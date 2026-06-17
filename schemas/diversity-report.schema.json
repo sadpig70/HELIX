@@ -2,11 +2,11 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "HELIX diversity / homogenization report",
   "type": "object",
-  "required": ["triggered", "breaches", "partial", "metrics", "signals"],
+  "required": ["triggered", "breaches", "sim_kind", "metrics", "signals"],
   "properties": {
     "triggered": {"type": "boolean"},
     "breaches": {"type": "integer", "minimum": 0, "maximum": 4},
-    "partial": {"type": "boolean", "description": "true when sim was absent (sim-based metrics omitted)"},
+    "sim_kind": {"type": "string", "enum": ["lexical", "semantic"], "description": "lexical default or injected semantic sim"},
     "metrics": {
       "type": "object",
       "required": ["keyword_coverage", "max_pair_count"],

@@ -100,7 +100,7 @@ python core/helix_fingerprint.py source ADPR ReleaseMesh PnR
 ```text
 === HELIX turn ===
   unified ledger: 2 entries (explore=1, exploit=1)
-  diversity pool: 7 items | triggered=False (partial=True, breaches=1)
+  diversity pool: 7 items | triggered=False (sim=lexical, breaches=1)
   latest explore winner: IDEA-018 "Time-Box Automation Enforcer" -> already_consumed=False
       lineage: IDEA-018 -> INS-L10-007 -> EVX-... -> CIX-... -> IDX-... -> TCX-... -> v2
   base-pairing (explore->corpus): AgentPACT
@@ -114,15 +114,26 @@ python core/helix_fingerprint.py source ADPR ReleaseMesh PnR
 - **HELIX-Gate** — 5점 다양성/복구 게이트 (sdxx→idxx→cixx→avoidance→cross-model)
 - **HELIX-Loop** — explore↔exploit 폐루프
 
-## 정직한 경계
+## 설계 불변식 & 확장점
 
-- HELIX는 **자기완결 모노레포**다 — 두 시스템의 모든 스킬을 `skills/`에 vendor했다(`MIGRATION.md` 출처 기록).
-  단 내부 로직은 `core/` 백본을 **단일 출처**로 두어 desync를 막는다(*패키징은 융합, 로직은 단일출처*).
-- pgf는 양 트리 내용이 일부 달랐다 — recreate_prj 버전을 canonical로 채택. aox/cix가 쓰는
-  `pgf/discovery/personas.json`은 동일해 기계 의존성은 안전(상세 `MIGRATION.md`).
-- 이중나선 은유는 2가닥에 최적. 향후 explore 소스가 3+로 늘면 삼중나선(collagen)으로 흡수하거나,
-  가닥 수 무관하면 백본 중심 framing 유지.
-- 임베딩 임계(cos 0.8/0.65 등)는 양측 차용값 — 통합 코퍼스에 맞춰 재보정 대상.
+전부 *동작하는 사실*이다 — 보류된 caveat이 아니다.
+
+- **자기완결 모노레포 · 단일 출처 백본.** 모든 스킬을 `skills/`에 vendor하되 ledger/diversity/
+  provenance/fingerprint/loop는 `core/`에 한 번만 정의해 두 엔진이 공유 → desync 불가 (`MIGRATION.md`).
+- **pgf 의존성 폐쇄 검증됨.** vendored 스킬의 pgf 기계 의존성은 `pgf/discovery/personas.json` 하나뿐이며
+  두 트리 동일. 나머지 pgf 차이는 prose-only로 실행 영향 0 (재현 명령 `MIGRATION.md §1`).
+- **다양성 신호는 항상 완전 · 의미유사도는 플러그인.** `core/helix_diversity`는 결정론 `lexical_sim`
+  기본을 탑재해 외부 의존 없이 완전한 report를 낸다(`sim_kind="lexical"`). 임베딩 `sim`을 주입하면
+  semantic 등급으로 격상(`sim_kind="semantic"`) — 임베딩은 엔진 책임이라는 결정론 경계의 깔끔한 확장점.
+- **임계값은 출처·보정 절차 명시 + override API.** 각 기본값의 provenance와 코퍼스/sim별 재보정 절차는
+  `docs/CALIBRATION.md`; `measure_diversity(..., thresholds={...})`로 즉시 덮어쓴다.
+- **백본 중심 = N가닥 확장 가능.** 불변항은 가닥 수가 아니라 백본. explore 소스가 3+로 늘어도
+  드라이버는 가닥 목록을 받아 라운드를 배분할 뿐(가닥 추가 = 어댑터 추가, `docs/ARCHITECTURE.md §6`).
+- **결정론 경계.** `core/`+어댑터는 순수 stdlib(시계·네트워크·AI 없음, `now`/`sim` 주입); 엔진 LLM
+  단계는 메타층; exploit 생성물 verdict 경로는 결정론 불변.
+
+### 범위 밖 (non-goals, 결함 아님)
+- 임베딩 모델 자체는 미동봉(주입 인터페이스 제공). 시장 수요·상업성 판단은 범위 밖(엔진의 평가층 소관).
 
 ## 라이선스
 

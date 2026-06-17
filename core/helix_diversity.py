@@ -10,9 +10,11 @@ lineage degrades. This unifies the two systems' separately-built guards:
   * recreate (idea-layer DiversityGuard): unique_ratio (cos>0.8 duplicate pairs).
 
 Determinism boundary: keyword/domain-pair signals are FULLY deterministic
-(stdlib counting). Semantic-similarity signals require a `sim(a, b) -> float`
-callable INJECTED by the caller (embeddings live in the engines, not here).
-With sim=None, the deterministic signals are still produced (partial report).
+(stdlib counting). Similarity signals use a `sim(a, b) -> float` callable; when
+none is injected, a deterministic lexical default (`lexical_sim`, Jaccard over
+tokens) is used so a complete report is always produced. Inject a semantic sim
+(embeddings, run in the engines) for embedding-grade signal. The report's
+`sim_kind` field records which was used ("lexical" | "semantic").
 """
 
 from collections import Counter
@@ -104,17 +106,35 @@ def unique_ratio(pool, sim, dup_cos):
     return (n - len(dup_idx)) / n
 
 
-def measure_diversity(pool, recent_winners=None, sim=None, thresholds=None) -> dict:
-    """Unified diversity report. Aggregation deterministic; `sim` injected.
+def lexical_sim(a, b) -> float:
+    """Deterministic default similarity: Jaccard over title+description tokens, [0,1].
 
-    Returns:
-        {triggered, breaches, partial, metrics{...}, signals{...}}
-    `partial` is True when sim was absent (sim-based metrics omitted from trigger).
+    A shallow but real (lexical) signal so diversity works with zero external
+    dependencies. Inject a semantic `sim(a, b)` for embedding-grade comparison.
+    """
+    ta = set(tokenize_name(_item_text(a)))
+    tb = set(tokenize_name(_item_text(b)))
+    if not ta or not tb:
+        return 0.0
+    union = len(ta | tb)
+    return len(ta & tb) / union if union else 0.0
+
+
+def measure_diversity(pool, recent_winners=None, sim=None, thresholds=None) -> dict:
+    """Unified diversity report. Aggregation deterministic; similarity pluggable.
+
+    `sim(a, b) -> float` is injectable; when None, the deterministic `lexical_sim`
+    default is used, so a complete report is ALWAYS produced (no omitted metrics).
+    Returns {triggered, breaches, sim_kind, metrics{...}, signals{...}, thresholds}.
+    `sim_kind` is "semantic" when a sim was injected, else "lexical".
     """
     P = dict(DEFAULT_THRESHOLDS)
     if thresholds:
         P.update(thresholds)
     recent_winners = recent_winners or []
+    sim_kind = "semantic" if sim is not None else "lexical"
+    if sim is None:
+        sim = lexical_sim
 
     kc = keyword_coverage(pool)
     mpc = max_domain_pair_repeat(pool)
@@ -129,13 +149,12 @@ def measure_diversity(pool, recent_winners=None, sim=None, thresholds=None) -> d
         ("winner_embedding_similarity", win_sim, win_sim is not None and win_sim >= P["winner_embedding_similarity"]),
     ]
     breaches = sum(1 for _, _, b in checks if b)
-    partial = sim is None
     triggered = breaches >= P["min_breaches"]
 
     return {
         "triggered": triggered,
         "breaches": breaches,
-        "partial": partial,
+        "sim_kind": sim_kind,
         "metrics": {name: val for name, val, _ in checks},
         "signals": {
             "unique_ratio": uniq,

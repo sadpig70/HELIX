@@ -55,9 +55,10 @@ winner만 append (양 엔진 공통 `record_only_when`).
 | `unique_ratio` | 주입 `sim` 집계 | recreate (island 재발산) |
 
 `measure_diversity(pool, recent_winners, sim, thresholds)` →
-`{triggered, breaches, partial, metrics, signals, thresholds}`.
-`triggered = breaches >= min_breaches(기본 2)`. `sim=None`이면 `partial=True`로
-키워드/pair 신호만 산출(부분 결정론). 임계는 `DEFAULT_THRESHOLDS` 단일 정의.
+`{triggered, breaches, sim_kind, metrics, signals, thresholds}`.
+`triggered = breaches >= min_breaches(기본 2)`. `sim=None`이면 결정론 `lexical_sim`
+기본을 써서 **완전한** report를 낸다(`sim_kind="lexical"`); 임베딩 sim 주입 시 `"semantic"`.
+임계는 `DEFAULT_THRESHOLDS` 단일 정의 + override(`thresholds=`) + 보정 절차(`docs/CALIBRATION.md`).
 
 ## 4. helix_provenance — 계보 + 환류 (염기쌍)
 

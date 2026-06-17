@@ -50,7 +50,8 @@ def build_report(explore_root=None, exploit_root=None) -> dict:
         pool += explore_adp.idea_pool_to_pool(ex["idea_pool"])
     if xp["candidates"]:
         pool += exploit_adp.candidates_to_pool(xp["candidates"])
-    diversity = measure_diversity(pool, sim=None)  # sim injected by engines in production
+    # lexical default by design; engines may inject a semantic sim for grade-up
+    diversity = measure_diversity(pool, sim=None)
 
     # 3) latest explore winner -> candidate, check against the shared ledger
     winner_report = None
@@ -110,7 +111,7 @@ def _print_report(r: dict) -> None:
     print(f"  unified ledger: {r['ledger_size']} entries "
           f"(explore={r['ledger_origins']['explore']}, exploit={r['ledger_origins']['exploit']})")
     print(f"  diversity pool: {r['pool_size']} items | "
-          f"triggered={r['diversity']['triggered']} (partial={r['diversity']['partial']}, "
+          f"triggered={r['diversity']['triggered']} (sim={r['diversity']['sim_kind']}, "
           f"breaches={r['diversity']['breaches']})")
     if r["winner"]:
         w = r["winner"]

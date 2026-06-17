@@ -19,7 +19,7 @@ from .helix_fingerprint import (
 from .helix_ledger import (
     is_consumed, append_consumed, load_ledger, save_ledger, reindex_ledger, empty_ledger,
 )
-from .helix_diversity import measure_diversity, DEFAULT_THRESHOLDS
+from .helix_diversity import measure_diversity, lexical_sim, DEFAULT_THRESHOLDS
 from .helix_provenance import trace_winner, winner_to_corpus_entry
 from .helix_loop import next_action, DEFAULT_LOOP_POLICY
 
@@ -27,7 +27,7 @@ __all__ = [
     "normalize_name", "tokenize_name", "source_fingerprint", "generated_fingerprint",
     "is_consumed", "append_consumed", "load_ledger", "save_ledger",
     "reindex_ledger", "empty_ledger",
-    "measure_diversity", "DEFAULT_THRESHOLDS",
+    "measure_diversity", "lexical_sim", "DEFAULT_THRESHOLDS",
     "trace_winner", "winner_to_corpus_entry",
     "next_action", "DEFAULT_LOOP_POLICY",
 ]

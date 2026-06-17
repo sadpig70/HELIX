@@ -18,11 +18,14 @@
 
 ## 결정 (decisions)
 
-1. **공유 표기 dedup → recreate_prj canonical.** pg/pgf/pgxf는 양 트리 중복. recreate_prj 버전(이번 세션 active, pgf v2.5)을 채택.
-   - ★ **분기 발견(정직 기록)**: IdeaFirst와 recreate_prj의 pgf는 **내용이 다름** — `pgf/SKILL.md`,
-     `pgf/agents/pgf-persona-p1..p14.md`, `discovery/discovery-reference.md`, `loop/{loop-reference.md,stop-hook.py}`,
-     `reference/{delegate,evolve}-reference.md`. **그러나 aox/cix/evx가 실제 로드하는 `pgf/discovery/personas.json`은 동일** → 기계 의존성은 안전.
-   - 영향: pgf *discover/persona-md* 행동이 IdeaFirst 원본과 미세하게 다를 수 있음(저위험). 원본 트리는 보존되어 있어 필요 시 대조 가능.
+1. **공유 표기 dedup → recreate_prj canonical (의존성 폐쇄 검증 완료).** pg/pgf/pgxf는 양 트리 중복.
+   recreate_prj 버전(pgf v2.5)을 채택했고, **vendored 스킬 전체의 pgf 기계 의존성 폐쇄를 검증**했다:
+   - 전 explore 스킬(aox/cix/evx/tcx/idx/sdx/…)이 기계적으로 로드하는 pgf 파일은 **`pgf/discovery/personas.json` 단 하나**
+     (`grep -roE "pgf/[^ ]+\.(json|yaml|py)"` 결과) — 이 파일은 **두 트리 동일**(`diff` 확인).
+   - 두 트리의 pgf 차이(`SKILL.md`, `agents/pgf-persona-p1..p14.md`, `discovery/loop/reference`)는 **pgf 자신의 discover-mode 산문**이며,
+     **어떤 vendored 스킬도 persona `.md`를 기계 로드하지 않는다**(`grep pgf-persona` 결과 0).
+   - 결론: recreate_prj pgf는 vendored 스킬 전체의 기계 의존성을 **완전 충족**한다. 차이는 prose-only로 실행 영향 없음
+     (재현: `diff <(grep -roE "pgf/[^ ]+\.(json|yaml|py)" skills/) ...` + `diff personas.json`).
 2. **fingerprint 중복 금지.** ProjectGenome `fingerprint.py`는 이미 `core/helix_fingerprint.py`로 승격 → vendor 안 함(스킬/스크립트는 core 참조).
 3. **recreate canonical = `.agents/skills/recreate`** (idea-layer 포함). 공개 패키징본 ProjectGenome은 미포함(중복 회피; 결정론 스크립트만 차용).
 4. **런타임 산출물 미포함.** `.aox/.cix/.sdx(runs)/.idea-ledger(history)` 등 *생성물*은 vendor 안 함(`.gitignore`). 단 *durable 입력/상태*(catalog, ledger 시드)는 `seed/`로 포함.

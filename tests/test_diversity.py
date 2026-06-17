@@ -2,7 +2,7 @@ import unittest
 
 import tests._path  # noqa: F401
 from core.helix_diversity import (
-    measure_diversity, keyword_coverage, max_domain_pair_repeat,
+    measure_diversity, lexical_sim, keyword_coverage, max_domain_pair_repeat,
     unique_ratio, DEFAULT_THRESHOLDS,
 )
 
@@ -44,13 +44,25 @@ class TestDiversity(unittest.TestCase):
     def test_unique_ratio_none_without_sim(self):
         self.assertIsNone(unique_ratio(make_pool(["a", "b"]), None, 0.8))
 
-    def test_partial_report_without_sim(self):
+    def test_lexical_default_when_no_sim(self):
         pool = make_pool(["mesh ledger", "mesh gate"], domains=[["d1", "d2"], ["d1", "d2"]])
         rep = measure_diversity(pool, sim=None)
-        self.assertTrue(rep["partial"])
-        self.assertIsNone(rep["metrics"]["avg_embedding_sim"])
-        # sim-based checks never count as breaches when sim is None
-        self.assertLessEqual(rep["breaches"], 2)
+        self.assertEqual(rep["sim_kind"], "lexical")
+        # with the lexical default, sim-based metrics are produced (never None for >=2 items)
+        self.assertIsNotNone(rep["metrics"]["avg_embedding_sim"])
+        self.assertIsNotNone(rep["signals"]["unique_ratio"])
+
+    def test_sim_kind_semantic_when_injected(self):
+        pool = make_pool(["a", "b"])
+        rep = measure_diversity(pool, sim=lambda x, y: 0.5)
+        self.assertEqual(rep["sim_kind"], "semantic")
+
+    def test_lexical_sim_basic(self):
+        a = {"title": "policy drift dossier"}
+        b = {"title": "policy drift calendar"}
+        c = {"title": "quantum lichen oracle"}
+        self.assertGreater(lexical_sim(a, b), lexical_sim(a, c))
+        self.assertEqual(lexical_sim(a, a), 1.0)
 
     def test_triggered_when_two_breaches(self):
         # homogeneous pool: high keyword coverage + repeated domain pair + high sim
