@@ -28,16 +28,25 @@ measure_diversity(pool, recent_winners, sim, thresholds={"avg_embedding_sim": 0.
 ```
 `thresholds` shallow-merges over the defaults — pass any subset.
 
-## 3. sim_kind matters for thresholds
+## 3. sim_kind selects the baseline thresholds (enforced in code)
 
 `measure_diversity` ships a deterministic `lexical_sim` default (Jaccard over
 tokens) so the report is always complete. The sim-based thresholds
-(`avg_embedding_sim`, `winner_embedding_similarity`, `dup_cos`) were tuned for
-**embedding cosine**, whose distribution differs from lexical Jaccard. So:
+(`avg_embedding_sim`, `winner_embedding_similarity`) were tuned for **embedding
+cosine**, whose distribution differs from lexical Jaccard. Applying the cosine
+ceilings to Jaccard data systematically under-triggers, so the baseline is now
+**chosen by `sim_kind`** (not merely advised):
 
-- `sim_kind == "lexical"` → the count/coverage signals (`keyword_coverage`,
-  `max_pair_count`) are authoritative; treat the sim-based ones as a coarse floor.
-- `sim_kind == "semantic"` → inject your embedding sim; the sim thresholds apply as tuned.
+| threshold | semantic (`DEFAULT_THRESHOLDS`) | lexical (`LEXICAL_THRESHOLD_OVERRIDES`) |
+|---|---|---|
+| `avg_embedding_sim` | 0.65 | 0.45 |
+| `winner_embedding_similarity` | 0.50 | 0.35 |
+| `keyword_coverage`, `max_pair_count`, `dup_cos`, `unique_ratio_floor` | scale-free / same |
+
+- `sim_kind == "lexical"` (no sim injected) → `base_thresholds("lexical")` applies
+  the Jaccard-appropriate ceilings; count/coverage signals stay authoritative.
+- `sim_kind == "semantic"` (sim injected) → the cosine-tuned `DEFAULT_THRESHOLDS` apply.
+- An explicit `thresholds=` argument still overrides either baseline (back-compatible).
 
 ## 4. Calibration procedure (run once per corpus / sim)
 

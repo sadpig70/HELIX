@@ -12,11 +12,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - name: Compile (stdlib only, no deps)
-        run: python -m compileall core engines tests helix.py
+      - name: Compile (stdlib only, no deps — incl. scripts)
+        run: python -m compileall core engines tests helix.py scripts
       - name: Unit tests
         run: python -m unittest discover -s tests -q
       - name: Validate structure + contracts
         run: python core/helix_validate.py .
       - name: Driver smoke (over shipped fixtures)
         run: python helix.py status
+      - name: Determinism regression (status byte-identical across runs)
+        run: |
+          python helix.py status --json > /tmp/helix_a.json
+          python helix.py status --json > /tmp/helix_b.json
+          diff /tmp/helix_a.json /tmp/helix_b.json

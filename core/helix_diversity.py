@@ -23,6 +23,7 @@ from itertools import combinations
 from .helix_fingerprint import tokenize_name
 
 # Unified thresholds: IdeaFirst 4 + recreate dup_cos + min_breaches.
+# These are the SEMANTIC baseline (tuned for embedding cosine, the parent systems' values).
 DEFAULT_THRESHOLDS = {
     "keyword_coverage": 0.80,            # IdeaFirst
     "max_pair_count": 3,                 # IdeaFirst (domain-pair repeat over window)
@@ -33,6 +34,25 @@ DEFAULT_THRESHOLDS = {
     "min_breaches": 2,                   # trigger when >= this many of the 4 breached
     "unique_ratio_triggers_repair": True,  # exploit-side island collapse must not be ignored
 }
+
+# Lexical (Jaccard) similarity is on a lower, narrower scale than embedding cosine,
+# so applying the semantic sim-ceilings to lexical data would systematically
+# under-trigger. When no semantic sim is injected (sim_kind == "lexical") these
+# recalibrated ceilings replace the sim-based ones; the count/coverage signals
+# (keyword_coverage, max_pair_count) are scale-free and stay as-is. See
+# docs/CALIBRATION.md §3. User-supplied `thresholds` still override either base.
+LEXICAL_THRESHOLD_OVERRIDES = {
+    "avg_embedding_sim": 0.45,            # Jaccard-appropriate mean-similarity ceiling
+    "winner_embedding_similarity": 0.35,  # Jaccard-appropriate winner-similarity ceiling
+}
+
+
+def base_thresholds(sim_kind: str) -> dict:
+    """Baseline thresholds for a sim_kind ('lexical'|'semantic'), pre user-override."""
+    P = dict(DEFAULT_THRESHOLDS)
+    if sim_kind == "lexical":
+        P.update(LEXICAL_THRESHOLD_OVERRIDES)
+    return P
 
 
 def _item_text(item: dict) -> str:
@@ -133,11 +153,13 @@ def measure_diversity(pool, recent_winners=None, sim=None, thresholds=None) -> d
     Returns {triggered, breaches, sim_kind, metrics{...}, signals{...}, thresholds}.
     `sim_kind` is "semantic" when a sim was injected, else "lexical".
     """
-    P = dict(DEFAULT_THRESHOLDS)
-    if thresholds:
-        P.update(thresholds)
     recent_winners = recent_winners or []
     sim_kind = "semantic" if sim is not None else "lexical"
+    # baseline depends on sim_kind (lexical Jaccard vs semantic cosine scale);
+    # explicit `thresholds` still win (back-compatible override).
+    P = base_thresholds(sim_kind)
+    if thresholds:
+        P.update(thresholds)
     if sim is None:
         sim = lexical_sim
 

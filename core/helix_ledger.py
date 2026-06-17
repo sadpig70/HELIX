@@ -190,11 +190,14 @@ def load_ledger(path) -> dict:
 
 
 def save_ledger(path, ledger: dict) -> None:
-    """Persist the ledger as pretty JSON (drops internal _norm caches)."""
+    """Persist the ledger as pretty JSON (drops internal _norm caches).
+
+    Written atomically (temp + os.replace) so a crash mid-write cannot corrupt the
+    single-source ledger the autonomous loop depends on.
+    """
+    from .helix_io import atomic_write_json
     out = json.loads(json.dumps(ledger))  # deep copy
     for entry in out.get("consumed", []):
         entry.pop("_norm_title", None)
         entry.pop("_norm_aliases", None)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=2, sort_keys=True)
-        f.write("\n")
+    atomic_write_json(path, out)

@@ -16,13 +16,15 @@ import sys
 
 try:  # package import (python -m core.helix_validate) or library use
     from .helix_ledger import is_consumed, MATCH_KEYS
-    from .helix_diversity import DEFAULT_THRESHOLDS
+    from .helix_diversity import DEFAULT_THRESHOLDS, measure_diversity
     from .helix_loop import VALID_ACTIONS, next_action
+    from .helix_schema import validate_against_schema, schema_features, schema_path
 except ImportError:  # direct script run: python core/helix_validate.py
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     from core.helix_ledger import is_consumed, MATCH_KEYS
-    from core.helix_diversity import DEFAULT_THRESHOLDS
+    from core.helix_diversity import DEFAULT_THRESHOLDS, measure_diversity
     from core.helix_loop import VALID_ACTIONS, next_action
+    from core.helix_schema import validate_against_schema, schema_features, schema_path
 
 REQUIRED_LEDGER_KEYS = ("schema_version", "consumed", "blocked_names",
                         "source_fingerprints", "generated_fingerprints")
@@ -110,6 +112,62 @@ def validate_thresholds(P: dict) -> list:
     return problems
 
 
+def _schema_required(root: str, name: str) -> set:
+    """Top-level `required` keys declared by a shipped schema."""
+    try:
+        with open(schema_path(root, name), "r", encoding="utf-8") as f:
+            return set(json.load(f).get("required", []))
+    except (FileNotFoundError, ValueError):
+        return set()
+
+
+def cross_check_schema_vs_validator(root: str) -> list:
+    """Detect drift between schemas/ and the hand-written validators (F1).
+
+    The schema's declared `required` keys must match what the code enforces; if a
+    schema gains/loses a required key without the validator following, this fires.
+    Also flags any schema that uses keywords outside the stdlib walker's subset
+    while jsonschema is absent (would be silently under-validated).
+    """
+    problems = []
+    ledger_req = _schema_required(root, "ledger")
+    if ledger_req and ledger_req != set(REQUIRED_LEDGER_KEYS):
+        problems.append(f"schema/validator drift: ledger.schema required {sorted(ledger_req)} "
+                        f"!= REQUIRED_LEDGER_KEYS {sorted(REQUIRED_LEDGER_KEYS)}")
+    try:
+        import jsonschema  # noqa: F401
+        have_jsonschema = True
+    except ImportError:
+        have_jsonschema = False
+    if not have_jsonschema:
+        for name in ("ledger", "diversity-report", "loop-state", "corpus-entry"):
+            sp = schema_path(root, name)
+            if not os.path.exists(sp):
+                continue
+            with open(sp, "r", encoding="utf-8") as f:
+                feats = schema_features(json.load(f))
+            if not feats["in_subset"]:
+                problems.append(f"{name}.schema uses unsupported keywords {feats['unsupported']} "
+                                f"and jsonschema is not installed (would be under-validated)")
+    return problems
+
+
+def validate_schemas(root: str) -> list:
+    """Validate live/example artifacts against their shipped JSON Schemas (F1)."""
+    problems = []
+    # example ledger ↔ ledger.schema
+    ex = os.path.join(root, "examples", "consumed_ledger.json")
+    if os.path.exists(ex):
+        with open(ex, "r", encoding="utf-8") as f:
+            problems += [f"examples/consumed_ledger.json !~ ledger.schema: {p}"
+                         for p in validate_against_schema(json.load(f), schema_path(root, "ledger"))]
+    # a generated diversity report ↔ diversity-report.schema
+    rep = measure_diversity([{"title": "a b"}, {"title": "a c"}])
+    problems += [f"diversity report !~ diversity-report.schema: {p}"
+                 for p in validate_against_schema(rep, schema_path(root, "diversity-report"))]
+    return problems
+
+
 EXPECTED_SKILLS = [
     # shared notation
     "pg", "pgf", "pgxf",
@@ -174,6 +232,10 @@ def validate_project(root: str) -> list:
 
     # default thresholds must be sane
     problems += [f"default thresholds: {p}" for p in validate_thresholds(DEFAULT_THRESHOLDS)]
+
+    # enforce the shipped JSON Schemas + detect schema/validator drift (F1)
+    problems += validate_schemas(root)
+    problems += cross_check_schema_vs_validator(root)
 
     return problems
 

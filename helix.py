@@ -20,11 +20,13 @@ sys.path.insert(0, ROOT)
 
 import importlib                                              # noqa: E402
 from core.helix_diversity import measure_diversity            # noqa: E402
+from core.helix_io import atomic_write_json, read_json        # noqa: E402
 from core.helix_ledger import (                               # noqa: E402
     is_consumed, append_consumed, load_ledger, save_ledger,
 )
 from core.helix_loop import next_action                       # noqa: E402
 from core.helix_provenance import trace_winner, winner_to_corpus_entry  # noqa: E402
+from core.helix_validate import validate_corpus_entry         # noqa: E402
 from engines.loaders import load_explore_state, load_exploit_state      # noqa: E402
 from engines.unify import build_unified_ledger                # noqa: E402
 from engines.explore import adapter as explore_adp            # noqa: E402
@@ -50,18 +52,18 @@ def append_corpus_entry(corpus_path: str, entry: dict) -> bool:
     """Append a corpus entry to a JSON-list file, idempotent by project name.
 
     Returns True if newly added, False if the project was already present.
+    The entry is validated against the corpus contract before writing (F5: refuse
+    invalid sources at the write boundary, not just in tests), and the file is
+    written atomically (F2) so a crash mid-write cannot corrupt the corpus.
     """
-    try:
-        with open(corpus_path, "r", encoding="utf-8") as f:
-            corpus = json.load(f)
-    except FileNotFoundError:
-        corpus = []
+    problems = validate_corpus_entry(entry)
+    if problems:
+        raise ValueError(f"append_corpus_entry: rejected invalid corpus entry: {problems}")
+    corpus = read_json(corpus_path, default=[])
     if any(c.get("project") == entry.get("project") for c in corpus):
         return False
     corpus.append(entry)
-    with open(corpus_path, "w", encoding="utf-8") as f:
-        json.dump(corpus, f, ensure_ascii=False, indent=2)
-        f.write("\n")
+    atomic_write_json(corpus_path, corpus)
     return True
 
 
@@ -205,7 +207,8 @@ def _now(argv):
 USAGE = ("usage:\n"
          "  python helix.py status [--explore-root R] [--exploit-root R] [--sim lexical|mod:fn] [--json]\n"
          "  python helix.py close-loop --winner <winner.json> --ledger <ledger.json> "
-         "--corpus <corpus.json> [--now <iso>]\n")
+         "--corpus <corpus.json> [--now <iso>]\n"
+         "  python helix.py loop-status [--loop-state <loop-state.json>] [--ledger <ledger.json>]\n")
 
 
 def _main(argv) -> int:
@@ -236,6 +239,17 @@ def _main(argv) -> int:
             ledger_path=ledger_path, corpus_path=corpus_path, now=_now(argv))
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0 if result["status"] in ("closed", "already_recorded") else 1
+
+    if cmd == "loop-status":
+        # read-only: report the autonomous loop's deterministic control state
+        # (stop decision + coverage). Turn execution stays in the INSTRUCTIONS meta-layer.
+        from core.helix_loop_state import load_loop_state, loop_status_report
+        state = load_loop_state(_opt(argv, "--loop-state", ".helix/loop/loop-state.json"))
+        ledger_path = _opt(argv, "--ledger")
+        ledger = load_ledger(ledger_path) if ledger_path else None
+        report = loop_status_report(state, ledger)
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 0
 
     sys.stderr.write(USAGE)
     return 2

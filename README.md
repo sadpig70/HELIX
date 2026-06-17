@@ -83,13 +83,19 @@ HELIX/
 ## 빠른 시작
 
 ```bash
-# 한 회전 실행 (픽스처 위에서 — 두 엔진 상태 → 다음 액션)
+# 한 회전 읽기 (픽스처 위에서 — 두 엔진 상태 → 다음 액션). read-only.
 python helix.py status
 
 # 실제 엔진 위에서 (IdeaFirst .evx*.yaml 은 PyYAML 필요)
 python helix.py status --explore-root D:/IdeaFirst --exploit-root D:/recreate_prj/ProjectGenome
 
-# 백본 검증 (구조 + 예제 일관성) / 테스트 / fingerprint CLI
+# ★ 루프 폐쇄 (write, actuator): 구현된 winner를 ledger에 기록 + 코퍼스로 환류(염기쌍). idempotent.
+python helix.py close-loop --winner winner.json --ledger .helix/ledger.json --corpus .helix/corpus.json
+
+# 자율 루프의 결정론 제어 상태 (정지여부 + coverage). read-only.
+python helix.py loop-status --loop-state .helix/loop/loop-state.json --ledger .helix/ledger.json
+
+# 백본 검증 (구조 + 계약 스키마 강제 + 예제 일관성) / 테스트 / fingerprint CLI
 python core/helix_validate.py .
 python -m unittest discover -s tests -q
 python core/helix_fingerprint.py source ADPR ReleaseMesh PnR

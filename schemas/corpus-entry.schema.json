@@ -11,6 +11,14 @@
     "source_chain": {"type": "object"},
     "semantic_family": {"type": ["string", "null"]},
     "readme_hint": {"type": ["string", "null"]},
-    "from_idea_id": {"type": ["string", "null"]}
+    "from_idea_id": {"type": ["string", "null"]},
+    "lineage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["layer", "id"],
+        "properties": {"layer": {"type": "string"}, "id": {"type": "string"}}
+      }
+    }
   }
 }
