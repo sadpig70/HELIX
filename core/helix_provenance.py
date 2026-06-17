@@ -70,6 +70,9 @@ def winner_to_corpus_entry(consumed_entry: dict) -> dict:
         raise ValueError("winner_to_corpus_entry: winner has no implementation "
                          "(only built projects may seed the corpus)")
     impl = impls[0]
+    if not impl.get("project_name"):
+        raise ValueError("winner_to_corpus_entry: implementation has no project_name "
+                         "(a corpus source must be a named project)")
     return {
         "project": impl.get("project_name"),
         "repo": impl.get("repo_url"),

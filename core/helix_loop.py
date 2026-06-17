@@ -49,11 +49,13 @@ def next_action(state: dict, policy: dict = None) -> dict:
         return {"action": "RECORD_CONSUMED",
                 "why": "implemented winner -> ledger (close provenance; base-pairing)"}
 
-    # 2) Repair before reproducing — homogenization detected -> refresh inputs.
-    if diversity.get("triggered"):
+    # 2) Repair before reproducing — homogenization OR exploit-side island collapse.
+    #    repair_required subsumes `triggered` and adds the unique_ratio-floor signal,
+    #    so a recreate-side collapse cannot be visible-but-non-actionable.
+    if diversity.get("repair_required", diversity.get("triggered")):
         target = "explore" if last_engine == "exploit" else "both"
         return {"action": "REFRESH_INPUTS",
-                "why": "diversity triggered -> refresh inputs before generating (repair)",
+                "why": "diversity repair_required -> refresh inputs before generating",
                 "target": target}
 
     # 3) Immature corpus -> bring in fresh external novelty.

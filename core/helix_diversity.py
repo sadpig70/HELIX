@@ -31,6 +31,7 @@ DEFAULT_THRESHOLDS = {
     "dup_cos": 0.80,                     # recreate (duplicate pair threshold)
     "unique_ratio_floor": 0.50,          # recreate (island re-divergence trigger)
     "min_breaches": 2,                   # trigger when >= this many of the 4 breached
+    "unique_ratio_triggers_repair": True,  # exploit-side island collapse must not be ignored
 }
 
 
@@ -42,11 +43,13 @@ def _item_text(item: dict) -> str:
     return " ".join(p for p in parts if p)
 
 
-def keyword_coverage(pool, k=10) -> float:
+def keyword_coverage(pool, k=None) -> float:
     """Fraction of items dominated by the top-k most common keywords (DF-based).
 
     High coverage = the same few words run through most outputs = homogeneous.
-    Fully deterministic (tokenize + document frequency, string tie-break).
+    `k=None` adapts to vocabulary size: min(10, max(3, sqrt(vocab))). This stops
+    the metric being trivially 1.0 on tiny pools where the top-10 keywords cover
+    the entire vocabulary. Fully deterministic (DF + string tie-break).
     """
     n = len(pool)
     if n == 0:
@@ -57,6 +60,8 @@ def keyword_coverage(pool, k=10) -> float:
         df.update(ts)
     if not df:
         return 0.0
+    if k is None:
+        k = min(10, max(3, int(len(df) ** 0.5)))
     # top-k by (frequency desc, token asc) -> deterministic
     top = [tok for tok, _ in sorted(df.items(), key=lambda kv: (-kv[1], kv[0]))[:k]]
     top_set = set(top)
@@ -150,15 +155,19 @@ def measure_diversity(pool, recent_winners=None, sim=None, thresholds=None) -> d
     ]
     breaches = sum(1 for _, _, b in checks if b)
     triggered = breaches >= P["min_breaches"]
+    unique_below = (uniq is not None and uniq < P["unique_ratio_floor"])
+    # exploit-side island collapse (low unique_ratio) must not be silently ignored
+    repair_required = triggered or (P.get("unique_ratio_triggers_repair", True) and unique_below)
 
     return {
         "triggered": triggered,
+        "repair_required": repair_required,
         "breaches": breaches,
         "sim_kind": sim_kind,
         "metrics": {name: val for name, val, _ in checks},
         "signals": {
             "unique_ratio": uniq,
-            "unique_ratio_below_floor": (uniq is not None and uniq < P["unique_ratio_floor"]),
+            "unique_ratio_below_floor": unique_below,
             "breached": [name for name, _, b in checks if b],
         },
         "thresholds": P,

@@ -23,7 +23,7 @@
     "Verify": "done"
   },
   "verify": {
-    "unittests": "64 passed",
+    "unittests": "unittest discover -s tests: OK",
     "validate": "PASS",
     "driver_smoke": "python helix.py status -> NEXT ACTION RUN_EXPLOIT (federated ledger explore=1/exploit=1, lineage traced, base-pairing AgentPACT)",
     "perspectives": {

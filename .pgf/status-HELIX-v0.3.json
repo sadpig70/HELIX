@@ -1,0 +1,25 @@
+{
+  "project": "HELIX",
+  "version": "0.3",
+  "phase": "verify",
+  "source_review": "_workspace/PGF-HELIX-system-analysis-2026-06-17.md (codex)",
+  "summary": {"done": 8, "total": 8},
+  "batches": {
+    "P0-1_CloseLoopActuator": "done — helix.py close-loop + append_corpus_entry (idempotent ledger/corpus write)",
+    "P0-2_DiversityRepairSemantics": "done — repair_required (unique_ratio collapse) + adaptive keyword k; loop acts on it",
+    "P1-1_LedgerMergeCollision": "done — merge_ledgers by full is_consumed contract + fold duplicates",
+    "P1-2_LiveArtifactResolver": "done — engines.loaders.resolve_latest (round-dir deterministic latest)",
+    "P1-3_SemanticSimInjection": "done — helix.py status --sim lexical|mod:fn (import outside core)",
+    "P2-1_SchemaValidator": "done — validate_corpus_entry/loop_state/thresholds + winner_to_corpus_entry project guard",
+    "P2-2_CalibrationHarness": "done — scripts/calibrate_diversity.py (rounds JSONL → thresholds JSON)",
+    "P3-1_StatusDocsSync": "done — status docs use 'unittest discover OK' (no count drift)"
+  },
+  "verify": {
+    "unittests": "83 passed (deterministic x2)",
+    "validate": "PASS",
+    "compile": "core+engines+scripts+helix.py OK",
+    "close_loop_smoke": "closed -> already_recorded (idempotent); corpus written (origin=explore)",
+    "determinism": "core+engines: no clock/random; datetime only at helix.py CLI edge"
+  },
+  "verdict": "v0.3 = operational closed-loop controller (actuator layer added)"
+}

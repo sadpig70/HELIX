@@ -14,7 +14,7 @@
     "B7_Verify": "done"
   },
   "verify": {
-    "self_tests": "64 passed",
+    "self_tests": "unittest discover -s tests: OK",
     "validate": "PASS (enforces 19-skill inventory + personas.json)",
     "dangling_refs": ".agents/skills=0, .agents/scripts=0 (excl. 1 generic doc mention in pgf/evolve-reference.md)",
     "personas_reachable": true,

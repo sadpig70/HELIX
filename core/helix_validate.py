@@ -72,6 +72,44 @@ def validate_loop_action(action: dict) -> list:
     return problems
 
 
+def validate_corpus_entry(entry: dict) -> list:
+    """A corpus source must be a named project with a known origin (non-empty)."""
+    problems = []
+    if not entry.get("project"):
+        problems.append("corpus entry: empty/missing project")
+    if entry.get("origin") not in ("explore", "exploit"):
+        problems.append(f"corpus entry: bad origin {entry.get('origin')!r}")
+    return problems
+
+
+def validate_loop_state(state: dict) -> list:
+    problems = []
+    if state.get("last_engine") not in (None, "explore", "exploit"):
+        problems.append(f"loop state: bad last_engine {state.get('last_engine')!r}")
+    cs = state.get("corpus_size", 0)
+    if not isinstance(cs, int) or cs < 0:
+        problems.append(f"loop state: corpus_size must be a non-negative int, got {cs!r}")
+    return problems
+
+
+def validate_thresholds(P: dict) -> list:
+    """Sanity-check a thresholds dict: ratios in [0,1], counts >= 1."""
+    problems = []
+    for k in ("keyword_coverage", "avg_embedding_sim", "winner_embedding_similarity",
+              "dup_cos", "unique_ratio_floor"):
+        v = P.get(k)
+        try:
+            if v is None or not (0.0 <= float(v) <= 1.0):
+                problems.append(f"threshold {k} out of [0,1]: {v!r}")
+        except (TypeError, ValueError):
+            problems.append(f"threshold {k} not a number: {v!r}")
+    if int(P.get("min_breaches", 0)) < 1:
+        problems.append(f"min_breaches must be >= 1: {P.get('min_breaches')!r}")
+    if int(P.get("max_pair_count", 0)) < 1:
+        problems.append(f"max_pair_count must be >= 1: {P.get('max_pair_count')!r}")
+    return problems
+
+
 EXPECTED_SKILLS = [
     # shared notation
     "pg", "pgf", "pgxf",
@@ -133,6 +171,9 @@ def validate_project(root: str) -> list:
     # smoke-check the loop policy is wired (deterministic)
     a = next_action({"corpus_size": 0})
     problems += [f"loop smoke: {p}" for p in validate_loop_action(a)]
+
+    # default thresholds must be sane
+    problems += [f"default thresholds: {p}" for p in validate_thresholds(DEFAULT_THRESHOLDS)]
 
     return problems
 

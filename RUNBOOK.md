@@ -56,9 +56,17 @@
 ## 4. HELIX 통합 루프 (`core/` + `helix.py`)
 
 ```bash
-# 한 회전: 두 엔진 상태 → 통합 ledger → diversity → 다음 액션
+# 한 회전(read): 두 엔진 상태 → 통합 ledger → diversity → 다음 액션
 python helix.py status
 python helix.py status --explore-root . --exploit-root .   # 라이브(.evx yaml 은 PyYAML 필요)
+python helix.py status --sim core.helix_diversity:lexical_sim   # semantic sim 주입(mod:fn)
+
+# ★ 루프 폐쇄(write, actuator): 구현된 winner를 ledger에 기록 + 코퍼스로 환류(염기쌍). idempotent.
+python helix.py close-loop --winner winner.json --ledger .helix/ledger.json --corpus .helix/corpus.json
+#   winner.json = {"winner": {...}, "source_chain": {...}, "implementation": {project_name,...}}
+
+# 임계값 보정(history → thresholds JSON)
+python scripts/calibrate_diversity.py rounds.jsonl --target 0.2 --out thresholds.json
 
 # 백본 직접 사용
 python core/helix_validate.py .
