@@ -79,7 +79,10 @@ python -m unittest discover -s tests -q
 
 ## 4.5 자율 실행 (문서만 읽고 풀사이클·연속 폐루프)
 
-런타임이 **HELIX를 루트로 두고 문서만 읽어** 자율 수행하려면:
+- **통합 설계도(pg/pgf)**: `docs/DESIGN-HELIX-UNIFIED-PIPELINE.pg.md` — aox·recreate **전 기능을 단일 폐루프로
+  파이프라인**한 Gantree+PPR 설계(함수 커버리지 매트릭스 포함). *무엇을 어떻게 파이프라인하는가*.
+
+런타임이 **HELIX를 루트로 두고 문서만 읽어** 자율 수행하려면(*어떻게 수행하는가*):
 - **1회 풀사이클 턴**: `docs/INSTRUCTIONS-helix-fullcycle.md` (BASE) — 상태 로드 → `next_action` strand 결정 →
   엔진 파이프라인 → 통합 ledger 게이트 → `pgf full-cycle` 구현 → `helix.py close-loop` actuator → 검증 → (선택) 공개.
 - **무중단 연속 폐루프**: `docs/INSTRUCTIONS-helix-loop-autonomous.md` (LOOP) — BASE를 inner turn으로 호출,
