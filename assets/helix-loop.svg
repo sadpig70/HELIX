@@ -1,62 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR','Segoe UI',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR','Segoe UI',Helvetica,Arial,sans-serif">
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#142536"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c2c44"/>
+      <stop offset="1" stop-color="#162232"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#5b86b4"/>
     </marker>
-    <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#ea580c"/>
+    <marker id="arrowG" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#3a8f5f"/>
     </marker>
   </defs>
 
-  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
 
-  <!-- title -->
-  <text x="480" y="32" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">HELIX — explore &#8853; exploit 폐쇄 제어 루프</text>
-  <text x="480" y="53" text-anchor="middle" font-size="13" fill="#64748b">환류하는 폐루프인데도 수렴 없이 복리로 성장하는 나선</text>
-
-  <!-- top labels -->
-  <text x="230" y="88" text-anchor="middle" font-size="14" font-weight="600" fill="#334155">세계 &#183; 무한</text>
-  <text x="730" y="88" text-anchor="middle" font-size="14" font-weight="600" fill="#334155">자산 &#183; 유한</text>
-  <line x1="230" y1="95" x2="230" y2="125" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
-  <line x1="730" y1="95" x2="730" y2="125" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- header (ReserveFlow style) -->
+  <text x="60" y="80" fill="#eaf0fb" font-size="40" font-weight="700">HELIX</text>
+  <text x="60" y="118" fill="#9db4d8" font-size="22">explore &#8853; exploit 폐쇄 제어 루프 — 수렴 없이 복리로 성장하는 나선</text>
+  <text x="60" y="150" fill="#6f86ad" font-size="15">두 상보 가닥 + 단일 출처 백본(HELIX-Core) &#183; vendored skills &#183; stdlib &#183; deterministic</text>
 
   <!-- strand A : EXPLORE (IdeaFirst) -->
-  <rect x="60" y="128" width="340" height="74" rx="11" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-  <text x="230" y="153" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1d4ed8">EXPLORE &#183; 가닥 A &#183; IdeaFirst</text>
-  <text x="230" y="176" text-anchor="middle" font-size="13.5" fill="#1e293b">sdx &#8594; tcx &#8594; idx &#8594; cix &#8594; evx &#183; aox</text>
-  <text x="230" y="194" text-anchor="middle" font-size="11.5" fill="#64748b">+ sdxx / idxx / cixx &#183; sa-*</text>
+  <rect x="60" y="200" width="380" height="120" rx="14" fill="url(#card)" stroke="#2c416b" stroke-width="1"/>
+  <text x="250" y="236" text-anchor="middle" fill="#7fa8e6" font-size="19" font-weight="700">EXPLORE &#183; 가닥 A &#183; IdeaFirst</text>
+  <text x="250" y="268" text-anchor="middle" fill="#9db4d8" font-size="15">sdx &#8594; tcx &#8594; idx &#8594; cix &#8594; evx &#183; aox</text>
+  <text x="250" y="296" text-anchor="middle" fill="#6f86ad" font-size="13">+ sdxx / idxx / cixx &#183; sa-*</text>
 
   <!-- strand B : EXPLOIT (recreate) -->
-  <rect x="560" y="128" width="340" height="74" rx="11" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
-  <text x="730" y="153" text-anchor="middle" font-size="14.5" font-weight="700" fill="#0f766e">EXPLOIT &#183; 가닥 B &#183; recreate / ProjectGenome</text>
-  <text x="730" y="176" text-anchor="middle" font-size="13.5" fill="#1e293b">corpus &#8594; DesignSeed</text>
-  <text x="730" y="194" text-anchor="middle" font-size="11.5" fill="#64748b">genes &#8594; recombine / mutate / transplant</text>
+  <rect x="760" y="200" width="380" height="120" rx="14" fill="url(#card)" stroke="#2c416b" stroke-width="1"/>
+  <text x="950" y="236" text-anchor="middle" fill="#7fe0a8" font-size="19" font-weight="700">EXPLOIT &#183; 가닥 B &#183; recreate</text>
+  <text x="950" y="268" text-anchor="middle" fill="#9db4d8" font-size="15">corpus &#8594; DesignSeed</text>
+  <text x="950" y="296" text-anchor="middle" fill="#6f86ad" font-size="13">genes &#8594; recombine / mutate / transplant</text>
 
   <!-- arrows strands -> new project -->
-  <path d="M 230,202 C 250,248 330,272 381,277" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
-  <path d="M 730,202 C 700,248 622,272 579,277" fill="none" stroke="#0d9488" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="300" y="244" text-anchor="middle" font-size="11.5" fill="#1d4ed8">final_idea &#8594; pgf</text>
-  <text x="662" y="244" text-anchor="middle" font-size="11.5" fill="#0f766e">DesignSeed &#8594; pgf</text>
+  <path d="M 250,320 C 305,382 432,402 478,411" fill="none" stroke="#5b86b4" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M 950,320 C 895,382 768,402 722,411" fill="none" stroke="#5b86b4" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="346" y="372" text-anchor="middle" fill="#9db4d8" font-size="13">final_idea &#8594; pgf</text>
+  <text x="854" y="372" text-anchor="middle" fill="#9db4d8" font-size="13">DesignSeed &#8594; pgf</text>
 
-  <!-- new project node -->
-  <rect x="383" y="251" width="194" height="58" rx="11" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-  <text x="480" y="277" text-anchor="middle" font-size="15" font-weight="700" fill="#6d28d9">새 프로젝트</text>
-  <text x="480" y="296" text-anchor="middle" font-size="11.5" fill="#64748b">pgf full-cycle 로 구현</text>
+  <!-- new project node (highlight card) -->
+  <rect x="480" y="382" width="240" height="92" rx="14" fill="#1d3457" stroke="#3f72c4" stroke-width="2"/>
+  <text x="600" y="420" text-anchor="middle" fill="#eaf0fb" font-size="20" font-weight="700">새 프로젝트</text>
+  <text x="600" y="448" text-anchor="middle" fill="#7fa8e6" font-size="13">pgf full-cycle 로 구현</text>
 
-  <!-- base-pairing feedback : winner -> corpus -->
-  <path d="M 577,292 C 700,352 800,356 850,344 C 884,335 866,248 845,224 C 833,210 816,203 800,201"
-        fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowO)"/>
-  <text x="712" y="378" text-anchor="middle" font-size="12.5" font-weight="600" fill="#ea580c">winner &#8594; corpus 환류 (염기쌍)</text>
+  <!-- base-pairing feedback : winner -> corpus (green) -->
+  <path d="M 722,444 C 930,496 1150,476 1150,392 C 1150,350 1086,328 1012,322"
+        fill="none" stroke="#3a8f5f" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arrowG)"/>
+  <text x="958" y="492" text-anchor="middle" fill="#7fe0a8" font-size="14" font-weight="700">winner &#8594; corpus 환류 (염기쌍)</text>
 
-  <!-- backbone support triangles -->
-  <polygon points="223,398 237,398 230,388" fill="#f59e0b"/>
-  <polygon points="473,398 487,398 480,388" fill="#f59e0b"/>
-  <polygon points="723,398 737,398 730,388" fill="#f59e0b"/>
+  <!-- backbone support triangles (amber) -->
+  <polygon points="243,518 257,518 250,506" fill="#b79438"/>
+  <polygon points="593,518 607,518 600,506" fill="#b79438"/>
+  <polygon points="943,518 957,518 950,506" fill="#b79438"/>
 
-  <!-- backbone bar : HELIX-Core -->
-  <rect x="60" y="400" width="840" height="56" rx="11" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
-  <text x="480" y="424" text-anchor="middle" font-size="14.5" font-weight="700" fill="#b45309">백본 &#183; HELIX-Core (단일 출처 &#183; 결정론)</text>
-  <text x="480" y="444" text-anchor="middle" font-size="13" fill="#92400e">ledger &#183; diversity &#183; provenance &#183; fingerprint &#183; loop</text>
+  <!-- backbone bar : HELIX-Core (amber accent) -->
+  <rect x="60" y="520" width="1080" height="76" rx="14" fill="#2a2615" stroke="#b79438" stroke-width="2"/>
+  <text x="600" y="556" text-anchor="middle" fill="#f0d68a" font-size="20" font-weight="700">백본 &#183; HELIX-Core (단일 출처 &#183; 결정론)</text>
+  <text x="600" y="583" text-anchor="middle" fill="#cdb87f" font-size="15">ledger &#183; diversity &#183; provenance &#183; fingerprint &#183; loop</text>
 
-  <text x="480" y="472" text-anchor="middle" font-size="11" fill="#94a3b8">두 엔진이 중복 구축한 기계를 백본에 한 번만 정의 → desync 제거</text>
+  <!-- footer -->
+  <text x="60" y="620" fill="#64789c" font-size="14">두 엔진이 중복 구축한 기계(ledger &#183; diversity &#183; provenance)를 백본에 한 번만 정의 &#8594; desync 제거</text>
 </svg>
