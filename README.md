@@ -1,3 +1,5 @@
+![HELIX](assets/HELIX_hero.png)
+
 # HELIX
 
 > **두 상보 가닥을 공유 백본이 묶어, 환류하는 폐루프인데도 매 회전 동질화를 차단해
