@@ -1,0 +1,315 @@
+# SDX Channel Entry Schema v1.0
+#
+# 각 채널은 이 스키마를 따른다.
+# 카탈로그는 80개 엔트리로 구성된 YAML 리스트.
+
+schema_definition:
+  required_fields:
+    - id              # CH-NNNN (고유 식별자)
+    - name            # 표시명 (원어 + 영문 병기)
+    - url_pattern     # 접근 URL 또는 URL 패턴
+    - axis            # 4-Axis 셀 좌표
+    - metrics         # 8축 평가 점수
+    - total_score     # 가중 평균 (independence × 2)
+    - discovery_strategy  # S1~S5
+    - language        # ISO 언어 코드 리스트
+    - url_alive       # bool
+    - validated_at    # ISO date
+
+  optional_fields:
+    - access_cost     # 무료 / 가입 / 유료 / 기관계약
+    - language_alt    # 영문 mirror 존재 여부
+    - notes           # 자유 메모
+    - unique_yield_example  # 이 채널에서만 나온 인사이트 예
+    - dependency      # 다른 채널이 이 채널을 인용하는가
+    # ---- v1.3: 노화·드리프트 추적 (decay_guide 참조) ----
+    - first_seen_round     # 카탈로그 최초 등재 라운드 (freshness anchor 폴백)
+    - last_yield_round     # 이 채널이 채택 인사이트에 기여한 마지막 라운드
+    - yield_count          # 누적 realized-yield 횟수
+    - freshness            # AI_score_channel_freshness 산출 (0-10, 라운드마다 갱신)
+    - orthogonality_drift  # 카탈로그 대비 max pairwise overlap (DriftGuard 갱신)
+
+# ==========================================
+# 예시 엔트리 5개 (각 전략별)
+# ==========================================
+
+example_entries:
+
+  # ---- S1: Reference Backtrack ----
+  - id: "CH-0001"
+    name: "Smithsonian Open Access Archive"
+    url_pattern: "https://www.si.edu/openaccess"
+    axis:
+      temporal: "T-100Y+"
+      geographic: "US_EU"
+      format: "nature"
+      scale: "macro"
+    metrics:
+      independence: 8
+      signal_density: 6
+      persistence: 10
+      accessibility: 9
+      geo_diversity: 3
+      temporal_depth: 10
+      format_unique: 9
+      trust_level: 10
+    total_score: 7.78
+    discovery_strategy: "S1_reference_backtrack"
+    language: ["en"]
+    url_alive: true
+    validated_at: "2026-05-11"
+    access_cost: "무료"
+    notes: "박물관 1차 자료, 디자인·재료·고대 기술 영감"
+    unique_yield_example: "고대 로마 콘크리트 제조법 → 자가복원 콘크리트 연구 부활"
+
+  # ---- S2: Cross-Lingual Mirror ----
+  - id: "CH-0002"
+    name: "中国知网 (CNKI)"
+    url_pattern: "https://kns.cnki.net/"
+    axis:
+      temporal: "T-0~T-30Y"
+      geographic: "CN"
+      format: "paper"
+      scale: "micro"
+    metrics:
+      independence: 10
+      signal_density: 7
+      persistence: 9
+      accessibility: 4
+      geo_diversity: 10
+      temporal_depth: 8
+      format_unique: 6
+      trust_level: 7
+    total_score: 8.22
+    discovery_strategy: "S2_cross_lingual"
+    language: ["zh-CN"]
+    url_alive: true
+    validated_at: "2026-05-11"
+    access_cost: "유료/기관계약"
+    language_alt: "영문 요약 일부 제공, 본문은 중국어"
+    notes: "중국 학위논문·학술지 통합, 영미권 미공개 다수"
+
+  # ---- S3: Failure & Death Archive ----
+  - id: "CH-0003"
+    name: "IETF Deprecated RFCs"
+    url_pattern: "https://datatracker.ietf.org/doc/search?status=obsolete"
+    axis:
+      temporal: "T-5Y~T-50Y"
+      geographic: "US_EU"
+      format: "std"
+      scale: "meso"
+    metrics:
+      independence: 9
+      signal_density: 8
+      persistence: 10
+      accessibility: 10
+      geo_diversity: 3
+      temporal_depth: 9
+      format_unique: 10
+      trust_level: 10
+    total_score: 8.78
+    discovery_strategy: "S3_failure_archive"
+    language: ["en"]
+    url_alive: true
+    validated_at: "2026-05-11"
+    access_cost: "무료"
+    notes: "사장된 인터넷 표준, 왜 실패했는지 분석 가능"
+    unique_yield_example: "RFC 793 deprecation → TCP/IP 진화 동력 분석"
+
+  # ---- S4: Adjacent Domain Borrow ----
+  - id: "CH-0004"
+    name: "BoardGameGeek Designer Diaries"
+    url_pattern: "https://boardgamegeek.com/blogs"
+    axis:
+      temporal: "T-0~T-10Y"
+      geographic: "US_EU"
+      format: "niche"
+      scale: "meso"
+    metrics:
+      independence: 9
+      signal_density: 8
+      persistence: 9
+      accessibility: 10
+      geo_diversity: 4
+      temporal_depth: 5
+      format_unique: 9
+      trust_level: 7
+    total_score: 7.78
+    discovery_strategy: "S4_adjacent_borrow"
+    language: ["en"]
+    url_alive: true
+    validated_at: "2026-05-11"
+    access_cost: "무료"
+    notes: "게임 인센티브 디자인 → 메커니즘 디자인, 토큰이코노미"
+    unique_yield_example: "Worker placement 메커니즘 → DAO 거버넌스 토큰 설계"
+
+  # ---- S5: Weak Signal Hunt ----
+  - id: "CH-0005"
+    name: "Construction Physics (Substack)"
+    url_pattern: "https://www.construction-physics.com/"
+    axis:
+      temporal: "T-0"
+      geographic: "US_EU"
+      format: "niche"
+      scale: "meso"
+    metrics:
+      independence: 9
+      signal_density: 9
+      persistence: 8
+      accessibility: 10
+      geo_diversity: 3
+      temporal_depth: 4
+      format_unique: 8
+      trust_level: 8
+    total_score: 7.67
+    discovery_strategy: "S5_weak_signal"
+    language: ["en"]
+    url_alive: true
+    validated_at: "2026-05-11"
+    access_cost: "무료 + 유료 일부"
+    notes: "건설 산업 1차 분석, 구독자 < 30K, 영미권 미디어 미반영"
+    unique_yield_example: "원전 비용 폭증 원인 분석 → AI 인프라 CAPEX 모델"
+
+# ==========================================
+# 8축 메트릭 가이드 (0-10 점수)
+# ==========================================
+
+metric_guide:
+  independence:
+    desc: "기존 카탈로그 채널과의 직교성"
+    measurement: "max(overlap with existing) → 10 - (10 × max_ov)"
+    weight: 2.0  # 가중치 2배
+
+  signal_density:
+    desc: "잡음 대비 정보율"
+    high_10: "1차 자료, 전문가 큐레이션"
+    mid_5: "혼재된 정보"
+    low_0: "광고/스팸/SEO 콘텐츠 다수"
+
+  persistence:
+    desc: "지속 갱신 vs 일회성"
+    high_10: "정기 갱신, archive 보존 정책 있음"
+    low_0: "도메인 만료 위험, 단발 프로젝트"
+
+  accessibility:
+    desc: "접근 비용"
+    10: "공개 API + 무료"
+    7: "무료 가입 필요"
+    4: "유료 구독"
+    1: "기관 계약 필요"
+
+  geo_diversity:
+    desc: "영미권 외 정도"
+    10: "비영미권 전용"
+    5: "혼합"
+    0: "영미권 only"
+
+  temporal_depth:
+    desc: "과거 도달 깊이"
+    10: "100년+ 아카이브"
+    7: "30년+"
+    4: "10년+"
+    1: "최근 1년"
+
+  format_unique:
+    desc: "다른 채널과 포맷 차이"
+    10: "독특한 포맷 (e.g., FOIA 공개문서)"
+    5: "흔한 포맷"
+    0: "표준 RSS, 흔한 뉴스"
+
+  trust_level:
+    desc: "1차 자료성"
+    10: "1차 자료 (정부 발간, 학회 원본)"
+    7: "검증된 2차 자료"
+    4: "비검증 2차"
+    0: "허위·왜곡 가능성"
+
+# ==========================================
+# 채널 노화 가이드 (v1.3 — 정본: SKILL.md AI_score_channel_freshness)
+# ==========================================
+#
+# 8축 metrics는 *발굴 시점* 정적 평가. decay_guide는 *시간에 따른 동적* 신선도.
+# 둘은 상보적: metrics=품질, freshness=노화. weak 판정은 둘 다 본다.
+
+decay_guide:
+  freshness:
+    desc: "미산출 지속 + validated_at 노화에 따른 지수 감쇠 신선도 (0-10)"
+    formula: |
+      rounds_since_yield = current_round - (last_yield_round or first_seen_round)
+      base = 10 × 0.5 ^ (rounds_since_yield / channel_decay.half_life_rounds)
+      freshness = clamp(base × (0.7 if validated_at 노화초과 else 1.0), 0, 10)
+    policy_ref: "SKILL.md SDX_POLICY.channel_decay (half_life_rounds / stale_validated_days / freshness_floor)"
+    rationale: "homogenization은 출력 동질화라는 *지연·시스템* 신호. freshness는 채널별 *선행* 신호."
+
+  orthogonality_drift:
+    desc: "현재 카탈로그 대비 이 채널의 max pairwise overlap (0-1)"
+    measurement: "max(AI_compute_pairwise_overlap(this, other) for other in catalog)"
+    weak_when: "> SDX_POLICY.selection.max_overlap_cut (0.5) — 발굴 후 상관이 누적된 신호"
+    updated_by: "DriftGuard(라운드별 표본) 및 ModeAudit(전수 N×N)"
+
+  catalog_size_note: |
+    카탈로그 80은 설계된 *직교 기저 차원*(고정)이지 비용 변수가 아니다.
+    노화 채널은 '축소'가 아니라 ModeRefresh의 *교체*(크기 보존)로 처리한다.
+    상향 확장만 ModeExpand로 허용. (cost≪가치: 비용절감용 축소 = non-goal)
+
+  yield_attribution:
+    desc: "last_yield_round / yield_count 를 채우는 출처 (v1.3 — 수기 아님)"
+    source: |
+      라운드 종료 시 SDX AI_record_channel_yield 가 기록. 기여 채널은
+      provenance walk 로 산출: EVX winner → CIX idea.source_insight_id
+      → IDX insight.source_tcx_items → TCX item.source_channel_id → CH-NNNN.
+      전부 *기존* 필드 — TCX/IDX/CIX/EVX 스키마 변경 불요.
+    yield_log: ".sdx/catalog/yield_log.jsonl (SDX 소유, append-only, 라운드당 1 레코드)"
+    policy_ref: "SKILL.md SDX_POLICY.yield_attribution (credit_scope / fallback)"
+    first_seen_round: |
+      신규 채널 등재(ModeBootstrap/Refresh/Expand emit) 시 반드시 설정 —
+      freshness anchor 폴백(아직 yield 없는 신선한 채널이 즉시 weak로 오인되지 않도록).
+
+# ==========================================
+# 4-Axis 셀 좌표 시스템
+# ==========================================
+
+axis_system:
+  temporal:
+    - T-0
+    - T-1Y
+    - T-5Y
+    - T-50Y
+    - T-100Y+
+  
+  geographic:
+    - US_EU
+    - CN
+    - RU_EE
+    - IN_SEA
+    - JP_KR
+    - LATAM
+    - AF
+    - MENA
+  
+  format:
+    - news
+    - paper
+    - patent
+    - oss
+    - std
+    - vc
+    - gov
+    - conf
+    - niche
+    - nature
+  
+  scale:
+    - macro
+    - meso
+    - micro
+
+  # 가능한 셀 총수: 5 × 8 × 10 × 3 = 1,200
+  # 카탈로그 80개 → 최소 80/1200 = 6.7% 커버
+  # 목표: 셀당 평균 1개 미만이지만 주요 셀은 반드시 1개 이상
+  
+  required_coverage:
+    geographic: "8개 모두 ≥ 1개 채널"
+    format: "10개 중 ≥ 8개"
+    temporal: "5개 모두 ≥ 1개"
+    scale: "3개 모두 ≥ 1개"

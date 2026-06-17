@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HELIX diversity / homogenization report",
+  "type": "object",
+  "required": ["triggered", "breaches", "partial", "metrics", "signals"],
+  "properties": {
+    "triggered": {"type": "boolean"},
+    "breaches": {"type": "integer", "minimum": 0, "maximum": 4},
+    "partial": {"type": "boolean", "description": "true when sim was absent (sim-based metrics omitted)"},
+    "metrics": {
+      "type": "object",
+      "required": ["keyword_coverage", "max_pair_count"],
+      "properties": {
+        "keyword_coverage": {"type": "number"},
+        "max_pair_count": {"type": "integer"},
+        "avg_embedding_sim": {"type": ["number", "null"]},
+        "winner_embedding_similarity": {"type": ["number", "null"]}
+      }
+    },
+    "signals": {
+      "type": "object",
+      "properties": {
+        "unique_ratio": {"type": ["number", "null"]},
+        "unique_ratio_below_floor": {"type": "boolean"},
+        "breached": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "thresholds": {"type": "object"}
+  }
+}

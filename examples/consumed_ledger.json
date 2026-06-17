@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "consumed": [
+    {
+      "idea_id": "IDEA-001",
+      "title": "AgentOps Accountability Autonomous Compatibility Mesh",
+      "normalized_title": "agentopsaccountabilityautonomouscompatibilitymesh",
+      "aliases": ["AgentPACT", "PACT"],
+      "semantic_family": "agentops-accountability-compatibility-mesh",
+      "origin": "explore",
+      "source_chain": {
+        "cix": "CIX-20260602-003",
+        "idx": "IDX-20260602-002",
+        "tcx": "TCX-20260602-001",
+        "sdx_catalog": "v1.0-union"
+      },
+      "implementations": [
+        {"project_name": "AgentPACT", "project_path": "pact", "repo_url": "https://example.invalid/pact"}
+      ],
+      "reuse_policy": "exclude_same_or_derivative",
+      "consumed_at_utc": "2026-06-02T11:17:45+00:00"
+    },
+    {
+      "idea_id": "GEN-WithheldActionWitness",
+      "title": "Withheld Action Witness",
+      "normalized_title": "withheldactionwitness",
+      "aliases": [],
+      "semantic_family": "absence-accountability-ledger",
+      "origin": "exploit",
+      "source_fingerprint": "ADPR+ForgeQuarantine+PnR+ReleaseMesh",
+      "source_chain": {"recreate_run": "001-withheld-action-witness"},
+      "implementations": [
+        {"project_name": "WithheldActionWitness", "project_path": "withheldactionwitness", "repo_url": "https://example.invalid/waw"}
+      ],
+      "reuse_policy": "exclude_same_or_derivative",
+      "consumed_at_utc": "2026-06-12T00:00:00+00:00"
+    }
+  ],
+  "blocked_names": [
+    "agentopsaccountabilityautonomouscompatibilitymesh",
+    "agentpact",
+    "pact",
+    "withheldactionwitness"
+  ],
+  "source_fingerprints": {
+    "ADPR+ForgeQuarantine+PnR+ReleaseMesh": "GEN-WithheldActionWitness"
+  },
+  "generated_fingerprints": {}
+}

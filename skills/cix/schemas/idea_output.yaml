@@ -1,0 +1,810 @@
+# CIX Seed Idea Output Schema v1.5.1
+#
+# v1.5.1 changes (per CIX SKILL.md v1.5.1, IdeaFirst + environment handling):
+#   - manifest contract에 ★ environment 블록 (cross_model_capability 등)
+#   - manifest.round.status = completed | blocked | partial
+#   - manifest.round.blocker_reason — 표준 코드 enum
+#   - manifest.round.handoff_required + handoff_to
+#   - NEW section 6: HANDOFF.md contract
+#   - weighted_total_formula_reference v1.5 (denominator 9.5)
+#
+# v1.5 changes (carried):
+#   - scoring.weights: nov 1.0→1.5, def 1.0→0.5, surp 1.5→2.5, denom 8.5→9.5
+#   - surprise_validation.fallback_acceptable: true → false
+#   - baseline_control enforcement: soft → strict
+#
+# v1.3 changes (carried):
+#   - PGF discovery 페르소나 (P1-P8) 정식 통합
+#   - surprise_persona_results 페르소나 ID를 PGF P1-P8로 통일
+#   - idea schema에 generated_by_persona / cross_check_persona / lens_assignment_persona 필드
+#   - manifest contract에 personas chain (TCX → IDX → CIX 전체 chain)
+#   - generation_log contract에 페르소나별 lens 사용·rejection·persona-purity audit
+#
+# v1.2 changes (carried):
+#   - C9:  파일명 round-agnostic (idea_pool.yaml, _v1 제거)
+#   - C10: rejection_check / baseline_comparison evidence를 IDX evidence v1.1 형식과
+#          호환되도록 source_file/section/span/hash/confidence 보강
+#   - C11: 4개 contract section 분리 (main / manifest / generation_log / .cix-index)
+#   - C12: total_score 공식 — CIX_POLICY.scoring 참조 (single source of truth).
+#   - C14: lens_application 필드 통일
+
+# ============================================================
+# 1. idea_pool.yaml — main artifact
+# ============================================================
+
+schema:
+  required_fields:
+    - id                       # IDEA-NNN
+    - title                    # 짧은 시스템명
+    - source_insight_id        # INS-L{N}-{NNN} (IDX 입력)
+    - source_insight_layer     # L6_Gap | L7_Tension | L9_Counterfactual | L10_Generative
+    - source_round_chain       # NEW v1.2 — IDX/TCX/SDX round chain (재현성)
+    - lens_application         # primary_lens + lens_stack + transformation
+    - system_description       # 시스템 묘사 (6-10줄)
+    - stakeholders             # 행위자 리스트
+    - domains                  # 결합 도메인 리스트
+    - scores                   # 6축 평가 점수 (CIX_POLICY.scoring.axes)
+    - total_score              # CIX_POLICY.scoring 적용
+    - generated_by_persona     # PGF P1-P14 (primary; v1.3 P1-P8 → v1.6 P1-P14)
+    - cross_check_persona      # PGF P1-P14 (cross-check; v1.3 P1-P8 → v1.6 P1-P14)
+    - lens_assignment_persona  # NEW v1.3 — 어느 페르소나의 lens_group_affinity로 렌즈 할당됐나
+    - rejection_check          # 자명 거부 필터 결과 + evidence v1.1
+    - ready_for_ideafirst_mc_step_5 # bool
+
+  optional_fields:
+    - failure_modes
+    - cross_domain_examples
+    - surprise_persona_results
+    - surprise_validation_methods   # v1.1 — applied validation methods (≥CIX_POLICY.surprise_validation.min_methods_required)
+    - lens_assignment_log_ref       # v1.2 — link to generation_log.yaml entry
+    - baseline_comparison           # v1.1 — baseline LLM 예측과의 유사도 (evidence v1.1 형식)
+    - notes
+
+  lens_application_schema:
+    description: |
+      v1.2 통일된 형식. single lens, stack 모두 동일 키 구조.
+      stack의 경우 transformation 안에 step_1, step_2, ... 추가.
+    required:
+      - primary_lens          # 단일 적용 시 그 렌즈 / stack 시 첫 렌즈
+      - lens_stack            # null (single) | [list of lens ids] (stack)
+      - transformation:       # 변형 흔적 (lens_traceable)
+          required:
+            - original_problem    # 변형 전 인사이트 핵심 구조
+            - lens_logic          # 렌즈가 적용한 논리
+            - result              # 변형 결과 요약
+          stack_extra:
+            - step_1, step_2, ... # stack 단계별 중간 결과
+
+  evidence_schema_v1_1:
+    description: |
+      v1.1 호환 — rejection_check / baseline_comparison 등에서 외부 출처 인용 시 사용.
+      IDX evidence schema와 동일 (source_file/section/span/quote/quote_hash/confidence).
+    required:
+      - source_file
+      - source_section
+      - source_span        # [start, end]
+      - quote
+      - quote_hash         # sha256 — 위변조 검출
+    optional:
+      - confidence         # 0.0-1.0
+      - contradictions
+
+# ============================================================
+# 2. 예시 아이디어 4개 (v1.2 — lens_application 키 통일 + evidence v1.1)
+# ============================================================
+
+example_ideas:
+
+  # ---- From L6 Gap (IoT PQC) ----
+  - id: "IDEA-001"
+    title: "IoT PQC Insurance Pool"
+    source_insight_id: "INS-L6-001"
+    source_insight_layer: "L6_Gap"
+    source_round_chain:
+      cix: "CIX-20260513-001"
+      idx: "IDX-20260513-001"
+      tcx: "TCX-20260513-005"
+      sdx_catalog: "v1.3"
+
+    lens_application:
+      primary_lens: "L7_FailureAsFeature"
+      lens_stack: null
+      transformation:
+        original_problem: "IoT 디바이스는 PQC 마이그레이션 사실상 불가 (수명·비용·접근성)"
+        lens_logic: "마이그레이션 불가성을 *문제*로 보지 않고 *보험 시장의 기반*으로 활용"
+        result: "OEM이 디바이스 출하 시 PQC 침해 위험금 적립, 풀이 30년 보상"
+
+    system_description: |
+      IoT/임베디드 디바이스 PQC 침해 보험 풀.
+      - 가입 OEM: 디바이스당 PQC 침해 위험금 적립 (출하가의 0.5-2%)
+      - 30년 보장: 양자 침해 발생 시 OEM 대신 풀이 보상
+      - 풀 운영자: 침해 모니터링 + cryptographic upgrade brokerage
+      - 정부 인센티브: PQC 풀 가입 OEM에 조달 우대, 미가입 OEM은 시장 퇴출
+      - 풀 자체가 PQC migration tool 산업의 대형 구매자로 작용
+      - 침해 데이터 누적으로 보험료 정확도 시간에 따라 개선
+
+    stakeholders:
+      - "IoT/임베디드 OEM (가입자)"
+      - "Insurance Pool Operator (운영자)"
+      - "Government (인증·강제)"
+      - "PQC Migration Tool Vendors (공급자)"
+      - "End Users (간접 수혜)"
+
+    domains: ["Cybersecurity", "Insurance", "IoT/Embedded", "Government Procurement"]
+
+    scores:
+      novelty: 8
+      generativity: 9       # 의료기기/자동차SDV/스마트홈 등 파생
+      defensibility: 8      # 규제 진입장벽 + 풀 효과
+      compounding: 9        # 가입↑→데이터↑→가격정확도↑ 선순환
+      surprise: 8           # 전문가 8명 중 5명 예측 실패
+      coherence: 9
+    total_score: 8.59
+    # = (8 + 9*2 + 8 + 9*2 + 8*1.5 + 9) / 8.5
+    # = (8 + 18 + 8 + 18 + 12 + 9) / 8.5
+    # = 73 / 8.5 ≈ 8.588
+
+    generated_by_persona: "P7"               # v1.3 — Contrarian Critic produced this idea
+    cross_check_persona: "P3"                # v1.3 — Regulatory Architect cross-validated
+    lens_assignment_persona: "P7"            # v1.3 — Group A Inversion (P1/P7 affinity)
+
+    rejection_check:
+      adjacent_market_saturated: false
+      lens_traceable: true                  # L7 흔적 명확
+      existing_product_match: 0.15
+      baseline_LLM_prediction_similarity: 0.32
+      inter_agent_overlap: 0.21
+      incumbent_benefit_only: false
+      decision: "PASSED"
+      evidence:                              # v1.1 형식 — 어디서 0.15라는 수치가 나왔나
+        - source_file: "raw_seed_ideas.yaml"
+          source_section: "§existing_product_search.IDEA-001"
+          source_span: [12048, 12298]
+          quote: "Closest match: 'Quantum-Safe IoT firmware update service' (Cloudflare proposal, 2025) — similarity 0.15 (different mechanism, no insurance model)"
+          quote_hash: "sha256:c1a3b5e7f9d2..."
+          confidence: 0.93
+
+    failure_modes:
+      - "OEM이 적립 의무를 회피하기 위해 디바이스 분류를 IoT 외로 변경"
+      - "양자 침해가 예상보다 빨라서 풀 자본 부족"
+      - "한 국가만 가입 의무화 → 지역 규제 차익"
+
+    cross_domain_examples:
+      - "FDIC (예금자 보호 풀)"
+      - "Nuclear power industry mutual liability pool"
+      - "Lloyd's of London marine insurance"
+
+    surprise_persona_results:                  # v1.6 — PGF P1-P14 (7-model × 2 baseline)
+      P1_Disruptive_Engineer: predicted        # 보험 매커니즘이 paradigm shift라기엔 평이
+      P2_Cold_eyed_Investor: predicted         # 매커니즘 익숙 (insurance pool은 잘 알려진 패턴)
+      P3_Regulatory_Architect: NOT_predicted   # 규제로 푸는 발상 못 떠올림
+      P4_Connecting_Scientist: NOT_predicted   # IoT ↔ insurance cross 못 봄
+      P5_Field_Operator: NOT_predicted         # 구현 복잡도가 보임 vs 보험 단순화
+      P6_Future_Sociologist: NOT_predicted     # 사회구조 변화 시각으로 못 봄
+      P7_Contrarian_Critic: predicted          # failure mode (OEM 회피)는 익숙한 패턴
+      P8_Convergence_Architect: NOT_predicted  # FinTech×IoT×Insurance 융합 못 떠올림
+      P9_Practical_Agency_Ethicist: NOT_predicted    # 주체성·존엄 프레임으로 못 떠올림
+      P10_Embodied_UX_Anthropologist: predicted      # 사용자 경험 관점은 익숙
+      P11_Adversarial_Robustness_Analyst: NOT_predicted  # 공격·악용 프레임으로 못 봄
+      P12_Regenerative_Systems_Ecologist: NOT_predicted  # 생태·자원 한계 시각으로 못 봄
+      P13_Historical_Cycle_Analyst: predicted        # 보험은 역사적으로 흔한 전례
+      P14_Mechanism_Designer: NOT_predicted          # 신규 인센티브 메커니즘 발명 관점
+      surprise_score: 7                        # 9/14 not_predicted → bucket 7 (9-11/14)
+
+    surprise_validation_methods:
+      - cross_model                          # 4 페르소나는 GPT, 4는 Claude
+      - temporal_separation                  # 다른 세션에서 격리 호출
+
+    baseline_comparison:
+      baseline_model: "GPT-4o (different from main Claude)"
+      baseline_prediction_summary: "IoT firmware OTA service for PQC update"
+      similarity: 0.32
+      evidence:
+        - source_file: "generation_log.yaml"
+          source_section: "§baseline_comparison.IDEA-001"
+          source_span: [4521, 4789]
+          quote: "Baseline GPT-4o output proposes incremental firmware update mechanism, no insurance/pool structure detected"
+          quote_hash: "sha256:d2b4c6e8a1f3..."
+          confidence: 0.91
+
+    ready_for_ideafirst_mc_step_5: true
+    notes: |
+      Compounding이 매우 강함 (시간↑ → 침해 데이터↑ → 가격 정확도↑).
+      Layer 10 Generative와 결합 시 다른 영역(의료기기 PQC, 자동차 SDV PQC,
+      스마트미터 PQC)으로 즉시 확장 가능.
+
+  # ---- From L7 Tension (AI Data Sovereignty) ----
+  - id: "IDEA-002"
+    title: "Sovereign Embedding Exchange"
+    source_insight_id: "INS-L7-001"
+    source_insight_layer: "L7_Tension"
+    source_round_chain:
+      cix: "CIX-20260513-001"
+      idx: "IDX-20260513-001"
+      tcx: "TCX-20260513-005"
+      sdx_catalog: "v1.3"
+
+    lens_application:
+      primary_lens: "L18_Atomization"
+      lens_stack: null
+      transformation:
+        original_problem: "AI 학습 규모 요구 ↔ 데이터 주권 (양립 불가 모순)"
+        lens_logic: "데이터를 통째로 이동시키지 말고 *임베딩 단위*로 atomize → 임베딩만 거래"
+        result: "각국이 데이터는 보유, 임베딩만 추출해 교환하는 시장"
+
+    system_description: |
+      국경 간 AI 학습 데이터 교환 시장 (임베딩 단위).
+      - 각국/조직: 데이터 원본은 자국 내 보유 (sovereignty 충족)
+      - 임베딩 추출: 표준화된 임베딩 모델로 원본 → 고차원 벡터 추출
+      - 거래소: 임베딩 묶음을 분류·검색·거래 (도메인·언어·시점 태그)
+      - 구매자(AI lab): 임베딩을 직접 학습에 활용 (raw data 접근 불필요)
+      - 임베딩 역추적 방지: 차등 프라이버시 + cryptographic mixing
+      - 출처 입증: 임베딩에 zero-knowledge proof of origin
+
+    stakeholders:
+      - "데이터 보유국/기관 (sellers)"
+      - "AI Foundation Model labs (buyers)"
+      - "Embedding Exchange Operator"
+      - "Regulators (sovereignty 보장)"
+      - "Privacy Researchers (역추적 방지 검증)"
+
+    domains: ["AI Infrastructure", "Data Markets", "Cryptography", "International Trade"]
+
+    scores:
+      novelty: 9
+      generativity: 8
+      defensibility: 9
+      compounding: 8
+      surprise: 9
+      coherence: 8
+    total_score: 8.41
+    # = (9 + 8*2 + 9 + 8*2 + 9*1.5 + 8) / 8.5
+    # = (9 + 16 + 9 + 16 + 13.5 + 8) / 8.5
+    # = 71.5 / 8.5 ≈ 8.412
+
+    generated_by_persona: "P2"               # v1.3 — Cold-eyed Investor (Atomization is a market move)
+    cross_check_persona: "P3"                # v1.3 — Regulatory Architect (sovereignty 검증)
+    lens_assignment_persona: "P2"            # v1.3 — Group D Composition (P2/P6 affinity)
+    rejection_check:
+      adjacent_market_saturated: false
+      lens_traceable: true
+      existing_product_match: 0.22
+      baseline_LLM_prediction_similarity: 0.41
+      inter_agent_overlap: 0.18
+      incumbent_benefit_only: false
+      decision: "PASSED"
+
+    surprise_validation_methods:
+      - cross_model
+      - blind_baseline
+
+    ready_for_ideafirst_mc_step_5: true
+
+  # ---- From L9 Counterfactual (Pre-standard Humanoid OS) ----
+  - id: "IDEA-003"
+    title: "Standard Arbitrage Exchange"
+    source_insight_id: "INS-L9-001"
+    source_insight_layer: "L9_Counterfactual"
+    source_round_chain:
+      cix: "CIX-20260513-001"
+      idx: "IDX-20260513-001"
+      tcx: "TCX-20260513-005"
+      sdx_catalog: "v1.3"
+
+    lens_application:
+      primary_lens: "L11_DomainTransplant"
+      lens_stack: ["L11_DomainTransplant", "L3_CostInversion"]
+      transformation:
+        original_problem: "Pre-standard era에서 표준 결과 불확실성이 모두에게 비용"
+        lens_logic: "Stack 2단계 — L11로 금융 derivatives 시장 구조 이식, L3로 불확실성을 비용에서 수익원으로 전환"
+        result: "표준 미확정 분야의 'standard arbitrage' 파생상품 거래소"
+        step_1: "L11: 휴머노이드 표준 미정 → 금융 derivatives 시장 구조 이식 (underlying = '특정 표준이 메이저가 될 것인가')"
+        step_2: "L3: 표준화 비용 부담 → 표준화 *불확실성*이 *수익원*으로 전환 (Binary options, futures, swaps)"
+
+    system_description: |
+      Pre-standard 분야 (휴머노이드 OS, AI Agent Protocol 등)의 표준 결과를
+      예측·거래하는 파생상품 거래소.
+      - Underlying: "MCP가 2028년까지 메이저 AI Agent 통신 표준이 될 것인가" 등
+      - 거래 상품: Binary options, futures, swaps
+      - 정보 비대칭 활용: 산업 인사이더 vs 외부 투자자
+      - 표준 결정 후 정산: 표준 단체 발표 또는 시장 점유율 임계치
+      - 부수 가치: 거래 가격 = 시장 합의 예측 신호 → 표준화 가속 효과
+      - 대상 분야: 휴머노이드 OS, AI Protocol, 양자 SDK, 바이오 데이터 포맷
+
+    stakeholders:
+      - "Standard Bodies (간접 영향)"
+      - "Industry Insiders (정보 우위 거래자)"
+      - "Hedge Funds (전문 거래)"
+      - "Tech Companies (표준 보험)"
+      - "Exchange Operator"
+
+    domains: ["Financial Derivatives", "Standards Bodies", "Technology Forecasting"]
+
+    scores:
+      novelty: 10
+      generativity: 7
+      defensibility: 9
+      compounding: 7
+      surprise: 10
+      coherence: 7
+    total_score: 8.12
+    # = (10 + 7*2 + 9 + 7*2 + 10*1.5 + 7) / 8.5
+    # = (10 + 14 + 9 + 14 + 15 + 7) / 8.5
+    # = 69 / 8.5 ≈ 8.118
+
+    generated_by_persona: "P1"               # v1.3 — Disruptive Engineer (CF inversion 본질)
+    cross_check_persona: "P8"                # v1.3 — Convergence Architect (cross-field 검증)
+    lens_assignment_persona: "P8"            # v1.3 — Group B Shift (P4/P8 affinity for L11)
+
+    rejection_check:
+      adjacent_market_saturated: false
+      lens_traceable: true                  # 2-stack 추적 가능
+      existing_product_match: 0.08
+      baseline_LLM_prediction_similarity: 0.19
+      inter_agent_overlap: 0.12
+      incumbent_benefit_only: false
+      decision: "PASSED"
+      caution: "규제 리스크 — 일부 국가에서 derivative 분류 불명확"
+
+    surprise_validation_methods:
+      - cross_model
+      - cross_prompt
+      - temporal_separation
+
+    ready_for_ideafirst_mc_step_5: true
+    notes: |
+      Surprise 최고. 그러나 규제 리스크 있음. IdeaFirst-MC STEP 5에서
+      투자자 관점 평가 시 Feasibility 점수가 낮을 수 있음.
+
+  # ---- From L10 Generative (Pre-standard Era) ----
+  - id: "IDEA-004"
+    title: "Compatibility-as-a-Service Mesh"
+    source_insight_id: "INS-L10-001"
+    source_insight_layer: "L10_Generative"
+    source_round_chain:
+      cix: "CIX-20260513-001"
+      idx: "IDX-20260513-001"
+      tcx: "TCX-20260513-005"
+      sdx_catalog: "v1.3"
+
+    lens_application:
+      primary_lens: "L20_MultiLensStack"
+      lens_stack: ["L11_DomainTransplant", "L19_Aggregation", "L13_FrequencyShift"]
+      transformation:
+        original_problem: "Pre-standard Era — 여러 사실표준 공존, 변환 비용 일회성"
+        lens_logic: "Stack 3단계로 통역사 모델 이식 → 통합 mesh → 실시간 지속화"
+        result: "사실표준 간 실시간 양방향 통역 mesh"
+        step_1: "L11: '통역사' 직업 모델을 기술 시스템에 이식"
+        step_2: "L19: 개별 변환을 통합 mesh 서비스로 묶음"
+        step_3: "L13: 일회성 변환을 실시간 지속 서비스로 빈도 변경"
+
+    system_description: |
+      Pre-standard 분야의 여러 사실표준(de facto) 사이를 실시간 양방향
+      변환하는 통합 mesh 서비스. "Pre-standard Era"의 핵심 인프라.
+      - 대상: 휴머노이드 OS (Figure↔1X↔Tesla), AI Agent Protocol (MCP↔A2A↔ANP),
+              바이오 데이터 (FHIR↔OMOP↔CDISC), 양자 SDK (Qiskit↔Cirq↔Q#)
+      - 변환 엔진: 각 페어별 변환 로직 + 손실 측정 + 의미 보존 검증
+      - 학습 효과: 변환 데이터 누적 → 변환 정확도 지수 개선
+      - Pricing: 변환 호출당 / 월 무제한 / 변환 손실 보험
+      - 거버넌스: 표준 변경 발생 시 자동 적응 (메이저 표준 v 업데이트 시)
+      - 부수 효과: 표준 통일 압력 감소 → 다양성 유지에 기여
+
+    stakeholders:
+      - "Pre-standard 분야 기업 (사용자)"
+      - "Standard Body (변환 로직 등록)"
+      - "Mesh Operator"
+      - "Quality Auditor (변환 정확도 검증)"
+
+    domains: ["Standards", "API Infrastructure", "Multi-Domain"]
+
+    scores:
+      novelty: 8
+      generativity: 10
+      defensibility: 9
+      compounding: 10
+      surprise: 7
+      coherence: 9
+    total_score: 9.00
+    # = (8 + 10*2 + 9 + 10*2 + 7*1.5 + 9) / 8.5
+    # = (8 + 20 + 9 + 20 + 10.5 + 9) / 8.5
+    # = 76.5 / 8.5 = 9.000
+
+    generated_by_persona: "P8"               # v1.3 — Convergence Architect (L10 Generative 본질)
+    cross_check_persona: "P4"                # v1.3 — Connecting Scientist (cross-domain 검증)
+    lens_assignment_persona: "P8"            # v1.3 — Group B Shift + L20 stack (P1/P4/P8 affinity)
+
+    rejection_check:
+      adjacent_market_saturated: "low"      # API gateway 시장은 있지만 standard-arbitrage layer는 없음
+      lens_traceable: true                  # 3-stack 모두 추적
+      existing_product_match: 0.25
+      baseline_LLM_prediction_similarity: 0.38
+      inter_agent_overlap: 0.15
+      incumbent_benefit_only: false
+      decision: "PASSED"
+
+    surprise_validation_methods:
+      - cross_model
+      - blind_baseline
+
+    ready_for_ideafirst_mc_step_5: true
+    notes: |
+      Compounding과 Generativity 모두 만점. L10 Generative 인사이트가
+      만든 아이디어답게 자체가 메타 인프라. IdeaFirst-MC STEP 7에서 최종 1개
+      후보 강력 추천.
+
+# ============================================================
+# 3. 평가 메트릭 가이드 (참고용)
+# ============================================================
+
+metric_guide:
+  novelty:
+    10: "유사 제품 검색 0건, 특허 0건"
+    7:  "부분적 유사 제품, 핵심 차별"
+    4:  "여러 유사 제품 존재, 미세 차별"
+    0:  "동일 제품 다수 존재"
+
+  generativity:                # ⭐ CIX_POLICY.scoring.weights.generativity = 2.0
+    10: "5개 이상 후속 아이디어 자동 도출"
+    7:  "3-4개 후속"
+    4:  "1-2개"
+    0:  "닫힌 시스템, 파생 없음"
+    measurement: "이 아이디어를 출발점으로 IDX L10 적용 가능성"
+
+  defensibility:
+    10: "네트워크 효과 + 데이터 누적 + 규제 진입장벽 모두"
+    7:  "2개 해자"
+    4:  "1개 해자"
+    0:  "복제 즉시 가능"
+
+  compounding:                 # ⭐ CIX_POLICY.scoring.weights.compounding = 2.0
+    10: "지수적 가치 증가 (사용자/시간/데이터)"
+    7:  "선형 + 약한 비선형"
+    4:  "선형 증가"
+    0:  "정적 가치"
+
+  surprise:                    # ⭐ CIX_POLICY.scoring.weights.surprise = 1.5
+    measurement: "14 전문가 페르소나 중 NOT_predicted 수 (cross-validation ≥CIX_POLICY.surprise_validation.min_methods_required)"
+    10: "14/14"
+    7:  "9-11/14"
+    4:  "4-6/14"
+    0:  "0-2/14"
+
+  coherence:
+    10: "구성·인과·시간 흐름 무모순"
+    7:  "약한 모순 1-2개"
+    0:  "내부 모순"
+
+weighted_total_formula_reference: |
+  # Reproduction only. Single source of truth: SKILL.md#CIX_POLICY.scoring
+  # ★ v1.5 IdeaFirst — surprise/novelty 강화, defensibility 강등
+  total = (novelty   * 1.5
+         + generativity  * 2.0
+         + defensibility * 0.5
+         + compounding   * 2.0
+         + surprise      * 2.5
+         + coherence     * 1.0) / 9.5
+
+  # 분모 9.5 = sum(weights). 이전 v1.4 분모 8.5 deprecated.
+  # 최댓값: (15 + 20 + 5 + 20 + 25 + 10) / 9.5 = 95/9.5 = 10.0
+  # surprise 가중치가 26.3%로 6축 중 1순위. defensibility 5.3%로 최하.
+
+# ============================================================
+# 4. manifest.yaml contract — round reproducibility (NEW v1.2)
+# ============================================================
+
+manifest_contract:
+  description: |
+    `.cix/rounds/{round_id}/manifest.yaml`. round 재현성을 위해 입력 IDX round,
+    그 IDX의 source TCX round, SDX catalog version, CIX_POLICY 스냅샷, CLI args를 모두 기록.
+    ★ v1.5.1 — environment capability + round.status 필드 추가.
+
+  shape: |
+    round:
+      id: "CIX-{YYYYMMDD}-{NNN}"             # CIX 자체 round_id (NOT AOX run_id)
+      generated_at: "ISO-8601"
+      cix_version: "1.5.1"
+      mode: "innovate | focus | filter"
+      duration_sec: 312
+      # ★ v1.5.1 신규 필드
+      status: "completed | blocked | partial"   # round 종료 상태
+      blocker_reason: null | "<표준 코드>"      # blocked일 때만. enum 아래 참조
+      handoff_required: false | true            # blocked → true
+      handoff_to: null | "human_or_orchestrator_with_external_api"
+      handoff_artifact: null | ".cix/rounds/{round_id}/HANDOFF.md"
+      phase_completed: null | "phase_4_raw_seeds" | "phase_5_validated" | ...
+        # 부분 완료 시 어디까지 수행됐는지 명시
+
+    # ★ v1.5.1 environment block (Codex 지적 반영)
+    environment:
+      probe_timestamp: "ISO-8601"
+      main_model_class: "Claude | GPT | Gemini | Codex | ..."
+      cross_model_capability: "available | unavailable | degraded"
+      file_io: "available"
+      pgf_personas_json_access: "available"
+      baseline_models_attempted: []           # 사용한 baseline 모델 ID 리스트 (v1.5)
+      baseline_model_id: null | "gpt-5"       # 주 baseline 모델 (cross-model 호출 시)
+      baseline_call_session_hash: null | "sha256:..."
+
+    inputs:
+      source_root: ".idx/latest"
+      idx_round:
+        id: "IDX-{YYYYMMDD}-{NNN}"
+        manifest_path: ".idx/latest/manifest.yaml"
+        manifest_hash: "sha256:..."             # IDX manifest 해시 (변경 탐지)
+        files_loaded:
+          insight_layered_traced: {path: "insight_layered_traced.yaml", bytes: 38421, hash: "sha256:..."}
+          insight_layered:        {path: "insight_layered.yaml",        bytes: 28104, hash: "sha256:..."}
+          audit_report:           {path: "audit_report.md",             bytes:  3892, hash: "sha256:..."}
+        audit_passed: true
+        layer_distribution_in: {L6_Gap: 5, L7_Tension: 5, L9_Counterfactual: 5, L10_Generative: 5}
+
+      tcx_round:                                 # via IDX manifest chain
+        id: "TCX-{YYYYMMDD}-{NNN}"
+        manifest_hash: "sha256:..."
+
+      sdx_catalog:                               # via TCX manifest chain
+        version: "v1.3"
+        policy_version: "v1.4"
+        catalog_size: 80
+        lock_eligible: true
+
+      policy:
+        cix_policy_snapshot: {generation: {...}, rejection: {...}, scoring: {...},
+                              surprise_validation: {...}, baseline_control: {...},
+                              environment_requirements: {...},   # ★ v1.5.1
+                              lens_distribution: {...}, storage: {...}}
+        weights_v1_5: {nov: 1.5, gen: 2.0, def: 0.5, comp: 2.0, surp: 2.5, coh: 1.0, denom: 9.5}
+
+      cli_args: ["innovate"]                     # or ["innovate", "--resume-round={cix_round_id}", "--from-phase=5"]
+      random_seed: 1746789012
+
+    execution:
+      scoring_mode: "v1_5_cross_model"           # | "v1_5_partial" | "v1_5_blocked"
+      # ★ v1.5.1: "deprecated_v1_5_heuristic" 사용 금지 — 발견 시 라운드 invalid
+      cross_model_baseline_calls:
+        attempted: 8
+        succeeded: 8
+        skipped: 0                               # degraded 시 일부 페르소나 skip
+      personas_validated: ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"]
+      personas_skipped: []
+
+    acceptance:
+      top_k_target_met: true                     # CIX_POLICY.scoring.top_k_to_ideafirst_mc
+      lens_distribution_even: true               # 8 AI 균등 확인
+      surprise_validation_methods_min_met: true  # 모든 idea ≥ min_methods_required
+      baseline_control_isolation_met: true       # different model 사용 확인
+      # ★ v1.5.1 신규
+      environment_capability_check_passed: true  # Stage 0 probe 통과
+      no_deprecated_heuristic_fallback: true     # scoring_mode != deprecated_v1_5_heuristic
+      failed_validations: []
+
+# ============================================================
+# 4.1 Standard blocker_reason codes (★ NEW v1.5.1)
+# ============================================================
+
+blocker_reason_codes:
+  description: |
+    `manifest.round.blocker_reason` 필드는 다음 표준 코드만 허용. 자유 텍스트 금지.
+    Auditor는 자유 텍스트 발견 시 HIGH severity issue로 보고.
+
+  enum:
+    cross_model_baseline_unavailable: |
+      CIX phase 5+ surprise_validation은 cross_model baseline 의무인데
+      현재 환경에서 다른 family LLM 호출 불가.
+      → raw_seed_ideas.yaml까지만 보존 + HANDOFF.md 작성.
+    cross_model_partial_capability: |
+      일부 페르소나만 baseline 가능 (quota/access 부분 제한).
+      → partial validation + 미검증 페르소나 surprise=0 보수 처리.
+    pgf_personas_json_missing: |
+      skills/pgf/discovery/personas.json 파일 접근 불가.
+      → 모든 sub-skill 실행 불가 (CIX/IDX/TCX/EVX 공통 의존).
+    upstream_round_missing: |
+      필요한 .{upstream}/latest/ 산출물이 없음 (예: CIX인데 .idx/latest/ 빈 상태).
+      → upstream 스킬 먼저 실행 또는 --insights= 명시.
+    sdx_catalog_orthogonality_breach: |
+      SDX audit에서 직교성 임계 미달. TCX 진입하면 입력 다양성 천장 깨짐.
+      → /sdx refresh 선행.
+    homogenization_trigger_unresolved: |
+      .aox/global/homogenization_trigger.flag 활성 + 환경이 SDX refresh 능력 없음.
+      → SDX refresh 가능한 환경에서 라운드 시작.
+
+# ============================================================
+# 4.2 HANDOFF.md contract (★ NEW v1.5.1)
+# ============================================================
+
+handoff_md_contract:
+  description: |
+    `.cix/rounds/{round_id}/HANDOFF.md`. blocked 라운드에서 다음 환경에 인계할 때 작성.
+    blocked round의 *재개 명령*과 *필요 능력*을 명시. raw 산출물 path 보존.
+
+  required_sections:
+    blocker_context:
+      template: |
+        Stage {N} ({name}) blocked at phase {M}.
+        Reason: {standard blocker_reason code}.
+        Probe result: {environment.cross_model_capability 등 관련 capability 값}.
+    required_capabilities:
+      template: |
+        다음 능력 갖춘 환경에서 resume:
+          - cross_model_baseline_for_cix: available
+          - 다른 family LLM: {main_model_class != baseline_model_class}
+          - 예: main=Codex(GPT family) → baseline ∈ {Claude, Gemini-3, Grok}
+    input_artifacts_preserved:
+      template: |
+        다음 산출물은 보존됨 — resume 시 재실행 불필요:
+          - .cix/rounds/{round_id}/raw_seed_ideas.yaml ({N} raw seeds)
+          - .cix/rounds/{round_id}/lens_assignment.yaml
+          - .cix/rounds/{round_id}/manifest.yaml (policy_snapshot + environment)
+    resume_command:
+      template: |
+        ★ 정확히 다음 명령을 사용 (CIX round_id, NOT AOX run_id):
+          /cix innovate --resume-round={cix_round_id} --from-phase=5_surprise_validation
+        주의: {cix_round_id}는 "CIX-YYYYMMDD-NNN" 형식. AOX run_id ("a3f4-...")를
+        넘기면 CIX가 인식 못함.
+    round_chain_provenance:
+      template: |
+        - source_idx_round: {from inputs.idx_round.id}
+        - source_tcx_round: {from inputs.tcx_round.id}
+        - sdx_catalog: {from inputs.sdx_catalog.version}
+
+  optional_sections:
+    estimated_remaining_cost: "외부 baseline 호출 추정 횟수 + 토큰 (참고용, KPI 아님)"
+    parallel_resume_personas: "degraded 케이스에서 이미 validated 완료한 페르소나 목록"
+    user_decision_required: "사용자 승인 필요 시점 명시 (예: 다른 모델 API 키 입력)"
+
+  acceptance_criteria:
+    - "모든 required_sections 채워짐"
+    - "resume_command는 CIX round_id 사용 (AOX run_id 금지)"
+    - "표준 blocker_reason 코드 인용 (자유 텍스트 금지)"
+
+# ============================================================
+# 5. generation_log.yaml contract — AI/lens/rejection debugging (NEW v1.2)
+# ============================================================
+
+generation_log_contract:
+  description: |
+    `.cix/rounds/{round_id}/generation_log.yaml`. 8 AI 각각이 어떤 인사이트에
+    어떤 렌즈를 적용해 얼마를 만들고 얼마가 거부됐는지 기록.
+    재현성 + 디버깅 + lens evolution feedback의 기반.
+
+  shape: |
+    generation:
+      round_id: "CIX-{YYYYMMDD}-{NNN}"
+      random_seed: 1746789012
+      total_raw_variations: 120                  # CIX_POLICY.generation.total_raw_variations
+      total_after_rejection: 62
+      total_top_k_selected: 24                   # CIX_POLICY.scoring.top_k_to_ideafirst_mc
+
+      lens_assignment:                           # 인사이트당 6 렌즈
+        "INS-L6-001":
+          mandatory_lenses:
+            group_A_Inversion: "L7_FailureAsFeature"
+            group_B_Shift:     "L11_DomainTransplant"
+            group_C_Constraint: "L15_ConstraintRemoval"
+            group_D_Composition: "L19_Aggregation"
+          multi_lens_stack_2: ["L1_DirectionReversal", "L13_FrequencyShift"]
+          multi_lens_stack_3: ["L8_SideEffectMining", "L11_DomainTransplant", "L17_ConstraintSubstitute"]
+          assigned_to_personas: ["P1", "P7"]   # v1.3 — PGF cognitive personas
+        "INS-L7-001":
+          mandatory_lenses:
+            group_A_Inversion: "L2_StakeholderInversion"
+            group_B_Shift:     "L18_Atomization"
+            group_C_Constraint: "L17_ConstraintSubstitute"
+            group_D_Composition: "L19_Aggregation"
+          multi_lens_stack_2: ["L4_PrivacyInversion", "L11_DomainTransplant"]
+          multi_lens_stack_3: ["L1_DirectionReversal", "L14_MediumSwap", "L15_ConstraintRemoval"]
+          assigned_to_personas: ["P4", "P8"]   # v1.3 — PGF cognitive personas
+        # ... 18 more insights
+
+      per_persona:                              # PGF P1-P14 (구 AI_1~AI_8 → v1.3 P1-P8 → v1.6 P1-P14)
+        P1:
+          name: "Disruptive Engineer"
+          cognitive_style: "creative"
+          assigned_insights: ["INS-L6-001", "INS-L6-002", "INS-L6-003", "INS-L6-004", "INS-L6-005"]
+          role: "primary"
+          variations_generated: 15
+          rejected: 7
+          final_in_output: 5
+          lens_usage_distribution:
+            L7: 5, L11: 5, L15: 5, L19: 5, L1: 2, L13: 2, L8: 1, L17: 1
+          persona_purity:                      # NEW v1.3 — system_prompt 일치도
+            tone_consistency: 0.91
+            evaluation_bias_applied: {novelty: 2.0, feasibility: 0.5, impact: 1.0, integrity: 1.0}
+        P7:
+          name: "Contrarian Critic"
+          cognitive_style: "critical"
+          assigned_insights: ["INS-L6-001", "INS-L6-002", "INS-L6-003", "INS-L6-004", "INS-L6-005"]
+          role: "cross_check"
+          variations_generated: 15
+          rejected: 8
+          final_in_output: 3                     # P1과 중복 분 2개 dedup
+          persona_purity:
+            tone_consistency: 0.88
+            evaluation_bias_applied: {integrity: 2.0, feasibility: 1.5, novelty: 0.3, impact: 0.5}
+        # ... P2, P3, P4, P5, P6, P8
+
+      rejection_log:
+        IDEA-XXX:
+          reasons: ["ADJACENT_DOMAINS_MARKET_SATURATED", "EXISTING_PRODUCT_MATCH:0.78"]
+          rejected_at_phase: "Phase4_ObviousRejection"
+          rejection_evidence:
+            - source_file: "raw_seed_ideas.yaml"
+              source_section: "§candidate.IDEA-XXX"
+              source_span: [21450, 21789]
+              quote: "API gateway 시장 진입 (10+ 회사 활성: AWS API Gateway, Kong, Tyk, ...)"
+              quote_hash: "sha256:..."
+              confidence: 0.95
+        IDEA-YYY:
+          reasons: ["NO_LENS_TRANSFORMATION"]
+          rejected_at_phase: "Phase4_ObviousRejection"
+        IDEA-ZZZ:
+          reasons: ["PREDICTABLE_BY_BASELINE:0.81", "INTER_AGENT_DUPLICATE"]
+          rejected_at_phase: "Phase4_ObviousRejection"
+
+      surprise_validation_summary:
+        methods_applied_overall: ["cross_model", "temporal_separation"]
+        self_reference_risk_mitigation: "확인됨 (≥CIX_POLICY.surprise_validation.min_methods_required)"
+        per_idea_methods:
+          IDEA-001: ["cross_model", "temporal_separation"]
+          IDEA-002: ["cross_model", "blind_baseline"]
+          IDEA-003: ["cross_model", "cross_prompt", "temporal_separation"]
+          IDEA-004: ["cross_model", "blind_baseline"]
+
+      lens_distribution_in_top_K:                # CIX_POLICY.scoring.top_k_to_ideafirst_mc 적용 후
+        L1: 1, L2: 1, L3: 1, L4: 1, L5: 0, L6: 1, L7: 3, L8: 1
+        L9: 1, L10: 1, L11: 4, L12: 1, L13: 1, L14: 1
+        L15: 1, L16: 1, L17: 1
+        L18: 1, L19: 1
+        L20_stacks: 6                            # 3 depth-2, 3 depth-3
+
+# ============================================================
+# 6. .cix/index.yaml contract — runtime rounds catalog (NEW v1.2)
+# ============================================================
+
+cix_index_contract:
+  description: |
+    `.cix/index.yaml`. 모든 CIX round 메타데이터 + 최신 round 포인터.
+    IdeaFirst-MC STEP 5+ 등 downstream이 latest_round_id로 추적.
+
+  shape: |
+    cix_output:
+      version: "v1.2"
+      schema: "cix.output_index.v1"
+      generated_at: "ISO-8601"
+
+      # ★ 고정 진입점 — IdeaFirst-MC STEP 5+ 등이 이걸 보고 최신 CIX round 정보를 얻는다
+      latest_round_id: "CIX-{YYYYMMDD}-{NNN}"
+      latest_round_path: "rounds/CIX-{YYYYMMDD}-{NNN}"      # relative to .cix/
+
+      rounds:                                                # 최신 → 과거 순 (LIFO)
+        - id: "CIX-20260513-001"
+          path: "rounds/CIX-20260513-001"
+          at: "ISO-8601"
+          mode: "innovate | focus | filter"
+          quality: "passed | failed"
+          source_idx_round: "IDX-20260513-001"
+          idx_manifest_hash: "sha256:..."                    # IDX 변경 추적
+          source_tcx_round: "TCX-20260513-005"               # via IDX chain
+          ideas_top_k: 24
+          layer_distribution: {L6_Gap: 6, L7_Tension: 6, L9_Counterfactual: 6, L10_Generative: 6}
+          duration_sec: 312
+        # ... older rounds
+
+      archive_policy:
+        retain_in_rounds_days: 90
+        archive_target_pattern: "archive/{YYYY-Q[1-4]}/"
+        archive_script: "{CIX_SKILL_DIR}/scripts/archive_rounds.py"
+        last_archive_run: "ISO-8601 | never"
+        rounds_in_archive: 0
+
+# ============================================================
+# References
+# ============================================================
+references:
+  upstream_idx_schemas: "{IDX_SKILL_DIR}/schemas/insight_output.yaml"
+  upstream_tcx_schemas: "{TCX_SKILL_DIR}/schemas/output_schemas.yaml"
+  upstream_sdx_schemas: "{SDX_SKILL_DIR}/schemas/channel_entry.yaml"
+  upstream_pgf_personas: "{PGF_SKILL_DIR}/discovery/personas.json (v1.0 — NEW v1.3 dependency)"
+  cix_policy:           "SKILL.md#CIX_POLICY (v1.3 — personas + lens_group_affinity 신설)"
+  lens_catalog:         "{CIX_SKILL_DIR}/prompts/lens_catalog.md"
+  archive_script:       "{CIX_SKILL_DIR}/scripts/archive_rounds.py"

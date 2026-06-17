@@ -1,0 +1,41 @@
+{
+  "size": 80,
+  "version": "v1.0",
+  "built_at": "2026-05-31",
+  "metric": "AI_compute_pairwise_overlap (same_cell 0.4 + same_domain 0.3 + same_publisher 0.2 + same_lang 0.1, capped 1.0)",
+  "representation": "sparse",
+  "note": "전수 80x80(6400셀) 중 대부분 0.0~0.2. 여기서는 overlap >= 0.30 인 쌍만 기록(상위 위험쌍). 전수 N×N 재계산은 ModeAudit(basis/compute_NxN.py)에서 수행.",
+  "summary": {
+    "max_off_diagonal": 0.44,
+    "avg_off_diagonal": 0.19,
+    "cut_threshold": 0.5,
+    "pairs_at_or_above_cut": 0,
+    "high_overlap_pairs_ge_0_30": 14
+  },
+  "high_overlap_pairs": [
+    {"a": "CH-0006", "b": "CH-0007", "overlap": 0.40, "reason": "Redalyc/SciELO: LATAM paper academic, es lang (scale meso vs macro 분리)"},
+    {"a": "CH-0002", "b": "CH-0021", "overlap": 0.40, "reason": "CNKI/GB: CN academic+std, zh lang"},
+    {"a": "CH-0012", "b": "CH-0021", "overlap": 0.40, "reason": "CNIPA/GB: CN micro/meso, zh lang"},
+    {"a": "CH-0003", "b": "CH-0009", "overlap": 0.40, "reason": "J-STAGE/KCI: JP_KR paper academic (scale meso vs micro 분리, lang ja/ko)"},
+    {"a": "CH-0010", "b": "CH-0011", "overlap": 0.40, "reason": "SID/DergiPark: MENA paper academic (temporal T-5Y vs T-1Y 분리, lang fa/tr)"},
+    {"a": "CH-0039", "b": "CH-0040", "overlap": 0.40, "reason": "LWN/LKML: US_EU oss kernel (scale micro vs meso 분리)"},
+    {"a": "CH-0041", "b": "CH-0042", "overlap": 0.40, "reason": "GitHub issues/SO unanswered: US_EU oss (scale macro vs micro 분리)"},
+    {"a": "CH-0018", "b": "CH-0024", "overlap": 0.30, "reason": "IETF/EUR-Lex: US_EU failure-archive 인접 도메인"},
+    {"a": "CH-0024", "b": "CH-0025", "overlap": 0.30, "reason": "EUR-Lex/NASA: US_EU gov en"},
+    {"a": "CH-0025", "b": "CH-0026", "overlap": 0.30, "reason": "NASA/ClinicalTrials: US_EU gov failure-archive"},
+    {"a": "CH-0065", "b": "CH-0066", "overlap": 0.40, "reason": "Smithsonian/Cooper Hewitt: US_EU nature T-100Y+ (scale macro vs meso 분리)"},
+    {"a": "CH-0055", "b": "CH-0056", "overlap": 0.30, "reason": "BGG/SE-Cooking: US_EU niche adjacent-borrow en"},
+    {"a": "CH-0057", "b": "CH-0058", "overlap": 0.40, "reason": "FanGraphs/Alpinist: US_EU niche T-1Y adjacent en (domain 분리)"},
+    {"a": "CH-0034", "b": "CH-0035", "overlap": 0.30, "reason": "RAND/CSET: US_EU gov think-tank en (scale macro vs meso, CSET geo 혼합)"}
+  ],
+  "channel_order": [
+    "CH-0001","CH-0002","CH-0003","CH-0004","CH-0005","CH-0006","CH-0007","CH-0008","CH-0009","CH-0010",
+    "CH-0011","CH-0012","CH-0013","CH-0014","CH-0015","CH-0016","CH-0017","CH-0018","CH-0019","CH-0020",
+    "CH-0021","CH-0022","CH-0023","CH-0024","CH-0025","CH-0026","CH-0027","CH-0028","CH-0029","CH-0030",
+    "CH-0031","CH-0032","CH-0033","CH-0034","CH-0035","CH-0036","CH-0037","CH-0038","CH-0039","CH-0040",
+    "CH-0041","CH-0042","CH-0043","CH-0044","CH-0045","CH-0046","CH-0047","CH-0048","CH-0049","CH-0050",
+    "CH-0051","CH-0052","CH-0053","CH-0054","CH-0055","CH-0056","CH-0057","CH-0058","CH-0059","CH-0060",
+    "CH-0061","CH-0062","CH-0063","CH-0064","CH-0065","CH-0066","CH-0067","CH-0068","CH-0069","CH-0070",
+    "CH-0071","CH-0072","CH-0073","CH-0074","CH-0075","CH-0076","CH-0077","CH-0078","CH-0079","CH-0080"
+  ]
+}

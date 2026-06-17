@@ -1,0 +1,33 @@
+{
+  "project": "HELIX-MONOREPO",
+  "goal": "self-contained HELIX repo performing ALL IdeaFirst + recreate_prj functions",
+  "phase": "verify",
+  "summary": {"done": 8, "total": 8},
+  "batches": {
+    "B0_Skeleton": "done",
+    "B1_SharedNotation": "done",
+    "B2_ExploreSkills": "done",
+    "B3_ExploreScriptsSeed": "done",
+    "B4_ExploitSkills": "done",
+    "B5_PathNormalize": "done",
+    "B6_UnifiedRunbook": "done",
+    "B7_Verify": "done"
+  },
+  "verify": {
+    "self_tests": "64 passed",
+    "validate": "PASS (enforces 19-skill inventory + personas.json)",
+    "dangling_refs": ".agents/skills=0, .agents/scripts=0 (excl. 1 generic doc mention in pgf/evolve-reference.md)",
+    "personas_reachable": true,
+    "skill_inventory": "19 dirs / 19 SKILL.md (shared 3 + explore 14 + exploit 2)",
+    "driver": "python helix.py status -> RUN_EXPLOIT",
+    "py_compile": "core+engines+skills+scripts OK",
+    "scale": "207 source files, 3.0M"
+  },
+  "decisions": {
+    "vendor_not_reference": "all skills copied into skills/ (self-contained)",
+    "single_source_substrate": "core/ backbone is the one ledger/diversity/provenance; vendored skills wire to it",
+    "shared_notation_canonical": "recreate_prj pg/pgf/pgxf; IdeaFirst pgf diverges in persona-md/SKILL but personas.json identical (MIGRATION.md)",
+    "runtime_outputs": "gitignored; durable seeds under seed/"
+  },
+  "resume_rule": "all batches done; re-run helix_validate + unittest to re-verify"
+}

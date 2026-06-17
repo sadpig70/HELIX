@@ -1,0 +1,117 @@
+# TCX Default Domain Set — default_ideafirst_domains
+# Used when /tcx is invoked without --domains override.
+# Designed to broadly cover SDX 4-Axis cell space (1,200 cells) with ~14 strategic domains.
+
+domain_set:
+  name: "default_ideafirst_domains"
+  version: "v1.0"
+  generated_at: "2026-05-13"
+  count: 14
+  selection_rationale: |
+    IdeaFirst 8-AI 실증에서 3-cluster collapse를 일으킨 영역들을 명시적 cover하고,
+    SDX 카탈로그의 비영미권 강화 채널(CN/JP_KR/AF/IN_SEA/LATAM/MENA/RU_EE)이
+    의미 있게 활성화될 수 있도록 cross-regional·cross-format 활용도 높은 도메인 선정.
+    각 도메인이 SDX의 ≥ 3개 format shard에서 신호를 받을 수 있어야 함.
+
+  domains:
+    - id: D01
+      name: "AI & Machine Learning"
+      keywords_en: ["AI", "machine learning", "LLM", "foundation models", "ML systems"]
+      keywords_ko: ["인공지능", "머신러닝", "LLM"]
+      expected_active_shards: [paper, conf, oss, niche, news, patent]
+
+    - id: D02
+      name: "Quantum Technology"
+      keywords_en: ["quantum computing", "PQC", "post-quantum cryptography", "quantum sensing", "QKD"]
+      keywords_ko: ["양자컴퓨팅", "양자기술", "PQC"]
+      expected_active_shards: [paper, patent, std, gov, news]
+
+    - id: D03
+      name: "Robotics & Autonomous Systems"
+      keywords_en: ["robotics", "humanoid", "autonomous", "embodied AI", "drone"]
+      keywords_ko: ["로보틱스", "휴머노이드", "자율시스템"]
+      expected_active_shards: [paper, patent, conf, oss, news]
+
+    - id: D04
+      name: "Synthetic Biology & Biotech"
+      keywords_en: ["synthetic biology", "CRISPR", "gene editing", "biomanufacturing", "mRNA"]
+      keywords_ko: ["합성생물학", "바이오테크", "유전자편집"]
+      expected_active_shards: [paper, patent, gov, news, nature]
+
+    - id: D05
+      name: "Space & LEO"
+      keywords_en: ["LEO", "low earth orbit", "space economy", "Mars", "satellite constellation"]
+      keywords_ko: ["우주산업", "LEO", "위성"]
+      expected_active_shards: [paper, gov, news, niche, vc]
+
+    - id: D06
+      name: "Energy Systems"
+      keywords_en: ["renewable energy", "nuclear", "SMR", "battery storage", "grid", "fusion"]
+      keywords_ko: ["에너지", "재생에너지", "원자력", "배터리"]
+      expected_active_shards: [paper, patent, gov, news, nature]
+
+    - id: D07
+      name: "Semiconductors & Materials"
+      keywords_en: ["semiconductor", "chip", "EUV", "lithography", "advanced materials", "2D materials"]
+      keywords_ko: ["반도체", "소부장", "신소재"]
+      expected_active_shards: [patent, paper, conf, news, std]
+
+    - id: D08
+      name: "Climate & Sustainability"
+      keywords_en: ["climate change", "carbon capture", "ESG", "biodiversity", "ecosystem"]
+      keywords_ko: ["기후변화", "탄소포집", "생태"]
+      expected_active_shards: [nature, gov, news, paper, std]
+
+    - id: D09
+      name: "Healthcare & Medicine"
+      keywords_en: ["healthcare", "clinical trial", "drug discovery", "digital health", "diagnostics"]
+      keywords_ko: ["헬스케어", "임상시험", "신약개발"]
+      expected_active_shards: [paper, gov, patent, news, vc]
+
+    - id: D10
+      name: "Cybersecurity & Internet Governance"
+      keywords_en: ["cybersecurity", "zero trust", "internet governance", "DNS", "encryption"]
+      keywords_ko: ["사이버보안", "인터넷거버넌스"]
+      expected_active_shards: [std, news, paper, gov, conf]
+
+    - id: D11
+      name: "Advanced Manufacturing"
+      keywords_en: ["additive manufacturing", "3D printing", "soft robotics", "biomanufacturing", "industry 4.0"]
+      keywords_ko: ["적층제조", "3D프린팅", "스마트팩토리"]
+      expected_active_shards: [patent, paper, vc, news, conf]
+
+    - id: D12
+      name: "Agriculture & Food Tech"
+      keywords_en: ["agtech", "precision agriculture", "alternative protein", "vertical farming", "food security"]
+      keywords_ko: ["애그테크", "정밀농업", "대체식품"]
+      expected_active_shards: [nature, paper, gov, news, vc]
+
+    - id: D13
+      name: "Geopolitics & Supply Chain"
+      keywords_en: ["supply chain", "export control", "industrial policy", "deglobalization", "critical minerals"]
+      keywords_ko: ["공급망", "수출통제", "산업정책"]
+      expected_active_shards: [news, gov, vc, paper, std]
+
+    - id: D14
+      name: "Financial Systems & Digital Currency"
+      keywords_en: ["CBDC", "fintech", "stablecoin", "digital payments", "DeFi"]
+      keywords_ko: ["CBDC", "핀테크", "디지털화폐"]
+      expected_active_shards: [news, paper, gov, vc, std]
+
+# ============================================================
+# Cell coverage check (across 14 domains)
+# ============================================================
+expected_cell_coverage:
+  format_shards_used:    ["paper", "patent", "std", "gov", "news", "conf", "oss", "niche", "nature", "vc"]   # 10/10
+  geographic_diversity:  "all 8 cells should be touched across 14 domains (depends on catalog sampling)"
+  rationale: |
+    각 도메인의 expected_active_shards가 평균 5개. 14 domains × 5 shards = 70 domain-shard pairs.
+    SDX 80 채널 카탈로그에서 골고루 샘플링되면 모든 format shard가 최소 1번 활성화됨 (G1 gate 충족).
+
+# ============================================================
+# Replacement policy
+# ============================================================
+override:
+  cli_flag: "--domains=name1,name2,..."
+  rule: "사용자가 --domains 제공 시 그 list가 정본. domain_set.name = 'custom_<hash>'로 기록."
+  override_no_personalization: true   # 사용자 personalization 반영 금지 (G6 gate)

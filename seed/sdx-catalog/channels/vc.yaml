@@ -1,0 +1,310 @@
+channels:
+- id: CH-0112
+  name: Failory startup graveyard
+  url_pattern: https://www.failory.com/graveyard
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: vc
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 6
+    format_unique: 9
+    trust_level: 7
+  total_score: 7.33
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 스타트업 실패 부검 — '왜 죽었나' 분석적 아카이브
+  unique_yield_example: Quibi 부검 → 짧은폼+모바일전용 가설 재검토
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.42
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0046
+    - agent: .sdx_org/gemini
+      orig_id: CH-0001
+    merged_count: 2
+- id: CH-0114
+  name: Startup Genome Global Startup Ecosystem Report
+  url_pattern: https://startupgenome.com/report/gser2024
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: vc
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 6
+    format_unique: 9
+    trust_level: 7
+  total_score: 7.33
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료
+  notes: 글로벌 스타트업 생태계 비교 리포트 — 지역별 자본/인재/딥테크 편차 신호
+  unique_yield_example: Ecosystem bottleneck metrics → non-US founder infrastructure arbitrage
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.42
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0001
+    merged_count: 1
+- id: CH-0115
+  name: CB Insights Death by Tech Graveyard
+  url_pattern: https://www.cbinsights.com/research/startup-failure-post-mortem/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: vc
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 7
+    persistence: 10
+    accessibility: 4
+    geo_diversity: 3
+    temporal_depth: 8
+    format_unique: 6
+    trust_level: 8
+  total_score: 7.33
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 일부유료
+  notes: 벤처캐피털 투자 유치 후 실패한 스타트업 포스트모템 리포트
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0002
+    - agent: .sdx_org/gemini
+      orig_id: CH-0002
+    merged_count: 2
+- id: CH-0129
+  name: IT桔子 (ITjuzi)
+  url_pattern: https://www.itjuzi.com/
+  axis:
+    temporal: T-1Y
+    geographic: CN
+    format: vc
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 8
+    accessibility: 4
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.22
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 유료 (일부 무료)
+  notes: 중국 스타트업·투자 DB — Crunchbase 사각지대
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.34
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0043
+    merged_count: 1
+- id: CH-0139
+  name: LAVCA (Latin American VC Assoc.)
+  url_pattern: https://www.lavca.org/
+  axis:
+    temporal: T-1Y
+    geographic: LATAM
+    format: vc
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 7
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 6
+    trust_level: 7
+  total_score: 7.11
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - es
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (리포트 일부 유료)
+  notes: 라틴아메리카 VC 동향 — 핀테크·애그테크 자본 흐름
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.39
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0045
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0003
+    - agent: .sdx_org/gemini
+      orig_id: CH-0003
+    merged_count: 3
+- id: CH-0172
+  name: Tracxn
+  url_pattern: https://tracxn.com/
+  axis:
+    temporal: T-1Y
+    geographic: IN_SEA
+    format: vc
+    scale: macro
+  metrics:
+    independence: 6
+    signal_density: 7
+    persistence: 8
+    accessibility: 4
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 6
+    trust_level: 7
+  total_score: 6.44
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 유료 (일부 무료)
+  notes: 인도 발 글로벌 스타트업 DB — 신흥시장 커버리지 강함
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.47
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0044
+    merged_count: 1
+- id: CH-0175
+  name: Crunchbase
+  url_pattern: https://www.crunchbase.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: vc
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 2
+    temporal_depth: 3
+    format_unique: 6
+    trust_level: 5
+  total_score: 5.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0006
+    merged_count: 1
+- id: CH-0246
+  name: MAGNiTT MENA Startup Intelligence
+  url_pattern: https://magnitt.com
+  axis:
+    temporal: T-5Y
+    geographic: MENA
+    format: vc
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 9
+  total_score: 7.89
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 중동 및 아프리카 지역 벤처 캐피탈 딜 데이터 및 스타트업 자금 모집 현황을 정밀 트래킹
+  first_seen_round: SDXX-20260609
+- id: CH-0252
+  name: Ventureburn
+  url_pattern: https://ventureburn.com
+  axis:
+    temporal: T-5Y
+    geographic: AF
+    format: vc
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 7
+  total_score: 7.78
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 아프리카 스타트업 신 생태계의 펀딩, 스케일업 등 로컬 벤처 투자 동향 및 시장 조사를 전문 수집하는 채널
+  first_seen_round: SDXX-20260609

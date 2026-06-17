@@ -1,0 +1,840 @@
+channels:
+- id: CH-0011
+  name: IETF datatracker — obsolete RFCs
+  url_pattern: https://datatracker.ietf.org/doc/search?status=obsolete
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: std
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 9
+    format_unique: 10
+    trust_level: 10
+  total_score: 8.67
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 사장된 인터넷 표준 — '왜 실패했나' 분석 가능
+  unique_yield_example: RFC 793 deprecation → TCP 진화 동력
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.3
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0018
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0004
+    - agent: .sdx_org/gemini
+      orig_id: CH-0004
+    merged_count: 3
+- id: CH-0012
+  name: GOST (Russian standards)
+  url_pattern: https://protect.gost.ru/
+  axis:
+    temporal: T-50Y
+    geographic: RU_EE
+    format: std
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 10
+    temporal_depth: 9
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.56
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ru
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (열람)
+  notes: 소련/러시아 표준 — 극한환경(저온·우주) 설계 규범, 깊은 과거
+  unique_yield_example: GOST 극저온 강재 규격 → 극지 인프라 재료
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.29
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0023
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0005
+    - agent: .sdx_org/gemini
+      orig_id: CH-0005
+    merged_count: 3
+- id: CH-0020
+  name: GB 国家标准 (China)
+  url_pattern: http://www.gb688.cn/
+  axis:
+    temporal: T-5Y
+    geographic: CN
+    format: std
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 10
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (열람)
+  notes: '중국 국가표준 — 서구와 다른 기술 규격 경로(예: 충전 표준)'
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.33
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0021
+    merged_count: 1
+- id: CH-0021
+  name: JIS
+  url_pattern: https://www.jisc.go.jp/
+  axis:
+    temporal: T-5Y
+    geographic: JP_KR
+    format: std
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  - ja
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0022
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0007
+    - agent: .sdx_org/gemini
+      orig_id: CH-0007
+    - agent: .sdx_org/kimi
+      orig_id: CH-0051
+    merged_count: 4
+- id: CH-0024
+  name: BIS
+  url_pattern: https://www.bis.gov.in/
+  axis:
+    temporal: T-5Y
+    geographic: IN_SEA
+    format: std
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0043
+    merged_count: 1
+- id: CH-0025
+  name: ABNT
+  url_pattern: https://www.abnt.org.br/
+  axis:
+    temporal: T-5Y
+    geographic: LATAM
+    format: std
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0058
+    merged_count: 1
+- id: CH-0026
+  name: SABS
+  url_pattern: https://www.sabs.co.za/
+  axis:
+    temporal: T-5Y
+    geographic: AF
+    format: std
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0067
+    merged_count: 1
+- id: CH-0027
+  name: SASO
+  url_pattern: https://www.saso.gov.sa/
+  axis:
+    temporal: T-5Y
+    geographic: MENA
+    format: std
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0075
+    merged_count: 1
+- id: CH-0038
+  name: Internet Systems Consortium (ISC) Releases
+  url_pattern: https://www.isc.org/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: std
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 6
+    temporal_depth: 8
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.0
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: BIND 등 주요 인터넷 기본 프로토콜 구현 배포 동향
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0006
+    - agent: .sdx_org/gemini
+      orig_id: CH-0006
+    merged_count: 2
+- id: CH-0046
+  name: GCC Standardization Organization
+  url_pattern: https://www.gcc-sg.org/
+  axis:
+    temporal: T-0
+    geographic: MENA
+    format: std
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 9
+  total_score: 7.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0077
+    merged_count: 1
+- id: CH-0076
+  name: IETF Datatracker
+  url_pattern: https://datatracker.ietf.org/
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: std
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 2
+    temporal_depth: 8
+    format_unique: 8
+    trust_level: 9
+  total_score: 7.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0005
+    merged_count: 1
+- id: CH-0091
+  name: IEEE withdrawn standards
+  url_pattern: https://standards.ieee.org/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: std
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 4
+    geo_diversity: 3
+    temporal_depth: 7
+    format_unique: 10
+    trust_level: 10
+  total_score: 7.44
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 유료
+  notes: 철회된 IEEE 표준 — 기술 합의 붕괴 지점 (IETF와 temporal/scale 분리)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.46
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0019
+    - agent: .sdx_org/gemini
+      orig_id: CH-0008
+    merged_count: 2
+- id: CH-0095
+  name: ISO Standards Catalogue
+  url_pattern: https://www.iso.org/standards.html
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: std
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 4
+    geo_diversity: 3
+    temporal_depth: 7
+    format_unique: 10
+    trust_level: 10
+  total_score: 7.44
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료/유료
+  notes: 국제 표준 카탈로그 — 산업 합의의 채택/지연/철회 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.46
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0008
+    merged_count: 1
+- id: CH-0142
+  name: IETF Working Group Mailings
+  url_pattern: https://mailarchive.ietf.org/arch/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: std
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 9
+    accessibility: 4
+    geo_diversity: 3
+    temporal_depth: 7
+    format_unique: 5
+    trust_level: 9
+  total_score: 7.11
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 차세대 인터넷 사양 논의를 위한 작업그룹 메일링 리스트
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0009
+    - agent: .sdx_org/gemini
+      orig_id: CH-0009
+    merged_count: 2
+- id: CH-0166
+  name: ISO Online Browsing Platform
+  url_pattern: https://www.iso.org/obp/ui/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: std
+    scale: macro
+  metrics:
+    independence: 6
+    signal_density: 7
+    persistence: 10
+    accessibility: 4
+    geo_diversity: 4
+    temporal_depth: 6
+    format_unique: 7
+    trust_level: 10
+  total_score: 6.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  - fr
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 유료 (목록 무료)
+  notes: 국제표준 기준선 — 인용 백트랙 도달지
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.47
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0020
+    merged_count: 1
+- id: CH-0187
+  name: African Organisation for Standardisation Catalogue
+  url_pattern: https://www.arso-oran.org/catalogue-of-african-standards/
+  axis:
+    temporal: T-50Y
+    geographic: AF
+    format: std
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 10
+    trust_level: 10
+  total_score: 9.11
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  - fr
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: African harmonized standards are a scarce std-format channel with continent-level industrial policy signals.
+  first_seen_round: SDXX-20260609
+- id: CH-0188
+  name: Arab Organization for Industrial Development, Standardization and Mining
+  url_pattern: https://aidsmo.org/roc/en/home/
+  axis:
+    temporal: T-0
+    geographic: MENA
+    format: std
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 10
+    trust_level: 10
+  total_score: 9.11
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - ar
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 아랍 연맹 산하 산업개발·표준화·광업 전문기구의 비서구권 표준·광업 데이터
+  first_seen_round: SDXX-20260609
+- id: CH-0194
+  name: Gulf Standardization Organization
+  url_pattern: https://www.gso.org.sa/
+  axis:
+    temporal: T-50Y
+    geographic: MENA
+    format: std
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 7
+    format_unique: 10
+    trust_level: 10
+  total_score: 8.89
+  discovery_strategy: S3_failure_archive
+  language:
+  - ar
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Gulf standards catalog adds Arabic std-format industrial regulation beyond ISO/Saudi-only channels.
+  first_seen_round: SDXX-20260609
+- id: CH-0203
+  name: Korean Standards and Certification
+  url_pattern: https://www.standard.go.kr/
+  axis:
+    temporal: T-50Y
+    geographic: JP_KR
+    format: std
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 8
+    temporal_depth: 7
+    format_unique: 10
+    trust_level: 10
+  total_score: 8.67
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ko
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Korean industrial standards add JP/KR std-format technical regulation outside IEEE/ISO channels.
+  first_seen_round: SDXX-20260609
+- id: CH-0204
+  name: Korean Agency for Technology and Standards (KATS)
+  url_pattern: https://kats.go.kr
+  axis:
+    temporal: T-50Y
+    geographic: JP_KR
+    format: std
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 8
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 10
+  total_score: 8.67
+  discovery_strategy: S3_failure_archive
+  language:
+  - ko
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 한국 국가기술표준원 채널로, 대한민국 산업 규격(KS) 제정 이력 및 국가 계량 표준 기술 동향 관리
+  first_seen_round: SDXX-20260609
+- id: CH-0214
+  name: Kenya Bureau of Standards (KEBS)
+  url_pattern: https://www.kebs.org/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: std
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 5
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  - sw
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: Kenya national standards body with local quality marks, certification schemes and technical regulations in East African context, primary regulatory documents not covered by ISO summaries or US/EU news.
+  first_seen_round: SDXX-20260609
+- id: CH-0215
+  name: CRIRSCO - Mineral Reserves International Reporting Standards
+  url_pattern: https://crirsco.com/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: std
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 8
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Borrows mining/geology sector's international ore-reserve reporting standards (JORC/SAMREC/PERC).
+  first_seen_round: SDXX-20260609
+- id: CH-0220
+  name: Association of German Engineers (VDI) Standards
+  url_pattern: https://vdi.de
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: std
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 7
+    temporal_depth: 8
+    format_unique: 9
+    trust_level: 10
+  total_score: 8.33
+  discovery_strategy: S3_failure_archive
+  language:
+  - de
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 독일 공학 기술 길드의 대표적인 표준 가이드라인으로 미세 기계공학 및 설비 규격을 독점 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0263
+  name: Department of Standards Malaysia (JSM)
+  url_pattern: https://www.jsm.gov.my/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: std
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 7
+    geo_diversity: 8
+    temporal_depth: 5
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  - ms
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: 말레이시아 국가표준청의 온라인 표준 포털로, ASEAN 지역 규격 및 할랄·전기통신 국가표준의 1차 공개 원문 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0264
+  name: Korean Standards Association (KSA)
+  url_pattern: https://www.ksa.or.kr/
+  axis:
+    temporal: T-0
+    geographic: JP_KR
+    format: std
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 7
+    geo_diversity: 7
+    temporal_depth: 5
+    format_unique: 8
+    trust_level: 9
+  total_score: 7.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - ko
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: 한국 산업표준(KS) 인증 및 표준정보 포털로, ISO/IEC 영문 규격과 직교하는 한국어 원문 국가표준 및 K마크 인증 데이터베이스
+  first_seen_round: SDXX-20260609
+- id: CH-0271
+  name: Japanese Standards Association (JSA) Standards and Specifications
+  url_pattern: https://webdesk.jsa.or.jp/
+  axis:
+    temporal: T-1Y
+    geographic: JP_KR
+    format: std
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 7
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ja
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: Japanese private and sector standards development center for agile non-JIS specifications; East Asian technical standardization source with service and industry focus.
+  first_seen_round: SDXX-20260609

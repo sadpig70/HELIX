@@ -1,0 +1,1450 @@
+channels:
+- id: CH-0013
+  name: NASA NTRS — cancelled missions
+  url_pattern: https://ntrs.nasa.gov/
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: gov
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 9
+    format_unique: 9
+    trust_level: 10
+  total_score: 8.44
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 취소된 미션 기술보고서 — 미해결 공학 질문 보고
+  unique_yield_example: 취소된 핵추진 NERVA → 차세대 우주추진 재검토
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.34
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0025
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0070
+    - agent: .sdx_org/gemini
+      orig_id: CH-0070
+    - agent: .sdx_org/kimi
+      orig_id: CH-0008
+    merged_count: 4
+- id: CH-0028
+  name: EUR-Lex — repealed directives
+  url_pattern: https://eur-lex.europa.eu/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 7
+    format_unique: 9
+    trust_level: 10
+  total_score: 8.11
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 폐지된 EU 지침 — 규제 실패·반전 추적
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.36
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0024
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0071
+    - agent: .sdx_org/gemini
+      orig_id: CH-0071
+    merged_count: 3
+- id: CH-0029
+  name: ClinicalTrials.gov — terminated trials
+  url_pattern: https://clinicaltrials.gov/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: gov
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 6
+    format_unique: 9
+    trust_level: 10
+  total_score: 8.11
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 중단된 임상시험 — 왜 실패했나, 안전성 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.35
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0026
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0072
+    - agent: .sdx_org/gemini
+      orig_id: CH-0072
+    merged_count: 3
+- id: CH-0030
+  name: gov.cn 国务院白皮书
+  url_pattern: https://www.gov.cn/
+  axis:
+    temporal: T-1Y
+    geographic: CN
+    format: gov
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.11
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 중국 국무원 백서 — 산업정책 1차 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.31
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0028
+    - agent: .sdx_org/kimi
+      orig_id: CH-0027
+    merged_count: 2
+- id: CH-0040
+  name: Diário Oficial da União (Brazil)
+  url_pattern: https://www.in.gov.br/
+  axis:
+    temporal: T-1Y
+    geographic: LATAM
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 8
+    trust_level: 9
+  total_score: 7.89
+  discovery_strategy: S2_cross_lingual
+  language:
+  - pt-BR
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 브라질 관보 — 규제·환경 인허가 1차
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.34
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0031
+    merged_count: 1
+- id: CH-0047
+  name: data.gov.in
+  url_pattern: https://data.gov.in/
+  axis:
+    temporal: T-1Y
+    geographic: IN_SEA
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 7
+    trust_level: 9
+  total_score: 7.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - hi
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (API)
+  notes: 인도 공공데이터 — 농업·전력·보건 미시통계
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.33
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0027
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0073
+    - agent: .sdx_org/gemini
+      orig_id: CH-0073
+    - agent: .sdx_org/kimi
+      orig_id: CH-0042
+    merged_count: 4
+- id: CH-0048
+  name: African Union / AUDA-NEPAD
+  url_pattern: https://au.int/
+  axis:
+    temporal: T-1Y
+    geographic: AF
+    format: gov
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 7
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - fr
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 아프리카연합 정책 — 대륙 단위 인프라·통합 의제
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.3
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0030
+    merged_count: 1
+- id: CH-0049
+  name: GovInfo FOIA reading room
+  url_pattern: https://www.govinfo.gov/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: gov
+    scale: meso
+  metrics:
+    independence: 7
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 7
+    format_unique: 9
+    trust_level: 10
+  total_score: 7.78
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: FOIA 공개문서 — 검색 가시성 낮은 1차 정부기록
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.41
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0033
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0074
+    - agent: .sdx_org/gemini
+      orig_id: CH-0074
+    merged_count: 3
+- id: CH-0064
+  name: open.data.gov.sa (Saudi)
+  url_pattern: https://open.data.gov.sa/
+  axis:
+    temporal: T-1Y
+    geographic: MENA
+    format: gov
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 7
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.67
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ar
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 사우디 공공데이터 — 사막·에너지전환·메가프로젝트
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.32
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0032
+    merged_count: 1
+- id: CH-0072
+  name: AFRINIC
+  url_pattern: https://www.afrinic.net/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: gov
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 6
+    trust_level: 9
+  total_score: 7.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0069
+    merged_count: 1
+- id: CH-0073
+  name: UNECA
+  url_pattern: https://www.uneca.org/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 6
+    trust_level: 9
+  total_score: 7.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0072
+    merged_count: 1
+- id: CH-0074
+  name: AIIB
+  url_pattern: https://www.aiib.org/
+  axis:
+    temporal: T-0
+    geographic: MENA
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 6
+    trust_level: 9
+  total_score: 7.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0076
+    merged_count: 1
+- id: CH-0078
+  name: Roscosmos / RU space docs
+  url_pattern: https://www.roscosmos.ru/
+  axis:
+    temporal: T-5Y
+    geographic: RU_EE
+    format: gov
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 6
+    geo_diversity: 10
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.56
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ru
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 러시아 우주국 — 비서구 우주 아키텍처
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.37
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0029
+    merged_count: 1
+- id: CH-0081
+  name: CNIPA (China National Intellectual Property Administration)
+  url_pattern: https://www.cnipa.gov.cn/
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: gov
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 8
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.56
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 중국 국가지식산권국 특허공시
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0075
+    - agent: .sdx_org/gemini
+      orig_id: CH-0075
+    - agent: .sdx_org/kimi
+      orig_id: CH-0028
+    merged_count: 3
+- id: CH-0102
+  name: CSET (Georgetown) — China tech translations
+  url_pattern: https://cset.georgetown.edu/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: gov
+    scale: meso
+  metrics:
+    independence: 7
+    signal_density: 9
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 6
+    temporal_depth: 4
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.33
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 중국어 정책원문 영역 번역 브릿지 — geo 혼합축(US_EU↔CN)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.43
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0035
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0076
+    - agent: .sdx_org/gemini
+      orig_id: CH-0076
+    merged_count: 3
+- id: CH-0113
+  name: Rospatent (Russian Federal Service for Intellectual Property)
+  url_pattern: https://rospatent.gov.ru/
+  axis:
+    temporal: T-50Y
+    geographic: RU_EE
+    format: gov
+    scale: macro
+  metrics:
+    independence: 6
+    signal_density: 6
+    persistence: 10
+    accessibility: 6
+    geo_diversity: 10
+    temporal_depth: 5
+    format_unique: 8
+    trust_level: 9
+  total_score: 7.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ru
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 러시아 지식재산청 공식 포털
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0077
+    - agent: .sdx_org/gemini
+      orig_id: CH-0077
+    merged_count: 2
+- id: CH-0130
+  name: US National Academies Press
+  url_pattern: https://nap.nationalacademies.org/
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: gov
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 7
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 3
+    temporal_depth: 6
+    format_unique: 6
+    trust_level: 6
+  total_score: 7.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 미국 국립학술원 과학 보고서
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0078
+    - agent: .sdx_org/gemini
+      orig_id: CH-0078
+    merged_count: 2
+- id: CH-0150
+  name: RAND Corporation reports
+  url_pattern: https://www.rand.org/pubs.html
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: gov
+    scale: macro
+  metrics:
+    independence: 6
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 4
+    temporal_depth: 6
+    format_unique: 6
+    trust_level: 8
+  total_score: 6.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 정책 think-tank 1차 — 인용 백트랙 빈출 도달지
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.45
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0034
+    merged_count: 1
+- id: CH-0155
+  name: USA.gov
+  url_pattern: https://www.usa.gov/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 2
+    temporal_depth: 3
+    format_unique: 6
+    trust_level: 9
+  total_score: 6.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0007
+    merged_count: 1
+- id: CH-0156
+  name: WEF Global Risks Report
+  url_pattern: https://www.weforum.org/reports/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 2
+    temporal_depth: 4
+    format_unique: 6
+    trust_level: 8
+  total_score: 6.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0083
+    merged_count: 1
+- id: CH-0178
+  name: Latin American Energy Organization (OLADE)
+  url_pattern: https://www.olade.org
+  axis:
+    temporal: T-0
+    geographic: LATAM
+    format: gov
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 9
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 8
+    format_unique: 9
+    trust_level: 10
+  total_score: 9.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - es
+  - pt
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 라틴아메리카 에너지 기구의 지역 에너지 수급·광업 에너지 소비 통계
+  first_seen_round: SDXX-20260609
+- id: CH-0183
+  name: National Archives of Korea
+  url_pattern: https://archives.go.kr
+  axis:
+    temporal: T-100Y+
+    geographic: JP_KR
+    format: gov
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 8
+    temporal_depth: 10
+    format_unique: 8
+    trust_level: 10
+  total_score: 9.11
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - ko
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 한국 행정 자산 및 근현대 기술 발전 역사, 산업화 시기 기록물을 소장하는 정부 공식 국립아카이브
+  first_seen_round: SDXX-20260609
+- id: CH-0189
+  name: ASEANStats Data Portal
+  url_pattern: https://data.aseanstats.org
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: gov
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 10
+  total_score: 9.0
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: ASEAN 사무국 공식 통계 포털로 동남아 10개국 거시 지표 통합
+  first_seen_round: SDXX-20260609
+- id: CH-0190
+  name: Philippine Institute for Development Studies
+  url_pattern: https://www.pids.gov.ph
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: gov
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 10
+  total_score: 9.0
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  - tl
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 필리핀 정부 유일 사회경제 싱크탱크의 동남아 개도국 정책 연구 보고서
+  first_seen_round: SDXX-20260609
+- id: CH-0198
+  name: African Legal Information Institute
+  url_pattern: https://africanlii.org/
+  axis:
+    temporal: T-50Y
+    geographic: AF
+    format: gov
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 8
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  - fr
+  - pt
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: African case-law and legislation collections add legal-primary temporal depth beyond current-news channels.
+  first_seen_round: SDXX-20260609
+- id: CH-0205
+  name: WHO AFRO DPC Data Portal
+  url_pattern: https://dataportal.afro.who.int/
+  axis:
+    temporal: T-5Y
+    geographic: AF
+    format: gov
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 5
+    format_unique: 7
+    trust_level: 10
+  total_score: 8.56
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - fr
+  - pt
+  - ar
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: WHO AFRO regional public-health datasets emphasize African disease indicators rather than global or US/EU biomedical news.
+  first_seen_round: SDXX-20260609
+- id: CH-0206
+  name: Statistics South Africa
+  url_pattern: https://www.statssa.gov.za/
+  axis:
+    temporal: T-50Y
+    geographic: AF
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 10
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 8
+    format_unique: 6
+    trust_level: 10
+  total_score: 8.56
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Long-running South African official statistics bring deeper historical administrative series outside startup/news sources.
+  first_seen_round: SDXX-20260609
+- id: CH-0207
+  name: e-Stat Japan
+  url_pattern: https://www.e-stat.go.jp/en
+  axis:
+    temporal: T-50Y
+    geographic: JP_KR
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 8
+    temporal_depth: 8
+    format_unique: 7
+    trust_level: 10
+  total_score: 8.56
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ja
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Japanese official statistics contribute long-run administrative series in Japanese and English.
+  first_seen_round: SDXX-20260609
+- id: CH-0208
+  name: IBICT Brazil
+  url_pattern: https://ibict.br
+  axis:
+    temporal: T-50Y
+    geographic: LATAM
+    format: gov
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 7
+    format_unique: 7
+    trust_level: 9
+  total_score: 8.56
+  discovery_strategy: S5_weak_signal
+  language:
+  - pt
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 브라질 연방 과학기술 부서 직속 기관으로 남미 최대 포르투갈어권 학술 및 과학 혁신 유통 인프라 수식 보존
+  first_seen_round: SDXX-20260609
+- id: CH-0209
+  name: SSTLU Ukraine
+  url_pattern: https://gntb.gov.ua
+  axis:
+    temporal: T-50Y
+    geographic: RU_EE
+    format: gov
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 7
+    format_unique: 7
+    trust_level: 9
+  total_score: 8.44
+  discovery_strategy: S5_weak_signal
+  language:
+  - uk
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 우크라이나 국립 과학기술 도서관의 국가 과학 포털로 현지 기초 과학, 광업, 엔지니어링 자료 정보 관리
+  first_seen_round: SDXX-20260609
+- id: CH-0210
+  name: Archivo General de la Nación (AGN) Mexico
+  url_pattern: https://www.gob.mx/agn
+  axis:
+    temporal: T-100Y+
+    geographic: LATAM
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 10
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.44
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - es
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: Mexican national archives with vast colonial and independence-era holdings; deep Latin American historical primary records outside excluded Western or Brazilian hosts.
+  first_seen_round: SDXX-20260609
+- id: CH-0217
+  name: CAPMAS Egypt
+  url_pattern: https://www.capmas.gov.eg/
+  axis:
+    temporal: T-50Y
+    geographic: MENA
+    format: gov
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 8
+    format_unique: 6
+    trust_level: 10
+  total_score: 8.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ar
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Egyptian official statistics provide Arabic national series with deeper institutional continuity.
+  first_seen_round: SDXX-20260609
+- id: CH-0221
+  name: Government Research Bulletin Taiwan
+  url_pattern: https://www.grb.gov.tw/
+  axis:
+    temporal: T-50Y
+    geographic: CN
+    format: gov
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 8
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-TW
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Taiwan government-funded research records add Chinese-language project provenance outside CNKI and patent sources.
+  first_seen_round: SDXX-20260609
+- id: CH-0222
+  name: South African National Space Agency (SANSA)
+  url_pattern: https://sansa.org.za
+  axis:
+    temporal: T-5Y
+    geographic: AF
+    format: gov
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 남아프리카공화국 공식 우주국 채널로 남반구 및 아프리카 지역 관측 위성 데이터 및 지구 우주 환경 모니터 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0223
+  name: BRIN Indonesia Dataverse
+  url_pattern: https://data.brin.go.id
+  axis:
+    temporal: T-5Y
+    geographic: IN_SEA
+    format: gov
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - id
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 인도네시아 국립연구혁신청의 오픈 연구 데이터 리포지토리로 인도네시아 해양 및 환경 데이터 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0224
+  name: Archivo Nacional de Chile
+  url_pattern: https://www.archivonacional.gob.cl/
+  axis:
+    temporal: T-50Y
+    geographic: LATAM
+    format: gov
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 9
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - es
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: Chile national archives with historical government records; Southern Cone LATAM deep temporal primary sources for political and social history.
+  first_seen_round: SDXX-20260609
+- id: CH-0230
+  name: ASEAN Energy Database System
+  url_pattern: https://aseanenergy.org/projects/aeds
+  axis:
+    temporal: T-5Y
+    geographic: IN_SEA
+    format: gov
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 5
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.11
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Energy-sector statistics from ASEAN borrow infrastructure signals from power policy and grid planning.
+  first_seen_round: SDXX-20260609
+- id: CH-0231
+  name: Oman National Centre for Statistics and Information
+  url_pattern: https://www.ncsi.gov.om/
+  axis:
+    temporal: T-5Y
+    geographic: MENA
+    format: gov
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 6
+    format_unique: 6
+    trust_level: 10
+  total_score: 8.11
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ar
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Omani official statistics add Gulf-state Arabic primary data and policy indicators.
+  first_seen_round: SDXX-20260609
+- id: CH-0235
+  name: Africa CDC Public Dashboards
+  url_pattern: https://dashboards.africacdc.org/
+  axis:
+    temporal: T-1Y
+    geographic: AF
+    format: gov
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 10
+  total_score: 8.0
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  - fr
+  - ar
+  - es
+  - pt
+  - sw
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Continental outbreak dashboards provide African public-health operational signals outside general English tech/news channels.
+  first_seen_round: SDXX-20260609
+- id: CH-0236
+  name: Satu Data Indonesia
+  url_pattern: https://data.go.id/
+  axis:
+    temporal: T-5Y
+    geographic: IN_SEA
+    format: gov
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 5
+    format_unique: 6
+    trust_level: 9
+  total_score: 8.0
+  discovery_strategy: S2_cross_lingual
+  language:
+  - id
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Indonesian-language national data counters English-language regional source concentration.
+  first_seen_round: SDXX-20260609
+- id: CH-0241
+  name: Datos Abiertos Colombia
+  url_pattern: https://www.datos.gov.co/
+  axis:
+    temporal: T-5Y
+    geographic: LATAM
+    format: gov
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 5
+    format_unique: 6
+    trust_level: 9
+  total_score: 7.89
+  discovery_strategy: S2_cross_lingual
+  language:
+  - es
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Colombian open data supplies Andean administrative datasets outside English-language aggregators.
+  first_seen_round: SDXX-20260609
+- id: CH-0242
+  name: CONAB - Acompanhamento da Safra Brasileira
+  url_pattern: https://www.conab.gov.br/info-agro/safras
+  axis:
+    temporal: T-0
+    geographic: LATAM
+    format: gov
+    scale: meso
+  metrics:
+    independence: 7
+    signal_density: 8
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 8
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.89
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - pt
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Borrows Brazilian agriculture sector's official crop-survey reporting hub (safra bulletins).
+  first_seen_round: SDXX-20260609
+- id: CH-0247
+  name: Taiwan Government Open Data Platform
+  url_pattern: https://data.gov.tw/
+  axis:
+    temporal: T-5Y
+    geographic: CN
+    format: gov
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 8
+    temporal_depth: 5
+    format_unique: 6
+    trust_level: 9
+  total_score: 7.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-TW
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Traditional Chinese government datasets add Greater China signals outside mainland gov.cn sources.
+  first_seen_round: SDXX-20260609
+- id: CH-0275
+  name: Vietnam NASATI / VISTA
+  url_pattern: https://www.vista.gov.vn/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: gov
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 6
+    persistence: 8
+    accessibility: 6
+    geo_diversity: 9
+    temporal_depth: 5
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.0
+  discovery_strategy: S2_cross_lingual
+  language:
+  - vi
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Vietnam's national S&T information agency; Vietnamese government source, rare geography.
+  first_seen_round: SDXX-20260609

@@ -1,0 +1,191 @@
+# EVX Output Schema v1.1 (dual winner — consensus + innovation)
+#
+# 4 contracts:
+#   1. stage5_candidates.yaml — 14 페르소나 × top-3 (machine-readable)
+#   2. stage6_final.yaml       — Cross-AI consensus + final 1 (machine-readable)
+#   3. final_idea.md           — 최종 보고서 (사람용)
+#   4. manifest.yaml           — provenance + policy snapshot
+#
+# 모든 점수 공식은 EVX_POLICY 단일 출처. 본 파일은 contract reference only.
+
+# ============================================================
+# 1. stage5_candidates.yaml — STEP 5 결과
+# ============================================================
+
+stage5_schema:
+  required_top_level:
+    - stage                    # literal "STEP_5_8AI_TOP3"
+    - personas                 # dict pid → persona_block
+
+  persona_block:
+    required:
+      - persona_name_en        # "Disruptive Engineer" 등
+      - evaluation_bias        # dict (PGF source 그대로)
+      - top_3                  # list (length == EVX_POLICY.stage5_top3.top_per_persona)
+    top_3_entry:
+      required:
+        - rank                 # 1 | 2 | 3
+        - score                # 페르소나 가중 점수 (PGF axes)
+        - id                   # IDEA-* (CIX 산출물 id)
+        - title
+        - layer                # L6_Gap | L7_Tension | L9_Counterfactual | L10_Generative
+        - generated_by_persona # CIX 생성 페르소나 (cross-skill chain)
+        - cix_total_score      # 참조용 (EVX 최종 ranking에 영향 X)
+
+# ============================================================
+# 2. stage6_final.yaml — STEP 6 결과
+# ============================================================
+
+stage6_schema:                                  # v1.1 dual winner
+  required_top_level:
+    - stage                       # literal "STEP_6_CROSS_AI_DUAL_WINNER" (v1.1) | "STEP_6_CROSS_AI_FINAL_1" (v1.0 compat)
+    - method_v1_1                 # description string
+    - consensus_ranking_top_8     # 합의 ranking (votes→breadth→mean)
+    - innovation_ranking_top_8    # 혁신 ranking (max_persona_score→votes→mean)
+    - consensus_winner            # ★ v1.1 — 안전한 합의 winner
+    - innovation_winner           # ★ v1.1 — 강한 champion winner
+    - winners_identical           # bool — 둘이 같으면 single 출력 권고
+  backward_compat_fields:         # v1.0 호환 (deprecated but present)
+    - ranking_top_8               # alias of consensus_ranking_top_8
+    - final_1                     # alias of consensus_winner
+
+  candidate_row:                  # v1.1 — max_persona_score / championed_by 필드 추가
+    required:
+      - id
+      - title
+      - layer
+      - generated_by_persona
+      - cix_total_score
+      - votes                     # int (top-3에 든 페르소나 수)
+      - voters                    # list[pid] (sorted)
+      - cognitive_style_breadth   # voter cognitive_style 유니크 수 (1-4)
+      - mean_persona_score        # 14 페르소나 평균
+      - max_persona_score         # ★ v1.1 — 가장 강한 페르소나 점수 (innovation ranking 기준)
+      - championed_by             # ★ v1.1 — 최고 점수를 준 페르소나 ID
+
+  quality_gate:
+    g3_winner_votes_min: 2        # EVX_POLICY.quality_gates.g3
+    rule: "consensus_winner.votes >= 2 이면 통과. 1이면 round 무효"
+    g6_dual_consistency:          # ★ NEW v1.1
+      rule: "winners_identical 경우 single 보고. 다르면 양면 보고 의무 (final_idea.md에 둘 다)"
+
+# ============================================================
+# 3. final_idea.md — STEP 7 결과 (사람용 보고서)
+# ============================================================
+
+final_idea_md_schema:                              # v1.1 dual winner template
+  required_sections:
+    - title_block                  # H1 + round id + source chain
+    - winner_disposition_note      # ★ NEW v1.1 — winners_identical 명시 + 사용자 안내
+    - consensus_winner_block:      # ★ v1.1 분리
+        - star_consensus_idea      # ★ CONSENSUS WINNER (안전한 합의)
+        - consensus_rationale      # vote distribution + cognitive_style 분석
+        - five_strengths           # S1-S5 (consensus 기준)
+        - three_risks              # R1-R3 with mitigation
+        - three_expansions         # X1-X3 with mechanism
+    - innovation_winner_block:     # ★ NEW v1.1 — winners_identical=false 일 때만 출력
+        - star_innovation_idea     # ⚡ INNOVATION WINNER (강한 champion)
+        - innovation_rationale     # max_persona_score + championed_by 분석
+        - five_strengths           # S1-S5 (innovation 기준)
+        - three_risks              # R1-R3 with mitigation
+        - three_expansions         # X1-X3 with mechanism
+    - pipeline_observations        # 시스템 동작 관찰 (선택)
+    - outputs_inventory            # 산출물 경로 표
+    - round_chain                  # 4-skill provenance
+
+  collapse_rule:                   # ★ NEW v1.1
+    if_winners_identical: "innovation_winner_block 생략, single 보고 + note in winner_disposition_note"
+    if_different: "양면 출력 + 사용자 선택지 안내 (둘 다 검토 권고)"
+
+  quality_gates:
+    g4_assessment_counts:          # consensus_winner_block 기준 (innovation은 별도 평가시 동일 적용)
+      strengths: 5
+      risks: 3
+      expansions: 3
+    g4_per_risk_mitigation: true
+    g4_per_expansion_mechanism: true
+    g6_dual_consistency:           # ★ NEW v1.1
+      rule: "winners_identical=false이면 innovation_winner_block 의무 — 누락 시 round invalid"
+
+# ============================================================
+# 4. manifest.yaml — provenance + policy
+# ============================================================
+
+manifest_schema:
+  required:
+    - round_id                 # "EVX-{YYYYMMDD}-{NNN}"
+    - built_at                 # ISO-8601 UTC
+    - inputs
+    - source_chain
+    - policy
+    - outputs
+
+  inputs:
+    required:
+      - idea_pool              # .cix/latest/idea_pool.yaml (path)
+      - idea_pool_sha16        # first 16 hex of sha256
+      - personas               # skills/pgf/discovery/personas.json
+      - personas_sha16
+
+  source_chain:
+    required:
+      - cix                    # CIX round_id
+      - idx                    # via CIX manifest
+      - tcx                    # via CIX manifest → IDX manifest
+      - sdx_catalog            # via TCX manifest → SDX catalog
+
+  policy:
+    required:
+      - axis_mapping           # EVX_POLICY.axis_mapping (4 formula strings)
+      - scoring                # 공식 텍스트
+      - consensus_tiebreak     # [votes, cognitive_style_breadth, mean_persona_score]
+
+  outputs:
+    required:
+      - stage5_candidates
+      - stage6_final
+      - final_idea
+    optional:
+      - rerank_diff             # ModeRerank 산출물
+
+# ============================================================
+# 5. .evx/index.yaml — rounds catalog
+# ============================================================
+
+evx_index_schema:
+  required_top_level:
+    - evx_output
+
+  evx_output:
+    required:
+      - version                # skill version (e.g., "v1.0")
+      - schema                 # "evx.output_index.v1"
+      - generated_at
+      - latest_round_id
+      - latest_round_path
+      - rounds                 # list (newest first)
+      - archive_policy
+
+  round_entry:
+    required:
+      - id
+      - path
+      - at
+      - mode                   # evaluate | rerank | compare
+      - quality                # passed | failed
+      - source_cix_round
+      - final_idea_id
+      - final_votes
+    optional:
+      - cognitive_style_breadth
+      - mean_persona_score
+      - cix_manifest_hash
+
+  archive_policy:
+    required:
+      - retain_in_rounds_days
+      - archive_target_pattern
+      - archive_script
+      - last_archive_run
+    optional:
+      - rounds_in_archive

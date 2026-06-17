@@ -1,0 +1,22 @@
+name: helix-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Compile (stdlib only, no deps)
+        run: python -m compileall core engines tests helix.py
+      - name: Unit tests
+        run: python -m unittest discover -s tests -q
+      - name: Validate structure + contracts
+        run: python core/helix_validate.py .
+      - name: Driver smoke (over shipped fixtures)
+        run: python helix.py status

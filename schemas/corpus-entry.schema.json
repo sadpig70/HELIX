@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HELIX corpus entry (explore winner -> exploit corpus source; base-pairing)",
+  "type": "object",
+  "required": ["project", "origin"],
+  "properties": {
+    "project": {"type": "string"},
+    "repo": {"type": ["string", "null"]},
+    "path": {"type": ["string", "null"]},
+    "origin": {"type": "string", "enum": ["explore", "exploit"]},
+    "source_chain": {"type": "object"},
+    "semantic_family": {"type": ["string", "null"]},
+    "readme_hint": {"type": ["string", "null"]},
+    "from_idea_id": {"type": ["string", "null"]}
+  }
+}

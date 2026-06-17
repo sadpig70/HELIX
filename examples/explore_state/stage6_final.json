@@ -1,0 +1,38 @@
+{
+  "stage": "stage6_consensus_cross_eval",
+  "round_id": "EVX-20260610-001",
+  "method_v1_1": "dual_winner_v1_1",
+  "input_idea_count": 24,
+  "eligible_idea_count": 22,
+  "excluded_consumed": [
+    {"idea_id": "IDEA-001", "reasons": ["normalized_title", "semantic_family"]}
+  ],
+  "consensus_winner": {
+    "id": "IDEA-018",
+    "title": "Time-Box Automation Enforcer",
+    "layer": "L10_Generative",
+    "generated_by_persona": "P5",
+    "provenance_model": "kimi",
+    "source_insight_id": "INS-L10-007",
+    "cix_total_score": 8.88,
+    "votes": 5,
+    "voters": ["P3", "P7", "P9", "P10", "P11"],
+    "cognitive_style_breadth": 2,
+    "mean_persona_score": 8.528,
+    "max_persona_score": 9.1
+  },
+  "innovation_winner": {
+    "id": "IDEA-020",
+    "title": "Orbital Tasking-to-Action Roaming Registry",
+    "layer": "L6_Gap",
+    "generated_by_persona": "P3",
+    "provenance_model": "claude",
+    "source_insight_id": "INS-L6-002",
+    "cix_total_score": 8.87,
+    "votes": 3,
+    "voters": ["P4", "P8", "P9"],
+    "cognitive_style_breadth": 3,
+    "mean_persona_score": 8.41,
+    "max_persona_score": 9.4
+  }
+}

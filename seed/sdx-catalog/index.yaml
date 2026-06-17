@@ -1,0 +1,83 @@
+catalog:
+  version: v2
+  policy_version: sdx-1.5
+  total_channels: 276
+  shard_key: format
+  acceptance:
+    catalog_size: 276
+    lock_eligible: true
+    required_coverage_passed: true
+shards:
+- format: conf
+  file: channels/conf.yaml
+  path: channels/conf.yaml
+  count: 13
+  id_range: CH-0077..CH-0267
+- format: gov
+  file: channels/gov.yaml
+  path: channels/gov.yaml
+  count: 44
+  id_range: CH-0013..CH-0275
+- format: nature
+  file: channels/nature.yaml
+  path: channels/nature.yaml
+  count: 23
+  id_range: CH-0001..CH-0086
+- format: news
+  file: channels/news.yaml
+  path: channels/news.yaml
+  count: 19
+  id_range: CH-0060..CH-0272
+- format: niche
+  file: channels/niche.yaml
+  path: channels/niche.yaml
+  count: 52
+  id_range: CH-0022..CH-0274
+- format: oss
+  file: channels/oss.yaml
+  path: channels/oss.yaml
+  count: 13
+  id_range: CH-0037..CH-0244
+- format: paper
+  file: channels/paper.yaml
+  path: channels/paper.yaml
+  count: 58
+  id_range: CH-0016..CH-0276
+- format: patent
+  file: channels/patent.yaml
+  path: channels/patent.yaml
+  count: 19
+  id_range: CH-0015..CH-0262
+- format: std
+  file: channels/std.yaml
+  path: channels/std.yaml
+  count: 26
+  id_range: CH-0011..CH-0271
+- format: vc
+  file: channels/vc.yaml
+  path: channels/vc.yaml
+  count: 9
+  id_range: CH-0112..CH-0252
+basis:
+  orthogonality_matrix: basis/orthogonality_matrix_v1.json
+  overlap_policy: basis/overlap_policy.yaml
+  selection_log: basis/selection_log_v1.yaml
+  rejected: basis/rejected_candidates.yaml
+  status: partial_reference
+  scope: v1_80basis_carried_to_v2_276_union (not recomputed for the 276-channel union)
+reports:
+  coverage: reports/coverage.md
+provenance:
+  built_at: '2026-06-09T06:27:03+00:00'
+  base: _legacy/sdx_org-20260609 (175 preserved; archived original snapshot)
+  added_via: SDXX 6-model + local
+  new_channels: 101
+  dead_removed: 15
+  inputs:
+  - chatgpt
+  - gemini
+  - grok
+  - kimi
+  - deepseek
+  - qwen
+  - sdxx-local

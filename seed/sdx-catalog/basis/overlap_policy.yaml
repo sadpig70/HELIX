@@ -1,0 +1,25 @@
+# SDX — pairwise overlap 계산 정책 (정본: SKILL.md AI_compute_pairwise_overlap)
+# overlap(a,b) ∈ [0,1] = Σ 가중치, min(.,1.0)
+overlap_components:
+  same_axis_cell: 0.4        # 4-Axis (temporal,geo,format,scale) 4-tuple 완전 일치
+  same_primary_domain: 0.3
+  same_publisher_group: 0.2
+  same_language: 0.1
+
+thresholds:
+  selection_max_overlap_cut: 0.5      # SDX_POLICY.selection.max_overlap_cut — 그리디 선택 컷
+  audit_redundancy_threshold: 0.7     # SDX_POLICY.audit.redundancy_similarity_threshold — 중복 간주
+  drift_guard_pair_warn: 0.5          # SDX_POLICY.drift_guard.pair_overlap_warn
+
+selection_method: |
+  AI_select_orthogonal_basis_80 — total_score 내림차순 정렬 후
+  기존 선택분과 max overlap < 0.5 인 후보만 채택.
+  cell_coverage < 0.6 이면 빈 셀 강제 보충(AI_force_fill_empty_cells).
+  본 v1은 required_coverage(geo 8/8, format 10/10, temporal 5/5, scale 3/3)
+  전부 충족하여 강제 보충 없이 80 도달.
+
+notes: |
+  같은 4-Axis 셀을 공유하는 쌍이 최대 위험. 본 카탈로그에서 의도적으로
+  scale/temporal 을 분리해 동일 (geo,format) 채널의 셀 충돌을 회피함.
+  예: J-STAGE(meso)↔KCI(micro), Smithsonian(macro)↔Cooper Hewitt(meso),
+      Redalyc(meso)↔SciELO(macro), LWN(micro)↔LKML(meso), IETF(meso,T-50Y)↔IEEE(macro,T-5Y).

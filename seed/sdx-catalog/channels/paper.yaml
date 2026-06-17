@@ -1,0 +1,1950 @@
+channels:
+- id: CH-0016
+  name: Banglajol
+  url_pattern: https://www.banglajol.info/
+  axis:
+    temporal: T-5Y
+    geographic: IN_SEA
+    format: paper
+    scale: micro
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 6
+  total_score: 8.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 방글라데시 학술지 웹 허브
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0016
+    - agent: .sdx_org/gemini
+      orig_id: CH-0016
+    merged_count: 2
+- id: CH-0018
+  name: arXiv
+  url_pattern: https://arxiv.org/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: paper
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 5
+    format_unique: 6
+    trust_level: 10
+  total_score: 8.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0001
+    - agent: .sdx_org/grok
+      orig_id: CH-0001
+    - agent: .sdx_org/kimi
+      orig_id: CH-0001
+    merged_count: 3
+- id: CH-0023
+  name: CNKI Academic Focus
+  url_pattern: https://oversea.cnki.net/
+  axis:
+    temporal: T-5Y
+    geographic: CN
+    format: paper
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 9
+    persistence: 7
+    accessibility: 4
+    geo_diversity: 10
+    temporal_depth: 8
+    format_unique: 9
+    trust_level: 7
+  total_score: 8.22
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 유료
+  notes: 중국 주요 논문의 해외 서비스 영문 요약본
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0017
+    - agent: .sdx_org/gemini
+      orig_id: CH-0017
+    merged_count: 2
+- id: CH-0032
+  name: J-STAGE
+  url_pattern: https://www.jstage.jst.go.jp/
+  axis:
+    temporal: T-5Y
+    geographic: JP_KR
+    format: paper
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 7
+    format_unique: 6
+    trust_level: 8
+  total_score: 8.11
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - ja
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 일본 학회지 통합, 소부장·정밀공학 1차
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.32
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0003
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0018
+    - agent: .sdx_org/gemini
+      orig_id: CH-0018
+    - agent: .sdx_org/kimi
+      orig_id: CH-0049
+    merged_count: 4
+- id: CH-0039
+  name: 中国知网 (CNKI)
+  url_pattern: https://kns.cnki.net/
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: paper
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 4
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 7
+    trust_level: 7
+  total_score: 8.0
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 유료/기관계약
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/grok
+      orig_id: CH-0002
+    merged_count: 1
+- id: CH-0043
+  name: Redalyc
+  url_pattern: https://www.redalyc.org/
+  axis:
+    temporal: T-1Y
+    geographic: LATAM
+    format: paper
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 6
+    trust_level: 8
+  total_score: 7.89
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - es
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 이베로아메리카 오픈액세스 학술
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.38
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0006
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0019
+    - agent: .sdx_org/gemini
+      orig_id: CH-0019
+    - agent: .sdx_org/kimi
+      orig_id: CH-0056
+    merged_count: 4
+- id: CH-0055
+  name: 中国知网 (CNKI)
+  url_pattern: https://www.cnki.net/
+  axis:
+    temporal: T-5Y
+    geographic: CN
+    format: paper
+    scale: micro
+  metrics:
+    independence: 10
+    signal_density: 7
+    persistence: 9
+    accessibility: 4
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 6
+    trust_level: 7
+  total_score: 7.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 유료/기관계약
+  language_alt: 영문 요약 일부, 본문 중국어
+  notes: 중국 학위논문·학술지 1차, 영미권 미공개 다수
+  unique_yield_example: 중국 고체전해질 논문군 → 전고체 배터리 우회 경로
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.3
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0002
+    merged_count: 1
+- id: CH-0056
+  name: Shodhganga
+  url_pattern: https://shodhganga.inflibnet.ac.in/
+  axis:
+    temporal: T-1Y
+    geographic: IN_SEA
+    format: paper
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - hi
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 인도 학위논문 리포지터리 — 적정기술·농업
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.28
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0005
+    - agent: .sdx_org/gemini
+      orig_id: CH-0020
+    - agent: .sdx_org/kimi
+      orig_id: CH-0041
+    merged_count: 3
+- id: CH-0057
+  name: SciELO
+  url_pattern: https://www.scielo.org/
+  axis:
+    temporal: T-1Y
+    geographic: LATAM
+    format: paper
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 6
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - es
+  - pt-BR
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  language_alt: 다국어 (포르투갈/스페인/영어)
+  notes: 브라질 주도 오픈액세스 네트워크 — Redalyc과 scale 분리(macro)로 직교
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.4
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0007
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0021
+    - agent: .sdx_org/gemini
+      orig_id: CH-0021
+    - agent: .sdx_org/kimi
+      orig_id: CH-0062
+    merged_count: 4
+- id: CH-0061
+  name: CORE
+  url_pattern: https://core.ac.uk/
+  axis:
+    temporal: T-1Y
+    geographic: IN_SEA
+    format: paper
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - hi
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료
+  notes: 오픈액세스 논문/리포지터리 통합 검색 — 기관 저장소 기반 장기 연구 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.28
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0020
+    merged_count: 1
+- id: CH-0066
+  name: eLibrary.ru
+  url_pattern: https://www.elibrary.ru/
+  axis:
+    temporal: T-5Y
+    geographic: RU_EE
+    format: paper
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 8
+    accessibility: 6
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 6
+    trust_level: 7
+  total_score: 7.67
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ru
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 가입/일부유료
+  notes: 러시아 학술 — 재료·우주·군사공학
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.3
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0004
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0022
+    - agent: .sdx_org/gemini
+      orig_id: CH-0022
+    merged_count: 3
+- id: CH-0067
+  name: African Journals Online (AJOL)
+  url_pattern: https://www.ajol.info/
+  axis:
+    temporal: T-1Y
+    geographic: AF
+    format: paper
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 6
+    trust_level: 8
+  total_score: 7.67
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - fr
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (일부 유료)
+  notes: 사하라이남 학술지 최대 집합 — 열대질병·농학 1차
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.27
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0008
+    - agent: .sdx_org/gemini
+      orig_id: CH-0023
+    merged_count: 2
+- id: CH-0070
+  name: SciELO South Africa
+  url_pattern: https://www.scielo.org.za/
+  axis:
+    temporal: T-1Y
+    geographic: AF
+    format: paper
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 6
+    trust_level: 8
+  total_score: 7.67
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - fr
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료 (일부 유료)
+  notes: 남아프리카 오픈액세스 학술지 — 지역 과학·공중보건·농업 연구 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.27
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0023
+    merged_count: 1
+- id: CH-0083
+  name: OSF Preprints
+  url_pattern: https://osf.io/preprints/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: paper
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 4
+    temporal_depth: 5
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.56
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료
+  notes: 개방형 preprint 허브 — 사회과학·심리·정책 실험의 빠른 미출판 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0024
+    merged_count: 1
+- id: CH-0084
+  name: SSRN (Social Science Research Network)
+  url_pattern: https://www.ssrn.com/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: paper
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 4
+    temporal_depth: 5
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.56
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료/일부유료
+  notes: 사회과학 논문 네트워크 (AI 규제 및 경제성 연구 인접 차용)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/gemini
+      orig_id: CH-0024
+    merged_count: 1
+- id: CH-0094
+  name: MedRxiv
+  url_pattern: https://www.medrxiv.org/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: paper
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 5
+    temporal_depth: 4
+    format_unique: 9
+    trust_level: 8
+  total_score: 7.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 의학 전문 연구 보고서 (인공지능 진단 모델 개발용 인접 채널)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0025
+    - agent: .sdx_org/gemini
+      orig_id: CH-0025
+    merged_count: 2
+- id: CH-0110
+  name: SID / Civilica (Iran)
+  url_pattern: https://www.sid.ir/
+  axis:
+    temporal: T-5Y
+    geographic: MENA
+    format: paper
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 7
+    accessibility: 6
+    geo_diversity: 10
+    temporal_depth: 6
+    format_unique: 6
+    trust_level: 7
+  total_score: 7.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - fa
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (가입)
+  notes: 페르시아어 학술 DB — 제재하 자체기술·에너지 우회연구
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.26
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0010
+    merged_count: 1
+- id: CH-0111
+  name: DergiPark (Turkey)
+  url_pattern: https://dergipark.org.tr/
+  axis:
+    temporal: T-1Y
+    geographic: MENA
+    format: paper
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 6
+    trust_level: 7
+  total_score: 7.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - tr
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 터키 오픈액세스 학술 — MENA 페르시아/아랍과 별개 언어축(tr) 보강
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.41
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0011
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0026
+    - agent: .sdx_org/gemini
+      orig_id: CH-0026
+    merged_count: 3
+- id: CH-0116
+  name: JSTOR
+  url_pattern: https://www.jstor.org/
+  axis:
+    temporal: T-100Y+
+    geographic: US_EU
+    format: paper
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 2
+    temporal_depth: 10
+    format_unique: 5
+    trust_level: 9
+  total_score: 7.33
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0013
+    merged_count: 1
+- id: CH-0117
+  name: ScienceNet China
+  url_pattern: https://www.sciencenet.cn/
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: paper
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 5
+    trust_level: 9
+  total_score: 7.33
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0032
+    merged_count: 1
+- id: CH-0118
+  name: Wanfang Data
+  url_pattern: https://www.wanfangdata.com.cn/
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: paper
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 5
+    trust_level: 9
+  total_score: 7.33
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0035
+    merged_count: 1
+- id: CH-0119
+  name: Russian Academy of Sciences
+  url_pattern: https://www.ras.ru/
+  axis:
+    temporal: T-0
+    geographic: RU_EE
+    format: paper
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 5
+    trust_level: 9
+  total_score: 7.33
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0040
+    merged_count: 1
+- id: CH-0120
+  name: KFUPM Repository
+  url_pattern: https://kfupm.edu.sa/
+  axis:
+    temporal: T-0
+    geographic: MENA
+    format: paper
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 5
+    trust_level: 9
+  total_score: 7.33
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0079
+    merged_count: 1
+- id: CH-0135
+  name: CERN Document Server
+  url_pattern: https://cds.cern.ch/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: paper
+    scale: micro
+  metrics:
+    independence: 10
+    signal_density: 6
+    persistence: 8
+    accessibility: 7
+    geo_diversity: 3
+    temporal_depth: 6
+    format_unique: 6
+    trust_level: 9
+  total_score: 7.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  - fr
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 유럽입자물리연구소 연구 보고서 및 프리프린트
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0027
+    - agent: .sdx_org/gemini
+      orig_id: CH-0027
+    merged_count: 2
+- id: CH-0140
+  name: SciELO Brazil
+  url_pattern: https://www.scielo.br/
+  axis:
+    temporal: T-5Y
+    geographic: LATAM
+    format: paper
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 9
+    accessibility: 4
+    geo_diversity: 8
+    temporal_depth: 3
+    format_unique: 9
+    trust_level: 6
+  total_score: 7.11
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - es
+  - pt-BR
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 라틴아메리카 및 브라질 오픈액세스 저널 네트워크
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0028
+    - agent: .sdx_org/gemini
+      orig_id: CH-0028
+    merged_count: 2
+- id: CH-0141
+  name: OpenDOAR (Directory of Open Access Repositories)
+  url_pattern: https://v2.sherpa.ac.uk/opendoar/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: paper
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 10
+    accessibility: 5
+    geo_diversity: 3
+    temporal_depth: 5
+    format_unique: 8
+    trust_level: 7
+  total_score: 7.11
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 전세계 리포지터리 디렉토리 서비스
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0029
+    - agent: .sdx_org/gemini
+      orig_id: CH-0029
+    merged_count: 2
+- id: CH-0148
+  name: KCI (한국학술지인용색인)
+  url_pattern: https://www.kci.go.kr/
+  axis:
+    temporal: T-1Y
+    geographic: JP_KR
+    format: paper
+    scale: micro
+  metrics:
+    independence: 7
+    signal_density: 7
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 4
+    format_unique: 5
+    trust_level: 8
+  total_score: 7.0
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ko
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 한국 학술지 인용색인 — J-STAGE와 scale 분리(micro)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.44
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0009
+    merged_count: 1
+- id: CH-0177
+  name: Math-Net.Ru All-Russian Mathematical Portal
+  url_pattern: https://www.mathnet.ru
+  axis:
+    temporal: T-0
+    geographic: RU_EE
+    format: paper
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 10
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 8
+    format_unique: 9
+    trust_level: 10
+  total_score: 9.56
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ru
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 러시아 수학 저널·학자 정보를 통합한 비서구권 기초과학 특화 포털
+  first_seen_round: SDXX-20260609
+- id: CH-0180
+  name: CODESRIA Publications
+  url_pattern: https://codesria.org/codesria-publications/
+  axis:
+    temporal: T-50Y
+    geographic: AF
+    format: paper
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 9
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 9
+    format_unique: 8
+    trust_level: 10
+  total_score: 9.44
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  - fr
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 1973년 설립된 범아프리카 사회과학 연구협의회의 반세기 축적된 모국어/지역 밀착 학술 출판물
+  first_seen_round: SDXX-20260609
+- id: CH-0181
+  name: Journal of the South African Institution of Civil Engineering
+  url_pattern: https://saice.org.za/journal/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: paper
+    scale: micro
+  metrics:
+    independence: 10
+    signal_density: 9
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 8
+    format_unique: 9
+    trust_level: 10
+  total_score: 9.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 남아프리카 토목학회 소속 아프리카 인프라·토목 특화 peer-reviewed 학술지
+  first_seen_round: SDXX-20260609
+- id: CH-0186
+  name: 'Maritime Affairs: Journal of the National Maritime Foundation'
+  url_pattern: https://maritimeindia.org/maritime-affairs-journal/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: paper
+    scale: micro
+  metrics:
+    independence: 10
+    signal_density: 9
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 9
+    trust_level: 10
+  total_score: 9.11
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 인도 국립해양재단의 인도양·동남아 해운·해양안보 전략 학술지
+  first_seen_round: SDXX-20260609
+- id: CH-0195
+  name: Indian Academy of Sciences (IAS)
+  url_pattern: https://ias.ac.in
+  axis:
+    temporal: T-100Y+
+    geographic: IN_SEA
+    format: paper
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 9
+    temporal_depth: 10
+    format_unique: 6
+    trust_level: 9
+  total_score: 8.78
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 노벨 물리학상 수상자 C.V. 라만이 설립한 인도 국립과학원의 학술지 포털로 식민지 시대 이후의 남부 아시아 과학 데이터베이스 보존
+  first_seen_round: SDXX-20260609
+- id: CH-0196
+  name: Algerian Scientific Journals Platform
+  url_pattern: https://asjp.cerist.dz
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: paper
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ar
+  - fr
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 알제리 CERIST가 운영하는 700개 이상 과학저널의 아랍어/프랑스어 모국어 학술 플랫폼
+  first_seen_round: SDXX-20260609
+- id: CH-0201
+  name: Latindex Catalog
+  url_pattern: https://www.latindex.org/latindex/
+  axis:
+    temporal: T-50Y
+    geographic: LATAM
+    format: paper
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 8
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - es
+  - pt
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  - deepseek
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: Latin American journal registry adds Spanish and Portuguese scholarly infrastructure outside SciELO/Redalyc.
+  first_seen_round: SDXX-20260609
+- id: CH-0212
+  name: Africa's Sources of Knowledge Digital Library (ASK-DL)
+  url_pattern: https://alp.fas.harvard.edu/ASK-DL
+  axis:
+    temporal: T-100Y+
+    geographic: AF
+    format: paper
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 8
+    format_unique: 8
+    trust_level: 8
+  total_score: 8.44
+  discovery_strategy: S2_cross_lingual
+  language:
+  - am
+  - ber
+  - mnk
+  - om
+  - so
+  - sw
+  - ti
+  - wo
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 아프리카 현지 언어로 된 희귀 문헌을 디지털화한 특화 아카이브로, 기존 채널이 거의 다루지 않음.
+  first_seen_round: SDXX-20260609
+- id: CH-0218
+  name: cqvip
+  url_pattern: https://cqvip.com
+  axis:
+    temporal: T-50Y
+    geographic: CN
+    format: paper
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 10
+    accessibility: 7
+    geo_diversity: 8
+    temporal_depth: 8
+    format_unique: 6
+    trust_level: 9
+  total_score: 8.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 중국 최대 학술지 아카이브 중 하나로, 주류 CNKI 서양 오버랩에서 누락된 중국 지방 과학 학회지 정보 보유
+  first_seen_round: SDXX-20260609
+- id: CH-0219
+  name: CLACSO Virtual Library
+  url_pattern: https://biblioteca-repositorio.clacso.edu.ar/
+  axis:
+    temporal: T-50Y
+    geographic: LATAM
+    format: paper
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 7
+    format_unique: 7
+    trust_level: 9
+  total_score: 8.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - es
+  - pt
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: 라틴아메리카·카리브 사회과학 연구소 연합(CLACSO)의 전자도서관으로, 북미-유럽 사회과학 서지와 직교하는 지역 전문 논문·저서 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0226
+  name: Kenya National Library Service (KNLS) and Virtual Library
+  url_pattern: https://www.knls.ac.ke/
+  axis:
+    temporal: T-5Y
+    geographic: AF
+    format: paper
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 7
+    trust_level: 8
+  total_score: 8.22
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - sw
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: Kenya national public library service with virtual library, digitization and author/publisher programs; East African vernacular and national heritage collections.
+  first_seen_round: SDXX-20260609
+- id: CH-0227
+  name: Russian State Library (RSL) Digital Collections
+  url_pattern: https://www.rsl.ru/
+  axis:
+    temporal: T-100Y+
+    geographic: RU_EE
+    format: paper
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 8
+    temporal_depth: 10
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - ru
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: Russian national library with extensive digital historical and rare materials; T-100Y+ Slavic and Eurasian primary sources outside excluded Russian patent or news hosts.
+  first_seen_round: SDXX-20260609
+- id: CH-0228
+  name: MENAdoc
+  url_pattern: https://menadoc.bibliothek.uni-halle.de/
+  axis:
+    temporal: T-100Y+
+    geographic: MENA
+    format: paper
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 8
+    format_unique: 7
+    trust_level: 8
+  total_score: 8.22
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ar
+  - en
+  - fr
+  - de
+  - tr
+  - fa
+  - he
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 중동·북아프리카·이슬람학 관련 디지털 소스 및 출판물의 특화 저장소로, 지역 고유의 자료를 광범위하게 제공함.
+  first_seen_round: SDXX-20260609
+- id: CH-0233
+  name: KISTI ScienceON
+  url_pattern: https://scienceon.kisti.re.kr
+  axis:
+    temporal: T-50Y
+    geographic: JP_KR
+    format: paper
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 8
+    temporal_depth: 7
+    format_unique: 6
+    trust_level: 9
+  total_score: 8.11
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - ko
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: 한국과학기술정보연구원의 통합 학술 정보 유통 인프라로 한국 내 비영리 기관의 로컬 논문 및 기술 트렌드망
+  first_seen_round: SDXX-20260609
+- id: CH-0234
+  name: Russian State Library Virtual Reading Room and Digital Library
+  url_pattern: https://www.ldiss.rsl.ru/eng
+  axis:
+    temporal: T-50Y
+    geographic: RU_EE
+    format: paper
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 8
+    temporal_depth: 9
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.11
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - ru
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: Russian State Library electronic library treasures and virtual reading room; deep Slavic historical and rare book collections for RU_EE temporal depth.
+  first_seen_round: SDXX-20260609
+- id: CH-0238
+  name: African Academy of Sciences Open Research (AAS Open Research)
+  url_pattern: https://aasopenresearch.org
+  axis:
+    temporal: T-5Y
+    geographic: AF
+    format: paper
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 3
+    format_unique: 6
+    trust_level: 9
+  total_score: 8.0
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 아프리카 최고 학술 기구의 오픈 액세스 채널로 아프리카 대륙 내부의 고유 연구 성과 및 현지 데이터를 직접 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0239
+  name: LILACS (Latin American and Caribbean Health Sciences Literature)
+  url_pattern: https://lilacs.bvsalud.org/
+  axis:
+    temporal: T-5Y
+    geographic: LATAM
+    format: paper
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 6
+    format_unique: 7
+    trust_level: 9
+  total_score: 8.0
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - es
+  - pt
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 라틴아메리카·카리브해 보건의학 문헌의 종합 DB로, 공중보건 분야의 지역 특화 정보를 제공함.
+  first_seen_round: SDXX-20260609
+- id: CH-0240
+  name: SHOT — Technology and Culture
+  url_pattern: https://www.historyoftechnology.org/publications/
+  axis:
+    temporal: T-100Y+
+    geographic: US_EU
+    format: paper
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 7
+    temporal_depth: 10
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.0
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Flagship history-of-technology journal (since 1959); analytical study of obsolescence and failed technologies.
+  first_seen_round: SDXX-20260609
+- id: CH-0245
+  name: China Open Access Journal Database (COAJ)
+  url_pattern: https://coaj.cn/home
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: paper
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 5
+    format_unique: 6
+    trust_level: 8
+  total_score: 7.89
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 중국 출판 오픈액세스 저널의 종합 DB로, 기존에 잘 알려지지 않은 중국 내 학술 정보를 제공함.
+  first_seen_round: SDXX-20260609
+- id: CH-0248
+  name: CiNii Research
+  url_pattern: https://cir.nii.ac.jp/
+  axis:
+    temporal: T-50Y
+    geographic: JP_KR
+    format: paper
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 8
+    temporal_depth: 8
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - ja
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Japanese scholarly graph data expands beyond J-STAGE and NDL-specific holdings.
+  first_seen_round: SDXX-20260609
+- id: CH-0249
+  name: Africa Commons
+  url_pattern: https://coherentdigital.net/products/africa-commons
+  axis:
+    temporal: T-100Y+
+    geographic: AF
+    format: paper
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 5
+    geo_diversity: 10
+    temporal_depth: 8
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  - fr
+  - pt
+  - af
+  - sw
+  - ha
+  - yo
+  - zu
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 전 세계 600여 기관의 아프리카 희귀 문화 자료를 한곳에 모은 디지털 아카이브로, 기존 채널에서 보기 드문 깊이를 자랑함.
+  first_seen_round: SDXX-20260609
+- id: CH-0250
+  name: OstDok – Eastern European Documents Online
+  url_pattern: https://www.osmikon.de/ostdok/
+  axis:
+    temporal: T-100Y+
+    geographic: RU_EE
+    format: paper
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 8
+    temporal_depth: 8
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S3_failure_archive
+  language:
+  - de
+  - en
+  - mul
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 동유럽 연구 전문 주제 리포지터리로, 전자 전문 서적과 학술지를 포함하여 희귀 자료 접근성을 높임.
+  first_seen_round: SDXX-20260609
+- id: CH-0251
+  name: LatArXiv Preprint Repository
+  url_pattern: https://latarxiv.org/
+  axis:
+    temporal: T-0
+    geographic: LATAM
+    format: paper
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 9
+    trust_level: 7
+  total_score: 7.78
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - es
+  - pt
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 라틴아메리카·카리브해·스페인 연구자들의 프리프린트 저장소로, 지역 학술 생산성의 조기 공유를 촉진함.
+  first_seen_round: SDXX-20260609
+- id: CH-0254
+  name: MENALIB (Middle East Virtual Library)
+  url_pattern: https://www.menalib.de/
+  axis:
+    temporal: T-0
+    geographic: MENA
+    format: paper
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 5
+    format_unique: 6
+    trust_level: 8
+  total_score: 7.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - ar
+  - en
+  - de
+  - fr
+  - tr
+  - fa
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 중동·북아프리카·이슬람학을 위한 독일의 특화 정보 서비스 웹 포털로, 방대한 디지털 자원에 접근 가능함.
+  first_seen_round: SDXX-20260609
+- id: CH-0255
+  name: TR Dizin (TÜBİTAK ULAKBİM)
+  url_pattern: https://trdizin.gov.tr/
+  axis:
+    temporal: T-1Y
+    geographic: RU_EE
+    format: paper
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 8
+    temporal_depth: 6
+    format_unique: 7
+    trust_level: 9
+  total_score: 7.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - tr
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Turkey's national citation index; Turkish-language, distinct host from DergiPark.
+  first_seen_round: SDXX-20260609
+- id: CH-0257
+  name: AfLIA Guide to African Open Access Resources
+  url_pattern: https://web.aflia.net/a-guide-to-african-open-access-resources-and-landscape/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: paper
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 6
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 5
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.56
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  - fr
+  - pt
+  - sw
+  - ar
+  - am
+  - yo
+  - ha
+  - zu
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 아프리카 전역의 오픈액세스 저널을 한곳에 모은 종합 가이드로, AfLIA(아프리카 도서관 협회)가 주도했다는 점에서 독특함.
+  first_seen_round: SDXX-20260609
+- id: CH-0261
+  name: MELA Notes (Middle East Librarians Association)
+  url_pattern: https://repositories.cdlib.org/mela/melanotes/
+  axis:
+    temporal: T-50Y
+    geographic: MENA
+    format: paper
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 8
+    temporal_depth: 6
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.44
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 중동 도서관학 및 학술 정보 서비스에 특화된 학술지로, 지역의 학술 정보 인프라에 대한 독특한 관점을 제공함.
+  first_seen_round: SDXX-20260609
+- id: CH-0268
+  name: Jxiv
+  url_pattern: https://jxiv.jst.go.jp/
+  axis:
+    temporal: T-1Y
+    geographic: JP_KR
+    format: paper
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 9
+    geo_diversity: 8
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.33
+  discovery_strategy: S5_weak_signal
+  language:
+  - ja
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Japan-focused preprints surface early local research signals outside arXiv/OpenReview.
+  first_seen_round: SDXX-20260609
+- id: CH-0269
+  name: CiNii
+  url_pattern: https://ci.nii.ac.jp/
+  axis:
+    temporal: T-0
+    geographic: JP_KR
+    format: paper
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 7
+    temporal_depth: 5
+    format_unique: 6
+    trust_level: 8
+  total_score: 7.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ja
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: 일본 전국 대학 및 학회 출판물 통합 검색 시스템으로, J-STAGE 논문을 포함한 일본어 학술 저작물 메타데이터 집중
+  first_seen_round: SDXX-20260609
+- id: CH-0270
+  name: Central and Eastern European Online Library (CEEOL)
+  url_pattern: https://www.ceeol.com/
+  axis:
+    temporal: T-0
+    geographic: RU_EE
+    format: paper
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 8
+    temporal_depth: 5
+    format_unique: 6
+    trust_level: 8
+  total_score: 7.33
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - mul
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 중앙·동유럽 학술지 디지털 아카이브로, 해당 지역의 다양한 언어와 학문 분야를 아우름.
+  first_seen_round: SDXX-20260609
+- id: CH-0276
+  name: Magiran
+  url_pattern: https://www.magiran.com/
+  axis:
+    temporal: T-1Y
+    geographic: MENA
+    format: paper
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 7
+    persistence: 8
+    accessibility: 5
+    geo_diversity: 9
+    temporal_depth: 6
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.0
+  discovery_strategy: S2_cross_lingual
+  language:
+  - fa
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Iran's Persian-language journal+newspaper database; Farsi primary source absent from Western indexes.
+  first_seen_round: SDXX-20260609

@@ -1,0 +1,18 @@
+{
+  "consumed_ideas": [
+    {
+      "idea_id": "IDEA-001",
+      "title": "AgentOps Accountability Autonomous Compatibility Mesh",
+      "normalized_title": "agentopsaccountabilityautonomouscompatibilitymesh",
+      "aliases": ["AgentPACT", "PACT"],
+      "semantic_family": "agentops-accountability-compatibility-mesh",
+      "source_chain": {"cix": "CIX-20260602-003", "idx": "IDX-20260602-002",
+                       "tcx": "TCX-20260602-001", "sdx_catalog": "v1.0-union"},
+      "implementations": [
+        {"project_name": "AgentPACT", "project_path": "pact", "repo_url": "https://example.invalid/pact"}
+      ],
+      "reuse_policy": "exclude_same_or_derivative",
+      "consumed_at_utc": "2026-06-02T11:17:45+00:00"
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+# TCX Output Schemas v1.5
+#
+# v1.5 changes:
+#   - news_item에 persona_id, cross_check_personas, persona_scores, tension_flag 필드 추가
+#   - news.md metadata에 personas 블록 (PGF discovery 참조)
+#   - sampling_log.yaml contract에 persona_assignment + channel_assignment 명시
+#   - manifest.yaml contract에 personas chain (version_pin 추적)
+#
+# v1.3 changes (carried):
+#   - shard counts dynamic (loaded from catalog.index.shards at runtime)
+#   - axis enums reference SDX schemas/channel_entry.yaml#axis_system (no inline duplication)
+#   - magic numbers reference TCX_POLICY
+
+## news.md metadata contract
+
+```yaml
+news_collection:
+  metadata:
+    round_id: "TCX-{YYYYMMDD}-{NNN}"
+    generated_at: "ISO-8601"
+    tcx_version: "1.5"
+    catalog:
+      index_path: "{input.catalog_index}"
+      root: "{derived from index_path.parent}"
+      shard_key: "{catalog.shard_key}"           # from index.yaml (currently 'format')
+      total_channels: "{catalog.acceptance.catalog_size}"   # dynamic
+      version: "{catalog.version}"                # e.g., v1.3
+      policy_version: "{catalog.policy_version}"  # e.g., v1.4
+      lock_eligible: "{catalog.acceptance.lock_eligible}"
+      shards_loaded: "{catalog.shards}"           # FULL OBJECT — paths + counts as found
+    domain_set:
+      name: "{domain_set.name}"                   # default_ideafirst_domains | custom_<hash>
+      source: "default | --domains"
+      count: "{len(domain_set.domains)}"
+      domain_set_version: "{domain_set.version}"
+    personas:                                     # NEW v1.5
+      source: "{TCX_POLICY.personas.source}"      # {PGF_SKILL_DIR}/discovery/personas.json
+      version_pin: "{TCX_POLICY.personas.version_pin}"   # e.g., "1.0"
+      enabled_set: "{TCX_POLICY.personas.enabled_set}"   # [P1..P14]
+      wave_count: "{TCX_POLICY.personas.wave_count}"
+      parallelism: "{TCX_POLICY.personas.parallelism}"
+      diversity_axes: "{TCX_POLICY.personas.diversity_axes}"  # [cognitive_style, domain_lens, time_horizon]
+    sampling:
+      policy_ref: "TCX_POLICY.sampling"
+      channels_sampled: "{N}"
+      format_shards_used: "{list_of_shard_names — all keys of catalog.shards in use}"
+      geographic_cells_used: "{list — subset of axis_system.geographic}"
+      temporal_cells_used:   "{list — subset of axis_system.temporal}"
+      scale_cells_used:      "{list — subset of axis_system.scale}"
+    quality:
+      diversity_mode: true
+      user_personalization_check: "passed | failed"
+      cross_check_min_per_domain_met: true        # NEW v1.5 — all domains ≥2 personas
+```
+
+## news item contract
+
+```yaml
+domain:
+  name: "{domain}"
+  items:
+    - title: "string"
+      source_channel_id: "CH-NNNN"
+      source_channel_name: "string"
+      source_shard: "{any key from catalog.shards — dynamic, not enumerated here}"
+      date: "YYYY-MM-DD | unknown"
+      summary: "string"
+      why_important: "string"
+      axis_tags:
+        # Enum values are NOT enumerated in this schema.
+        # Source of truth: {sdx_skill_root}/schemas/channel_entry.yaml#axis_system
+        # Validators must load that file at runtime and check each tag against the live enum.
+        temporal:   "{any value from axis_system.temporal}"
+        geographic: "{any value from axis_system.geographic}"
+        format:     "{any value from axis_system.format}"
+        scale:      "{any value from axis_system.scale}"
+
+      # NEW v1.5 — PGF discovery 페르소나 추적 필드
+      persona_id: "P1 | P2 | ... | P8"           # 본 item을 생성한 primary persona
+      cross_check_personas: ["P{N}", ...]        # cross-check role 페르소나들 (보통 1개)
+      persona_scores:                            # 각 페르소나의 evaluation_bias 적용 점수
+        "{persona_id}":
+          novelty: 0.0-10.0
+          feasibility: 0.0-10.0
+          impact: 0.0-10.0
+          integrity: 0.0-10.0
+          weighted_total: 0.0-10.0              # bias 가중합
+      final_score: 0.0-10.0                     # mean across personas
+      tension_flag: true | false                # cross-check disagreement > threshold (L7 input)
+      provenance: "synthetic | observed"         # NEW v1.5 — W5 fix (synthesis mode 명시)
+```
+
+> **Why no inline enum?** SDX is the canonical source for the 4-Axis space.
+> If SDX adds a new cell (e.g., format=`thesis`, geographic=`OCEANIA`), TCX accepts it
+> automatically without code change. Hard-coded enums caused v1.2 to require manual
+> sync after every SDX expansion.
+
+## industry_trend.md contract
+
+```yaml
+industry_trend:
+  metadata:
+    round_id: "TCX-{YYYYMMDD}-{NNN}"
+    based_on: "news.md"
+    tcx_version: "1.3"
+    catalog_version: "{catalog.version}"          # for traceability
+  domain_analyses:
+    "{domain}":
+      D1_Technology_Trend:
+        summary: "string"
+        evidence_sources: ["CH-NNNN"]
+      D2_Market_Structure:
+        summary: "string"
+        evidence_sources: ["CH-NNNN"]
+      D3_Policy_Regulation:
+        summary: "string"
+        evidence_sources: ["CH-NNNN"]
+      D4_Risk_Opportunity:
+        summary: "string"
+        evidence_sources: ["CH-NNNN"]
+  cross_domain_synthesis:
+    recurring_patterns: []
+    cascading_effects: []
+    boundary_phenomena: []
+```
+
+## quality_report.md contract
+
+```yaml
+quality_report:
+  policy_ref: "TCX_POLICY.quality_gates_thresholds"
+  thresholds_applied:
+    G2_domain_coverage_floor: "{from policy}"
+    G5_geographic_diversity_floor: "{from policy}"
+    G5_format_shards_required: "{from policy}"
+  gates:
+    catalog_contract:        "pass | fail"
+    domain_coverage:         "pass | fail"
+    dimension_coverage:      "pass | fail"
+    channel_attribution:     "pass | fail"
+    sampling_diversity:      "pass | fail"
+    no_user_personalization: "pass | fail"
+    cross_domain_synthesis:  "pass | fail"
+  failures:
+    - {gate: "G5_sampling_diversity", reason: "geographic_cells_used=4 < floor=6"}
+  retry_recommendation: "none | collect | analyze | full"
+```
+
+## .tcx/index.yaml contract (v1.4 — runtime rounds catalog)
+
+```yaml
+tcx_output:
+  version: "v1.4"
+  schema: "tcx.output_index.v1"
+  generated_at: "ISO-8601"
+
+  # ★ 고정 진입점 — IDX/AOX 등이 이걸 보고 최신 라운드 정보를 얻는다
+  latest_round_id: "TCX-{YYYYMMDD}-{NNN}"
+  latest_round_path: "rounds/TCX-{YYYYMMDD}-{NNN}"      # relative to .tcx/
+
+  rounds:                                                # 최신 → 과거 순 (LIFO)
+    - id: "TCX-20260513-005"
+      path: "rounds/TCX-20260513-005"
+      at: "ISO-8601"
+      mode: "full | collect | analyze"
+      quality: "passed | failed"
+      catalog_v: "v1.3"
+      catalog_policy_v: "v1.4"
+      domain_set: "default_ideafirst_domains | custom_<hash>"
+      channels_sampled: 36
+      duration_sec: 124
+    # ... older rounds
+
+  archive_policy:
+    retain_in_rounds_days: 90
+    archive_target_pattern: "archive/{YYYY-Q[1-4]}/"
+    archive_script: "{TCX_SKILL_DIR}/scripts/archive_rounds.py"
+    last_archive_run: "ISO-8601 | never"
+    rounds_in_archive: 0                                  # quick count
+```
+
+## .tcx/rounds/{round_id}/manifest.yaml contract (v1.5 — persona-aware reproducibility)
+
+```yaml
+round:
+  id: "TCX-{YYYYMMDD}-{NNN}"
+  generated_at: "ISO-8601"
+  tcx_version: "1.5"
+  mode: "full | collect | analyze"
+  duration_sec: 124
+  agent_runtime: "Claude Code Opus 4.7 + N sub-agents in W waves"
+
+inputs:
+  catalog:
+    index_path: "{input.catalog_index}"
+    version: "{catalog.version}"                   # e.g., v1.3
+    policy_version: "{catalog.policy_version}"     # e.g., v1.4
+    catalog_size: "{catalog.acceptance.catalog_size}"
+    lock_eligible: "{catalog.acceptance.lock_eligible}"
+    snapshot_hash: "sha256:..."                    # index.yaml 내용 해시
+    shards_snapshot:                               # 카탈로그 변경 추적
+      news: {path: "channels/news.yaml", count: 8}
+      paper: {path: "channels/paper.yaml", count: 11}
+      # ... full shard map at execution time
+
+  domain_set:
+    name: "default_ideafirst_domains | custom_<hash>"
+    source: "default | --domains"
+    version: "{domain_set.version}"
+    count: "{len(domain_set.domains)}"
+    domains: ["AI", "Quantum", "..."]              # 실행 시점의 도메인 목록
+    domains_hash: "sha256:..."                     # domain list 해시 (재현성 검증용)
+
+  personas:                                        # NEW v1.5 — PGF chain tracking
+    source: "{PGF_SKILL_DIR}/discovery/personas.json"
+    version_pin: "1.0"
+    snapshot_hash: "sha256:..."                    # personas.json 내용 해시
+    enabled_set: [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14]
+    parallelism: 4
+    wave_count: 4
+
+  policy:
+    tcx_policy_snapshot: {sampling: {...}, collection: {...}, personas: {...},
+                          persona_assignment: {...}, scoring: {...}, ...}
+                                                   # 실행 시점의 TCX_POLICY 전체 복사
+
+  cli_args: ["full", "--catalog=.sdx/catalog/index.yaml"]
+
+execution:                                         # NEW v1.5
+  wave_1_personas: [P1, P2, P3, P4]
+  wave_2_personas: [P5, P6, P7, P8]
+  trend_waves: ["TW1 (D01-D04)", "TW2 (D05-D08)", "TW3 (D09-D11)", "TW4 (D12-D14)"]
+  total_subagents: 12
+  synthesis_mode: "knowledge-based | live-scraped"  # W5 fix — provenance 명시
+
+acceptance:
+  catalog_validation_passed: true
+  persona_assignment_valid: true                   # NEW v1.5 — all domains ≥2 persona
+  all_quality_gates_passed: "true | false"
+  failed_gates: []
+  tension_flags_count: 0                           # NEW v1.5 — L7 input candidates
+```
+
+## .tcx/rounds/{round_id}/sampling_log.yaml contract (v1.5 — persona-aware debugging/replay)
+
+```yaml
+sampling:
+  round_id: "TCX-{YYYYMMDD}-{NNN}"
+  rng_seed: 1746789012                              # reproducible sampling
+  total_pool: "{catalog.acceptance.catalog_size}"   # e.g., 80
+  total_sampled: 36
+
+  by_shard:                                         # 어떤 shard에서 몇 개 뽑았나
+    news:   {pool_count: 8,  sampled_count: 5, sampled_ids: ["CH-0028", "CH-0029", ...]}
+    paper:  {pool_count: 11, sampled_count: 6, sampled_ids: [...]}
+    # ... all 10 shards
+
+  by_axis:
+    geographic_cells_used: ["CN", "JP_KR", "MENA", "AF", "LATAM", "IN_SEA", "US_EU"]  # 7/8
+    temporal_cells_used:   ["T-0", "T-1Y", "T-5Y", "T-50Y", "T-100Y+"]                 # 5/5
+    scale_cells_used:      ["macro", "meso", "micro"]                                  # 3/3
+
+  by_domain:                                        # 각 도메인에 매칭된 채널 + 페르소나
+    "AI & Machine Learning":
+      matched_channels: ["CH-0035", "CH-0041", "CH-0017", "CH-0040", "CH-0042"]
+      news_items_collected: 10
+      personas_assigned: ["P5", "P8"]              # NEW v1.5 — cross-check pair
+    "Quantum Technology":
+      matched_channels: [...]
+      news_items_collected: 10
+      personas_assigned: ["P1", "P4"]
+    # ... 14 domains
+
+  # NEW v1.5 — PGF discovery 페르소나 assignment (재현성)
+  persona_assignment:
+    source: "{PGF_SKILL_DIR}/discovery/personas.json"
+    version_pin: "1.0"
+    strategy: "{TCX_POLICY.persona_assignment.strategy}"
+    cross_check_min_per_domain: 2                   # G7-style 강제
+    canonical_mapping_used: true                    # default 14-domain 일치 시 true
+
+    by_persona:
+      P1:
+        name: "Disruptive Engineer"
+        cognitive_style: "creative"
+        domain_lens: "technology"
+        time_horizon: "long"
+        evaluation_bias: {novelty: 2.0, feasibility: 0.5, impact: 1.0, integrity: 1.0}
+        assigned_domains: ["D02_Quantum", "D03_Robotics", "D05_Space"]
+        assigned_channels: ["CH-0035", "CH-0075", "CH-0040", "CH-0017"]
+        wave: 1
+      # ... P2 ~ P8
+
+  channel_assignment:                               # NEW v1.5 — channel ↔ persona affinity
+    strategy: "shard_keyword_match"                 # persona.search_keywords + channel.shard
+    assignments:
+      "CH-0035":
+        primary_persona: "P1"
+        cross_check_persona: null
+        rationale: "oss shard + persona.search_keywords['breakthrough', 'paradigm shift']"
+      # ... per channel
+
+  diversity_check:
+    max_single_region_share: 0.31     # 최대 region 비중 (POLICY.diversity 0.40 하한 통과)
+    max_single_format_share: 0.22     # 최대 format 비중 (POLICY.diversity 0.30 하한 통과)
+    rebalance_iterations: 0           # 다양성 컷 위반 시 재샘플링 횟수
+    persona_balance:                  # NEW v1.5 — 페르소나 load balance
+      max_domains_per_persona: 4
+      min_domains_per_persona: 2
+      cross_check_coverage: "14/14"   # 모든 도메인 ≥2 persona 확인
+```
+
+## References
+
+- **SDX axis system (정본)**: `{sdx_skill_root}/schemas/channel_entry.yaml#axis_system`
+- **SDX catalog manifest**: `{catalog_root}/index.yaml`
+- **PGF discovery personas (NEW v1.5 정본)**: `{PGF_SKILL_DIR}/discovery/personas.json`
+- **TCX policy**: `SKILL.md#TCX_POLICY` (v1.5 — personas + persona_assignment + scoring 신설)
+- **TCX default domain set**: `{TCX_SKILL_DIR}/domain_sets/default.yaml`
+- **TCX storage policy**: `SKILL.md#TCX_POLICY.storage` (v1.4)
+- **TCX archive script**: `{TCX_SKILL_DIR}/scripts/archive_rounds.py`
+- **TCX persona assignment script (NEW v1.5)**: `{TCX_SKILL_DIR}/scripts/assign_personas.py`

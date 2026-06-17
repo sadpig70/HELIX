@@ -1,0 +1,795 @@
+channels:
+- id: CH-0001
+  name: 国立国会図書館デジタルコレクション (NDL Digital)
+  url_pattern: https://dl.ndl.go.jp/
+  axis:
+    temporal: T-100Y+
+    geographic: JP_KR
+    format: nature
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 10
+  total_score: 9.11
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ja
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 일본 국립국회도서관 — 고문헌·고지도·근대자료 디지털 1차 (서구 박물관 미수록)
+  first_seen_round: 1
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.18
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0081
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0058
+    - agent: .sdx_org/gemini
+      orig_id: CH-0058
+    merged_count: 3
+- id: CH-0002
+  name: Qatar Digital Library (مكتبة قطر الرقمية)
+  url_pattern: https://www.qdl.qa/
+  axis:
+    temporal: T-100Y+
+    geographic: MENA
+    format: nature
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 9.11
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ar
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료 (봇 차단, 본문 공개)
+  notes: 아랍 과학 필사본·걸프 역사 1차 — 천문·의학 고문헌 디지털
+  first_seen_round: 1
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.17
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0083
+    merged_count: 1
+- id: CH-0003
+  name: BNDigital (Biblioteca Nacional Brasil)
+  url_pattern: https://bndigital.bn.gov.br/
+  axis:
+    temporal: T-100Y+
+    geographic: LATAM
+    format: nature
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.89
+  discovery_strategy: S2_cross_lingual
+  language:
+  - pt-BR
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 브라질 국립도서관 디지털 — 식민기 지도·신문·희귀본 1차
+  first_seen_round: 2
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.16
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0089
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0059
+    - agent: .sdx_org/gemini
+      orig_id: CH-0059
+    merged_count: 3
+- id: CH-0004
+  name: National Diet Library
+  url_pattern: https://www.ndl.go.jp/
+  axis:
+    temporal: T-100Y+
+    geographic: JP_KR
+    format: nature
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0050
+    merged_count: 1
+- id: CH-0005
+  name: 敦煌 Dunhuang digital archive
+  url_pattern: https://www.e-dunhuang.com/
+  axis:
+    temporal: T-100Y+
+    geographic: CN
+    format: nature
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 둔황 석굴 디지털 유산 — 비서구 1000년+ 안료·구조·도상
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.27
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0068
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0060
+    - agent: .sdx_org/gemini
+      orig_id: CH-0060
+    merged_count: 3
+- id: CH-0006
+  name: ColBase 国立文化財機構
+  url_pattern: https://colbase.nich.go.jp/
+  axis:
+    temporal: T-100Y+
+    geographic: JP_KR
+    format: nature
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 10
+  total_score: 8.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ja
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 일본 국립박물관 통합 소장품 — 두루마리·칠기·금속공예 형태·기법 어휘 (NDL과 scale 분리)
+  first_seen_round: 1
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.22
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0082
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0061
+    - agent: .sdx_org/gemini
+      orig_id: CH-0061
+    merged_count: 3
+- id: CH-0007
+  name: Bibliotheca Alexandrina manuscripts (مكتبة الإسكندرية)
+  url_pattern: https://www.bibalex.org/
+  axis:
+    temporal: T-100Y+
+    geographic: MENA
+    format: nature
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ar
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 이집트 알렉산드리아 도서관 — 디지털 필사본·아랍 과학사 (QDL과 scale 분리)
+  first_seen_round: 1
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.21
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0084
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0062
+    - agent: .sdx_org/gemini
+      orig_id: CH-0062
+    merged_count: 3
+- id: CH-0008
+  name: Mediateca INAH (México)
+  url_pattern: https://mediateca.inah.gob.mx/
+  axis:
+    temporal: T-100Y+
+    geographic: LATAM
+    format: nature
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - es
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 멕시코 인류학·역사연구소 — 메소아메리카 코덱스·고고 1차 (BNDigital과 scale 분리)
+  first_seen_round: 2
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.19
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0090
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0063
+    - agent: .sdx_org/gemini
+      orig_id: CH-0063
+    merged_count: 3
+- id: CH-0009
+  name: Tombouctou Manuscripts Project (Timbuktu)
+  url_pattern: https://www.tombouctoumanuscripts.org/
+  axis:
+    temporal: T-100Y+
+    geographic: AF
+    format: nature
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 6
+    persistence: 7
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ar
+  - fr
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 말리 팀북투 필사본 — 사하라 이남 아랍어 천문·의학·법학 고문헌 (독보적 직교)
+  first_seen_round: 2
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.12
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0091
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0064
+    - agent: .sdx_org/gemini
+      orig_id: CH-0064
+    merged_count: 3
+- id: CH-0010
+  name: Five Hundred Year Archive (FHYA, South Africa)
+  url_pattern: https://fhya.org/
+  axis:
+    temporal: T-100Y+
+    geographic: AF
+    format: nature
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 7
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 8
+  total_score: 8.67
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료 (non-www URL만 응답)
+  notes: 남아공 500년 심층 과거 큐레이션 아카이브 — 문헌 이전 시대 사료 (Tombouctou와 scale 분리)
+  first_seen_round: 2
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.2
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0092
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0065
+    - agent: .sdx_org/gemini
+      orig_id: CH-0065
+    merged_count: 3
+- id: CH-0014
+  name: Biodiversity Heritage Library
+  url_pattern: https://www.biodiversitylibrary.org/
+  axis:
+    temporal: T-100Y+
+    geographic: US_EU
+    format: nature
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 10
+  total_score: 8.44
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 역사적 박물지·생물도감(종 단위 micro) — 잊힌 종·관찰 데이터. Smithsonian(macro)와 scale 분리로 직교
+  unique_yield_example: 19세기 식물 도해 → 생체모방 구조
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.4
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0067
+    - agent: .sdx_org/grok
+      orig_id: CH-0019
+    merged_count: 2
+- id: CH-0031
+  name: Smithsonian Open Access
+  url_pattern: https://www.si.edu/openaccess
+  axis:
+    temporal: T-100Y+
+    geographic: US_EU
+    format: nature
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 3
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 10
+  total_score: 8.11
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (봇 차단, API 일부)
+  notes: 박물관 1차자료 — 고대 재료·기술 영감
+  unique_yield_example: 로마 콘크리트 → 자가복원 콘크리트
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.38
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0065
+    - agent: .sdx_org/grok
+      orig_id: CH-0017
+    merged_count: 2
+- id: CH-0034
+  name: Internet Archive
+  url_pattern: https://archive.org/
+  axis:
+    temporal: T-100Y+
+    geographic: US_EU
+    format: nature
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 2
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.11
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0038
+    - agent: .sdx_org/gemini
+      orig_id: CH-0038
+    - agent: .sdx_org/kimi
+      orig_id: CH-0012
+    merged_count: 3
+- id: CH-0035
+  name: GBIF + iNaturalist + OBIS
+  url_pattern: https://www.gbif.org/
+  axis:
+    temporal: T-0
+    geographic: global
+    format: nature
+    scale: macro
+  total_score: 8.11
+  discovery_strategy: S4_adjacent_borrow
+  url_alive: true
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/grok
+      orig_id: CH-0020
+    merged_count: 1
+- id: CH-0036
+  name: Computer History Museum
+  url_pattern: https://computerhistory.org/
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: nature
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 3
+    temporal_depth: 9
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.0
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 사장된 컴퓨팅 아키텍처 — 막다른 길의 미답 질문
+  unique_yield_example: Symbolics Lisp machine → 도메인특화 하드웨어 재고
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.39
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0069
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0066
+    - agent: .sdx_org/gemini
+      orig_id: CH-0066
+    merged_count: 3
+- id: CH-0041
+  name: Cooper Hewitt collections
+  url_pattern: https://www.cooperhewitt.org/collections/
+  axis:
+    temporal: T-100Y+
+    geographic: US_EU
+    format: nature
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 3
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 7.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 디자인 박물관 — 산업디자인 역사적 형태 어휘
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.45
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0066
+    - agent: .sdx_org/gemini
+      orig_id: CH-0067
+    merged_count: 2
+- id: CH-0044
+  name: Europeana Collections
+  url_pattern: https://www.europeana.eu/en/collections
+  axis:
+    temporal: T-100Y+
+    geographic: US_EU
+    format: nature
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 3
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 7.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료
+  notes: 유럽 문화유산 컬렉션 — 산업디자인·재료·시각 어휘의 장기 아카이브
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.45
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0067
+    merged_count: 1
+- id: CH-0050
+  name: Long Now Foundation
+  url_pattern: https://longnow.org/
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: nature
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 3
+    temporal_depth: 9
+    format_unique: 9
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 장기(10000년) 사고 프레이밍 — 조직 아카이브 깊이 기준 T-50Y/micro로 셀 분리(Cooper Hewitt·CompHist 충돌 회피)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.43
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0070
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0068
+    - agent: .sdx_org/gemini
+      orig_id: CH-0068
+    merged_count: 3
+- id: CH-0051
+  name: Internet Archive special collections
+  url_pattern: https://archive.org/details/additional_collections
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: nature
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 7
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 9
+    format_unique: 9
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 디지털화된 회색문헌·잊힌 매뉴얼 — 약신호 대량 보관
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.46
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0071
+    merged_count: 1
+- id: CH-0052
+  name: Cornell Lab eBird
+  url_pattern: https://ebird.org/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: nature
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 5
+    temporal_depth: 4
+    format_unique: 9
+    trust_level: 9
+  total_score: 7.78
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (API)
+  notes: 시민과학 조류 관측 → 분산 센싱·집단지성 데이터 모델 차용
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.42
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0072
+    merged_count: 1
+- id: CH-0063
+  name: iNaturalist global micro
+  url_pattern: https://www.inaturalist.org/
+  axis:
+    temporal: T-0
+    geographic: global
+    format: nature
+    scale: micro
+  total_score: 7.78
+  discovery_strategy: S4_adjacent_borrow
+  url_alive: true
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/grok
+      orig_id: CH-0045
+    merged_count: 1
+- id: CH-0071
+  name: CVH + SiBBr (CN/LATAM biodiversity)
+  url_pattern: https://www.cvh.ac.cn/
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: nature
+    scale: macro
+  total_score: 7.67
+  discovery_strategy: S2_cross_lingual
+  url_alive: true
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/grok
+      orig_id: CH-0039
+    merged_count: 1
+- id: CH-0086
+  name: Schmidt Ocean Institute
+  url_pattern: https://schmidtocean.org/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: nature
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 3
+    format_unique: 9
+    trust_level: 9
+  total_score: 7.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 심해 탐사 라이브 → 고압·극한환경 공학 차용
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.44
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0073
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0069
+    - agent: .sdx_org/gemini
+      orig_id: CH-0069
+    merged_count: 3

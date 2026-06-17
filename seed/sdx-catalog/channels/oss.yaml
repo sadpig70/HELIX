@@ -1,0 +1,458 @@
+channels:
+- id: CH-0037
+  name: GitHub Trending Page
+  url_pattern: https://github.com/trending
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: oss
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 5
+    temporal_depth: 5
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.0
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 신규 활성화 유력 오픈소스 기술 동향
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0030
+    - agent: .sdx_org/gemini
+      orig_id: CH-0030
+    merged_count: 2
+- id: CH-0090
+  name: Gitee 码云
+  url_pattern: https://gitee.com/
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: oss
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.44
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (가입)
+  notes: 중국 OSS 호스팅 — GitHub 미공개 국내 프로젝트
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.33
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0036
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0031
+    - agent: .sdx_org/gemini
+      orig_id: CH-0031
+    - agent: .sdx_org/kimi
+      orig_id: CH-0034
+    merged_count: 4
+- id: CH-0098
+  name: Code for Africa
+  url_pattern: https://codeforafrica.org/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: oss
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.44
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0071
+    merged_count: 1
+- id: CH-0109
+  name: LKML (Linux kernel mailing list)
+  url_pattern: https://lkml.org/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: oss
+    scale: meso
+  metrics:
+    independence: 7
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 4
+    format_unique: 9
+    trust_level: 9
+  total_score: 7.33
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 커널 설계 논쟁 원문 — 기술 트레이드오프 1차 (LWN과 scale 분리)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.43
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0040
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0032
+    - agent: .sdx_org/gemini
+      orig_id: CH-0032
+    merged_count: 3
+- id: CH-0127
+  name: OpenStreetMap wiki/changesets
+  url_pattern: https://wiki.openstreetmap.org/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: oss
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 7
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 5
+    temporal_depth: 3
+    format_unique: 9
+    trust_level: 8
+  total_score: 7.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (API)
+  notes: 지리정보 1차 — changeset이 도시변화 실시간 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.4
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0038
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0033
+    - agent: .sdx_org/gemini
+      orig_id: CH-0033
+    merged_count: 3
+- id: CH-0128
+  name: LWN.net
+  url_pattern: https://lwn.net/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: oss
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 3
+    temporal_depth: 4
+    format_unique: 8
+    trust_level: 9
+  total_score: 7.22
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (1주 지연) / 유료 즉시
+  notes: 커널·시스템 주간 심층 — 전문가 큐레이션 약신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.38
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0039
+    merged_count: 1
+- id: CH-0133
+  name: Open-Source Abandoned Projects Registry
+  url_pattern: https://unmaintained.tech/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: oss
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 7
+    accessibility: 9
+    geo_diversity: 3
+    temporal_depth: 5
+    format_unique: 5
+    trust_level: 9
+  total_score: 7.22
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 개발 및 메인테이너 지원이 중단된 오픈소스 저장소
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0034
+    - agent: .sdx_org/gemini
+      orig_id: CH-0034
+    merged_count: 2
+- id: CH-0134
+  name: SourceForge Enterprise Software Hub
+  url_pattern: https://sourceforge.net/
+  axis:
+    temporal: T-10Y
+    geographic: US_EU
+    format: oss
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 6
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 6
+    temporal_depth: 3
+    format_unique: 5
+    trust_level: 6
+  total_score: 7.22
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 레거시 오픈소스 프로젝트 리포지터리 및 다운로드 동향
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0035
+    - agent: .sdx_org/gemini
+      orig_id: CH-0035
+    merged_count: 2
+- id: CH-0154
+  name: HuggingFace Hub
+  url_pattern: https://huggingface.co/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: oss
+    scale: macro
+  metrics:
+    independence: 6
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 8
+  total_score: 6.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (가입)
+  notes: 모델·데이터셋 1차 — 모델카드가 연구 인용 도달지
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.44
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0037
+    merged_count: 1
+- id: CH-0164
+  name: GitHub long-open issues (>1y)
+  url_pattern: https://github.com/search?q=is%3Aissue+is%3Aopen+sort%3Acomments-desc&type=issues
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: oss
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 7
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 7
+  total_score: 6.78
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (API)
+  notes: 1년+ 미해결 이슈 — 실제 사용자 pain point 노출
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.46
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0041
+    merged_count: 1
+- id: CH-0165
+  name: Stack Overflow unanswered (>100 votes)
+  url_pattern: https://stackoverflow.com/unanswered
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: oss
+    scale: micro
+  metrics:
+    independence: 7
+    signal_density: 7
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 7
+  total_score: 6.67
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 고득표 무응답 질문 — 미해결 기술 갭의 직접 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.45
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0042
+    merged_count: 1
+- id: CH-0167
+  name: GitHub
+  url_pattern: https://github.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: oss
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 2
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 7
+  total_score: 6.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0003
+    merged_count: 1
+- id: CH-0244
+  name: Casualty Actuarial Society - Research Resources
+  url_pattern: https://www.casact.org/publications-research/research/research-resources
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: oss
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 4
+    temporal_depth: 8
+    format_unique: 9
+    trust_level: 9
+  total_score: 7.89
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Borrows insurance/actuarial profession's open reserving datasets and modeling toolkits.
+  first_seen_round: SDXX-20260609

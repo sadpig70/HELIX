@@ -1,0 +1,1785 @@
+channels:
+- id: CH-0022
+  name: Killed by Tech
+  url_pattern: https://killedby.tech/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 7
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 8
+    format_unique: 9
+    trust_level: 6
+  total_score: 8.22
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 테크 공룡 기업들의 버려진 제품 목록
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0036
+    - agent: .sdx_org/gemini
+      orig_id: CH-0036
+    merged_count: 2
+- id: CH-0042
+  name: Mongabay-India
+  url_pattern: https://india.mongabay.com/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: niche
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.89
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 남아시아 환경·생물다양성 현장 리포팅 — 산림·해양·기후 1차 관측 (The Ken과 scale 분리)
+  first_seen_round: 3
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.24
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0098
+    - agent: .sdx_org/gemini
+      orig_id: CH-0037
+    merged_count: 2
+- id: CH-0045
+  name: Rest of World
+  url_pattern: https://restofworld.org/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: niche
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.89
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료
+  notes: 비서구권 테크 현장 보도 — 글로벌 사우스의 제품·노동·인프라 약신호
+  first_seen_round: 3
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.24
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0037
+    merged_count: 1
+- id: CH-0053
+  name: BoardGameGeek designer diaries
+  url_pattern: https://boardgamegeek.com/blogs
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 5
+    format_unique: 9
+    trust_level: 7
+  total_score: 7.78
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 게임 디자인 → 인센티브/메커니즘 설계 차용
+  unique_yield_example: Worker placement → DAO 거버넌스 토큰 설계
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.38
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0055
+    merged_count: 1
+- id: CH-0054
+  name: Pesquisa FAPESP
+  url_pattern: https://revistapesquisa.fapesp.br/
+  axis:
+    temporal: T-0
+    geographic: LATAM
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S5_weak_signal
+  language:
+  - pt-BR
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 브라질 연구재단 과학매거진 — 영문 미반영 남미 1차 연구 동향
+  first_seen_round: 2
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.22
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0093
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0039
+    - agent: .sdx_org/gemini
+      orig_id: CH-0039
+    merged_count: 3
+- id: CH-0065
+  name: Tirto.id
+  url_pattern: https://tirto.id/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: niche
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 8
+    trust_level: 7
+  total_score: 7.67
+  discovery_strategy: S5_weak_signal
+  language:
+  - id
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료 (봇 차단, 본문 공개)
+  notes: 인도네시아 데이터 저널리즘 — 인도네시아어 권역 약신호 (영어 미인덱싱)
+  first_seen_round: 3
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.31
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0099
+    - agent: .sdx_org/gemini
+      orig_id: CH-0040
+    merged_count: 2
+- id: CH-0069
+  name: KrASIA
+  url_pattern: https://kr-asia.com/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: niche
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 8
+    trust_level: 7
+  total_score: 7.67
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료
+  notes: 동남아/중국 스타트업·테크 현장 보도 — 영미권 주류보다 빠른 지역 신호
+  first_seen_round: 3
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.31
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0040
+    merged_count: 1
+- id: CH-0075
+  name: NPTEL
+  url_pattern: https://nptel.ac.in/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 7
+  total_score: 7.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0047
+    merged_count: 1
+- id: CH-0079
+  name: Salud con Lupa
+  url_pattern: https://saludconlupa.com/
+  axis:
+    temporal: T-0
+    geographic: LATAM
+    format: niche
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 8
+    trust_level: 7
+  total_score: 7.56
+  discovery_strategy: S5_weak_signal
+  language:
+  - es
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 안데스 공중보건 탐사보도 — 자원·환경·보건 현장 약신호 (FAPESP와 scale 분리)
+  first_seen_round: 2
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.27
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0094
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0041
+    - agent: .sdx_org/gemini
+      orig_id: CH-0041
+    merged_count: 3
+- id: CH-0080
+  name: Krishi Jagran (कृषि जागरण)
+  url_pattern: https://krishijagran.com/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: niche
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 6
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 8
+    trust_level: 6
+  total_score: 7.56
+  discovery_strategy: S5_weak_signal
+  language:
+  - hi
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 인도 농업 그래스루트 매체(힌디) — 소농 현장 적정기술·작물 약신호 (Tirto와 lang/domain 분리, overlap 0.4<cut)
+  first_seen_round: 3
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.4
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0100
+    merged_count: 1
+- id: CH-0087
+  name: Bunnie Huang's blog
+  url_pattern: https://www.bunniestudios.com/blog/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 9
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 4
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.44
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 하드웨어 역설계·중국 제조 생태계 1차 관찰 (Shenzhen)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.43
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0053
+    merged_count: 1
+- id: CH-0088
+  name: ICTworks (ICT4D)
+  url_pattern: https://www.ictworks.org/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 개발협력 적정기술 현장 — 저자원 환경 설계 제약 차용
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.36
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0061
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0042
+    - agent: .sdx_org/gemini
+      orig_id: CH-0042
+    merged_count: 3
+- id: CH-0089
+  name: African Arguments
+  url_pattern: https://africanarguments.org/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.44
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료 (봇 차단, 본문 공개)
+  notes: 아프리카 현장 분석·논평 — 외부 미디어 미포착 정치경제 약신호
+  first_seen_round: 2
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.29
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0095
+    merged_count: 1
+- id: CH-0093
+  name: InfoQ Architecture and Engineering
+  url_pattern: https://www.infoq.com/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 7
+    accessibility: 8
+    geo_diversity: 5
+    temporal_depth: 7
+    format_unique: 9
+    trust_level: 9
+  total_score: 7.44
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료
+  notes: 소프트웨어 아키텍처/운영 사례 심층 기사 — 현업 adoption friction 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0043
+    merged_count: 1
+- id: CH-0097
+  name: Software Engineering Radio
+  url_pattern: https://www.se-radio.net/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 7
+    accessibility: 8
+    geo_diversity: 5
+    temporal_depth: 7
+    format_unique: 9
+    trust_level: 9
+  total_score: 7.44
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 소프트웨어 아키텍처 및 도구 심층 팟캐스트 인터뷰
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/gemini
+      orig_id: CH-0043
+    merged_count: 1
+- id: CH-0104
+  name: Construction Physics (Substack)
+  url_pattern: https://www.construction-physics.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 3
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.33
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 + 유료 일부
+  notes: 건설산업 1차 분석 — 영미권 미디어 미반영
+  unique_yield_example: 원전 비용폭증 분석 → AI 인프라 CAPEX 모델
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.39
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0051
+    merged_count: 1
+- id: CH-0105
+  name: 少数派 (sspai)
+  url_pattern: https://sspai.com/
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.33
+  discovery_strategy: S5_weak_signal
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료 (일부 멤버십)
+  notes: 중국 인디 생산성·하드웨어 큐레이션 — 영문 미디어 미반영 사용자 워크플로우 신호
+  first_seen_round: 1
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.24
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0085
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0044
+    - agent: .sdx_org/gemini
+      orig_id: CH-0044
+    merged_count: 3
+- id: CH-0106
+  name: 果壳 / 返朴 (Guokr / Fanpu)
+  url_pattern: https://www.guokr.com/
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: niche
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.33
+  discovery_strategy: S5_weak_signal
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 중국 과학자 직접 집필 과학해설 — 국내 연구 동향의 비공식 1차 시각 (sspai와 scale 분리)
+  first_seen_round: 1
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.28
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0086
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0045
+    - agent: .sdx_org/gemini
+      orig_id: CH-0045
+    merged_count: 3
+- id: CH-0107
+  name: Qiita
+  url_pattern: https://qiita.com/
+  axis:
+    temporal: T-0
+    geographic: JP_KR
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 9
+    temporal_depth: 2
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.33
+  discovery_strategy: S5_weak_signal
+  language:
+  - ja
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 일본 엔지니어 지식공유 — 영어권 미인덱싱 현장 기술 노하우·삽질기록
+  first_seen_round: 1
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.3
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0087
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0046
+    - agent: .sdx_org/gemini
+      orig_id: CH-0046
+    merged_count: 3
+- id: CH-0108
+  name: The Ken
+  url_pattern: https://the-ken.com/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 8
+    accessibility: 7
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.33
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 유료 (구독 심층보도)
+  notes: 인도 구독제 심층 비즈니스 저널 — 1기사 1주제, 영미권 미반영 인도/동남아 산업 분석
+  first_seen_round: 3
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.26
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0097
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0047
+    - agent: .sdx_org/gemini
+      orig_id: CH-0047
+    merged_count: 3
+- id: CH-0122
+  name: FanGraphs (sabermetrics)
+  url_pattern: https://www.fangraphs.com/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 3
+    temporal_depth: 4
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.22
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (일부 유료)
+  notes: 스포츠 통계 → 확률·리스크·가치평가 모델 차용
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.42
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0057
+    merged_count: 1
+- id: CH-0123
+  name: MarineTraffic
+  url_pattern: https://www.marinetraffic.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 5
+    temporal_depth: 3
+    format_unique: 9
+    trust_level: 8
+  total_score: 7.22
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 + 유료
+  notes: 선박 AIS 실시간 → 공급망/물류 충격 조기신호 차용
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.4
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0060
+    - agent: .sdx_org/gemini
+      orig_id: CH-0048
+    merged_count: 2
+- id: CH-0124
+  name: ARRL / amateur radio digests
+  url_pattern: https://www.arrl.org/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 3
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 7
+  total_score: 7.22
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (일부 회원)
+  notes: 아마추어 무선 — 재난통신·저전력 RF 실험 현장 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.41
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0063
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0049
+    - agent: .sdx_org/gemini
+      orig_id: CH-0049
+    merged_count: 3
+- id: CH-0125
+  name: PubPeer
+  url_pattern: https://pubpeer.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 3
+    format_unique: 9
+    trust_level: 7
+  total_score: 7.22
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 출판후 동료검증 — 철회·재현실패 조기신호 (실패 아카이브 실시간판)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.43
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0064
+    merged_count: 1
+- id: CH-0126
+  name: iAfrikan
+  url_pattern: https://www.iafrikan.com/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: niche
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 7
+    trust_level: 6
+  total_score: 7.22
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료 (일부 뉴스레터)
+  notes: 아프리카 테크·데이터·프라이버시 인디 — 대륙 디지털 현장 약신호 (African Arguments와 scale 분리)
+  first_seen_round: 2
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.32
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0096
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0050
+    - agent: .sdx_org/gemini
+      orig_id: CH-0050
+    merged_count: 3
+- id: CH-0131
+  name: OpenSeaMap
+  url_pattern: https://map.openseamap.org/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 5
+    temporal_depth: 3
+    format_unique: 9
+    trust_level: 8
+  total_score: 7.22
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료
+  notes: 공개 해양 지도/항로 정보 — 해상 인프라와 물류 병목의 비상업 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.4
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0048
+    merged_count: 1
+- id: CH-0132
+  name: JASNA (Jane Austen Society of North America - Niche Japan version)
+  url_pattern: https://www.jasna.org/
+  axis:
+    temporal: T-50Y
+    geographic: JP_KR
+    format: niche
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 8
+    temporal_depth: 3
+    format_unique: 6
+    trust_level: 7
+  total_score: 7.22
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - ja
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 지역 문학 및 인문학 소사이어티 교차 레코드
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0051
+    - agent: .sdx_org/gemini
+      orig_id: CH-0051
+    merged_count: 2
+- id: CH-0137
+  name: Stack Exchange — Cooking
+  url_pattern: https://cooking.stackexchange.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 7
+  total_score: 7.11
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 요리 화학 → 화학공정·상전이 직관 차용
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.44
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0056
+    merged_count: 1
+- id: CH-0138
+  name: GeekNews (긱뉴스)
+  url_pattern: https://news.hada.io/
+  axis:
+    temporal: T-0
+    geographic: JP_KR
+    format: niche
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 9
+    temporal_depth: 2
+    format_unique: 7
+    trust_level: 6
+  total_score: 7.11
+  discovery_strategy: S5_weak_signal
+  language:
+  - ko
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 한국 개발자 큐레이션 — 한국어권 기술 약신호·번역전 화제 (Qiita와 scale 분리)
+  first_seen_round: 1
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.33
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0088
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0052
+    - agent: .sdx_org/gemini
+      orig_id: CH-0052
+    merged_count: 3
+- id: CH-0143
+  name: GitHub Octoverse
+  url_pattern: https://octoverse.github.com/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 2
+    temporal_depth: 4
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.11
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0081
+    merged_count: 1
+- id: CH-0144
+  name: Stack Overflow Developer Survey
+  url_pattern: https://survey.stackoverflow.co/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 2
+    temporal_depth: 4
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.11
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0082
+    merged_count: 1
+- id: CH-0146
+  name: Slime Mold Time Mold
+  url_pattern: https://slimemoldtimemold.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 6
+  total_score: 7.0
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 비주류 가설 장기연재 (비만·환경독소) — 반골 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.41
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0052
+    merged_count: 1
+- id: CH-0147
+  name: American Kennel Club breed data
+  url_pattern: https://www.akc.org/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 3
+    temporal_depth: 6
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.0
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 선택교배 행동·형질 → 합성생물학 표현형 설계 차용
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.44
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0059
+    merged_count: 1
+- id: CH-0153
+  name: Alpinist / Climbing
+  url_pattern: https://www.alpinist.com/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 4
+    temporal_depth: 4
+    format_unique: 7
+    trust_level: 7
+  total_score: 6.89
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (일부 유료)
+  notes: 고산 등반 생존술 → 우주/극지 인간생존 차용
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.46
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0058
+    merged_count: 1
+- id: CH-0169
+  name: Drew DeVault's blog
+  url_pattern: https://drewdevault.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: micro
+  metrics:
+    independence: 7
+    signal_density: 8
+    persistence: 7
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 7
+  total_score: 6.56
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 독립 시스템 SW 비판 — 주류 합의 반대 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.48
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0054
+    merged_count: 1
+- id: CH-0170
+  name: Hacker News — Ask HN archive
+  url_pattern: https://news.ycombinator.com/ask
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: niche
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 7
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 6
+  total_score: 6.56
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: Ask HN — 실무자 비공식 질문 패턴 (front page와 구분)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.47
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0062
+    merged_count: 1
+- id: CH-0176
+  name: Presidential Library of Russia - Inventions & History
+  url_pattern: https://www.prlib.ru
+  axis:
+    temporal: T-100Y+
+    geographic: RU_EE
+    format: niche
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 10
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 10
+    format_unique: 10
+    trust_level: 10
+  total_score: 9.56
+  discovery_strategy: S3_failure_archive
+  language:
+  - ru
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - kimi
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 러시아 제국·소련 시대 발명품·과학기술 역사 아카이브 디지털 컬렉션
+  first_seen_round: SDXX-20260609
+- id: CH-0179
+  name: Qatar National Library (QNL) Repository
+  url_pattern: https://qnl.qa
+  axis:
+    temporal: T-100Y+
+    geographic: MENA
+    format: niche
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 9
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 10
+    format_unique: 8
+    trust_level: 10
+  total_score: 9.44
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - ar
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 카타르 국립도서관 디지털 리포지토리로 중동 및 이슬람 역사 문서, 희귀 지도, 과학 사본을 보존 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0184
+  name: Manuscriptorium
+  url_pattern: https://manuscriptorium.com
+  axis:
+    temporal: T-100Y+
+    geographic: US_EU
+    format: niche
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 7
+    persistence: 10
+    accessibility: 9
+    geo_diversity: 8
+    temporal_depth: 10
+    format_unique: 9
+    trust_level: 9
+  total_score: 9.11
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  - cs
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 유럽 역사 보존 협동조합 소속의 중세 역사 과학 사본, 필사본, 도금 서적 디지털 종합 아카이브
+  first_seen_round: SDXX-20260609
+- id: CH-0185
+  name: 'ArcheoBiblioBase: Archives in Russia'
+  url_pattern: https://abb.eastview.com
+  axis:
+    temporal: T-100Y+
+    geographic: RU_EE
+    format: niche
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 8
+    accessibility: 6
+    geo_diversity: 10
+    temporal_depth: 10
+    format_unique: 10
+    trust_level: 10
+  total_score: 9.11
+  discovery_strategy: S3_failure_archive
+  language:
+  - ru
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 러시아 연방·모스크바·상트페테르부르크 소련시대 폐기·역사 아카이브 메타데이터
+  first_seen_round: SDXX-20260609
+- id: CH-0191
+  name: Gallica (Bibliothèque nationale de France)
+  url_pattern: https://gallica.bnf.fr
+  axis:
+    temporal: T-100Y+
+    geographic: US_EU
+    format: niche
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 7
+    temporal_depth: 10
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - fr
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: 프랑스 국립도서관 아카이브로 17~19세기 유럽 초기 기계학, 철강 제작 기법 및 인쇄 역사 아카이브 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0192
+  name: Sahara and Sahel Observatory
+  url_pattern: https://www.oss-online.org
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: niche
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.89
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  - fr
+  - ar
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 사하라·사헬 지역의 사막화·수자원 관측에 특화된 비영미권 환경·지리 인접 도메인 인프라
+  first_seen_round: SDXX-20260609
+- id: CH-0199
+  name: Afrobarometer
+  url_pattern: https://afrobarometer.org
+  axis:
+    temporal: T-5Y
+    geographic: AF
+    format: niche
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.67
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  - fr
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 35개국 이상의 아프리카 대륙 현지 여론조사 및 거버넌스 데이터를 수집 제공하는 독점적 통계 분석 인프라
+  first_seen_round: SDXX-20260609
+- id: CH-0200
+  name: VINITI RAS
+  url_pattern: https://viniti.ru
+  axis:
+    temporal: T-50Y
+    geographic: RU_EE
+    format: niche
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 8
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.67
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ru
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 러시아 과학원 산하 과학기술정보연구소로, 소련 시대부터 누적된 기계, 광업, 신소재 과학기술 요약 정보망
+  first_seen_round: SDXX-20260609
+- id: CH-0211
+  name: BelNIIDAD
+  url_pattern: https://belniidad.by
+  axis:
+    temporal: T-50Y
+    geographic: RU_EE
+    format: niche
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 7
+    persistence: 8
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 8
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.44
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - ru
+  - be
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: 벨라루스 국가 기록 보존 및 기록관리학 연구소로 동유럽 고유의 문헌 아카이브와 행정 체계 보존 서류 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0225
+  name: Nigerian Ports Authority Statistics and Publications
+  url_pattern: https://nigerianports.gov.ng/ports-statistics/
+  axis:
+    temporal: T-5Y
+    geographic: AF
+    format: niche
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 5
+    format_unique: 8
+    trust_level: 8
+  total_score: 8.22
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: Detailed Nigerian ports statistics, handbooks and SOPs; granular West African maritime trade and operations data from federal authority.
+  first_seen_round: SDXX-20260609
+- id: CH-0232
+  name: Kenya Agricultural and Livestock Research Organization (KALRO) Digital Platforms
+  url_pattern: https://keep.kalro.org/
+  axis:
+    temporal: T-1Y
+    geographic: AF
+    format: niche
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 5
+    format_unique: 8
+    trust_level: 8
+  total_score: 8.11
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: Kenya national agricultural research digital observatory and data platform; adjacent ag/food systems real-time data for AF smallholder and policy use.
+  first_seen_round: SDXX-20260609
+- id: CH-0237
+  name: Bitsavers Documentation Library
+  url_pattern: https://bitsavers.org/
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: niche
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 8
+    accessibility: 7
+    geo_diversity: 4
+    temporal_depth: 9
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.0
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: 8.8M pages of manuals for dead computer architectures (CDC, DEC); original spec docs, independent of archive.org.
+  first_seen_round: SDXX-20260609
+- id: CH-0243
+  name: DataFirst UCT
+  url_pattern: https://datafirst.uct.ac.za/
+  axis:
+    temporal: T-50Y
+    geographic: AF
+    format: niche
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 7
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 7
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.89
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: 남아프리카 케이프타울대가 운영하는 사회과학 마이크로데이터 보관소로, 역사적 인종/노동/가계 패널을 아프리카 현지에서 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0260
+  name: Saba IP
+  url_pattern: https://www.sabaip.com/
+  axis:
+    temporal: T-0
+    geographic: MENA
+    format: niche
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 8
+    temporal_depth: 5
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  - ar
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: 중동-북아프리카 지역의 지식재산 및 특허 법률 동향을 다루는 로펌 기반 1차 정보원으로, USPTO/EPO 중심 특허 채널과 지역 직교
+  first_seen_round: SDXX-20260609
+- id: CH-0273
+  name: NANOG — Historical Mailing List Archive
+  url_pattern: https://archive.nanog.org/list/archives/historical.html
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: niche
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 7
+    accessibility: 7
+    geo_diversity: 4
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.22
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Network-operator list archives of deprecated routing/peering and dead protocols; distinct from IETF (excluded).
+  first_seen_round: SDXX-20260609
+- id: CH-0274
+  name: Society of Actuaries
+  url_pattern: https://www.soa.org/
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: niche
+    scale: meso
+  metrics:
+    independence: 7
+    signal_density: 7
+    persistence: 8
+    accessibility: 7
+    geo_diversity: 5
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.11
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: 북미 보험계리사 학회의 연구지 및 정책 보고서로, 핀테크/빅테크 뉴스와 직교하는 보험·위험·장수/질병 예측 모델의 심층 1차 자료
+  first_seen_round: SDXX-20260609

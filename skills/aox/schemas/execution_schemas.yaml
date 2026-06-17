@@ -1,0 +1,458 @@
+# AOX Execution Schemas v1.3.1 (IdeaFirst + EVX dual + capability handling)
+
+## status.json 전체 스키마
+
+```yaml
+# 매 run마다 .aox/{run_id}/status.json 생성·갱신
+status:
+  # 기본 메타데이터
+  run_id: "a3f4-2026-05-14T05:00:00"   # AOX run_id (UUID + timestamp) — CIX/IDX/TCX/EVX round_id와 별개
+  aox_version: "1.3.1"
+  started_at: "2026-05-14T05:00:00.000Z"
+  completed_at: null  # 진행 중이면 null
+  duration_seconds: null
+  mode: "full"  # full | partial | resume | dry-run
+
+  # 호출 인자
+  args:
+    start_from: null
+    run_id_to_resume: null
+    config_path: null
+    dry_run: false
+
+  # ★ v1.3.1 — environment capability probe (Stage 0에서 채워짐)
+  environment_capability:
+    cross_model_baseline_for_cix: "available"  # "available" | "unavailable" | "degraded"
+    file_io: "available"
+    pgf_personas_json_access: "available"
+    main_model_class: "Claude"                 # Codex | Claude | GPT | Gemini | ...
+    probe_timestamp: "2026-05-14T05:00:00.500Z"
+
+  # ★ v1.3.1 — handoff tracking (단독 환경 처리)
+  handoff_mode: false                          # capability=unavailable이면 true
+  last_stage_completable: null                 # 단독 환경에서 완료 가능한 마지막 stage (예: "4_cix_phase_4_raw_seeds")
+  blocked_reasons: []                          # 발생한 blocker_reason 코드 누적
+  # 예시 (blocked 발생 시):
+  # blocked_reasons:
+  #   - stage: "4_cix"
+  #     reason: "cross_model_baseline_unavailable"  # 표준 코드
+  #     handoff_artifact: ".cix/rounds/CIX-20260514-001/HANDOFF.md"
+  #     timestamp: "2026-05-14T05:12:34.000Z"
+
+  # 현재 상태
+  current_stage: "3_idx"  # 진행 중인 단계
+
+  # 단계별 상태 (v1.3.1 — capability 처리)
+  stages:
+    "0_init":   "completed"
+    "1_sdx":    "skipped_reused"     # 카탈로그 재사용
+    "2_tcx":    "completed"
+    "3_idx":    "in_progress"
+    "4_cix":    "pending"            # 가능 상태: pending | in_progress | completed | partial | blocked | failed
+    "5_evx":    "pending"
+    "6_wrapup": "pending"
+
+  # 단계별 타임스탬프 + 라운드 id 매핑 (★ v1.3.1)
+  stage_timestamps:
+    "0_init":
+      started: "2026-05-14T05:00:00.000Z"
+      completed: "2026-05-14T05:00:01.000Z"
+    "1_sdx":
+      started: "2026-05-14T05:00:01.000Z"
+      completed: "2026-05-14T05:00:01.500Z"
+      duration_seconds: 0.5
+      action: "skip_reuse"           # bootstrap | refresh | skip_reuse
+    "2_tcx":
+      started: "2026-05-14T05:00:02.000Z"
+      completed: "2026-05-14T05:08:00.000Z"
+      duration_seconds: 478
+      attempts: 1
+      quality_gates_passed: 8        # ★ G1-G8 (v1.5 cross_check_coverage 포함)
+      tcx_round_id: "TCX-20260514-001"   # ★ v1.3.1 — 하부 스킬 round_id 명시 추적
+    "3_idx":
+      started: "2026-05-14T05:08:01.000Z"
+      completed: null
+      attempts: 0
+      idx_round_id: null             # 완료 시 채워짐 (예: "IDX-20260514-001")
+    "4_cix":
+      started: null
+      completed: null
+      attempts: 0
+      cix_round_id: null             # ★ v1.3.1 — CIX round_id 추적 (AOX run_id와 별개)
+      phase_completed: null          # 부분 완료 시 표시 (예: "phase_4_raw_seeds")
+    "5_evx":
+      started: null
+      completed: null
+      evx_round_id: null             # 예: "EVX-20260514-001"
+    "6_wrapup":
+      started: null
+      completed: null
+
+  # ★ v1.3.1 — sub-skill round_id 매핑 (handoff resume 시 사용)
+  sub_round_ids:
+    tcx_round_id: "TCX-20260514-001"
+    idx_round_id: null
+    cix_round_id: null    # ← 이 ID가 /cix --resume-round={cix_round_id} 에 사용 (NOT aox run_id)
+    evx_round_id: null
+
+  # 에러 로그
+  errors: []
+
+  # 동질화 추적 (v1.3 — M1-M4 확장)
+  homogenization:
+    triggered_at_start: false
+    measured_at_end: null  # Stage 6에서 채워짐
+    metrics: null          # {keyword_coverage, max_pair_count, avg_embedding_sim, winner_embedding_similarity}
+
+  # ★ v1.3 — KPI 측정값 (Tech Doc §10.2)
+  kpis:                              # Stage 6에서 채워짐. duration/자율실행률은 *부산물*로만 기록
+    novelty: null                    # baseline_LLM 예측 실패율 (목표 ≥0.7)
+    diversity: null                  # 24 ideas pairwise 임베딩 거리 평균 (목표 ≥0.6)
+    sustained_innovation: null       # 라운드 N vs N-1 winner cosine (목표 ≤0.5)
+    surprise_pass_rate: null         # 14 페르소나 중 ≥11 예측 실패 비율 (목표 ≥0.75)
+    post_hoc_yield: null             # 12개월 후 외부 추적 — 현 라운드는 N/A
+    # 부산물 (KPI 아님)
+    duration_seconds_byproduct: null
+    autonomous_execution_rate_byproduct: null
+
+  # 산출물 경로 (v1.3 — 각 스킬의 latest/ 고정 경로)
+  outputs:
+    sdx_catalog_index: ".sdx/catalog/index.yaml"
+    sdx_catalog_root:  ".sdx/catalog"
+    tcx_latest:        ".tcx/latest/"
+    idx_latest:        ".idx/latest/insight_layered_traced.yaml"
+    cix_latest:        ".cix/latest/idea_pool.yaml"
+    evx_latest:        ".evx/latest/"
+    final_idea:        null               # .evx/latest/final_idea.md 경로
+    round_chain:       null               # .evx/latest/manifest.yaml의 source_chain 인용
+    # ★ v1.1 dual winner 양면
+    consensus_winner_id: null              # .evx/latest/stage6_final.yaml.consensus_winner.id
+    innovation_winner_id: null             # .evx/latest/stage6_final.yaml.innovation_winner.id
+    winners_identical: null
+
+  # AI 모델 라우팅 기록 (재현성)
+  ai_model_routing:
+    AI_1: "claude-opus-4-7"
+    AI_2: "gpt-5"
+    AI_3: "gemini-3-ultra"
+    AI_4: "grok-5"
+    AI_5: "kimi-k3"
+    AI_6: "deepseek-v4"
+    AI_7: "qwen-3-max"
+    AI_8: "mistral-large-3"
+```
+
+### 표준 blocker_reason 코드 (v1.3.1)
+
+```yaml
+cross_model_baseline_unavailable    # CIX phase 5+, surprise_validation 의무인데 다른 family LLM 호출 불가
+cross_model_partial_capability      # 일부 페르소나만 baseline 가능 (quota/access 부분 제한)
+pgf_personas_json_missing           # skills/pgf/discovery/personas.json 파일 접근 불가
+upstream_round_missing              # 필요한 .{upstream}/latest/ 산출물 부재
+sdx_catalog_orthogonality_breach    # SDX audit에서 직교성 임계 미달 — TCX 진입 불가
+homogenization_trigger_unresolved   # 동질화 flag 활성 + SDX refresh 능력 없음
+```
+
+자유 텍스트 blocker_reason 금지. blocked 라운드는 위 표준 코드만 사용.
+
+---
+
+## summary.md 템플릿 (Stage 6 산출물, v1.3.1)
+
+```markdown
+# AOX Run Summary
+
+**Run ID**: a3f4-2026-05-14T05:00:00     # AOX run_id
+**AOX Version**: 1.3.1
+**Duration**: 18 minutes 24 seconds (부산물 — 목표 KPI 아님)
+**Mode**: full
+**Status**: ✅ Completed | ⚠️ Partial | 🛑 Blocked (handoff_required)
+
+## Sub-skill Round IDs (★ v1.3.1)
+- TCX round: TCX-20260514-001
+- IDX round: IDX-20260514-001
+- CIX round: CIX-20260514-001         ← 이 ID가 /cix --resume-round= 에 사용
+- EVX round: EVX-20260514-001
+
+## Environment Capability (★ v1.3.1)
+- cross_model_baseline_for_cix: available
+- main_model_class: Claude
+- probe_timestamp: 2026-05-14T05:00:00.500Z
+
+## Stage Status
+
+| Stage | Status | Duration | Action / Round ID |
+|-------|--------|----------|-------------------|
+| 0_init | ✅ completed | 1s | capability probe: available |
+| 1_sdx | ⏭️ skip_reused | 0.5s | catalog age: 3 days |
+| 2_tcx | ✅ completed | 8m | TCX-20260514-001, G1-G8 passed |
+| 3_idx | ✅ completed | 4m | IDX-20260514-001, layer 5/5/5/5 |
+| 4_cix | ✅ completed | 5m | CIX-20260514-001, v1.5 weights applied |
+| 5_evx | ✅ completed | 30s | EVX-20260514-001, dual winner (winners_identical=false) |
+| 6_wrapup | ✅ completed | 30s | homogenization: no |
+
+## ★ Dual Winner Block (v1.1)
+
+### Consensus Winner (안전한 합의)
+- ID / title / votes / voters / cognitive_style_breadth / mean_persona_score / layer
+- 참조: .evx/latest/final_idea.md §consensus_winner_block
+
+### Innovation Winner (강한 champion) — winners_identical=false 일 때만
+- ID / title / max_persona_score / championed_by / votes / layer
+- 참조: .evx/latest/final_idea.md §innovation_winner_block
+
+## ★ KPIs (v1.3 — 5 KPI 정본)
+
+| KPI | 값 | 목표 | 상태 |
+|---|---|---|---|
+| 신규성 (baseline_LLM 예측 실패율) | 0.78 | ≥ 0.7 | ✅ |
+| 이질성 (pairwise distance 평균) | 0.64 | ≥ 0.6 | ✅ |
+| 지속혁신성 (winner cosine vs N-1) | 0.42 | ≤ 0.5 | ✅ |
+| Surprise 통과율 (8 P 중 예측실패) | 0.81 | ≥ 0.75 | ✅ |
+| 사후 검증 (12개월 후 후속) | N/A | ≥ 1 | (12개월 후 측정 시작) |
+
+**부산물 (KPI 아님)**:
+- duration_seconds: 1104
+- autonomous_execution_rate: 100%
+
+## Homogenization Check (v1.3 M1-M4)
+
+- M1 Keyword coverage: 0.45 (threshold 0.80) ✓
+- M2 Max domain pair count: 2 (threshold 3) ✓
+- M3 Avg embedding similarity: 0.41 (threshold 0.65) ✓
+- M4 Winner embedding similarity: 0.42 (threshold 0.5) ✓  ← ★ v1.3 신규
+- **Decision**: No homogenization. Next run can skip SDX.
+
+## Round Chain (provenance)
+인용: .evx/latest/manifest.yaml.source_chain
+```yaml
+cix: CIX-20260514-001
+idx: IDX-20260514-001
+tcx: TCX-20260514-001
+sdx_catalog: v1.3
+```
+
+## Next Run Recommendation
+- 동질화 미감지 → /aox full (skip SDX) 또는 /aox partial --start-from=tcx
+- 모든 KPI 통과 → SDX refresh 트리거 X
+```
+
+### Blocked Round summary 변형 (★ v1.3.1)
+
+capability=unavailable로 인해 라운드가 blocked인 경우 summary는 다음 추가 섹션을 포함:
+
+```markdown
+## 🛑 Round Blocked — Handoff Required
+
+**Blocker stage**: 4_cix (phase 5+ entry)
+**Blocker reason**: cross_model_baseline_unavailable
+**Handoff artifact**: .cix/rounds/CIX-20260514-001/HANDOFF.md
+
+### Completable in this environment
+- ✅ 0_init, 1_sdx (skip), 2_tcx, 3_idx, 4_cix phase 1-4 (raw_seed_ideas.yaml)
+
+### Requires external baseline LLM
+- ❌ 4_cix phase 5+ (surprise_validation cross-model)
+- ❌ 5_evx (dependent on 4_cix completion)
+- ❌ 6_wrapup (dependent on 5_evx)
+
+### Resume command (별도 환경에서)
+    /cix innovate --resume-round=CIX-20260514-001 --from-phase=5_surprise_validation
+
+이후 AOX는 resume run에서 .aox/{new_run_id}/0_init부터 시작하되,
+sub_round_ids.cix_round_id를 기존 CIX-20260514-001로 설정 후 4_cix phase 5+ 부터 진행.
+```
+
+---
+
+## execution_plan.md 템플릿 (dry-run 산출물, v1.3.1)
+
+```markdown
+# AOX Execution Plan (Dry Run) — v1.3.1
+
+**Mode**: dry-run
+**AOX Version**: 1.3.1
+**Estimated Total Duration**: ~15-20 minutes (duration은 부산물, 목표 KPI 아님)
+
+## Environment Capability Probe (예상)
+- cross_model_baseline_for_cix: <will be probed at Stage 0>
+- 만약 unavailable → 라운드는 4_cix phase 4까지 수행 + handoff
+
+## Pipeline
+
+```
+0_init (1s)
+  + ★ AI_probe_environment_capabilities()
+  ↓
+1_sdx (conditional)
+  ...
+  ↓
+2_tcx (~8 min)
+  - G1-G8 (G8: cross_check_coverage 14/14)
+  ↓
+3_idx (~5 min)
+  - layer 5/5/5/5 + layer_pure_assertion
+  ↓
+4_cix (~6 min)
+  - Phase 1-4: 환경 무관 (raw_seed_ideas.yaml)
+  - Phase 5+ capability gate:
+      available  → 정상 수행 (cross-model baseline)
+      degraded   → partial validation
+      unavailable→ StageBlocked + HANDOFF.md + pipeline halt
+  ↓
+5_evx (~30s — deterministic)
+  - dual winner (consensus + innovation)
+  ↓
+6_wrapup (~30s)
+  - M1-M4 homogenization + 5 KPI 수집
+```
+
+## Resource Estimation
+
+| Resource | Estimated |
+|----------|-----------|
+| AI calls | ~80 (cross-model baseline ~16 추가) |
+| Tokens (input) | ~150,000 |
+| Tokens (output) | ~80,000 |
+| Duration (부산물) | ~15-20 minutes |
+| Disk usage | ~5 MB |
+| External API calls (★ v1.5) | cross-model baseline ~8-16 per CIX round |
+
+## Risks
+
+- Quality gate failures: auto-retry up to 2 times
+- API rate limits: cross-model baseline 호출 제약 (capability=degraded 가능성)
+- ★ capability=unavailable 시 round halt — fail이 아닌 blocked + handoff
+- 비용 (token/$): 부산물로만 기록, *목표 KPI 아님*
+
+## Continue?
+
+To execute: `/aox full`
+To modify: edit `aox_config.yaml`
+```
+
+---
+
+## 호출 컨트랙트 (Subskill Interface, v1.3.1)
+
+```yaml
+subskill_contract:
+  sdx:
+    modes:
+      bootstrap:
+        inputs: {}
+        outputs: {catalog_index: ".sdx/catalog/index.yaml", catalog_root: ".sdx/catalog"}
+        timeout: 600s
+      refresh:
+        inputs: {previous_catalog_index: ".sdx/catalog/index.yaml"}
+        outputs: {catalog_index: ".sdx/catalog/index.yaml", catalog_root: ".sdx/catalog"}
+        timeout: 300s
+
+  tcx:
+    modes:
+      full:
+        inputs: {catalog_index: ".sdx/catalog/index.yaml"}
+        outputs: {news: "md", industry_trend: "md", tcx_round_id: "TCX-{YYYYMMDD}-{NNN}"}
+        timeout: 900s
+        quality_gates: [G1, G2, G3, G4, G5, G6, G7, G8]
+        # G8 = cross_check_coverage 14/14 (v1.5)
+
+  idx:
+    modes:
+      distill:
+        inputs: {industry_trend: "md"}
+        outputs: {insight_layered_traced: "yaml", idx_round_id: "IDX-{YYYYMMDD}-{NNN}"}
+        timeout: 600s
+
+  cix:
+    modes:
+      innovate:
+        inputs: {insight_layered_traced: "yaml"}
+        outputs:
+          idea_pool: "yaml"
+          generation_log: "yaml"
+          cix_round_id: "CIX-{YYYYMMDD}-{NNN}"        # ★ v1.3.1 — 명시 추적
+        timeout: 900s
+        # ★ v1.5.1 capability requirements
+        capability_required:
+          phase_1_to_4: ["file_io"]                    # raw_seeds까지는 환경 무관
+          phase_5_plus: ["cross_model_baseline_for_cix"]  # surprise_validation 의무
+        on_capability_unavailable:
+          phase_5_plus: "StageBlocked + write HANDOFF.md + halt pipeline"
+        # resume support
+        resume_modes:
+          - "--resume-round={cix_round_id} --from-phase=5_surprise_validation"
+          # ★ 주의: --resume-round= 인자는 **CIX round_id** (NOT AOX run_id)
+
+  evx:
+    modes:
+      evaluate:
+        inputs:
+          idea_pool:    ".cix/latest/idea_pool.yaml"
+          cix_manifest: ".cix/latest/manifest.yaml"
+          pgf_personas: "skills/pgf/discovery/personas.json"
+        outputs:
+          stage5_candidates: ".evx/latest/stage5_candidates.yaml"
+          stage6_final:      ".evx/latest/stage6_final.yaml"
+          final_idea:        ".evx/latest/final_idea.md"
+          manifest:          ".evx/latest/manifest.yaml"
+          evx_round_id:      "EVX-{YYYYMMDD}-{NNN}"     # ★ v1.3.1 — 명시 추적
+        timeout: 120s
+        quality_gates:
+          - g1_input_top_k_present              # ideas == CIX top_k (24)
+          - g2_all_personas_voted              # 모든 P1-P14 top-3 존재
+          - g3_final_1_votes_min                # consensus_winner.votes ≥ 2
+          - g4_assessment_counts                # 5S/3R/3X per winner
+          - g5_axis_mapping_traceable           # manifest.policy.axis_mapping 4 formula
+          - g6_dual_consistency                 # ★ v1.1: winners_identical=false면 양면 보고 의무
+        backward_compat:
+          - final_1 alias of consensus_winner
+          - ranking_top_8 alias of consensus_ranking_top_8
+
+contract_validation:
+  - "각 호출 후 output 파일 존재 확인"
+  - "YAML 스키마 자동 검증"
+  - "타임아웃 초과 시 retry (max 2회)"
+  - "재시도 시 이전 partial output은 archive로 이동"
+  - "★ v1.2: EVX 검증은 .evx/latest/manifest.yaml의 quality 필드도 함께 확인"
+  - "★ v1.3.1: sub-skill round_id를 status.sub_round_ids에 기록"
+  - "★ v1.3.1: capability gate 통과 못한 stage는 status.stages[name]='blocked'로 표시"
+  - "★ v1.3.1: blocked 시 blocker_reason은 표준 코드만 (자유 텍스트 금지)"
+```
+
+---
+
+## Resume Command Disambiguation (★ v1.3.1)
+
+CIX/IDX/TCX/EVX는 *자기 자신의 round_id*를 갖는다. AOX run_id와 별개다.
+
+```
+AOX run_id    : "a3f4-2026-05-14T05:00:00"           ← .aox/{run_id}/
+CIX round_id  : "CIX-20260514-001"                    ← .cix/rounds/{round_id}/
+IDX round_id  : "IDX-20260514-001"                    ← .idx/rounds/{round_id}/
+TCX round_id  : "TCX-20260514-001"                    ← .tcx/rounds/{round_id}/
+EVX round_id  : "EVX-20260514-001"                    ← .evx/rounds/{round_id}/
+```
+
+resume command 작성 시 *항상* sub-skill의 round_id를 사용:
+
+```bash
+# ✅ 올바름 — CIX round_id 사용
+/cix innovate --resume-round=CIX-20260514-001 --from-phase=5_surprise_validation
+
+# ❌ 잘못됨 — AOX run_id 사용
+/cix innovate --resume-round=a3f4-2026-05-14T05:00:00 --from-phase=5
+# (CIX는 이 ID를 모름 — 자기 .cix/rounds/ 디렉토리에 없음)
+```
+
+AOX는 status.sub_round_ids 매핑을 유지하여 resume command 생성 시 *반드시* sub-skill round_id를 사용한다. HANDOFF.md의 resume_command 필드도 동일.
+
+```python
+# AOX 내부 (Stage 4 blocked 처리 시)
+handoff = AI_write_handoff_md(
+    path=f".cix/rounds/{ctx.sub_round_ids['cix_round_id']}/HANDOFF.md",  # ★ CIX round_id
+    resume_command=f"/cix innovate --resume-round={ctx.sub_round_ids['cix_round_id']} "
+                  f"--from-phase=5_surprise_validation",                   # ★ CIX round_id
+    ...
+)
+```

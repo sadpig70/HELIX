@@ -1,0 +1,17 @@
+{
+  "innovation": {"round_id": "CIX-20260609-001", "source_idx_round": "IDX-20260609-001"},
+  "ideas": [
+    {"id": "IDEA-018", "title": "Time-Box Automation Enforcer", "source_insight_id": "INS-L10-007",
+     "source_insight_layer": "L10_Generative", "domains": ["ai-ops", "governance"],
+     "system_description": "An enforcer that bounds autonomous agent runtime by hard time budgets."},
+    {"id": "IDEA-020", "title": "Orbital Tasking-to-Action Roaming Registry", "source_insight_id": "INS-L6-002",
+     "source_insight_layer": "L6_Gap", "domains": ["space", "robotics"],
+     "system_description": "A registry routing orbital tasking into ground action with provenance."},
+    {"id": "IDEA-009", "title": "Failure Futures Exchange", "source_insight_id": "INS-L7-004",
+     "source_insight_layer": "L7_Tension", "domains": ["finance", "climate"],
+     "system_description": "A market that prices the option value of anticipated failures."},
+    {"id": "IDEA-014", "title": "Cross-Lingual Drift Dossier", "source_insight_id": "INS-L9-001",
+     "source_insight_layer": "L9_Counterfactual", "domains": ["policy", "ai-ops"],
+     "system_description": "Tracks policy-drift across languages as a deterministic dossier."}
+  ]
+}

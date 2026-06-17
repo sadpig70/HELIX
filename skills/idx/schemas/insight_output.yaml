@@ -1,0 +1,547 @@
+# IDX Insight Output Schema v1.4
+#
+# v1.4 changes (per IDX SKILL.md v1.4, audit findings 반영):
+#   - insight schema에 cix_downstream_utilization 필드 (retrospective post-CIX)
+#   - secondary_layer 옵션 필드 (hybrid layer 지원 — INS-L6-004 사례)
+#   - layer_pure_assertion 추적용 strong 플래그
+#
+# v1.3 changes (carried):
+#   - PGF discovery 페르소나 (P1-P8) 정식 통합
+#   - insight에 generated_by_persona / cross_check_persona / persona_evaluation_bias 필드 추가
+#   - manifest contract에 personas chain (TCX persona_assignment 추적)
+#   - distillation_log contract에 페르소나별 layer 일치도 audit
+#
+# v1.2 changes (carried):
+#   - I6: 3 new contracts — manifest.yaml, distillation_log.yaml, .idx/index.yaml
+#   - I10: ALL example evidence unified to v1.1 schema
+#         (source_file / source_section / source_span / quote / quote_hash / confidence)
+#   - Layer-specific required_fields + semantic_checks blocks (consumed by
+#     PPR.AI_validate_layer_specific_rules in SKILL.md).
+#
+# 각 인사이트는 4개 출력 Layer 중 하나에 속함.
+# 카탈로그는 IDX_POLICY.distillation.target_insights_total (default 20) 인사이트
+# (Layer당 IDX_POLICY.distillation.insights_per_layer, default 5) YAML 리스트.
+
+# ============================================================
+# 1. insight_layered.yaml — main artifact
+# ============================================================
+
+schema:
+  required_fields_all_layers:
+    - id              # INS-L{N}-{NNN}
+    - layer           # L6_Gap | L7_Tension | L9_Counterfactual | L10_Generative
+    - statement       # 인사이트 본문 (1-3문장)
+    - evidence        # 출처 데이터 인용 (≥1) — v1.1 스키마 필수
+    - metrics         # 층위별 전용 + 공통 메트릭
+    - total_score     # 가중 평균
+    - generated_by_persona    # PGF P1-P14 (primary; v1.3 P1-P8 → v1.6 P1-P14)
+    - cross_check_persona     # PGF P1-P14 (cross-check; v1.3 P1-P8 → v1.6 P1-P14)
+    - source_round    # 어느 IDX 라운드 (IDX-{YYYYMMDD}-{NNN})
+    - source_tcx_items    # NEW v1.3: 인사이트가 참조한 .tcx/latest news item IDs (페르소나 chain)
+
+  optional_fields_v1_4:                # NEW v1.4 — audit findings 반영
+    - secondary_layer                  # hybrid 인사이트 (예: INS-L6-004 = L6_Gap + L7_Tension)
+    - cix_downstream_utilization       # retrospective post-CIX:
+                                       #   {raw: int, top24: int, top_score_max: float}
+    - is_strong                        # boolean: total_score >= 8.0 AND cix_top24 >= 1
+    - audit_history                    # list of {round_id, audited_at, recommendation, applied: bool}
+
+  evidence_schema_v1_1:
+    description: |
+      v1.1 신규 — 위변조 방지 및 검증성. 모든 evidence 항목은 본 스키마를 따른다.
+      Layer 7/9/10도 동일하게 적용 (v1.2에서 통일).
+    required:
+      - source_file        # "industry_trend.md" | "news.md" | "context_layers.yaml" | ...
+      - source_section     # "§Cybersecurity"
+      - source_span        # [start_char, end_char]
+      - quote              # 직접 인용문
+      - quote_hash         # "sha256:..."
+    optional:
+      - confidence         # 0.0-1.0
+      - contradictions     # 같은 사실에 대한 반대 증거 목록
+
+  layer_specific_fields:
+    L6_Gap:
+      required_fields:
+        - what_is_missing
+        - why_it_matters
+      optional_fields:
+        - who_should_fill
+      semantic_checks:
+        - "what_is_missing은 데이터에 명시되지 않은 항목이어야 함"
+        - "why_it_matters는 시스템적 영향을 명시해야 함"
+
+    L7_Tension:
+      required_fields:
+        - force_A
+        - force_B
+        - convergence_zone
+      optional_fields:
+        - false_resolutions
+      semantic_checks:
+        - "force_A와 force_B는 양립 불가 또는 트레이드오프 관계여야 함"
+        - "convergence_zone은 두 힘이 동시 작용하는 구체적 도메인/시장이어야 함"
+
+    L9_Counterfactual:
+      required_fields:
+        - counterfactual_premise
+        - branched_world
+        - divergence_axes
+      optional_fields:
+        - implausibility_check
+        - insight_for_present
+      semantic_checks:
+        - "premise는 실제와 다른 분기점이 명확해야 함"
+        - "branched_world는 premise로부터 인과적으로 도출 가능해야 함"
+
+    L10_Generative:
+      required_fields:
+        - meta_pattern
+        - yielded_seeds       # ≥3
+        - cross_domain_evidence  # ≥2
+        - abstraction_level
+      semantic_checks:
+        - "meta_pattern은 단일 도메인을 초월한 추상 패턴이어야 함"
+        - "yielded_seeds 각각이 독립적 하위 인사이트로 사용 가능해야 함"
+        - "cross_domain_evidence는 서로 다른 ≥2개 도메인에서 관찰되어야 함"
+
+# ============================================================
+# 2. 예시 엔트리 (v1.2 — 모든 evidence를 v1.1 스키마로 통일)
+# ============================================================
+
+example_insights:
+
+  # ---- Layer 6: Gap ----
+  - id: "INS-L6-001"
+    layer: "L6_Gap"
+    statement: |
+      PQC(Post-Quantum Cryptography) 마이그레이션 논의는 데이터센터,
+      금융, 정부 시스템에 거의 전적으로 집중되어 있다. 그러나 수십억 대가
+      이미 배치되었고 30년 이상 운영될 IoT/임베디드 디바이스 영역은
+      논의에서 통째로 빠져있다.
+    what_is_missing: "IoT/임베디드 PQC 마이그레이션 경로"
+    why_it_matters: |
+      이미 배치된 디바이스는 펌웨어 업데이트 채널이 없거나 제한적.
+      교체 비용은 디바이스당 수십~수백 달러. 미메우면 2030년대 대규모
+      시스템적 위협 발생 (e.g., 의료기기, 스마트미터, 산업 PLC).
+    who_should_fill: "디바이스 OEM + 표준화 기관 + 보험 (현재 모두 회피)"
+    evidence:
+      - source_file: "industry_trend.md"
+        source_section: "§Cybersecurity"
+        source_span: [1247, 1389]
+        quote: "NIST PQC 표준 채택은 클라우드 인프라를 우선 대상으로..."
+        quote_hash: "sha256:a3f4b2c1d8e9..."
+        confidence: 0.92
+        contradictions: []
+      - source_file: "news.md"
+        source_section: "§Cybersecurity & Internet Governance"
+        source_span: [342, 478]
+        quote: "IoT 보안은 별도 트랙으로 다루어져 PQC 로드맵에서 누락됨..."
+        quote_hash: "sha256:b8c2d1e4f7a3..."
+        confidence: 0.88
+        contradictions: ["industry_trend.md §Standards에서 통합 트랙 주장"]
+    metrics:
+      non_obviousness: 7
+      importance_of_filling: 9
+      evidence_grounded: 8
+      specificity: 9
+      cross_layer_independence: 8
+    total_score: 8.16
+    generated_by: ["AI_1", "AI_2"]
+    source_round: "IDX-20260513-001"
+    seeds_for_CIX: 6
+    notes: "고가치 갭. CIX의 L11(Domain Transplant)·L7(Failure-as-Feature) 강한 변형 후보."
+
+  # ---- Layer 7: Tension ----
+  - id: "INS-L7-001"
+    layer: "L7_Tension"
+    statement: |
+      AI 모델 성능을 위한 학습 데이터 규모 요구가 폭증하는 동시에,
+      각국의 데이터 주권 규제가 국경 간 데이터 이동을 강하게 차단하고 있다.
+      두 힘이 동시에 강해지면서 해법(연합학습 등)은 본질적 손실을 동반한다.
+    force_A:
+      name: "Scale Imperative"
+      actors: ["Hyperscaler", "Foundation model labs"]
+      strength_trend: "지속 강화"
+    force_B:
+      name: "Data Sovereignty"
+      actors: ["EU GDPR/AI Act", "China CSL/PIPL", "India DPDPA", "Russia Localization"]
+      strength_trend: "지속 강화, 다극화"
+    convergence_zone: "다국적 AI 서비스 (의료, 금융, 교육)"
+    false_resolutions:
+      - "연합학습: 데이터 품질·통신 비용·모델 동기화 문제"
+      - "합성 데이터: 분포 편향, 희귀 케이스 손실"
+      - "지역 모델 분기: 모델 일관성 손실, 운영 비용"
+    evidence:
+      - source_file: "industry_trend.md"
+        source_section: "§AI Policy"
+        source_span: [2104, 2298]
+        quote: "EU AI Act 전면 시행 + 인도 DPDPA 발효로 다국적 학습 파이프라인 재설계 압력..."
+        quote_hash: "sha256:c7d1e2f9a4b6..."
+        confidence: 0.91
+        contradictions: []
+      - source_file: "industry_trend.md"
+        source_section: "§AI Infrastructure"
+        source_span: [3501, 3672]
+        quote: "Foundation model 학습 토큰량은 연간 2-3배 증가 추세 지속..."
+        quote_hash: "sha256:d8e2f1a9b3c4..."
+        confidence: 0.94
+        contradictions: []
+    metrics:
+      force_balance: 9
+      resolution_difficulty: 9
+      evidence_grounded: 9
+      specificity: 8
+      cross_layer_independence: 9
+    total_score: 8.84
+    generated_by: ["AI_3", "AI_4"]
+    source_round: "IDX-20260513-001"
+    notes: "최고가치 긴장. 다극 AI 생태계의 핵심 분열선."
+
+  # ---- Layer 9: Counterfactual ----
+  - id: "INS-L9-001"
+    layer: "L9_Counterfactual"
+    statement: |
+      만약 휴머노이드 로봇 OS가 2024년 이전에 단일 표준으로 미리 정해졌다면,
+      현재 GR00T/N1 등 multi-vendor 경쟁 구도와 그로 인한 compatibility
+      산업·표준 선점 전쟁은 존재하지 않았을 것이다.
+    counterfactual_premise: |
+      Pre-standardization이 아닌 ISO-style early standardization이 일어났다면
+    branched_world: |
+      - 단일 OS 위에서 하드웨어 차별화에만 경쟁
+      - 표준 거버넌스 기관이 강력한 게이트키퍼
+      - 혁신 속도는 느렸을 것
+      - 그러나 사고 책임 체계는 명확
+    divergence_axes:
+      - "혁신 속도: -50%"
+      - "안전 명확성: +200%"
+      - "시장 진입장벽: +300% (대형 사업자만 생존)"
+    implausibility_check: |
+      그럴듯함 6/10. 항공·자동차에서 이런 사전 표준화 사례 있음.
+      그러나 휴머노이드는 군사·민간 dual-use라 빠른 상용화 압력이 컸음.
+    insight_for_present: |
+      → 역으로, *지금이라도* 휴머노이드 OS 표준화를 인위적으로 가속하는
+      개입(국제 협약, 보험 강제, 정부 조달 표준)이 어떤 시장을 사라지게
+      하고 어떤 시장을 폭발시키는가?
+    evidence:
+      - source_file: "industry_trend.md"
+        source_section: "§Robotics"
+        source_span: [1820, 2004]
+        quote: "Figure, 1X, Tesla Optimus, GR00T가 각자 독자 OS를 빠르게 상용화..."
+        quote_hash: "sha256:e3f4a5b6c7d8..."
+        confidence: 0.93
+        contradictions: []
+      - source_file: "industry_trend.md"
+        source_section: "§Standards"
+        source_span: [501, 689]
+        quote: "ISO/IEC가 휴머노이드 OS 분야 표준화 워킹그룹 출범을 검토 중이나..."
+        quote_hash: "sha256:f9a1b2c3d4e5..."
+        confidence: 0.85
+        contradictions: ["news.md §Robotics에서는 워킹그룹 출범이 무산됐다고 보도"]
+    metrics:
+      plausibility: 6
+      divergence_from_actual: 8
+      evidence_grounded: 7
+      specificity: 8
+      cross_layer_independence: 9
+    total_score: 7.92
+    generated_by: ["AI_5", "AI_6"]
+    source_round: "IDX-20260513-001"
+    notes: "CIX에서 L15(Constraint Removal) 적용 후보"
+
+  # ---- Layer 10: Generative ⭐⭐ ----
+  - id: "INS-L10-001"
+    layer: "L10_Generative"
+    statement: |
+      2026-2030 시기는 'Pre-standard Commercialization Era'다.
+      여러 핵심 기술(휴머노이드 OS, 양자 SDK, 바이오 데이터 포맷,
+      AI 에이전트 통신 프로토콜, 우주 ISL)이 모두 표준화 *전에*
+      상용화되는 동일 패턴을 보인다. 이는 분야별 우연이 아닌 시기적 현상.
+    meta_pattern: "Pre-standard Commercialization"
+    yielded_seeds:
+      - id: "SEED-001"
+        statement: "표준 선점 전쟁 산업 (de facto standard 경쟁)"
+      - id: "SEED-002"
+        statement: "Compatibility Layer 시장 (서로 다른 사실표준 간 변환)"
+      - id: "SEED-003"
+        statement: "사후 표준화 거버넌스 시장 (이미 형성된 시장 위에 표준 부과)"
+      - id: "SEED-004"
+        statement: "Standard Arbitrage (지역·산업 표준 차이를 이용한 사업)"
+      - id: "SEED-005"
+        statement: "Pre-standard Insurance (표준 부재 리스크 대신 부담)"
+    cross_domain_evidence:
+      - domain: "Humanoid OS"
+        observation: "Figure, 1X, GR00T, Tesla Optimus가 모두 독자 OS"
+      - domain: "Quantum SDK"
+        observation: "Qiskit, Cirq, Q#, Ocean이 모두 incompatible"
+      - domain: "Bio Data Format"
+        observation: "FHIR, OMOP, CDISC 동시 존재"
+      - domain: "AI Agent Protocol"
+        observation: "MCP, A2A, ANP 동시 등장"
+      - domain: "Satellite ISL"
+        observation: "Starlink, Kuiper, IRIS² 독자 ISL"
+    abstraction_level: 3
+    evidence:
+      - source_file: "industry_trend.md"
+        source_section: "§Robotics ↔ §Quantum ↔ §Healthcare ↔ §AI Infra ↔ §Space (cross)"
+        source_span: [0, -1]
+        quote: "(synthetic cross-section quote — derived from §multiple)"
+        quote_hash: "sha256:00cross00cross..."
+        confidence: 0.80
+        contradictions: []
+      - source_file: "context_layers.yaml"
+        source_section: "L2_Pattern.recurring_patterns[Pre-standard Commercialization]"
+        source_span: [1024, 1320]
+        quote: "동일 시기에 5개 이상의 핵심 기술 영역에서 표준화 전 상용화가 관측됨..."
+        quote_hash: "sha256:11pattern22aa..."
+        confidence: 0.87
+        contradictions: []
+    metrics:
+      seeds_yielded: 5
+      depth_of_implication: 9
+      evidence_grounded: 9
+      specificity: 8
+      cross_layer_independence: 10
+    total_score: 9.20
+    generated_by: ["AI_7", "AI_8"]
+    source_round: "IDX-20260513-001"
+    notes: |
+      최고 가치 인사이트. CIX에서 5개 SEED 각각을 별도 변형 대상으로
+      처리 → 단일 인사이트가 30개 아이디어를 생성하는 폭발적 효과.
+
+# ============================================================
+# 3. 메트릭 가이드 (참고용)
+# ============================================================
+
+metric_guide_per_layer:
+  L6_Gap:
+    non_obviousness:
+      10: "발견 자체가 어렵고, 다른 7개 AI가 모두 놓침"
+      5:  "보면 당연하지만 명시는 안 됐음"
+      0:  "이미 광범위하게 논의됨 (=Gap 아님)"
+    importance_of_filling:
+      10: "메우지 않으면 시스템적 실패"
+      5:  "메우면 중요한 가치"
+      0:  "메워도 별 영향 없음"
+
+  L7_Tension:
+    force_balance:
+      10: "두 힘이 비슷하게 강함"
+      5:  "한쪽이 좀 더 우세"
+      0:  "한쪽이 압도적 (=긴장 아님)"
+    resolution_difficulty:
+      10: "근본적 해결 불가, 트레이드오프만 가능"
+      5:  "어려움, 부분 해법 존재"
+      0:  "쉽게 해결됨 (=가짜 긴장)"
+
+  L9_Counterfactual:
+    plausibility:
+      10: "충분히 가능했던 분기"
+      5:  "낮은 확률이지만 가능"
+      0:  "물리법칙·역사 강하게 위반"
+    divergence_from_actual:
+      10: "현실과 거의 모든 면이 다름"
+      5:  "주요 면에서 다름"
+      0:  "현실과 거의 같음 (=무의미한 CF)"
+
+  L10_Generative:
+    seeds_yielded:
+      10: "5개 이상 하위 인사이트 자동 도출"
+      5:  "3개"
+      0:  "0-1개 (=Generative 아님)"
+    depth_of_implication:
+      10: "여러 도메인·시간 스케일에 동시 영향"
+      5:  "한 도메인에서 깊은 영향"
+      0:  "표면적 영향"
+
+  common:
+    evidence_grounded:
+      10: "직접 인용 가능한 출처 ≥2"
+      5:  "간접 추론 가능"
+      0:  "추측"
+    specificity:
+      10: "구체적 행위자·시점·매커니즘 명시"
+      5:  "모호하지 않음"
+      0:  "일반론"
+    cross_layer_independence:
+      10: "다른 19개 인사이트와 완전히 직교"
+      5:  "부분 중복"
+      0:  "다른 인사이트의 재진술"
+
+# ============================================================
+# 4. manifest.yaml contract — round reproducibility (NEW v1.2)
+# ============================================================
+
+manifest_contract:
+  description: |
+    `.idx/rounds/{round_id}/manifest.yaml`. round 재현성을 위해 입력 TCX round,
+    SDX catalog version, IDX_POLICY 스냅샷, CLI args, PGF persona chain을 모두 기록.
+
+  shape: |
+    round:
+      id: "IDX-{YYYYMMDD}-{NNN}"
+      generated_at: "ISO-8601"
+      idx_version: "1.2"
+      mode: "distill | focus | audit"
+      duration_sec: 245
+
+    inputs:
+      source_root: ".tcx/latest"
+      tcx_round:
+        id: "TCX-{YYYYMMDD}-{NNN}"             # source_tcx_round chain
+        manifest_path: ".tcx/latest/manifest.yaml"
+        manifest_hash: "sha256:..."             # TCX manifest 해시 (변경 탐지)
+        files_loaded:
+          industry_trend:  {path: "industry_trend.md",  bytes: 18234, hash: "sha256:..."}
+          news:            {path: "news.md",            bytes: 22018, hash: "sha256:..."}
+          quality_report:  {path: "quality_report.md",  bytes:  4521, hash: "sha256:..."}
+        quality_gates_passed: true              # TCX quality_report 통과 여부
+
+      sdx_catalog:                               # via TCX manifest chain
+        version: "v1.3"
+        policy_version: "v1.4"
+        catalog_size: 80
+        lock_eligible: true
+
+      # NEW v1.3 — PGF persona chain (TCX 페르소나 추적)
+      personas:
+        source: "{PGF_SKILL_DIR}/discovery/personas.json"
+        version_pin: "1.0"
+        snapshot_hash: "sha256:..."             # personas.json 내용 해시
+        enabled_set: [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14]
+        tcx_persona_chain:                       # TCX manifest에서 가져온 매핑
+          source_tcx_round: "TCX-{YYYYMMDD}-{NNN}"
+          tcx_assignment:                         # 어떤 페르소나가 어떤 도메인 담당했는지
+            D01_AI: [P5, P8]
+            # ... full mapping from TCX manifest
+
+      domain_set:
+        name: "default_ideafirst_domains"
+        version: "v1.0"
+        count: 14
+        domains_hash: "sha256:..."
+
+      policy:
+        idx_policy_snapshot: {distillation: {...}, dedup: {...}, layer_metric_thresholds: {...},
+                              layer_8_activation: {...}, storage: {...}}
+
+      cli_args: ["distill"]
+
+    acceptance:
+      target_insights_total_met: true            # 20개 산출
+      layer_distribution_met:                    # 각 layer = 5
+        L6_Gap: 5
+        L7_Tension: 5
+        L9_Counterfactual: 5
+        L10_Generative: 5
+      all_metric_thresholds_passed: true
+      failed_validations: []
+
+# ============================================================
+# 5. distillation_log.yaml contract — agent-level debugging (NEW v1.2)
+# ============================================================
+
+distillation_log_contract:
+  description: |
+    `.idx/rounds/{round_id}/distillation_log.yaml`. PGF P1-P14 각각이
+    어떤 Layer에서 몇 개의 candidate를 만들고 몇 개가 dedup/threshold로 잘렸는지 기록.
+    Audit mode + 사후 디버깅 + persona-purity 검증 핵심.
+
+  shape: |
+    distillation:
+      round_id: "IDX-{YYYYMMDD}-{NNN}"
+      total_candidates: 47                       # 14 페르소나 합산
+      total_after_dedup: 20
+
+      per_persona:                              # PGF P1-P14 (구 AI_1~AI_8 → v1.3 P1-P8 → v1.6 P1-P14)
+        P3:
+          name: "Regulatory Architect"
+          assigned_layer: "L6_Gap"
+          role: "primary"
+          evaluation_bias: {integrity: 2.0, impact: 1.0, novelty: 0.5, feasibility: 1.0}
+          candidates_generated: 6
+          accepted_after_thresholds: 4
+          rejected:
+            - {id: "tmp-l6-005", reason: "non_obviousness=4 < 6 threshold"}
+            - {id: "tmp-l6-006", reason: "missing what_is_missing field"}
+          final_in_output: 3
+          persona_purity:                       # NEW v1.3
+            keywords_matched: ["governance gap", "regulatory void", "jurisdictional"]
+            tone_consistency: 0.92             # 0-1, persona system_prompt 일치도
+        P7:
+          name: "Contrarian Critic"
+          assigned_layer: "L6_Gap"
+          role: "cross_check"
+          evaluation_bias: {integrity: 2.0, feasibility: 1.5, novelty: 0.3, impact: 0.5}
+          candidates_generated: 5
+          accepted_after_thresholds: 4
+          final_in_output: 2                     # P3와 중복된 1개 dedup됨
+          persona_purity:
+            keywords_matched: ["hidden assumption", "historical failure analog"]
+            tone_consistency: 0.89
+        # ... P1, P2, P4, P5, P6, P8 (각자의 Layer 담당)
+
+      dedup_stats:
+        same_layer_collisions: 4                 # within-layer dedup 발생 횟수
+        cross_layer_collisions: 1                # cross-layer 발생 횟수
+        embeddings_model: "(implementation-defined)"
+
+      layer_metric_pass_rates:
+        L6_Gap: 0.83                             # 6/(6+1) 등
+        L7_Tension: 0.75
+        L9_Counterfactual: 0.71
+        L10_Generative: 0.66
+
+      l8_activation:
+        evaluated: true
+        activated: false
+        skip_reason: "temporal_span_years=2 < 3 required"
+
+# ============================================================
+# 6. .idx/index.yaml contract — runtime rounds catalog (NEW v1.2)
+# ============================================================
+
+idx_index_contract:
+  description: |
+    `.idx/index.yaml`. 모든 IDX round의 메타데이터 + 최신 round 포인터.
+    CIX 등 downstream이 latest_round_id로 추적.
+
+  shape: |
+    idx_output:
+      version: "v1.2"
+      schema: "idx.output_index.v1"
+      generated_at: "ISO-8601"
+
+      # ★ 고정 진입점 — CIX 등이 이걸 보고 최신 IDX round 정보를 얻는다
+      latest_round_id: "IDX-{YYYYMMDD}-{NNN}"
+      latest_round_path: "rounds/IDX-{YYYYMMDD}-{NNN}"      # relative to .idx/
+
+      rounds:                                                # 최신 → 과거 순 (LIFO)
+        - id: "IDX-20260513-001"
+          path: "rounds/IDX-20260513-001"
+          at: "ISO-8601"
+          mode: "distill | focus | audit"
+          quality: "passed | failed"
+          source_tcx_round: "TCX-20260513-005"
+          tcx_manifest_hash: "sha256:..."                    # TCX 변경 추적
+          insights_total: 20
+          layer_distribution: {L6_Gap: 5, L7_Tension: 5, L9_Counterfactual: 5, L10_Generative: 5}
+          duration_sec: 245
+        # ... older rounds
+
+      archive_policy:
+        retain_in_rounds_days: 90
+        archive_target_pattern: "archive/{YYYY-Q[1-4]}/"
+        archive_script: "{IDX_SKILL_DIR}/scripts/archive_rounds.py"
+        last_archive_run: "ISO-8601 | never"
+        rounds_in_archive: 0
+
+# ============================================================
+# References
+# ============================================================
+references:
+  upstream_tcx_schemas: "{TCX_SKILL_DIR}/schemas/output_schemas.yaml"
+  upstream_sdx_schemas: "{SDX_SKILL_DIR}/schemas/channel_entry.yaml"
+  upstream_pgf_personas: "{PGF_SKILL_DIR}/discovery/personas.json (v1.0 — NEW v1.3 dependency)"
+  idx_policy:           "SKILL.md#IDX_POLICY (v1.3 — personas.layer_affinity 신설)"
+  archive_script:       "{IDX_SKILL_DIR}/scripts/archive_rounds.py"

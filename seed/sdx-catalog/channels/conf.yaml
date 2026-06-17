@@ -1,0 +1,417 @@
+channels:
+- id: CH-0077
+  name: RIPE NCC meeting archives
+  url_pattern: https://www.ripe.net/participate/meetings/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: conf
+    scale: micro
+  metrics:
+    independence: 7
+    signal_density: 8
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 4
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 9
+  total_score: 7.56
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 유럽 인터넷 운영자 회의 — 라우팅·인프라 현장 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.41
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0050
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0079
+    - agent: .sdx_org/gemini
+      orig_id: CH-0079
+    merged_count: 3
+- id: CH-0085
+  name: DEF CON media archive
+  url_pattern: https://media.defcon.org/
+  axis:
+    temporal: T-5Y
+    geographic: US_EU
+    format: conf
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 6
+    format_unique: 9
+    trust_level: 7
+  total_score: 7.44
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 해킹·보안 발표 원본 영상/슬라이드 — 공식미디어 미반영 기술
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.4
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0049
+    merged_count: 1
+- id: CH-0101
+  name: CCF (中国计算机学会) conferences
+  url_pattern: https://www.ccf.org.cn/
+  axis:
+    temporal: T-1Y
+    geographic: CN
+    format: conf
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 6
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (목록)
+  notes: 중국 컴퓨터학회 학술대회 — 국내 발표 우선 공개
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.36
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0047
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0080
+    - agent: .sdx_org/gemini
+      orig_id: CH-0080
+    merged_count: 3
+- id: CH-0149
+  name: NTCIR
+  url_pattern: https://research.nii.ac.jp/ntcir/
+  axis:
+    temporal: T-0
+    geographic: JP_KR
+    format: conf
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 5
+    trust_level: 7
+  total_score: 7.0
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0053
+    merged_count: 1
+- id: CH-0162
+  name: NeurIPS / OpenReview
+  url_pattern: https://openreview.net/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: conf
+    scale: macro
+  metrics:
+    independence: 6
+    signal_density: 9
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 8
+  total_score: 6.78
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 공개 리뷰·반박 원문 — 채택뿐 아니라 거절 논문도 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.45
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0048
+    merged_count: 1
+- id: CH-0173
+  name: ICML Proceedings
+  url_pattern: https://proceedings.mlr.press/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: conf
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 2
+    temporal_depth: 3
+    format_unique: 5
+    trust_level: 7
+  total_score: 6.22
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0009
+    merged_count: 1
+- id: CH-0216
+  name: SACAM Archive
+  url_pattern: https://saam.africa/sacam-archive/
+  axis:
+    temporal: T-5Y
+    geographic: AF
+    format: conf
+    scale: micro
+  metrics:
+    independence: 10
+    signal_density: 7
+    persistence: 7
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 5
+    format_unique: 10
+    trust_level: 8
+  total_score: 8.33
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: African computational and applied mechanics proceedings add scarce AF conf-format engineering signals.
+  first_seen_round: SDXX-20260609
+- id: CH-0253
+  name: SIGCIS — History of Computing Source Guide
+  url_pattern: https://www.sigcis.org/resources
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: conf
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 8
+    geo_diversity: 6
+    temporal_depth: 9
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.67
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: SHOT special-interest group; workshop proceedings + annotated source guide; academic weak-signal entry point.
+  first_seen_round: SDXX-20260609
+- id: CH-0258
+  name: EAI AFRICOMM Conference
+  url_pattern: https://africommconference.eai-conferences.org/
+  axis:
+    temporal: T-1Y
+    geographic: AF
+    format: conf
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 3
+    format_unique: 8
+    trust_level: 7
+  total_score: 7.44
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  - fr
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 아프리카 인터넷 인프라와 서비스를 주제로 하는 국제 학술대회로, 범아프리카적 시각을 가짐.
+  first_seen_round: SDXX-20260609
+- id: CH-0259
+  name: TMS - The Minerals, Metals & Materials Society
+  url_pattern: https://www.tms.org/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: conf
+    scale: meso
+  metrics:
+    independence: 7
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 5
+    temporal_depth: 8
+    format_unique: 8
+    trust_level: 9
+  total_score: 7.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Borrows metallurgy/materials sector's annual conference proceedings stream.
+  first_seen_round: SDXX-20260609
+- id: CH-0265
+  name: JADH Proceedings
+  url_pattern: https://www.jadh.org/
+  axis:
+    temporal: T-0
+    geographic: JP_KR
+    format: conf
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 9
+    geo_diversity: 7
+    temporal_depth: 5
+    format_unique: 8
+    trust_level: 7
+  total_score: 7.33
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - ja
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - kimi
+  validation: model_claimed_unverified
+  novelty_vs_known: 일본 디지털 인문학 학회(JADH)의 학회 논문집 아카이브로, 영미권 DH 학회(ADHO) proceedings와 직교하는 일본어/아시아 중심 인문학 연구 공유
+  first_seen_round: SDXX-20260609
+- id: CH-0266
+  name: DTIC — Defense Technical Information Center
+  url_pattern: https://www.dtic.mil/
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: conf
+    scale: macro
+  metrics:
+    independence: 6
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 4
+    temporal_depth: 9
+    format_unique: 9
+    trust_level: 9
+  total_score: 7.33
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Declassified workshop/conference proceedings absent from mainstream indexes; distinct from NTRS (excluded).
+  first_seen_round: SDXX-20260609
+- id: CH-0267
+  name: ICE Virtual Library - Geotechnical Engineering
+  url_pattern: https://www.icevirtuallibrary.com/toc/jgeen/current
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: conf
+    scale: micro
+  metrics:
+    independence: 7
+    signal_density: 7
+    persistence: 9
+    accessibility: 5
+    geo_diversity: 5
+    temporal_depth: 9
+    format_unique: 8
+    trust_level: 9
+  total_score: 7.33
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Borrows civil/geotechnical engineering sector's institution proceedings (ground-behavior research).
+  first_seen_round: SDXX-20260609

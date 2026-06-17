@@ -1,0 +1,42 @@
+# SDX ModeBootstrap — selection log v1
+# AI_select_orthogonal_basis_80 채택/거절 기록
+built_at: "2026-05-31"
+round: 0
+
+pipeline_funnel:
+  phase1_seed_baseline: 8
+  phase2_candidates_pre_dedup: 120
+  phase2_after_dedup: 118
+  phase3_url_alive_pass: 118        # dead 0 (봇/지역차단 3건은 alive 유지)
+  phase4_selected_basis: 80
+  phase4_rejected: 38
+
+selection_rule: |
+  total_score 내림차순 정렬 → 기존 선택분 대비 max pairwise overlap < 0.5 인 후보만 채택.
+  required_coverage 미달 시 빈 셀 강제 보충 — 본 라운드는 미발동(전 요건 자연 충족).
+
+rejection_reasons:
+  redundant_overlap: 32      # 기존 선택과 동일 4-Axis 셀 + 동일 도메인/언어로 overlap >= 0.5
+  low_trust_or_obituary: 3   # 단순 obituary, 신뢰도 미달
+  geo_ambiguous: 1           # geo 좌표 모호(글로벌 분산)
+  duplicate_venue: 2         # 동일 발행기관군
+
+coverage_guarantee:
+  geographic: "8/8 — 강제 보충 없이 충족"
+  format: "10/10"
+  temporal: "5/5"
+  scale: "3/3"
+
+notable_selection_decisions:
+  - "arXiv(CH-0001) 채택하되 independence=5 — 베이스 과노출 인지, 직교 기준선 역할로만 유지"
+  - "영미권 tech 뉴스(TechCrunch/Verge/MITTR)는 동질화 직접 원인 → 카탈로그 전면 제외 (seed_channels.yaml에 baseline으로만 기록)"
+  - "news 포맷은 비영미권 1차(zh/ja/ar/pt/ru/hi)만 7개 채택 — geo 다양성 확보 목적"
+  - "nature heritage 군집 US_EU/T-100Y+ 셀 충돌 → Biodiversity micro, LongNow T-50Y/micro 로 scale·temporal 분산"
+  - "CNKI/Wanfang, J-STAGE/CiNii, J-PlatPat/KIPRIS 등 동일셀 쌍은 더 직교적인 쪽만 채택"
+
+candidate_counts_by_strategy_selected:
+  S1: 11
+  S2: 37
+  S3: 8
+  S4: 9
+  S5: 15

@@ -1,0 +1,66 @@
+# SDX — rejected candidates (consolidated, all versions)
+# 거절 = 사망(url dead)이 아니라 직교성/중복/신뢰도 사유. 향후 refresh/expand 재고 대상.
+versions:
+  v1:
+    built_at: "2026-05-31"
+    round: 0
+    rejected:
+      # --- redundant overlap (동일셀 + 동일도메인/언어) ---
+      - { name: "万方数据 Wanfang", strategy: "S2", reason: "CNKI(CH-0002)와 CN/paper 셀·도메인 중복", overlap_vs: "CH-0002 ~0.7" }
+      - { name: "CiNii", strategy: "S2", reason: "J-STAGE(CH-0003)와 JP_KR/paper 중복", overlap_vs: "CH-0003 ~0.7" }
+      - { name: "KIPRIS", strategy: "S2", reason: "J-PlatPat(CH-0013) JP_KR/patent/micro 셀 중복", overlap_vs: "CH-0013 ~0.6" }
+      - { name: "WIPO PATENTSCOPE", strategy: "S1", reason: "Espacenet(CH-0015)와 patent/macro 중복", overlap_vs: "CH-0015 ~0.6" }
+      - { name: "ITU-T Recommendations", strategy: "S1", reason: "ISO(CH-0020)와 US_EU/std/macro 중복", overlap_vs: "CH-0020 ~0.6" }
+      - { name: "USENIX past proceedings", strategy: "S1", reason: "NeurIPS/OpenReview(CH-0048) conf/macro 중복", overlap_vs: "CH-0048 ~0.6" }
+      - { name: "Semantic Scholar API", strategy: "S1", reason: "arXiv(CH-0001) US_EU/paper 중복", overlap_vs: "CH-0001 ~0.6" }
+      - { name: "Beesource beekeeping", strategy: "S4", reason: "niche US_EU 셀 과밀", overlap_vs: "CH-0055~0064 ~0.5" }
+      - { name: "Audubon", strategy: "S4", reason: "eBird(CH-0072) 조류·시민과학 중복", overlap_vs: "CH-0072 ~0.7" }
+      - { name: "SABR sabermetrics", strategy: "S4", reason: "FanGraphs(CH-0057) 중복", overlap_vs: "CH-0057 ~0.7" }
+      - { name: "Chaos Computer Congress (CCC)", strategy: "S5", reason: "DEF CON(CH-0049) conf/보안 셀 중복", overlap_vs: "CH-0049 ~0.5" }
+      - { name: "Mars failed missions DB", strategy: "S3", reason: "NASA NTRS(CH-0025)에 포섭", overlap_vs: "CH-0025 ~0.6" }
+      # --- low trust / 단순 obituary ---
+      - { name: "Killed by Google", strategy: "S3", reason: "단순 obituary, 분석성 낮음(SKILL S3 조건 위배)" }
+      - { name: "Pitch graveyard", strategy: "S3", reason: "신뢰도/지속성 낮음" }
+      - { name: "CB Insights teardowns", strategy: "S3", reason: "Failory(CH-0046)와 중복 + 유료벽" }
+      # --- geo ambiguous ---
+      - { name: "World Bank Open Data", strategy: "S1", reason: "geo 좌표 글로벌 분산으로 4-Axis 셀 귀속 모호" }
+      # --- duplicate venue / 2차 가공 ---
+      - { name: "Pew Research", strategy: "S1", reason: "RAND(CH-0034) think-tank군 중복" }
+      - { name: "McKinsey Global Institute", strategy: "S1", reason: "2차 가공 컨설팅, trust_level 낮음" }
+    note: |
+      위 18개는 명시적 거절 사유 기록분. 나머지 ~20개는 phase2 후보 중
+      동일 셀 그리디 컷에서 자동 탈락(저점수 동질 후보)으로, 개별 명세 생략.
+      refresh/expand 시 빈 셀 보충 후보 풀로 재활용 가능.
+  v1_1:
+    built_at: "2026-06-01"
+    round: 1
+    mode: "expand"
+    target_cells: ["T-100Y+/JP_KR/nature", "T-100Y+/MENA/nature", "T-0/CN/niche", "T-0/JP_KR/niche"]
+    rejected:
+      - { name: "正倉院 (Shosoin) database", strategy: "S2", reason: "ColBase(CH-0082)/NDL(CH-0081) JP heritage 셀에 포섭, scale 충돌" }
+      - { name: "World Digital Library (UNESCO)", strategy: "S1", reason: "geo 글로벌 분산 — 4-Axis 귀속 모호 (v1 World Bank와 동일 사유)" }
+      - { name: "Aga Khan Documentation Center (MIT)", strategy: "S1", reason: "US_EU 귀속, MENA 비원어 — QDL/BibAlex가 더 직교적 1차" }
+      - { name: "36氪 (36Kr)", strategy: "S2", reason: "중국 주류 tech미디어 — 약신호 아님(동질화 위험), sspai/Guokr이 더 niche" }
+      - { name: "ITmedia (Japan)", strategy: "S2", reason: "일본 주류 IT미디어 — Qiita(현장 약신호)가 더 직교" }
+      - { name: "note.com", strategy: "S5", reason: "JP_KR/niche/T-0 셀이 Qiita(meso)/GeekNews(micro)로 이미 채워짐" }
+  v1_2:
+    built_at: "2026-06-01"
+    round: 2
+    mode: "expand"
+    target_cells: ["T-100Y+/LATAM/nature", "T-100Y+/AF/nature", "T-0/LATAM/niche", "T-0/AF/niche"]
+    rejected:
+      - { name: "Aluka (JSTOR African heritage)", strategy: "S1", reason: "JSTOR(US_EU) 호스팅 — 비서구 1차 귀속 약함, Tombouctou/FHYA가 더 직교" }
+      - { name: "Endangered Archives Programme (British Library)", strategy: "S1", reason: "US_EU 귀속 — AF native 아님" }
+      - { name: "Techpoint Africa", strategy: "S2", reason: "아프리카 주류 tech미디어 — 약신호 아님(동질화 위험)" }
+      - { name: "Nexo Jornal (Brazil)", strategy: "S2", reason: "format=news에 가까움, niche 약신호 아님 — FAPESP/Salud이 더 1차" }
+      - { name: "South African History Online (SAHO)", strategy: "S2", reason: "FHYA(non-www 200 확인)로 AF/nature/meso/T-100Y+ 셀 충족 → 셀 중복" }
+  v1_3:
+    built_at: "2026-06-01"
+    round: 3
+    mode: "expand"
+    target_cells: ["T-0/IN_SEA/niche"]
+    rejected:
+      - { name: "Tech in Asia", strategy: "S5", reason: "동남아 주류 tech미디어 — 약신호 아님(동질화 위험)" }
+      - { name: "Rest of World", strategy: "S5", reason: "US 본사 — geo 귀속 US_EU, IN_SEA native 아님" }
+      - { name: "Rappler (Philippines)", strategy: "S2", reason: "format=news에 가까움 — niche 약신호 아님" }
+      - { name: "The Morning Context (India)", strategy: "S5", reason: "The Ken(meso/en)과 IN_SEA/niche/meso/T-0 + en 동일 → overlap 0.5 컷" }

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HELIX unified consumed/registry ledger",
+  "type": "object",
+  "required": ["schema_version", "consumed", "blocked_names", "source_fingerprints", "generated_fingerprints"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "consumed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["idea_id", "title"],
+        "properties": {
+          "idea_id": {"type": "string"},
+          "title": {"type": "string"},
+          "normalized_title": {"type": "string"},
+          "aliases": {"type": "array", "items": {"type": "string"}},
+          "semantic_family": {"type": "string"},
+          "origin": {"type": "string", "enum": ["explore", "exploit", "unknown"]},
+          "source_fingerprint": {"type": "string"},
+          "generated_fingerprint": {"type": "string"},
+          "source_chain": {"type": "object"},
+          "implementations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "project_name": {"type": "string"},
+                "project_path": {"type": "string"},
+                "repo_url": {"type": "string"}
+              }
+            }
+          },
+          "reuse_policy": {"type": "string"},
+          "consumed_at_utc": {"type": "string"}
+        }
+      }
+    },
+    "blocked_names": {"type": "array", "items": {"type": "string"}},
+    "source_fingerprints": {"type": "object"},
+    "generated_fingerprints": {"type": "object"}
+  }
+}

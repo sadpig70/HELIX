@@ -1,0 +1,9 @@
+{
+  "round": {"id": "EVX-20260610-001", "generated_at": "2026-06-10T08:35:31+00:00", "evx_version": "v1.1-cross-eval"},
+  "inputs": {
+    "cix_round": "CIX-20260609-001",
+    "idx_round": "IDX-20260609-001",
+    "tcx_round": "TCX-20260609-003",
+    "sdx_catalog": "v2"
+  }
+}

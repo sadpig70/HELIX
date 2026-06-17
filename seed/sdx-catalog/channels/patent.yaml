@@ -1,0 +1,644 @@
+channels:
+- id: CH-0015
+  name: CNIPA 中国专利
+  url_pattern: https://pss-system.cponline.cnipa.gov.cn/
+  axis:
+    temporal: T-5Y
+    geographic: CN
+    format: patent
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (가입)
+  notes: 중국 특허 — 출원량 세계 1위, 미번역 다수
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.33
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0012
+    - agent: .sdx_org/gemini
+      orig_id: CH-0010
+    merged_count: 2
+- id: CH-0017
+  name: CNIPA English
+  url_pattern: https://english.cnipa.gov.cn/
+  axis:
+    temporal: T-5Y
+    geographic: CN
+    format: patent
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료 (가입)
+  notes: 중국 국가 지식재산권국 영문 포털 — 중국 특허 정책·통계·공고 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.33
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0010
+    merged_count: 1
+- id: CH-0019
+  name: J-PlatPat
+  url_pattern: https://www.j-platpat.inpit.go.jp/
+  axis:
+    temporal: T-5Y
+    geographic: JP_KR
+    format: patent
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - ja
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 일본 특허청 — 소부장 공정특허 1차
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.42
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0013
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0011
+    - agent: .sdx_org/gemini
+      orig_id: CH-0011
+    - agent: .sdx_org/kimi
+      orig_id: CH-0054
+    merged_count: 4
+- id: CH-0033
+  name: Rospatent FIPS
+  url_pattern: https://www.fips.ru/
+  axis:
+    temporal: T-5Y
+    geographic: RU_EE
+    format: patent
+    scale: micro
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 8
+    accessibility: 6
+    geo_diversity: 10
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 9
+  total_score: 8.11
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ru
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 러시아 특허 — 재료·추진 분야 비서구 설계
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.31
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0014
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0012
+    - agent: .sdx_org/gemini
+      orig_id: CH-0012
+    merged_count: 3
+- id: CH-0058
+  name: Espacenet (EPO)
+  url_pattern: https://worldwide.espacenet.com/
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: patent
+    scale: macro
+  metrics:
+    independence: 6
+    signal_density: 8
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 9
+    format_unique: 8
+    trust_level: 10
+  total_score: 7.78
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 1억+ 특허, 1차자료 추적 백본 (S1 도달지). 깊은 과거 도달
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.45
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0015
+    - agent: .sdx_org/gemini
+      orig_id: CH-0013
+    merged_count: 2
+- id: CH-0059
+  name: INPI Brazil patents
+  url_pattern: https://www.gov.br/inpi/
+  axis:
+    temporal: T-5Y
+    geographic: LATAM
+    format: patent
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 8
+    geo_diversity: 10
+    temporal_depth: 6
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - pt-BR
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 브라질 특허 — 바이오연료·농기계
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.34
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0017
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0014
+    - agent: .sdx_org/gemini
+      orig_id: CH-0014
+    - agent: .sdx_org/kimi
+      orig_id: CH-0057
+    merged_count: 4
+- id: CH-0062
+  name: Google Patents
+  url_pattern: https://patents.google.com/
+  axis:
+    temporal: T-50Y
+    geographic: US_EU
+    format: patent
+    scale: macro
+  metrics:
+    independence: 6
+    signal_density: 8
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 3
+    temporal_depth: 9
+    format_unique: 8
+    trust_level: 10
+  total_score: 7.78
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료
+  notes: 전세계 특허 전문/인용 검색 — 오래된 특허 패밀리와 prior art 탐색
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.45
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0013
+    merged_count: 1
+- id: CH-0068
+  name: InPASS (India Patent)
+  url_pattern: https://iprsearch.ipindia.gov.in/
+  axis:
+    temporal: T-1Y
+    geographic: IN_SEA
+    format: patent
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 4
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.67
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - hi
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 인도 특허청 검색 — frugal innovation 단서
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.34
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0016
+    merged_count: 1
+- id: CH-0099
+  name: Indian Patent Office
+  url_pattern: https://ipindia.gov.in/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: patent
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.44
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0046
+    merged_count: 1
+- id: CH-0100
+  name: ARIPO
+  url_pattern: https://www.aripo.org/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: patent
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 8
+  total_score: 7.44
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0066
+    merged_count: 1
+- id: CH-0136
+  name: KIPRIS (Korea Intellectual Property Rights Information Service)
+  url_pattern: http://www.kipris.or.kr/
+  axis:
+    temporal: T-50Y
+    geographic: JP_KR
+    format: patent
+    scale: macro
+  metrics:
+    independence: 6
+    signal_density: 7
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 9
+    temporal_depth: 7
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.22
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - ko
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료
+  notes: 한국 특허정보원 공식 특허 검색 포털
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0015
+    - agent: .sdx_org/gemini
+      orig_id: CH-0015
+    merged_count: 2
+- id: CH-0168
+  name: PatentsView
+  url_pattern: https://www.patentsview.org/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: patent
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 2
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 8
+  total_score: 6.67
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0024
+    merged_count: 1
+- id: CH-0182
+  name: GCC Patent Office
+  url_pattern: https://www.gccpo.org
+  axis:
+    temporal: T-0
+    geographic: MENA
+    format: patent
+    scale: macro
+  metrics:
+    independence: 10
+    signal_density: 9
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 6
+    format_unique: 10
+    trust_level: 10
+  total_score: 9.22
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - ar
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - qwen
+  validation: model_claimed_unverified
+  novelty_vs_known: 걸프협력회의(GCC) 6개국 통합 특허 검색 및 명세서 아랍어/영어 데이터베이스
+  first_seen_round: SDXX-20260609
+- id: CH-0193
+  name: INAPI Chile
+  url_pattern: https://inapi.cl
+  axis:
+    temporal: T-50Y
+    geographic: LATAM
+    format: patent
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 9
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 8
+    format_unique: 9
+    trust_level: 10
+  total_score: 8.89
+  discovery_strategy: S3_failure_archive
+  language:
+  - es
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: 칠레의 국립 특허 및 지식재산 정보 포털로, 남미 안데스 지역의 주요 자원 공학 및 바이오 특허 아카이브 제공
+  first_seen_round: SDXX-20260609
+- id: CH-0197
+  name: Eurasian Patent Organization
+  url_pattern: https://www.eapo.org/
+  axis:
+    temporal: T-50Y
+    geographic: RU_EE
+    format: patent
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 9
+    temporal_depth: 7
+    format_unique: 10
+    trust_level: 10
+  total_score: 8.78
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - ru
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: Eurasian patent infrastructure covers RU/EE-region filings separate from WIPO/Google patent channels.
+  first_seen_round: SDXX-20260609
+- id: CH-0202
+  name: Turkish Patent and Trademark Office
+  url_pattern: https://www.turkpatent.gov.tr/
+  axis:
+    temporal: T-50Y
+    geographic: MENA
+    format: patent
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 8
+    geo_diversity: 8
+    temporal_depth: 7
+    format_unique: 10
+    trust_level: 10
+  total_score: 8.67
+  discovery_strategy: S2_cross_lingual
+  language:
+  - tr
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - chatgpt
+  validation: model_claimed_unverified
+  novelty_vs_known: Turkish patent data adds non-US/EU invention filings in a scarce patent format.
+  first_seen_round: SDXX-20260609
+- id: CH-0213
+  name: Companies and Intellectual Property Commission (CIPC) Intellectual Property Online
+  url_pattern: https://iponline.cipc.co.za/
+  axis:
+    temporal: T-1Y
+    geographic: AF
+    format: patent
+    scale: macro
+  metrics:
+    independence: 9
+    signal_density: 8
+    persistence: 9
+    accessibility: 7
+    geo_diversity: 10
+    temporal_depth: 6
+    format_unique: 9
+    trust_level: 9
+  total_score: 8.44
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - grok
+  validation: model_claimed_unverified
+  novelty_vs_known: South African government patent registration, search and journal publications portal; primary 1st-source IP filings from AF jurisdiction outside excluded Western patent aggregators.
+  first_seen_round: SDXX-20260609
+- id: CH-0229
+  name: UPOV PLUTO - Plant Variety Database
+  url_pattern: https://www.upov.int/en/find-and-explore/databases/pluto-search
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: patent
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 6
+    geo_diversity: 9
+    temporal_depth: 8
+    format_unique: 10
+    trust_level: 9
+  total_score: 8.22
+  discovery_strategy: S4_adjacent_borrow
+  language:
+  - en
+  - fr
+  - es
+  - de
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: Borrows agronomy/plant-breeding sector's breeders'-rights (plant-IP) registry; non-standard patent-like channel.
+  first_seen_round: SDXX-20260609
+- id: CH-0262
+  name: GIAN — Abandoned US Patents Database
+  url_pattern: https://gian.org/abandoned-us-patents/
+  axis:
+    temporal: T-5Y
+    geographic: IN_SEA
+    format: patent
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 6
+    accessibility: 8
+    geo_diversity: 8
+    temporal_depth: 6
+    format_unique: 9
+    trust_level: 7
+  total_score: 7.44
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - sdxx-local
+  validation: model_claimed_unverified
+  novelty_vs_known: India grassroots-innovation network curating ABANDONED lapsed public-domain US patents; failure-filtered patent signal.
+  first_seen_round: SDXX-20260609

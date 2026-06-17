@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Runtime artifacts (engines generate these at the HELIX root at run time).
+# Durable seeds are kept under seed/ and copied into place when running.
+.aox/
+.sdx/
+.sdxx/
+.sdx_ci/
+.tcx/
+.idx/
+.idxx/
+.cix/
+.cixx/
+.evx/
+.recreate/
+.idea-ledger/
+.sa-aox/
+.sa-evx/
+.sa-icx/
+.pgf/runs/

@@ -1,0 +1,980 @@
+consumed_ideas:
+- idea_id: IDEA-001
+  title: AgentOps Accountability Autonomous Compatibility Mesh (L6)
+  normalized_title: agentops-accountability-autonomous-compatibility-mesh-l6
+  aliases:
+  - AgentPACT
+  - PACT
+  semantic_family: agentops-accountability-compatibility-mesh
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-02T11:17:45+00:00'
+  implementations:
+  - project_name: AgentPACT
+    project_path: pact
+    repo_url: https://github.com/sadpig70/pact
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-002
+  title: Robot Incident Evidence Autonomous Compatibility Mesh (L6)
+  normalized_title: robot-incident-evidence-autonomous-compatibility-mesh-l6
+  aliases:
+  - RoboTrace
+  - RobotRace
+  semantic_family: robot-incident-evidence-compatibility-mesh
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-03T11:52:23+00:00'
+  implementations:
+  - project_name: RoboTrace
+    project_path: robotrace
+    repo_url: https://github.com/sadpig70/robotrace
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-003
+  title: Inference Grid Planning Autonomous Compatibility Mesh (L6)
+  normalized_title: inference-grid-planning-autonomous-compatibility-mesh-l6
+  aliases:
+  - InferMesh
+  - InferenceGridMesh
+  semantic_family: inference-grid-planning-compatibility-mesh
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-04T07:56:54+00:00'
+  implementations:
+  - project_name: InferMesh
+    project_path: infermesh
+    repo_url: https://github.com/sadpig70/infermesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-004
+  title: Certifiable Robot Learning Autonomous Compatibility Mesh (L7)
+  normalized_title: certifiable-robot-learning-autonomous-compatibility-mesh-l7
+  aliases:
+  - CertMesh
+  - CertifiableRobotLearningMesh
+  semantic_family: certifiable-robot-learning-compatibility-mesh
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-04T08:09:48+00:00'
+  implementations:
+  - project_name: CertMesh
+    project_path: certmesh
+    repo_url: https://github.com/sadpig70/certmesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-005
+  title: Programmable Settlement Control Autonomous Compatibility Mesh (L7)
+  normalized_title: programmable-settlement-control-autonomous-compatibility-mesh-l7
+  aliases:
+  - SettleMesh
+  - ProgrammableSettlementMesh
+  semantic_family: programmable-settlement-control-compatibility-mesh
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-04T13:08:35+00:00'
+  implementations:
+  - project_name: SettleMesh
+    project_path: settlemesh
+    repo_url: https://github.com/sadpig70/settlemesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-006
+  title: Agent Treasury Counterfactual Autonomous Compatibility Mesh (L9)
+  normalized_title: agent-treasury-counterfactual-autonomous-compatibility-mesh-l9
+  aliases:
+  - SpendMesh
+  - AgentTreasuryMesh
+  semantic_family: agent-treasury-counterfactual-compatibility-mesh
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-05T14:20:29+00:00'
+  implementations:
+  - project_name: SpendMesh
+    project_path: spendmesh
+    repo_url: https://github.com/sadpig70/spendmesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-007
+  title: Robot OS Release Ledger Autonomous Compatibility Mesh (L9)
+  normalized_title: robot-os-release-ledger-autonomous-compatibility-mesh-l9
+  aliases:
+  - ReleaseMesh
+  - RobotOsReleaseLedgerMesh
+  semantic_family: robot-os-release-ledger-compatibility-mesh
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-06T03:54:58+00:00'
+  implementations:
+  - project_name: ReleaseMesh
+    project_path: releasemesh
+    repo_url: https://github.com/sadpig70/releasemesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-008
+  title: Climate Control Evidence Autonomous Compatibility Mesh (L9)
+  normalized_title: climate-control-evidence-autonomous-compatibility-mesh-l9
+  aliases:
+  - ClimateMesh
+  - ClimateControlEvidenceMesh
+  semantic_family: climate-control-evidence-compatibility-mesh
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-06T05:17:44+00:00'
+  implementations:
+  - project_name: ClimateMesh
+    project_path: climatemesh
+    repo_url: https://github.com/sadpig70/climatemesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-009
+  title: Sovereignty Architecture Autonomous Compatibility Mesh (L10)
+  normalized_title: sovereignty-architecture-autonomous-compatibility-mesh-l10
+  aliases:
+  - SovMesh
+  - SovereigntyArchitectureMesh
+  semantic_family: sovereignty-architecture-compatibility-mesh
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-06T07:17:42+00:00'
+  implementations:
+  - project_name: SovMesh
+    project_path: sovmesh
+    repo_url: https://github.com/sadpig70/sovmesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-010
+  title: Bottleneck Translation Autonomous Compatibility Mesh (L10)
+  normalized_title: bottleneck-translation-autonomous-compatibility-mesh-l10
+  aliases:
+  - FlowMesh
+  - BottleneckTranslationMesh
+  semantic_family: bottleneck-translation-compatibility-mesh
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-06T07:34:28+00:00'
+  implementations:
+  - project_name: FlowMesh
+    project_path: flowmesh
+    repo_url: https://github.com/sadpig70/flowmesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-011
+  title: Pre-Standard Compatibility Byproduct Signal Exchange (L10)
+  normalized_title: pre-standard-compatibility-byproduct-signal-exchange-l10
+  aliases:
+  - SignalMesh
+  - ByproductSignalExchange
+  semantic_family: pre-standard-byproduct-signal-exchange
+  source_chain:
+    cix: CIX-20260602-003
+    idx: IDX-20260602-002
+    tcx: TCX-20260602-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-06T07:49:45+00:00'
+  implementations:
+  - project_name: SignalMesh
+    project_path: signalmesh
+    repo_url: https://github.com/sadpig70/signalmesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-002
+  title: 'WasteWatt: Selling Stranded-Cluster Power Hookups, Then Gating on Interconnect
+    Not Chips'
+  normalized_title: wastewatt-selling-stranded-cluster-power-hookups-then-gating-on-interconnect-not-chips
+  aliases:
+  - WasteWatt
+  - WasteStack
+  semantic_family: wastewatt-selling-stranded-cluster-power-hookups-then-gating-on-interconnect-not-chips
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T05:55:55+00:00'
+  implementations:
+  - project_name: WasteStack
+    project_path: wastestack
+    repo_url: https://github.com/sadpig70/wastestack
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-003
+  title: 'DroughtDesk: Curtailment-Failure Futures for Immunology Cold Chains'
+  normalized_title: droughtdesk-curtailment-failure-futures-for-immunology-cold-chains
+  aliases:
+  - DroughtDesk
+  - FailureFutures
+  semantic_family: curtailment-failure-futures-cold-chain
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T06:19:28+00:00'
+  implementations:
+  - project_name: FailureFutures
+    project_path: failfutures
+    repo_url: https://github.com/sadpig70/failfutures
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-004
+  title: 'OrphanX: Stranded-Asset-Failure Market for Robotic Field Fleets'
+  normalized_title: orphanx-stranded-asset-failure-market-for-robotic-field-fleets
+  aliases:
+  - OrphanX
+  - FailureFutures
+  semantic_family: stranded-asset-failure-market-robotic-fleet
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T06:19:28+00:00'
+  implementations:
+  - project_name: FailureFutures
+    project_path: failfutures
+    repo_url: https://github.com/sadpig70/failfutures
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-019
+  title: 'WasteHeat-as-a-Yield: District Thermal Off-take Bonds'
+  normalized_title: wasteheat-as-a-yield-district-thermal-off-take-bonds
+  aliases:
+  - WasteHeat
+  - WasteStack
+  semantic_family: wasteheat-as-a-yield-district-thermal-off-take-bonds
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T05:55:55+00:00'
+  implementations:
+  - project_name: WasteStack
+    project_path: wastestack
+    repo_url: https://github.com/sadpig70/wastestack
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-001
+  title: 'Compute Follows Power: Orbital Load-Roaming Swarm'
+  normalized_title: compute-follows-power-orbital-load-roaming-swarm
+  aliases:
+  - ComputeFollowsPower
+  - PowerRoam
+  semantic_family: compute-follows-power-roaming-swarm
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T07:10:02+00:00'
+  implementations:
+  - project_name: PowerRoam
+    project_path: powerroam
+    repo_url: https://github.com/sadpig70/powerroam
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-005
+  title: 'Insurer-Funded Generation: Bio Screening Paid Like Credit-Card Fraud Loss'
+  normalized_title: insurer-funded-generation-bio-screening-paid-like-credit-card-fraud-loss
+  aliases:
+  - InsurerFundedGeneration
+  - CoverGate
+  semantic_family: insurer-funded-generation-liability-cover-gated-synthesis
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T09:04:03+00:00'
+  implementations:
+  - project_name: CoverGate
+    project_path: covergate
+    repo_url: https://github.com/sadpig70/covergate
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-020
+  title: 'WarmBrine: Selling Data-Center Reject Water, Then Trading on Heat Not Volume'
+  normalized_title: warmbrine-selling-data-center-reject-water-then-trading-on-heat-not-volume
+  aliases: []
+  semantic_family: warmbrine-selling-data-center-reject-water-then-trading-on-heat-not-volume
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: derivative
+  derivative_of: wastestack (IDEA-002/IDEA-019)
+  excluded_reason: L8->L17 datacenter byproduct->heat off-take to district-heating/greenhouse;
+    same domain/lens/buyers as WasteHeat
+- idea_id: IDEA-022
+  title: 'OrbitGlut: Obsolescence-Failure Market for Stranded Satellite Compute'
+  normalized_title: orbitglut-obsolescence-failure-market-for-stranded-satellite-compute
+  aliases: []
+  semantic_family: orbitglut-obsolescence-failure-market-for-stranded-satellite-compute
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: derivative
+  derivative_of: failfutures (IDEA-004 OrphanX)
+  excluded_reason: L7->L11->L19 failure-as-asset salvage clearinghouse; verbatim OrphanX
+    template (stranded satellite). FailureFutures SPEC named this as 3rd vertical
+- idea_id: IDEA-023
+  title: 'CrewGap: Key-Person-Failure Market for On-Orbit Servicing Crews'
+  normalized_title: crewgap-key-person-failure-market-for-on-orbit-servicing-crews
+  aliases: []
+  semantic_family: crewgap-key-person-failure-market-for-on-orbit-servicing-crews
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: derivative
+  derivative_of: failfutures (IDEA-003/IDEA-004)
+  excluded_reason: L7->L11->L19 failure-as-asset clearinghouse; key-person failure
+    variant of FailureFutures template
+- idea_id: IDEA-021
+  title: 'ClaimStream: Selling Incident Exhaust, Then Pricing on Behavior Not Capital'
+  normalized_title: claimstream-selling-incident-exhaust-then-pricing-on-behavior-not-capital
+  aliases: []
+  semantic_family: claimstream-selling-incident-exhaust-then-pricing-on-behavior-not-capital
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: near_duplicate
+  derivative_of: covergate (IDEA-005)
+  excluded_reason: behavior-not-capital underwriting = CoverGate core; incident-exhaust
+    mining (L8)
+- idea_id: IDEA-017
+  title: Aviation-Style Black-Box Authorization Funded by Defrauded Parties
+  normalized_title: aviation-style-black-box-authorization-funded-by-defrauded-parties
+  aliases: []
+  semantic_family: aviation-style-black-box-authorization-funded-by-defrauded-parties
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: near_duplicate
+  derivative_of: covergate (IDEA-005)
+  excluded_reason: L3->L11->L17 invert-who-pays + compliance-envelope gate (insurability-style)
+- idea_id: IDEA-007
+  title: 'Inference-Backed Carbon Sink: Serving Losses Paid by the Atmosphere Market'
+  normalized_title: inference-backed-carbon-sink-serving-losses-paid-by-the-atmosphere-market
+  aliases: []
+  semantic_family: inference-backed-carbon-sink-serving-losses-paid-by-the-atmosphere-market
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: lens_twin
+  derivative_of: covergate (IDEA-005)
+  excluded_reason: L3->L11->L17 invert-who-pays cost-inversion; carbon domain
+- idea_id: IDEA-008
+  title: Streaming-CDN-Style Removal Edge Funded by Content Platforms
+  normalized_title: streaming-cdn-style-removal-edge-funded-by-content-platforms
+  aliases: []
+  semantic_family: streaming-cdn-style-removal-edge-funded-by-content-platforms
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: lens_twin
+  derivative_of: covergate (IDEA-005)
+  excluded_reason: L3->L11->L17 invert-who-pays cost-inversion; carbon-removal domain
+- idea_id: IDEA-011
+  title: 'Inverted Compute: Sell Demand-Response, Not Inference'
+  normalized_title: inverted-compute-sell-demand-response-not-inference
+  aliases: []
+  semantic_family: inverted-compute-sell-demand-response-not-inference
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: lens_twin
+  derivative_of: powerroam (IDEA-001)
+  excluded_reason: L1->L9->L17 reverse-compute-power + scale-to-fleet; same compute/grid
+    domain
+- idea_id: IDEA-015
+  title: Climate-Intervention Generator Exchange With Coupled-Risk Clearing
+  normalized_title: climate-intervention-generator-exchange-with-coupled-risk-clearing
+  aliases: []
+  semantic_family: climate-intervention-generator-exchange-with-coupled-risk-clearing
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: hybrid
+  derivative_of: covergate + failfutures
+  excluded_reason: gate dual-use generators (CoverGate) + coupled-risk clearing (FailureFutures)
+- idea_id: IDEA-013
+  title: Live Telemetry Bazaar From Dark-Factory Exhaust
+  normalized_title: live-telemetry-bazaar-from-dark-factory-exhaust
+  aliases: []
+  semantic_family: live-telemetry-bazaar-from-dark-factory-exhaust
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: lens_family
+  derivative_of: wastestack (L8 side-effect)
+  excluded_reason: L8 mining of factory telemetry exhaust as product
+- idea_id: IDEA-016
+  title: Live Misuse-Pattern Feed Mined From Refusals
+  normalized_title: live-misuse-pattern-feed-mined-from-refusals
+  aliases: []
+  semantic_family: live-misuse-pattern-feed-mined-from-refusals
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:10:03+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: lens_family
+  derivative_of: wastestack (L8 side-effect)
+  excluded_reason: L8 mining of AI-refusal exhaust as misuse-pattern feed
+- idea_id: IDEA-006
+  title: Cold-Capacity Market for Quantum Substrate
+  normalized_title: cold-capacity-market-for-quantum-substrate
+  aliases:
+  - ColdCapacityMarket
+  - ColdMkh
+  semantic_family: cold-capacity-market-quantum-cryo
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:27:55+00:00'
+  implementations:
+  - project_name: ColdMkh
+    project_path: coldmkh
+    repo_url: https://github.com/sadpig70/coldmkh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-010
+  title: One-Time Generator Birth-Certificate, Verified Forever
+  normalized_title: one-time-generator-birth-certificate-verified-forever
+  aliases:
+  - GenCert
+  - GeneratorBirthCertificate
+  semantic_family: generator-birth-certificate-inheritance-attestation
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T11:52:00+00:00'
+  implementations:
+  - project_name: GenCert
+    project_path: gencert
+    repo_url: https://github.com/sadpig70/gencert
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-012
+  title: 'Demand-Side Magnet Cartel: Buyers Set the Terms'
+  normalized_title: demand-side-magnet-cartel-buyers-set-the-terms
+  aliases:
+  - BuyBloc
+  - DemandSideMagnetCartel
+  semantic_family: demand-side-buyer-federation-term-setting
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T12:13:21+00:00'
+  implementations:
+  - project_name: BuyBloc
+    project_path: buybloc
+    repo_url: https://github.com/sadpig70/buybloc
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-014
+  title: Spectrum-Allocation Slot Exchange as the Network's Limiting Reactant
+  normalized_title: spectrum-allocation-slot-exchange-as-the-network-s-limiting-reactant
+  aliases: []
+  semantic_family: spectrum-interconnect-slot-clearing-exchange
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T13:58:37+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: near_dup
+  derivative_of: coldmkh (IDEA-006)
+  excluded_reason: L11->L19 aggregate fragmented idle scarce capacity from many holders
+    into a two-sided clearing exchange selling guaranteed units; same lens stack and
+    core mechanism as ColdMkh (millikelvin-hours -> throughput slots), only the domain
+    differs (quantum cryo -> spectrum/interconnect)
+- idea_id: IDEA-009
+  title: In-Body Compute Capacity Market
+  normalized_title: in-body-compute-capacity-market
+  aliases: []
+  semantic_family: in-body-compute-capacity-clearing-market
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T14:01:21+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: near_dup
+  derivative_of: coldmkh (IDEA-006)
+  excluded_reason: L11->L19 transplant substrate relocation + aggregate fragmented
+    idle capacity from many holders into a two-sided clearing market selling guaranteed
+    units; same lens stack and core mechanism as ColdMkh and the excluded IDEA-014,
+    only the domain differs (quantum cryo -> in-body implant compute)
+- idea_id: IDEA-024
+  title: 'Permanent Capability Endowment: Pay Once, Frontier Forever'
+  normalized_title: permanent-capability-endowment-pay-once-frontier-forever
+  aliases:
+  - EndowFront
+  - PermanentCapabilityEndowment
+  semantic_family: permanent-endowment-perpetual-frontier-funding
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T14:12:36+00:00'
+  implementations:
+  - project_name: EndowFront
+    project_path: endowfront
+    repo_url: https://github.com/sadpig70/endowfront
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-018
+  title: 'Seasonal Removal Battery: Capture Once, Power Compute From It'
+  normalized_title: seasonal-removal-battery-capture-once-power-compute-from-it
+  aliases:
+  - SeasonBat
+  - SeasonalRemovalBattery
+  semantic_family: seasonal-removal-battery-firm-compute
+  source_chain:
+    cix: CIX-20260607-001
+    idx: IDX-20260607-001
+    tcx: TCX-20260606-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-07T14:36:37+00:00'
+  implementations:
+  - project_name: SeasonBat
+    project_path: seasonbat
+    repo_url: https://github.com/sadpig70/seasonbat
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-001
+  title: AI Operations Autonomous Compatibility Mesh (L6)
+  normalized_title: ai-operations-autonomous-compatibility-mesh-l6
+  aliases:
+  - AgentMesh
+  - AgentOps
+  - OpsMesh
+  semantic_family: ai-operations-accountability-compatibility-mesh
+  source_chain:
+    cix: CIX-20260608-002
+    idx: IDX-20260608-001
+    tcx: TCX-20260608-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-08T13:34:43+00:00'
+  implementations:
+  - project_name: AgentMesh
+    project_path: agentmesh
+    repo_url: https://github.com/sadpig70/agentmesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-002
+  title: Quantum Security Autonomous Compatibility Mesh (L6)
+  normalized_title: quantum-security-autonomous-compatibility-mesh-l6
+  aliases:
+  - PqcMesh
+  - PQCMesh
+  - QuantumSecurityMesh
+  semantic_family: quantum-security-pqc-migration-compatibility-mesh
+  source_chain:
+    cix: CIX-20260608-002
+    idx: IDX-20260608-001
+    tcx: TCX-20260608-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-08T23:30:40+00:00'
+  implementations:
+  - project_name: PqcMesh
+    project_path: pqcmesh
+    repo_url: https://github.com/sadpig70/pqcmesh
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-003
+  title: Robotics Autonomous Compatibility Mesh (L6)
+  normalized_title: robotics-autonomous-compatibility-mesh-l6
+  aliases: []
+  semantic_family: robotics-incident-evidence-compatibility-mesh
+  source_chain:
+    cix: CIX-20260608-002
+    idx: IDX-20260608-001
+    tcx: TCX-20260608-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-09T00:03:58+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: derivative
+  derivative_of: robotrace (IDEA-002, robot-incident-evidence-compatibility-mesh)
+  excluded_reason: Same robot post-incident evidence domain + L11/L19/L13 compatibility-mesh
+    mechanism as published robotrace; §4.1 derivative check failed.
+- idea_id: IDEA-004
+  title: Energy Infrastructure Autonomous Compatibility Mesh (L6)
+  normalized_title: energy-infrastructure-autonomous-compatibility-mesh-l6
+  aliases: []
+  semantic_family: inference-grid-planning-compatibility-mesh
+  source_chain:
+    cix: CIX-20260608-002
+    idx: IDX-20260608-001
+    tcx: TCX-20260608-001
+    sdx_catalog: v1.0-union
+  consumed_at_utc: '2026-06-09T00:05:21+00:00'
+  implementations: []
+  reuse_policy: exclude_derivative_or_near_duplicate
+  excluded_as: derivative
+  derivative_of: infermesh (inference-grid-planning-compatibility-mesh)
+  excluded_reason: Identical starting thesis "inference demand as a grid-planning
+    primitive" + L11/L19/L13 mesh mechanism as published infermesh.
+- idea_id: IDEA-018
+  title: Time-Box Automation Enforcer
+  normalized_title: time-box-automation-enforcer
+  aliases:
+  - SlotGate
+  - TimeBoxAutomationEnforcer
+  - IDEA-018
+  semantic_family: time-box-automation-reauthorization-gate
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: EVX-20260610-001
+    sdx_catalog: v2
+  consumed_at_utc: '2026-06-10T13:27:54+00:00'
+  implementations:
+  - project_name: SlotGate
+    project_path: slotgate
+    repo_url: https://github.com/sadpig70/slotgate
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-020
+  title: Orbital Tasking-to-Action Roaming Registry
+  normalized_title: orbital-tasking-to-action-roaming-registry
+  aliases:
+  - OrbiRoam
+  - OrbitalTaskingRoamingRegistry
+  - IDEA-020
+  semantic_family: orbital-tasking-action-roaming-registry
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: EVX-20260610-001
+    sdx_catalog: v2
+  consumed_at_utc: '2026-06-10T13:27:54+00:00'
+  implementations:
+  - project_name: OrbiRoam
+    project_path: orbiroam
+    repo_url: https://github.com/sadpig70/orbiroam
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-003
+  title: Strategic-Reserve Flow Marketplace
+  normalized_title: strategic-reserve-flow-marketplace
+  aliases:
+  - ReserveFlow
+  - StrategicReserveFlowMarketplace
+  - IDEA-003
+  semantic_family: strategic-reserve-flow-clearing-market
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: EVX-20260610-001
+    sdx_catalog: v2
+  consumed_at_utc: '2026-06-10T13:27:54+00:00'
+  implementations:
+  - project_name: ReserveFlow
+    project_path: reserveflow
+    repo_url: https://github.com/sadpig70/reserveflow
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-014
+  title: Interruptible Clearing Gate
+  normalized_title: interruptible-clearing-gate
+  aliases:
+  - VetoEscrow
+  - InterruptibleClearingGate
+  - IDEA-014
+  semantic_family: ai-decision-interruptible-clearing-veto-escrow
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: EVX-20260610-001
+    sdx_catalog: v2
+  consumed_at_utc: '2026-06-10T14:08:44+00:00'
+  implementations:
+  - project_name: VetoEscrow
+    project_path: vetoescrow
+    repo_url: https://github.com/sadpig70/vetoescrow
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-008
+  title: Supply Detour Simulator
+  normalized_title: supply-detour-simulator
+  aliases:
+  - DetourDesk
+  - SupplyDetourSimulator
+  - IDEA-008-CIX-20260609-001
+  semantic_family: supply-chain-detour-operational-simulation
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: EVX-20260610-001
+    sdx_catalog: v2
+  consumed_at_utc: '2026-06-10T14:44:37+00:00'
+  implementations:
+  - project_name: DetourDesk
+    project_path: detourdesk
+    repo_url: https://github.com/sadpig70/detourdesk
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-022
+  title: Mycorrhizal Data Root
+  normalized_title: mycorrhizal-data-root
+  aliases:
+  - FieldRoot
+  - MycorrhizalDataRoot
+  - IDEA-022-CIX-20260609-001
+  semantic_family: precision-agriculture-mycorrhizal-p2p-field-data-root
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: EVX-20260610-001
+    sdx_catalog: v2
+  consumed_at_utc: '2026-06-10T15:01:10+00:00'
+  implementations:
+  - project_name: FieldRoot
+    project_path: fieldroot
+    repo_url: https://github.com/sadpig70/fieldroot
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-016
+  title: Coercion Refusal Options
+  normalized_title: coercion-refusal-options
+  aliases:
+  - RefusalOption
+  - CoercionRefusalOptions
+  - IDEA-016-CIX-20260609-001
+  semantic_family: coercive-rerouting-refusal-option-pricing-desk
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: EVX-20260610-001
+    sdx_catalog: v2
+  consumed_at_utc: '2026-06-11T00:00:00+00:00'
+  implementations:
+  - project_name: RefusalOption
+    project_path: refusaloption
+    repo_url: https://github.com/sadpig70/refusaloption
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-017
+  title: Afferent Human-in-the-Loop Core
+  normalized_title: afferent-human-in-the-loop-core
+  aliases:
+  - AfferentCore
+  - AfferentHumanInTheLoopCore
+  - IDEA-017-CIX-20260609-001
+  semantic_family: afferent-tactile-reflex-interruption-path-verifier
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: EVX-20260610-001
+    sdx_catalog: v2
+  consumed_at_utc: '2026-06-11T00:00:00+00:00'
+  implementations:
+  - project_name: AfferentCore
+    project_path: afferentcore
+    repo_url: https://github.com/sadpig70/afferentcore
+  reuse_policy: exclude_same_or_derivative
+- idea_id: IDEA-009
+  title: Repair the Loop Kit
+  normalized_title: repair-the-loop-kit
+  aliases:
+  - LoopKit
+  - RepairTheLoopKit
+  - IDEA-009-CIX-20260609-001
+  semantic_family: invisible-automation-legibility-repair-loop-kit
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: EVX-20260610-001
+    sdx_catalog: v2
+  consumed_at_utc: '2026-06-11T00:00:00+00:00'
+  implementations:
+  - project_name: LoopKit
+    project_path: loopkit
+    repo_url: https://github.com/sadpig70/loopkit
+  reuse_policy: exclude_same_or_derivative
+- idea_id: SA-EVX-20260611-001-LAZARETTOSTAGE
+  title: LazarettoStage
+  normalized_title: lazarettostage
+  aliases:
+  - LazarettoStage
+  - EngineeredOrganismQuarantineStagingPlanner
+  - SA-EVX-20260611-001-LAZARETTOSTAGE
+  semantic_family: synthetic-biology-engineered-organism-graduated-quarantine-staging
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: SA-EVX-20260611-001
+    sdx_catalog: v2
+    sa_evx: SA-EVX-20260611-001
+    sa_source_artifact: .sa-evx/rounds/SA-EVX-20260611-001/final_integrated_idea.md
+  consumed_at_utc: '2026-06-11T06:58:29+00:00'
+  implementations:
+  - project_name: LazarettoStage
+    project_path: lazarettostage
+    repo_url: https://github.com/sadpig70/lazarettostage
+  reuse_policy: exclude_same_or_derivative
+- idea_id: SA-EVX-20260611-001-DRIFTDOSSIER
+  title: DriftDossier
+  normalized_title: driftdossier
+  aliases:
+  - DriftDossier
+  - ClinicalTrialLiveEvidenceDivergenceCompiler
+  - SA-EVX-20260611-001-DRIFTDOSSIER
+  semantic_family: clinical-trial-live-evidence-divergence-attestation-dossier
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: SA-EVX-20260611-001
+    sdx_catalog: v2
+    sa_evx: SA-EVX-20260611-001
+    sa_source_artifact: .sa-evx/rounds/SA-EVX-20260611-001/final_integrated_idea.md
+  consumed_at_utc: '2026-06-11T07:15:56+00:00'
+  implementations:
+  - project_name: DriftDossier
+    project_path: driftdossier
+    repo_url: https://github.com/sadpig70/driftdossier
+  reuse_policy: exclude_same_or_derivative
+- idea_id: SA-EVX-20260611-001-CONTEXTCREEP
+  title: ContextCreep
+  normalized_title: contextcreep
+  aliases:
+  - ContextCreep
+  - PersistentAgentContextAttackPathEnumerator
+  - SA-EVX-20260611-001-CONTEXTCREEP
+  semantic_family: persistent-agent-accumulated-context-attack-path-enumerator
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: SA-EVX-20260611-001
+    sdx_catalog: v2
+    sa_evx: SA-EVX-20260611-001
+    sa_source_artifact: .sa-evx/rounds/SA-EVX-20260611-001/final_integrated_idea.md
+  consumed_at_utc: '2026-06-11T07:45:00+00:00'
+  implementations:
+  - project_name: ContextCreep
+    project_path: contextcreep
+    repo_url: https://github.com/sadpig70/contextcreep
+  reuse_policy: exclude_same_or_derivative
+- idea_id: SA-EVX-20260611-001-FORGEQUARANTINE
+  title: ForgeQuarantine
+  normalized_title: forgequarantine
+  aliases:
+  - ForgeQuarantine
+  - AdditiveManufacturingPQCExposureLedger
+  - SA-EVX-20260611-001-FORGEQUARANTINE
+  semantic_family: additive-manufacturing-pqc-physical-component-service-life-exposure-ledger
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: SA-EVX-20260611-001
+    sdx_catalog: v2
+    sa_evx: SA-EVX-20260611-001
+    sa_source_artifact: .sa-evx/rounds/SA-EVX-20260611-001/final_integrated_idea.md
+  consumed_at_utc: '2026-06-11T08:13:30+00:00'
+  implementations:
+  - project_name: ForgeQuarantine
+    project_path: forgequarantine
+    repo_url: https://github.com/sadpig70/forgequarantine
+  reuse_policy: exclude_same_or_derivative
+- idea_id: SA-EVX-20260611-001-THERMALPLUMESTAGE
+  title: ThermalPlume Stage
+  normalized_title: thermalplume-stage
+  aliases:
+  - ThermalPlume Stage
+  - ThermalPlumeStage
+  - MarineThermalDischargeDispersionPlanner
+  - SA-EVX-20260611-001-THERMALPLUMESTAGE
+  semantic_family: marine-thermal-discharge-physical-dispersion-valve-schedule
+  source_chain:
+    cix: CIX-20260609-001
+    idx: IDX-20260609-001
+    tcx: TCX-20260609-003
+    evx: SA-EVX-20260611-001
+    sdx_catalog: v2
+    sa_evx: SA-EVX-20260611-001
+    sa_source_artifact: .sa-evx/rounds/SA-EVX-20260611-001/final_integrated_idea.md
+  consumed_at_utc: '2026-06-11T08:27:58+00:00'
+  implementations:
+  - project_name: ThermalPlume Stage
+    project_path: thermalplumestage
+    repo_url: https://github.com/sadpig70/thermalplumestage
+  reuse_policy: exclude_same_or_derivative

@@ -1,0 +1,629 @@
+channels:
+- id: CH-0060
+  name: Defunct Biotech Startup Database (FierceBiotech Archive)
+  url_pattern: https://www.fiercebiotech.com/
+  axis:
+    temporal: T-1Y
+    geographic: US_EU
+    format: news
+    scale: meso
+  metrics:
+    independence: 9
+    signal_density: 7
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 5
+    temporal_depth: 7
+    format_unique: 9
+    trust_level: 6
+  total_score: 7.78
+  discovery_strategy: S3_failure_archive
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료/가입필요
+  notes: 실패한 임상실험 및 폐업 바이오 테크 기업 분석
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0053
+    - agent: .sdx_org/gemini
+      orig_id: CH-0053
+    merged_count: 2
+- id: CH-0082
+  name: MIT Technological Review
+  url_pattern: https://www.technologyreview.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: news
+    scale: meso
+  metrics:
+    independence: 10
+    signal_density: 7
+    persistence: 9
+    accessibility: 3
+    geo_diversity: 6
+    temporal_depth: 7
+    format_unique: 8
+    trust_level: 8
+  total_score: 7.56
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 일부유료
+  notes: 기술 동향 및 분석 미디어
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0054
+    - agent: .sdx_org/gemini
+      orig_id: CH-0054
+    merged_count: 2
+- id: CH-0092
+  name: Hacker News
+  url_pattern: https://news.ycombinator.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: news
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 6
+    temporal_depth: 6
+    format_unique: 6
+    trust_level: 9
+  total_score: 7.44
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-02'
+  access_cost: 무료/가입필요
+  notes: 개발자/창업자 중심 실시간 기술 논쟁 — 초기 adoption backlash 신호
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0055
+    - agent: .sdx_org/kimi
+      orig_id: CH-0010
+    merged_count: 2
+- id: CH-0096
+  name: Reddit Tech Subreddits (r/MachineLearning)
+  url_pattern: https://www.reddit.com/r/MachineLearning/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: news
+    scale: micro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 8
+    accessibility: 8
+    geo_diversity: 6
+    temporal_depth: 6
+    format_unique: 6
+    trust_level: 9
+  total_score: 7.44
+  discovery_strategy: S5_weak_signal
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  access_cost: 무료/가입필요
+  notes: 실시간 현업 인공지능 연구 평가 및 여론 모니터링
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.0
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/gemini
+      orig_id: CH-0055
+    merged_count: 1
+- id: CH-0103
+  name: Al Jazeera Arabic
+  url_pattern: https://www.aljazeera.net/
+  axis:
+    temporal: T-0
+    geographic: MENA
+    format: news
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 9
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 5
+    trust_level: 7
+  total_score: 7.33
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ar
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 아랍어 본문 — 영문판과 다른 MENA 관점·에너지 보도
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.39
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0076
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0056
+    - agent: .sdx_org/gemini
+      orig_id: CH-0056
+    merged_count: 3
+- id: CH-0121
+  name: Meduza
+  url_pattern: https://meduza.io/
+  axis:
+    temporal: T-0
+    geographic: RU_EE
+    format: news
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 8
+    accessibility: 10
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 5
+    trust_level: 7
+  total_score: 7.22
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ru
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료
+  notes: 러시아 독립 미디어(망명) — 국영매체와 다른 관점
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.4
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0079
+    - agent: .sdx_org/chatgpt
+      orig_id: CH-0057
+    - agent: .sdx_org/gemini
+      orig_id: CH-0057
+    merged_count: 3
+- id: CH-0145
+  name: The Africa Report / AllAfrica
+  url_pattern: https://www.theafricareport.com/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: news
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 8
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 5
+    trust_level: 7
+  total_score: 7.0
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - fr
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (일부 유료)
+  notes: 범아프리카 보도 — 자원·인프라·핀테크 현지 시각
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.41
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0077
+    merged_count: 1
+- id: CH-0151
+  name: Folha de S.Paulo
+  url_pattern: https://www.folha.uol.com.br/
+  axis:
+    temporal: T-0
+    geographic: LATAM
+    format: news
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 4
+    trust_level: 6
+  total_score: 6.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  - pt-BR
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0078
+    - agent: .sdx_org/kimi
+      orig_id: CH-0059
+    merged_count: 2
+- id: CH-0152
+  name: The Hindu / Scroll.in
+  url_pattern: https://www.thehindu.com/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: news
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 5
+    trust_level: 7
+  total_score: 6.89
+  discovery_strategy: S2_cross_lingual
+  language:
+  - en
+  - hi
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 무료 (일부 유료)
+  notes: 인도 정론지 — 적정기술·농업·디지털공공인프라
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.47
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0080
+    merged_count: 1
+- id: CH-0157
+  name: People's Daily
+  url_pattern: http://www.people.com.cn/
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: news
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 4
+    trust_level: 6
+  total_score: 6.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0030
+    merged_count: 1
+- id: CH-0158
+  name: Hindustan Times
+  url_pattern: https://www.hindustantimes.com/
+  axis:
+    temporal: T-0
+    geographic: IN_SEA
+    format: news
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 4
+    trust_level: 6
+  total_score: 6.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0044
+    merged_count: 1
+- id: CH-0159
+  name: Mainichi Shimbun
+  url_pattern: https://mainichi.jp/
+  axis:
+    temporal: T-0
+    geographic: JP_KR
+    format: news
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 4
+    trust_level: 6
+  total_score: 6.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0052
+    merged_count: 1
+- id: CH-0160
+  name: Daily Maverick
+  url_pattern: https://www.dailymaverick.co.za/
+  axis:
+    temporal: T-0
+    geographic: AF
+    format: news
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 4
+    trust_level: 6
+  total_score: 6.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0064
+    merged_count: 1
+- id: CH-0161
+  name: Ahram Online
+  url_pattern: http://english.ahram.org.eg/
+  axis:
+    temporal: T-0
+    geographic: MENA
+    format: news
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 4
+    trust_level: 6
+  total_score: 6.89
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0073
+    merged_count: 1
+- id: CH-0163
+  name: 财新 (Caixin)
+  url_pattern: https://www.caixin.com/
+  axis:
+    temporal: T-0
+    geographic: CN
+    format: news
+    scale: macro
+  metrics:
+    independence: 8
+    signal_density: 8
+    persistence: 8
+    accessibility: 4
+    geo_diversity: 10
+    temporal_depth: 2
+    format_unique: 5
+    trust_level: 8
+  total_score: 6.78
+  discovery_strategy: S2_cross_lingual
+  language:
+  - zh-CN
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 유료 (일부 무료)
+  notes: 중국 탐사보도 — 정책·산업 실상 (영문판과 다른 본문)
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.36
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0074
+    merged_count: 1
+- id: CH-0171
+  name: 日本経済新聞 (Nikkei)
+  url_pattern: https://www.nikkei.com/
+  axis:
+    temporal: T-0
+    geographic: JP_KR
+    format: news
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 7
+    persistence: 9
+    accessibility: 4
+    geo_diversity: 9
+    temporal_depth: 2
+    format_unique: 5
+    trust_level: 8
+  total_score: 6.44
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ja
+  url_alive: true
+  validated_at: '2026-05-31'
+  access_cost: 유료
+  notes: 일본 경제지 — 공급망·소부장 1차 보도
+  first_seen_round: 0
+  last_yield_round: null
+  yield_count: 0
+  freshness: 10.0
+  orthogonality_drift: 0.43
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/catalog
+      orig_id: CH-0075
+    merged_count: 1
+- id: CH-0174
+  name: TechCrunch
+  url_pattern: https://techcrunch.com/
+  axis:
+    temporal: T-0
+    geographic: US_EU
+    format: news
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 6
+    persistence: 9
+    accessibility: 9
+    geo_diversity: 2
+    temporal_depth: 3
+    format_unique: 4
+    trust_level: 6
+  total_score: 6.11
+  discovery_strategy: S1_reference_backtrack
+  language:
+  - en
+  url_alive: true
+  validated_at: '2026-06-01'
+  ci_provenance:
+    sources:
+    - agent: .sdx_org/kimi
+      orig_id: CH-0018
+    merged_count: 1
+- id: CH-0256
+  name: Emirates News Agency (WAM)
+  url_pattern: https://wam.ae
+  axis:
+    temporal: T-5Y
+    geographic: MENA
+    format: news
+    scale: macro
+  metrics:
+    independence: 7
+    signal_density: 8
+    persistence: 10
+    accessibility: 10
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 5
+    trust_level: 9
+  total_score: 7.56
+  discovery_strategy: S2_cross_lingual
+  language:
+  - ar
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - gemini
+  validation: model_claimed_unverified
+  novelty_vs_known: UAE(아랍에미리트)의 정부 통신사로 걸프 협력회의(GCC) 지역의 주요 국가 산업 및 외교 정책을 다국어로 독점 보도
+  first_seen_round: SDXX-20260609
+- id: CH-0272
+  name: BIREME Bulletin
+  url_pattern: https://boletin.bireme.org/
+  axis:
+    temporal: T-1Y
+    geographic: LATAM
+    format: news
+    scale: meso
+  metrics:
+    independence: 8
+    signal_density: 7
+    persistence: 7
+    accessibility: 9
+    geo_diversity: 9
+    temporal_depth: 3
+    format_unique: 7
+    trust_level: 7
+  total_score: 7.22
+  discovery_strategy: S5_weak_signal
+  language:
+  - es
+  - pt
+  - en
+  url_alive: true
+  validated_at: null
+  access_cost: unknown
+  discovery_skill: sdxx
+  source_models:
+  - deepseek
+  validation: model_claimed_unverified
+  novelty_vs_known: 라틴아메리카·카리브해 보건 정보 관련 소식을 전하는 전문 뉴스레터로, 지역 특화 시사 정보를 제공함.
+  first_seen_round: SDXX-20260609
