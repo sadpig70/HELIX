@@ -484,3 +484,15 @@ def fix_clippy(workspace: Path) -> FixResult:
 | 하위 노드 10개 이상 | 중간 그룹 노드 추가 |
 | 정확성 필요한 곳에 `AI_` 사용 | 수학/변환은 실제 코드로 |
 | 입출력 타입 미정의 | 파이썬 타입 힌트로 선언 |
+
+---
+
+## Reference — 실행 가이드 (본질 활용)
+
+> SKILL.md가 표기를 *정의*한다면, 아래 문서는 그 표기로 **작업 과정 자체를 프로그래밍**하는 절차를 준다.
+> 필요 시 `{SKILL_DIR}/reference/<name>.md` 를 로드한다.
+
+| Document | Purpose |
+|----------|---------|
+| `{SKILL_DIR}/reference/work-as-program.md` | "작업 자체를 pg로 프로그래밍" — 7단계 루프(분석→설계→작업설계→**PPR 시뮬레이션 사전검증**→실행→재설계→체크포인트) |
+| `{SKILL_DIR}/reference/control-flow-cookbook.md` | 타입 I/O · 조건 · 분기 · 반복 · 도급(공장 라인) 패턴 — 복잡 다단계 작업 오케스트레이션 |
