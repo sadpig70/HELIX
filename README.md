@@ -121,3 +121,7 @@ python core/helix_fingerprint.py source ADPR ReleaseMesh PnR
 - 이중나선 은유는 2가닥에 최적. 향후 explore 소스가 3+로 늘면 삼중나선(collagen)으로 흡수하거나,
   가닥 수 무관하면 백본 중심 framing 유지.
 - 임베딩 임계(cos 0.8/0.65 등)는 양측 차용값 — 통합 코퍼스에 맞춰 재보정 대상.
+
+## 라이선스
+
+[MIT License](LICENSE) © 2025–2026 sadpig70 (Jung Wook Yang)
