@@ -20,4 +20,5 @@ __pycache__/
 .sa-evx/
 .sa-icx/
 .pgf/runs/
+.helix/
 _workspace/

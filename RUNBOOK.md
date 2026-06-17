@@ -77,6 +77,14 @@ python -m unittest discover -s tests -q
 루프 정책(`core/helix_loop.py`): `RECORD_CONSUMED`(구현 winner→ledger) → `REFRESH_INPUTS`(동질화 시) →
 `RUN_EXPLORE`/`RUN_EXPLOIT`(균형). explore winner 구현분은 `winner_to_corpus_entry`로 exploit 코퍼스에 환류(염기쌍).
 
+## 4.5 자율 실행 (문서만 읽고 풀사이클·연속 폐루프)
+
+런타임이 **HELIX를 루트로 두고 문서만 읽어** 자율 수행하려면:
+- **1회 풀사이클 턴**: `docs/INSTRUCTIONS-helix-fullcycle.md` (BASE) — 상태 로드 → `next_action` strand 결정 →
+  엔진 파이프라인 → 통합 ledger 게이트 → `pgf full-cycle` 구현 → `helix.py close-loop` actuator → 검증 → (선택) 공개.
+- **무중단 연속 폐루프**: `docs/INSTRUCTIONS-helix-loop-autonomous.md` (LOOP) — BASE를 inner turn으로 호출,
+  `.helix/loop/loop-state.json` 체크포인트, 다양성 steering·자기진화·공개 가드레일·정지 조건·crash 재개.
+
 ## 5. 런타임 디렉토리 (생성물 — gitignore)
 
 `.sdx/ .tcx/ .idx/ .cix/ .evx/ .aox/ .idea-ledger/ .recreate/ .sa-*/` 는 실행 중 HELIX 루트에 생성된다.
