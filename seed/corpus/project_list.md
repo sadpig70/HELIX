@@ -3,6 +3,7 @@
 D:\\tmp 아래 하위 프로젝트 개요입니다. 각 프로젝트명 뒤의 한 줄은 해당 README.md에서 추출한 요약입니다.
 
 - **ADPR** (ADPR): ADPR is a hash-only provenance log. It never holds biological material or proprietary model weights — only commitments.
+- **ActionHandbackVerifier** (actionhandbackverifier): ActionHandbackVerifier verifies whether a delegated autonomous action was handed back with authority, custody, route, rollback, and public trace evidence intact.
 - **AfferentCore** (afferentcore): AfferentCore is a reflex-interruption path verifier for AI action risk events, modeled on afferent/efferent nerve pathways.
 - **AfferentInterrupt** (afferentinterrupt): AfferentInterrupt detects and interrupts abnormal autonomous-agent loops in real time and issues attestations.
 - **AgentActionGovernanceOS** (agentactiongovernanceos): AgentActionGovernanceOS judges agent actions across pre-approval, in-flight safety, and post-hoc justification.
