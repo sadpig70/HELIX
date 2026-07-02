@@ -191,6 +191,60 @@ def validate_skill_inventory(root: str) -> list:
     return problems
 
 
+def validate_handback_integration(root: str) -> list:
+    """Validate ActionHandbackVerifier integration artifacts (handback gate).
+
+    Checks: (1) close_loop_demo/winner.json parses with required keys,
+    (2) ActionHandbackVerifier core files exist, (3) the shipped handback
+    packet fixture evaluates to ``valid`` via the verifier.
+    """
+    problems = []
+
+    # 1. close_loop_demo winner fixture
+    winner_path = os.path.join(root, "examples", "close_loop_demo", "winner.json")
+    if os.path.exists(winner_path):
+        with open(winner_path, "r", encoding="utf-8") as f:
+            try:
+                winner = json.load(f)
+            except ValueError as e:
+                problems.append(f"close_loop_demo/winner.json: invalid JSON: {e}")
+            else:
+                for key in ("winner", "implementation"):
+                    if key not in winner:
+                        problems.append(f"close_loop_demo/winner.json: missing key '{key}'")
+    else:
+        problems.append("missing file: examples/close_loop_demo/winner.json")
+
+    # 2. ActionHandbackVerifier core files
+    for rel in ("ActionHandbackVerifier/__init__.py",
+                "ActionHandbackVerifier/verifier.py",
+                "ActionHandbackVerifier/ledger.py",
+                "ActionHandbackVerifier/cli.py"):
+        if not os.path.exists(os.path.join(root, rel)):
+            problems.append(f"missing file: {rel}")
+
+    # 3. handback packet fixture verifies as valid
+    packet_path = os.path.join(root, "examples", "exploit_state", "handback_packet.json")
+    if os.path.exists(packet_path):
+        try:
+            sys.path.insert(0, root)
+            from ActionHandbackVerifier.verifier import evaluate_handback
+            with open(packet_path, "r", encoding="utf-8") as f:
+                packet = json.load(f)
+            result = evaluate_handback(packet)
+            if result["verdict"] != "valid":
+                problems.append(
+                    f"handback_packet.json: expected valid, got {result['verdict']}")
+        except ImportError:
+            pass  # ActionHandbackVerifier absent (standalone extracted) — skip
+        except Exception as e:
+            problems.append(f"handback_packet.json: evaluation failed: {e}")
+    else:
+        problems.append("missing file: examples/exploit_state/handback_packet.json")
+
+    return problems
+
+
 def validate_project(root: str) -> list:
     """Validate the HELIX project layout + example artifacts under `root`."""
     problems = []
@@ -237,6 +291,9 @@ def validate_project(root: str) -> list:
     problems += validate_schemas(root)
     problems += cross_check_schema_vs_validator(root)
 
+    # handback gate integration (ActionHandbackVerifier artifacts)
+    problems += validate_handback_integration(root)
+
     return problems
 
 
@@ -245,6 +302,7 @@ def _main(argv) -> int:
     print(f"=== HELIX validation (root: {os.path.abspath(root)}) ===")
     print(f"  - match keys: {', '.join(MATCH_KEYS)}")
     print(f"  - diversity thresholds: {DEFAULT_THRESHOLDS}")
+    print(f"  - handback gate: ActionHandbackVerifier")
     problems = validate_project(root)
     if problems:
         print("\nFAIL — problems:")
