@@ -55,8 +55,13 @@ def evx_manifest_to_source_chain(manifest: dict) -> dict:
 
 def idea_pool_to_pool(idea_pool: dict) -> list:
     """CIX idea_pool.yaml -> diversity pool items {title, domains, system_description}."""
+    ideas = (idea_pool or {}).get("ideas")
+    innovation = (idea_pool or {}).get("innovation")
+    if ideas is None and isinstance(innovation, dict):
+        ideas = innovation.get("ideas")
+
     pool = []
-    for idea in (idea_pool or {}).get("ideas", []) or []:
+    for idea in ideas or []:
         pool.append({
             "id": idea.get("id"),
             "title": idea.get("title", ""),

@@ -89,6 +89,36 @@ def close_loop(explore_winner: dict, source_chain: dict, implementation: dict,
             "corpus_entry": corpus_entry, "corpus_added": added}
 
 
+def verify_handback(registry_path: str, project_name: str, packet_path: str) -> dict:
+    """Actuator: verify a project's handback packet and persist the verdict.
+
+    Loads the handback packet, evaluates it with ActionHandbackVerifier, and
+    writes the verdict into the registry entry's ``handback_verdict`` field
+    (atomic write). The next ``registry_to_ledger`` read trusts the persisted
+    verdict without re-evaluation, closing the write/read loop.
+    """
+    registry = read_json(registry_path, default=None)
+    if registry is None:
+        raise FileNotFoundError(f"registry not found: {registry_path}")
+    projects = registry.get("generated_projects", {})
+    gp = projects.get(project_name)
+    if gp is None:
+        raise KeyError(f"project not found in registry: {project_name}")
+    with open(packet_path, "r", encoding="utf-8") as f:
+        packet = json.load(f)
+    from ActionHandbackVerifier.verifier import evaluate_handback
+    result = evaluate_handback(packet)
+    gp["handback_verdict"] = result["verdict"]
+    atomic_write_json(registry_path, registry)
+    return {
+        "status": "verified",
+        "project": project_name,
+        "verdict": result["verdict"],
+        "handback_id": result.get("handback_id", ""),
+        "persisted": True,
+    }
+
+
 def build_report(explore_root=None, exploit_root=None, sim=None) -> dict:
     """Run one HELIX turn over the two engines' state. Deterministic given inputs.
 
@@ -104,6 +134,7 @@ def build_report(explore_root=None, exploit_root=None, sim=None) -> dict:
     # 1) project each engine's native store onto the unified ledger, then merge
     explore_ledger = explore_adp.consumed_yaml_to_ledger(ex["consumed"]) if ex["consumed"] else None
     exploit_ledger = exploit_adp.registry_to_ledger(xp["registry"]) if xp["registry"] else None
+    handback_gate = exploit_ledger.pop("_handback_gate", None) if exploit_ledger else None
     ledger = build_unified_ledger(explore_ledger, exploit_ledger)
 
     # 2) combined diversity pool (explore ideas + exploit candidates)
@@ -141,7 +172,13 @@ def build_report(explore_root=None, exploit_root=None, sim=None) -> dict:
     # 5) next loop action
     #    corpus = exploit-origin entries + explore winners fed back as corpus sources.
     corpus_size = sum(1 for e in ledger["consumed"] if e.get("origin") == "exploit") + len(corpus_feedback)
-    last_engine = "explore" if ex["stage6_final"] else ("exploit" if xp["registry"] else None)
+    exploit_run_status = xp.get("run_status") or {}
+    exploit_phase = exploit_run_status.get("phase")
+    # A run-scoped recreate status is stronger evidence than the fixture explore
+    # winner: it means the exploit strand actually completed a live turn.
+    last_engine = "exploit" if exploit_phase else (
+        "explore" if ex["stage6_final"] else ("exploit" if xp["registry"] else None)
+    )
     # A freshly selected EVX winner is NOT yet built; recording into the ledger
     # happens on a later turn after pgf implements it. So the read-only status view
     # never marks a winner pending-implemented (RECORD_CONSUMED is driven by a build event).
@@ -163,7 +200,14 @@ def build_report(explore_root=None, exploit_root=None, sim=None) -> dict:
         "pool_size": len(pool),
         "diversity": diversity,
         "winner": winner_report,
+        "latest_exploit_run": {
+            "run_id": exploit_run_status.get("run_id"),
+            "phase": exploit_phase,
+            "winner": exploit_run_status.get("winner"),
+            "implementation_path": exploit_run_status.get("implementation_path"),
+        } if exploit_run_status else None,
         "corpus_feedback": corpus_feedback,
+        "handback_gate": handback_gate,
         "next_action": action,
     }
 
@@ -183,6 +227,9 @@ def _print_report(r: dict) -> None:
     if r["corpus_feedback"]:
         names = ", ".join(c["project"] for c in r["corpus_feedback"])
         print(f"  base-pairing (explore->corpus): {names}")
+    g = r.get("handback_gate")
+    if g and g.get("checked"):
+        print(f"  handback gate: {g['checked']} checked, {g['passed']} passed, {g['excluded']} excluded")
     a = r["next_action"]
     print(f"  NEXT ACTION: {a['action']}  ({a['why']})")
 
@@ -208,6 +255,8 @@ USAGE = ("usage:\n"
          "  python helix.py status [--explore-root R] [--exploit-root R] [--sim lexical|mod:fn] [--json]\n"
          "  python helix.py close-loop --winner <winner.json> --ledger <ledger.json> "
          "--corpus <corpus.json> [--now <iso>]\n"
+         "  python helix.py verify-handback --registry <registry.json> --project <name> "
+         "--packet <handback.json>\n"
          "  python helix.py loop-status [--loop-state <loop-state.json>] [--ledger <ledger.json>]\n")
 
 
@@ -239,6 +288,17 @@ def _main(argv) -> int:
             ledger_path=ledger_path, corpus_path=corpus_path, now=_now(argv))
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0 if result["status"] in ("closed", "already_recorded") else 1
+
+    if cmd == "verify-handback":
+        registry_path = _opt(argv, "--registry")
+        project_name = _opt(argv, "--project")
+        packet_path = _opt(argv, "--packet")
+        if not (registry_path and project_name and packet_path):
+            sys.stderr.write(USAGE)
+            return 2
+        result = verify_handback(registry_path, project_name, packet_path)
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0 if result["verdict"] != "breach" else 1
 
     if cmd == "loop-status":
         # read-only: report the autonomous loop's deterministic control state

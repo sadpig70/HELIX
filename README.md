@@ -62,13 +62,17 @@ HELIX/
 ├── helix.py                  # ★ 드라이버 — 두 엔진 상태→통합 ledger→diversity→next_action
 ├── engines/                  # 가닥 어댑터 — vendored 스킬 ↔ core 배선. 실코드 구현됨.
 │   ├── explore/adapter.py    #   가닥 A — IdeaFirst(.evx/.cix/.idea-ledger) → 백본
-│   ├── exploit/adapter.py    #   가닥 B — recreate(.recreate/registry.json) → 백본
+│   ├── exploit/adapter.py    #   가닥 B — recreate(.recreate/registry.json) → 백본 + handback 게이트
 │   ├── unify.py              #   두 엔진 ledger 병합 (단일 출처 join)
 │   └── loaders.py            #   I/O glue (JSON; YAML은 PyYAML 있을 때만)
+├── ActionHandbackVerifier/   # ★ exploit 산출물 — handback 검증 CLI + 백본 게이트 (stdlib only)
+│   ├── verifier.py           #   5-predicate 검사 (authority·custody·route·rollback·trace)
+│   ├── ledger.py             #   append-only hash-chain audit ledger
+│   └── cli.py                #   sample / run / report / verify
 ├── schemas/                  # 백본 데이터 계약 (JSON Schema 4종)
 ├── docs/
-│   ├── ARCHITECTURE.md       # 이중나선 → 시스템 매핑 (정정판)
-│   └── SUBSTRATE-CONTRACT.md # HELIX-Core 단일 출처 계약
+│   ├── ARCHITECTURE.md       # 이중나선 → 시스템 매핑 (정정판, §7 핸드백 게이트)
+│   └── SUBSTRATE-CONTRACT.md # HELIX-Core 단일 출처 계약 (§8 handback 게이트 포함)
 ├── examples/                 # 샘플 ledger + 1라운드 루프
 └── tests/                    # 결정론 helper unittest (stdlib only)
 ```
@@ -137,6 +141,11 @@ python core/helix_fingerprint.py source ADPR ReleaseMesh PnR
   드라이버는 가닥 목록을 받아 라운드를 배분할 뿐(가닥 추가 = 어댑터 추가, `docs/ARCHITECTURE.md §6`).
 - **결정론 경계.** `core/`+어댑터는 순수 stdlib(시계·네트워크·AI 없음, `now`/`sim` 주입); 엔진 LLM
   단계는 메타층; exploit 생성물 verdict 경로는 결정론 불변.
+- **exploit 구현물 handback 검증 = 결정론 게이트.** `ActionHandbackVerifier`(stdlib)가 exploit
+  생성물의 handback boundary(권한·인계·경로·롤백·추적)를 검증하며, `breach` 판정은 통합 ledger
+  `consumed`에서 제외된다. `verify-handback` actuator가 verdict를 registry에 영속화하고
+  `registry_to_ledger` read가 persisted verdict를 신뢰하여 읽기/쓰기 루프를 폐쇄한다
+  (`RUNBOOK §핸드백 게이트`).
 
 ### 범위 밖 (non-goals, 결함 아님)
 - 임베딩 모델 자체는 미동봉(주입 인터페이스 제공). 시장 수요·상업성 판단은 범위 밖(엔진의 평가층 소관).

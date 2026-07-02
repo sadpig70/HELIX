@@ -76,6 +76,25 @@ def _walk(value, schema, path, problems):
             _walk(item, schema["items"], f"{path}[{i}]", problems)
 
 
+def _jsonschema_path(path) -> str:
+    out = "$"
+    for part in path:
+        if isinstance(part, int):
+            out += f"[{part}]"
+        else:
+            out += f".{part}"
+    return out
+
+
+def _jsonschema_problem(error) -> list:
+    """Normalize optional jsonschema errors to HELIX's stdlib walker style."""
+    path = _jsonschema_path(error.absolute_path)
+    if error.validator == "required" and isinstance(error.instance, dict):
+        missing = [k for k in error.validator_value if k not in error.instance]
+        return [f"{path}: missing required key '{key}'" for key in missing]
+    return [f"{path}: {error.message}"]
+
+
 def schema_features(schema: dict) -> dict:
     """Report whether a schema stays inside the stdlib walker's supported subset.
 
@@ -121,9 +140,11 @@ def validate_against_schema(doc, schema) -> list:
         schema = _load_json(schema)
     try:
         import jsonschema  # optional; full draft-07 when available
-        return [f"$.{'.'.join(str(p) for p in e.absolute_path)}: {e.message}"
-                for e in sorted(jsonschema.Draft7Validator(schema).iter_errors(doc),
-                                key=lambda e: list(e.absolute_path))]
+        problems = []
+        for error in sorted(jsonschema.Draft7Validator(schema).iter_errors(doc),
+                            key=lambda e: list(e.absolute_path)):
+            problems.extend(_jsonschema_problem(error))
+        return problems
     except ImportError:
         problems = []
         _walk(doc, schema, "$", problems)

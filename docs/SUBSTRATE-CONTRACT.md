@@ -95,3 +95,31 @@ jsonschema 미의존(ProjectGenome `validate_projectgenome.py`와 동일 철학)
 | IdeaFirst `consumed_ideas.yaml` 로직, `AOX/SDX` homogenization 임계 | `core/helix_ledger`, `core/helix_diversity` |
 
 → 임계·로직이 시스템 *사이*에서 갈라질 위험(desync) 제거.
+
+## 8. exploit adapter — 핸드백 게이트 (ActionHandbackVerifier 연동)
+
+**위치**: `engines/exploit/adapter.py`. core가 아닌 어댑터 계층이지만, exploit 생성물의
+admit/exclude를 결정하는 **백본 검증 계약**의 일부.
+
+**계약**: `registry_to_ledger`는 각 `generated_project`의 handback verdict를 해석하여 consumed
+admit/exclude를 결정한다.
+
+| 함수 | 계약 |
+|---|---|
+| `_resolve_handback(gp)` | persisted `handback_verdict` 우선 신뢰; 없으면 `handback` packet으로 live 검증; 둘 다 없으면 `None` |
+| `_verify_handback(gp)` | `handback` packet → ActionHandbackVerifier `evaluate_handback` (lazy import) → `{verdict, handback_id}` |
+| `registry_to_ledger(registry)` | 각 entry에 게이트 적용: `breach` → consumed 제외; `valid`/`thin` → `handback_verdict` 표시; `_handback_gate` 통계 반환 |
+
+**writer 계약** (`helix.py verify_handback`): registry entry의 `handback_verdict`를 atomic write로
+영속화. 다음 turn의 `registry_to_ledger`가 persisted verdict를 재검증 없이 신뢰 → 읽기/쓰기 폐쇄.
+
+**verdict 매핑**:
+
+| verdict | consumed | 게이트 통계 |
+|---|---|---|
+| `valid` / `thin` | admitted + `handback_verdict` 표시 | passed++ |
+| `breach` | excluded | excluded++ |
+| packet/verdict 없음 | admitted (변경 없음) | 미카운트 |
+
+**결정론 보장**: ActionHandbackVerifier는 순수 stdlib (시계·네트워크·AI 없음) → §0 결정론 규약 준수.
+ledger와 마찬가지로 품질 인증이 아니라 **admit/exclude 게이트**다.

@@ -35,6 +35,26 @@ class TestExploreAdapter(unittest.TestCase):
         self.assertEqual(len(pool), 4)
         self.assertTrue(all("title" in it and "domains" in it for it in pool))
 
+    def test_idea_pool_to_pool_accepts_live_innovation_shape(self):
+        pool = A.idea_pool_to_pool({
+            "innovation": {
+                "round_id": "CIX-20260702-001",
+                "ideas": [
+                    {
+                        "id": "IDEA-001",
+                        "title": "AI Operations Autonomous Compatibility Mesh (L6)",
+                        "domains": ["aiops", "governance"],
+                        "system_description": "Compatibility verifier for autonomous operations.",
+                        "source_insight_id": "INSIGHT-001",
+                    }
+                ],
+            }
+        })
+        self.assertEqual(len(pool), 1)
+        self.assertEqual(pool[0]["id"], "IDEA-001")
+        self.assertEqual(pool[0]["title"], "AI Operations Autonomous Compatibility Mesh (L6)")
+        self.assertEqual(pool[0]["domains"], ["aiops", "governance"])
+
     def test_consumed_yaml_to_ledger_indexes(self):
         ledger = A.consumed_yaml_to_ledger(load("consumed_ideas.json"))
         self.assertEqual(len(ledger["consumed"]), 1)
