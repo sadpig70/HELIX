@@ -1,0 +1,24 @@
+{
+  "winner": {
+    "id": "IDEA-018",
+    "title": "Time-Box Automation Enforcer",
+    "layer": "L10_Generative",
+    "generated_by_persona": "P5",
+    "provenance_model": "kimi",
+    "source_insight_id": "INS-L10-007",
+    "cix_total_score": 8.88,
+    "votes": 5,
+    "voters": ["P3", "P7", "P9", "P10", "P11"],
+    "cognitive_style_breadth": 2,
+    "mean_persona_score": 8.528,
+    "max_persona_score": 9.1
+  },
+  "source_chain": {
+    "evx": "EVX-20260610-001",
+    "cix": "CIX-20260609-001"
+  },
+  "implementation": {
+    "project_name": "TimeBoxEnforcer",
+    "project_path": "timeboxenforcer"
+  }
+}
