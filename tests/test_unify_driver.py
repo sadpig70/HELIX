@@ -206,6 +206,61 @@ class TestDriver(unittest.TestCase):
         self.assertEqual(r["pool_size"], 4 + 1)
         self.assertEqual(r["next_action"]["action"], "RUN_EXPLORE")
 
+    def _winner(self):
+        return _load("examples", "explore_state", "stage6_final.json")["consensus_winner"]
+
+    def test_close_loop_without_packet_backward_compatible(self):
+        with tempfile.TemporaryDirectory() as d:
+            ledger_path = os.path.join(d, "ledger.json")
+            corpus_path = os.path.join(d, "corpus.json")
+            result = helix.close_loop(
+                explore_winner=self._winner(),
+                source_chain={"cix": "CIX-1"},
+                implementation={"project_name": "TestProj", "project_path": "test"},
+                ledger_path=ledger_path, corpus_path=corpus_path,
+                now="2026-07-02T00:00:00+00:00")
+            self.assertEqual(result["status"], "closed")
+            self.assertNotIn("handback", result)
+
+    def test_close_loop_with_valid_handback(self):
+        from ActionHandbackVerifier.samples import VALID_PACKET
+        with tempfile.TemporaryDirectory() as d:
+            ledger_path = os.path.join(d, "ledger.json")
+            corpus_path = os.path.join(d, "corpus.json")
+            pkt_path = os.path.join(d, "handback.json")
+            _write_json(pkt_path, VALID_PACKET)
+            result = helix.close_loop(
+                explore_winner=self._winner(),
+                source_chain={"cix": "CIX-1"},
+                implementation={"project_name": "TestProj", "project_path": "test"},
+                ledger_path=ledger_path, corpus_path=corpus_path,
+                now="2026-07-02T00:00:00+00:00",
+                packet_path=pkt_path)
+            self.assertEqual(result["status"], "closed")
+            self.assertEqual(result["handback"]["verdict"], "valid")
+            ledger = helix.load_ledger(ledger_path)
+            self.assertEqual(ledger["consumed"][0]["handback_verdict"], "valid")
+
+    def test_close_loop_with_breach_handback_aborts(self):
+        from ActionHandbackVerifier.samples import BREACH_PACKET
+        with tempfile.TemporaryDirectory() as d:
+            ledger_path = os.path.join(d, "ledger.json")
+            corpus_path = os.path.join(d, "corpus.json")
+            pkt_path = os.path.join(d, "handback.json")
+            _write_json(pkt_path, BREACH_PACKET)
+            result = helix.close_loop(
+                explore_winner=self._winner(),
+                source_chain={"cix": "CIX-1"},
+                implementation={"project_name": "TestProj", "project_path": "test"},
+                ledger_path=ledger_path, corpus_path=corpus_path,
+                now="2026-07-02T00:00:00+00:00",
+                packet_path=pkt_path)
+            self.assertEqual(result["status"], "handback_breach")
+            self.assertEqual(result["handback"]["verdict"], "breach")
+            # nothing was written
+            ledger = helix.load_ledger(ledger_path)
+            self.assertEqual(len(ledger["consumed"]), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

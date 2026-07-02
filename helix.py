@@ -68,25 +68,51 @@ def append_corpus_entry(corpus_path: str, entry: dict) -> bool:
 
 
 def close_loop(explore_winner: dict, source_chain: dict, implementation: dict,
-               ledger_path: str, corpus_path: str, now: str) -> dict:
+               ledger_path: str, corpus_path: str, now: str,
+               packet_path: str = None) -> dict:
     """Actuator: record an implemented explore winner and feed it to the corpus.
 
     Idempotent — re-running on an already-recorded winner is a no-op. `now` is
     injected (the CLI stamps it). This is what turns next_action's RECORD_CONSUMED
     intent into an actual ledger/corpus mutation (closes the loop).
+
+    If ``packet_path`` is supplied, the handback packet is verified with
+    ActionHandbackVerifier *before* writing. A ``breach`` verdict aborts the
+    write (nothing is persisted); ``valid``/``thin`` annotate the entry.
     """
+    handback = None
+    if packet_path:
+        with open(packet_path, "r", encoding="utf-8") as f:
+            packet = json.load(f)
+        from ActionHandbackVerifier.verifier import evaluate_handback
+        verdict_doc = evaluate_handback(packet)
+        handback = {"verdict": verdict_doc["verdict"],
+                    "handback_id": verdict_doc.get("handback_id", "")}
+        if handback["verdict"] == "breach":
+            return {"status": "handback_breach",
+                    "idea_id": explore_winner.get("idea_id", ""),
+                    "handback": handback}
+
     entry = explore_adp.evx_winner_to_consumed_entry(
         winner=explore_winner, source_chain=source_chain,
         implementations=[implementation])
+    if handback:
+        entry["handback_verdict"] = handback["verdict"]
     ledger = load_ledger(ledger_path)
     if is_consumed(entry, ledger)["consumed"]:
-        return {"status": "already_recorded", "idea_id": entry["idea_id"]}
+        result = {"status": "already_recorded", "idea_id": entry["idea_id"]}
+        if handback:
+            result["handback"] = handback
+        return result
     append_consumed(ledger, entry, now=now)
     corpus_entry = winner_to_corpus_entry(entry)
     added = append_corpus_entry(corpus_path, corpus_entry)
     save_ledger(ledger_path, ledger)
-    return {"status": "closed", "idea_id": entry["idea_id"],
-            "corpus_entry": corpus_entry, "corpus_added": added}
+    result = {"status": "closed", "idea_id": entry["idea_id"],
+              "corpus_entry": corpus_entry, "corpus_added": added}
+    if handback:
+        result["handback"] = handback
+    return result
 
 
 def verify_handback(registry_path: str, project_name: str, packet_path: str) -> dict:
@@ -254,7 +280,7 @@ def _now(argv):
 USAGE = ("usage:\n"
          "  python helix.py status [--explore-root R] [--exploit-root R] [--sim lexical|mod:fn] [--json]\n"
          "  python helix.py close-loop --winner <winner.json> --ledger <ledger.json> "
-         "--corpus <corpus.json> [--now <iso>]\n"
+         "--corpus <corpus.json> [--now <iso>] [--packet <handback.json>]\n"
          "  python helix.py verify-handback --registry <registry.json> --project <name> "
          "--packet <handback.json>\n"
          "  python helix.py loop-status [--loop-state <loop-state.json>] [--ledger <ledger.json>]\n")
@@ -276,6 +302,7 @@ def _main(argv) -> int:
         wf = _opt(argv, "--winner")
         ledger_path = _opt(argv, "--ledger")
         corpus_path = _opt(argv, "--corpus")
+        packet_path = _opt(argv, "--packet")
         if not (wf and ledger_path and corpus_path):
             sys.stderr.write(USAGE)
             return 2
@@ -285,7 +312,8 @@ def _main(argv) -> int:
             explore_winner=spec["winner"],
             source_chain=spec.get("source_chain", {}),
             implementation=spec["implementation"],
-            ledger_path=ledger_path, corpus_path=corpus_path, now=_now(argv))
+            ledger_path=ledger_path, corpus_path=corpus_path, now=_now(argv),
+            packet_path=packet_path)
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0 if result["status"] in ("closed", "already_recorded") else 1
 
