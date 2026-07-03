@@ -28,6 +28,12 @@ class TestShouldStop(unittest.TestCase):
     def test_failures(self):
         self.assertEqual(should_stop({"consecutive_failures": 3})["reason"], "consecutive_failures")
 
+    def test_handback_breach_stops(self):
+        self.assertEqual(should_stop({"handback_breach": True})["reason"], "handback_breach")
+
+    def test_handback_breach_absent_continues(self):
+        self.assertFalse(should_stop({"turn": 1})["stop"])
+
     def test_deterministic(self):
         s = {"turn": 2, "consecutive_dry": 1}
         self.assertEqual(should_stop(s), should_stop(s))
@@ -86,6 +92,21 @@ class TestStateIo(unittest.TestCase):
         self.assertFalse(rep["stop"]["stop"])
         self.assertEqual(rep["coverage"]["origin"], {"explore": 1})
         self.assertEqual(rep["least_covered_origin"], "explore")
+
+    def test_status_report_handback_breach_stops(self):
+        rep = loop_status_report(
+            {"turn": 1, "status": "active"},
+            handback_gate={"checked": 2, "passed": 1, "excluded": 1},
+        )
+        self.assertTrue(rep["stop"]["stop"])
+        self.assertEqual(rep["stop"]["reason"], "handback_breach")
+
+    def test_status_report_no_handback_breach(self):
+        rep = loop_status_report(
+            {"turn": 1, "status": "active"},
+            handback_gate={"checked": 1, "passed": 1, "excluded": 0},
+        )
+        self.assertFalse(rep["stop"]["stop"])
 
 
 if __name__ == "__main__":

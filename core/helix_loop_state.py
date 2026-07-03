@@ -41,6 +41,8 @@ def should_stop(state: dict, policy: dict = None) -> dict:
         return {"stop": True, "reason": "human_stop"}
     if state.get("integrity_alarm"):
         return {"stop": True, "reason": "integrity_alarm"}
+    if state.get("handback_breach"):
+        return {"stop": True, "reason": "handback_breach"}
     if state.get("budget_exhausted"):
         return {"stop": True, "reason": "budget_exhausted"}
     max_turns = P.get("max_turns")
@@ -105,13 +107,21 @@ def checkpoint_loop_state(path: str, state: dict) -> None:
     atomic_write_json(path, state)
 
 
-def loop_status_report(state: dict, ledger: dict = None, policy: dict = None) -> dict:
-    """Read-only summary for the `helix.py loop-status` helper (no turn execution)."""
+def loop_status_report(state: dict, ledger: dict = None, policy: dict = None,
+                       handback_gate: dict = None) -> dict:
+    """Read-only summary for the `helix.py loop-status` helper (no turn execution).
+
+    When ``handback_gate`` reports excluded > 0, the loop state is enriched with
+    ``handback_breach=True`` so ``should_stop`` can fire a stop.
+    """
+    enriched = dict(state)
+    if handback_gate and handback_gate.get("excluded", 0) > 0:
+        enriched["handback_breach"] = True
     rep = {
-        "status": state.get("status", "active"),
-        "turn": state.get("turn", 0),
-        "stop": should_stop(state, policy),
-        "strand_counts": state.get("strand_counts", {}),
+        "status": enriched.get("status", "active"),
+        "turn": enriched.get("turn", 0),
+        "stop": should_stop(enriched, policy),
+        "strand_counts": enriched.get("strand_counts", {}),
     }
     if ledger is not None:
         cov = update_coverage(ledger)

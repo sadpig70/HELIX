@@ -245,6 +245,16 @@ def _print_report(r: dict) -> None:
     print(f"  diversity pool: {r['pool_size']} items | "
           f"triggered={r['diversity']['triggered']} (sim={r['diversity']['sim_kind']}, "
           f"breaches={r['diversity']['breaches']})")
+    d = r["diversity"]
+    if d["triggered"]:
+        pairs = d.get("signals", {}).get("breached_pairs", [])
+        if pairs:
+            top = pairs[0]
+            print(f"  diversity breach: top pair '{top['pair'][0]} + {top['pair'][1]}' "
+                  f"= {top['count']}x (threshold {top['threshold']})")
+        kws = d.get("signals", {}).get("breached_keywords", [])
+        if kws:
+            print(f"  keyword concentration: {', '.join(kws[:5])}")
     if r["winner"]:
         w = r["winner"]
         print(f"  latest explore winner: {w['winner_id']} \"{w['title']}\" "

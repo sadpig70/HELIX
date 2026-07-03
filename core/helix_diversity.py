@@ -74,29 +74,46 @@ def keyword_coverage(pool, k=None) -> float:
     n = len(pool)
     if n == 0:
         return 0.0
-    token_sets = [set(tokenize_name(_item_text(it))) for it in pool]
-    df = Counter()
-    for ts in token_sets:
-        df.update(ts)
-    if not df:
+    top, token_sets = _keyword_topk(pool, k)
+    if not top:
         return 0.0
-    if k is None:
-        k = min(10, max(3, int(len(df) ** 0.5)))
-    # top-k by (frequency desc, token asc) -> deterministic
-    top = [tok for tok, _ in sorted(df.items(), key=lambda kv: (-kv[1], kv[0]))[:k]]
     top_set = set(top)
     covered = sum(1 for ts in token_sets if ts & top_set)
     return covered / n
 
 
+def _keyword_topk(pool, k=None):
+    """Top-k keywords by document frequency (deterministic: freq desc, token asc).
+
+    Returns (top_keywords, token_sets) so callers can reuse both the ranking and
+    the pre-computed sets without re-tokenizing.
+    """
+    token_sets = [set(tokenize_name(_item_text(it))) for it in pool]
+    df = Counter()
+    for ts in token_sets:
+        df.update(ts)
+    if not df:
+        return [], token_sets
+    if k is None:
+        k = min(10, max(3, int(len(df) ** 0.5)))
+    top = [tok for tok, _ in sorted(df.items(), key=lambda kv: (-kv[1], kv[0]))[:k]]
+    return top, token_sets
+
+
 def max_domain_pair_repeat(pool) -> int:
     """Largest number of items sharing the same unordered domain pair (deterministic)."""
+    counter = _domain_pair_counter(pool)
+    return max(counter.values()) if counter else 0
+
+
+def _domain_pair_counter(pool):
+    """Counter of unordered domain pairs across pool items (deterministic)."""
     counter = Counter()
     for it in pool:
         domains = sorted({d for d in it.get("domains", []) if d})
         for pair in combinations(domains, 2):
             counter[pair] += 1
-    return max(counter.values()) if counter else 0
+    return counter
 
 
 def avg_pairwise(items, sim):
@@ -181,6 +198,21 @@ def measure_diversity(pool, recent_winners=None, sim=None, thresholds=None) -> d
     # exploit-side island collapse (low unique_ratio) must not be silently ignored
     repair_required = triggered or (P.get("unique_ratio_triggers_repair", True) and unique_below)
 
+    # breach cause detail (empty when no breach — backward compatible)
+    breached_keywords = []
+    if kc >= P["keyword_coverage"]:
+        top, _ = _keyword_topk(pool)
+        breached_keywords = top
+
+    breached_pairs = []
+    if mpc >= P["max_pair_count"]:
+        pair_counter = _domain_pair_counter(pool)
+        breached_pairs = [
+            {"pair": list(pair), "count": count, "threshold": P["max_pair_count"]}
+            for pair, count in pair_counter.most_common(3)
+            if count >= P["max_pair_count"]
+        ]
+
     return {
         "triggered": triggered,
         "repair_required": repair_required,
@@ -191,6 +223,8 @@ def measure_diversity(pool, recent_winners=None, sim=None, thresholds=None) -> d
             "unique_ratio": uniq,
             "unique_ratio_below_floor": unique_below,
             "breached": [name for name, _, b in checks if b],
+            "breached_keywords": breached_keywords,
+            "breached_pairs": breached_pairs,
         },
         "thresholds": P,
     }

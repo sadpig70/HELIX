@@ -93,6 +93,36 @@ class TestDiversity(unittest.TestCase):
                   "winner_embedding_similarity", "dup_cos", "min_breaches"):
             self.assertIn(k, DEFAULT_THRESHOLDS)
 
+    def test_breached_keywords_populated_on_breach(self):
+        pool = make_pool(["mesh ledger gate", "mesh ledger stage", "mesh ledger index"])
+        rep = measure_diversity(pool, sim=lambda a, b: 0.1)
+        kws = rep["signals"]["breached_keywords"]
+        self.assertTrue(kws, "expected non-empty breached_keywords on keyword_coverage breach")
+        self.assertIn("mesh", kws)
+
+    def test_breached_keywords_empty_when_diverse(self):
+        pool = make_pool(["alpha one", "beta two", "gamma three", "delta four"],
+                         domains=[["a", "b"], ["c", "d"], ["e", "f"], ["g", "h"]])
+        rep = measure_diversity(pool, sim=lambda a, b: 0.05)
+        self.assertEqual(rep["signals"]["breached_keywords"], [])
+
+    def test_breached_pairs_populated_on_breach(self):
+        pool = make_pool(["a", "b", "c", "d"],
+                         domains=[["gov", "infra"], ["gov", "infra"],
+                                  ["gov", "infra"], ["gov", "infra"]])
+        rep = measure_diversity(pool, sim=lambda a, b: 0.1)
+        pairs = rep["signals"]["breached_pairs"]
+        self.assertTrue(pairs, "expected non-empty breached_pairs on max_pair_count breach")
+        top = pairs[0]
+        self.assertEqual(top["count"], 4)
+        self.assertEqual(top["threshold"], DEFAULT_THRESHOLDS["max_pair_count"])
+
+    def test_breached_pairs_empty_when_diverse(self):
+        pool = make_pool(["a", "b"],
+                         domains=[["x", "y"], ["z", "w"]])
+        rep = measure_diversity(pool, sim=lambda a, b: 0.1)
+        self.assertEqual(rep["signals"]["breached_pairs"], [])
+
 
 if __name__ == "__main__":
     unittest.main()
