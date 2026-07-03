@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mineral-shock"
+version = "0.1.0"
+description = "Strategic-mineral reserve market, refusal option, and shock rehearsal — ReserveFlow + RefusalOption + ShockRehearsal."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Jung Wook Yang" }]
+keywords = ["strategic-minerals", "reserve", "refusal-option", "shock", "supply-chain", "geopolitics", "deterministic"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+mineral-shock = "MineralShock.cli:main"
+
+[tool.setuptools]
+packages = ["MineralShock", "MineralShock.tests"]
