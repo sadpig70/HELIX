@@ -1,0 +1,241 @@
+{
+  "schema": "helix-layered-corpus/1.0",
+  "updated": "2026-07-06",
+  "layer0_projects": {
+    "count": 69,
+    "ref": "seed/corpus/project_list.md + _workspace/condense/U1-mechanism-graph.md",
+    "machines": "M1..M14 (see U1)",
+    "source_roots": [
+      "D:/HELIX",
+      "D:/recreate_prj",
+      "D:/IdeaFirst"
+    ]
+  },
+  "layer1_platforms": [
+    {
+      "name": "Attestra",
+      "verb": "attest",
+      "cluster": "Governance/Trust",
+      "packs": 13,
+      "repo": "github.com/sadpig70/Attestra",
+      "published": true,
+      "reused_machines": [
+        "M1",
+        "M14"
+      ],
+      "kernel_machines": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M14"
+      ],
+      "consolidated": [
+        "ActionHandbackVerifier",
+        "SpendBoundary",
+        "VetoEscrow",
+        "DelegationUnderwriter",
+        "WithheldActionWitness",
+        "PolicyDriftDossier",
+        "CustodyRelayDocket",
+        "SlotGate",
+        "ContextCreep",
+        "AgentActionGovernanceOS",
+        "ReproDossier",
+        "GenCert",
+        "ReserveFlow(verify)"
+      ]
+    },
+    {
+      "name": "Clearstra",
+      "verb": "clear",
+      "cluster": "Clearing/Market",
+      "packs": 10,
+      "repo": "github.com/sadpig70/Clearstra",
+      "published": true,
+      "reused_machines": [
+        "M1(from Attestra)",
+        "M14"
+      ],
+      "kernel_machines": [
+        "M1",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "consolidated": [
+        "CryoFutures",
+        "ColdMkh",
+        "FailureFutures",
+        "ReserveFlow",
+        "RefusalOption",
+        "ExclusiveGrantWarrant",
+        "QuadraticCarbonFund",
+        "BuyBloc",
+        "ShockRehearsal",
+        "RRE"
+      ]
+    },
+    {
+      "name": "Routestra",
+      "verb": "route",
+      "cluster": "Routing/Siting",
+      "packs": 10,
+      "repo": "github.com/sadpig70/Routestra",
+      "published": true,
+      "reused_machines": [
+        "M1",
+        "M4",
+        "M14"
+      ],
+      "kernel_machines": [
+        "M9",
+        "M10",
+        "M4",
+        "M1"
+      ],
+      "consolidated": [
+        "SkyGrid",
+        "PowerRoam",
+        "InferMesh",
+        "WattWeaveAI",
+        "SoilBond",
+        "ThermalCascadeBound",
+        "ThermalPlumeStage",
+        "WasteStack",
+        "SeasonBat",
+        "ClimateMesh"
+      ]
+    },
+    {
+      "name": "Certstra",
+      "verb": "certify",
+      "cluster": "Robotics/Release",
+      "packs": 3,
+      "repo": "D:/HELIX/Certstra (local, unpublished)",
+      "published": false,
+      "reused_machines": [
+        "M1",
+        "M14",
+        "M2",
+        "M4",
+        "determinism"
+      ],
+      "new_machines": [
+        "M12(stage_schedule)"
+      ],
+      "kernel_machines": [
+        "M2",
+        "M4",
+        "M12",
+        "M1"
+      ],
+      "consolidated": [
+        "CertMesh",
+        "ReleaseMesh",
+        "RoboTrace"
+      ],
+      "emitted_by": "Condense recipe (U3 pilot)"
+    }
+  ],
+  "layer2_ecosystem": {
+    "shared_severity_algebra": "valid/thin/breach == compliant/restricted/violation == certifiable/needs_review/blocked",
+    "composition_edges": [
+      {
+        "from": "Clearstra.clear()",
+        "to": "Attestra.reserve-flow verdict",
+        "proven": "clear() output attests valid"
+      },
+      {
+        "from": "Routestra bound verdict",
+        "to": "Attestra severity (to_attestra_verdict)",
+        "proven": "aligned"
+      },
+      {
+        "from": "Certstra certify verdict",
+        "to": "Attestra severity (to_attestra_verdict)",
+        "proven": "aligned"
+      }
+    ]
+  },
+  "base_pairing_feedback": {
+    "rule": "새 corpus 프로젝트가 기존 플랫폼의 machine을 공유하고 그 contract에 맞으면 -> 독립 프로젝트가 아니라 그 플랫폼의 PACK으로 생성(build-on-platform).",
+    "absorbed_total": 36,
+    "build_on_platform_candidates": {
+      "Attestra": [
+        "MethodBond",
+        "ADPR",
+        "AgentPACT",
+        "GPOA",
+        "CoverGate",
+        "AfferentCore",
+        "AfferentInterrupt",
+        "LoopKit",
+        "PnR",
+        "QVeil",
+        "PqcMesh",
+        "ForgeQuarantine",
+        "MLX",
+        "Qvidence",
+        "SpendMesh",
+        "SlotSettleGate",
+        "SovMesh(done)",
+        "AgentMesh",
+        "SignalMesh",
+        "FlowMesh"
+      ],
+      "Clearstra": [
+        "MineralShock",
+        "EndowFront",
+        "DetourDesk",
+        "SettleMesh"
+      ],
+      "Routestra": [
+        "WattMesh",
+        "FieldRoot"
+      ],
+      "Certstra": [
+        "RouteSentinel",
+        "OrbiRoam"
+      ]
+    },
+    "remaining_unplatformed_clusters": [
+      "Bio staged-release (BioClock,DriftDossier,Qvidence,LazarettoStage)",
+      "Compatibility Mesh (AgentMesh,PqcMesh,SovMesh,SignalMesh,FlowMesh)",
+      "white-space: Drift (M11) cross-cluster"
+    ]
+  },
+  "candidate_clusters": [
+    {
+      "cluster": "Compatibility Mesh",
+      "substantiated_count": 5,
+      "shared_machines": [
+        "M2",
+        "M3"
+      ],
+      "note": "machine = Attestra predicate-gate + verdict (SovMesh.audit) -> BUILD_ON_PLATFORM, not new platform",
+      "members_implemented": [
+        "SovMesh",
+        "PqcMesh",
+        "AgentMesh",
+        "SignalMesh",
+        "FlowMesh"
+      ]
+    },
+    {
+      "cluster": "Bio staged-release",
+      "substantiated_count": 3,
+      "shared_machines": [
+        "M11",
+        "M12"
+      ],
+      "note": "M11 drift is a novel machine (not platformed) -> genuine CONDENSE candidate once >= threshold",
+      "members_implemented": [
+        "BioClock",
+        "DriftDossier",
+        "LazarettoStage"
+      ]
+    }
+  ]
+}
