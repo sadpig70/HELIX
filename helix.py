@@ -25,6 +25,8 @@ from core.helix_ledger import (                               # noqa: E402
     is_consumed, append_consumed, load_ledger, save_ledger,
 )
 from core.helix_loop import next_action                       # noqa: E402
+from core.helix_condense import condense_state                # noqa: E402
+from core.helix_project_paths import ensure_project_src       # noqa: E402
 from core.helix_provenance import trace_winner, winner_to_corpus_entry  # noqa: E402
 from core.helix_validate import validate_corpus_entry         # noqa: E402
 from engines.loaders import load_explore_state, load_exploit_state      # noqa: E402
@@ -84,6 +86,7 @@ def close_loop(explore_winner: dict, source_chain: dict, implementation: dict,
     if packet_path:
         with open(packet_path, "r", encoding="utf-8") as f:
             packet = json.load(f)
+        ensure_project_src(ROOT, "ActionHandbackVerifier")
         from ActionHandbackVerifier.verifier import evaluate_handback
         verdict_doc = evaluate_handback(packet)
         handback = {"verdict": verdict_doc["verdict"],
@@ -132,6 +135,7 @@ def verify_handback(registry_path: str, project_name: str, packet_path: str) -> 
         raise KeyError(f"project not found in registry: {project_name}")
     with open(packet_path, "r", encoding="utf-8") as f:
         packet = json.load(f)
+    ensure_project_src(ROOT, "ActionHandbackVerifier")
     from ActionHandbackVerifier.verifier import evaluate_handback
     result = evaluate_handback(packet)
     gp["handback_verdict"] = result["verdict"]
@@ -145,7 +149,7 @@ def verify_handback(registry_path: str, project_name: str, packet_path: str) -> 
     }
 
 
-def build_report(explore_root=None, exploit_root=None, sim=None) -> dict:
+def build_report(explore_root=None, exploit_root=None, sim=None, layered_corpus_path=None) -> dict:
     """Run one HELIX turn over the two engines' state. Deterministic given inputs.
 
     `sim` is an optional semantic similarity callable; when None the diversity
@@ -215,6 +219,14 @@ def build_report(explore_root=None, exploit_root=None, sim=None) -> dict:
         "pending_implemented_winner": False,
         "winner_in_ledger": bool(winner_report and winner_report["already_consumed"]),
     }
+    # Condense strand (opt-in): when a layered-corpus is given (--layered-corpus), derive
+    # CONDENSE / BUILD_ON_PLATFORM candidates from it. Pure transform; file loading is the
+    # driver's job. No path -> no candidates -> status behaves exactly as before.
+    condense = {}
+    if layered_corpus_path and os.path.exists(layered_corpus_path):
+        with open(layered_corpus_path, "r", encoding="utf-8") as f:
+            condense = condense_state(json.load(f))
+        state.update(condense)
     action = next_action(state)
 
     return {
@@ -234,6 +246,7 @@ def build_report(explore_root=None, exploit_root=None, sim=None) -> dict:
         } if exploit_run_status else None,
         "corpus_feedback": corpus_feedback,
         "handback_gate": handback_gate,
+        "condense": condense or None,
         "next_action": action,
     }
 
@@ -266,6 +279,15 @@ def _print_report(r: dict) -> None:
     g = r.get("handback_gate")
     if g and g.get("checked"):
         print(f"  handback gate: {g['checked']} checked, {g['passed']} passed, {g['excluded']} excluded")
+    c = r.get("condense")
+    if c:
+        cc = c.get("condense_candidate")
+        if cc:
+            print(f"  condense candidate: '{cc['cluster']}' "
+                  f"({cc['substantiated_count']} substantiated, unplatformed)")
+        bp = c.get("build_on_platform_candidate")
+        if bp:
+            print(f"  build-on-platform: {bp['project']} -> {bp['platform']} (grow as pack)")
     a = r["next_action"]
     print(f"  NEXT ACTION: {a['action']}  ({a['why']})")
 
@@ -301,7 +323,8 @@ def _main(argv) -> int:
 
     if cmd == "status":
         report = build_report(_opt(argv, "--explore-root"), _opt(argv, "--exploit-root"),
-                              sim=resolve_sim(_opt(argv, "--sim")))
+                              sim=resolve_sim(_opt(argv, "--sim")),
+                              layered_corpus_path=_opt(argv, "--layered-corpus"))
         if "--json" in argv:
             print(json.dumps(report, ensure_ascii=False, indent=2))
         else:
