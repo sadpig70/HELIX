@@ -55,6 +55,20 @@ class TestCondenseAdapter(unittest.TestCase):
     def test_empty_layered_corpus(self):
         self.assertEqual(condense_state({}), {})   # no candidates -> empty (backward compatible)
 
+    def test_machine_covered_cluster_is_not_condense(self):
+        # a cluster whose machine an existing platform already provides -> BUILD_ON_PLATFORM,
+        # not a new platform (the SovMesh/Compatibility-Mesh finding).
+        lc = {"layer1_platforms": [{"cluster": "Governance/Trust", "kernel_machines": ["M1", "M2", "M3", "M4"]}],
+              "candidate_clusters": [{"cluster": "Compatibility Mesh", "substantiated_count": 9,
+                                      "shared_machines": ["M2", "M3"]}]}
+        self.assertIsNone(condense_candidate(lc))
+
+    def test_novel_machine_cluster_can_condense(self):
+        lc = {"layer1_platforms": [{"cluster": "Governance", "kernel_machines": ["M1", "M2", "M3", "M4"]}],
+              "candidate_clusters": [{"cluster": "Bio", "substantiated_count": 6,
+                                      "shared_machines": ["M11", "M12"]}]}
+        self.assertEqual(condense_candidate(lc)["cluster"], "Bio")   # M11 novel -> condensable
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -19,17 +19,42 @@ def _platformed_clusters(layered_corpus):
     return {p.get("cluster") for p in layered_corpus.get("layer1_platforms", [])}
 
 
-def condense_candidate(layered_corpus, policy=None):
-    """Ripest unplatformed candidate cluster (>= threshold substantiated projects).
+def _covered_machines(layered_corpus):
+    """Machines already provided by an existing platform's kernel."""
+    covered = set()
+    for p in layered_corpus.get("layer1_platforms", []):
+        covered.update(str(m).split("(")[0] for m in p.get("kernel_machines", []))
+    return covered
 
+
+def _cluster_machines(cluster):
+    ms = cluster.get("shared_machines")
+    if ms is None:
+        ms = [cluster.get("shared_machine")] if cluster.get("shared_machine") else []
+    return {str(m).strip() for m in ms if str(m).strip()}
+
+
+def condense_candidate(layered_corpus, policy=None):
+    """Ripest CONDENSE-eligible cluster (>= threshold substantiated projects).
+
+    Machine-aware: a cluster whose machine set is already covered by an existing
+    platform is NOT a new-platform candidate (it belongs on that platform as packs ->
+    BUILD_ON_PLATFORM). Only clusters with a genuinely novel machine can CONDENSE.
     Deterministic tie-break: highest substantiated_count, then cluster name ascending.
     Returns {cluster, substantiated_count, platformized:False} or None.
     """
     P = {**DEFAULT_CONDENSE_POLICY, **(policy or {})}
     platformed = _platformed_clusters(layered_corpus)
-    ripe = [c for c in layered_corpus.get("candidate_clusters", [])
-            if c.get("cluster") not in platformed
-            and int(c.get("substantiated_count", 0)) >= P["min_cluster_for_condense"]]
+    covered = _covered_machines(layered_corpus)
+    ripe = []
+    for c in layered_corpus.get("candidate_clusters", []):
+        if c.get("cluster") in platformed:
+            continue
+        cms = _cluster_machines(c)
+        if cms and cms <= covered:   # machine already platformed -> BUILD_ON_PLATFORM, not CONDENSE
+            continue
+        if int(c.get("substantiated_count", 0)) >= P["min_cluster_for_condense"]:
+            ripe.append(c)
     if not ripe:
         return None
     best = sorted(ripe, key=lambda c: (-int(c["substantiated_count"]), str(c["cluster"])))[0]
