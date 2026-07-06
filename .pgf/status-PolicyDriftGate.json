@@ -1,0 +1,70 @@
+{
+  "project": "PolicyDriftGate",
+  "version": "1.0",
+  "phase": "done",
+  "design": ".pgf/DESIGN-PolicyDriftGate.md",
+  "workplan": ".pgf/WORKPLAN-PolicyDriftGate.md",
+  "source_seed": ".recreate/runs/003-policydriftgate/DESIGN-SEED-PolicyDriftGate.md",
+  "summary": {
+    "total": 21,
+    "done": 21,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  },
+  "nodes": {
+    "PolicyDriftGate": {"status": "done"},
+    "InputContract": {"status": "done"},
+    "SampleFixtures": {"status": "done"},
+    "PacketSections": {"status": "done"},
+    "PredicateEngine": {"status": "done"},
+    "BehaviorCheck": {"status": "done"},
+    "DossierCheck": {"status": "done"},
+    "LoopSignalCheck": {"status": "done"},
+    "VerdictAggregate": {"status": "done"},
+    "CliTriplet": {"status": "done"},
+    "SampleCommand": {"status": "done"},
+    "RunCommand": {"status": "done"},
+    "ReportCommand": {"status": "done"},
+    "ClosedAuditLedger": {"status": "done"},
+    "LedgerAppend": {"status": "done"},
+    "LedgerVerify": {"status": "done"},
+    "VerifyCommand": {"status": "done"},
+    "TestSuite": {"status": "done"},
+    "Verify": {"status": "done"}
+  },
+  "outputs": {
+    "files_created": [
+      "PolicyDriftGate/.gitignore",
+      "PolicyDriftGate/LICENSE",
+      "PolicyDriftGate/README.md",
+      "PolicyDriftGate/pyproject.toml",
+      "PolicyDriftGate/src/PolicyDriftGate/__init__.py",
+      "PolicyDriftGate/src/PolicyDriftGate/__main__.py",
+      "PolicyDriftGate/src/PolicyDriftGate/cli.py",
+      "PolicyDriftGate/src/PolicyDriftGate/ledger.py",
+      "PolicyDriftGate/src/PolicyDriftGate/samples.py",
+      "PolicyDriftGate/src/PolicyDriftGate/verifier.py",
+      "PolicyDriftGate/tests/test_policy_drift_gate.py",
+      "tests/test_policy_drift_gate.py"
+    ],
+    "commands": {
+      "sample": "python -m PolicyDriftGate sample",
+      "run": "python -m PolicyDriftGate run --input <packet.json> [--ledger <ledger.jsonl>]",
+      "report": "python -m PolicyDriftGate report --input <packet.json>",
+      "verify": "python -m PolicyDriftGate verify --ledger <ledger.jsonl>"
+    }
+  },
+  "verify": {
+    "acceptance": "passed — sample emits cleared/warned/interrupted; run is deterministic; loop_signal interrupt overrides cleared/warned policy; private payload rejected; ledger append+verify+tamper detection pass",
+    "quality": "passed — stdlib-only, pure predicate helpers, no hidden clock/network/random; ledger records are timestamp-free and deterministic",
+    "architecture": "passed — DESIGN Gantree maps to verifier.py, ledger.py, cli.py, samples.py, and tests; self-contained (zero HELIX core/engines imports)",
+    "standalone": "passed — pyproject.toml enables pip install -e . with policy-drift-gate entry point; no dependency outside stdlib",
+    "commands": [
+      "python -m unittest tests.test_policy_drift_gate -q",
+      "python -m unittest PolicyDriftGate.tests.test_policy_drift_gate -q"
+    ],
+    "verdict": "passed"
+  },
+  "next": "Closed-audit loop complete. Bind PolicyDriftGate verdict into HELIX exploit adapter or extract as standalone repo."
+}

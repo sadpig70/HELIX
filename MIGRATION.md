@@ -29,6 +29,16 @@
 2. **fingerprint 중복 금지.** ProjectGenome `fingerprint.py`는 이미 `core/helix_fingerprint.py`로 승격 → vendor 안 함(스킬/스크립트는 core 참조).
 3. **recreate canonical = `.agents/skills/recreate`** (idea-layer 포함). 공개 패키징본 ProjectGenome은 미포함(중복 회피; 결정론 스크립트만 차용).
 4. **런타임 산출물 미포함.** `.aox/.cix/.sdx(runs)/.idea-ledger(history)` 등 *생성물*은 vendor 안 함(`.gitignore`). 단 *durable 입력/상태*(catalog, ledger 시드)는 `seed/`로 포함.
+5. **ActionHandbackVerifier — recreate 생성물 → 백본 handback 게이트 통합.** HELIX가
+   `seed/corpus/` 재조합으로 ActionHandbackVerifier를 최초 exploit 산출물로 생성(`.recreate/runs/001`)
+   했고, 이를 standalone 패키지(`pyproject.toml`)로 승격한 뒤 exploit adapter의 검증 게이트로 통합했다:
+   - **read**: `registry_to_ledger`가 registry entry의 `handback`/`handback_verdict`를 해석하여
+     breach=consumed 제외, valid/thin=admit (`_resolve_handback`).
+   - **write**: `verify-handback` actuator가 verdict를 registry에 영속화 (atomic write).
+   - **actuator 통합**: `close-loop --packet`이 winner 기록 전 handback 검증 (breach=abort, fail-fast).
+   - **검증**: `helix_validate.validate_handback_integration`이 fixture 일관성을 CI에서 자동 검증.
+   - **결정론 경계 준수**: ActionHandbackVerifier는 순수 stdlib → 백본 결정론 경계 위반 없음
+     (ARCHITECTURE §7 proofreading 메타포, SUBSTRATE-CONTRACT §8 계약).
 
 ## 경로 정규화 (B5)
 
@@ -47,3 +57,5 @@ vendored 45개 파일에서 다음을 HELIX 레이아웃으로 치환:
 - 스킬은 **AI-native(parser-free)** — `skills/{name}/SKILL.md`를 로드하면 AI 런타임이 그 기능을 수행한다(주 실행 경로).
 - `scripts/`의 결정론 runner는 **선택적 local emit 도구** — HELIX 루트를 project-root로 받아 런타임 산출 디렉토리(`.sdx/.cix/...`)를 생성. seed/는 그 입력 시드.
 - HELIX-Core(`core/`)는 두 시스템의 ledger/diversity/provenance를 단일화한 백본 — vendored 스킬의 중복 로직을 대체하는 단일 출처.
+- ActionHandbackVerifier는 HELIX가 생성한 exploit 산출물이자 백본 handback 게이트 — `core/`가 아닌
+  최상위 패키지이지만 exploit adapter를 통해 백본 검증 계약의 일부로 작동한다 (SUBSTRATE-CONTRACT §8).

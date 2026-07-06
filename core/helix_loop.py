@@ -7,21 +7,31 @@ diversity refresh (anti-homogenization) over raw generation. This is the single
 place where the two engines are sequenced; the engines themselves stay independent.
 
 Action vocabulary:
-    RECORD_CONSUMED  - an implemented winner must be written to the ledger
-                       (closes provenance; base-pairing). Highest priority.
-    REFRESH_INPUTS   - diversity triggered -> refresh inputs before generating
-                       (explore: sdx/sdxx refresh; exploit: bump avoidance).
-    RUN_EXPLORE      - scan the world for fresh signal (IdeaFirst).
-    RUN_EXPLOIT      - recombine accumulated assets (recreate).
+    RECORD_CONSUMED   - an implemented winner must be written to the ledger
+                        (closes provenance; base-pairing). Highest priority.
+    REFRESH_INPUTS    - diversity triggered -> refresh inputs before generating
+                        (explore: sdx/sdxx refresh; exploit: bump avoidance).
+    CONDENSE          - a ripe cluster of >=N substantiated projects sharing a
+                        machine, not yet platformized -> emit a platform (the
+                        convergence strand; project generator -> platform generator).
+    BUILD_ON_PLATFORM - a substantiated project fits an existing platform's contract
+                        -> generate it as a PACK for that platform (zero-kernel-change),
+                        not another standalone project (layered corpus).
+    RUN_EXPLORE       - scan the world for fresh signal (IdeaFirst).
+    RUN_EXPLOIT       - recombine accumulated assets (recreate).
 
 Determinism: pure function of `state`; identical state -> identical action.
+CONDENSE/BUILD_ON_PLATFORM add deliberate convergence at the platform layer while
+diversity gates keep generation divergent -> a layered spiral (projects -> platforms).
 """
 
 DEFAULT_LOOP_POLICY = {
-    "min_corpus_for_exploit": 2,   # below this, prefer fresh external signal
+    "min_corpus_for_exploit": 2,     # below this, prefer fresh external signal
+    "min_cluster_for_condense": 5,   # >=N substantiated projects sharing a machine -> condensable
 }
 
-VALID_ACTIONS = ("RECORD_CONSUMED", "REFRESH_INPUTS", "RUN_EXPLORE", "RUN_EXPLOIT")
+VALID_ACTIONS = ("RECORD_CONSUMED", "REFRESH_INPUTS", "CONDENSE",
+                 "BUILD_ON_PLATFORM", "RUN_EXPLORE", "RUN_EXPLOIT")
 
 
 def next_action(state: dict, policy: dict = None) -> dict:
@@ -33,6 +43,10 @@ def next_action(state: dict, policy: dict = None) -> dict:
         corpus_size: int                         (exploit corpus source count)
         pending_implemented_winner: bool         (a built winner awaiting record)
         winner_in_ledger: bool                   (already recorded?)
+        condense_candidate: {cluster, substantiated_count, platformized}
+                                                 (a ripe cluster from the layered corpus)
+        build_on_platform_candidate: {project, platform}
+                                                 (a substantiated project fitting a platform contract)
 
     Returns {action, why, [target]}.
     """
@@ -58,10 +72,30 @@ def next_action(state: dict, policy: dict = None) -> dict:
                 "why": "diversity repair_required -> refresh inputs before generating",
                 "target": target}
 
+    # 2.5) Condense — a ripe cluster of substantiated projects sharing a machine, not
+    #      yet platformized, should be consolidated into a platform (convergence strand).
+    #      Placed above generation so accumulated value is layered before it diverges
+    #      further; only fires when a cluster is genuinely ripe (implies a mature corpus).
+    condense = state.get("condense_candidate") or {}
+    if (int(condense.get("substantiated_count", 0)) >= P["min_cluster_for_condense"]
+            and not condense.get("platformized")):
+        return {"action": "CONDENSE",
+                "why": "ripe cluster (>=N substantiated, shared machine) -> emit platform",
+                "target": condense.get("cluster")}
+
     # 3) Immature corpus -> bring in fresh external novelty.
     if corpus_size < P["min_corpus_for_exploit"]:
         return {"action": "RUN_EXPLORE",
                 "why": "corpus immature -> scan world for fresh signal"}
+
+    # 3.5) Build on platform — a substantiated project fitting an existing platform's
+    #      contract is grown as a PACK (zero-kernel-change), not a standalone project.
+    #      Preferred over generic recombination when a candidate exists (layered corpus).
+    build_on = state.get("build_on_platform_candidate") or {}
+    if build_on.get("project") and build_on.get("platform"):
+        return {"action": "BUILD_ON_PLATFORM",
+                "why": "substantiated project fits existing platform -> grow as pack (zero-kernel-change)",
+                "target": {"project": build_on["project"], "platform": build_on["platform"]}}
 
     # 4) Balance the two strands: after explore, compound via exploit; else explore.
     if last_engine == "explore":

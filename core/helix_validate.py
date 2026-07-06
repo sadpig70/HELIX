@@ -16,13 +16,17 @@ import sys
 
 try:  # package import (python -m core.helix_validate) or library use
     from .helix_ledger import is_consumed, MATCH_KEYS
-    from .helix_diversity import DEFAULT_THRESHOLDS
+    from .helix_diversity import DEFAULT_THRESHOLDS, measure_diversity
     from .helix_loop import VALID_ACTIONS, next_action
+    from .helix_project_paths import ensure_project_src
+    from .helix_schema import validate_against_schema, schema_features, schema_path
 except ImportError:  # direct script run: python core/helix_validate.py
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     from core.helix_ledger import is_consumed, MATCH_KEYS
-    from core.helix_diversity import DEFAULT_THRESHOLDS
+    from core.helix_diversity import DEFAULT_THRESHOLDS, measure_diversity
     from core.helix_loop import VALID_ACTIONS, next_action
+    from core.helix_project_paths import ensure_project_src
+    from core.helix_schema import validate_against_schema, schema_features, schema_path
 
 REQUIRED_LEDGER_KEYS = ("schema_version", "consumed", "blocked_names",
                         "source_fingerprints", "generated_fingerprints")
@@ -110,6 +114,62 @@ def validate_thresholds(P: dict) -> list:
     return problems
 
 
+def _schema_required(root: str, name: str) -> set:
+    """Top-level `required` keys declared by a shipped schema."""
+    try:
+        with open(schema_path(root, name), "r", encoding="utf-8") as f:
+            return set(json.load(f).get("required", []))
+    except (FileNotFoundError, ValueError):
+        return set()
+
+
+def cross_check_schema_vs_validator(root: str) -> list:
+    """Detect drift between schemas/ and the hand-written validators (F1).
+
+    The schema's declared `required` keys must match what the code enforces; if a
+    schema gains/loses a required key without the validator following, this fires.
+    Also flags any schema that uses keywords outside the stdlib walker's subset
+    while jsonschema is absent (would be silently under-validated).
+    """
+    problems = []
+    ledger_req = _schema_required(root, "ledger")
+    if ledger_req and ledger_req != set(REQUIRED_LEDGER_KEYS):
+        problems.append(f"schema/validator drift: ledger.schema required {sorted(ledger_req)} "
+                        f"!= REQUIRED_LEDGER_KEYS {sorted(REQUIRED_LEDGER_KEYS)}")
+    try:
+        import jsonschema  # noqa: F401
+        have_jsonschema = True
+    except ImportError:
+        have_jsonschema = False
+    if not have_jsonschema:
+        for name in ("ledger", "diversity-report", "loop-state", "corpus-entry"):
+            sp = schema_path(root, name)
+            if not os.path.exists(sp):
+                continue
+            with open(sp, "r", encoding="utf-8") as f:
+                feats = schema_features(json.load(f))
+            if not feats["in_subset"]:
+                problems.append(f"{name}.schema uses unsupported keywords {feats['unsupported']} "
+                                f"and jsonschema is not installed (would be under-validated)")
+    return problems
+
+
+def validate_schemas(root: str) -> list:
+    """Validate live/example artifacts against their shipped JSON Schemas (F1)."""
+    problems = []
+    # example ledger ↔ ledger.schema
+    ex = os.path.join(root, "examples", "consumed_ledger.json")
+    if os.path.exists(ex):
+        with open(ex, "r", encoding="utf-8") as f:
+            problems += [f"examples/consumed_ledger.json !~ ledger.schema: {p}"
+                         for p in validate_against_schema(json.load(f), schema_path(root, "ledger"))]
+    # a generated diversity report ↔ diversity-report.schema
+    rep = measure_diversity([{"title": "a b"}, {"title": "a c"}])
+    problems += [f"diversity report !~ diversity-report.schema: {p}"
+                 for p in validate_against_schema(rep, schema_path(root, "diversity-report"))]
+    return problems
+
+
 EXPECTED_SKILLS = [
     # shared notation
     "pg", "pgf", "pgxf",
@@ -130,6 +190,61 @@ def validate_skill_inventory(root: str) -> list:
     # aox/cix/evx depend on this exact file
     if not os.path.exists(os.path.join(root, "skills", "pgf", "discovery", "personas.json")):
         problems.append("missing skills/pgf/discovery/personas.json (aox/cix/evx dependency)")
+    return problems
+
+
+def validate_handback_integration(root: str) -> list:
+    """Validate ActionHandbackVerifier integration artifacts (handback gate).
+
+    Checks: (1) close_loop_demo/winner.json parses with required keys,
+    (2) ActionHandbackVerifier core files exist, (3) the shipped handback
+    packet fixture evaluates to ``valid`` via the verifier.
+    """
+    problems = []
+
+    # 1. close_loop_demo winner fixture
+    winner_path = os.path.join(root, "examples", "close_loop_demo", "winner.json")
+    if os.path.exists(winner_path):
+        with open(winner_path, "r", encoding="utf-8") as f:
+            try:
+                winner = json.load(f)
+            except ValueError as e:
+                problems.append(f"close_loop_demo/winner.json: invalid JSON: {e}")
+            else:
+                for key in ("winner", "implementation"):
+                    if key not in winner:
+                        problems.append(f"close_loop_demo/winner.json: missing key '{key}'")
+    else:
+        problems.append("missing file: examples/close_loop_demo/winner.json")
+
+    # 2. ActionHandbackVerifier core files
+    for rel in ("ActionHandbackVerifier/src/ActionHandbackVerifier/__init__.py",
+                "ActionHandbackVerifier/src/ActionHandbackVerifier/verifier.py",
+                "ActionHandbackVerifier/src/ActionHandbackVerifier/ledger.py",
+                "ActionHandbackVerifier/src/ActionHandbackVerifier/cli.py"):
+        if not os.path.exists(os.path.join(root, rel)):
+            problems.append(f"missing file: {rel}")
+
+    # 3. handback packet fixture verifies as valid
+    packet_path = os.path.join(root, "examples", "exploit_state", "handback_packet.json")
+    if os.path.exists(packet_path):
+        try:
+            sys.path.insert(0, root)
+            ensure_project_src(root, "ActionHandbackVerifier")
+            from ActionHandbackVerifier.verifier import evaluate_handback
+            with open(packet_path, "r", encoding="utf-8") as f:
+                packet = json.load(f)
+            result = evaluate_handback(packet)
+            if result["verdict"] != "valid":
+                problems.append(
+                    f"handback_packet.json: expected valid, got {result['verdict']}")
+        except ImportError:
+            pass  # ActionHandbackVerifier absent (standalone extracted) — skip
+        except Exception as e:
+            problems.append(f"handback_packet.json: evaluation failed: {e}")
+    else:
+        problems.append("missing file: examples/exploit_state/handback_packet.json")
+
     return problems
 
 
@@ -175,6 +290,13 @@ def validate_project(root: str) -> list:
     # default thresholds must be sane
     problems += [f"default thresholds: {p}" for p in validate_thresholds(DEFAULT_THRESHOLDS)]
 
+    # enforce the shipped JSON Schemas + detect schema/validator drift (F1)
+    problems += validate_schemas(root)
+    problems += cross_check_schema_vs_validator(root)
+
+    # handback gate integration (ActionHandbackVerifier artifacts)
+    problems += validate_handback_integration(root)
+
     return problems
 
 
@@ -183,6 +305,7 @@ def _main(argv) -> int:
     print(f"=== HELIX validation (root: {os.path.abspath(root)}) ===")
     print(f"  - match keys: {', '.join(MATCH_KEYS)}")
     print(f"  - diversity thresholds: {DEFAULT_THRESHOLDS}")
+    print(f"  - handback gate: ActionHandbackVerifier")
     problems = validate_project(root)
     if problems:
         print("\nFAIL — problems:")

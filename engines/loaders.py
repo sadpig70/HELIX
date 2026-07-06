@@ -87,6 +87,31 @@ def _load_any(root: str, stem: str, subdir: str):
     return read_doc(fixture or resolve_latest(root, subdir, stem))
 
 
+def _latest_run_path(root: str, subdir: str) -> str:
+    """Resolve a recreate-style latest run directory, if latest.json exists."""
+    latest = os.path.join(root, subdir, "latest.json")
+    doc = read_doc(latest)
+    if not isinstance(doc, dict):
+        return None
+    run_path = doc.get("latest_run_path")
+    if not run_path:
+        return None
+    if not os.path.isabs(run_path):
+        run_path = os.path.join(root, run_path)
+    return run_path if os.path.isdir(run_path) else None
+
+
+def _load_latest_run_any(root: str, subdir: str, stem: str):
+    """Load {stem} from the latest run directory before falling back."""
+    run_path = _latest_run_path(root, subdir)
+    if run_path:
+        for s in _with_ext(stem):
+            p = os.path.join(run_path, s)
+            if os.path.exists(p):
+                return read_doc(p)
+    return _load_any(root, stem, subdir)
+
+
 def load_explore_state(root: str) -> dict:
     """Resolve IdeaFirst artifacts under `root` (json fixtures or live yaml rounds)."""
     return {
@@ -101,5 +126,6 @@ def load_exploit_state(root: str) -> dict:
     """Resolve recreate artifacts under `root`."""
     return {
         "registry":   _load_any(root, "registry", ".recreate"),
-        "candidates": _load_any(root, "candidates", ".recreate"),
+        "candidates": _load_latest_run_any(root, ".recreate", "candidates"),
+        "run_status": _load_latest_run_any(root, ".recreate", "status"),
     }

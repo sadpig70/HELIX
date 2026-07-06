@@ -25,6 +25,8 @@ REQUIRED_SECTIONS = [
     "Round Chain",
 ]
 
+EXPECTED_PERSONA_COUNT = 14
+
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -82,7 +84,7 @@ def main() -> int:
         "verdict": "passed"
         if not missing
         and all(identical.values())
-        and len(personas) == 8
+        and len(personas) == EXPECTED_PERSONA_COUNT
         and all(len(data.get("top_3", [])) == 3 for data in personas.values())
         and manifest.get("quality") == "passed"
         and all(sections_present.values())

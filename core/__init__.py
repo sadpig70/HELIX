@@ -19,15 +19,29 @@ from .helix_fingerprint import (
 from .helix_ledger import (
     is_consumed, append_consumed, load_ledger, save_ledger, reindex_ledger, empty_ledger,
 )
-from .helix_diversity import measure_diversity, lexical_sim, DEFAULT_THRESHOLDS
+from .helix_diversity import (
+    measure_diversity, lexical_sim, base_thresholds,
+    DEFAULT_THRESHOLDS, LEXICAL_THRESHOLD_OVERRIDES,
+)
 from .helix_provenance import trace_winner, winner_to_corpus_entry
 from .helix_loop import next_action, DEFAULT_LOOP_POLICY
+from .helix_io import atomic_write_json, read_json
+from .helix_schema import validate_against_schema, schema_features, schema_path
+from .helix_loop_state import (
+    should_stop, update_coverage, least_covered, rate_limit_ok,
+    load_loop_state, checkpoint_loop_state, loop_status_report,
+)
 
 __all__ = [
     "normalize_name", "tokenize_name", "source_fingerprint", "generated_fingerprint",
     "is_consumed", "append_consumed", "load_ledger", "save_ledger",
     "reindex_ledger", "empty_ledger",
-    "measure_diversity", "lexical_sim", "DEFAULT_THRESHOLDS",
+    "measure_diversity", "lexical_sim", "base_thresholds",
+    "DEFAULT_THRESHOLDS", "LEXICAL_THRESHOLD_OVERRIDES",
     "trace_winner", "winner_to_corpus_entry",
     "next_action", "DEFAULT_LOOP_POLICY",
+    "atomic_write_json", "read_json",
+    "validate_against_schema", "schema_features", "schema_path",
+    "should_stop", "update_coverage", "least_covered", "rate_limit_ok",
+    "load_loop_state", "checkpoint_loop_state", "loop_status_report",
 ]

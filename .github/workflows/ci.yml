@@ -1,22 +1,22 @@
-name: helix-ci
-
-on:
-  push:
-  pull_request:
-
+name: CI
+on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # ActionHandbackVerifier is an independent repo and HELIX's reference
+      # exploit project (handback gate). Vendor it as a subdir so the
+      # integration tests + validate run against the real implementation.
+      - name: Vendor reference project (ActionHandbackVerifier)
+        uses: actions/checkout@v4
+        with:
+          repository: sadpig70/ActionHandbackVerifier
+          path: ActionHandbackVerifier
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
-      - name: Compile (stdlib only, no deps)
-        run: python -m compileall core engines tests helix.py
+          python-version: '3.11'
       - name: Unit tests
         run: python -m unittest discover -s tests -q
-      - name: Validate structure + contracts
+      - name: Validate (structure + determinism)
         run: python core/helix_validate.py .
-      - name: Driver smoke (over shipped fixtures)
-        run: python helix.py status

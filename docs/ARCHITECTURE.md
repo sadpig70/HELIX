@@ -16,6 +16,7 @@
 | 복제 (replication) | 새 프로젝트 산출 (자가증식) | pgf 위임 |
 | **복구효소 (repair enzyme)** | 5점 다양성 게이트 | ★세대 퇴화(동질화) 방지 (정정: pitch보다 정확) |
 | 나선 상승 (pitch/rise) | 회전마다 폭 유지 → 수렴 없이 전진 | 폐루프 ≠ 원 |
+| **복제 후 교정 (proofreading)** | **ActionHandbackVerifier**: handback 게이트 | 복제(새 프로젝트) 후 권한·인계·경로·롤백·추적 검증; breach=consumed 제외 |
 
 ## 2. 두 가지 정정 (초기 제안 대비)
 
@@ -65,3 +66,30 @@ HELIX-Core는 그 세 요소를 코드로 구현한 백본이다.
 삼중나선(collagen)도 생물에 실재하고, explore 소스가 3+로 늘어도 `core/helix_loop`의 드라이버는
 가닥 목록을 받아 라운드를 배분할 뿐이다. 즉 은유는 2가닥에서 가장 선명하나, 아키텍처는
 **N가닥으로 확장 가능**하며 백본(`core/`)만 단일 출처로 유지하면 된다. (가닥 추가 = 어댑터 추가.)
+
+## 7. 핸드백 게이트 — exploit 구현물 검증 (ActionHandbackVerifier)
+
+DNA 복제 후 **proofreading**(중합효소의 3'→5' 교정 활성)이 오복제를 검출·제거하듯, HELIX는
+exploit 가닥에서 새 프로젝트가 생성된 후 그 **handback boundary**를 결정론적으로 검증한다.
+
+```text
+exploit 구현물
+  │
+  ├─ verify-handback --packet H ──► ActionHandbackVerifier 5-predicate 검사
+  │     authority · custody · route · rollback · trace
+  │     verdict: valid / thin / breach
+  │       │
+  │       ▼
+  │  registry.handback_verdict 영속화 (atomic write)
+  │       │
+  │       ▼ (다음 turn)
+  └─ registry_to_ledger ──► persisted verdict 신뢰
+        ├─ valid / thin → consumed에 admitted
+        └─ breach       → consumed에서 제외
+              │
+              ▼
+        helix.py status ──► "handback gate: N checked, N passed, N excluded"
+```
+
+다양성 게이트(§4)가 *입력 측*에서 동질화를 차단한다면, 핸드백 게이트는 *출력 측*에서 구현물의
+증거 무결성을 검증한다 — 폐루프의 양 끝이 모두 결정론 게이트로 닫혀 있다.

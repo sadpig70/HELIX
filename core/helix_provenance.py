@@ -82,4 +82,7 @@ def winner_to_corpus_entry(consumed_entry: dict) -> dict:
         "semantic_family": consumed_entry.get("semantic_family"),
         "readme_hint": consumed_entry.get("title"),
         "from_idea_id": consumed_entry.get("idea_id"),
+        # carry the full ordered lineage (not just source_chain) so the exploit
+        # engine recombines with deep provenance for audit (EVX→CIX→IDX→TCX→SDX).
+        "lineage": trace_winner(consumed_entry),
     }

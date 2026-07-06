@@ -1,0 +1,35 @@
+{
+  "project": "HELIX",
+  "version": "0.4",
+  "phase": "verify",
+  "supersedes_current_state_of": ["status-HELIX.json (v0.2)", "status-HELIX-v0.3.json (v0.3)"],
+  "source_design": "_workspace/PGF-HELIX-v0.4-hardening-design-2026-06-17.md (pgf design --analyze)",
+  "workplan": ".pgf/WORKPLAN-HELIX-v0.4.md",
+  "summary": {"done": 8, "total": 8},
+  "batches": {
+    "1_SchemaEnforce_F1": "done — core/helix_schema.py (stdlib draft-07 subset walker + optional jsonschema); helix_validate enforces schemas + cross_check_schema_vs_validator (drift guard)",
+    "2_AtomicActuator_F2_F5": "done — core/helix_io.atomic_write_json (temp+os.replace); save_ledger + append_corpus_entry atomic; append_corpus_entry validates corpus contract before write",
+    "3_LoopCorePromote_F3": "done — core/helix_loop_state.py (should_stop/update_coverage/least_covered/rate_limit_ok/checkpoint, pure); helix.py loop-status command (read-only)",
+    "4_SimKindThresholds_F4": "done — base_thresholds(sim_kind): lexical Jaccard ceilings (0.45/0.35) vs semantic cosine (0.65/0.50); explicit thresholds still override; CALIBRATION.md §3 updated",
+    "5_ProvenanceLineage_F7": "done — winner_to_corpus_entry carries full ordered trace_winner lineage; corpus-entry.schema lineage[] added",
+    "6_CiHarden_F6": "done — ci.yml compiles scripts too + determinism regression step (status --json byte-identical x2)",
+    "7_ReadmeStatusSync_F8": "done — README quick-start exposes close-loop + loop-status; this file records v0.4 canonical state",
+    "8_VerifyV04": "done — 3-perspective verify below"
+  },
+  "verify": {
+    "unittests": "unittest discover -s tests: OK (125 tests; was 83 + 42 new: test_schema/test_atomic_io/test_loop_state/test_v04_hardening)",
+    "validate": "PASS (schema enforcement + drift cross-check wired)",
+    "compile": "compileall core engines tests helix.py scripts -> OK",
+    "determinism": "helix.py status --json x2 byte-identical; core+engines have no clock/random (grep clean); tempfile suffix never affects final path",
+    "close_loop_smoke": "closed -> already_recorded (idempotent) with atomic writes; corpus entry now carries lineage",
+    "loop_status_smoke": "helix.py loop-status -> {status,turn,stop,coverage} (read-only; turn execution stays meta-layer)",
+    "perspectives": {
+      "consistency": "atomic write single-sourced in core/helix_io (ledger/corpus/loop-state share one contract); determinism boundary preserved (optional imports inside functions)",
+      "completeness": "F1~F8 all implemented + tested; v0.3 done items not re-touched; LLM turn execution intentionally NOT coded (meta-layer)",
+      "correctness": "fixture status unchanged after F4 (avg lexical 0.035 << 0.45 -> breaches=1, triggered=False); schema/validator drift = 0; back-compat via threshold override priority + additive keys"
+    }
+  },
+  "determinism_boundary": "core+engines = pure stdlib (now/sim injected; tempfile suffix non-semantic); wall-clock only at helix.py CLI edge; engine LLM = meta-layer; exploit verdict path deterministic",
+  "invariants_held": "vendored skills/ untouched; changes limited to core (new files + small edits), helix.py, schemas, docs, ci, tests",
+  "verdict": "v0.4 = contract-enforced, crash-safe, testable-loop hardening"
+}
