@@ -118,8 +118,8 @@
       "verb": "certify",
       "cluster": "Robotics/Release",
       "packs": 3,
-      "repo": "D:/HELIX/Certstra (local, unpublished)",
-      "published": false,
+      "repo": "github.com/sadpig70/Certstra",
+      "published": true,
       "reused_machines": [
         "M1",
         "M14",
