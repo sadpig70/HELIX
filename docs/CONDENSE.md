@@ -47,9 +47,23 @@ else:
     -> CONDENSE            (새 플랫폼 emit)
 ```
 
-**실사례:** Compatibility Mesh(SovMesh 등)는 machine이 Attestra의 predicate-gate였다. 순진하게
-CONDENSE하면 커널을 복제한다. machine-aware 라우팅이 이를 BUILD_ON_PLATFORM(Attestra `sov-mesh` 팩,
-SovMesh.audit parity)으로 교정했다.
+**실사례 — Compatibility Mesh 5형제 (실코드로 완결 검증):** 이름이 같은 "Compatibility Mesh"
+클러스터(SovMesh·PqcMesh·SignalMesh·AgentMesh·FlowMesh)를 순진하게 보면 "새 플랫폼 1개"로 CONDENSE하기
+쉽다. 하지만 각 프로젝트의 **실코드를 읽어 machine을 판정**하면 이름만 같을 뿐 machine이 서로 다르고,
+**전부 기존 커널로 환원**된다 — 새 플랫폼 0개, 3개 플랫폼에 분산:
+
+| 프로젝트 | machine (실코드) | 귀속 | 팩 |
+|---|---|---|---|
+| SovMesh | M2+M3 정책 audit → severity verdict | Attestra | `sov-mesh` |
+| PqcMesh | M2+M3 자산 assess → severity verdict | Attestra | `pqc-mesh` |
+| SignalMesh | M2+M3 admissibility → exchange posture | Attestra | `signal-mesh` |
+| FlowMesh | M10 utilization threshold-bound | Routestra | `flow-mesh` |
+| AgentMesh | M6+M5 cost pricing + rollup (verdict 없음) | Clearstra | `agent-ops` |
+
+라우팅은 **양방향**으로 작동한다: SovMesh는 Attestra로 *끌어들이고*, AgentMesh는 (verdict 대수가 없으므로)
+Attestra에서 *밀어내* Clearstra pricing으로 보낸다. 각 팩은 원본과의 **parity 테스트**를 동봉한다
+(`test_*_mesh_parity.py`; 소스 있으면 실행, CI에선 skip). 결론: **한 클러스터가 이름은 같아도 machine
+기준으로 여러 플랫폼에 분산될 수 있으며, 새 커널을 짓기 전에 실코드 machine 판정이 선행돼야 한다.**
 
 ## 사용
 

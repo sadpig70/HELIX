@@ -16,7 +16,7 @@
       "name": "Attestra",
       "verb": "attest",
       "cluster": "Governance/Trust",
-      "packs": 13,
+      "packs": 16,
       "repo": "github.com/sadpig70/Attestra",
       "published": true,
       "reused_machines": [
@@ -43,14 +43,17 @@
         "AgentActionGovernanceOS",
         "ReproDossier",
         "GenCert",
-        "ReserveFlow(verify)"
+        "ReserveFlow(verify)",
+        "SovMesh",
+        "PqcMesh",
+        "SignalMesh"
       ]
     },
     {
       "name": "Clearstra",
       "verb": "clear",
       "cluster": "Clearing/Market",
-      "packs": 10,
+      "packs": 11,
       "repo": "github.com/sadpig70/Clearstra",
       "published": true,
       "reused_machines": [
@@ -74,14 +77,15 @@
         "QuadraticCarbonFund",
         "BuyBloc",
         "ShockRehearsal",
-        "RRE"
+        "RRE",
+        "AgentMesh"
       ]
     },
     {
       "name": "Routestra",
       "verb": "route",
       "cluster": "Routing/Siting",
-      "packs": 10,
+      "packs": 11,
       "repo": "github.com/sadpig70/Routestra",
       "published": true,
       "reused_machines": [
@@ -105,7 +109,8 @@
         "ThermalPlumeStage",
         "WasteStack",
         "SeasonBat",
-        "ClimateMesh"
+        "ClimateMesh",
+        "FlowMesh"
       ]
     },
     {
@@ -161,7 +166,7 @@
   },
   "base_pairing_feedback": {
     "rule": "새 corpus 프로젝트가 기존 플랫폼의 machine을 공유하고 그 contract에 맞으면 -> 독립 프로젝트가 아니라 그 플랫폼의 PACK으로 생성(build-on-platform).",
-    "absorbed_total": 36,
+    "absorbed_total": 41,
     "build_on_platform_candidates": {
       "Attestra": [
         "MethodBond",
@@ -174,26 +179,26 @@
         "LoopKit",
         "PnR",
         "QVeil",
-        "PqcMesh",
         "ForgeQuarantine",
         "MLX",
         "Qvidence",
         "SpendMesh",
         "SlotSettleGate",
         "SovMesh(done)",
-        "AgentMesh",
-        "SignalMesh",
-        "FlowMesh"
+        "PqcMesh(done)",
+        "SignalMesh(done)"
       ],
       "Clearstra": [
         "MineralShock",
         "EndowFront",
         "DetourDesk",
-        "SettleMesh"
+        "SettleMesh",
+        "AgentMesh(done)"
       ],
       "Routestra": [
         "WattMesh",
-        "FieldRoot"
+        "FieldRoot",
+        "FlowMesh(done)"
       ],
       "Certstra": [
         "RouteSentinel",
@@ -202,7 +207,6 @@
     },
     "remaining_unplatformed_clusters": [
       "Bio staged-release (BioClock,DriftDossier,Qvidence,LazarettoStage)",
-      "Compatibility Mesh (AgentMesh,PqcMesh,SovMesh,SignalMesh,FlowMesh)",
       "white-space: Drift (M11) cross-cluster"
     ]
   },
@@ -212,9 +216,20 @@
       "substantiated_count": 5,
       "shared_machines": [
         "M2",
-        "M3"
+        "M3",
+        "M5",
+        "M6",
+        "M10"
       ],
-      "note": "machine = Attestra predicate-gate + verdict (SovMesh.audit) -> BUILD_ON_PLATFORM, not new platform",
+      "resolved": true,
+      "note": "VERIFIED (real-code): the cluster shares a NAME (L11 interconnection-mesh transplant), NOT one machine. Machine-aware routing split all 5 across THREE existing platforms - zero new platforms. Absorbed as packs; each with a parity test vs source.",
+      "routing": [
+        {"member": "SovMesh", "machine": "M2+M3 (policy audit -> severity verdict)", "platform": "Attestra", "pack": "sov-mesh", "done": true},
+        {"member": "PqcMesh", "machine": "M2+M3 (asset assess -> severity verdict)", "platform": "Attestra", "pack": "pqc-mesh", "done": true},
+        {"member": "SignalMesh", "machine": "M2+M3 (admissibility -> exchange posture)", "platform": "Attestra", "pack": "signal-mesh", "done": true},
+        {"member": "FlowMesh", "machine": "M10 (utilization threshold-bound)", "platform": "Routestra", "pack": "flow-mesh", "done": true},
+        {"member": "AgentMesh", "machine": "M6+M5 (cost pricing + rollup; no verdict algebra)", "platform": "Clearstra", "pack": "agent-ops", "done": true}
+      ],
       "members_implemented": [
         "SovMesh",
         "PqcMesh",
