@@ -1,5 +1,7 @@
 ![HELIX](assets/HELIX_hero.png)
 
+[![CI](https://github.com/sadpig70/HELIX/actions/workflows/ci.yml/badge.svg)](https://github.com/sadpig70/HELIX/actions/workflows/ci.yml)
+
 # HELIX
 
 > **두 상보 가닥을 공유 백본이 묶어, 환류하는 폐루프인데도 매 회전 동질화를 차단해
@@ -42,13 +44,17 @@ ledger·verdict severity·predicate gate·clearing·routing…)을 공유하는 
 발산을 지키는 것과 대칭으로, **플랫폼 층의 의도적 수렴**. HELIX가 프로젝트 → **플랫폼** → 생태계로
 층이 쌓이는 나선이 된다.
 
-- **실증된 4개 플랫폼** (각 corpus 클러스터를 원본 실코드 parity로 승격, 전부 독립 저장소·public):
+- **실증된 4개 플랫폼** (각 corpus 클러스터를 원본 실코드 parity로 승격, 전부 독립 저장소·public·CI green):
   [Attestra](https://github.com/sadpig70/Attestra)(attest) ·
   [Clearstra](https://github.com/sadpig70/Clearstra)(clear) ·
   [Routestra](https://github.com/sadpig70/Routestra)(route) ·
   [Certstra](https://github.com/sadpig70/Certstra)(certify — **Condense 레시피로 emit**).
+  넷을 한 결정으로 잇는 [stra-demo](https://github.com/sadpig70/stra-demo)(route→clear→certify→attest).
 - **machine-aware 라우팅**: 클러스터의 machine이 기존 플랫폼에 이미 있으면 새 플랫폼(CONDENSE)이 아니라
-  기존 플랫폼에 팩 추가(BUILD_ON_PLATFORM) — 커널 중복 방지(예: Compatibility Mesh → Attestra `sov-mesh`).
+  기존 플랫폼에 팩 추가(BUILD_ON_PLATFORM) — 커널 중복 방지. **실증**: 이름이 같던 "Compatibility Mesh"
+  5형제(SovMesh·PqcMesh·SignalMesh·FlowMesh·AgentMesh)를 실코드 machine으로 판정해 **3개 플랫폼에 분산**
+  흡수했다 — 새 커널 0개: Attestra 게이트(`sov-mesh`·`pqc-mesh`·`signal-mesh`) · Routestra bound(`flow-mesh`)
+  · Clearstra price(`agent-ops`). 각 팩은 원본과 parity 테스트 동봉.
 - **루프 편입**: `core/helix_loop.py` `next_action`이 `CONDENSE`/`BUILD_ON_PLATFORM`을 1급 액션으로 제안
   (`helix.py status --layered-corpus seed/condense/layered-corpus.json`). 레시피는 `skills/condense` 스킬.
 - 상세: [`docs/CONDENSE.md`](docs/CONDENSE.md).
