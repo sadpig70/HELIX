@@ -1,1 +1,0 @@
-"""Independent tests for SkyGrid."""

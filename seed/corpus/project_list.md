@@ -34,6 +34,7 @@ D:\\tmp 아래 하위 프로젝트 개요입니다. 각 프로젝트명 뒤의 �
 - **LazarettoStage** (lazarettostage): LazarettoStage builds staged quarantine and release-observation schedules for engineered organisms.
 - **LoopKit** (loopkit): LoopKit makes invisible automation loops noticeable and repairable.
 - **Message-Layer Compliance Oracle (MCO)** (MCO): MCO is an AI-native exploratory transaction compliance routing oracle. It targets multi-jurisdictional compliance semantic incompatibilities on ISO 20022 message layers and stablecoin settlement channels.
+- **MethodBond** (methodbond): MethodBond is a method-publishing trust-bundle gate: it verifies whether a published method or model artifact is properly licensed, independently reproducible, and certified against its declared behavior baseline.
 - **MLX** (MLX): MLX defines a portable metadata schema for method licenses — (transfer_type × source_domain × target_industry × revenue_share_pct) — attachable to any HF Hub artifact (model card YAML frontmatter or standalone JSON).
 - **MineralShock** (mineralshock): MineralShock clears strategic-mineral stockpile flow rights while pricing refusal capacity and rehearsing geopolitical shock scenarios.
 - **OrbiRoam** (orbiroam): Orbital Tasking-to-Action Roaming Registry — bind orbital sensor tasking to an accountable jurisdiction, a human-review SLA, and a cross-jurisdiction roaming agreement, with a hash-chained authorization ledger.
@@ -59,6 +60,7 @@ D:\\tmp 아래 하위 프로젝트 개요입니다. 각 프로젝트명 뒤의 �
 - **SignalMesh** (signalmesh): SignalMesh treats a system's operational exhaust as the product. Logs, disputes, failed migrations, compliance traces, and residual heat are mined into
 - **SkyGrid** (skygrid): SkyGrid routes mobile compute to the cheapest renewable power verified by orbital sensor tasking, binding energy, compute, and satellite evidence.
 - **SlotGate** (slotgate): Time-Box Automation Enforcer — turn open-ended automation runs into fixed execution slots with re-authorization gates and a hash-chained authorization ledger.
+- **SlotSettleGate** (slotsettlegate): Does a time-boxed autonomous settlement run have valid slot authorization, pass settlement compliance rules, and remain within veto-escrow interrupt bounds?
 - **SoilBond** (soilbond): SoilBond scores farmland climate resilience and routes regeneration funding to the highest-impact parcels via verifiable soil-carbon reductions.
 - **SovMesh** (sovmesh): SovMesh treats sovereignty as a product architecture concern, not a policy appendix. For one system's deployment it answers: It audits each deployment component against a declared sovereignty policy across
 - **SpendMesh** (spendmesh): SpendMesh treats an AI agent as what it fundamentally is — a thing that spends money — and puts a treasury control in front of every spend. For one spend

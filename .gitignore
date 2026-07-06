@@ -23,3 +23,28 @@ __pycache__/
 .helix/
 _workspace/
 AGENTS.md
+.opencode/
+.-p/
+
+# Independent repos vendored on disk as siblings/subdirs (each has its own
+# github.com/sadpig70 remote). They are NOT part of the HELIX repo; CI checks
+# out the reference project (ActionHandbackVerifier) on demand. Ignoring them
+# keeps HELIX's tree clean and prevents accidental embedded-repo (gitlink) adds.
+/ActionHandbackVerifier/
+/ArticleGate/
+/Attestra/
+/BioClock/
+/Certstra/
+/Clearstra/
+/CryoFutures/
+/MethodBond/
+/MineralShock/
+/PolicyDriftGate/
+/ProvenanceStage/
+/Routestra/
+/SkyGrid/
+/SlotSettleGate/
+/SoilBond/
+/SpendBoundary/
+/stra-demo/
+/ThermalCascadeBound/

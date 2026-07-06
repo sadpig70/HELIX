@@ -18,12 +18,14 @@ try:  # package import (python -m core.helix_validate) or library use
     from .helix_ledger import is_consumed, MATCH_KEYS
     from .helix_diversity import DEFAULT_THRESHOLDS, measure_diversity
     from .helix_loop import VALID_ACTIONS, next_action
+    from .helix_project_paths import ensure_project_src
     from .helix_schema import validate_against_schema, schema_features, schema_path
 except ImportError:  # direct script run: python core/helix_validate.py
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     from core.helix_ledger import is_consumed, MATCH_KEYS
     from core.helix_diversity import DEFAULT_THRESHOLDS, measure_diversity
     from core.helix_loop import VALID_ACTIONS, next_action
+    from core.helix_project_paths import ensure_project_src
     from core.helix_schema import validate_against_schema, schema_features, schema_path
 
 REQUIRED_LEDGER_KEYS = ("schema_version", "consumed", "blocked_names",
@@ -216,10 +218,10 @@ def validate_handback_integration(root: str) -> list:
         problems.append("missing file: examples/close_loop_demo/winner.json")
 
     # 2. ActionHandbackVerifier core files
-    for rel in ("ActionHandbackVerifier/__init__.py",
-                "ActionHandbackVerifier/verifier.py",
-                "ActionHandbackVerifier/ledger.py",
-                "ActionHandbackVerifier/cli.py"):
+    for rel in ("ActionHandbackVerifier/src/ActionHandbackVerifier/__init__.py",
+                "ActionHandbackVerifier/src/ActionHandbackVerifier/verifier.py",
+                "ActionHandbackVerifier/src/ActionHandbackVerifier/ledger.py",
+                "ActionHandbackVerifier/src/ActionHandbackVerifier/cli.py"):
         if not os.path.exists(os.path.join(root, rel)):
             problems.append(f"missing file: {rel}")
 
@@ -228,6 +230,7 @@ def validate_handback_integration(root: str) -> list:
     if os.path.exists(packet_path):
         try:
             sys.path.insert(0, root)
+            ensure_project_src(root, "ActionHandbackVerifier")
             from ActionHandbackVerifier.verifier import evaluate_handback
             with open(packet_path, "r", encoding="utf-8") as f:
                 packet = json.load(f)

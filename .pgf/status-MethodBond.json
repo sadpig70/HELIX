@@ -1,0 +1,22 @@
+{
+  "project": "MethodBond",
+  "summary": {
+    "done": 11,
+    "total": 11,
+    "in_progress": 0,
+    "blocked": 0
+  },
+  "nodes": {
+    "CreateProjectDir": "done",
+    "WriteEngine": "done",
+    "WriteCLI": "done",
+    "WriteReport": "done",
+    "WriteLedger": "done",
+    "WriteInitAndMain": "done",
+    "WriteTests": "done",
+    "WritePackaging": "done",
+    "RunValidation": "done",
+    "UpdateBackbone": "done",
+    "GitInitAndPush": "done"
+  }
+}

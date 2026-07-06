@@ -10,6 +10,10 @@ from ActionHandbackVerifier.samples import samples
 from ActionHandbackVerifier.verifier import evaluate_handback, has_private_payload
 from ActionHandbackVerifier.ledger import append_record, verify_ledger
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+AHV_SRC = os.path.join(ROOT, "ActionHandbackVerifier", "src")
+ENV = {**os.environ, "PYTHONPATH": AHV_SRC}
+
 
 class TestActionHandbackVerifier(unittest.TestCase):
     def test_sample_verdicts(self):
@@ -40,15 +44,21 @@ class TestActionHandbackVerifier(unittest.TestCase):
 
     def test_cli_sample_run_report(self):
         with tempfile.TemporaryDirectory() as d:
-            subprocess.check_output([sys.executable, "-m", "ActionHandbackVerifier", "sample", "--out", d], text=True)
+            subprocess.check_output(
+                [sys.executable, "-m", "ActionHandbackVerifier", "sample", "--out", d],
+                env=ENV,
+                text=True,
+            )
             valid = os.path.join(d, "valid.json")
             out = subprocess.check_output(
                 [sys.executable, "-m", "ActionHandbackVerifier", "run", "--input", valid],
+                env=ENV,
                 text=True,
             )
             self.assertEqual(json.loads(out)["verdict"], "valid")
             report = subprocess.check_output(
                 [sys.executable, "-m", "ActionHandbackVerifier", "report", "--input", valid],
+                env=ENV,
                 text=True,
             )
             self.assertIn("# ActionHandbackVerifier Report", report)
@@ -73,16 +83,20 @@ class TestLedger(unittest.TestCase):
     def test_run_with_ledger_flag_appends(self):
         with tempfile.TemporaryDirectory() as d:
             subprocess.check_output(
-                [sys.executable, "-m", "ActionHandbackVerifier", "sample", "--out", d], text=True,
+                [sys.executable, "-m", "ActionHandbackVerifier", "sample", "--out", d],
+                env=ENV,
+                text=True,
             )
             ledger = os.path.join(d, "ledger.jsonl")
             subprocess.check_output(
                 [sys.executable, "-m", "ActionHandbackVerifier", "run",
                  "--input", os.path.join(d, "valid.json"), "--ledger", ledger],
+                env=ENV,
                 text=True,
             )
             verify = json.loads(subprocess.check_output(
                 [sys.executable, "-m", "ActionHandbackVerifier", "verify", "--ledger", ledger],
+                env=ENV,
                 text=True,
             ))
             self.assertTrue(verify["valid"])
@@ -133,7 +147,9 @@ class TestLedger(unittest.TestCase):
                 f.writelines(lines)
             proc = subprocess.run(
                 [sys.executable, "-m", "ActionHandbackVerifier", "verify", "--ledger", ledger],
-                text=True, capture_output=True,
+                env=ENV,
+                text=True,
+                capture_output=True,
             )
             self.assertNotEqual(proc.returncode, 0)
             self.assertFalse(json.loads(proc.stdout)["valid"])
