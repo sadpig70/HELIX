@@ -68,11 +68,13 @@ def build_on_platform_candidate(layered_corpus):
 
     Reads base_pairing_feedback.build_on_platform_candidates ({platform: [projects]});
     picks platform then project in sorted order. Returns {project, platform} or None.
+    Entries with a status marker are skipped: '(done)' = already absorbed,
+    '(design-only)' = no real code to reproduce. Only bare names are open candidates.
     """
     bp = (layered_corpus.get("base_pairing_feedback", {})
           .get("build_on_platform_candidates", {}))
     for platform in sorted(bp):
-        projects = bp.get(platform) or []
+        projects = [p for p in (bp.get(platform) or []) if "(" not in p]
         if projects:
             return {"project": sorted(projects)[0], "platform": platform}
     return None
