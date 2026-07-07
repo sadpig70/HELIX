@@ -125,7 +125,7 @@
       "name": "Certstra",
       "verb": "certify",
       "cluster": "Robotics/Release",
-      "packs": 4,
+      "packs": 5,
       "repo": "github.com/sadpig70/Certstra",
       "published": true,
       "reused_machines": [
@@ -148,7 +148,8 @@
         "CertMesh",
         "ReleaseMesh",
         "RoboTrace",
-        "OrbiRoam"
+        "OrbiRoam",
+        "BioClock"
       ],
       "emitted_by": "Condense recipe (U3 pilot)"
     }
@@ -175,7 +176,7 @@
   },
   "base_pairing_feedback": {
     "rule": "새 corpus 프로젝트가 기존 플랫폼의 machine을 공유하고 그 contract에 맞으면 -> 독립 프로젝트가 아니라 그 플랫폼의 PACK으로 생성(build-on-platform).",
-    "absorbed_total": 50,
+    "absorbed_total": 51,
     "build_on_platform_candidates": {
       "Attestra": [
         "MethodBond(done)",
@@ -215,8 +216,7 @@
       ]
     },
     "remaining_unplatformed_clusters": [
-      "Bio staged-release (BioClock,DriftDossier,Qvidence,LazarettoStage)",
-      "white-space: Drift (M11) cross-cluster"
+      "none — every candidate cluster routed. Bio staged-release REFUTED as a CONDENSE (M11 'drift' is not a novel platform machine): BioClock -> Certstra certify (done), DriftDossier -> defer (scoring), LazarettoStage -> candidate Certstra M12 pack. No new-platform (CONDENSE) candidate remains at/above threshold."
     ]
   },
   "candidate_clusters": [
@@ -251,10 +251,16 @@
       "cluster": "Bio staged-release",
       "substantiated_count": 3,
       "shared_machines": [
-        "M11",
+        "M2",
         "M12"
       ],
-      "note": "M11 drift is a novel machine (not platformed) -> genuine CONDENSE candidate once >= threshold",
+      "resolved": true,
+      "note": "REFUTED (real-code): M11 'drift' is NOT a novel platform machine, so this is NOT a CONDENSE candidate. Machine-aware routing splits the cluster onto existing platforms: BioClock = drift+quarantine certification verdict -> Certstra certify (done, bio-clock); DriftDossier = per-event divergence SCORING compilation -> defer (like ForgeQuarantine); LazarettoStage = M12 staged-release, already covered by Certstra. shared_machines corrected to [M2, M12] (both covered) so the loop treats it as BUILD_ON_PLATFORM, never CONDENSE.",
+      "routing": [
+        {"member": "BioClock", "machine": "M2 (drift+quarantine -> certification verdict)", "platform": "Certstra", "pack": "bio-clock", "done": true},
+        {"member": "DriftDossier", "machine": "per-event divergence scoring compilation", "platform": null, "deferred": true},
+        {"member": "LazarettoStage", "machine": "M12 staged-release + risk band", "platform": "Certstra", "note": "M12 already covered; candidate stage pack"}
+      ],
       "members_implemented": [
         "BioClock",
         "DriftDossier",
