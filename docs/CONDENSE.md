@@ -19,10 +19,14 @@ gate·provenance·clearing·routing…)을 도메인만 바꿔 반복한다. 이
 | [Attestra](https://github.com/sadpig70/Attestra) | attest | Governance/Trust | ActionHandbackVerifier | 손 |
 | [Clearstra](https://github.com/sadpig70/Clearstra) | clear | Clearing/Market | CryoFutures | 손 |
 | [Routestra](https://github.com/sadpig70/Routestra) | route | Routing/Siting | SkyGrid | 손 |
-| [Certstra](https://github.com/sadpig70/Certstra) | certify | Robotics/Release | CertMesh | **Condense 레시피로 emit** |
+| [Certstra](https://github.com/sadpig70/Certstra) | certify | Robotics/Release | CertMesh | **Condense emit** (1번째) |
+| [Scorestra](https://github.com/sadpig70/Scorestra) | score | Assessment/Scoring | ForgeQuarantine | **Condense emit** (2번째) |
 
-네 플랫폼은 **verdict severity 대수를 공유**한다(valid/thin/breach ≅ compliant/restricted/violation ≅
+앞 네 플랫폼은 **verdict severity 대수를 공유**한다(valid/thin/breach ≅ compliant/restricted/violation ≅
 certifiable/needs_review/blocked) → 상호 조합·증언 가능(예: `Clearstra.clear() → Attestra verdict=valid`).
+**Scorestra**는 verdict가 아니라 **가중 score → 등급 tier → 분포 집계**(M15)라는 다른 machine으로,
+defer됐던 스코어링 클러스터(ForgeQuarantine·LoopKit·LazarettoStage·DetourDesk·FieldRoot)를 CONDENSE로
+emit해 흡수했다 — "defer = 버림"이 아니라 **미인식 novel-machine 클러스터**였음의 실증.
 
 ## 단계 (U1~U5)
 

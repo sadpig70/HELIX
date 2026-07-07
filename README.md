@@ -44,12 +44,13 @@ ledger·verdict severity·predicate gate·clearing·routing…)을 공유하는 
 발산을 지키는 것과 대칭으로, **플랫폼 층의 의도적 수렴**. HELIX가 프로젝트 → **플랫폼** → 생태계로
 층이 쌓이는 나선이 된다.
 
-- **실증된 4개 플랫폼** (각 corpus 클러스터를 원본 실코드 parity로 승격, 전부 독립 저장소·public·CI green):
+- **실증된 5개 플랫폼** (각 corpus 클러스터를 원본 실코드 parity로 승격, 전부 독립 저장소·public·CI green):
   [Attestra](https://github.com/sadpig70/Attestra)(attest) ·
   [Clearstra](https://github.com/sadpig70/Clearstra)(clear) ·
   [Routestra](https://github.com/sadpig70/Routestra)(route) ·
-  [Certstra](https://github.com/sadpig70/Certstra)(certify — **Condense 레시피로 emit**).
-  넷을 한 결정으로 잇는 [stra-demo](https://github.com/sadpig70/stra-demo)(route→clear→certify→attest).
+  [Certstra](https://github.com/sadpig70/Certstra)(certify — **Condense emit**) ·
+  [Scorestra](https://github.com/sadpig70/Scorestra)(score — **Condense emit**).
+  앞 넷을 한 결정으로 잇는 [stra-demo](https://github.com/sadpig70/stra-demo)(route→clear→certify→attest).
 - **machine-aware 라우팅**: 클러스터의 machine이 기존 플랫폼에 이미 있으면 새 플랫폼(CONDENSE)이 아니라
   기존 플랫폼에 팩 추가(BUILD_ON_PLATFORM) — 커널 중복 방지. **실증**: 이름이 같던 "Compatibility Mesh"
   5형제(SovMesh·PqcMesh·SignalMesh·FlowMesh·AgentMesh)를 실코드 machine으로 판정해 **3개 플랫폼에 분산**
@@ -58,11 +59,13 @@ ledger·verdict severity·predicate gate·clearing·routing…)을 공유하는 
 - **루프 편입**: `core/helix_loop.py` `next_action`이 `CONDENSE`/`BUILD_ON_PLATFORM`을 1급 액션으로 제안
   (`helix.py status --layered-corpus seed/condense/layered-corpus.json`). 레시피는 `skills/condense` 스킬.
 - **완주한 라우팅 sweep**: corpus 후보 풀 전체를 machine으로 판정해 **3분류로 완전 배정** —
-  **흡수 15**(clean gate/primitive → 팩 + 원본 parity 테스트) · **defer 7**(다차원 simulation/scoring
-  machine — 억지 포팅 시 parity 훼손) · **design-only 8**(코드 없음). 4개 플랫폼이 corpus에서 성장:
-  **Attestra 23 · Clearstra 12 · Routestra 11 · Certstra 5 (총 51팩)**. 라우팅은 **이름이 아니라 machine**
-  으로 판정하며 양방향 교정한다(AgentMesh: Attestra→Clearstra, SettleMesh: Clearstra→Attestra). 5번째
-  플랫폼(CONDENSE) 가설이던 "Bio drift(M11)"는 실코드로 **반증**(verdict/scoring으로 환원). 결과:
+  **흡수 20**(clean gate/primitive → 팩 + 원본 parity 테스트) · **defer 2**(RouteSentinel·EndowFront) ·
+  **design-only 8**(코드 없음). **5개 플랫폼**이 corpus에서 성장:
+  **Attestra 23 · Clearstra 12 · Routestra 11 · Certstra 5 · Scorestra 5 (총 56팩)**. 라우팅은 **이름이 아니라
+  machine**으로 판정하며 양방향 교정한다(AgentMesh: Attestra→Clearstra, SettleMesh: Clearstra→Attestra).
+  "Bio drift(M11)" CONDENSE 가설은 실코드로 **반증**했으나, defer됐던 스코어링 클러스터의 **novel M15
+  machine**(가중 score→등급 tier→집계)을 확정 → HELIX가 스스로 **CONDENSE를 제안·실행해 5번째 플랫폼
+  Scorestra를 emit**했다(Certstra에 이은 2번째 CONDENSE, 2-D rule-ladder 커널로 클러스터 5/5 흡수). 결과:
   `build_on_platform_candidate()`·`condense_candidate()` 모두 `None` — corpus 완전 라우팅.
 - 상세: [`docs/CONDENSE.md`](docs/CONDENSE.md).
 
