@@ -208,7 +208,7 @@
         "FlowMesh(done)"
       ],
       "Certstra": [
-        "RouteSentinel",
+        "RouteSentinel(deferred:simulation-engine)",
         "OrbiRoam(done)"
       ]
     },
