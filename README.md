@@ -57,6 +57,13 @@ ledger·verdict severity·predicate gate·clearing·routing…)을 공유하는 
   · Clearstra price(`agent-ops`). 각 팩은 원본과 parity 테스트 동봉.
 - **루프 편입**: `core/helix_loop.py` `next_action`이 `CONDENSE`/`BUILD_ON_PLATFORM`을 1급 액션으로 제안
   (`helix.py status --layered-corpus seed/condense/layered-corpus.json`). 레시피는 `skills/condense` 스킬.
+- **완주한 라우팅 sweep**: corpus 후보 풀 전체를 machine으로 판정해 **3분류로 완전 배정** —
+  **흡수 15**(clean gate/primitive → 팩 + 원본 parity 테스트) · **defer 7**(다차원 simulation/scoring
+  machine — 억지 포팅 시 parity 훼손) · **design-only 8**(코드 없음). 4개 플랫폼이 corpus에서 성장:
+  **Attestra 23 · Clearstra 12 · Routestra 11 · Certstra 5 (총 51팩)**. 라우팅은 **이름이 아니라 machine**
+  으로 판정하며 양방향 교정한다(AgentMesh: Attestra→Clearstra, SettleMesh: Clearstra→Attestra). 5번째
+  플랫폼(CONDENSE) 가설이던 "Bio drift(M11)"는 실코드로 **반증**(verdict/scoring으로 환원). 결과:
+  `build_on_platform_candidate()`·`condense_candidate()` 모두 `None` — corpus 완전 라우팅.
 - 상세: [`docs/CONDENSE.md`](docs/CONDENSE.md).
 
 ## 구조
