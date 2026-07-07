@@ -123,7 +123,7 @@
       "name": "Certstra",
       "verb": "certify",
       "cluster": "Robotics/Release",
-      "packs": 3,
+      "packs": 4,
       "repo": "github.com/sadpig70/Certstra",
       "published": true,
       "reused_machines": [
@@ -145,7 +145,8 @@
       "consolidated": [
         "CertMesh",
         "ReleaseMesh",
-        "RoboTrace"
+        "RoboTrace",
+        "OrbiRoam"
       ],
       "emitted_by": "Condense recipe (U3 pilot)"
     }
@@ -172,7 +173,7 @@
   },
   "base_pairing_feedback": {
     "rule": "새 corpus 프로젝트가 기존 플랫폼의 machine을 공유하고 그 contract에 맞으면 -> 독립 프로젝트가 아니라 그 플랫폼의 PACK으로 생성(build-on-platform).",
-    "absorbed_total": 47,
+    "absorbed_total": 48,
     "build_on_platform_candidates": {
       "Attestra": [
         "MethodBond(done)",
@@ -208,7 +209,7 @@
       ],
       "Certstra": [
         "RouteSentinel",
-        "OrbiRoam"
+        "OrbiRoam(done)"
       ]
     },
     "remaining_unplatformed_clusters": [
