@@ -10,6 +10,8 @@
 HELIX는 두 시스템을 **하나의 자기완결 repo로 통합**한다 — 모든 스킬을 `skills/`에 vendor하되,
 내부 로직은 공유 백본(HELIX-Core)을 **단일 출처**로 두어 desync를 막는다.
 
+> 📄 **외부 검토·빠른 파악용 단일 브리핑**: [`docs/OVERVIEW.md`](docs/OVERVIEW.md) — 현황(5 플랫폼·56팩)·설계 불변식·정직한 한계·열린 질문·향후 방향.
+
 <p align="center">
   <img src="assets/helix-loop.svg" alt="HELIX explore⊕exploit 폐쇄 제어 루프: IdeaFirst(가닥 A)와 recreate(가닥 B)가 새 프로젝트로 모이고 winner→corpus 환류(염기쌍)로 닫히며, 백본 HELIX-Core가 ledger·diversity·provenance·fingerprint·loop를 단일 출처로 받친다" width="92%">
 </p>
