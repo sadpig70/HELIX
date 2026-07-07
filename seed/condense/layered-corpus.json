@@ -216,7 +216,7 @@
       ]
     },
     "remaining_unplatformed_clusters": [
-      "none — every candidate cluster routed. Bio staged-release REFUTED as a CONDENSE (M11 'drift' is not a novel platform machine): BioClock -> Certstra certify (done), DriftDossier -> defer (scoring), LazarettoStage -> candidate Certstra M12 pack. No new-platform (CONDENSE) candidate remains at/above threshold."
+      "none — every candidate cluster routed. Bio staged-release REFUTED as a CONDENSE (M11 'drift' is not a novel platform machine): BioClock -> Certstra certify (done), DriftDossier -> defer (scoring), LazarettoStage -> defer (schedule-generation/scoring machine, not Certstra's plan_stages primitive). No new-platform (CONDENSE) candidate remains at/above threshold."
     ]
   },
   "candidate_clusters": [
@@ -255,11 +255,11 @@
         "M12"
       ],
       "resolved": true,
-      "note": "REFUTED (real-code): M11 'drift' is NOT a novel platform machine, so this is NOT a CONDENSE candidate. Machine-aware routing splits the cluster onto existing platforms: BioClock = drift+quarantine certification verdict -> Certstra certify (done, bio-clock); DriftDossier = per-event divergence SCORING compilation -> defer (like ForgeQuarantine); LazarettoStage = M12 staged-release, already covered by Certstra. shared_machines corrected to [M2, M12] (both covered) so the loop treats it as BUILD_ON_PLATFORM, never CONDENSE.",
+      "note": "REFUTED (real-code): M11 'drift' is NOT a novel platform machine, so this is NOT a CONDENSE candidate. Machine-aware routing splits the cluster onto existing platforms: BioClock = drift+quarantine certification verdict -> Certstra certify (done, bio-clock); DriftDossier = per-event divergence SCORING compilation -> defer (like ForgeQuarantine); LazarettoStage = risk-scaled quarantine SCHEDULE GENERATOR (does not fit Certstra's cohort-rollout plan_stages) -> defer; M12 staged-release itself is already covered by Certstra. shared_machines corrected to [M2, M12] (both covered) so the loop treats it as BUILD_ON_PLATFORM, never CONDENSE.",
       "routing": [
         {"member": "BioClock", "machine": "M2 (drift+quarantine -> certification verdict)", "platform": "Certstra", "pack": "bio-clock", "done": true},
         {"member": "DriftDossier", "machine": "per-event divergence scoring compilation", "platform": null, "deferred": true},
-        {"member": "LazarettoStage", "machine": "M12 staged-release + risk band", "platform": "Certstra", "note": "M12 already covered; candidate stage pack"}
+        {"member": "LazarettoStage", "machine": "risk-scaled quarantine SCHEDULE GENERATOR (durations/cadences/monitoring + risk band)", "platform": null, "deferred": true, "note": "does not fit Certstra plan_stages (cohort-% rollout + incident-threshold go/halt) — a different schedule-generation/scoring machine; forcing it would be lossy"}
       ],
       "members_implemented": [
         "BioClock",
