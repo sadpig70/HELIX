@@ -16,7 +16,7 @@
       "name": "Attestra",
       "verb": "attest",
       "cluster": "Governance/Trust",
-      "packs": 21,
+      "packs": 22,
       "repo": "github.com/sadpig70/Attestra",
       "published": true,
       "reused_machines": [
@@ -51,7 +51,8 @@
         "AfferentCore",
         "AfferentInterrupt",
         "SpendMesh",
-        "SlotSettleGate"
+        "SlotSettleGate",
+        "MethodBond"
       ]
     },
     {
@@ -171,10 +172,10 @@
   },
   "base_pairing_feedback": {
     "rule": "새 corpus 프로젝트가 기존 플랫폼의 machine을 공유하고 그 contract에 맞으면 -> 독립 프로젝트가 아니라 그 플랫폼의 PACK으로 생성(build-on-platform).",
-    "absorbed_total": 46,
+    "absorbed_total": 47,
     "build_on_platform_candidates": {
       "Attestra": [
-        "MethodBond",
+        "MethodBond(done)",
         "ADPR(design-only)",
         "AgentPACT(design-only)",
         "GPOA(design-only)",
