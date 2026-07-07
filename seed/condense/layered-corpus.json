@@ -158,8 +158,8 @@
       "verb": "score",
       "cluster": "Assessment/Scoring mesh",
       "packs": 3,
-      "repo": "D:/HELIX/Scorestra (local, unpublished)",
-      "published": false,
+      "repo": "github.com/sadpig70/Scorestra",
+      "published": true,
       "reused_machines": [
         "determinism"
       ],
