@@ -157,7 +157,7 @@
       "name": "Scorestra",
       "verb": "score",
       "cluster": "Assessment/Scoring mesh",
-      "packs": 1,
+      "packs": 3,
       "repo": "D:/HELIX/Scorestra (local, unpublished)",
       "published": false,
       "reused_machines": [
@@ -170,8 +170,11 @@
         "M15"
       ],
       "consolidated": [
-        "ForgeQuarantine"
+        "ForgeQuarantine",
+        "LoopKit",
+        "LazarettoStage"
       ],
+      "two_dim_variant": "DetourDesk + FieldRoot compute a weighted score too, but CLASSIFY by TWO variables (DetourDesk: delay-vs-buffer AND reliability; FieldRoot: risk OR cloud-dependence), which the single-score->band kernel does not fit — candidate Scorestra kernel extension (2-D bands), not force-fit.",
       "emitted_by": "Condense recipe — 2nd CONDENSE emit (after Certstra). helix.py next_action proposed CONDENSE for the deferred scoring cluster; kernel score->classify->aggregate + pqc-exposure reference pack (ForgeQuarantine parity). Pending packs: LoopKit, DetourDesk, FieldRoot, LazarettoStage."
     }
   ],
