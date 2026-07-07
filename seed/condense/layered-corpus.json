@@ -157,7 +157,7 @@
       "name": "Scorestra",
       "verb": "score",
       "cluster": "Assessment/Scoring mesh",
-      "packs": 3,
+      "packs": 5,
       "repo": "github.com/sadpig70/Scorestra",
       "published": true,
       "reused_machines": [
@@ -172,9 +172,12 @@
       "consolidated": [
         "ForgeQuarantine",
         "LoopKit",
-        "LazarettoStage"
+        "LazarettoStage",
+        "DetourDesk",
+        "FieldRoot"
       ],
-      "two_dim_variant": "DetourDesk + FieldRoot compute a weighted score too, but CLASSIFY by TWO variables (DetourDesk: delay-vs-buffer AND reliability; FieldRoot: risk OR cloud-dependence), which the single-score->band kernel does not fit — candidate Scorestra kernel extension (2-D bands), not force-fit.",
+      "kernel_modes": "score->band (pqc-exposure, loop-kit, lazaretto-risk) + rule-ladder 2-D (detour-posture: AND; field-posture: OR). rule-ladder generalizes score->band.",
+      "two_dim_note": "DetourDesk + FieldRoot compute a weighted score too, but CLASSIFY by TWO variables (DetourDesk: delay-vs-buffer AND reliability; FieldRoot: risk OR cloud-dependence), which the single-score->band kernel does not fit — candidate Scorestra kernel extension (2-D bands), not force-fit.",
       "emitted_by": "Condense recipe — 2nd CONDENSE emit (after Certstra). helix.py next_action proposed CONDENSE for the deferred scoring cluster; kernel score->classify->aggregate + pqc-exposure reference pack (ForgeQuarantine parity). Pending packs: LoopKit, DetourDesk, FieldRoot, LazarettoStage."
     }
   ],
@@ -225,13 +228,13 @@
       "Clearstra": [
         "MineralShock(done)",
         "EndowFront(deferred:funding-projection)",
-        "DetourDesk(deferred:consequence-sim)",
+        "DetourDesk(done:Scorestra detour-posture)",
         "SettleMesh(done:routed-to-Attestra)",
         "AgentMesh(done)"
       ],
       "Routestra": [
         "WattMesh(design-only)",
-        "FieldRoot(deferred:network-routing-sim)",
+        "FieldRoot(done:Scorestra field-posture)",
         "FlowMesh(done)"
       ],
       "Certstra": [
