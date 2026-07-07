@@ -205,8 +205,8 @@
         "AgentMesh(done)"
       ],
       "Routestra": [
-        "WattMesh",
-        "FieldRoot",
+        "WattMesh(design-only)",
+        "FieldRoot(deferred:network-routing-sim)",
         "FlowMesh(done)"
       ],
       "Certstra": [
