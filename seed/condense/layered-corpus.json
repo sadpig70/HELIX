@@ -266,6 +266,26 @@
         "DriftDossier",
         "LazarettoStage"
       ]
+    },
+    {
+      "cluster": "Assessment/Scoring mesh",
+      "substantiated_count": 5,
+      "shared_machines": [
+        "M15"
+      ],
+      "note": "CANDIDATE (real-code): the projects deferred from BUILD_ON_PLATFORM as 'multi-output simulation/scoring machines' in fact share a NOVEL substrate absent from all four kernels — normalize a batch -> per-item weighted multi-factor SCORE -> graded tier/band/class classification (+ priority ranking) -> aggregate distribution report (+ evidence/ledger). Distinct from M2 (discrete pass/fail verdict), M9 (score then SELECT one), M6 (pricing), M10 (single-dim threshold). This is a genuine CONDENSE (5th platform) candidate: an assessment-scoring kernel + N domain score-formula packs. 'defer' was not 'discard' — it was an unrecognized novel-machine cluster.",
+      "machine_M15": "assessment-scoring: weighted multi-factor score -> graded tier/band -> aggregate distribution",
+      "members_implemented": [
+        "ForgeQuarantine",
+        "LoopKit",
+        "DetourDesk",
+        "FieldRoot",
+        "LazarettoStage"
+      ],
+      "related_verdict_variants": [
+        "RouteSentinel",
+        "EndowFront"
+      ]
     }
   ]
 }
