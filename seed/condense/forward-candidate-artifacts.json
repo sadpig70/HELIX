@@ -1,0 +1,56 @@
+{
+  "artifacts": {
+    "ADPR": {
+      "candidate": "examples/condense/candidate-adpr-m4.json",
+      "source": "seed/corpus/project_list.md",
+      "source_note": "ADPR is a hash-only provenance log; it stores commitments only"
+    },
+    "AgentPACT": {
+      "candidate": "examples/condense/candidate-agentpact-m1.json",
+      "source": "_workspace/project_list.md",
+      "source_note": "PACT records provenance, accountability, compatibility, and trust as a hash-chain layer"
+    },
+    "EndowFront": {
+      "candidate": "examples/condense/candidate-endowfront-m17.json",
+      "source": "https://github.com/sadpig70/endowfront",
+      "source_note": "EndowFront engine: aggregate pledges, project corpus, judge sustainability/open access"
+    },
+    "GPOA": {
+      "candidate": "examples/condense/candidate-gpoa-m15.json",
+      "source": "seed/corpus/project_list.md",
+      "source_note": "GPOA scores governance-phase incidents on a rule_density x SPOF_density matrix"
+    },
+    "MLX": {
+      "candidate": "examples/condense/candidate-mlx-m3.json",
+      "source": "MethodBond/MethodBond/engine.py",
+      "source_note": "MLX-style license metadata is validated by MethodBond's Attestra predicate gate"
+    },
+    "PnR": {
+      "candidate": "examples/condense/candidate-pnr-m15.json",
+      "source": "_workspace/project_list.md",
+      "source_note": "PnR classifies and scores non-response, delay, and avoidance evidence"
+    },
+    "QVeil": {
+      "candidate": "examples/condense/candidate-qveil-m3.json",
+      "source": "seed/corpus/project_list.md",
+      "source_note": "QVeil upgrades TLS traffic to PQC through Kubernetes annotation and sidecar policy"
+    },
+    "Qvidence": {
+      "candidate": "examples/condense/candidate-qvidence-m4.json",
+      "source": "_workspace/project_list.md",
+      "source_note": "Qvidence protects bio evidence through PQC capsules, hash chains, and jurisdiction routing"
+    },
+    "RouteSentinel": {
+      "candidate": "examples/condense/candidate-routesentinel-m16.json",
+      "source": ".recreate/runs/001-action-handback-verifier/genes.json",
+      "source_note": "RouteSentinel gene: planned route, actual route, deviation policy, rollback state"
+    },
+    "WattMesh": {
+      "candidate": "examples/condense/candidate-wattmesh-m9.json",
+      "source": "SkyGrid/src/SkyGrid/core.py",
+      "source_note": "WattMesh supplies home energy negotiation / renewable availability to the SkyGrid route primitive"
+    }
+  },
+  "purpose": "Optional normalized artifacts for live layered-corpus forward candidates",
+  "version": 1
+}

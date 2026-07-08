@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "agreement": 1.0,
+    "allow_errors": false,
+    "allow_skipped_claims": false,
+    "implemented_probe_cases": 95,
+    "matched_claims": 95,
+    "scored_claims": 95,
+    "total_platform_packs": 56
+  },
+  "purpose": "U7 hard gate for U6 deterministic machine-probe agreement over live -stra pack samples",
+  "required_platforms": [
+    "Attestra",
+    "Clearstra",
+    "Routestra",
+    "Certstra",
+    "Scorestra"
+  ],
+  "version": 1
+}

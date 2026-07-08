@@ -1,0 +1,129 @@
+{
+  "design": ".pgf/DESIGN-HELIXForwardClosure.md",
+  "iteration": 1,
+  "nodes": {
+    "AgentPACT": {
+      "outputs": {
+        "candidate": "examples/condense/candidate-agentpact-m1.json",
+        "prediction": "BUILD_ON_PLATFORM / Attestra"
+      },
+      "status": "done"
+    },
+    "CandidateNormalization": {
+      "outputs": {
+        "files_created": [
+          "examples/condense/candidate-agentpact-m1.json",
+          "examples/condense/candidate-gpoa-m15.json",
+          "examples/condense/candidate-mlx-m3.json",
+          "examples/condense/candidate-pnr-m15.json",
+          "examples/condense/candidate-qveil-m3.json",
+          "examples/condense/candidate-qvidence-m4.json",
+          "examples/condense/candidate-wattmesh-m9.json"
+        ],
+        "files_modified": [
+          "seed/condense/forward-candidate-artifacts.json",
+          "tests/test_forward_candidate_manifest.py",
+          "tests/test_forward_predict.py"
+        ]
+      },
+      "status": "done"
+    },
+    "CanonicalStateAudit": {
+      "outputs": {
+        "notes": "Read HANDOFF, docs/MACHINE-GRAPH.md, live manifest, seed/corpus/project_list.md, U1 mechanism graph, and platform pack references."
+      },
+      "status": "done"
+    },
+    "GPOA": {
+      "outputs": {
+        "candidate": "examples/condense/candidate-gpoa-m15.json",
+        "prediction": "BUILD_ON_PLATFORM / Scorestra"
+      },
+      "status": "done"
+    },
+    "HELIXForwardClosure": {
+      "status": "done"
+    },
+    "HandoffAndPublish": {
+      "outputs": {
+        "files_modified": [
+          "HANDOFF.md",
+          "docs/MACHINE-GRAPH.md"
+        ],
+        "note": "Commit and push authorized by user; execute after status file update."
+      },
+      "status": "done"
+    },
+    "LivePredictionClosure": {
+      "outputs": {
+        "artifact_counts": {
+          "available": 10,
+          "missing": 0
+        },
+        "live_summary": {
+          "BUILD_ON_PLATFORM": 8,
+          "DEFER": 2
+        }
+      },
+      "status": "done"
+    },
+    "MLX": {
+      "outputs": {
+        "candidate": "examples/condense/candidate-mlx-m3.json",
+        "prediction": "BUILD_ON_PLATFORM / Attestra"
+      },
+      "status": "done"
+    },
+    "PnR": {
+      "outputs": {
+        "candidate": "examples/condense/candidate-pnr-m15.json",
+        "prediction": "BUILD_ON_PLATFORM / Scorestra"
+      },
+      "status": "done"
+    },
+    "QVeil": {
+      "outputs": {
+        "candidate": "examples/condense/candidate-qveil-m3.json",
+        "prediction": "BUILD_ON_PLATFORM / Attestra"
+      },
+      "status": "done"
+    },
+    "Qvidence": {
+      "outputs": {
+        "candidate": "examples/condense/candidate-qvidence-m4.json",
+        "prediction": "BUILD_ON_PLATFORM / Attestra"
+      },
+      "status": "done"
+    },
+    "VerificationGate": {
+      "outputs": {
+        "gate_evidence": [
+          "python core/helix_validate.py . -> PASS",
+          "python -m unittest discover -s tests -q -> Ran 281 tests OK",
+          "python -m py_compile ... -> PASS",
+          "python scripts/condense/machine_probe_dataset.py --out _workspace/condense/U6-machine-probe-report.json -> 95/95 agreement 1.0",
+          "python helix.py status --forward-predict-report _workspace/condense/U9-live-forward-predict-report.json -> BUILD_ON_PLATFORM=8, DEFER=2"
+        ]
+      },
+      "status": "done"
+    },
+    "WattMesh": {
+      "outputs": {
+        "candidate": "examples/condense/candidate-wattmesh-m9.json",
+        "prediction": "BUILD_ON_PLATFORM / Routestra"
+      },
+      "status": "done"
+    }
+  },
+  "project": "HELIXForwardClosure",
+  "started_at": "2026-07-08T00:00:00+09:00",
+  "summary": {
+    "blocked": 0,
+    "designing": 0,
+    "done": 13,
+    "in-progress": 0,
+    "total": 13
+  },
+  "updated_at": "2026-07-08T00:00:00+09:00",
+  "workplan": ".pgf/WORKPLAN-HELIXForwardClosure.md"
+}

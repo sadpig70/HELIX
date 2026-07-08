@@ -1,0 +1,30 @@
+{
+  "artifact": {
+    "chain": [
+      {
+        "confirmed": true,
+        "evidence_hash": "sha256:clinical-capsule-000"
+      },
+      {
+        "confirmed": true,
+        "evidence_hash": "sha256:clinical-capsule-001"
+      }
+    ],
+    "operation": "bio_evidence_commitment_verify",
+    "record": {
+      "artifact_id": "qvidence-clinical-run-001",
+      "evidence_hash": "sha256:clinical-capsule-001"
+    },
+    "result": {
+      "chain_length": 2,
+      "evidence_hash": "sha256:clinical-capsule-001",
+      "provenance_valid": true
+    },
+    "source_note": "Qvidence protects clinical and genomic evidence through PQC capsules, hash chains, and jurisdiction-aware handling."
+  },
+  "expected": [
+    "M4"
+  ],
+  "id": "candidate-qvidence-m4",
+  "substantiated_count": 1
+}

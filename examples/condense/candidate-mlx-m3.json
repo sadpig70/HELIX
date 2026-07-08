@@ -1,0 +1,53 @@
+{
+  "artifact": {
+    "aggregate": {
+      "merge": "max_severity",
+      "verdict": "valid",
+      "worst": "transfer_type"
+    },
+    "checks": [
+      {
+        "gate": "transfer_type",
+        "reason": "permissive is an allowed transfer type",
+        "verdict": "valid"
+      },
+      {
+        "gate": "source_domain",
+        "reason": "open is an allowed source domain",
+        "verdict": "valid"
+      },
+      {
+        "gate": "target_industry",
+        "reason": "general is an allowed target industry",
+        "verdict": "valid"
+      },
+      {
+        "gate": "revenue_share_pct",
+        "reason": "10 is within the inclusive 0..100 range",
+        "verdict": "valid"
+      }
+    ],
+    "operation": "method_license_metadata_gate",
+    "packet": {
+      "license": {
+        "revenue_share_pct": 10,
+        "source_domain": "open",
+        "target_industry": "general",
+        "transfer_type": "permissive"
+      },
+      "packet_id": "mlx-license-001",
+      "subject": "hf-artifact-card"
+    },
+    "severity_order": [
+      "valid",
+      "thin",
+      "breach"
+    ],
+    "source_note": "MLX defines portable method-license metadata fields used by MethodBond's Attestra predicate gate."
+  },
+  "expected": [
+    "M3"
+  ],
+  "id": "candidate-mlx-m3",
+  "substantiated_count": 1
+}

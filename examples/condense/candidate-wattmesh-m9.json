@@ -1,0 +1,33 @@
+{
+  "artifact": {
+    "all_scores": [
+      {
+        "eligible": true,
+        "name": "home-battery",
+        "reason": "",
+        "score": 62.5
+      },
+      {
+        "eligible": true,
+        "name": "neighborhood-solar",
+        "reason": "",
+        "score": 88.0
+      },
+      {
+        "eligible": false,
+        "name": "diesel-backup",
+        "reason": "renewable evidence absent",
+        "score": 91.0
+      }
+    ],
+    "operation": "home_energy_negotiation_route",
+    "selected": "neighborhood-solar",
+    "selected_score": 88.0,
+    "source_note": "WattMesh is a peer-to-peer multi-agent home energy negotiation mesh; SkyGrid uses it as renewable availability input."
+  },
+  "expected": [
+    "M9"
+  ],
+  "id": "candidate-wattmesh-m9",
+  "substantiated_count": 1
+}

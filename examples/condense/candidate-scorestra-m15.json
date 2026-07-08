@@ -1,0 +1,35 @@
+{
+  "artifact": {
+    "bands": [
+      {
+        "min": 0.8,
+        "tier": "high"
+      },
+      {
+        "min": 0.0,
+        "tier": "low"
+      }
+    ],
+    "count_by_tier": {
+      "high": 1,
+      "low": 0
+    },
+    "operation": "assessment_scoring",
+    "scored": [
+      {
+        "id": "x",
+        "score": 0.9,
+        "tier": "high"
+      }
+    ],
+    "weights": {
+      "impact": 0.7,
+      "risk": 0.3
+    }
+  },
+  "expected": [
+    "M15"
+  ],
+  "id": "candidate-scorestra-m15",
+  "substantiated_count": 1
+}

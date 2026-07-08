@@ -1,0 +1,17 @@
+{
+  "candidates": [
+    {
+      "candidate": "candidate-scorestra-m15.json"
+    },
+    {
+      "candidate": "candidate-m13-defer.json"
+    },
+    {
+      "candidate": "candidate-m13-condense.json"
+    }
+  ],
+  "layered_corpus": "seed/condense/layered-corpus.json",
+  "purpose": "Example U9 candidate batch without locked oracle expectations",
+  "schema": "helix-forward-predict-manifest/1.0",
+  "version": 1
+}

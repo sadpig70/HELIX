@@ -1,0 +1,42 @@
+{
+  "artifact": {
+    "actual_route": [
+      "dock",
+      "storage",
+      "lab"
+    ],
+    "deviation_policy": {
+      "blocked_zones": [
+        "storage"
+      ],
+      "max_deviation_count": 0
+    },
+    "operation": "route_deviation_simulation",
+    "planned_route": [
+      "dock",
+      "hall",
+      "lab"
+    ],
+    "rollback": {
+      "completed": true,
+      "required": true,
+      "restored_route": [
+        "dock",
+        "hall",
+        "lab"
+      ]
+    },
+    "simulation": {
+      "blocked_zone_hits": 1,
+      "decision": "rollback",
+      "deviation_count": 1,
+      "rollback_required": true
+    },
+    "source_gene": ".recreate/runs/001-action-handback-verifier/genes.json#RouteSentinel"
+  },
+  "expected": [
+    "M16"
+  ],
+  "id": "candidate-routesentinel-m16",
+  "substantiated_count": 1
+}

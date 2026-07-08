@@ -1,0 +1,29 @@
+{
+  "artifact": {
+    "operation": "compatibility_gap_scoring",
+    "pairs": [
+      {
+        "compatibility_score": 0.7,
+        "gap_score": 0.3,
+        "source": "a",
+        "target": "adapter"
+      },
+      {
+        "compatibility_score": 0.5,
+        "gap_score": 0.5,
+        "source": "b",
+        "target": "adapter"
+      }
+    ],
+    "summary": {
+      "mean_compatibility": 0.6,
+      "mean_gap": 0.4,
+      "pair_count": 2
+    }
+  },
+  "expected": [
+    "M13"
+  ],
+  "id": "candidate-m13-condense",
+  "substantiated_count": 5
+}

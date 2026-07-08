@@ -1,0 +1,42 @@
+{
+  "artifact": {
+    "bands": [
+      {
+        "min": 0.75,
+        "tier": "evasive_non_response"
+      },
+      {
+        "min": 0.4,
+        "tier": "delayed_response"
+      },
+      {
+        "min": 0.0,
+        "tier": "responsive"
+      }
+    ],
+    "count_by_tier": {
+      "delayed_response": 1,
+      "evasive_non_response": 1,
+      "responsive": 0
+    },
+    "operation": "proof_of_non_response_scoring",
+    "scored": [
+      {
+        "id": "warning-a",
+        "score": 0.82,
+        "tier": "evasive_non_response"
+      },
+      {
+        "id": "warning-b",
+        "score": 0.5,
+        "tier": "delayed_response"
+      }
+    ],
+    "source_note": "PnR classifies and scores non-response, delay, and avoidance evidence."
+  },
+  "expected": [
+    "M15"
+  ],
+  "id": "candidate-pnr-m15",
+  "substantiated_count": 1
+}

@@ -1,0 +1,22 @@
+{
+  "criteria": {
+    "decision_count": 95,
+    "deferred_machines": {
+      "M13": 1
+    },
+    "summary": {
+      "BUILD_ON_PLATFORM": 94,
+      "DEFER": 1
+    }
+  },
+  "layered_corpus": "seed/condense/layered-corpus.json",
+  "purpose": "U8 hard gate for deterministic probe-router summary over live -stra machine evidence",
+  "required_platforms": [
+    "Attestra",
+    "Clearstra",
+    "Routestra",
+    "Certstra",
+    "Scorestra"
+  ],
+  "version": 1
+}

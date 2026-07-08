@@ -26,6 +26,7 @@ from core.helix_ledger import (                               # noqa: E402
 )
 from core.helix_loop import next_action                       # noqa: E402
 from core.helix_condense import condense_state                # noqa: E402
+from core.helix_router import route_probe_rows                # noqa: E402
 from core.helix_project_paths import ensure_project_src       # noqa: E402
 from core.helix_provenance import trace_winner, winner_to_corpus_entry  # noqa: E402
 from core.helix_validate import validate_corpus_entry         # noqa: E402
@@ -36,6 +37,64 @@ from engines.exploit import adapter as exploit_adp            # noqa: E402
 
 FIXTURE_EXPLORE = os.path.join(ROOT, "examples", "explore_state")
 FIXTURE_EXPLOIT = os.path.join(ROOT, "examples", "exploit_state")
+
+
+def probe_router_summary(layered_corpus: dict) -> dict:
+    """Route live machine-probe agreement rows against layered platform coverage.
+
+    This is CLI/meta-layer glue: it executes the U6 dataset builder when the local
+    platform repos are available, then feeds only probe-confirmed machines to the
+    deterministic router. Missing platform repos or extraction failures are reported
+    as unavailable instead of changing the core next_action policy.
+    """
+    try:
+        from scripts.condense.machine_probe_dataset import build_dataset
+        dataset = build_dataset()
+    except Exception as e:
+        return {"available": False, "reason": str(e)}
+    routed = route_probe_rows(layered_corpus, dataset["agreement"]["rows"])
+    deferred = {}
+    for decision in routed["decisions"]:
+        if decision["action"] == "DEFER":
+            for machine in decision.get("uncovered_machines", []):
+                deferred[machine] = deferred.get(machine, 0) + 1
+    return {
+        "available": True,
+        "summary": routed["summary"],
+        "deferred_machines": dict(sorted(deferred.items())),
+        "probe_cases": dataset["agreement"]["cases"],
+        "scored_claims": dataset["agreement"]["scored_claims"],
+        "matched_claims": dataset["agreement"]["matched_claims"],
+        "agreement": dataset["agreement"]["agreement"],
+    }
+
+
+def load_forward_predict_summary(path: str) -> dict:
+    """Load a U9 forward-prediction report summary for status output."""
+    if not path:
+        return None
+    if not os.path.exists(path):
+        return {"available": False, "reason": f"missing report: {path}"}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            report = json.load(f)
+    except Exception as e:
+        return {"available": False, "reason": str(e)}
+    rows = []
+    for row in report.get("rows", []):
+        rows.append({
+            "id": row.get("id", ""),
+            "action": row.get("actual_action", ""),
+            "platform": row.get("actual_platform"),
+            "ok": bool(row.get("ok")),
+        })
+    return {
+        "available": True,
+        "all_ok": bool(report.get("all_ok")),
+        "count": int(report.get("count", len(rows)) or 0),
+        "summary": report.get("summary", {}),
+        "rows": rows,
+    }
 
 
 def resolve_sim(spec):
@@ -149,7 +208,8 @@ def verify_handback(registry_path: str, project_name: str, packet_path: str) -> 
     }
 
 
-def build_report(explore_root=None, exploit_root=None, sim=None, layered_corpus_path=None) -> dict:
+def build_report(explore_root=None, exploit_root=None, sim=None, layered_corpus_path=None,
+                 forward_predict_report_path=None) -> dict:
     """Run one HELIX turn over the two engines' state. Deterministic given inputs.
 
     `sim` is an optional semantic similarity callable; when None the diversity
@@ -223,9 +283,12 @@ def build_report(explore_root=None, exploit_root=None, sim=None, layered_corpus_
     # CONDENSE / BUILD_ON_PLATFORM candidates from it. Pure transform; file loading is the
     # driver's job. No path -> no candidates -> status behaves exactly as before.
     condense = {}
+    router = None
     if layered_corpus_path and os.path.exists(layered_corpus_path):
         with open(layered_corpus_path, "r", encoding="utf-8") as f:
-            condense = condense_state(json.load(f))
+            layered_corpus = json.load(f)
+            condense = condense_state(layered_corpus)
+            router = probe_router_summary(layered_corpus)
         state.update(condense)
     action = next_action(state)
 
@@ -247,6 +310,8 @@ def build_report(explore_root=None, exploit_root=None, sim=None, layered_corpus_
         "corpus_feedback": corpus_feedback,
         "handback_gate": handback_gate,
         "condense": condense or None,
+        "router": router,
+        "forward_predict": load_forward_predict_summary(forward_predict_report_path),
         "next_action": action,
     }
 
@@ -288,6 +353,25 @@ def _print_report(r: dict) -> None:
         bp = c.get("build_on_platform_candidate")
         if bp:
             print(f"  build-on-platform: {bp['project']} -> {bp['platform']} (grow as pack)")
+    router = r.get("router")
+    if router:
+        if router.get("available"):
+            print(f"  probe router: {router['summary']} "
+                  f"(matched={router['matched_claims']}/{router['scored_claims']}, "
+                  f"agreement={router['agreement']:.6f})")
+            if router.get("deferred_machines"):
+                print(f"      deferred machines: {router['deferred_machines']}")
+        else:
+            print(f"  probe router: unavailable ({router.get('reason', 'unknown')})")
+    fp = r.get("forward_predict")
+    if fp:
+        if fp.get("available"):
+            print(f"  forward predict: {fp['summary']} (count={fp['count']}, all_ok={fp['all_ok']})")
+            for row in fp.get("rows", []):
+                platform = f" -> {row['platform']}" if row.get("platform") else ""
+                print(f"      {row['id']}: {row['action']}{platform}")
+        else:
+            print(f"  forward predict: unavailable ({fp.get('reason', 'unknown')})")
     a = r["next_action"]
     print(f"  NEXT ACTION: {a['action']}  ({a['why']})")
 
@@ -310,7 +394,8 @@ def _now(argv):
 
 
 USAGE = ("usage:\n"
-         "  python helix.py status [--explore-root R] [--exploit-root R] [--sim lexical|mod:fn] [--json]\n"
+         "  python helix.py status [--explore-root R] [--exploit-root R] "
+         "[--layered-corpus P] [--forward-predict-report P] [--sim lexical|mod:fn] [--json]\n"
          "  python helix.py close-loop --winner <winner.json> --ledger <ledger.json> "
          "--corpus <corpus.json> [--now <iso>] [--packet <handback.json>]\n"
          "  python helix.py verify-handback --registry <registry.json> --project <name> "
@@ -324,7 +409,8 @@ def _main(argv) -> int:
     if cmd == "status":
         report = build_report(_opt(argv, "--explore-root"), _opt(argv, "--exploit-root"),
                               sim=resolve_sim(_opt(argv, "--sim")),
-                              layered_corpus_path=_opt(argv, "--layered-corpus"))
+                              layered_corpus_path=_opt(argv, "--layered-corpus"),
+                              forward_predict_report_path=_opt(argv, "--forward-predict-report"))
         if "--json" in argv:
             print(json.dumps(report, ensure_ascii=False, indent=2))
         else:

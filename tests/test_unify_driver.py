@@ -2,6 +2,8 @@ import json
 import os
 import tempfile
 import unittest
+from contextlib import redirect_stdout
+from io import StringIO
 
 import tests._path  # noqa: F401
 from engines.unify import merge_ledgers, build_unified_ledger
@@ -64,6 +66,35 @@ class TestDriver(unittest.TestCase):
         # corpus has matured (exploit entry + AgentPACT fed back) and last engine was
         # explore -> the loop recombines via exploit (compound), not re-explore.
         self.assertEqual(r["next_action"]["action"], "RUN_EXPLOIT")
+        self.assertIsNone(r["router"])
+        self.assertIsNone(r["forward_predict"])
+
+    def test_build_report_layered_corpus_includes_probe_router_summary(self):
+        r = helix.build_report(
+            layered_corpus_path=os.path.join(ROOT, "seed", "condense", "layered-corpus.json"))
+        self.assertEqual(r["condense"], None)
+        self.assertEqual(r["next_action"]["action"], "RUN_EXPLOIT")
+        self.assertTrue(r["router"]["available"])
+        self.assertEqual(r["router"]["summary"], {"BUILD_ON_PLATFORM": 94, "DEFER": 1})
+        self.assertEqual(r["router"]["deferred_machines"], {"M13": 1})
+        self.assertEqual(r["router"]["matched_claims"], 95)
+        self.assertEqual(r["router"]["scored_claims"], 95)
+
+    def test_build_report_includes_forward_predict_summary_when_requested(self):
+        report_path = os.path.join(ROOT, "_workspace", "condense", "U9-forward-predict-report.json")
+        if not os.path.exists(report_path):
+            from scripts.condense.forward_predict import main as forward_main
+            with redirect_stdout(StringIO()):
+                forward_main(["--gate", os.path.join(ROOT, "seed", "condense", "forward-predict-gate.json"),
+                              "--layered-corpus", os.path.join(ROOT, "seed", "condense", "layered-corpus.json"),
+                              "--out", report_path,
+                              "--json"])
+        r = helix.build_report(forward_predict_report_path=report_path)
+        self.assertTrue(r["forward_predict"]["available"])
+        self.assertTrue(r["forward_predict"]["all_ok"])
+        self.assertEqual(r["forward_predict"]["summary"],
+                         {"BUILD_ON_PLATFORM": 1, "CONDENSE": 1, "DEFER": 1})
+        self.assertEqual(r["forward_predict"]["rows"][0]["action"], "BUILD_ON_PLATFORM")
 
     def test_report_deterministic(self):
         self.assertEqual(helix.build_report(), helix.build_report())

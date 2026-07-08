@@ -1,0 +1,53 @@
+{
+  "artifact": {
+    "count_by_tier": {
+      "dense_rules_distributed_control": 1,
+      "dense_rules_single_point_failure": 0,
+      "thin_rules_distributed_control": 0,
+      "thin_rules_single_point_failure": 1
+    },
+    "operation": "governance_phase_quadrant_scoring",
+    "rules": [
+      {
+        "condition": "rule_density >= 0.5 and spof_density < 0.5",
+        "tier": "dense_rules_distributed_control"
+      },
+      {
+        "condition": "rule_density >= 0.5 and spof_density >= 0.5",
+        "tier": "dense_rules_single_point_failure"
+      },
+      {
+        "condition": "rule_density < 0.5 and spof_density < 0.5",
+        "tier": "thin_rules_distributed_control"
+      },
+      {
+        "condition": "rule_density < 0.5 and spof_density >= 0.5",
+        "tier": "thin_rules_single_point_failure"
+      }
+    ],
+    "scored": [
+      {
+        "factors": {
+          "rule_density": 0.75,
+          "spof_density": 0.2
+        },
+        "id": "incident-a",
+        "tier": "dense_rules_distributed_control"
+      },
+      {
+        "factors": {
+          "rule_density": 0.25,
+          "spof_density": 0.8
+        },
+        "id": "incident-b",
+        "tier": "thin_rules_single_point_failure"
+      }
+    ],
+    "source_note": "GPOA classifies governance-phase incidents on a rule_density x SPOF_density 2x2 matrix."
+  },
+  "expected": [
+    "M15"
+  ],
+  "id": "candidate-gpoa-m15",
+  "substantiated_count": 1
+}

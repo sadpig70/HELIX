@@ -1,0 +1,80 @@
+{
+  "artifact": {
+    "evidence": [
+      {
+        "detail": "pledge 100 -> share 0.6667 of corpus 150; verdict endowed; open_access True",
+        "ref_id": "p-univ",
+        "source": "declared pledge book + endowment policy"
+      },
+      {
+        "detail": "pledge 50 -> share 0.3333 of corpus 150; verdict endowed; open_access True",
+        "ref_id": "p-lab",
+        "source": "declared pledge book + endowment policy"
+      }
+    ],
+    "operation": "endowment_funding_projection",
+    "pledges": [
+      {
+        "amount": 100.0,
+        "name": "Research university",
+        "pledge_id": "p-univ"
+      },
+      {
+        "amount": 50.0,
+        "name": "National laboratory",
+        "pledge_id": "p-lab"
+      }
+    ],
+    "policy": {
+      "cost_growth_rate": 0.0,
+      "frontier_cost_year0": 5.0,
+      "horizon_years": 3,
+      "min_coverage_ratio": 1.0,
+      "real_return_rate": 0.1,
+      "require_open_access": true
+    },
+    "posture": {
+      "corpus": 150.0,
+      "coverage_year0": 3.0,
+      "final_corpus": 183.1,
+      "frontier_cost_year0": 5.0,
+      "horizon_years": 3,
+      "min_corpus": 160.0,
+      "open_access_granted": true,
+      "payout_year0": 15.0,
+      "pledge_count": 2,
+      "preserved": true,
+      "verdict": "endowed",
+      "years_funded": 3
+    },
+    "schedule": [
+      {
+        "closing_corpus": 160.0,
+        "cost": 5.0,
+        "opening_corpus": 150.0,
+        "payout": 15.0,
+        "year": 1
+      },
+      {
+        "closing_corpus": 171.0,
+        "cost": 5.0,
+        "opening_corpus": 160.0,
+        "payout": 16.0,
+        "year": 2
+      },
+      {
+        "closing_corpus": 183.1,
+        "cost": 5.0,
+        "opening_corpus": 171.0,
+        "payout": 17.1,
+        "year": 3
+      }
+    ],
+    "source_repo": "https://github.com/sadpig70/endowfront"
+  },
+  "expected": [
+    "M17"
+  ],
+  "id": "candidate-endowfront-m17",
+  "substantiated_count": 1
+}

@@ -1,0 +1,30 @@
+{
+  "artifact": {
+    "chain": [
+      {
+        "confirmed": true,
+        "evidence_hash": "sha256:previous-adpr-commitment"
+      },
+      {
+        "confirmed": true,
+        "evidence_hash": "sha256:adpr-commitment-001"
+      }
+    ],
+    "operation": "hash_only_provenance_commitment",
+    "record": {
+      "artifact_id": "bio-design-001",
+      "evidence_hash": "sha256:adpr-commitment-001"
+    },
+    "result": {
+      "chain_length": 2,
+      "evidence_hash": "sha256:adpr-commitment-001",
+      "provenance_valid": true
+    },
+    "source_note": "ADPR is a hash-only provenance log; it stores commitments, not biological material or model weights."
+  },
+  "expected": [
+    "M4"
+  ],
+  "id": "candidate-adpr-m4",
+  "substantiated_count": 1
+}

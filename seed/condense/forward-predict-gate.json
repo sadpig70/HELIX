@@ -1,0 +1,29 @@
+{
+  "fixtures": [
+    {
+      "action": "BUILD_ON_PLATFORM",
+      "candidate": "examples/condense/candidate-scorestra-m15.json",
+      "platform": "Scorestra"
+    },
+    {
+      "action": "DEFER",
+      "candidate": "examples/condense/candidate-m13-defer.json",
+      "platform_absent": true
+    },
+    {
+      "action": "CONDENSE",
+      "candidate": "examples/condense/candidate-m13-condense.json",
+      "platform_absent": true
+    }
+  ],
+  "layered_corpus": "seed/condense/layered-corpus.json",
+  "purpose": "U9 hard gate for deterministic forward-prediction fixture routes",
+  "required_platforms": [
+    "Attestra",
+    "Clearstra",
+    "Routestra",
+    "Certstra",
+    "Scorestra"
+  ],
+  "version": 1
+}

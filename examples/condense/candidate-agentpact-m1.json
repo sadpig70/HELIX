@@ -1,0 +1,33 @@
+{
+  "artifact": {
+    "operation": "agent_accountability_hash_chain",
+    "records": [
+      {
+        "accountability": "declared",
+        "action": "delegate",
+        "actor": "agent-a",
+        "evidence_hash": "sha256:pact-provenance-001",
+        "index": 0,
+        "prev_hash": "",
+        "record_hash": "e3639f8f8313db550e98abcc7ed5df86592bff026f5c2bab313119da7cdb75c5",
+        "recorded_at": "2026-07-08T00:00:00Z"
+      },
+      {
+        "accountability": "accepted",
+        "action": "accept",
+        "actor": "agent-b",
+        "evidence_hash": "sha256:pact-provenance-002",
+        "index": 1,
+        "prev_hash": "e3639f8f8313db550e98abcc7ed5df86592bff026f5c2bab313119da7cdb75c5",
+        "record_hash": "548fe3cb6eb3e226efc77d178160f0d888529bf12b0f2fc9d5f1dc5afb9fea71",
+        "recorded_at": "2026-07-08T00:00:01Z"
+      }
+    ],
+    "source_note": "PACT records provenance, accountability, compatibility, and trust as a hash-chained accountability layer."
+  },
+  "expected": [
+    "M1"
+  ],
+  "id": "candidate-agentpact-m1",
+  "substantiated_count": 1
+}

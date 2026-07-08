@@ -1,0 +1,83 @@
+{
+  "platforms": {
+    "Attestra": {
+      "files": {
+        "attestra_core/__init__.py": "d5997ac3fe08382e76b7fff1d335a9e89287765336338a1f203bbec910a82636",
+        "attestra_core/attestation.py": "fcdcfea74c213b9b9ede6765766cbafbbaea3597f1d78800dd3e23425018ca07",
+        "attestra_core/attestation_ledger.py": "08ba79ea607ed7047d0f457745069cad0458ebe7fd0468d9032507efcd2e3280",
+        "attestra_core/determinism.py": "2b9591a4cc6973a391ff482433d841def30f94c8e673e186f0d0d4fa6c86aad4",
+        "attestra_core/fingerprint.py": "390d47dbbac7f23670c3276b276fcb6f0763fb16095aea88bcb909914d1cdc16",
+        "attestra_core/gate_runtime.py": "7e005a0a80040b4ae941a0b04c16a33a7f9420990b327c09cd31af6854412651",
+        "attestra_core/ledger.py": "282179cfc7d2201b94ab5512c77a61e3676982bdef7e2d9eaa3c1fab70df15ab",
+        "attestra_core/packet.py": "67814d7e0bd6a5d0962e05e4f45e4b680cd0288ddf5531c2fc5fdf8ff0d1e395",
+        "attestra_core/provenance.py": "7a7ee93e2c2215bf535425b36f429b9011294c6729b49d18771820d337ec62b6",
+        "attestra_core/schema.py": "ebe9fd0c1d45082fb88a7179f10d20ad36c19d5b92b002e0d742f9eef025bb56",
+        "attestra_core/verdict.py": "eb1272664df2e633f01d8524f61ad0ef3ef98a4d1e6fb3c83025a2bfe3300654"
+      },
+      "kernel_dirs": [
+        "attestra_core"
+      ]
+    },
+    "Certstra": {
+      "files": {
+        "certstra_core/__init__.py": "26b5e77d83afab6c1923fe61af688669ccc5ffd2c2aecb3fdd63c2f8a2e342c2",
+        "certstra_core/certify.py": "f91c8730e73097c2a1e3b56bf1f24642b9a422d0a5410dd8ec9f992f601f8226",
+        "certstra_core/determinism.py": "344e2751487696fc98a0965786653fcb383614330dad2d99534ba0d85352a900",
+        "certstra_core/fingerprint.py": "8d9076fadc5a31255c0cf3754b1679f0c45c64026f978b2068ce0277d2a4e9d4",
+        "certstra_core/ledger.py": "8caa63c7a830141f14fbf330fa259c386b0c6ca0106d54bf592787a5d94a74e6",
+        "certstra_core/provenance.py": "50b267285a34d4978f5bb979e3400c4453b366f4bced77ecc7b0187a37f84282",
+        "certstra_core/stage_schedule.py": "e401c55ab58505df0b3d4de805ee87747ee55729b4dac53d54837aeb6795b48a",
+        "certstra_core/verdict.py": "93a1b562536f13dd0e8a72a2d5078fab1e77e31841097ef6f4da5c126ec96a82"
+      },
+      "kernel_dirs": [
+        "certstra_core"
+      ]
+    },
+    "Clearstra": {
+      "files": {
+        "clearstra_core/__init__.py": "dc730bff27308f3619076c4ddb1570d35b015c3ff907b41370cba15d4dcf8049",
+        "clearstra_core/attestra_bridge.py": "8a3cd66a319c625e99e8b247fbcaf8b5cd17832a4f7ea0b80b06e3c7af23b38c",
+        "clearstra_core/clearing.py": "4cffe915219047184c755d1e2a8befcd6ab7ebd49169c4f7a882b448f9c870a5",
+        "clearstra_core/determinism.py": "a5d0fd70fb59c32edf77b2f7e0d3e372266ecbed8aae9fb12f1a859d68cb7f3a",
+        "clearstra_core/fingerprint.py": "a55162679a100b08c8102acef470ca582dcd0fb358078426baa9ad71b2f7c515",
+        "clearstra_core/ledger.py": "1c284ecb885cd785f84aec9681df5c82f2f0ca4fa3a08d1b6281af83674a9a6d",
+        "clearstra_core/order.py": "6437177ab4775673a9dd20b3416d54e8da9da95d2c64a4eae79d55301960e700",
+        "clearstra_core/pricing.py": "8aef5245b46647bc05bfa94df6eb5dd8ec170b5d653c0c7ba027a66f06a1cd76",
+        "clearstra_core/settlement.py": "07bc5a557bf628d7b906977d5d250ff8b0aa885ccee2c7fe5a78248a249dfa6e",
+        "clearstra_core/shock.py": "c0304c871686afd5b5b1a04f8c7c75dd3447102a84f46051a4f488eb78530fd2"
+      },
+      "kernel_dirs": [
+        "clearstra_core"
+      ]
+    },
+    "Routestra": {
+      "files": {
+        "routestra_core/__init__.py": "5f3ee3e417fd85cd38a7b3242abefc6584ab9cff4f099625a336f72895e25477",
+        "routestra_core/bound.py": "85b74f964acd5a8f08438556ca6ae6457d917e5a9bab4374d2b99512fd5d308d",
+        "routestra_core/candidate.py": "9d57d6ca0e9b88e8b151a61f511c1c633a8e974162c7503d2cfd0c121cfa06a6",
+        "routestra_core/determinism.py": "490caaaf7f2eaddc60cd8d3c6fec7207340b6a4446fc7d7d629df11e7440357d",
+        "routestra_core/fingerprint.py": "8850f9e98bea8b3deb997cb390e871384154e2b55c5a8d263a0dea7cffdb4c4e",
+        "routestra_core/ledger.py": "4de01b86dcf966b05b9f205ef6abdaebc3802e38179acb81c17094a1bba8d790",
+        "routestra_core/provenance.py": "40f79a492005b53f33fd61758f887145829eb25c64bba356836ee8055d4ca52d",
+        "routestra_core/route.py": "a3ea2672f519513cebe1e1c9d0d667df2aa557b24ad0189e2757c9a326998c3f",
+        "routestra_core/score.py": "bbb8c1a3282ca9d91ecc05f1ee4fdaa37b2c2803c70969ee63d015023b58330e",
+        "routestra_core/verdict.py": "748e7fea704602f2e3a94b19879c7842e32c42a0d0d514195b9d809c1c6dbae5"
+      },
+      "kernel_dirs": [
+        "routestra_core"
+      ]
+    },
+    "Scorestra": {
+      "files": {
+        "scorestra_core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "scorestra_core/assess.py": "0fa850cfa5f624cef1bf593b603e18bd021dbc68d893156c912119bae30fe223",
+        "scorestra_core/determinism.py": "ceeffeb465edc2112dc119ca1066aa4ae872a0f4bed37706dc136a98ffb4516f"
+      },
+      "kernel_dirs": [
+        "scorestra_core"
+      ]
+    }
+  },
+  "purpose": "zero-kernel-change lock for HELIX BUILD_ON_PLATFORM growth",
+  "version": 1
+}

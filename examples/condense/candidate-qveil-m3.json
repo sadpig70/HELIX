@@ -1,0 +1,49 @@
+{
+  "artifact": {
+    "aggregate": {
+      "merge": "max_severity",
+      "verdict": "thin",
+      "worst": "legacy_fallback"
+    },
+    "checks": [
+      {
+        "gate": "kubernetes_annotation",
+        "reason": "pod declares qveil/pqc-upgrade=true",
+        "verdict": "valid"
+      },
+      {
+        "gate": "envoy_sidecar",
+        "reason": "sidecar injection is present",
+        "verdict": "valid"
+      },
+      {
+        "gate": "pqc_cipher_suite",
+        "reason": "post-quantum TLS suite is configured",
+        "verdict": "valid"
+      },
+      {
+        "gate": "legacy_fallback",
+        "reason": "fallback is restricted to explicitly listed clients",
+        "verdict": "thin"
+      }
+    ],
+    "operation": "pqc_api_upgrade_gate",
+    "packet": {
+      "annotation": "qveil/pqc-upgrade=true",
+      "packet_id": "qveil-pod-001",
+      "sidecar": "envoy-qveil",
+      "subject": "kubernetes-pod"
+    },
+    "severity_order": [
+      "valid",
+      "thin",
+      "breach"
+    ],
+    "source_note": "QVeil upgrades TLS traffic to post-quantum cryptography through a Kubernetes annotation and sidecar."
+  },
+  "expected": [
+    "M3"
+  ],
+  "id": "candidate-qveil-m3",
+  "substantiated_count": 1
+}
