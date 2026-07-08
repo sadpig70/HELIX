@@ -39,6 +39,19 @@ DEFAULT_LAYERED_CORPUS = os.path.join(ROOT, "seed", "condense", "layered-corpus.
 DEFAULT_GATE = os.path.join(ROOT, "seed", "condense", "forward-predict-gate.json")
 
 
+def _pack_rows_or_empty():
+    """Return live pack rows when local platform repos exist, else kernel-only routing.
+
+    GitHub's HELIX checkout does not vendor the nested `-stra` repos. Forward prediction
+    must still run there because most candidate decisions only need layered-corpus
+    kernel coverage. Pack-level evidence, such as M11, is an optional local enhancement.
+    """
+    try:
+        return build_dataset()["agreement"]["rows"]
+    except FileNotFoundError:
+        return []
+
+
 def _load_json(path):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -112,7 +125,7 @@ def predict_candidate(candidate, layered_corpus, pack_rows=None, policy=None):
     row = dict(report["rows"][0])
     row["substantiated_count"] = int(candidate.get("substantiated_count", 1) or 0)
     if pack_rows is None:
-        pack_rows = build_dataset()["agreement"]["rows"]
+        pack_rows = _pack_rows_or_empty()
     pack_index = pack_machine_index(layered_corpus, pack_rows)
     decision = route_machine_claim(layered_corpus, row, policy=policy, pack_index=pack_index)
     return {
@@ -194,7 +207,7 @@ def build_report(gate_path=DEFAULT_GATE, layered_corpus_path=None, policy=None):
     gate = _load_json(gate_path)
     corpus_path = layered_corpus_path or _resolve_ref(gate.get("layered_corpus", DEFAULT_LAYERED_CORPUS))
     layered_corpus = _load_json(corpus_path)
-    pack_rows = build_dataset()["agreement"]["rows"]
+    pack_rows = _pack_rows_or_empty()
     rows = []
     for fixture in gate.get("fixtures", []):
         candidate_rel = fixture["candidate"]
@@ -218,7 +231,7 @@ def build_manifest_report(manifest_path, layered_corpus_path=None, policy=None):
     corpus_ref = layered_corpus_path or manifest.get("layered_corpus", DEFAULT_LAYERED_CORPUS)
     corpus_path = _resolve_ref(corpus_ref, manifest_dir)
     layered_corpus = _load_json(corpus_path)
-    pack_rows = build_dataset()["agreement"]["rows"]
+    pack_rows = _pack_rows_or_empty()
     rows = []
     entries = manifest.get("candidates", [])
     if not isinstance(entries, list) or not entries:

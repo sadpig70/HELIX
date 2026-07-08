@@ -11,6 +11,7 @@ from engines.explore import adapter as EX
 from engines.exploit import adapter as XP
 from core.helix_ledger import is_consumed
 import helix
+from scripts.condense.machine_probe_dataset import required_platforms_available
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -74,11 +75,15 @@ class TestDriver(unittest.TestCase):
             layered_corpus_path=os.path.join(ROOT, "seed", "condense", "layered-corpus.json"))
         self.assertEqual(r["condense"], None)
         self.assertEqual(r["next_action"]["action"], "RUN_EXPLOIT")
-        self.assertTrue(r["router"]["available"])
-        self.assertEqual(r["router"]["summary"], {"BUILD_ON_PLATFORM": 94, "DEFER": 1})
-        self.assertEqual(r["router"]["deferred_machines"], {"M13": 1})
-        self.assertEqual(r["router"]["matched_claims"], 95)
-        self.assertEqual(r["router"]["scored_claims"], 95)
+        if required_platforms_available():
+            self.assertTrue(r["router"]["available"])
+            self.assertEqual(r["router"]["summary"], {"BUILD_ON_PLATFORM": 94, "DEFER": 1})
+            self.assertEqual(r["router"]["deferred_machines"], {"M13": 1})
+            self.assertEqual(r["router"]["matched_claims"], 95)
+            self.assertEqual(r["router"]["scored_claims"], 95)
+        else:
+            self.assertFalse(r["router"]["available"])
+            self.assertIn("missing platform repo", r["router"]["reason"])
 
     def test_build_report_includes_forward_predict_summary_when_requested(self):
         report_path = os.path.join(ROOT, "_workspace", "condense", "U9-forward-predict-report.json")

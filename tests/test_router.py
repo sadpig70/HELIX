@@ -8,7 +8,7 @@ from core.helix_router import (
     route_machine_claim,
     route_probe_rows,
 )
-from scripts.condense.machine_probe_dataset import build_dataset
+from scripts.condense.machine_probe_dataset import build_dataset, required_platforms_available
 
 
 LC = {
@@ -61,6 +61,7 @@ class TestRouter(unittest.TestCase):
         self.assertEqual(decision["coverage_scope"], "pack_evidence")
         self.assertNotIn("M11", platform_machine_index(LC))
 
+    @unittest.skipUnless(required_platforms_available(), "live -stra platform repos are not vendored in this checkout")
     def test_live_probe_rows_route_without_human_cluster_names(self):
         dataset = build_dataset()
         self.assertEqual(dataset["agreement"]["rows"][0]["platform"], "Attestra")

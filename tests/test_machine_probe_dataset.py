@@ -6,9 +6,10 @@ from contextlib import redirect_stdout
 from io import StringIO
 
 import tests._path  # noqa: F401
-from scripts.condense.machine_probe_dataset import build_dataset, main
+from scripts.condense.machine_probe_dataset import build_dataset, main, required_platforms_available
 
 
+@unittest.skipUnless(required_platforms_available(), "live -stra platform repos are not vendored in this checkout")
 class TestMachineProbeDataset(unittest.TestCase):
     def test_live_stra_pack_samples_match_implemented_probes(self):
         dataset = build_dataset()

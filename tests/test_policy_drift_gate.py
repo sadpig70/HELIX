@@ -21,6 +21,9 @@ if SRC not in sys.path:
     sys.path.insert(0, SRC)
 ENV = {**os.environ, "PYTHONPATH": SRC}
 
+if not os.path.isdir(SRC):
+    raise unittest.SkipTest("PolicyDriftGate standalone repo is not vendored in this checkout")
+
 from PolicyDriftGate.samples import samples
 from PolicyDriftGate.verifier import (
     digest_public_surface,

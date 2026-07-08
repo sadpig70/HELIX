@@ -22,10 +22,24 @@ if ROOT not in sys.path:
 
 from core.helix_machine_probes import PROBES, agreement_report  # noqa: E402
 
+REQUIRED_PLATFORM_DIRS = ("Attestra", "Clearstra", "Routestra", "Certstra", "Scorestra")
+
+
+def missing_platform_dirs(root=ROOT):
+    """Return required nested platform repos absent from this checkout."""
+    return [name for name in REQUIRED_PLATFORM_DIRS if not os.path.isdir(os.path.join(root, name))]
+
+
+def required_platforms_available(root=ROOT):
+    """Whether the live -stra platform repos needed for U6 extraction are present."""
+    return not missing_platform_dirs(root)
+
 
 @contextlib.contextmanager
 def platform_import(platform_dir):
     path = os.path.join(ROOT, platform_dir)
+    if not os.path.isdir(path):
+        raise FileNotFoundError(f"missing platform repo: {path}")
     old_cwd = os.getcwd()
     sys.path.insert(0, path)
     os.chdir(path)
