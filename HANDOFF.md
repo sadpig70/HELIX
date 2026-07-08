@@ -1,7 +1,7 @@
 # HANDOFF — HELIX 작업 연계 (Claude Opus 4.8 → Codex)
 
 > 이 문서 하나 + 링크된 파일들로 이어서 작업할 수 있게 작성했다. 작성 2026-07-07, Codex 갱신 2026-07-08.
-> **즉시 할 일: live forward manifest의 `MISSING_ARTIFACT`는 0으로 닫혔다. 다음은 push 후 GitHub CI 상태를 확인한다.**
+> **즉시 할 일: forward closure와 CI fix는 push/CI green까지 완료됐다. 다음은 HELIX가 제안한 `RUN_EXPLOIT`를 실행한다.**
 
 ---
 
@@ -19,18 +19,18 @@
 - 현재 핵심 수치: U6 machine probe `95/95` agreement, U8 router `BUILD_ON_PLATFORM=94 / DEFER=1(M13)`,
   U9 forward prediction fixtures `BUILD_ON_PLATFORM=1 / DEFER=1 / CONDENSE=1`, live collector 후보
   `10`개(`deferred=2`, `future=8`, `BUILD_ON_PLATFORM=8` + `DEFER=2(M16/M17)` +
-  `MISSING_ARTIFACT=0`), 전체 `281 tests` green.
+  `MISSING_ARTIFACT=0`), 전체 `281 tests` green, GitHub Actions `CI` green.
 
 ---
 
 ## 1. 지금 당장 할 일 (다음 단계)
 
-**목표:** push 후 GitHub Actions/CI 상태를 확인하고, 실패하면 로그 기반으로 수정한다.
+**목표:** `helix.py status`가 제안한 `RUN_EXPLOIT` 경로로 fresh assets를 재조합한다.
 
 **첫 3스텝:**
-1. `git push` 후 GitHub Actions check run 상태를 확인한다.
-2. 실패 시 실패 job log를 읽고 원인별 최소 수정만 적용한다.
-3. 수정 후 local gates와 CI를 다시 맞춘다.
+1. `python helix.py status --layered-corpus seed/condense/layered-corpus.json --forward-predict-report _workspace/condense/U9-live-forward-predict-report.json`로 현재 loop state를 재확인한다.
+2. `NEXT ACTION: RUN_EXPLOIT`이면 fresh assets 기반 exploit/recombine 작업을 시작한다.
+3. 산출 후 local gates와 CI를 다시 맞춘다.
 
 **하드 게이트:** `python core/helix_validate.py .` PASS · `python -m unittest discover -s tests -q` PASS ·
 `python scripts/condense/machine_probe_dataset.py --out _workspace/condense/U6-machine-probe-report.json` 재생성 ·
@@ -96,9 +96,9 @@
   - hard gate: `seed/condense/forward-predict-gate.json`.
 
 ### git 상태
-- **로컬 HELIX 브랜치 = `main`** (origin/main과 동기, 최신 커밋 `docs: add OVERVIEW.md`). feature 브랜치 없음.
-- HELIX PR #1~#11 전부 병합됨. 현재 Codex 작업은 아직 미커밋이며, `core/`, `scripts/condense/`,
-  `tests/`, `docs/`, `examples/condense/`, `seed/condense/*-gate.json`에 걸쳐 있음. 커밋/푸시는 사용자 승인 전 금지.
+- **로컬 HELIX 브랜치 = `main`**. forward closure 커밋 `05f7ac3`와 CI fix 커밋 `c019b51`은
+  origin/main에 push됐고 GitHub Actions `CI`는 success.
+- 세션 종료 전 `_workspace/ex_runbook.md`의 불필요한 로컬 변경은 되돌렸다. 다음 세션은 clean worktree에서 시작해야 한다.
 - **각 플랫폼은 독립 git repo**(D:\HELIX 하위, 각자 origin). HELIX `.gitignore`가 `/Attestra/`~`/Scorestra/`
   등 18개 nested repo를 무시 → HELIX에 embed되지 않음.
 
@@ -202,5 +202,6 @@ cd /d/HELIX/<Platform> && python -m unittest discover -s tests -q && python cli.
 
 > **U6~U9, manifest batch input, live candidate collector, RouteSentinel M16 normalization, EndowFront M17
 > normalization, ADPR M4 normalization, 남은 7개 future 후보 normalization은 구현·검증 완료.
-> 다음은 GitHub push 후 CI 상태를 확인하라.** 결정론 경계·zero-kernel-change·hard gates를 유지하고,
+> CI fix까지 push되어 GitHub Actions green. 다음은 `RUN_EXPLOIT` fresh-assets recombination을 실행하라.**
+> 결정론 경계·zero-kernel-change·hard gates를 유지하고,
 > GitHub 공개/병합은 사용자 승인 게이트로 남겨라.
