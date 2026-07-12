@@ -222,6 +222,12 @@
     "blocked": 2,
     "total": 43
   },
-  "thesis": "GOVERNED INTERNAL SYSTEM — verified deterministic admission control plane as internal runtime; generator claim stays downgraded to internal corpus router (T1); product claim withheld (T4 not judged). Re-qualification conditions sealed in P7-thesis-verdict.md",
+  "thesis": "GOVERNED INTERNAL SYSTEM — verified deterministic admission control plane as internal runtime; generator claim STRUCTURALLY CONFIRMED as internal corpus router (T1 retry, 4-step investigation, not pursued: 9/17 machines corpus-specific, external groundable base rate 3.3%, density-vs-blindness leakage tension is structural); product claim withheld (T4 not judged). Evidence: P7-thesis-verdict.md + T1-retry-verdict.md",
+  "t1_retry": {
+    "verdict": "not pursued — structural limit confirmed",
+    "steps": ["postmortem", "grounding-gate (core/helix_oracle_grounding.py)", "independent-rescoring (macro-F1 0.45->0.20)", "feasibility"],
+    "useful_artifact": "grounding gate + MACHINE_FEATURES rubric (blind-trial methodology hardening; commit candidate)",
+    "evidence": "_workspace/helix-direction/T1-retry-verdict.md"
+  },
   "next": "USER-DECISION: (a) commit approval for the uncommitted direction work, (b) P5_5 external pilots"
 }

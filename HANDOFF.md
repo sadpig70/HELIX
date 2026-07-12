@@ -2,12 +2,13 @@
 
 > 갱신: 2026-07-12
 > **현재 상태:** Condense 라인(5 platforms · 56 packs)과 HELIXDirection 라인(Deterministic
-> Admission Control Plane) 모두 구축 완료. 595 tests OK, `helix_validate` PASS.
-> **영속화 완료(2026-07-12):** HELIXDirection 작업 전체를 branch
-> `helixdirection-admission-plane`에 commit+push, **CI green** (commit `5f0f91d` +
-> CI fix `dcd475f`). PR/merge는 아직 미실행 — 정욱님 결정.
-> **정확한 다음 최우선 작업: `P5_5_ExternalPilots` 개시** — 준비(온보딩/프로토콜 문서)는
-> 자율 진행 가능, **공개·모집·운영 개시는 정욱님 승인 필요**.
+> Admission Control Plane) 모두 구축 완료. **613 tests OK**, `helix_validate` PASS.
+> **영속화 완료:** HELIXDirection P0~P7이 **main에 merge됨** (PR #12 + line-ending fix PR #13,
+> CI green). 그 이후 T1 재도전 조사 산출물(grounding gate 등)은 미commit — 정욱님 결정.
+> **T1 재도전 완결:** 4단계 조사로 강등이 **구조적 한계**임을 확정 (재상향 미추진). thesis
+> "internal corpus router" 최종화 — 완화 없음.
+> **정확한 다음 최우선 작업: 정욱님 방향 결정** — (i) grounding gate 등 유효 산출물 commit,
+> (ii) P5_5 외부 pilot 개시, (iii) 페르소나 utility trial. 자율 순수 실무는 종결됨.
 > 이전 완료 계보: [`_legacy/`](_legacy/) (Condense v0.6 · HELIXDirection 종결본/상세본)
 
 ---
@@ -35,7 +36,7 @@ plane을 내부 runtime으로 보유. generator 주장은 internal corpus router
 | Gate | Verdict | 핵심 사실 |
 |---|---|---|
 | **T0** State Authority | **PASSED** | canonical receipt `8ea2534ef8904ac7…`, 전 구간 무결 |
-| **T1** Blind Validity | **FAILED → 강등** | 실제 unseen 30: coverage 0.900✓, macro-F1 0.450✗ (M10/M15 전멸). autonomous CONDENSE emit 금지 |
+| **T1** Blind Validity | **FAILED → 강등 (구조적 확정)** | unseen 30: macro-F1 0.450✗. **재도전 4단계 조사**: 독립 view-grounded 재채점 0.20, 9/17 machine이 corpus-specific, 외부 groundable base rate 3.3% → 강등은 구조적 한계, 재상향 미추진. autonomous CONDENSE emit 금지 |
 | **T2** Governance Shadow | **PASSED** | 실역사 35 action: disagreement 0%, false-ALLOW 0, replay 35/35 |
 | **T3** Closed Actuator | **PASSED** | ungated 0, stop-write 0, bypass 0, replay 100%, 적대 주입 13종 방어 |
 | **T4** Utility | **NOT JUDGED** | 내부 pilot 10 decisions(prevented 4, replay 10/10)은 내부 실증; 외부 표본 없음 |
@@ -43,13 +44,18 @@ plane을 내부 runtime으로 보유. generator 주장은 internal corpus router
 
 ## 2. 해야 할 작업 (우선순위 — 내 판단)
 
-### ① commit 영속화 — 완료 (2026-07-12)
+### ① commit 영속화 + main merge — 완료 (2026-07-12)
 
-HELIXDirection 방향 작업(303 files, 30310 insertions)을 branch
-`helixdirection-admission-plane`에 commit(`5f0f91d`)+push했고 CI green.
-CI에서 환경 의존 테스트 1건(`test_state_receipt_cli`, _workspace report 부재 시
-missing vs unverifiable)이 드러나 fix commit(`dcd475f`)으로 해결. nested 19 repos·
-`_workspace`는 격리 유지. **남은 것은 정욱님 결정**: PR 생성 및 main merge 여부.
+HELIXDirection P0~P7(303 files)을 PR #12로 main에 merge. Windows CRLF가
+content-addressed evidence hash를 깨뜨린 결함을 `.gitattributes`로 잡아 PR #13(hotfix)로
+merge. **CI green, main 안정.** nested 19 repos·`_workspace`는 격리 유지.
+
+### ①-b T1 재도전 조사 — 완결, 산출물 미commit
+
+T1 강등이 구조적 한계임을 4단계로 확정(`_workspace/helix-direction/T1-retry-verdict.md`).
+유효 산출물 **grounding gate**(`core/helix_oracle_grounding.py` + `tests/test_oracle_grounding.py`,
+613 tests에 포함)와 pilot kit 이후 산출물은 아직 미commit. **정욱님 결정**: 이 유효
+도구들을 새 branch로 commit할지.
 
 ### ② P5_5 외부 pilot 개시 — T4 판정으로 직결 (최우선 방향)
 
@@ -71,11 +77,17 @@ wedge(agent handback/approval audit)는 실증 완료 상태이며(내부 pilot 
 
 T4 gate 통과 시 "Governed Internal System"에서 **"Admission Plane(제품)"**으로 상향 가능.
 
-### ③ [선택] T1 재도전 — generator 주장 재상향
+### ③ 페르소나 utility trial — 방법론 정합 완료, provenance 입력 대기
 
-T1 강등을 되돌리려면(완화 불가 4요건): 새 cohort + **독립 oracle author** + M10/M15 계열
-검출 보강 + novelty 구현·환원 실측 ≥3건. 통과 전 autonomous CONDENSE emit 금지 유지.
-큰 작업이며 ②와 독립적이다.
+방법론 논의(비결정론 페르소나 + 인과적 독립성 + provenance)로 "AI 페르소나를 인간 pilot과
+동등한 지위·동등한 독립성 규율 하에 두는 conditional-adoption trial"이 정합해졌다. 실행
+전제: **실존 인물의 관점 자료 + 그 인물의 재현 충실도 보증**(정욱님이 대상·자료·보증 방식
+지정). 지정되면 자율 구현 가능.
+
+### (종결) T1 재도전 — 재상향 미추진
+
+구조적 한계로 확정(①-b). generator 주장 재상향은 추진하지 않는다. blind trial 방법론은
+grounding gate로 강화됨.
 
 ## 3. 산출 인벤토리 (HELIXDirection, 전부 미commit)
 
