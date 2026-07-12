@@ -53,8 +53,12 @@ verdict만 편집해 다시 봉인하는 정직한 실수나 우연한 변조는
 > **보안 한계 (정직 표기):** seal은 서명이 아니라 **무결성 체크**(unkeyed SHA-256)다.
 > packet과 ledger store에 **write 권한이 있는 적대자**는 packet까지 일관되게 재구축해
 > replay와 chain 검증을 **둘 다 통과**시킬 수 있다. 즉 이 도구는 우연 변조·정직한
-> 실수를 탐지할 뿐, adversary-facing 위·변조 방지는 아니다. 그 방어에는 keyed 서명과
-> 외부 anchoring이 필요하다(backlog). `valid` verdict는 기본적으로 packet의 **구조**가
+> 실수를 탐지할 뿐, **기본(unkeyed)** 모드에서는 adversary-facing 위·변조 방지가 아니다.
+> **keyed 서명(opt-in, 구현됨):** `audit_handback`/`run_admission`에 `signing_key`를 주면
+> ledger entry가 HMAC-SHA256으로 서명되고 `verify_actuation_ledger(signing_key=K)`가
+> 검증한다 — 키를 모르는 write-권한 적대자는 chain을 재구축해도 서명을 위조할 수 없어
+> 탐지된다(integrity→authenticity). 키까지 탈취한 내부자 방어는 외부 anchoring이 담당
+> (backlog). `valid` verdict는 기본적으로 packet의 **구조**가
 > 완비되었음을 뜻한다. **evidence-truth 검증(opt-in):** `audit_handback`에
 > `evidence_root`(참가자가 제출한 evidence 파일 디렉토리)를 주면 각 predicate의
 > `evidence_path` 존재를(그리고 packet에 `evidence_hashes`가 있으면 hash를) 검증한다.
