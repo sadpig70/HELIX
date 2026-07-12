@@ -24,6 +24,15 @@ Replayability: ``verify_wedge_decision`` re-hashes the stored packet,
 re-runs the AHV verdict and the admission classification, and re-checks
 every seal — a decision that cannot be reproduced is reported, never trusted.
 
+Security boundary (honest): seals are unkeyed SHA-256 (integrity, not
+authenticity). Replay catches an honest mistake or accidental corruption
+that leaves the stored packet intact, but a write-capable adversary who
+rebuilds the packet too can make replay reproduce a laundered verdict — this
+is NOT tamper-evidence against such an adversary; keyed signing and external
+anchoring would be required (backlog). Also, ``valid`` attests packet
+structure only: AHV does not read the files at ``evidence_path``, so evidence
+existence/authenticity is unverified here.
+
 Absent-packet admission (QUARANTINE) for registry entries is already covered
 by engines/exploit registry_admissions; this wedge audits SUBMITTED packets.
 
@@ -98,6 +107,51 @@ def _store_packet(root: str, packets_dir: str, packet: dict) -> tuple:
     return digest, rel
 
 
+EVIDENCE_PREDICATES = ("delegation", "custody", "route", "rollback", "trace")
+
+
+def _verify_evidence(root: str, packet: dict, evidence_root) -> dict:
+    """Check that the packet's cited evidence artifacts actually exist.
+
+    Addresses the persona-trial finding that a ``valid`` verdict attests
+    packet STRUCTURE only — AHV never reads the files at ``evidence_path``.
+    When the participant submits an ``evidence_root`` (the directory holding
+    their evidence files), this verifies each cited path exists and, if the
+    packet carries an ``evidence_hashes`` map {path: sha256}, that the bytes
+    match. Returns {status, checks}:
+
+    - not_provided : no evidence_root, or the packet cites no evidence paths —
+      the wedge cannot see the participant's files and says so honestly rather
+      than pretending the evidence is verified.
+    - verified     : every cited artifact is present (and declared hashes match).
+    - unverified   : a cited artifact is missing or hash-mismatched.
+    """
+    if not evidence_root:
+        return {"status": "not_provided", "checks": []}
+    hashes = packet.get("evidence_hashes") or {}
+    checks = []
+    ok = True
+    for pred in EVIDENCE_PREDICATES:
+        path = (packet.get(pred) or {}).get("evidence_path")
+        if not path:
+            continue
+        full = path if os.path.isabs(path) else os.path.join(
+            _full(root, evidence_root), path)
+        exists = os.path.isfile(full)
+        check = {"predicate": pred, "evidence_path": path, "exists": exists,
+                 "hash_match": None}
+        if not exists:
+            ok = False
+        elif path in hashes:
+            check["hash_match"] = sha256_file(full) == hashes[path]
+            if not check["hash_match"]:
+                ok = False
+        checks.append(check)
+    if not checks:
+        return {"status": "not_provided", "checks": []}
+    return {"status": "verified" if ok else "unverified", "checks": checks}
+
+
 def _audit_intent(operator: dict, packet_sha256: str) -> dict:
     return {
         "schema": "helix-action-intent/1.0",
@@ -121,11 +175,19 @@ def _audit_intent(operator: dict, packet_sha256: str) -> dict:
 
 def audit_handback(root: str, packet: dict, operator: dict,
                    current_state_receipt_hash: str, ledger_rel: str,
-                   packets_dir: str, migration=None) -> dict:
+                   packets_dir: str, migration=None, evidence_root=None,
+                   evidence_required=False) -> dict:
     """One admission decision for one submitted handback packet.
 
     Returns {decision, gate, admission_receipt} on success; a non-auditable
     gate (DENY/HUMAN/RETIRE) refuses with zero records beyond the gate entry.
+
+    Evidence truth (persona-trial fix): with ``evidence_root``, cited evidence
+    artifacts are verified for existence/hash. With ``evidence_required=True``,
+    a ``valid`` packet whose evidence is ``unverified`` is downgraded to
+    ``thin`` (ADMIT -> SANDBOX_ONLY) so structure-only claims cannot earn
+    ADMIT. Without evidence_root the wedge honestly records
+    ``evidence_check.status = not_provided`` and does not pretend to verify.
     """
     if not isinstance(packet, dict) or not packet:
         raise ValueError("audit requires a submitted handback packet; "
@@ -148,7 +210,14 @@ def audit_handback(root: str, packet: dict, operator: dict,
         return {"decision": None, "stage": "gate", "gate": gate,
                 "why": f"gate decision {gate['decision']} refuses the audit"}
 
-    verdict = _ahv_verdict(root, packet)
+    raw_verdict = _ahv_verdict(root, packet)
+    evidence_check = _verify_evidence(root, packet, evidence_root)
+    verdict = raw_verdict
+    evidence_downgrade = False
+    if (evidence_required and evidence_check["status"] == "unverified"
+            and raw_verdict == "valid"):
+        verdict = "thin"  # structure valid but evidence unverified -> sandbox
+        evidence_downgrade = True
     admission_receipt = build_admission_receipt(
         packet.get("handback_id") or decision_id, verdict, migration,
         current_state_receipt_hash)
@@ -161,7 +230,11 @@ def audit_handback(root: str, packet: dict, operator: dict,
         "handback_id": packet.get("handback_id"),
         "packet_sha256": packet_sha256,
         "packet_path": packet_rel,
-        "handback_verdict": verdict,
+        "handback_verdict": raw_verdict,
+        "effective_verdict": verdict,
+        "evidence_check": {"status": evidence_check["status"],
+                           "checks": evidence_check["checks"],
+                           "downgraded": evidence_downgrade},
         "admission": admission_receipt["admission"],
         "admission_basis": admission_receipt["basis"],
         "admission_receipt_sha256": admission_receipt["receipt_sha256"],
@@ -195,7 +268,12 @@ def verify_wedge_decision(root: str, decision: dict) -> list:
     if verdict != decision.get("handback_verdict"):
         problems.append(f"verdict does not replay: recorded "
                         f"{decision.get('handback_verdict')!r}, fresh {verdict!r}")
-    reclass = classify_admission(verdict, None,
+    # Admission is derived from the EFFECTIVE verdict (raw, or thin after an
+    # evidence downgrade). evidence_check itself is a decision-time record and
+    # is not re-verified here (participant evidence may be unavailable at
+    # replay); the seal covers it.
+    effective = decision.get("effective_verdict", decision.get("handback_verdict"))
+    reclass = classify_admission(effective, None,
                                  decision.get("state_receipt_hash"))
     if (not decision.get("admission_basis", "").startswith("migration")
             and reclass["admission"] != decision.get("admission")):

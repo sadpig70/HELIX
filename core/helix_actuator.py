@@ -24,7 +24,10 @@ Guarantees, enforced stage by stage:
 
 The actuation ledger is an append-only JSONL hash chain (parent seal ->
 entry seal), so the full decision-to-effect history replays and tampering
-with any line breaks the chain.
+with any single line breaks the chain. This is integrity, not authenticity:
+the seals are unkeyed, so a write-capable adversary who rebuilds the whole
+chain is not detected — keyed signing / external anchoring is required for
+adversary-facing tamper-evidence (backlog).
 
 Deterministic, stdlib-only: no clock, network, subprocess, randomness, or AI.
 """

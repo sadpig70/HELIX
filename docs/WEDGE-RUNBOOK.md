@@ -47,15 +47,29 @@ python helix.py audit-handback --packet <packet.json> [--operator YOUR-ID] [--js
 | packet 없음(registry) | QUARANTINE | 증거 부재 — fail-closed (registry 경로: `registry_admissions`) | — |
 | gate 거부 | — | 감사 자체가 거부됨 (사유 출력) | 1 |
 
-판정을 "고쳐서" 받아낼 방법은 없다: verdict를 편집해 다시 봉인해도 replay 검증
-(저장 packet 재hash + AHV 재평가)에서 탐지된다.
+verdict만 편집해 다시 봉인하는 정직한 실수나 우연한 변조는 replay 검증(저장 packet
+재hash + AHV 재평가)에서 탐지된다.
+
+> **보안 한계 (정직 표기):** seal은 서명이 아니라 **무결성 체크**(unkeyed SHA-256)다.
+> packet과 ledger store에 **write 권한이 있는 적대자**는 packet까지 일관되게 재구축해
+> replay와 chain 검증을 **둘 다 통과**시킬 수 있다. 즉 이 도구는 우연 변조·정직한
+> 실수를 탐지할 뿐, adversary-facing 위·변조 방지는 아니다. 그 방어에는 keyed 서명과
+> 외부 anchoring이 필요하다(backlog). `valid` verdict는 기본적으로 packet의 **구조**가
+> 완비되었음을 뜻한다. **evidence-truth 검증(opt-in):** `audit_handback`에
+> `evidence_root`(참가자가 제출한 evidence 파일 디렉토리)를 주면 각 predicate의
+> `evidence_path` 존재를(그리고 packet에 `evidence_hashes`가 있으면 hash를) 검증한다.
+> `evidence_required=True`면 evidence가 `unverified`인 `valid` packet은 **thin으로
+> 강등**되어 ADMIT 대신 SANDBOX_ONLY가 된다. evidence_root 미제공 시 wedge는 참가자
+> 파일을 볼 수 없으므로 `evidence_check.status = not_provided`로 정직 기록한다.
 
 ## 5. Replay 검증 (판정 재현)
 
 모든 decision receipt는 저장된 packet에서 재현 가능하다. CLI가 매 판정 직후 자동으로
 replay 검증을 수행하며(`replay check: REPRODUCED`), 출력된 `replay:` 명령을 그대로
 실행하면 제3자가 동일 판정을 독립 재현할 수 있다. ledger는 append-only hash chain이라
-과거 판정의 삭제·변조도 탐지된다.
+개별 라인의 삭제·변조는 탐지된다 — 단 전체 chain을 재구축할 write 권한을 가진 적대자는
+탐지되지 않는다(위 보안 한계 참조: integrity이지 authenticity 아님). operator.id도
+현재 self-asserted이며 인증되지 않는다.
 
 ## 6. 이의 제기 (appeal)
 

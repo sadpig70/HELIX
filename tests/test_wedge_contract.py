@@ -45,11 +45,13 @@ class WedgeFixtureCase(unittest.TestCase):
                         os.path.join(self.root, "ActionHandbackVerifier", "src"))
         self.packet = load_packet()
 
-    def audit(self, packet=None, operator=None, migration=None):
+    def audit(self, packet=None, operator=None, migration=None,
+              evidence_root=None, evidence_required=False):
         return audit_handback(self.root,
                               packet if packet is not None else self.packet,
                               operator or OPERATOR, CURRENT, LEDGER, PACKETS,
-                              migration=migration)
+                              migration=migration, evidence_root=evidence_root,
+                              evidence_required=evidence_required)
 
 
 class TestWedgeDecision(WedgeFixtureCase):
@@ -109,6 +111,58 @@ class TestWedgeDecision(WedgeFixtureCase):
         del packet["custody"]
         decision = self.audit(packet, migration=flag)["decision"]
         self.assertEqual(decision["admission"], "EXCLUDED")
+
+
+class TestEvidenceTruth(WedgeFixtureCase):
+    """Persona-trial fix: a 'valid' packet whose evidence does not exist must
+    not silently earn ADMIT when evidence verification is required."""
+
+    def write_evidence(self, packet):
+        """Materialize every cited evidence file under an evidence root."""
+        root = os.path.join(self.root, "_evidence")
+        for pred in ("delegation", "custody", "route", "rollback", "trace"):
+            path = (packet.get(pred) or {}).get("evidence_path")
+            if not path:
+                continue
+            full = os.path.join(root, *path.split("/"))
+            os.makedirs(os.path.dirname(full), exist_ok=True)
+            with open(full, "w", encoding="utf-8") as f:
+                f.write("{}\n")
+        return "_evidence"
+
+    def test_present_evidence_keeps_admit(self):
+        evroot = self.write_evidence(self.packet)
+        result = self.audit(evidence_root=evroot, evidence_required=True)
+        d = result["decision"]
+        self.assertEqual(d["evidence_check"]["status"], "verified")
+        self.assertEqual(d["admission"], "ADMIT")
+        self.assertFalse(d["evidence_check"]["downgraded"])
+        self.assertEqual(verify_wedge_decision(self.root, d), [])
+
+    def test_missing_evidence_downgrades_admit_to_sandbox(self):
+        # valid packet, but no evidence files exist -> unverified -> SANDBOX
+        result = self.audit(evidence_root="_evidence_absent",
+                            evidence_required=True)
+        d = result["decision"]
+        self.assertEqual(d["handback_verdict"], "valid")
+        self.assertEqual(d["effective_verdict"], "thin")
+        self.assertEqual(d["evidence_check"]["status"], "unverified")
+        self.assertTrue(d["evidence_check"]["downgraded"])
+        self.assertEqual(d["admission"], "SANDBOX_ONLY")
+        self.assertEqual(verify_wedge_decision(self.root, d), [])
+
+    def test_unverified_without_required_flag_stays_admit_but_recorded(self):
+        result = self.audit(evidence_root="_evidence_absent",
+                            evidence_required=False)
+        d = result["decision"]
+        self.assertEqual(d["evidence_check"]["status"], "unverified")
+        self.assertFalse(d["evidence_check"]["downgraded"])
+        self.assertEqual(d["admission"], "ADMIT")  # opt-in; recorded not forced
+
+    def test_no_evidence_root_is_honestly_not_provided(self):
+        d = self.audit()["decision"]  # backward-compatible default
+        self.assertEqual(d["evidence_check"]["status"], "not_provided")
+        self.assertEqual(d["admission"], "ADMIT")
 
 
 class TestWedgeLedger(WedgeFixtureCase):

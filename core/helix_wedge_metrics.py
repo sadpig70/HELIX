@@ -11,7 +11,10 @@ DERIVED from sealed evidence, never kept as a separate mutable counter:
 - prevented_invalid_handbacks = EXCLUDED + QUARANTINE decisions (invalid
   handbacks blocked without manual review — the wedge's core value);
 - replay_success re-runs ``verify_wedge_decision`` on every decision, so a
-  laundered receipt drags the rate below 100% instead of hiding;
+  receipt laundered WITHOUT also rebuilding its stored packet drags the rate
+  below 100% instead of hiding; a write-capable adversary who rebuilds the
+  packet too is NOT caught here (unkeyed seals — see helix_wedge security
+  boundary);
 - interventions are sealed appeal/override receipts chained to gate results
   that actually appear in this ledger — unverifiable receipts are reported,
   never counted;
