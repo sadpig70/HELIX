@@ -176,7 +176,7 @@ def _audit_intent(operator: dict, packet_sha256: str) -> dict:
 def audit_handback(root: str, packet: dict, operator: dict,
                    current_state_receipt_hash: str, ledger_rel: str,
                    packets_dir: str, migration=None, evidence_root=None,
-                   evidence_required=False) -> dict:
+                   evidence_required=False, signing_key=None) -> dict:
     """One admission decision for one submitted handback packet.
 
     Returns {decision, gate, admission_receipt} on success; a non-auditable
@@ -205,7 +205,8 @@ def audit_handback(root: str, packet: dict, operator: dict,
           "provenance": {"origin": "external", "reference": None}}])
     gate = authorize(root, intent, manifest, [], current_state_receipt_hash)
     decision_id = f"WD-{packet_sha256[:16]}"
-    append_actuation_ledger(root, ledger_rel, "gate", decision_id, gate)
+    append_actuation_ledger(root, ledger_rel, "gate", decision_id, gate,
+                            signing_key=signing_key)
     if gate["decision"] not in AUDITABLE_GATES:
         return {"decision": None, "stage": "gate", "gate": gate,
                 "why": f"gate decision {gate['decision']} refuses the audit"}
@@ -245,7 +246,7 @@ def audit_handback(root: str, packet: dict, operator: dict,
                    "counts_toward": "weekly_real_admission_decisions"},
     })
     append_actuation_ledger(root, ledger_rel, "wedge_decision", decision_id,
-                            decision)
+                            decision, signing_key=signing_key)
     return {"decision": decision, "gate": gate,
             "admission_receipt": admission_receipt}
 

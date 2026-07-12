@@ -44,6 +44,7 @@ try:  # package import (python -m core.helix_actuator) or library use
     from .helix_impact_handback import (build_impact_handback,
                                         perform_rollback, snapshot_scope)
     from .helix_side_effect_guard import guard_side_effects
+    from .helix_signing import sign_bytes, verify_signature
 except ImportError:  # direct script run
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     from core.helix_authorization import authorize
@@ -52,6 +53,7 @@ except ImportError:  # direct script run
     from core.helix_impact_handback import (build_impact_handback,
                                             perform_rollback, snapshot_scope)
     from core.helix_side_effect_guard import guard_side_effects
+    from core.helix_signing import sign_bytes, verify_signature
 
 LEDGER_SCHEMA_ID = "helix-actuation-ledger-entry/1.0"
 
@@ -60,9 +62,13 @@ def _full(root: str, path: str) -> str:
     return path if os.path.isabs(path) else os.path.join(root, path)
 
 
+def _entry_body(entry: dict) -> dict:
+    return {k: v for k, v in entry.items()
+            if k not in ("entry_sha256", "entry_hmac")}
+
+
 def _entry_seal(entry: dict) -> str:
-    body = {k: v for k, v in entry.items() if k != "entry_sha256"}
-    return hashlib.sha256(canonical_json_bytes(body)).hexdigest()
+    return hashlib.sha256(canonical_json_bytes(_entry_body(entry))).hexdigest()
 
 
 def read_actuation_ledger(root: str, ledger_rel: str) -> list:
@@ -79,8 +85,14 @@ def read_actuation_ledger(root: str, ledger_rel: str) -> list:
 
 
 def append_actuation_ledger(root: str, ledger_rel: str, kind: str,
-                            request_id: str, receipt: dict) -> dict:
-    """Append one sealed entry chained to the previous entry's seal."""
+                            request_id: str, receipt: dict,
+                            signing_key=None) -> dict:
+    """Append one sealed entry chained to the previous entry's seal.
+
+    With ``signing_key`` the entry also carries a keyed HMAC (authenticity):
+    a write-capable adversary who rebuilds the chain cannot forge it without
+    the key. Without a key the entry keeps the unkeyed seal (integrity only).
+    """
     entries = read_actuation_ledger(root, ledger_rel)
     parent = entries[-1]["entry_sha256"] if entries else None
     entry = {
@@ -92,6 +104,9 @@ def append_actuation_ledger(root: str, ledger_rel: str, kind: str,
         "receipt": receipt,
     }
     entry["entry_sha256"] = _entry_seal(entry)
+    if signing_key is not None:
+        entry["entry_hmac"] = sign_bytes(
+            signing_key, canonical_json_bytes(_entry_body(entry)))
     full = _full(root, ledger_rel)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "a", encoding="utf-8", newline="\n") as f:
@@ -99,8 +114,13 @@ def append_actuation_ledger(root: str, ledger_rel: str, kind: str,
     return entry
 
 
-def verify_actuation_ledger(root: str, ledger_rel: str) -> list:
-    """Re-verify the append-only chain: seq, parent links, entry seals."""
+def verify_actuation_ledger(root: str, ledger_rel: str, signing_key=None) -> list:
+    """Re-verify the append-only chain: seq, parent links, entry seals.
+
+    With ``signing_key`` also verifies each entry's keyed HMAC — an adversary
+    who rebuilt the chain (recomputing seq/parent/seal) but lacks the key
+    fails here (authenticity, not just integrity).
+    """
     problems = []
     parent = None
     for index, entry in enumerate(read_actuation_ledger(root, ledger_rel)):
@@ -110,6 +130,11 @@ def verify_actuation_ledger(root: str, ledger_rel: str) -> list:
             problems.append(f"entry {index}: parent chain broken")
         if _entry_seal(entry) != entry.get("entry_sha256"):
             problems.append(f"entry {index}: entry seal broken")
+        if signing_key is not None and not verify_signature(
+                signing_key, canonical_json_bytes(_entry_body(entry)),
+                entry.get("entry_hmac")):
+            problems.append(f"entry {index}: keyed signature invalid or missing "
+                            "(forged chain or wrong key)")
         parent = entry.get("entry_sha256")
     return problems
 
@@ -195,19 +220,20 @@ def _execute_effects(root: str, effects: list) -> None:
 def run_admission(root: str, request: dict, current_state_receipt_hash: str,
                   ledger_rel: str, snapshot_dir: str,
                   stop_tokens: list = None,
-                  resume_receipts: list = None) -> dict:
+                  resume_receipts: list = None, signing_key=None) -> dict:
     """One full propose->gate->execute->handback->ledger round, fail-closed.
 
     request = {request_id, intent, evidence_manifest, approvals,
     effects: [{path, op, content?}]} — content (utf-8 str) is required for
-    create/modify and sizes the plan's byte budget honestly.
+    create/modify and sizes the plan's byte budget honestly. With
+    ``signing_key`` every ledger entry is keyed-signed (authenticity).
     """
     request_id = request["request_id"]
     intent = request["intent"]
 
     def ledger(kind, receipt):
         return append_actuation_ledger(root, ledger_rel, kind, request_id,
-                                       receipt)
+                                       receipt, signing_key=signing_key)
 
     gate = authorize(root, intent, request.get("evidence_manifest"),
                      request.get("approvals") or [],
