@@ -1,0 +1,5 @@
+# HELIX content-addressed evidence is verified by exact-byte sha256. Git must
+# never convert line endings on these paths (CRLF on Windows checkout would
+# break every hash check in the holdout registries and evidence manifests).
+seed/evaluation/** -text
+examples/constitution/artifacts/** -text
