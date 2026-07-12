@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-009",
+  "family": "synthetic-family-009",
+  "readme": "Synthetic project 009: aggregate_tier, emit_receipt, replay_ledger over a local store.",
+  "operations": [
+    "aggregate_tier",
+    "emit_receipt",
+    "replay_ledger"
+  ],
+  "entrypoints": [
+    "cli_aggregate_tier",
+    "cli_emit_receipt",
+    "cli_replay_ledger"
+  ]
+}

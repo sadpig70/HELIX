@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-029",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/vercel/next-forge",
+    "immutable_revision": "f189de79ceef7c1ef69f61f12e272f99b4cdb699",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-029.README.md"
+  },
+  "observed_operations": [
+    "scaffold_saas_app",
+    "wire_default_integrations",
+    "build_monorepo"
+  ],
+  "observed_inputs": [
+    "template configuration"
+  ],
+  "observed_outputs": [
+    "production-grade application skeleton"
+  ],
+  "invariants": [
+    "opinionated defaults require minimal configuration"
+  ],
+  "sample_behavior": "Turborepo template that scaffolds production-grade Next.js SaaS applications."
+}

@@ -1,0 +1,25 @@
+{
+  "candidate_id": "T1-005",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/JKHeadley/rest-hapi",
+    "immutable_revision": "708ecbcd4f5d3ec1d11c987a4741d505358e7de9",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-005.README.md"
+  },
+  "observed_operations": [
+    "generate_rest_endpoints",
+    "map_schema_associations",
+    "validate_payloads",
+    "query_with_filters"
+  ],
+  "observed_inputs": [
+    "mongoose schemas"
+  ],
+  "observed_outputs": [
+    "RESTful CRUD endpoints"
+  ],
+  "invariants": [
+    "generated endpoints mirror the schema structure"
+  ],
+  "sample_behavior": "hapi plugin that generates RESTful API endpoints from database schemas."
+}

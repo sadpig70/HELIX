@@ -1,0 +1,27 @@
+{
+  "candidate_id": "SYN-015",
+  "provenance": {
+    "locator": "seed/evaluation/holdout/sources/SYN-015.json",
+    "immutable_revision": "synthetic-snapshot-015"
+  },
+  "observed_operations": [
+    "clear_obligation",
+    "score_candidate",
+    "attest_claim"
+  ],
+  "observed_inputs": [
+    "clear_obligation_request",
+    "score_candidate_request",
+    "attest_claim_request"
+  ],
+  "observed_outputs": [
+    "clear_obligation_receipt",
+    "score_candidate_receipt",
+    "attest_claim_receipt"
+  ],
+  "invariants": [
+    "clear_obligation is append-only",
+    "score_candidate is deterministic"
+  ],
+  "sample_behavior": "processes clear_obligation then emits attest_claim evidence"
+}

@@ -1,0 +1,25 @@
+{
+  "candidate_id": "T1-011",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/SponsioLabs/Sponsio",
+    "immutable_revision": "0af0e3b984509a7c2e38799bb40447fa4fef0bd6",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-011.README.md"
+  },
+  "observed_operations": [
+    "define_procedure_contract",
+    "check_rule_at_every_action",
+    "block_violating_action"
+  ],
+  "observed_inputs": [
+    "agent actions",
+    "contract rules"
+  ],
+  "observed_outputs": [
+    "pass/violation decisions"
+  ],
+  "invariants": [
+    "every action is checked deterministically without LLM cost"
+  ],
+  "sample_behavior": "Runtime contracts enforce agent procedure rules at every step, backed by formal methods."
+}

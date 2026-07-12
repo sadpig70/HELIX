@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-007",
+  "family": "synthetic-family-007",
+  "readme": "Synthetic project 007: price_unit, gate_predicate, aggregate_tier over a local store.",
+  "operations": [
+    "price_unit",
+    "gate_predicate",
+    "aggregate_tier"
+  ],
+  "entrypoints": [
+    "cli_price_unit",
+    "cli_gate_predicate",
+    "cli_aggregate_tier"
+  ]
+}

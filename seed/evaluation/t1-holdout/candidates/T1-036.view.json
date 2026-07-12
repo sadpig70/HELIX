@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-036",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/temporalio/temporal",
+    "immutable_revision": "1d4be84b3771a03e870f09db74bee9e437469b0d",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-036.README.md"
+  },
+  "observed_operations": [
+    "execute_durable_workflows",
+    "persist_execution_history",
+    "resume_after_failure"
+  ],
+  "observed_inputs": [
+    "workflow and activity code"
+  ],
+  "observed_outputs": [
+    "durable executions"
+  ],
+  "invariants": [
+    "execution progress is durable across crashes"
+  ],
+  "sample_behavior": "Durable execution platform that persists workflow progress and resumes after failures."
+}

@@ -1,0 +1,8 @@
+{
+  "candidate_id": "T1-015",
+  "role": "candidate_view",
+  "excluded_stub": true,
+  "reasons": [
+    "filter1: license 'ISC' not in allowlist"
+  ]
+}

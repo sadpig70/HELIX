@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-impact-handback/1.0",
+  "title": "HELIX actuation impact handback (outcome delta, use, rollback, trace)",
+  "type": "object",
+  "required": ["schema", "handback_id", "intent_digest", "gate_result_sha256", "plan_sha256", "guard_receipt_sha256", "state_receipt_hash", "outcomes", "actual_use", "budget_ok", "undeclared", "rollback_ready", "problems", "verdict", "receipt_sha256"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-impact-handback/1.0"]},
+    "handback_id": {"type": "string"},
+    "intent_digest": {"type": "string"},
+    "gate_result_sha256": {"type": "string"},
+    "plan_sha256": {"type": "string"},
+    "guard_receipt_sha256": {"type": "string"},
+    "state_receipt_hash": {"type": "string"},
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "op", "status", "post_sha256", "post_bytes"],
+        "properties": {
+          "path": {"type": "string"},
+          "op": {"type": "string", "enum": ["create", "modify", "delete"]},
+          "status": {"type": "string", "enum": ["applied", "not_applied"]},
+          "post_sha256": {"type": ["string", "null"]},
+          "post_bytes": {"type": ["integer", "null"]}
+        }
+      }
+    },
+    "actual_use": {
+      "type": "object",
+      "required": ["files", "bytes"],
+      "properties": {
+        "files": {"type": "integer", "minimum": 0},
+        "bytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "budget_ok": {"type": "boolean"},
+    "undeclared": {
+      "type": "object",
+      "required": ["checked", "changes"],
+      "properties": {
+        "checked": {"type": "boolean"},
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "kind"],
+            "properties": {
+              "path": {"type": "string"},
+              "kind": {"type": "string", "enum": ["created", "modified", "deleted"]}
+            }
+          }
+        }
+      }
+    },
+    "rollback_ready": {"type": "boolean"},
+    "problems": {"type": "array", "items": {"type": "string"}},
+    "verdict": {"type": "string", "enum": ["clean", "deviated"]},
+    "receipt_sha256": {"type": "string"}
+  }
+}

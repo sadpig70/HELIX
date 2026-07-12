@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-evidence-manifest/1.0",
+  "title": "HELIX Constitution evidence manifest (artifact hash, issuer, provenance, policy version)",
+  "type": "object",
+  "required": ["schema", "manifest_id", "policy_version", "intent_digest", "issuer", "artifacts", "manifest_sha256"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-evidence-manifest/1.0"]},
+    "manifest_id": {"type": "string"},
+    "policy_version": {"type": "string", "enum": ["HELIX-CONSTITUTION/1.0"]},
+    "intent_digest": {"type": "string"},
+    "issuer": {
+      "type": "object",
+      "required": ["kind", "id"],
+      "properties": {
+        "kind": {"type": "string", "enum": ["ai", "human", "system"]},
+        "id": {"type": "string"}
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "path", "sha256", "bytes", "provenance"],
+        "properties": {
+          "role": {"type": "string"},
+          "path": {"type": "string"},
+          "sha256": {"type": "string"},
+          "bytes": {"type": "integer", "minimum": 0},
+          "provenance": {
+            "type": "object",
+            "required": ["origin", "reference"],
+            "properties": {
+              "origin": {"type": "string", "enum": ["state_receipt", "trial_receipt", "reduction_receipt", "command_output", "external"]},
+              "reference": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    },
+    "manifest_sha256": {"type": "string"}
+  }
+}

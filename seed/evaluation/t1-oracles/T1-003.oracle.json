@@ -1,0 +1,10 @@
+{
+  "candidate_id": "T1-003",
+  "role": "oracle",
+  "expected": {
+    "action": "DEFER",
+    "machines": []
+  },
+  "oracle_rationale": "Configurable audit event pipeline; no hash-chain, verdict algebra, or gating mechanism.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

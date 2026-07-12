@@ -1,0 +1,27 @@
+{
+  "candidate_id": "T1-014",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/alibaba/Sentinel",
+    "immutable_revision": "a3f40ba8e900c8489bd520274739f17235a7721c",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-014.README.md"
+  },
+  "observed_operations": [
+    "monitor_resource_flow",
+    "apply_flow_rules",
+    "shape_traffic",
+    "limit_concurrency",
+    "break_circuit_on_overload"
+  ],
+  "observed_inputs": [
+    "service invocations",
+    "traffic metrics"
+  ],
+  "observed_outputs": [
+    "pass/block/queue decisions per resource"
+  ],
+  "invariants": [
+    "traffic exceeding configured thresholds is rejected or shaped"
+  ],
+  "sample_behavior": "Flow-control library guarding microservice reliability with thresholds, circuit breaking, and adaptive overload protection."
+}

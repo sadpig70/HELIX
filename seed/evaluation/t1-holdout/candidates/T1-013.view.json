@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-013",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/digitalocean/nginxconfig.io",
+    "immutable_revision": "dd290c0b706b8a8c2f86cfbffaae9c17715b431d",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-013.README.md"
+  },
+  "observed_operations": [
+    "compose_server_config",
+    "apply_curated_templates",
+    "generate_config_files"
+  ],
+  "observed_inputs": [
+    "interactive configuration choices"
+  ],
+  "observed_outputs": [
+    "NGINX configuration files"
+  ],
+  "invariants": [
+    "generated configs follow curated templates"
+  ],
+  "sample_behavior": "Interactive generator that produces NGINX server configuration files."
+}

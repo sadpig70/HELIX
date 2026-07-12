@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-041",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/Python-Markdown/markdown",
+    "immutable_revision": "8453df010daf9547efcc20a05bb12c0e2fd2016a",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-041.README.md"
+  },
+  "observed_operations": [
+    "parse_markdown",
+    "apply_extensions",
+    "render_html"
+  ],
+  "observed_inputs": [
+    "markdown text"
+  ],
+  "observed_outputs": [
+    "HTML"
+  ],
+  "invariants": [
+    "close to reference behavior with an extension API"
+  ],
+  "sample_behavior": "Python implementation of Markdown with extensions."
+}

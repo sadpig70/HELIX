@@ -1,0 +1,33 @@
+{
+  "schema": "helix-evidence-manifest/1.0",
+  "manifest_id": "EVM-R1-001",
+  "policy_version": "HELIX-CONSTITUTION/1.0",
+  "intent_digest": "94f32c048fa8704d9c7403002f5e280e8c471e1868b149ccda34e3a8aa4a53f0",
+  "issuer": {
+    "kind": "system",
+    "id": "helix-runtime"
+  },
+  "artifacts": [
+    {
+      "role": "test_log",
+      "path": "examples/constitution/artifacts/demo-test-log.txt",
+      "sha256": "be21f887078d87075d84d9a47e68bb35483293e54e66096df467386eb1b27d19",
+      "bytes": 39,
+      "provenance": {
+        "origin": "command_output",
+        "reference": "python -m unittest discover -s tests -q"
+      }
+    },
+    {
+      "role": "state_snapshot",
+      "path": "examples/constitution/artifacts/demo-state.json",
+      "sha256": "c9ee05013bed8254a3537af8c3f0a86865a27a5d6adb55d3039fdd40406b59c0",
+      "bytes": 38,
+      "provenance": {
+        "origin": "state_receipt",
+        "reference": "8ea2534ef8904ac7e42142fa0ca3726d372e5db3e1d745a8f668884f33ec67f7"
+      }
+    }
+  ],
+  "manifest_sha256": "69578eedd0b7b16088937e44d63d9e6151747f49f69d868be4df48786baa0505"
+}

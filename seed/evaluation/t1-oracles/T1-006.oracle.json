@@ -1,0 +1,10 @@
+{
+  "candidate_id": "T1-006",
+  "role": "oracle",
+  "expected": {
+    "action": "DEFER",
+    "machines": []
+  },
+  "oracle_rationale": "DB change tracking with revert; versioning, not a hash-chain ledger or rollback-evidence machine.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

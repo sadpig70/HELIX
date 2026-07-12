@@ -1,0 +1,5 @@
+{
+  "candidate_id": "T1-025",
+  "role": "oracle",
+  "excluded_stub": true
+}

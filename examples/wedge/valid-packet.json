@@ -1,0 +1,39 @@
+{
+  "custody": {
+    "artifact_id": "ART-42",
+    "evidence_path": "evidence/custody/ART-42.json",
+    "from_actor": "field-agent-7",
+    "handback_confirmed": true,
+    "to_actor": "AUTH-17"
+  },
+  "delegation": {
+    "action": "retrieve_artifact",
+    "allowed_actions": [
+      "retrieve_artifact",
+      "return_to_base"
+    ],
+    "authority_id": "AUTH-17",
+    "delegated_to": "field-agent-7",
+    "evidence_path": "evidence/delegation/AUTH-17.json",
+    "expires_at": "2026-07-03T00:00:00+00:00",
+    "return_to": "AUTH-17"
+  },
+  "handback_id": "HB-VALID-001",
+  "handback_time": "2026-07-02T00:00:00+00:00",
+  "rollback": {
+    "completed": false,
+    "evidence_path": "evidence/rollback/not-required.json",
+    "required": false
+  },
+  "route": {
+    "actual_route_id": "ROUTE-A",
+    "evidence_path": "evidence/route/ROUTE-A.json",
+    "planned_route_id": "ROUTE-A",
+    "rollback_required": false,
+    "status": "passed"
+  },
+  "trace": {
+    "digest": "6393be58e8e5f4c4e98a78173212205a8b2c7920b6398390c427ecd07b9f67b9",
+    "evidence_path": "evidence/trace/HB-VALID-001.sha256"
+  }
+}

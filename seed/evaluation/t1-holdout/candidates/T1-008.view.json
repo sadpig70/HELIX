@@ -1,0 +1,27 @@
+{
+  "candidate_id": "T1-008",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/open-policy-agent/gatekeeper",
+    "immutable_revision": "7bf3b8051a8d64c941fd056917b7af8e5e7147f6",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-008.README.md"
+  },
+  "observed_operations": [
+    "intercept_admission_request",
+    "evaluate_constraints",
+    "enforce_decision",
+    "audit_existing_resources"
+  ],
+  "observed_inputs": [
+    "Kubernetes admission requests",
+    "constraint definitions"
+  ],
+  "observed_outputs": [
+    "admit/reject decisions",
+    "audit findings"
+  ],
+  "invariants": [
+    "resources violating constraints are rejected at admission"
+  ],
+  "sample_behavior": "Evaluates a parameterized constraint library against cluster changes and enforces admit/reject decisions."
+}

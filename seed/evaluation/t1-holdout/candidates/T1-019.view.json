@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-019",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/Udayraj123/OMRChecker",
+    "immutable_revision": "de3f6982822895491be760325fd43e65e90fa293",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-019.README.md"
+  },
+  "observed_operations": [
+    "scan_omr_sheet",
+    "detect_marked_bubbles",
+    "evaluate_responses"
+  ],
+  "observed_inputs": [
+    "scanned or phone images of OMR sheets"
+  ],
+  "observed_outputs": [
+    "recognized responses and evaluation results"
+  ],
+  "invariants": [
+    "detection is aligned to a sheet template"
+  ],
+  "sample_behavior": "Reads and evaluates human-marked OMR sheets from images."
+}

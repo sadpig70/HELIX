@@ -1,0 +1,27 @@
+{
+  "candidate_id": "SYN-KNOWN-HASH",
+  "provenance": {
+    "locator": "seed/evaluation/holdout/sources/SYN-KNOWN-HASH.json",
+    "immutable_revision": "synthetic-snapshot-901"
+  },
+  "observed_operations": [
+    "verify_chain",
+    "route_request",
+    "clear_obligation"
+  ],
+  "observed_inputs": [
+    "verify_chain_request",
+    "route_request_request",
+    "clear_obligation_request"
+  ],
+  "observed_outputs": [
+    "verify_chain_receipt",
+    "route_request_receipt",
+    "clear_obligation_receipt"
+  ],
+  "invariants": [
+    "verify_chain is append-only",
+    "route_request is deterministic"
+  ],
+  "sample_behavior": "processes verify_chain then emits clear_obligation evidence"
+}

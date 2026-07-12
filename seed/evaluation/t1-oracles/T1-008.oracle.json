@@ -1,0 +1,12 @@
+{
+  "candidate_id": "T1-008",
+  "role": "oracle",
+  "expected": {
+    "action": "BUILD_ON_PLATFORM",
+    "machines": [
+      "M3"
+    ]
+  },
+  "oracle_rationale": "Constraint predicates evaluated over admission requests producing admit/reject verdicts.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

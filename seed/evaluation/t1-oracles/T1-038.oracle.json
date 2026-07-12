@@ -1,0 +1,10 @@
+{
+  "candidate_id": "T1-038",
+  "role": "oracle",
+  "expected": {
+    "action": "DEFER",
+    "machines": []
+  },
+  "oracle_rationale": "Markdown converter (out-of-domain control).",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

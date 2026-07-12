@@ -1,0 +1,25 @@
+{
+  "candidate_id": "T1-034",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/PrefectHQ/prefect",
+    "immutable_revision": "c7f899b57acfb22893cf0f4e6dbf41ffbcceb296",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-034.README.md"
+  },
+  "observed_operations": [
+    "elevate_script_to_flow",
+    "schedule_flows",
+    "cache_and_retry_tasks",
+    "react_to_events"
+  ],
+  "observed_inputs": [
+    "Python functions"
+  ],
+  "observed_outputs": [
+    "production workflow runs"
+  ],
+  "invariants": [
+    "flows recover from unexpected changes"
+  ],
+  "sample_behavior": "Workflow orchestration framework for building resilient data pipelines in Python."
+}

@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-017",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/stefanprodan/AspNetCoreRateLimit",
+    "immutable_revision": "3a574a8e6a6ab1bfe3ecf285490568c08cf1aa65",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-017.README.md"
+  },
+  "observed_operations": [
+    "count_requests_per_client",
+    "apply_rate_rules_per_period",
+    "reject_over_limit"
+  ],
+  "observed_inputs": [
+    "HTTP requests with IP or client id"
+  ],
+  "observed_outputs": [
+    "allowed responses or 429 rejections"
+  ],
+  "invariants": [
+    "a client cannot exceed configured calls per interval per endpoint"
+  ],
+  "sample_behavior": "Middleware enforcing per-IP/per-client request limits across multiple periods and scopes."
+}

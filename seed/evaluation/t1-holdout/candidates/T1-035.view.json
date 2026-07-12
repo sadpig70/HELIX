@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-035",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/coleam00/Archon",
+    "immutable_revision": "60458483ec933c12bb8cbf6a2b0c7f27b986762d",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-035.README.md"
+  },
+  "observed_operations": [
+    "define_yaml_workflows",
+    "run_coding_agent_steps",
+    "validate_outputs"
+  ],
+  "observed_inputs": [
+    "YAML workflow definitions"
+  ],
+  "observed_outputs": [
+    "repeatable agent runs"
+  ],
+  "invariants": [
+    "the same workflow runs uniformly across projects"
+  ],
+  "sample_behavior": "Workflow engine that makes AI coding processes deterministic and repeatable."
+}

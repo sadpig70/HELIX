@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-001",
+  "family": "synthetic-family-001",
+  "readme": "Synthetic project 001: verify_chain, route_request, clear_obligation over a local store.",
+  "operations": [
+    "verify_chain",
+    "route_request",
+    "clear_obligation"
+  ],
+  "entrypoints": [
+    "cli_verify_chain",
+    "cli_route_request",
+    "cli_clear_obligation"
+  ]
+}

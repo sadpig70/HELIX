@@ -1,0 +1,12 @@
+{
+  "candidate_id": "T1-012",
+  "role": "oracle",
+  "expected": {
+    "action": "BUILD_ON_PLATFORM",
+    "machines": [
+      "M3"
+    ]
+  },
+  "oracle_rationale": "Intercept-classify-block predicate gate over every tool call before execution.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

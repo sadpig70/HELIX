@@ -1,0 +1,27 @@
+{
+  "candidate_id": "SYN-007",
+  "provenance": {
+    "locator": "seed/evaluation/holdout/sources/SYN-007.json",
+    "immutable_revision": "synthetic-snapshot-007"
+  },
+  "observed_operations": [
+    "price_unit",
+    "gate_predicate",
+    "aggregate_tier"
+  ],
+  "observed_inputs": [
+    "price_unit_request",
+    "gate_predicate_request",
+    "aggregate_tier_request"
+  ],
+  "observed_outputs": [
+    "price_unit_receipt",
+    "gate_predicate_receipt",
+    "aggregate_tier_receipt"
+  ],
+  "invariants": [
+    "price_unit is append-only",
+    "gate_predicate is deterministic"
+  ],
+  "sample_behavior": "processes price_unit then emits aggregate_tier evidence"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-010",
+  "family": "synthetic-family-010",
+  "readme": "Synthetic project 010: emit_receipt, replay_ledger, append_entry over a local store.",
+  "operations": [
+    "emit_receipt",
+    "replay_ledger",
+    "append_entry"
+  ],
+  "entrypoints": [
+    "cli_emit_receipt",
+    "cli_replay_ledger",
+    "cli_append_entry"
+  ]
+}

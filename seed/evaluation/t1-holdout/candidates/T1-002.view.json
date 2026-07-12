@@ -1,0 +1,25 @@
+{
+  "candidate_id": "T1-002",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/collectiveidea/audited",
+    "immutable_revision": "dbf8432604ec97734bcfb3dc6df61f4faa0d1b84",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-002.README.md"
+  },
+  "observed_operations": [
+    "record_model_change",
+    "attribute_change_author",
+    "associate_related_models",
+    "query_audit_history"
+  ],
+  "observed_inputs": [
+    "ORM model create/update/destroy events"
+  ],
+  "observed_outputs": [
+    "audit records with author and comments"
+  ],
+  "invariants": [
+    "every tracked model change appends an audit record"
+  ],
+  "sample_behavior": "ORM extension that logs all changes to models, recording who made each change."
+}

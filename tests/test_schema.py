@@ -58,7 +58,8 @@ class TestStdlibWalker(unittest.TestCase):
 
 class TestShippedSchemas(unittest.TestCase):
     def test_all_schemas_in_walker_subset(self):
-        for name in ("ledger", "diversity-report", "loop-state", "corpus-entry"):
+        for name in ("ledger", "diversity-report", "loop-state", "corpus-entry",
+                     "helix-state-receipt", "helix-holdout-registry"):
             with open(schema_path(ROOT, name), encoding="utf-8") as f:
                 feats = schema_features(json.load(f))
             self.assertTrue(feats["in_subset"],

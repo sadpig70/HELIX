@@ -27,10 +27,16 @@ from core.helix_ledger import (                               # noqa: E402
 from core.helix_loop import next_action                       # noqa: E402
 from core.helix_condense import condense_state                # noqa: E402
 from core.helix_router import route_probe_rows                # noqa: E402
+from core.helix_state_receipt import (                        # noqa: E402
+    apply_drift_gate, build_state_receipt, compare_receipts,
+)
 from core.helix_project_paths import ensure_project_src       # noqa: E402
 from core.helix_provenance import trace_winner, winner_to_corpus_entry  # noqa: E402
 from core.helix_validate import validate_corpus_entry         # noqa: E402
-from engines.loaders import load_explore_state, load_exploit_state      # noqa: E402
+from engines.loaders import (                                 # noqa: E402
+    load_explore_state, load_exploit_state, resolve_explore_paths,
+    resolve_exploit_paths,
+)
 from engines.unify import build_unified_ledger                # noqa: E402
 from engines.explore import adapter as explore_adp            # noqa: E402
 from engines.exploit import adapter as exploit_adp            # noqa: E402
@@ -383,6 +389,66 @@ def _opt(argv, name, default=None):
     return default
 
 
+def _git_head(root: str):
+    """Read the current commit without invoking Git; return None when unavailable."""
+    git_dir = os.path.join(root, ".git")
+    if os.path.isfile(git_dir):
+        with open(git_dir, "r", encoding="utf-8") as f:
+            marker = f.read().strip()
+        if marker.startswith("gitdir:"):
+            target = marker.split(":", 1)[1].strip()
+            git_dir = target if os.path.isabs(target) else os.path.join(root, target)
+    head_path = os.path.join(git_dir, "HEAD")
+    if not os.path.isfile(head_path):
+        return None
+    with open(head_path, "r", encoding="utf-8") as f:
+        head = f.read().strip()
+    if not head.startswith("ref:"):
+        return head or None
+    ref = head.split(":", 1)[1].strip()
+    ref_path = os.path.join(git_dir, *ref.split("/"))
+    if os.path.isfile(ref_path):
+        with open(ref_path, "r", encoding="utf-8") as f:
+            return f.read().strip() or None
+    packed = os.path.join(git_dir, "packed-refs")
+    if os.path.isfile(packed):
+        with open(packed, "r", encoding="utf-8") as f:
+            for line in f:
+                if not line.startswith(("#", "^")):
+                    value, _, name = line.strip().partition(" ")
+                    if name == ref:
+                        return value
+    return None
+
+
+def _load_report_bindings(path: str) -> list:
+    if not path:
+        return []
+    with open(path, "r", encoding="utf-8") as f:
+        doc = json.load(f)
+    reports = doc.get("reports") if isinstance(doc, dict) else None
+    if not isinstance(reports, list):
+        raise ValueError("--report-seals must contain a reports array")
+    return reports
+
+
+def _unsealed_report(report: str, path: str) -> dict:
+    return {"report": report, "path": path, "expected_sha256": None, "sources": []}
+
+
+def _receipt_replay_argv(argv) -> list:
+    """Reproduce the receipt on stdout; output location is intentionally excluded."""
+    result = ["python", "helix.py"]
+    i = 1
+    while i < len(argv):
+        if argv[i] == "--out":
+            i += 2
+            continue
+        result.append(argv[i])
+        i += 1
+    return result
+
+
 def _now(argv):
     """Timestamp for actuator writes. Injected via --now, else read at the CLI edge
     (allowed: the CLI is outside the deterministic core)."""
@@ -393,13 +459,52 @@ def _now(argv):
     return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
 
+def _live_receipt_hash() -> str:
+    """Current live state-receipt hash with default paths (wedge anchor)."""
+    default_reports = {
+        "machine_probe": os.path.join(
+            ROOT, "_workspace", "condense", "U6-machine-probe-report.json"),
+        "forward_candidate_manifest": os.path.join(
+            ROOT, "_workspace", "condense", "U9-live-candidate-manifest.json"),
+        "forward_prediction": os.path.join(
+            ROOT, "_workspace", "condense", "U9-live-forward-predict-report.json"),
+    }
+    report_bindings = [_unsealed_report(name, path)
+                       for name, path in default_reports.items()]
+    layered_corpus = os.path.join(ROOT, "seed", "condense", "layered-corpus.json")
+    runtime_report = build_report(
+        ROOT, ROOT, sim=resolve_sim(None), layered_corpus_path=layered_corpus,
+        forward_predict_report_path=default_reports["forward_prediction"])
+    input_paths = {}
+    input_paths.update(resolve_explore_paths(ROOT))
+    input_paths.update(resolve_exploit_paths(ROOT))
+    input_paths["layered_corpus"] = layered_corpus
+    gate_paths = {
+        "platform_kernel": os.path.join(ROOT, "seed", "condense",
+                                        "platform-kernel-lock.json"),
+        "machine_probe": os.path.join(ROOT, "seed", "condense",
+                                      "machine-probe-gate.json"),
+        "router": os.path.join(ROOT, "seed", "condense", "router-gate.json"),
+        "forward_predict": os.path.join(ROOT, "seed", "condense",
+                                        "forward-predict-gate.json"),
+        "loop_policy": os.path.join(ROOT, "core", "helix_loop.py"),
+    }
+    receipt = build_state_receipt(ROOT, runtime_report, input_paths, gate_paths,
+                                  report_bindings, git_head=_git_head(ROOT))
+    return receipt["receipt_hash"]
+
+
 USAGE = ("usage:\n"
          "  python helix.py status [--explore-root R] [--exploit-root R] "
          "[--layered-corpus P] [--forward-predict-report P] [--sim lexical|mod:fn] [--json]\n"
+         "  python helix.py state-receipt [--explore-root R] [--exploit-root R] "
+         "[--layered-corpus P] [--report-seals P] [--compare P] [--out P]\n"
          "  python helix.py close-loop --winner <winner.json> --ledger <ledger.json> "
          "--corpus <corpus.json> [--now <iso>] [--packet <handback.json>]\n"
          "  python helix.py verify-handback --registry <registry.json> --project <name> "
          "--packet <handback.json>\n"
+         "  python helix.py audit-handback --packet <handback.json> [--operator ID] "
+         "[--ledger P] [--packets-dir P] [--state-receipt-hash H] [--json]\n"
          "  python helix.py loop-status [--loop-state <loop-state.json>] [--ledger <ledger.json>]\n")
 
 
@@ -415,6 +520,64 @@ def _main(argv) -> int:
             print(json.dumps(report, ensure_ascii=False, indent=2))
         else:
             _print_report(report)
+        return 0
+
+    if cmd == "state-receipt":
+        explore_root = _opt(argv, "--explore-root", ROOT)
+        exploit_root = _opt(argv, "--exploit-root", ROOT)
+        layered_corpus = _opt(
+            argv, "--layered-corpus", os.path.join(ROOT, "seed", "condense", "layered-corpus.json"))
+        default_reports = {
+            "machine_probe": os.path.join(
+                ROOT, "_workspace", "condense", "U6-machine-probe-report.json"),
+            "forward_candidate_manifest": os.path.join(
+                ROOT, "_workspace", "condense", "U9-live-candidate-manifest.json"),
+            "forward_prediction": _opt(
+                argv, "--forward-predict-report",
+                os.path.join(ROOT, "_workspace", "condense", "U9-live-forward-predict-report.json")),
+        }
+        report_bindings = _load_report_bindings(_opt(argv, "--report-seals"))
+        sealed_names = {binding.get("report") for binding in report_bindings}
+        for report_name, report_path in default_reports.items():
+            if report_name not in sealed_names:
+                report_bindings.append(_unsealed_report(report_name, report_path))
+
+        runtime_report = build_report(
+            explore_root, exploit_root,
+            sim=resolve_sim(_opt(argv, "--sim")),
+            layered_corpus_path=layered_corpus,
+            forward_predict_report_path=default_reports["forward_prediction"],
+        )
+        input_paths = {}
+        input_paths.update(resolve_explore_paths(explore_root))
+        input_paths.update(resolve_exploit_paths(exploit_root))
+        if layered_corpus:
+            input_paths["layered_corpus"] = layered_corpus
+        gate_paths = {
+            "platform_kernel": os.path.join(
+                ROOT, "seed", "condense", "platform-kernel-lock.json"),
+            "machine_probe": os.path.join(
+                ROOT, "seed", "condense", "machine-probe-gate.json"),
+            "router": os.path.join(ROOT, "seed", "condense", "router-gate.json"),
+            "forward_predict": os.path.join(
+                ROOT, "seed", "condense", "forward-predict-gate.json"),
+            "loop_policy": os.path.join(ROOT, "core", "helix_loop.py"),
+        }
+        receipt = build_state_receipt(
+            ROOT, runtime_report, input_paths, gate_paths, report_bindings,
+            git_head=_git_head(ROOT), replay_argv=_receipt_replay_argv(argv),
+        )
+        compare_path = _opt(argv, "--compare")
+        if compare_path:
+            with open(compare_path, "r", encoding="utf-8") as f:
+                stored_receipt = json.load(f)
+            receipt = apply_drift_gate(
+                receipt, compare_receipts(stored_receipt, receipt))
+        out = _opt(argv, "--out")
+        if out:
+            atomic_write_json(out, receipt)
+        else:
+            print(json.dumps(receipt, ensure_ascii=False, indent=2))
         return 0
 
     if cmd == "close-loop":
@@ -446,6 +609,53 @@ def _main(argv) -> int:
         result = verify_handback(registry_path, project_name, packet_path)
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0 if result["verdict"] != "breach" else 1
+
+    if cmd == "audit-handback":
+        # First utility wedge (P5): one submitted packet -> one sealed,
+        # replayable admission decision. Exit codes: 0 ADMIT, 3 SANDBOX_ONLY,
+        # 4 QUARANTINE/EXCLUDED, 1 gate refusal, 2 usage.
+        from core.helix_wedge import audit_handback, verify_wedge_decision
+        packet_path = _opt(argv, "--packet")
+        if not packet_path:
+            sys.stderr.write(USAGE)
+            return 2
+        with open(packet_path, "r", encoding="utf-8") as f:
+            packet = json.load(f)
+        operator = {"kind": "human", "id": _opt(argv, "--operator", "operator-local")}
+        ledger_rel = _opt(argv, "--ledger",
+                          os.path.join(".helix", "wedge", "ledger.jsonl"))
+        packets_dir = _opt(argv, "--packets-dir",
+                           os.path.join(".helix", "wedge", "packets"))
+        anchor = _opt(argv, "--state-receipt-hash") or _live_receipt_hash()
+        result = audit_handback(ROOT, packet, operator, anchor,
+                                ledger_rel.replace(os.sep, "/"),
+                                packets_dir.replace(os.sep, "/"))
+        if result["decision"] is None:
+            print(json.dumps({"stage": "gate", "why": result["why"],
+                              "gate_decision": result["gate"]["decision"]},
+                             ensure_ascii=False, indent=2))
+            return 1
+        decision = result["decision"]
+        replay_problems = verify_wedge_decision(ROOT, decision)
+        if "--json" in argv:
+            print(json.dumps({"decision": decision,
+                              "replay_problems": replay_problems},
+                             ensure_ascii=False, indent=2))
+        else:
+            print("=== HELIX wedge decision ===")
+            print(f"  handback_id: {decision['handback_id']}")
+            print(f"  verdict:     {decision['handback_verdict']}")
+            print(f"  admission:   {decision['admission']}  ({decision['admission_basis']})")
+            print(f"  decision:    {decision['decision_id']}  seal {decision['receipt_sha256'][:16]}…")
+            print(f"  packet:      {decision['packet_path']}")
+            print(f"  ledger:      {ledger_rel}")
+            print(f"  replay:      python helix.py audit-handback --packet "
+                  f"{decision['packet_path']} --state-receipt-hash {anchor}"
+                  f" --ledger {ledger_rel} --packets-dir {packets_dir}")
+            print(f"  replay check: {'REPRODUCED' if not replay_problems else replay_problems}")
+        if replay_problems:
+            return 1
+        return {"ADMIT": 0, "SANDBOX_ONLY": 3}.get(decision["admission"], 4)
 
     if cmd == "loop-status":
         # read-only: report the autonomous loop's deterministic control state

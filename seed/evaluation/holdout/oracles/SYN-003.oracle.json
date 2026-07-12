@@ -1,0 +1,10 @@
+{
+  "candidate_id": "SYN-003",
+  "expected": {
+    "action": "BUILD_ON_PLATFORM",
+    "machines": [
+      "M4"
+    ]
+  },
+  "oracle_rationale": "synthetic oracle label for candidate 003"
+}

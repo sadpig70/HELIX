@@ -1,0 +1,27 @@
+{
+  "candidate_id": "SYN-020",
+  "provenance": {
+    "locator": "seed/evaluation/holdout/sources/SYN-020.json",
+    "immutable_revision": "synthetic-snapshot-020"
+  },
+  "observed_operations": [
+    "gate_predicate",
+    "aggregate_tier",
+    "emit_receipt"
+  ],
+  "observed_inputs": [
+    "gate_predicate_request",
+    "aggregate_tier_request",
+    "emit_receipt_request"
+  ],
+  "observed_outputs": [
+    "gate_predicate_receipt",
+    "aggregate_tier_receipt",
+    "emit_receipt_receipt"
+  ],
+  "invariants": [
+    "gate_predicate is append-only",
+    "aggregate_tier is deterministic"
+  ],
+  "sample_behavior": "processes gate_predicate then emits emit_receipt evidence"
+}

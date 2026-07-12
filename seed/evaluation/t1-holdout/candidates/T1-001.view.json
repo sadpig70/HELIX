@@ -1,0 +1,27 @@
+{
+  "candidate_id": "T1-001",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/iflytek/skillhub",
+    "immutable_revision": "e32f05b375379d887bd3766b40f993c70d39db54",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-001.README.md"
+  },
+  "observed_operations": [
+    "publish_skill_package",
+    "discover_skills",
+    "manage_namespaces",
+    "search_registry"
+  ],
+  "observed_inputs": [
+    "skill packages",
+    "namespace assignments"
+  ],
+  "observed_outputs": [
+    "registry entries",
+    "search results"
+  ],
+  "invariants": [
+    "packages are versioned within governed namespaces"
+  ],
+  "sample_behavior": "Self-hosted registry where teams publish, discover, and manage reusable agent skill packages."
+}

@@ -61,6 +61,41 @@ python helix.py status
 python helix.py status --explore-root . --exploit-root .   # 라이브(.evx yaml 은 PyYAML 필요)
 python helix.py status --sim core.helix_diversity:lexical_sim   # semantic sim 주입(mod:fn)
 
+# 상태 권위 receipt(read): 실제 loader inputs + gates + reports + next action을 SHA256으로 봉인
+python helix.py state-receipt
+python helix.py state-receipt --out _workspace/helix-direction/current-state-receipt.json
+python helix.py state-receipt --compare _workspace/helix-direction/current-state-receipt.json
+# report seal이 없으면 freshness=unverifiable이며 actuator_ready=false (fail-closed)
+# sealed provenance 사용: --report-seals <json containing reports[] bindings>
+# --compare drift 시 state_drift blocker를 추가하고 receipt를 다시 봉인
+
+# blind holdout registry(read): schema + policy + commitment lock + 실제 artifact hash 검증
+python core/helix_holdout.py seed/evaluation/holdout-registry.json
+# synthetic live-size fixture 결정론 재생성 (동일 commitment 재현)
+python scripts/evaluate/build_synthetic_holdout.py
+
+# trial receipt chain(read): prediction/reveal receipt를 locked registry 대비 독립 재검증
+python core/helix_prediction.py <registry.json> <prediction-receipt.json> [reveal-receipt.json]
+
+# blind machine trial 한 회전: 내장 baseline + 주입 predictor를 같은 locked cohort에서 평가.
+# receipts/report는 _workspace/helix-direction/trials/에 기록 (predictor는 candidate view만 받음)
+# novelty 주장(CONDENSE/DEFER)은 후보별 reduction receipt로 추적 (--reduction-evidence JSON 주입)
+python scripts/evaluate/blind_machine_trial.py [--system name=module:fn] [--reduction-evidence PATH]
+
+# Constitution action intent(read): schema + 결정론 risk 유도 + under-classification fail-closed
+python core/helix_constitution.py examples/constitution/intent-r1-local-artifact.json
+
+# Constitution evidence manifest(read): artifact hash/issuer/provenance 실 bytes 재검증 + intent 바인딩
+python core/helix_evidence.py examples/constitution/evidence-r1-local-artifact.json examples/constitution/intent-r1-local-artifact.json
+
+# ★ 첫 utility wedge: handback packet 하나 → AHV 검사 → admission class → sealed replayable decision
+#   운영 절차·판정 해석·exit code는 docs/WEDGE-RUNBOOK.md (샘플: examples/wedge/)
+python helix.py audit-handback --packet examples/wedge/valid-packet.json
+
+# T4 external pilot: 다중 참가자 wedge ledger를 하나의 sealed T4 리포트로 집계·판정.
+#   운영 프로토콜(참가·측정·gate·kill 조건)은 docs/PILOT-PROTOCOL.md
+python scripts/evaluate/pilot_report.py --config pilot.json [--out report.json]
+
 # ★ 루프 폐쇄(write, actuator): 구현된 winner를 ledger에 기록 + 코퍼스로 환류(염기쌍). idempotent.
 python helix.py close-loop --winner winner.json --ledger .helix/ledger.json --corpus .helix/corpus.json
 #   winner.json = {"winner": {...}, "source_chain": {...}, "implementation": {project_name,...}}

@@ -1,0 +1,26 @@
+{
+  "candidate_id": "T1-031",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/apache/airflow",
+    "immutable_revision": "621192d76a9fec1f9f105d0597f9ddcd955c35b7",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-031.README.md"
+  },
+  "observed_operations": [
+    "define_dag_workflows",
+    "schedule_tasks",
+    "execute_with_retries",
+    "monitor_runs"
+  ],
+  "observed_inputs": [
+    "Python DAG definitions"
+  ],
+  "observed_outputs": [
+    "scheduled task executions",
+    "run states"
+  ],
+  "invariants": [
+    "tasks execute per dependency order and schedule"
+  ],
+  "sample_behavior": "Platform to programmatically author, schedule, and monitor workflows as code."
+}

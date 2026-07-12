@@ -1,0 +1,208 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-state-receipt/1.0",
+  "title": "HELIX canonical state receipt",
+  "description": "Hashable authority snapshot. Wall-clock metadata is excluded from the receipt hash; AI may propose, but this document records deterministic evidence and action authority.",
+  "type": "object",
+  "required": [
+    "schema",
+    "generated_from",
+    "canonical_inputs",
+    "gate_hashes",
+    "report_freshness",
+    "runtime_state",
+    "blockers",
+    "next_action",
+    "authority",
+    "replay_command",
+    "receipt_hash"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": ["helix-state-receipt/1.0"]
+    },
+    "generated_from": {
+      "type": "object",
+      "required": ["root", "git_head", "builder_version"],
+      "properties": {
+        "root": {"type": "string"},
+        "git_head": {"type": ["string", "null"], "description": "Full commit id, or null outside a Git worktree."},
+        "builder_version": {"type": "string", "enum": ["helix-state-receipt-builder/1.0"]}
+      }
+    },
+    "canonical_inputs": {
+      "type": "array",
+      "description": "Content-addressed inputs actually selected by HELIX loaders.",
+      "items": {
+        "type": "object",
+        "required": ["role", "path", "sha256", "bytes", "status"],
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "explore_winner",
+              "explore_manifest",
+              "explore_pool",
+              "explore_consumed",
+              "exploit_registry",
+              "exploit_candidates",
+              "exploit_run_status",
+              "layered_corpus"
+            ]
+          },
+          "path": {"type": "string"},
+          "sha256": {"type": ["string", "null"], "description": "Lowercase SHA256 hex; null only when status=missing."},
+          "bytes": {"type": ["integer", "null"], "minimum": 0},
+          "status": {"type": "string", "enum": ["present", "missing"]}
+        }
+      }
+    },
+    "gate_hashes": {
+      "type": "array",
+      "description": "Every policy or hard gate that can change the reported action.",
+      "items": {
+        "type": "object",
+        "required": ["gate", "path", "sha256", "bytes", "status"],
+        "properties": {
+          "gate": {
+            "type": "string",
+            "enum": ["platform_kernel", "machine_probe", "router", "forward_predict", "loop_policy"]
+          },
+          "path": {"type": "string"},
+          "sha256": {"type": ["string", "null"], "description": "Lowercase SHA256 hex; null only when status=missing."},
+          "bytes": {"type": ["integer", "null"], "minimum": 0},
+          "status": {"type": "string", "enum": ["present", "missing"]}
+        }
+      }
+    },
+    "report_freshness": {
+      "type": "array",
+      "description": "A report is fresh only when its recorded source hashes match current content hashes.",
+      "items": {
+        "type": "object",
+        "required": ["report", "path", "sha256", "expected_sha256", "source_paths", "source_hashes", "status", "reasons"],
+        "properties": {
+          "report": {
+            "type": "string",
+            "enum": ["machine_probe", "forward_candidate_manifest", "forward_prediction"]
+          },
+          "path": {"type": "string"},
+          "sha256": {"type": ["string", "null"]},
+          "expected_sha256": {"type": ["string", "null"], "description": "Report hash recorded when its source bindings were sealed."},
+          "source_paths": {"type": "array", "items": {"type": "string"}},
+          "source_hashes": {"type": "array", "items": {"type": "string"}},
+          "status": {"type": "string", "enum": ["fresh", "stale", "missing", "unverifiable"]},
+          "reasons": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "runtime_state": {
+      "type": "object",
+      "required": [
+        "last_engine",
+        "corpus_size",
+        "unified_ledger_entries",
+        "pending_implemented_winner",
+        "winner_in_ledger",
+        "diversity"
+      ],
+      "properties": {
+        "last_engine": {"type": ["string", "null"], "enum": ["explore", "exploit", null]},
+        "corpus_size": {"type": "integer", "minimum": 0},
+        "unified_ledger_entries": {"type": "integer", "minimum": 0},
+        "pending_implemented_winner": {"type": "boolean"},
+        "winner_in_ledger": {"type": "boolean"},
+        "diversity": {
+          "type": "object",
+          "required": ["triggered", "repair_required", "breaches"],
+          "properties": {
+            "triggered": {"type": "boolean"},
+            "repair_required": {"type": "boolean"},
+            "breaches": {"type": "integer", "minimum": 0}
+          }
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "severity", "evidence", "effect"],
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "missing_input",
+              "missing_gate",
+              "missing_report",
+              "stale_report",
+              "unverifiable_report",
+              "state_drift",
+              "diversity_repair_required",
+              "validation_failed"
+            ]
+          },
+          "severity": {"type": "string", "enum": ["info", "warning", "blocking"]},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "effect": {"type": "string"}
+        }
+      }
+    },
+    "next_action": {
+      "type": "object",
+      "required": ["action", "why", "target"],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": ["RECORD_CONSUMED", "REFRESH_INPUTS", "CONDENSE", "BUILD_ON_PLATFORM", "RUN_EXPLORE", "RUN_EXPLOIT"]
+        },
+        "why": {"type": "string"},
+        "target": {"type": ["string", "object", "null"]}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": ["actuator_ready", "basis", "required_clearances"],
+      "properties": {
+        "actuator_ready": {"type": "boolean"},
+        "basis": {"type": "string", "enum": ["clear", "blocked", "read_only"]},
+        "required_clearances": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "replay_command": {
+      "type": "object",
+      "required": ["cwd", "argv"],
+      "properties": {
+        "cwd": {"type": "string"},
+        "argv": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "drift": {
+      "type": "object",
+      "required": ["drifted", "stored_receipt_hash", "categories", "changes"],
+      "properties": {
+        "drifted": {"type": "boolean"},
+        "stored_receipt_hash": {"type": ["string", "null"]},
+        "categories": {"type": "array", "items": {"type": "string"}},
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["category", "key", "before_sha256", "after_sha256"],
+            "properties": {
+              "category": {"type": "string"},
+              "key": {"type": "string"},
+              "before_sha256": {"type": ["string", "null"]},
+              "after_sha256": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    },
+    "receipt_hash": {
+      "type": "string",
+      "description": "Lowercase SHA256 of canonical JSON with receipt_hash omitted. Wall-clock metadata is not part of the schema."
+    }
+  }
+}

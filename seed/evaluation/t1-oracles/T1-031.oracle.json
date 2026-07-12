@@ -1,0 +1,10 @@
+{
+  "candidate_id": "T1-031",
+  "role": "oracle",
+  "expected": {
+    "action": "DEFER",
+    "machines": []
+  },
+  "oracle_rationale": "DAG scheduler/orchestrator; staged go/halt rollout machine not the core mechanism.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

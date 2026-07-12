@@ -1,0 +1,8 @@
+{
+  "candidate_id": "T1-026",
+  "role": "candidate_view",
+  "excluded_stub": true,
+  "reasons": [
+    "filter1: license 'AGPL-3.0' not in allowlist"
+  ]
+}

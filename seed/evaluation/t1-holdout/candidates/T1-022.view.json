@@ -1,0 +1,8 @@
+{
+  "candidate_id": "T1-022",
+  "role": "candidate_view",
+  "excluded_stub": true,
+  "reasons": [
+    "filter2: archived or fork"
+  ]
+}
