@@ -3,9 +3,11 @@
 > 갱신: 2026-07-12
 > **현재 상태:** Condense 라인(5 platforms · 56 packs)과 HELIXDirection 라인(Deterministic
 > Admission Control Plane) 모두 구축 완료. 595 tests OK, `helix_validate` PASS.
+> **영속화 완료(2026-07-12):** HELIXDirection 작업 전체를 branch
+> `helixdirection-admission-plane`에 commit+push, **CI green** (commit `5f0f91d` +
+> CI fix `dcd475f`). PR/merge는 아직 미실행 — 정욱님 결정.
 > **정확한 다음 최우선 작업: `P5_5_ExternalPilots` 개시** — 준비(온보딩/프로토콜 문서)는
-> 자율 진행 가능, **공개·모집·운영 개시는 정욱님 승인 필요**. 선행 조건은 미commit 작업의
-> commit 영속화(정욱님 승인).
+> 자율 진행 가능, **공개·모집·운영 개시는 정욱님 승인 필요**.
 > 이전 완료 계보: [`_legacy/`](_legacy/) (Condense v0.6 · HELIXDirection 종결본/상세본)
 
 ---
@@ -41,12 +43,13 @@ plane을 내부 runtime으로 보유. generator 주장은 internal corpus router
 
 ## 2. 해야 할 작업 (우선순위 — 내 판단)
 
-### ① [정욱님 결정] 미commit 작업 commit 영속화 — 모든 후속의 선행
+### ① commit 영속화 — 완료 (2026-07-12)
 
-HELIXDirection 방향 작업 전체(modified 6 · untracked 60)가 아직 미commit이다. 영속화하지
-않으면 유실 위험이 있고, P5_5 외부 pilot의 공개(push)도 이것부터다. **정욱님이 commit을
-지시하면** branch 생성 후 commit(+요청 시 push)한다. `git add -A` 금지(nested repos) —
-명시적 파일 지정. 대상 목록은 `_workspace/helix-direction/P7-regression.json`에 봉인됨.
+HELIXDirection 방향 작업(303 files, 30310 insertions)을 branch
+`helixdirection-admission-plane`에 commit(`5f0f91d`)+push했고 CI green.
+CI에서 환경 의존 테스트 1건(`test_state_receipt_cli`, _workspace report 부재 시
+missing vs unverifiable)이 드러나 fix commit(`dcd475f`)으로 해결. nested 19 repos·
+`_workspace`는 격리 유지. **남은 것은 정욱님 결정**: PR 생성 및 main merge 여부.
 
 ### ② P5_5 외부 pilot 개시 — T4 판정으로 직결 (최우선 방향)
 
@@ -109,9 +112,9 @@ T1 강등을 되돌리려면(완화 불가 4요건): 새 cohort + **독립 oracl
 
 ## 7. Rollback 상태
 
-이 방향 작업 전체가 **미commit** — 승인 전 영속화 없음. 되돌리려면 untracked 산출물 제거 +
-modified 파일 revert(P7-regression.json에 목록). nested 19 repos는 무변경(clean)이라
-rollback 대상 없음. `_workspace/`는 gitignored durable evidence — 삭제 금지.
+이 방향 작업은 branch `helixdirection-admission-plane`에 committed (main 미merge).
+되돌리려면 해당 branch를 삭제/미merge로 두면 main은 무영향. nested 19 repos는
+무변경(clean). `_workspace/`는 gitignored durable evidence — 삭제 금지.
 
 ## 8. 운영 규율 (유지)
 
