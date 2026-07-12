@@ -57,12 +57,17 @@ class TestStateReceiptCli(unittest.TestCase):
         self.assertEqual(validate_against_schema(receipt, SCHEMA), [])
         self.assertTrue(verify_receipt_hash(receipt))
         self.assertEqual(receipt["next_action"]["action"], "RUN_EXPLOIT")
-        self.assertEqual(
-            [row["status"] for row in receipt["report_freshness"]],
-            ["unverifiable", "unverifiable", "unverifiable"],
-        )
-        self.assertIn("unverifiable_report",
-                      receipt["authority"]["required_clearances"])
+        # Default reports carry no sealed hash, so none can be fresh. Whether a
+        # given report is "unverifiable" (present but unbound, e.g. local
+        # _workspace) or "missing" (absent, e.g. CI) is environment-dependent;
+        # either way it is non-fresh and must block actuation.
+        statuses = [row["status"] for row in receipt["report_freshness"]]
+        self.assertTrue(all(s in ("unverifiable", "missing") for s in statuses),
+                        statuses)
+        clearances = receipt["authority"]["required_clearances"]
+        self.assertTrue("unverifiable_report" in clearances
+                        or "missing_report" in clearances, clearances)
+        self.assertFalse(receipt["authority"]["actuator_ready"])
 
     def test_out_is_atomic_json_and_excluded_from_replay(self):
         with tempfile.TemporaryDirectory() as tmp:
