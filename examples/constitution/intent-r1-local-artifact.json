@@ -1,0 +1,12 @@
+{
+  "schema": "helix-action-intent/1.0",
+  "intent_id": "INT-R1-001",
+  "title": "Write local trial report artifact",
+  "proposer": {"kind": "ai", "id": "helix-runtime"},
+  "risk_class": "R1",
+  "scope": {"write_paths": ["_workspace/helix-direction/trials/demo-report.json"], "remote_mutation": false, "publish": false},
+  "impact": {"authority": false, "economic": false, "physical": false, "broad_public": false},
+  "reversibility": {"reversible": true, "rollback_plan": "delete the written report file; no other state is touched"},
+  "budget": {"max_files": 1, "max_bytes": 262144},
+  "justification": "Persist deterministic trial scoring output for audit."
+}

@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-006",
+  "family": "synthetic-family-006",
+  "readme": "Synthetic project 006: bound_flow, price_unit, gate_predicate over a local store.",
+  "operations": [
+    "bound_flow",
+    "price_unit",
+    "gate_predicate"
+  ],
+  "entrypoints": [
+    "cli_bound_flow",
+    "cli_price_unit",
+    "cli_gate_predicate"
+  ]
+}

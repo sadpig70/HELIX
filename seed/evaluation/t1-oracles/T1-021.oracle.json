@@ -1,0 +1,10 @@
+{
+  "candidate_id": "T1-021",
+  "role": "oracle",
+  "expected": {
+    "action": "DEFER",
+    "machines": []
+  },
+  "oracle_rationale": "ML model serving platform; no machine mechanism.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

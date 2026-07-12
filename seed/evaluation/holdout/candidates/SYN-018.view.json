@@ -1,0 +1,27 @@
+{
+  "candidate_id": "SYN-018",
+  "provenance": {
+    "locator": "seed/evaluation/holdout/sources/SYN-018.json",
+    "immutable_revision": "synthetic-snapshot-018"
+  },
+  "observed_operations": [
+    "bound_flow",
+    "price_unit",
+    "gate_predicate"
+  ],
+  "observed_inputs": [
+    "bound_flow_request",
+    "price_unit_request",
+    "gate_predicate_request"
+  ],
+  "observed_outputs": [
+    "bound_flow_receipt",
+    "price_unit_receipt",
+    "gate_predicate_receipt"
+  ],
+  "invariants": [
+    "bound_flow is append-only",
+    "price_unit is deterministic"
+  ],
+  "sample_behavior": "processes bound_flow then emits gate_predicate evidence"
+}

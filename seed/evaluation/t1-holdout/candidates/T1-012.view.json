@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-012",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/Justin0504/Aegis",
+    "immutable_revision": "b1ac11dc7d396c95813de807537602ea35d5bf21",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-012.README.md"
+  },
+  "observed_operations": [
+    "intercept_tool_call",
+    "classify_call",
+    "block_before_execution"
+  ],
+  "observed_inputs": [
+    "AI agent tool calls"
+  ],
+  "observed_outputs": [
+    "allow/block decisions"
+  ],
+  "invariants": [
+    "blocked calls never execute"
+  ],
+  "sample_behavior": "Firewall that intercepts, classifies, and blocks every agent tool call before it executes."
+}

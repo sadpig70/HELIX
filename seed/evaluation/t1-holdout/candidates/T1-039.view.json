@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-039",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/jonschlinkert/remarkable",
+    "immutable_revision": "7c5e433620c967618eb38cdb57360734274061c4",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-039.README.md"
+  },
+  "observed_operations": [
+    "parse_commonmark",
+    "apply_syntax_extensions",
+    "render_html"
+  ],
+  "observed_inputs": [
+    "markdown text"
+  ],
+  "observed_outputs": [
+    "HTML"
+  ],
+  "invariants": [
+    "CommonMark compliant"
+  ],
+  "sample_behavior": "Fast, extensible markdown parser."
+}

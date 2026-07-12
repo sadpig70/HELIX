@@ -1,0 +1,23 @@
+{
+  "candidate_id": "T1-038",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/showdownjs/showdown",
+    "immutable_revision": "e5cab1e9a5dcea2bb3cbf888863fa7e65ab37edf",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-038.README.md"
+  },
+  "observed_operations": [
+    "convert_markdown_to_html",
+    "extend_with_plugins"
+  ],
+  "observed_inputs": [
+    "markdown text"
+  ],
+  "observed_outputs": [
+    "HTML"
+  ],
+  "invariants": [
+    "usable client side and server side"
+  ],
+  "sample_behavior": "JavaScript markdown-to-HTML converter."
+}

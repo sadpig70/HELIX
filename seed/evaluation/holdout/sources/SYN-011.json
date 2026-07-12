@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-011",
+  "family": "synthetic-family-011",
+  "readme": "Synthetic project 011: replay_ledger, append_entry, verify_chain over a local store.",
+  "operations": [
+    "replay_ledger",
+    "append_entry",
+    "verify_chain"
+  ],
+  "entrypoints": [
+    "cli_replay_ledger",
+    "cli_append_entry",
+    "cli_verify_chain"
+  ]
+}

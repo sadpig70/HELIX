@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-holdout-registry/1.0",
+  "title": "HELIX blind holdout registry",
+  "type": "object",
+  "required": ["schema", "policy_version", "cohort", "leakage_control", "scoring", "reveal_authority", "candidates"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-holdout-registry/1.0"]},
+    "policy_version": {"type": "string", "enum": ["HELIX-HOLDOUT/1.0"]},
+    "cohort": {
+      "type": "object",
+      "required": ["cohort_id", "kind", "selection_rule", "selection_cutoff", "commitment_sha256", "minimum_candidates", "status"],
+      "properties": {
+        "cohort_id": {"type": "string"},
+        "kind": {"type": "string", "enum": ["live", "policy_fixture"]},
+        "selection_rule": {"type": "string"},
+        "selection_cutoff": {"type": "string"},
+        "commitment_sha256": {"type": "string"},
+        "minimum_candidates": {"type": "integer", "minimum": 1},
+        "status": {"type": "string", "enum": ["draft", "locked", "leakage_breach", "scored"]}
+      }
+    },
+    "leakage_control": {
+      "type": "object",
+      "required": ["excluded_registries", "excluded_source_hashes", "forbidden_candidate_fields", "predictor_forbidden_paths", "overlap_policy"],
+      "properties": {
+        "excluded_registries": {"type": "array", "items": {"type": "string"}},
+        "excluded_source_hashes": {"type": "array", "items": {"type": "string"}},
+        "forbidden_candidate_fields": {"type": "array", "items": {"type": "string"}},
+        "predictor_forbidden_paths": {"type": "array", "items": {"type": "string"}},
+        "overlap_policy": {"type": "string", "enum": ["exclude_locked_no_replacement"]}
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "required": ["coverage_denominator", "score_denominator", "credits", "minimum_coverage", "minimum_macro_f1"],
+      "properties": {
+        "coverage_denominator": {"type": "string", "enum": ["locked_eligible_candidates"]},
+        "score_denominator": {"type": "string", "enum": ["locked_eligible_candidates"]},
+        "credits": {
+          "type": "object",
+          "required": ["exact", "wrong", "abstain", "missing_artifact", "protocol_violation"],
+          "properties": {
+            "exact": {"type": "integer", "enum": [1]},
+            "wrong": {"type": "integer", "enum": [0]},
+            "abstain": {"type": "integer", "enum": [0]},
+            "missing_artifact": {"type": "integer", "enum": [0]},
+            "protocol_violation": {"type": "integer", "enum": [0]}
+          }
+        },
+        "minimum_coverage": {"type": "number", "minimum": 0, "maximum": 1},
+        "minimum_macro_f1": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "reveal_authority": {
+      "type": "object",
+      "required": ["required_approvals", "allowed_roles", "prediction_seal_required", "commitment_match_required"],
+      "properties": {
+        "required_approvals": {"type": "integer", "minimum": 1},
+        "allowed_roles": {"type": "array", "items": {"type": "string"}},
+        "prediction_seal_required": {"type": "boolean", "enum": [true]},
+        "commitment_match_required": {"type": "boolean", "enum": [true]}
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["candidate_id", "status", "source", "eligibility", "candidate_view", "oracle_commitment", "prediction_receipt", "reveal"],
+        "properties": {
+          "candidate_id": {"type": "string"},
+          "status": {"type": "string", "enum": ["eligible", "excluded", "protocol_violation", "scored"]},
+          "source": {
+            "type": "object",
+            "required": ["kind", "locator", "immutable_revision", "artifact_sha256", "family_id", "license_id", "license_evidence_path", "license_evidence_sha256"],
+            "properties": {
+              "kind": {"type": "string", "enum": ["git", "archive", "local_snapshot"]},
+              "locator": {"type": "string"},
+              "immutable_revision": {"type": "string"},
+              "artifact_sha256": {"type": "string"},
+              "family_id": {"type": "string"},
+              "license_id": {"type": "string"},
+              "license_evidence_path": {"type": "string"},
+              "license_evidence_sha256": {"type": "string"}
+            }
+          },
+          "eligibility": {
+            "type": "object",
+            "required": ["source_hash_unseen", "family_unseen", "registry_overlap", "license_allowed", "reasons"],
+            "properties": {
+              "source_hash_unseen": {"type": "boolean"},
+              "family_unseen": {"type": "boolean"},
+              "registry_overlap": {"type": "boolean"},
+              "license_allowed": {"type": "boolean"},
+              "reasons": {"type": "array", "items": {"type": "string"}}
+            }
+          },
+          "candidate_view": {
+            "type": "object",
+            "required": ["path", "sha256", "builder_role", "label_free"],
+            "properties": {
+              "path": {"type": "string"},
+              "sha256": {"type": "string"},
+              "builder_role": {"type": "string", "enum": ["candidate_builder"]},
+              "label_free": {"type": "boolean", "enum": [true]}
+            }
+          },
+          "oracle_commitment": {
+            "type": "object",
+            "required": ["path", "sha256", "author_role", "access"],
+            "properties": {
+              "path": {"type": "string"},
+              "sha256": {"type": "string"},
+              "author_role": {"type": "string", "enum": ["oracle_author"]},
+              "access": {"type": "string", "enum": ["sealed", "revealed"]}
+            }
+          },
+          "prediction_receipt": {
+            "type": "object",
+            "required": ["status", "path", "sha256", "predictor_role"],
+            "properties": {
+              "status": {"type": "string", "enum": ["absent", "sealed"]},
+              "path": {"type": ["string", "null"]},
+              "sha256": {"type": ["string", "null"]},
+              "predictor_role": {"type": "string", "enum": ["predictor"]}
+            }
+          },
+          "reveal": {
+            "type": "object",
+            "required": ["status", "authorized_by", "receipt_sha256"],
+            "properties": {
+              "status": {"type": "string", "enum": ["sealed", "revealed", "denied"]},
+              "authorized_by": {"type": "array", "items": {"type": "string"}},
+              "receipt_sha256": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    }
+  }
+}

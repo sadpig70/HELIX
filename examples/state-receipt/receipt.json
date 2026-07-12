@@ -1,0 +1,87 @@
+{
+  "schema": "helix-state-receipt/1.0",
+  "generated_from": {
+    "root": "D:/HELIX",
+    "git_head": "d9740f994324d831154fbaf71b1f65a36916ee9f",
+    "builder_version": "helix-state-receipt-builder/1.0"
+  },
+  "canonical_inputs": [
+    {
+      "role": "explore_winner",
+      "path": ".evx/latest/stage6_final.yaml",
+      "sha256": "29a2974511a09794af6583e96c976c9631f936255e923f763341d295982e717e",
+      "bytes": 1640,
+      "status": "present"
+    },
+    {
+      "role": "explore_pool",
+      "path": ".cix/latest/idea_pool.yaml",
+      "sha256": "fa45c4cdb30569c906460a8cdc2a37b0be955b832d65836c5b7b2fa803cfca28",
+      "bytes": 65218,
+      "status": "present"
+    },
+    {
+      "role": "exploit_registry",
+      "path": ".recreate/registry.json",
+      "sha256": "24144becc05973b494e9c4399dbc9bfbe45acf69232fe9a0598eb3490e2c14fa",
+      "bytes": 19359,
+      "status": "present"
+    }
+  ],
+  "gate_hashes": [
+    {
+      "gate": "machine_probe",
+      "path": "seed/condense/machine-probe-gate.json",
+      "sha256": "80d81334f86e4f35eab6c74b95e8764c21c9781a34754379f88accd3d0c4d7b6",
+      "bytes": 457,
+      "status": "present"
+    }
+  ],
+  "report_freshness": [
+    {
+      "report": "machine_probe",
+      "path": "_workspace/condense/U6-machine-probe-report.json",
+      "sha256": "fc78d2cebcbd004054447aba0b6539226e83a70b72965b04e053b596086de436",
+      "expected_sha256": "fc78d2cebcbd004054447aba0b6539226e83a70b72965b04e053b596086de436",
+      "source_paths": ["seed/condense/machine-probe-gate.json"],
+      "source_hashes": ["80d81334f86e4f35eab6c74b95e8764c21c9781a34754379f88accd3d0c4d7b6"],
+      "status": "fresh",
+      "reasons": []
+    }
+  ],
+  "runtime_state": {
+    "last_engine": "exploit",
+    "corpus_size": 10,
+    "unified_ledger_entries": 10,
+    "pending_implemented_winner": false,
+    "winner_in_ledger": false,
+    "diversity": {
+      "triggered": true,
+      "repair_required": true,
+      "breaches": 2
+    }
+  },
+  "blockers": [
+    {
+      "code": "diversity_repair_required",
+      "severity": "blocking",
+      "evidence": ["Governance + Infrastructure count 18 exceeds threshold 3"],
+      "effect": "refresh inputs before generation or actuation"
+    }
+  ],
+  "next_action": {
+    "action": "REFRESH_INPUTS",
+    "why": "diversity repair_required -> refresh inputs before generating",
+    "target": "both"
+  },
+  "authority": {
+    "actuator_ready": false,
+    "basis": "blocked",
+    "required_clearances": ["diversity_repair_required"]
+  },
+  "replay_command": {
+    "cwd": "D:/HELIX",
+    "argv": ["python", "helix.py", "status", "--explore-root", ".", "--exploit-root", "."]
+  },
+  "receipt_hash": "a2b7255c640b011dbba7497a4cec1f475bc5c89ad03cf61171e63a760f4cba90"
+}

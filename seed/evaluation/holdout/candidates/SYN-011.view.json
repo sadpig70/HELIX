@@ -1,0 +1,27 @@
+{
+  "candidate_id": "SYN-011",
+  "provenance": {
+    "locator": "seed/evaluation/holdout/sources/SYN-011.json",
+    "immutable_revision": "synthetic-snapshot-011"
+  },
+  "observed_operations": [
+    "replay_ledger",
+    "append_entry",
+    "verify_chain"
+  ],
+  "observed_inputs": [
+    "replay_ledger_request",
+    "append_entry_request",
+    "verify_chain_request"
+  ],
+  "observed_outputs": [
+    "replay_ledger_receipt",
+    "append_entry_receipt",
+    "verify_chain_receipt"
+  ],
+  "invariants": [
+    "replay_ledger is append-only",
+    "append_entry is deterministic"
+  ],
+  "sample_behavior": "processes replay_ledger then emits verify_chain evidence"
+}

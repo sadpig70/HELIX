@@ -1,0 +1,25 @@
+{
+  "candidate_id": "T1-021",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/Hydrospheredata/hydro-serving",
+    "immutable_revision": "c76c12421e9d90db0a74ee7c1163c8f45ebde5d0",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-021.README.md"
+  },
+  "observed_operations": [
+    "deploy_models",
+    "serve_inference",
+    "version_model_endpoints"
+  ],
+  "observed_inputs": [
+    "trained ML models"
+  ],
+  "observed_outputs": [
+    "serving endpoints",
+    "predictions"
+  ],
+  "invariants": [
+    "models are served behind versioned endpoints"
+  ],
+  "sample_behavior": "Platform for deploying machine-learning models to production serving."
+}

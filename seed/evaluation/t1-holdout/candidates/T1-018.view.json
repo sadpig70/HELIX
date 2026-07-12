@@ -1,0 +1,8 @@
+{
+  "candidate_id": "T1-018",
+  "role": "candidate_view",
+  "excluded_stub": true,
+  "reasons": [
+    "filter3: duplicate owner alibaba"
+  ]
+}

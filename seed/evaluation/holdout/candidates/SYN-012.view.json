@@ -1,0 +1,27 @@
+{
+  "candidate_id": "SYN-012",
+  "provenance": {
+    "locator": "seed/evaluation/holdout/sources/SYN-012.json",
+    "immutable_revision": "synthetic-snapshot-012"
+  },
+  "observed_operations": [
+    "append_entry",
+    "verify_chain",
+    "route_request"
+  ],
+  "observed_inputs": [
+    "append_entry_request",
+    "verify_chain_request",
+    "route_request_request"
+  ],
+  "observed_outputs": [
+    "append_entry_receipt",
+    "verify_chain_receipt",
+    "route_request_receipt"
+  ],
+  "invariants": [
+    "append_entry is append-only",
+    "verify_chain is deterministic"
+  ],
+  "sample_behavior": "processes append_entry then emits route_request evidence"
+}

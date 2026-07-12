@@ -1,0 +1,10 @@
+{
+  "candidate_id": "T1-001",
+  "role": "oracle",
+  "expected": {
+    "action": "DEFER",
+    "machines": []
+  },
+  "oracle_rationale": "Registry/catalog of skill packages; no ledger, gate, verdict, or scoring machine mechanism.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

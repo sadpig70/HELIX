@@ -1,0 +1,13 @@
+{
+  "candidate_id": "T1-007",
+  "role": "oracle",
+  "expected": {
+    "action": "BUILD_ON_PLATFORM",
+    "machines": [
+      "M1",
+      "M3"
+    ]
+  },
+  "oracle_rationale": "Deterministic predicate gate deciding every agent action before execution (M3) plus tamper-evident decision records (M1).",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

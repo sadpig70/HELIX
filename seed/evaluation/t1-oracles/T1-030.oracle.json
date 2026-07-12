@@ -1,0 +1,12 @@
+{
+  "candidate_id": "T1-030",
+  "role": "oracle",
+  "expected": {
+    "action": "BUILD_ON_PLATFORM",
+    "machines": [
+      "M3"
+    ]
+  },
+  "oracle_rationale": "Per-identity/segment predicate evaluation gating feature exposure.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

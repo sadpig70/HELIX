@@ -1,0 +1,10 @@
+{
+  "candidate_id": "T1-020",
+  "role": "oracle",
+  "expected": {
+    "action": "DEFER",
+    "machines": []
+  },
+  "oracle_rationale": "Cheminformatics toolkit; ML docking scores are not the deterministic score-tier-aggregate machine.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-017",
+  "family": "synthetic-family-017",
+  "readme": "Synthetic project 017: attest_claim, bound_flow, price_unit over a local store.",
+  "operations": [
+    "attest_claim",
+    "bound_flow",
+    "price_unit"
+  ],
+  "entrypoints": [
+    "cli_attest_claim",
+    "cli_bound_flow",
+    "cli_price_unit"
+  ]
+}

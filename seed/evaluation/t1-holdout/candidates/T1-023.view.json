@@ -1,0 +1,26 @@
+{
+  "candidate_id": "T1-023",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/elizaOS/elizaos.github.io",
+    "immutable_revision": "838529c24739284153d6c399467a9dc9cc067e9b",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-023.README.md"
+  },
+  "observed_operations": [
+    "ingest_contribution_events",
+    "summarize_activity",
+    "compute_activity_scores",
+    "maintain_leaderboard"
+  ],
+  "observed_inputs": [
+    "GitHub contribution data across repositories"
+  ],
+  "observed_outputs": [
+    "activity summaries",
+    "scored developer leaderboard"
+  ],
+  "invariants": [
+    "the leaderboard reflects processed contribution history"
+  ],
+  "sample_behavior": "Analytics pipeline that processes contributor data and maintains a scored leaderboard of developer activity."
+}

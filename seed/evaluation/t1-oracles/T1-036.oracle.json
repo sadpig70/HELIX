@@ -1,0 +1,10 @@
+{
+  "candidate_id": "T1-036",
+  "role": "oracle",
+  "expected": {
+    "action": "DEFER",
+    "machines": []
+  },
+  "oracle_rationale": "Durable execution platform; no machine mechanism.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

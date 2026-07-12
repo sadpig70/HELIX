@@ -1,0 +1,12 @@
+{
+  "schema": "helix-action-intent/1.0",
+  "intent_id": "INT-R3-001",
+  "title": "Rotate reveal-approver authority set",
+  "proposer": {"kind": "human", "id": "operator-1"},
+  "risk_class": "R3",
+  "scope": {"write_paths": ["seed/evaluation/t1-holdout-registry.json"], "remote_mutation": false, "publish": false},
+  "impact": {"authority": true, "economic": false, "physical": false, "broad_public": false},
+  "reversibility": {"reversible": true, "rollback_plan": "restore prior registry from sealed receipt and re-verify commitment"},
+  "budget": {"max_files": 1, "max_bytes": 1048576},
+  "justification": "Authority membership change; requires two-party approval and dry-run per risk policy."
+}

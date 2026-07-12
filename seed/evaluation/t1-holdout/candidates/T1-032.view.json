@@ -1,0 +1,26 @@
+{
+  "candidate_id": "T1-032",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/conductor-oss/conductor",
+    "immutable_revision": "813bea2bc2a7b06b9df505618ed3ed8e4957a9b5",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-032.README.md"
+  },
+  "observed_operations": [
+    "orchestrate_service_workflows",
+    "persist_workflow_state",
+    "retry_failed_tasks",
+    "recover_state"
+  ],
+  "observed_inputs": [
+    "workflow definitions",
+    "task workers"
+  ],
+  "observed_outputs": [
+    "durable workflow executions"
+  ],
+  "invariants": [
+    "workflow state survives failures and restarts"
+  ],
+  "sample_behavior": "Durable workflow engine orchestrating microservices and agents at scale."
+}

@@ -1,0 +1,1944 @@
+{
+  "schema": "helix-holdout-registry/1.0",
+  "policy_version": "HELIX-HOLDOUT/1.0",
+  "cohort": {
+    "cohort_id": "T1-LIVE-001",
+    "kind": "live",
+    "selection_rule": "Sealed policy _workspace/helix-direction/T1/selection-policy.md sha256=8a46c9be3d9c25a165a627b6410170d0406053271d75bf0dd9402f0cc8f29789: seven fixed GitHub topic searches, stars-desc, fixed filters, no replacement",
+    "selection_cutoff": "search-evidence-bundle-sha256:be3f876812814eb02149f9a8caec571f7ef08281cd837a574014573371dc69e3",
+    "commitment_sha256": "f0794d1580eb9e0698c1fffa7a44f178f53042ba008d1c0249111f92ff1b06dc",
+    "minimum_candidates": 20,
+    "status": "locked"
+  },
+  "leakage_control": {
+    "excluded_registries": [
+      "seed/condense/layered-corpus.json",
+      "seed/condense/forward-candidate-artifacts.json"
+    ],
+    "excluded_source_hashes": [],
+    "excluded_family_ids": [
+      "sadpig70"
+    ],
+    "forbidden_candidate_fields": [
+      "expected",
+      "machines",
+      "machine_id",
+      "action",
+      "expected_action",
+      "platform",
+      "platform_hint",
+      "oracle_rationale"
+    ],
+    "predictor_forbidden_paths": [
+      "seed/evaluation/t1-oracles"
+    ],
+    "overlap_policy": "exclude_locked_no_replacement"
+  },
+  "scoring": {
+    "coverage_denominator": "locked_eligible_candidates",
+    "score_denominator": "locked_eligible_candidates",
+    "credits": {
+      "exact": 1,
+      "wrong": 0,
+      "abstain": 0,
+      "missing_artifact": 0,
+      "protocol_violation": 0
+    },
+    "minimum_coverage": 0.8,
+    "minimum_macro_f1": 0.8
+  },
+  "reveal_authority": {
+    "required_approvals": 1,
+    "allowed_roles": [
+      "reveal_approver"
+    ],
+    "prediction_seal_required": true,
+    "commitment_match_required": true
+  },
+  "candidates": [
+    {
+      "candidate_id": "T1-001",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-001.README.md",
+        "immutable_revision": "e32f05b375379d887bd3766b40f993c70d39db54",
+        "artifact_sha256": "d49e4a3f0b9b2e708c33367ca4f04d79167b4ebbe55e10529be911a7514196e5",
+        "family_id": "iflytek",
+        "license_id": "Apache-2.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-001.LICENSE.txt",
+        "license_evidence_sha256": "3fe70565009e4b7b70e42b0b51a9b63c504658ed5c8a68b2475a02146f8ff9da"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-001.view.json",
+        "sha256": "45bac1558caaf71638eeecc4ad7a5c1df9dc4a8e5e16ec7e0d4285160b78bd04",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-001.oracle.json",
+        "sha256": "de4ecf5ff35486d0c6b5c46d6b520871ffeb4bd275f458db8e9708b39d8c1bc3",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-002",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-002.README.md",
+        "immutable_revision": "dbf8432604ec97734bcfb3dc6df61f4faa0d1b84",
+        "artifact_sha256": "6b43ba99c2425f3c98d2eee9377310a8e3a85aff666c55f99f5ceb463892529b",
+        "family_id": "collectiveidea",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-002.LICENSE.txt",
+        "license_evidence_sha256": "92db5cfdbb79fd39c1a53124129c3633f1228768ed61a57a790ceb95c82a1ce6"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-002.view.json",
+        "sha256": "c0e575f8a08d5ef2af300cc2cdf9089ef165ef4bd268f34c2bc8d63749f76db4",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-002.oracle.json",
+        "sha256": "ed9bc276722b083994b88374269f6c6e35f0cdf04bf1775e079a2359a545be13",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-003",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-003.README.md",
+        "immutable_revision": "437cbbb8252beed08f2887c3605f558b2ad1201e",
+        "artifact_sha256": "97e097506374bb35207867ed491f3045be8a1852bbfa4bb8f41c19876299126d",
+        "family_id": "thepirat000",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-003.LICENSE.txt",
+        "license_evidence_sha256": "5d0b25a172c8923384edd2bf1d06d665749c3d6ec1ed27cba6f4131b9cb5bcf6"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-003.view.json",
+        "sha256": "4f2ee31b5d3e1ac00ea4fe85f4a9eeed7a41fc00a41985ce73c308bc91d21003",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-003.oracle.json",
+        "sha256": "f65b155764680ba3cca83b84c1c723bc6b0f5dff6f9b18bce320c564bbb3b9a1",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-004",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-004.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "c2b75769496253df44e2bab402b0f63babf2862f9ffda8f3cb09dcced3203acc",
+        "family_id": "pgaudit",
+        "license_id": "NOASSERTION",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-004.metadata.json",
+        "license_evidence_sha256": "c2b75769496253df44e2bab402b0f63babf2862f9ffda8f3cb09dcced3203acc"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": false,
+        "reasons": [
+          "filter1: license 'NOASSERTION' not in allowlist",
+          "license NOASSERTION not in allowlist"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-004.view.json",
+        "sha256": "0f2f4436c59c75ac7bf642d8900bd703e4ef997a8c6f2145ad53ff57a13c4bda",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-004.oracle.json",
+        "sha256": "53fa3498ecbb412cdc2c291187e71fbe958782a60f4c3e50403392556d029da1",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-005",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-005.README.md",
+        "immutable_revision": "708ecbcd4f5d3ec1d11c987a4741d505358e7de9",
+        "artifact_sha256": "afead27a36412966dd114584f672ed700fdaf82a5d594f26101f4b5c1bdd2bd1",
+        "family_id": "JKHeadley",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-005.LICENSE.txt",
+        "license_evidence_sha256": "3f2f90d0036b59d8cbfa6c269ba53044600d721d85294b01490bc5e6b20e8967"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-005.view.json",
+        "sha256": "d0299b34a04dce5a27b735d57454ba8f6ffb468966e1dbceb94d5cd97b89ebd4",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-005.oracle.json",
+        "sha256": "fd02a6afe99f2446b76439771eb948a52cae1923f3dd4b9ca175dbc8392e1ce6",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-006",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-006.README.md",
+        "immutable_revision": "5aae29eabe62706739ba035c89bcf82f457fe27d",
+        "artifact_sha256": "5b53d5d06317790e91b26883112c7e4b309f45029b36e0a7b11142d330ed8c61",
+        "family_id": "izelnakri",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-006.LICENSE.txt",
+        "license_evidence_sha256": "8e4e8143cde0865fccf9303a3c9cf96aa3df18b61d2a674cf94e00214bf099d8"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-006.view.json",
+        "sha256": "aa3443acee21ecd2cf07cbc4140fe4d128a0ba5afdf82e0c8653d9801993b050",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-006.oracle.json",
+        "sha256": "dc391b2fa607bc659a19ad5ae7cf8b908f35297a01896f7b4d0d204306d68ec0",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-007",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-007.README.md",
+        "immutable_revision": "99b904b1e2ecb71e01840b8d6df468a4d5cf4394",
+        "artifact_sha256": "41665cf8a2eb6eacdda5c5612f9910d0b00cb246fba9974efe471a52c086c285",
+        "family_id": "microsoft",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-007.LICENSE.txt",
+        "license_evidence_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-007.view.json",
+        "sha256": "c14c204ebbffae24b7505f1fbc2be609c07367d07078f1fed35ea87cc295f53a",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-007.oracle.json",
+        "sha256": "88a59f9e2856eeb73b5f8fae6d3cf8f21db3b2f1f02ae87fefbc83a2b5ca8207",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-008",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-008.README.md",
+        "immutable_revision": "7bf3b8051a8d64c941fd056917b7af8e5e7147f6",
+        "artifact_sha256": "d709370072c62690406d0a74868b276ea0257d023d95f5193003c73fa353af15",
+        "family_id": "open-policy-agent",
+        "license_id": "Apache-2.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-008.LICENSE.txt",
+        "license_evidence_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-008.view.json",
+        "sha256": "f9b972b3e9380d8e7a4d8e1c7c48d451b8f9b651833b844d3cac7fc0fddf3773",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-008.oracle.json",
+        "sha256": "6aa852dead273bd214825c60d509706c327f5a6667fc6499881083896998edba",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-009",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-009.README.md",
+        "immutable_revision": "f5d6c9584102f7c26ae568b3d97d30424e2a4780",
+        "artifact_sha256": "df38e029157b1b218d2ffdb2f7831923767e2664fdf813e5af5cbd5d9ae7290f",
+        "family_id": "open-gitagent",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-009.LICENSE.txt",
+        "license_evidence_sha256": "26e7acb2a827865118a34942573af5d04da9940304e1cb3e963224c8d44593d1"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-009.view.json",
+        "sha256": "9bf0d4555784bd42ad7eee3a90c8ed790309f903b34b033019dddead22a2054a",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-009.oracle.json",
+        "sha256": "4d2b4fb3b8f25caae62c428794ab8b9e345b2c723c720f027a8cb329128cc729",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-010",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-010.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "7c7235b14dc46d0c77cd817375d8a8ae7ee5a4731f959c11d6c002d2c593d58d",
+        "family_id": "cordum-io",
+        "license_id": "NOASSERTION",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-010.metadata.json",
+        "license_evidence_sha256": "7c7235b14dc46d0c77cd817375d8a8ae7ee5a4731f959c11d6c002d2c593d58d"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": false,
+        "reasons": [
+          "filter1: license 'NOASSERTION' not in allowlist",
+          "license NOASSERTION not in allowlist"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-010.view.json",
+        "sha256": "809aa6e001241476367dee59f55f8988dc5a4827c0f6e18781e105dd56288f0e",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-010.oracle.json",
+        "sha256": "26d91e5633906f2d0bdc721c9e0fcb02951df21ba851a8e4bd7aabe0577e3f56",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-011",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-011.README.md",
+        "immutable_revision": "0af0e3b984509a7c2e38799bb40447fa4fef0bd6",
+        "artifact_sha256": "604f7924af49eb81badc42201360d1fe02bd3175f75ce11d2e4b56f16cb3f8d6",
+        "family_id": "SponsioLabs",
+        "license_id": "Apache-2.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-011.LICENSE.txt",
+        "license_evidence_sha256": "59ac9b9eb453930dd69f21a5cbe1639ab5bb84af53ebb5e7446a4512ec14cb5f"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-011.view.json",
+        "sha256": "2e8874872d4273df7b074ef940b30bb66f2240fd56f91387bd643e37c9f5f3b8",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-011.oracle.json",
+        "sha256": "9d79a469eca08316878839788b33ada56146f4a6905aa8e68ddd2f9960c02511",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-012",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-012.README.md",
+        "immutable_revision": "b1ac11dc7d396c95813de807537602ea35d5bf21",
+        "artifact_sha256": "c0e33aa708545e04291e85cf573bb6da6a13aba53a40be5df2cfe8f2e42b983b",
+        "family_id": "Justin0504",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-012.LICENSE.txt",
+        "license_evidence_sha256": "74d5e66420f3af4154d022dc4ac510610ea8f219c8b663e01ab2c8e4dde5e6c9"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-012.view.json",
+        "sha256": "fffb405c5f4ca39e74f9abcbdb6f9af71690f4dc8d5e8e0182fd1dbe11b56864",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-012.oracle.json",
+        "sha256": "732f8f0dc4f574f4af874f6bb359fb5de3c668ae4f4b5681d7e51a68f0b18885",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-013",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-013.README.md",
+        "immutable_revision": "dd290c0b706b8a8c2f86cfbffaae9c17715b431d",
+        "artifact_sha256": "98da34c7bdaaecf3302e4e91b7ba1e91c18d04f0aa97f0e5c17f46cd62e19e37",
+        "family_id": "digitalocean",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-013.LICENSE.txt",
+        "license_evidence_sha256": "9ccd44e8c7348b73df98293835fbc3094b82c7bdb4229f92088fcd10b6fa0d22"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-013.view.json",
+        "sha256": "44bd1f4a61dd4ab091b68bcd2e494ac50d949a1d6f850d50324163f227bb7c5c",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-013.oracle.json",
+        "sha256": "2879b9e164328a58d86be329c49d6f384b6aaca024adf3340a676393e7c723d0",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-014",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-014.README.md",
+        "immutable_revision": "a3f40ba8e900c8489bd520274739f17235a7721c",
+        "artifact_sha256": "b073d1573708479c36e6a89e39acb7369ac44f64ecd012e3f39d63744f7b8497",
+        "family_id": "alibaba",
+        "license_id": "Apache-2.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-014.LICENSE.txt",
+        "license_evidence_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-014.view.json",
+        "sha256": "aa28fbe475c8892f79546348ebcb5f1df22db45d133fb4ef67004ae106764e9f",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-014.oracle.json",
+        "sha256": "725aa1f7efdd4bb89b35402cc74e71f5da75054e3a784945bce93a2083703182",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-015",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-015.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "1f6994205d30d0fb3af5d9782cab2f58b552eef0c23842eb88dfa0c909d42bc2",
+        "family_id": "animir",
+        "license_id": "ISC",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-015.metadata.json",
+        "license_evidence_sha256": "1f6994205d30d0fb3af5d9782cab2f58b552eef0c23842eb88dfa0c909d42bc2"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": false,
+        "reasons": [
+          "filter1: license 'ISC' not in allowlist",
+          "license ISC not in allowlist"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-015.view.json",
+        "sha256": "2fe4beda0500a790ddd33932ec8ca943faa0bcf83b39ff1687f3499550b14594",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-015.oracle.json",
+        "sha256": "e7d86a07e475e50758b9d94e93ad3c4f23cbed3083c849ba284a8cdadf2ed7d5",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-016",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-016.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "5f7d673c3ea9be245b9f68686c0c040c2623118cb85b6486737eb889ee9c96c9",
+        "family_id": "express-rate-limit",
+        "license_id": "NOASSERTION",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-016.metadata.json",
+        "license_evidence_sha256": "5f7d673c3ea9be245b9f68686c0c040c2623118cb85b6486737eb889ee9c96c9"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": false,
+        "reasons": [
+          "filter1: license 'NOASSERTION' not in allowlist",
+          "license NOASSERTION not in allowlist"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-016.view.json",
+        "sha256": "34e6dfbcbfe42d934ae0352bf8d4a1a1dc39e55576cca208ccbb01d35b3c1f19",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-016.oracle.json",
+        "sha256": "dac103b6f7b6dbc713f2be979599584278204e2e9166d92965b6994a361a0c0a",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-017",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-017.README.md",
+        "immutable_revision": "3a574a8e6a6ab1bfe3ecf285490568c08cf1aa65",
+        "artifact_sha256": "a8ec591d5b046ab8c2de4c5bab3e56488862cbb0aac5543086ca4b70f61b15bd",
+        "family_id": "stefanprodan",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-017.LICENSE.txt",
+        "license_evidence_sha256": "03a4322bc1f9e2ee5fd1711ff728fc8f13cdf408992be942c46e9290fed81ef3"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-017.view.json",
+        "sha256": "163c54f22606b9970a614bd183e2b8a1dc41881f8c9aa3baafd3c180753308c1",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-017.oracle.json",
+        "sha256": "34951b1a7cfdd2deaa2ab2ec3bb5ccf8566e3bc71df88e7e800cdf483d4f81ff",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-018",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-018.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "dc57e8575770541049d2f988c62d2f48ef801ed7917867bb02b70960d804ac4c",
+        "family_id": "alibaba",
+        "license_id": "Apache-2.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-018.metadata.json",
+        "license_evidence_sha256": "dc57e8575770541049d2f988c62d2f48ef801ed7917867bb02b70960d804ac4c"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": false,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": [
+          "filter3: duplicate owner alibaba",
+          "known or duplicate source family"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-018.view.json",
+        "sha256": "3e10b39997963dcee029f0177579dbf9043572d9946d3f442a6924266383048a",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-018.oracle.json",
+        "sha256": "1cad77080f0a3f600985e126b172eb4172c08cc41bdfe4680a301fdedffeb608",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-019",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-019.README.md",
+        "immutable_revision": "de3f6982822895491be760325fd43e65e90fa293",
+        "artifact_sha256": "b10dd156b40dec653af67a6bc2a90d1073d1bc1d81904a3f3cb47f2920b56abc",
+        "family_id": "Udayraj123",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-019.LICENSE.txt",
+        "license_evidence_sha256": "3d72ab01aefdb28fcf2ec73f6a0564cd855bd880aa3a55ea37efa8c49d4fe94d"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-019.view.json",
+        "sha256": "dc96cf535998bd619bbd8e1dfb471c9b54e6a97af6676240f0e83624a2b2faf6",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-019.oracle.json",
+        "sha256": "211c5e06db869208aa3668b946dc5c985f0630e3722b7eb7a0f906e9ec7686b0",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-020",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-020.README.md",
+        "immutable_revision": "bfbf9ea99768b556684dc99c6ac87a9f16b16f80",
+        "artifact_sha256": "7dc61d485ca1bdb3be0c3177bc6ab6d22bcea9f028879dc4e5a67b3845be25c8",
+        "family_id": "oddt",
+        "license_id": "BSD-3-Clause",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-020.LICENSE.txt",
+        "license_evidence_sha256": "bb5593ead533b4441296c8a16fb988110798b6d5db4208637c23e2af47883f6f"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-020.view.json",
+        "sha256": "349cb94c7f821559691cf6d86bf199756b8ee74e3af506f1ca201ddd27d48f52",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-020.oracle.json",
+        "sha256": "b713ab619d63e01ff42b1e8f26e804bce957588f34ad0ba85c58803292fe7167",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-021",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-021.README.md",
+        "immutable_revision": "c76c12421e9d90db0a74ee7c1163c8f45ebde5d0",
+        "artifact_sha256": "88adef82ed206e83e992b6515f1eb9738f463f083793f17431eda52e547d40d5",
+        "family_id": "Hydrospheredata",
+        "license_id": "Apache-2.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-021.LICENSE.txt",
+        "license_evidence_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-021.view.json",
+        "sha256": "334fd49e55ef059ac19846d2760bd35384c0ffb6b82ae05e7153b866e51201be",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-021.oracle.json",
+        "sha256": "a0ea4c5c4fb07be335860e7e1c4a2c844b78fd3f0a19eb4681087f3b0ac511fb",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-022",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-022.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "f3e1e40f656041593596502b3f9a446a4f56d38cae77af871d952f8734da6348",
+        "family_id": "DeepRank",
+        "license_id": "Apache-2.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-022.metadata.json",
+        "license_evidence_sha256": "f3e1e40f656041593596502b3f9a446a4f56d38cae77af871d952f8734da6348"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": [
+          "filter2: archived or fork"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-022.view.json",
+        "sha256": "76f93d6ad41c3ab4ec199baf09278f14cb25c69a182680274aacb29f08921682",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-022.oracle.json",
+        "sha256": "ac1becc854bb2ed3da3c59e8049008913c7b244da1ea4879294ee0c60dd46732",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-023",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-023.README.md",
+        "immutable_revision": "838529c24739284153d6c399467a9dc9cc067e9b",
+        "artifact_sha256": "2497157e81604b9724765f8aea4df33ddac6c56da3fda40b00434091f81c76a9",
+        "family_id": "elizaOS",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-023.LICENSE.txt",
+        "license_evidence_sha256": "192d110a3d9ef278644e00fd80f66b645c91cdeb1d8883c7e09473e7936041d9"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-023.view.json",
+        "sha256": "929f1c6e292fed201978ae64a6e5871ceb862876811b40111f55b87ca701c416",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-023.oracle.json",
+        "sha256": "2c51456607581593bbb1c4d83d2522b5b8e3d7bb7f71c7e68a524dbfdfba04e8",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-024",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-024.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "02f35bddcb5e0d7d55b67357bc81264f20d28cc5edcdaf561bb2566e62f39fbe",
+        "family_id": "nsacyber",
+        "license_id": "NOASSERTION",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-024.metadata.json",
+        "license_evidence_sha256": "02f35bddcb5e0d7d55b67357bc81264f20d28cc5edcdaf561bb2566e62f39fbe"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": false,
+        "reasons": [
+          "filter1: license 'NOASSERTION' not in allowlist",
+          "filter2: archived or fork",
+          "license NOASSERTION not in allowlist"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-024.view.json",
+        "sha256": "a94a11aa9d029783dcd37ddff5e1912e0d526f489596221e650b1cecea86490d",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-024.oracle.json",
+        "sha256": "c6e37c5e62794292113abede89bd479f52190468a55ad2ac5213070fe083940d",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-025",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-025.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "fdc972f40a7140ec40a9ee030de17bb0dfa1e3a053b741132ce4a93ec1a1f60e",
+        "family_id": "PostHog",
+        "license_id": "NOASSERTION",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-025.metadata.json",
+        "license_evidence_sha256": "fdc972f40a7140ec40a9ee030de17bb0dfa1e3a053b741132ce4a93ec1a1f60e"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": false,
+        "reasons": [
+          "filter1: license 'NOASSERTION' not in allowlist",
+          "license NOASSERTION not in allowlist"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-025.view.json",
+        "sha256": "12ddb06e3cf70b2b61018010f9a98a1b0e3f2f86308502dd730e49b9a0fe2ad7",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-025.oracle.json",
+        "sha256": "2c9e8ae3283a5fa9aa72d9231938a4f3443b2fec6b36870350f0839740f777eb",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-026",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-026.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "fb674e5fdaecfed304a180ace9c17fe4620b70fe819e7759a988b44e415eade7",
+        "family_id": "Unleash",
+        "license_id": "AGPL-3.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-026.metadata.json",
+        "license_evidence_sha256": "fb674e5fdaecfed304a180ace9c17fe4620b70fe819e7759a988b44e415eade7"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": false,
+        "reasons": [
+          "filter1: license 'AGPL-3.0' not in allowlist",
+          "license AGPL-3.0 not in allowlist"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-026.view.json",
+        "sha256": "118fd6b46432810000889fbca7f55c5be6f5872efe716b8c44aedb71ce1c16b8",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-026.oracle.json",
+        "sha256": "aa96384531023b3ca32061a963c6641ea4f6681292cf44fd2e33e7819f2670d0",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-027",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-027.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "898918798e346d7e69b17d7e15bfd22c9ca80cbaa47e71f411526e771d5028b4",
+        "family_id": "openreplay",
+        "license_id": "NOASSERTION",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-027.metadata.json",
+        "license_evidence_sha256": "898918798e346d7e69b17d7e15bfd22c9ca80cbaa47e71f411526e771d5028b4"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": false,
+        "reasons": [
+          "filter1: license 'NOASSERTION' not in allowlist",
+          "license NOASSERTION not in allowlist"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-027.view.json",
+        "sha256": "2f20dd9fdda2a41f62f0785a844df76f4e646692726dae89eb01444309d3cdb3",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-027.oracle.json",
+        "sha256": "5091d0b022e915a0eec3786a5a5da64dde562413b5a7ce9a7d46a7add1084068",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-028",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-028.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "9ff3847a7f3bd08dcda27dbfee307d9d5c48423383e077f757122cae8a1acf5a",
+        "family_id": "growthbook",
+        "license_id": "NOASSERTION",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-028.metadata.json",
+        "license_evidence_sha256": "9ff3847a7f3bd08dcda27dbfee307d9d5c48423383e077f757122cae8a1acf5a"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": false,
+        "reasons": [
+          "filter1: license 'NOASSERTION' not in allowlist",
+          "license NOASSERTION not in allowlist"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-028.view.json",
+        "sha256": "acbdcd5252a44f34e9bc3c42f645ff02a85c3f811557e124559e7e6f7a4055de",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-028.oracle.json",
+        "sha256": "44a6287b40c06b7fcacb52ea5a7da65edb56e3585b046b03be77b2de30cef3c8",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-029",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-029.README.md",
+        "immutable_revision": "f189de79ceef7c1ef69f61f12e272f99b4cdb699",
+        "artifact_sha256": "fba8418b2e950bce1be84f88399b0e286bd407cba8c62423daff1dca6aab3059",
+        "family_id": "vercel",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-029.LICENSE.txt",
+        "license_evidence_sha256": "dff4646152d400203d76112abe6dea79167b9a3c44177c2a67ed77d3bb5a49cf"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-029.view.json",
+        "sha256": "437304111ffb36c7e61ac1aed8c8f4e041be53ead30b024189175b16417228c5",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-029.oracle.json",
+        "sha256": "dc535974532af4abfe3135384d29887d7299e0840ee28b7210e9f8c64d28e9cb",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-030",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-030.README.md",
+        "immutable_revision": "1c73453daf1bc5769f14b3ee69291072e44746dc",
+        "artifact_sha256": "2123efe08dea706799b6e107e7f9d1aa42d6a3c40448a1e35fd374b7b0b1c79a",
+        "family_id": "Flagsmith",
+        "license_id": "BSD-3-Clause",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-030.LICENSE.txt",
+        "license_evidence_sha256": "38b92c820487f19d267b211cedbaf4cb2fbde2329a8b6c4b7adee63793d2e4b2"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-030.view.json",
+        "sha256": "1fa0211e58c0abb33e479c4691796fbe988b8d86c5074216dedd0fc3e8f1a865",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-030.oracle.json",
+        "sha256": "bf2473fc8a242696ee778e27728e9f6fb0236a2c56eecda1176b262884443cca",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-031",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-031.README.md",
+        "immutable_revision": "621192d76a9fec1f9f105d0597f9ddcd955c35b7",
+        "artifact_sha256": "5128321ee6f700d917ba201dada762a788122eb1dfcda93e59174cc630391fc9",
+        "family_id": "apache",
+        "license_id": "Apache-2.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-031.LICENSE.txt",
+        "license_evidence_sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-031.view.json",
+        "sha256": "dd1b152f07087ecd38bd2b0d3da69bf55e35a1449f6271962299be131980387a",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-031.oracle.json",
+        "sha256": "cfa1bc17936835437a85c3b978ccec490f947ab669816b94834ecdaf41b47ca2",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-032",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-032.README.md",
+        "immutable_revision": "813bea2bc2a7b06b9df505618ed3ed8e4957a9b5",
+        "artifact_sha256": "8950bb0cbbe0de5ad7ffeab66ee8a95f8f7dc1dca9527b547e28c4042e522141",
+        "family_id": "conductor-oss",
+        "license_id": "Apache-2.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-032.LICENSE.txt",
+        "license_evidence_sha256": "5a09b5eb8064615992192a13ffa6875568225d1e5bef991a48ca9d48ba3c0dc8"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-032.view.json",
+        "sha256": "62572abab85e320a9483e112fa28e642189d2ab0126c7b7793394fa8f067b3d6",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-032.oracle.json",
+        "sha256": "1f0f59054a95403af4b2666a90d151f2ef84f6848198ed88cfe2e7a55f0d6fb1",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-033",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-033.metadata.json",
+        "immutable_revision": "unpinned-excluded",
+        "artifact_sha256": "71ee50ee4fa1b7c4dc9f395c1f7d5083aa9607c444268dcba16c90e70d584a88",
+        "family_id": "Budibase",
+        "license_id": "NOASSERTION",
+        "license_evidence_path": "seed/evaluation/t1-holdout/sources/T1-033.metadata.json",
+        "license_evidence_sha256": "71ee50ee4fa1b7c4dc9f395c1f7d5083aa9607c444268dcba16c90e70d584a88"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": false,
+        "reasons": [
+          "filter1: license 'NOASSERTION' not in allowlist",
+          "license NOASSERTION not in allowlist"
+        ]
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-033.view.json",
+        "sha256": "87bf7aadaf7070cb5dbc5fceddb526e17ae5405cd3eb61164dba4b29d4cfe60c",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-033.oracle.json",
+        "sha256": "c9b793294b3ec64a5ed325e2c71370d42bd78b5f6898789d86658a59b5211f86",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-034",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-034.README.md",
+        "immutable_revision": "c7f899b57acfb22893cf0f4e6dbf41ffbcceb296",
+        "artifact_sha256": "755a4de39a3959a2ca1c9c897dedb591217c3c38a11c026abb948333ca9e4077",
+        "family_id": "PrefectHQ",
+        "license_id": "Apache-2.0",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-034.LICENSE.txt",
+        "license_evidence_sha256": "302c6c9fca2c024cdfc4a0b8082fdd2dc52453c0d92e4ca2859f261acdc08774"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-034.view.json",
+        "sha256": "f5278c4025c72ea713ef38fc8f3ff77ddf404ef65062a644441fad76f47b623b",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-034.oracle.json",
+        "sha256": "71ed5178404bdd76fbaab89f36d47d0d697ee1073c8b92e454d172c6496ac3ff",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-035",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-035.README.md",
+        "immutable_revision": "60458483ec933c12bb8cbf6a2b0c7f27b986762d",
+        "artifact_sha256": "4950e242c3c7d1a004c5ec4716737d6fd8b3f395a15a5d29c7a1ab9af0cb4acd",
+        "family_id": "coleam00",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-035.LICENSE.txt",
+        "license_evidence_sha256": "be39e59fb1d5f09c831ab6d8d38cba6d07812afb27eed300520dc493580cc7f6"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-035.view.json",
+        "sha256": "a88135386e77dddde3f738e0186d0677328405ff6fa51b84581b1506d36dffbb",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-035.oracle.json",
+        "sha256": "1e03482fc028b94b3189288c6a1eb507e56904e5c379aacaeee1d117230dbcb5",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-036",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-036.README.md",
+        "immutable_revision": "1d4be84b3771a03e870f09db74bee9e437469b0d",
+        "artifact_sha256": "269838d3de5da90d4c2c0b45bf7fc745b384a5a05c0932582e923638e8994189",
+        "family_id": "temporalio",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-036.LICENSE.txt",
+        "license_evidence_sha256": "6aab9afd99ceb1dcaf6a0d91386b46baef9bce17ae4006044e0f231e31430b69"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-036.view.json",
+        "sha256": "b23d58177dd8638a65858c660f4af9e5f7fb9ba4aeb500ecdfd73119f7cc9d92",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-036.oracle.json",
+        "sha256": "459b2c41c25808e71ab33dd04f4c11015c45646bcc646a9c1f24c6d6e09b918e",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-037",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-037.README.md",
+        "immutable_revision": "4e433a8d57078645b55d21fd12c887d3ba6ca01e",
+        "artifact_sha256": "565105600bf9de90d374af4fe400b3f41ea571506cb4a2975ad1b8ff7e0b88ef",
+        "family_id": "erusev",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-037.LICENSE.txt",
+        "license_evidence_sha256": "d76b34cb4a026e7d8f9e13e2c4e56e985bff8749659c90456d13bea99713a1bc"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-037.view.json",
+        "sha256": "c40816b4f8ef74461fedaccfd5288b9282ad2a0a1124afac465c314fd6b453dd",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-037.oracle.json",
+        "sha256": "6eec8c041767d97129d127cb817910115cf88f11e13ad49cd446f2c2fc884171",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-038",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-038.README.md",
+        "immutable_revision": "e5cab1e9a5dcea2bb3cbf888863fa7e65ab37edf",
+        "artifact_sha256": "c28e748fa74b7944eeef94986b163086cb81af061733eb262ced5ec9611ddb4e",
+        "family_id": "showdownjs",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-038.LICENSE.txt",
+        "license_evidence_sha256": "56c14cb3c7835f93abce90f65b7ed58470981e2d768a8e60499ca34bae7764ad"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-038.view.json",
+        "sha256": "7127e83100abf05814580abd4aca90e207320d5fb71b942e54ee80722320ed3a",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-038.oracle.json",
+        "sha256": "666a47fe00d95524eb1292ed3ffa9c91ddaf8b53424b4a82d89892851d52fd6c",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-039",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-039.README.md",
+        "immutable_revision": "7c5e433620c967618eb38cdb57360734274061c4",
+        "artifact_sha256": "1cb8f48270139ddade89822f07839391e4556fb1f930ec44bb928787fca91881",
+        "family_id": "jonschlinkert",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-039.LICENSE.txt",
+        "license_evidence_sha256": "09c07b72608d9ce6bd40b97b9e54208b30ebf3d9c323c7d01653a33fc87a170a"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-039.view.json",
+        "sha256": "084eb6b0a05010bfaeb920a1db23860da41d1e1d8b7db11433944ab04f993b0b",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-039.oracle.json",
+        "sha256": "85bd67930568bbf767dd90fb500f53491b7385710f3d5ef80b1537d602466c05",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-040",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-040.README.md",
+        "immutable_revision": "fc705234fa211d179ee1d5e7656b51ab99f70ca9",
+        "artifact_sha256": "ebe09f7aada53fa7625b46d196281aaaf9a987afd81ac7211060cdcc9c9bd928",
+        "family_id": "xoofx",
+        "license_id": "BSD-2-Clause",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-040.LICENSE.txt",
+        "license_evidence_sha256": "ae543293657b6782e3d4a76257dc4157210ce88a352ef8392065d3f04dcd88d1"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-040.view.json",
+        "sha256": "c89ba5797d21848e69f07b2962bd0d06ae11d36dcb0288a9ce969d2b2856e5c0",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-040.oracle.json",
+        "sha256": "8dd114aa233eed3c69ababeb3c56b0d21ecd59e8b222edfdd156ec8ca05caf8c",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-041",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-041.README.md",
+        "immutable_revision": "8453df010daf9547efcc20a05bb12c0e2fd2016a",
+        "artifact_sha256": "c4284dac2103e4c2c544e656978ab704ed9c0c986ec87cf7de37279509a2da28",
+        "family_id": "Python-Markdown",
+        "license_id": "BSD-3-Clause",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-041.LICENSE.txt",
+        "license_evidence_sha256": "7ba4eb6d10b32b2d11dce13821340351cdbbb30ba8ccc67841db2ffd86e79aca"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-041.view.json",
+        "sha256": "c356757c4540d0dbf480a398b0ecd6645bbb56ddce58682d9a7502e96c98468c",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-041.oracle.json",
+        "sha256": "b26030f248daa8aa9b12ba999073ba60d88c5ba74b33fa461d40398bee2d7c75",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    },
+    {
+      "candidate_id": "T1-042",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "seed/evaluation/t1-holdout/sources/T1-042.README.md",
+        "immutable_revision": "0dd9d803837cd76c33f7650d27b1ed4c36d5d33d",
+        "artifact_sha256": "c5d167a7d07e8190596fd5f33ae78524c8c5a179b8ead1ec85d1eccc6727fcac",
+        "family_id": "chrisdiana",
+        "license_id": "MIT",
+        "license_evidence_path": "seed/evaluation/t1-holdout/licenses/T1-042.LICENSE.txt",
+        "license_evidence_sha256": "a0b91e048a125e4020e9cbda371023beda73bfa9100a6a6185295ab271ea503a"
+      },
+      "eligibility": {
+        "source_hash_unseen": true,
+        "family_unseen": true,
+        "registry_overlap": false,
+        "license_allowed": true,
+        "reasons": []
+      },
+      "candidate_view": {
+        "path": "seed/evaluation/t1-holdout/candidates/T1-042.view.json",
+        "sha256": "cc2ea0f84be8fff192936d5b8acb47f649256d4128615e130a1d3171d8d50c37",
+        "builder_role": "candidate_builder",
+        "label_free": true
+      },
+      "oracle_commitment": {
+        "path": "seed/evaluation/t1-oracles/T1-042.oracle.json",
+        "sha256": "6e97c36ef6f8e67aa9539927756fdb094911f90b73cd9178525679531a316589",
+        "author_role": "oracle_author",
+        "access": "sealed"
+      },
+      "prediction_receipt": {
+        "status": "absent",
+        "path": null,
+        "sha256": null,
+        "predictor_role": "predictor"
+      },
+      "reveal": {
+        "status": "sealed",
+        "authorized_by": [],
+        "receipt_sha256": null
+      }
+    }
+  ]
+}

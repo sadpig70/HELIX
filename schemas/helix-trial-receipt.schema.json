@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-trial-receipt/1.0",
+  "title": "HELIX blind trial receipt (prediction seal / oracle reveal)",
+  "type": "object",
+  "required": ["schema", "receipt_kind", "policy_version", "cohort_id", "cohort_commitment_sha256", "candidate_id", "parent_receipt_sha256", "prediction", "reveal", "receipt_sha256"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-trial-receipt/1.0"]},
+    "receipt_kind": {"type": "string", "enum": ["prediction", "reveal"]},
+    "policy_version": {"type": "string", "enum": ["HELIX-HOLDOUT/1.0"]},
+    "cohort_id": {"type": "string"},
+    "cohort_commitment_sha256": {"type": "string"},
+    "candidate_id": {"type": "string"},
+    "parent_receipt_sha256": {"type": "string"},
+    "prediction": {
+      "type": ["object", "null"],
+      "required": ["candidate_view_sha256", "predictor_role", "outcome", "action", "machines"],
+      "properties": {
+        "candidate_view_sha256": {"type": "string"},
+        "predictor_role": {"type": "string", "enum": ["predictor"]},
+        "outcome": {"type": "string", "enum": ["PREDICT", "ABSTAIN", "MISSING_ARTIFACT"]},
+        "action": {"type": ["string", "null"]},
+        "machines": {"type": ["array", "null"], "items": {"type": "string"}}
+      }
+    },
+    "reveal": {
+      "type": ["object", "null"],
+      "required": ["prediction_receipt_sha256", "oracle_commitment_sha256", "approvals"],
+      "properties": {
+        "prediction_receipt_sha256": {"type": "string"},
+        "oracle_commitment_sha256": {"type": "string"},
+        "approvals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["approver_id", "role"],
+            "properties": {
+              "approver_id": {"type": "string"},
+              "role": {"type": "string", "enum": ["reveal_approver"]}
+            }
+          }
+        }
+      }
+    },
+    "receipt_sha256": {"type": "string"}
+  }
+}

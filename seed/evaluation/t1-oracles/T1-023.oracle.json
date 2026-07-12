@@ -1,0 +1,12 @@
+{
+  "candidate_id": "T1-023",
+  "role": "oracle",
+  "expected": {
+    "action": "BUILD_ON_PLATFORM",
+    "machines": [
+      "M15"
+    ]
+  },
+  "oracle_rationale": "Computes weighted contributor activity scores and aggregates them into a maintained leaderboard.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

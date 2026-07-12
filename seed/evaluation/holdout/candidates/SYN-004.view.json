@@ -1,0 +1,27 @@
+{
+  "candidate_id": "SYN-004",
+  "provenance": {
+    "locator": "seed/evaluation/holdout/sources/SYN-004.json",
+    "immutable_revision": "synthetic-snapshot-004"
+  },
+  "observed_operations": [
+    "score_candidate",
+    "attest_claim",
+    "bound_flow"
+  ],
+  "observed_inputs": [
+    "score_candidate_request",
+    "attest_claim_request",
+    "bound_flow_request"
+  ],
+  "observed_outputs": [
+    "score_candidate_receipt",
+    "attest_claim_receipt",
+    "bound_flow_receipt"
+  ],
+  "invariants": [
+    "score_candidate is append-only",
+    "attest_claim is deterministic"
+  ],
+  "sample_behavior": "processes score_candidate then emits bound_flow evidence"
+}

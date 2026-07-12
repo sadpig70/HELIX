@@ -1,0 +1,27 @@
+{
+  "candidate_id": "SYN-KNOWN-FAMILY",
+  "provenance": {
+    "locator": "seed/evaluation/holdout/sources/SYN-KNOWN-FAMILY.json",
+    "immutable_revision": "synthetic-snapshot-902"
+  },
+  "observed_operations": [
+    "route_request",
+    "clear_obligation",
+    "score_candidate"
+  ],
+  "observed_inputs": [
+    "route_request_request",
+    "clear_obligation_request",
+    "score_candidate_request"
+  ],
+  "observed_outputs": [
+    "route_request_receipt",
+    "clear_obligation_receipt",
+    "score_candidate_receipt"
+  ],
+  "invariants": [
+    "route_request is append-only",
+    "clear_obligation is deterministic"
+  ],
+  "sample_behavior": "processes route_request then emits score_candidate evidence"
+}

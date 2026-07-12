@@ -1,0 +1,23 @@
+{
+  "candidate_id": "T1-037",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/erusev/parsedown",
+    "immutable_revision": "4e433a8d57078645b55d21fd12c887d3ba6ca01e",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-037.README.md"
+  },
+  "observed_operations": [
+    "parse_markdown",
+    "render_html"
+  ],
+  "observed_inputs": [
+    "markdown text"
+  ],
+  "observed_outputs": [
+    "HTML"
+  ],
+  "invariants": [
+    "single file, no dependencies"
+  ],
+  "sample_behavior": "Fast markdown parser for PHP."
+}

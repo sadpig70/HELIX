@@ -1,0 +1,27 @@
+{
+  "candidate_id": "T1-009",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/open-gitagent/clawless",
+    "immutable_revision": "f5d6c9584102f7c26ae568b3d97d30424e2a4780",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-009.README.md"
+  },
+  "observed_operations": [
+    "run_agents_in_browser",
+    "sandbox_agent_actions",
+    "enforce_runtime_rules",
+    "audit_agent_activity"
+  ],
+  "observed_inputs": [
+    "agent definitions",
+    "tool invocations"
+  ],
+  "observed_outputs": [
+    "sandboxed executions",
+    "audit trails"
+  ],
+  "invariants": [
+    "agent actions run inside a rule-driven sandbox"
+  ],
+  "sample_behavior": "Serverless browser runtime that executes agents under audit- and rule-driven sandboxing."
+}

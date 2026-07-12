@@ -1,0 +1,10 @@
+{
+  "candidate_id": "T1-002",
+  "role": "oracle",
+  "expected": {
+    "action": "DEFER",
+    "machines": []
+  },
+  "oracle_rationale": "Append-only audit trail without hash-chain or canonical record hashes; no machine mechanism substantiated.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

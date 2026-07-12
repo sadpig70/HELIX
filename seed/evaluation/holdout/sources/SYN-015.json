@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-015",
+  "family": "synthetic-family-015",
+  "readme": "Synthetic project 015: clear_obligation, score_candidate, attest_claim over a local store.",
+  "operations": [
+    "clear_obligation",
+    "score_candidate",
+    "attest_claim"
+  ],
+  "entrypoints": [
+    "cli_clear_obligation",
+    "cli_score_candidate",
+    "cli_attest_claim"
+  ]
+}

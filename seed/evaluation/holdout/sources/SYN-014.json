@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-014",
+  "family": "synthetic-family-014",
+  "readme": "Synthetic project 014: route_request, clear_obligation, score_candidate over a local store.",
+  "operations": [
+    "route_request",
+    "clear_obligation",
+    "score_candidate"
+  ],
+  "entrypoints": [
+    "cli_route_request",
+    "cli_clear_obligation",
+    "cli_score_candidate"
+  ]
+}

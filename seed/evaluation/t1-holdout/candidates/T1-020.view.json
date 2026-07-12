@@ -1,0 +1,26 @@
+{
+  "candidate_id": "T1-020",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/oddt/oddt",
+    "immutable_revision": "bfbf9ea99768b556684dc99c6ac87a9f16b16f80",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-020.README.md"
+  },
+  "observed_operations": [
+    "parse_molecules",
+    "dock_ligands",
+    "apply_scoring_functions",
+    "filter_compounds"
+  ],
+  "observed_inputs": [
+    "molecular structures"
+  ],
+  "observed_outputs": [
+    "docking poses",
+    "interaction fingerprints"
+  ],
+  "invariants": [
+    "pipeline stages are composable"
+  ],
+  "sample_behavior": "Modular cheminformatics toolkit for molecular modeling and drug discovery pipelines."
+}

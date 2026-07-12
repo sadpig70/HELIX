@@ -1,0 +1,30 @@
+{
+  "candidate_id": "T1-007",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/microsoft/agent-governance-toolkit",
+    "immutable_revision": "99b904b1e2ecb71e01840b8d6df468a4d5cf4394",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-007.README.md"
+  },
+  "observed_operations": [
+    "intercept_tool_call",
+    "evaluate_action_rules",
+    "deny_or_allow_before_execution",
+    "attribute_agent_identity",
+    "record_tamper_evident_decision"
+  ],
+  "observed_inputs": [
+    "agent tool calls",
+    "message sends",
+    "delegations"
+  ],
+  "observed_outputs": [
+    "allow/deny decisions",
+    "tamper-evident decision records"
+  ],
+  "invariants": [
+    "denied actions never reach execution",
+    "every decision is recorded with the active rule set"
+  ],
+  "sample_behavior": "Deterministic interception layer that decides each agent action before it executes and keeps tamper-evident decision records for auditors."
+}

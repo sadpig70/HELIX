@@ -1,0 +1,27 @@
+{
+  "candidate_id": "SYN-009",
+  "provenance": {
+    "locator": "seed/evaluation/holdout/sources/SYN-009.json",
+    "immutable_revision": "synthetic-snapshot-009"
+  },
+  "observed_operations": [
+    "aggregate_tier",
+    "emit_receipt",
+    "replay_ledger"
+  ],
+  "observed_inputs": [
+    "aggregate_tier_request",
+    "emit_receipt_request",
+    "replay_ledger_request"
+  ],
+  "observed_outputs": [
+    "aggregate_tier_receipt",
+    "emit_receipt_receipt",
+    "replay_ledger_receipt"
+  ],
+  "invariants": [
+    "aggregate_tier is append-only",
+    "emit_receipt is deterministic"
+  ],
+  "sample_behavior": "processes aggregate_tier then emits replay_ledger evidence"
+}

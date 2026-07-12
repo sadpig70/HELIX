@@ -1,0 +1,25 @@
+{
+  "candidate_id": "T1-003",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/thepirat000/Audit.NET",
+    "immutable_revision": "437cbbb8252beed08f2887c3605f558b2ad1201e",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-003.README.md"
+  },
+  "observed_operations": [
+    "intercept_operation_event",
+    "build_audit_event",
+    "apply_creation_rules",
+    "dispatch_to_data_provider"
+  ],
+  "observed_inputs": [
+    "framework operation events"
+  ],
+  "observed_outputs": [
+    "audit event documents via pluggable data providers"
+  ],
+  "invariants": [
+    "audit events follow the configured creation rules"
+  ],
+  "sample_behavior": "Framework-wide audit trail library with customizable event creation and output providers."
+}

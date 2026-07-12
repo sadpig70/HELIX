@@ -1,207 +1,130 @@
-# HANDOFF — HELIX 작업 연계 (Claude Opus 4.8 → Codex)
+# HANDOFF — HELIX
 
-> 이 문서 하나 + 링크된 파일들로 이어서 작업할 수 있게 작성했다. 작성 2026-07-07, Codex 갱신 2026-07-08.
-> **즉시 할 일: forward closure와 CI fix는 push/CI green까지 완료됐다. 다음은 HELIX가 제안한 `RUN_EXPLOIT`를 실행한다.**
-
----
-
-## 0. TL;DR (30초)
-
-- HELIX = 자율 창조 시스템. 이번 세션에 corpus를 **5개 `-stra` 플랫폼(56팩)**으로 완전 라우팅하고,
-  루프가 스스로 제안한 CONDENSE로 **5번째 플랫폼 Scorestra**를 emit했다. 전부 public·CI green.
-- 그 뒤 **8개 외부 런타임 AI에게 검토**를 받았고(`_workspace/external_runtime_helix_reviews.md`),
-  그 통합 분석으로 **차기 업그레이드 방향 v0.6**을 설계했다(`_workspace/new_upgrade_plan2.md`).
-- **v0.6 U6~U9 1차 구현 완료.** "human-labeled-machine-aware" 결함을 깨기 위해 M1~M15 결정론
-  probe, live 56-pack dataset, static hard gates, probe router, forward prediction scaffold/report, manifest batch
-  input, live deferred/future collector, RouteSentinel M16 probe/candidate, EndowFront M17 probe/candidate,
-  ADPR M4 candidate, 그리고 남은 7개 후보(AgentPACT/GPOA/MLX/PnR/QVeil/Qvidence/WattMesh)
-  normalized candidate를 추가했다.
-- 현재 핵심 수치: U6 machine probe `95/95` agreement, U8 router `BUILD_ON_PLATFORM=94 / DEFER=1(M13)`,
-  U9 forward prediction fixtures `BUILD_ON_PLATFORM=1 / DEFER=1 / CONDENSE=1`, live collector 후보
-  `10`개(`deferred=2`, `future=8`, `BUILD_ON_PLATFORM=8` + `DEFER=2(M16/M17)` +
-  `MISSING_ARTIFACT=0`), 전체 `281 tests` green, GitHub Actions `CI` green.
+> 갱신: 2026-07-12
+> **현재 상태:** Condense 라인(5 platforms · 56 packs)과 HELIXDirection 라인(Deterministic
+> Admission Control Plane) 모두 구축 완료. 595 tests OK, `helix_validate` PASS.
+> **정확한 다음 최우선 작업: `P5_5_ExternalPilots` 개시** — 준비(온보딩/프로토콜 문서)는
+> 자율 진행 가능, **공개·모집·운영 개시는 정욱님 승인 필요**. 선행 조건은 미commit 작업의
+> commit 영속화(정욱님 승인).
+> 이전 완료 계보: [`_legacy/`](_legacy/) (Condense v0.6 · HELIXDirection 종결본/상세본)
 
 ---
 
-## 1. 지금 당장 할 일 (다음 단계)
+## 1. 프로젝트 현황
 
-**목표:** `helix.py status`가 제안한 `RUN_EXPLOIT` 경로로 fresh assets를 재조합한다.
+### Condense 라인 (기존 완료, 유지)
 
-**첫 3스텝:**
-1. `python helix.py status --layered-corpus seed/condense/layered-corpus.json --forward-predict-report _workspace/condense/U9-live-forward-predict-report.json`로 현재 loop state를 재확인한다.
-2. `NEXT ACTION: RUN_EXPLOIT`이면 fresh assets 기반 exploit/recombine 작업을 시작한다.
-3. 산출 후 local gates와 CI를 다시 맞춘다.
+explore⊕exploit⊕condense 삼중나선. corpus 클러스터를 kernel+plugin 플랫폼으로 수렴 —
+실증된 5 플랫폼 전부 독립 저장소·public·CI green:
+Attestra(23) · Clearstra(12) · Routestra(11) · Certstra(5) · Scorestra(5) = **56 packs**.
+corpus 완전 라우팅(흡수 20 · defer 2 · design-only 8). 상세: `docs/CONDENSE.md`,
+계보 백업 `_legacy/HANDOFF-CONDENSE-v0.6-COMPLETE.md`.
 
-**하드 게이트:** `python core/helix_validate.py .` PASS · `python -m unittest discover -s tests -q` PASS ·
-`python scripts/condense/machine_probe_dataset.py --out _workspace/condense/U6-machine-probe-report.json` 재생성 ·
-`python scripts/condense/collect_forward_candidates.py --out _workspace/condense/U9-live-candidate-manifest.json` 재생성 ·
-`python scripts/condense/forward_predict.py --manifest _workspace/condense/U9-live-candidate-manifest.json --out _workspace/condense/U9-live-forward-predict-report.json` 재생성.
+### HELIXDirection 라인 (이번 방향, 완료)
 
----
+HELIX를 `advisor + human actuator`에서 **Deterministic Admission Control Plane**으로 전환.
+폐루프 `proposal → blind verification → constitutional authorization → bounded actuation
+→ impact handback → replayable ledger`를 결정론으로 구현·검증했다.
 
-## 2. 현재 상태 (사실)
+**최종 thesis: GOVERNED INTERNAL SYSTEM** (완료 정의 경로 2) — 검증된 admission control
+plane을 내부 runtime으로 보유. generator 주장은 internal corpus router로 강등 유지,
+제품 주장은 보류.
 
-### 생태계 (전부 github.com/sadpig70/*, public, CI green)
-| 저장소 | 팩 | 로컬 경로 | 비고 |
-|---|---|---|---|
-| HELIX (허브) | — | `D:\HELIX` | 커널 + Condense v0.5 |
-| Attestra | 23 | `D:\HELIX\Attestra` | predicate 게이트 |
-| Clearstra | 12 | `D:\HELIX\Clearstra` | 청산/가격 |
-| Routestra | 11 | `D:\HELIX\Routestra` | 라우팅/bound |
-| Certstra | 5 | `D:\HELIX\Certstra` | 인증 (Condense emit #1) |
-| Scorestra | 5 | `D:\HELIX\Scorestra` | 스코어링 M15 (Condense emit #2) |
-| stra-demo | — | `D:\HELIX\stra-demo` | 생태계 데모 |
+| Gate | Verdict | 핵심 사실 |
+|---|---|---|
+| **T0** State Authority | **PASSED** | canonical receipt `8ea2534ef8904ac7…`, 전 구간 무결 |
+| **T1** Blind Validity | **FAILED → 강등** | 실제 unseen 30: coverage 0.900✓, macro-F1 0.450✗ (M10/M15 전멸). autonomous CONDENSE emit 금지 |
+| **T2** Governance Shadow | **PASSED** | 실역사 35 action: disagreement 0%, false-ALLOW 0, replay 35/35 |
+| **T3** Closed Actuator | **PASSED** | ungated 0, stop-write 0, bypass 0, replay 100%, 적대 주입 13종 방어 |
+| **T4** Utility | **NOT JUDGED** | 내부 pilot 10 decisions(prevented 4, replay 10/10)은 내부 실증; 외부 표본 없음 |
+| T5 Federation | 진입 불가 | 조건(T1~T4 통과 + 외부 사용자 2) 미충족 |
 
-- corpus 라우팅 완결: `build_on_platform_candidate()` · `condense_candidate()` 둘 다 **None**.
-  (흡수 20 / defer 2[RouteSentinel·EndowFront] / design-only 8)
-- Mechanism Graph **M1~M15**는 `docs/MACHINE-GRAPH.md`로 승격됨. 모든 M1~M15는
-  `core/helix_machine_probes.py` probe에 대응한다.
-- U6 live dataset: `scripts/condense/machine_probe_dataset.py`, report
-  `_workspace/condense/U6-machine-probe-report.json` = `implemented_probe_cases=95`, `matched/scored=95/95`,
-  `agreement=1.0`.
-- U7 hard gates in `core/helix_validate.py`:
-  - determinism static gate: runtime boundary에서 `requests`/`urllib`/`socket`/`random`/`datetime.now`류 차단.
-  - zero-kernel gate: `seed/condense/platform-kernel-lock.json`으로 5개 `-stra` `*_core/` 해시 잠금.
-  - machine-probe gate: `seed/condense/machine-probe-gate.json`으로 U6 `95/95` 고정.
-- U8 router:
-  - `core/helix_router.py`가 probe-positive machine을 `kernel_machines` + live pack evidence로 라우팅.
-  - current summary: `BUILD_ON_PLATFORM=94`, `DEFER=1`, `deferred_machines={"M13": 1}`.
-  - hard gate: `seed/condense/router-gate.json`.
-- U9 forward prediction:
-  - `scripts/condense/forward_predict.py`.
-  - fixtures: `examples/condense/candidate-scorestra-m15.json`, `candidate-m13-defer.json`,
-    `candidate-m13-condense.json`.
-  - manifest batch input: `examples/condense/forward-predict-manifest.json`, schema
-    `helix-forward-predict-manifest/1.0`.
-  - live collector: `scripts/condense/collect_forward_candidates.py` →
-    `_workspace/condense/U9-live-candidate-manifest.json`.
-  - live artifact catalog: `seed/condense/forward-candidate-artifacts.json`.
-  - normalized live future artifacts:
-    `candidate-adpr-m4.json` -> `M4 / Attestra`,
-    `candidate-agentpact-m1.json` -> `M1 / Attestra`,
-    `candidate-gpoa-m15.json` -> `M15 / Scorestra`,
-    `candidate-mlx-m3.json` -> `M3 / Attestra`,
-    `candidate-pnr-m15.json` -> `M15 / Scorestra`,
-    `candidate-qveil-m3.json` -> `M3 / Attestra`,
-    `candidate-qvidence-m4.json` -> `M4 / Attestra`,
-    `candidate-wattmesh-m9.json` -> `M9 / Routestra`.
-  - RouteSentinel source artifact: `examples/condense/candidate-routesentinel-m16.json` from
-    `.recreate/runs/001-action-handback-verifier/genes.json`.
-  - EndowFront source artifact: `examples/condense/candidate-endowfront-m17.json` from
-    `github.com/sadpig70/endowfront`.
-  - report: `_workspace/condense/U9-forward-predict-report.json` = `all_ok=True`,
-    summary `{"BUILD_ON_PLATFORM": 1, "CONDENSE": 1, "DEFER": 1}`.
-  - live report: `_workspace/condense/U9-live-forward-predict-report.json` =
-    `{"BUILD_ON_PLATFORM": 8, "DEFER": 2}` after closing all normalized live artifacts.
-  - hard gate: `seed/condense/forward-predict-gate.json`.
+## 2. 해야 할 작업 (우선순위 — 내 판단)
 
-### git 상태
-- **로컬 HELIX 브랜치 = `main`**. forward closure 커밋 `05f7ac3`와 CI fix 커밋 `c019b51`은
-  origin/main에 push됐고 GitHub Actions `CI`는 success.
-- 세션 종료 전 `_workspace/ex_runbook.md`의 불필요한 로컬 변경은 되돌렸다. 다음 세션은 clean worktree에서 시작해야 한다.
-- **각 플랫폼은 독립 git repo**(D:\HELIX 하위, 각자 origin). HELIX `.gitignore`가 `/Attestra/`~`/Scorestra/`
-  등 18개 nested repo를 무시 → HELIX에 embed되지 않음.
+### ① [정욱님 결정] 미commit 작업 commit 영속화 — 모든 후속의 선행
 
----
+HELIXDirection 방향 작업 전체(modified 6 · untracked 60)가 아직 미commit이다. 영속화하지
+않으면 유실 위험이 있고, P5_5 외부 pilot의 공개(push)도 이것부터다. **정욱님이 commit을
+지시하면** branch 생성 후 commit(+요청 시 push)한다. `git add -A` 금지(nested repos) —
+명시적 파일 지정. 대상 목록은 `_workspace/helix-direction/P7-regression.json`에 봉인됨.
 
-## 3. 운영 환경 & 필수 규칙
+### ② P5_5 외부 pilot 개시 — T4 판정으로 직결 (최우선 방향)
 
-### 환경
-- OS: Windows. 셸: **Git Bash**(POSIX sh) 주. PowerShell 7(`D:\Tools\PS7\...`, UTF-8) 가용. **PS 5.1 금지**(인코딩).
-- Python: `python`(PATH). **절대경로 인터프리터 호출 금지.** `python -` heredoc에서 Windows 경로(`D:/HELIX/...`)
-  사용(git-bash `/d/HELIX/...`는 Python이 이해 못 함).
-- `gh` CLI: `workflow` 스코프 있음(이번 세션에 추가). GitHub 작업 가능.
+wedge(agent handback/approval audit)는 실증 완료 상태이며(내부 pilot 10 decisions, wedge가
+수동 검토보다 엄격·false-admit 방향 불일치 0), 연결 킷도 준비됐다:
+`helix.py audit-handback` + `docs/WEDGE-RUNBOOK.md` + `examples/wedge/` + sealed metrics.
 
-### 결정론 경계 (지배 불변식 — 절대 위반 금지)
-- 커널(`*_core/`)·팩 = **순수 stdlib, 시계/네트워크/AI 없음**. 시간은 `now` 주입, hash에서 시간 메타 제외.
-- **AI/LLM/휴리스틱은 전부 "메타층"**(경계 밖). v0.6에서도: **AI는 proposal, 결정론 gate가 판정**.
-- 팩 추가는 커널을 건드리면 안 됨(**zero-kernel-change**). novel machine만 CONDENSE로 새 커널.
-- 각 팩은 원본과의 **parity 테스트** 동봉(소스 있으면 실행, CI에선 현재 skip — v0.6 U7이 이걸 강제로 바꿈).
+**자율 진행 가능(공개 전에도):**
+- pilot 운영 프로토콜 문서 — 목표(주 20 real decisions 또는 검토시간 50% 절감,
+  false-admit ≤1%, 8주 판정), 참가 절차, 측정·집계 방법.
+- 외부 참가자 온보딩 가이드 — packet 작성부터 판정·replay·appeal까지.
+- pilot 결과 집계 자동화(여러 참가자 ledger → `wedge_metrics` 통합 리포트).
 
-### 검증 (작업 후 항상)
-```bash
-cd /d/HELIX
-python core/helix_validate.py .              # 구조/계약/예제 PASS
-python -m unittest discover -s tests -q       # 현재 281 tests
-python scripts/condense/machine_probe_dataset.py --out _workspace/condense/U6-machine-probe-report.json
-python scripts/condense/forward_predict.py --gate seed/condense/forward-predict-gate.json \
-  --layered-corpus seed/condense/layered-corpus.json \
-  --out _workspace/condense/U9-forward-predict-report.json
-python scripts/condense/forward_predict.py --manifest examples/condense/forward-predict-manifest.json \
-  --out _workspace/condense/U9-forward-predict-report.json
-python scripts/condense/collect_forward_candidates.py \
-  --out _workspace/condense/U9-live-candidate-manifest.json
-python scripts/condense/forward_predict.py --manifest _workspace/condense/U9-live-candidate-manifest.json \
-  --out _workspace/condense/U9-live-forward-predict-report.json
-# 플랫폼 작업 시 해당 repo에서:
-cd /d/HELIX/<Platform> && python -m unittest discover -s tests -q && python cli.py determinism
-```
+**정욱님 승인 필요:**
+- repo/kit 공개 범위(commit/push — ①과 연결), 외부 workflow 3개 모집, 8주 운영 개시.
 
-### git / 커밋 규칙
-- 커밋·푸시는 **사용자가 요청할 때만**. main에서 작업 중이면 대규모 feature는 브랜치 먼저.
-- **outward-facing(게이트, 승인 필수):** GitHub 저장소 공개(`gh repo create`), main 병합/PR merge,
-  브랜치 삭제, 원격 push. — 사용자 승인 없이 하지 말 것.
-- 로컬 코드·테스트·문서 작성은 자율 진행 가능.
-- 커밋 메시지 co-author 라인: 각 런타임 자신의 것으로. (이전 커밋들은
-  `Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>` 사용.)
-- **`git add -A` 금지**(HELIX에서): nested repo가 embedded gitlink로 잘못 들어감. **명시 경로만 add.**
+T4 gate 통과 시 "Governed Internal System"에서 **"Admission Plane(제품)"**으로 상향 가능.
 
----
+### ③ [선택] T1 재도전 — generator 주장 재상향
 
-## 4. 핵심 참고 파일 (읽는 순서)
+T1 강등을 되돌리려면(완화 불가 4요건): 새 cohort + **독립 oracle author** + M10/M15 계열
+검출 보강 + novelty 구현·환원 실측 ≥3건. 통과 전 autonomous CONDENSE emit 금지 유지.
+큰 작업이며 ②와 독립적이다.
 
-1. **`_workspace/new_upgrade_plan2.md`** ★ — v0.6 설계 전문(목표·아키텍처·단계·성공/철회 기준·리뷰 반영 매트릭스). **작업의 기준 문서.**
-2. **`_workspace/external_runtime_helix_reviews.md`** — 8개 외부 AI 리뷰 원문(비판 근거).
-3. `docs/OVERVIEW.md` — HELIX 현황 브리핑(외부 검토용 단일 진입점).
-4. `docs/CONDENSE.md` — Condense 상세 + machine-aware 라우팅 실사례.
-5. `docs/MACHINE-GRAPH.md` — M1~M15 정의, U6/U8/U9 probe/router/forward-predict 계약.
-6. `seed/condense/layered-corpus.json` — platform coverage registry(`kernel_machines`) + routed corpus 상태.
-7. `core/helix_machine_probes.py` · `scripts/condense/machine_probe_dataset.py`.
-8. `core/helix_router.py` · `scripts/condense/forward_predict.py` · `helix.py`.
-9. `core/helix_validate.py` · `seed/condense/*-gate.json`.
-10. corpus 소스 루트: `D:/HELIX`(9) · `D:/recreate_prj`(exploit) · `D:/IdeaFirst`(explore, 실코드 다수).
+## 3. 산출 인벤토리 (HELIXDirection, 전부 미commit)
 
----
+- **core 신규 15종**: helix_{state_receipt, holdout, prediction, novelty, constitution,
+  evidence, risk_policy, authorization, stop_token, contestability, execution_plan,
+  admission, side_effect_guard, actuator, impact_handback, wedge, wedge_metrics}
+- **schemas 8종**, **tests 17파일**(329→595), **CLI**: `state-receipt`, `audit-handback`
+- **wedge 킷**: `docs/WEDGE-RUNBOOK.md`, `examples/wedge/`; **policy**: `docs/HOLDOUT-POLICY.md`
+- **seed**: `seed/evaluation/` (synthetic + T1-LIVE-001 실 cohort — 30 unseen, pinned SHA)
+- **scripts**: `scripts/evaluate/` (synthetic builder · T1 collector · blind trial ·
+  shadow replay); `engines/exploit/adapter.py`에 `registry_admissions` 추가
 
-## 5. 함정 (Gotchas — 시간 절약)
+## 4. Evidence 색인 (`_workspace/helix-direction/`, gitignored durable)
 
-- **nested repo:** D:\HELIX 하위 플랫폼/프로젝트 18개는 각자 독립 git repo. HELIX에서 `git add -A`하면
-  깨진 gitlink. 명시 경로만. (자세히: `memory` 또는 커밋 히스토리 `Decouple vendored corpus repos` 참고)
-- **브랜치 staleness:** HELIX 문서를 main에 직접 커밋하는 패턴 때문에, 로컬이 뒤처진 작업 브랜치에 있으면
-  파일이 "없어" 보인다. 지금은 로컬=main으로 정렬해 둠. feature 작업 시 브랜치 만들고 커밋을 그 브랜치에 일관되게.
-- **parity CI-skip:** 원본이 vendored 아니라 CI에서 parity 전부 skip. U7에서 이를 완전히 CI 해결하지는 않았고,
-  대신 HELIX 로컬 hard gate(`machine-probe`, `router`, `forward-predict`)로 결정론 acceptance surface를 세웠다.
-- **layered-corpus.json은 수작업:** `(done)`/`(deferred:...)`/`(design-only)` 마커가 사람 판정.
-  `build_on_platform_candidate()`는 `(`가 든 항목을 skip. — v0.6가 이 라벨을 프로브-검증으로 대체.
-- **리뷰가 본 스냅샷과 현재 차이:** 에이전트 8의 "Scorestra 5/5는 거짓(live 1/5)" 지적은 **이미 해소**됨
-  (현재 5팩 전부 완성: pqc-exposure·loop-kit·lazaretto-risk·detour-posture·field-posture). 플랜 §0 참고.
-- **M11 정책:** `M11`은 Attestra kernel로 승격하지 않는다. `policy-drift` pack에서 실증된
-  `pack_evidence` coverage로만 라우팅한다. `M13`은 live `-stra` pack coverage가 없어 현재 `DEFER`.
-- **M16 정책:** `M16`은 RouteSentinel-style route deviation + rollback restoration simulation으로만 좁게
-  정의했다. generic simulator로 넓히지 말 것. 현재 covered platform이 없어 `DEFER`.
-- **M17 정책:** `M17`은 EndowFront-style one-time endowment corpus projection + sustainability/open-access
-  verdict로만 좁게 정의했다. generic finance/pricing으로 넓히지 말 것. 현재 covered platform이 없어 `DEFER`.
-- **manifest report semantics:** oracle 없는 manifest row는 `expectation="none"`이고 `ok=True`로 기록한다.
-  hard gate로 쓰려면 `seed/condense/forward-predict-gate.json`처럼 `action`/`platform`을 명시한다.
-  `missing_artifact=true` row는 `MISSING_ARTIFACT`로 report되며 probe를 실행하지 않는다.
-- **relative `--out` 주의:** `scripts/condense/*`는 nested repo sample 실행 중 CWD를 바꿀 수 있다.
-  현재는 테스트로 잡혀 있지만, 리포트 생성/검증은 가능하면 한 명령 안에서 순차 실행한다.
+- T0 `T0-verification.*` · T1 `T1-validity-report.md`+`T1/`+`trials/T1/`
+- T2 `T2-verification.*`+`T2/` · T3 `T3-verification.*`+`T3/`
+- T4 `T4-verification.md`+`T4/`(internal pilot report · sealed metrics · ledger)
+- P7 `P7-regression.json` · `P7-architecture-review.md` · `P7-thesis-verdict.md`
+- PGF 상태: `.pgf/status-HELIXDirection.json` (41 done / 2 blocked / 43 nodes)
 
----
+## 5. Blocked 노드 재개 조건
 
-## 6. 작업 진행 방식 (사용자 선호)
+| 노드 | 사유 | 재개 조건 |
+|---|---|---|
+| `P5_5_ExternalPilots` | 외부 모집·공개는 명시 승인 필요 | 정욱님이 공개 범위·대상·개시 승인 — 킷 준비 완료 |
+| `P6_FederationPlane` | 진입 조건 미충족 | T1 재도전 통과 + T4 판정 통과 + 외부 사용자 2 |
 
-- 사용자(정욱님)는 **한 번에 한 gated step**을 선호: 작업 실행 → 검증(테스트/CI 근거 제시) → 보고 →
-  **다음 최우선 작업 1개 제시**. 자율 루프 지시("멈출 때까지 반복")를 받으면 승인 대기 없이 이어가되,
-  **outward-facing은 게이트**. 한국어 대화, 코드/명령/식별자는 영어.
-- 정직하게: 테스트 실패면 실패라고, 억지 매핑(force-fit) 금지, parity 없는 흡수 금지.
+## 6. 알려진 한계 / 이탈 (은폐 없음)
 
----
+1. NoveltyTrial 실측(구현·환원 ≥3건) 미수행 — T1 재도전 조건.
+2. stop token은 암호 서명이 아닌 canonical seal + ledger 정합 (서명 도입은 향후 과제).
+3. 기존 exploit ledger의 fail-open 소비 경로가 migration flag 유예 하 잔존.
+4. wedge latency/cost는 sidecar 설계만 (결정론 경계 준수의 의도적 선택).
+5. FederationPlane 미구현 — DESIGN의 조건부 gate가 의도한 blocked.
+6. (방법론) T1 oracle·T2 brief를 단일 운영자 작성; 격리는 predictor/classifier subagent
+   컨텍스트로만 확보. 제3자 역할 분리는 외부 pilot의 몫.
 
-## 7. 한 줄 인수인계
+## 7. Rollback 상태
 
-> **U6~U9, manifest batch input, live candidate collector, RouteSentinel M16 normalization, EndowFront M17
-> normalization, ADPR M4 normalization, 남은 7개 future 후보 normalization은 구현·검증 완료.
-> CI fix까지 push되어 GitHub Actions green. 다음은 `RUN_EXPLOIT` fresh-assets recombination을 실행하라.**
-> 결정론 경계·zero-kernel-change·hard gates를 유지하고,
-> GitHub 공개/병합은 사용자 승인 게이트로 남겨라.
+이 방향 작업 전체가 **미commit** — 승인 전 영속화 없음. 되돌리려면 untracked 산출물 제거 +
+modified 파일 revert(P7-regression.json에 목록). nested 19 repos는 무변경(clean)이라
+rollback 대상 없음. `_workspace/`는 gitignored durable evidence — 삭제 금지.
+
+## 8. 운영 규율 (유지)
+
+- 정욱님 호칭, 한국어 보고, code/command/identifier English.
+- 한 번에 하나의 gated step, 다음 최우선 작업 하나만 보고.
+- PowerShell 5.1 금지(Git Bash 또는 지정 PS7), PATH의 `python`만 사용.
+- `git add -A` 금지(nested repos), commit/push/merge/공개는 명시 승인 시에만.
+- hard gate 실패를 threshold 완화나 문서 표현으로 숨기지 않는다.
+- runtime evidence가 문서보다 우선하며 즉시 동기화한다.
+
+## 9. 한 줄 인수인계
+
+> **HELIXDirection이 GOVERNED INTERNAL SYSTEM으로 종결됐고(595 tests·sealed evidence),
+> Condense 5 플랫폼 라인도 유지된다. 다음 최우선은 `P5_5 외부 pilot 개시`로 T4를 판정하는
+> 것 — 준비 문서는 지금 자율로 시작할 수 있고, 공개·모집·운영과 그 선행인 commit 영속화는
+> 정욱님 승인이 필요하다.**

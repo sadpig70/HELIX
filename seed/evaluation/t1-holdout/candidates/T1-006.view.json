@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-006",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/izelnakri/paper_trail",
+    "immutable_revision": "5aae29eabe62706739ba035c89bcf82f457fe27d",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-006.README.md"
+  },
+  "observed_operations": [
+    "track_db_changes",
+    "store_versions",
+    "revert_to_version"
+  ],
+  "observed_inputs": [
+    "database insert/update/delete operations"
+  ],
+  "observed_outputs": [
+    "version records"
+  ],
+  "invariants": [
+    "any tracked change can be reverted to a prior version"
+  ],
+  "sample_behavior": "Tracks and records database changes and can revert back to any point in time."
+}

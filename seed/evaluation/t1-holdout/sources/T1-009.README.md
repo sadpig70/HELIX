@@ -1,0 +1,193 @@
+<table align="center">
+  <tr>
+    <td align="center" width="250">
+      <img src="clawless_readme.png" alt="ClawLess" width="200" />
+    </td>
+    <td>
+      <h1>ClawLess</h1>
+      <p><em>No server required to run Claw Agents, use ClawLess to run on browser!</em></p>
+      <p><strong>A serverless browser-based runtime for Claw AI Agents powered by WebContainers</strong></p>
+      <ul>
+        <li>Run Claw Agents without a Server — entirely on-browser via WebContainers (WASM)</li>
+        <li>Complete Audit &amp; Policy driven sandboxing</li>
+        <li>Built on <a href="https://gitagent.sh">GitAgent</a> Standard</li>
+        <li>Pluggable SDK with template-based agent bootstrapping</li>
+        <li>Secure by design — fully isolated WASM sandbox, no access to host system</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/clawcontainer"><img src="https://img.shields.io/npm/v/clawcontainer?color=cb3837&label=npm&logo=npm" alt="npm version" /></a>
+  <a href="https://github.com/open-gitagent/clawless/releases"><img src="https://img.shields.io/github/v/release/open-gitagent/clawless?color=blue&logo=github" alt="GitHub release" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" /></a>
+  <a href="https://github.com/open-gitagent/clawless/stargazers"><img src="https://img.shields.io/github/stars/open-gitagent/clawless?style=social" alt="GitHub stars" /></a>
+  <a href="https://github.com/open-gitagent/clawless/issues"><img src="https://img.shields.io/github/issues/open-gitagent/clawless?color=yellow" alt="GitHub issues" /></a>
+  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" /></a>
+  <img src="https://img.shields.io/badge/TypeScript-5.4-blue?logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/WebContainers-WASM-orange?logo=webassembly&logoColor=white" alt="WebContainers" />
+  <img src="https://img.shields.io/badge/platform-browser-lightgrey?logo=googlechrome&logoColor=white" alt="Platform: Browser" />
+</p>
+
+<p align="center">
+  <a href="#quick-start">Quick Start</a> &middot;
+  <a href="DOCS.md">Documentation</a> &middot;
+  <a href="#sdk-usage">SDK Usage</a> &middot;
+  <a href="CONTRIBUTING.md">Contributing</a> &middot;
+  <a href="https://github.com/open-gitagent/clawless/discussions">Discussions</a>
+</p>
+
+---
+
+Run, observe, and control AI agents entirely in the browser — no backend required. ClawLess provides a full sandboxed Node.js environment via WebContainers (WASM) with built-in editor, terminal, policy engine, and audit logging.
+
+---
+
+## See It In Action
+
+<p align="center">
+  <img src="screenshot-ppt.png" alt="ClawLess — AI Agent building a PowerPoint presentation using pptxgenjs" width="900" />
+</p>
+
+<p align="center"><em>An AI agent using learned skills to build a 9-slide Lobster presentation with pptxgenjs — installed and executed entirely in the browser.</em></p>
+
+ClawLess runs a full Node.js runtime in the browser via WebContainers — that means access to **3.4 million+ npm packages**. In this example, the agent installs `pptxgenjs`, generates a polished PowerPoint file with charts, images, and styled layouts, and saves it to the virtual filesystem — all without a server. The agent even learns and crystallizes reusable skills for future tasks.
+
+<p align="center">
+  <img src="screenshot.png" alt="ClawLess — AI Agent building a calculator app inside a WASM sandbox" width="900" />
+</p>
+
+<p align="center"><em>An AI agent building and previewing a calculator app — code, execution, and live preview, all inside the browser.</em></p>
+
+The agent runs inside a WebContainer with full virtual filesystem access — reading, writing, and executing files in an isolated WASM runtime. No server, no backend, no access to the host system. Everything from code generation to live preview happens within the sandboxed browser environment, completely isolated from your machine.
+
+<p align="center">
+  <img src="screenshot-audit.png" alt="ClawLess — Complete audit logging and observability" width="900" />
+</p>
+
+<p align="center"><em>Full audit trail — every process spawn, file write, network request, and agent action is logged and filterable.</em></p>
+
+Every action inside the container is tracked end-to-end: process lifecycle, file I/O, network requests/responses, environment configuration, and policy enforcement. Sensitive headers like API keys are automatically masked. Filter by source, level, or event type — and download the full audit log for compliance and debugging.
+
+<p align="center">
+  <img src="screenshot-policy.png" alt="ClawLess — YAML-based policy engine for agent guardrails" width="900" />
+</p>
+
+<p align="center"><em>Declarative YAML policy engine — define exactly what agents can and cannot do.</em></p>
+
+Control agent behavior with a built-in policy system. Define file access rules, allowed processes, port bindings, and runtime limits like max file size, max processes, max turns, and timeout — all in a simple YAML format. Policies are enforced at the container level, so agents cannot bypass them. Apply or reset policies on the fly without restarting the container.
+
+---
+
+## Key Features
+
+- **WebContainer-powered sandboxed runtime (WASM)** — full OS-level isolation in the browser
+- **Monaco Editor with multi-file tabs** — rich editing experience out of the box
+- **xterm.js terminal with full PTY support** — real terminal sessions, not a toy console
+- **GitHub integration** — clone and push repositories via the GitHub API
+- **YAML-based policy engine with glob patterns** — declarative guardrails for agent behavior
+- **Complete audit logging** — process, file, network, and git events captured end-to-end
+- **Plugin system with lifecycle hooks** — extend and customize every stage of execution
+- **Template system for agent configurations** — bootstrap agents from reusable presets
+- **Network interception** — intercepts both browser `fetch` and Node.js `http` calls
+- **Multi-provider AI support** — Anthropic, OpenAI, and Google out of the box
+
+## Quick Start
+
+```bash
+# Run locally
+git clone https://github.com/open-gitagent/clawless.git
+cd clawless
+npm install
+npm run dev
+```
+
+```bash
+# Install as a dependency
+npm install clawcontainer
+```
+
+## SDK Usage
+
+```typescript
+import { ClawContainer } from 'clawcontainer';
+
+const cc = new ClawContainer('#app', {
+  template: 'gitclaw',
+  env: { ANTHROPIC_API_KEY: 'sk-...' }
+});
+
+await cc.start();
+cc.on('ready', () => console.log('Container ready!'));
+```
+
+## Architecture
+
+| Component | Role |
+|---|---|
+| **ClawContainer** | SDK facade — the single entry point for consumers |
+| **ContainerManager** | WebContainer orchestration and lifecycle |
+| **PolicyEngine** | YAML-based guardrails enforcing file, process, and network rules |
+| **AuditLog** | Complete event trail for every action inside the container |
+| **GitService** | GitHub API integration (clone, commit, push) |
+| **PluginManager** | Lifecycle hooks for extending container behavior |
+| **UIManager** | Monaco Editor, xterm.js terminal, and tab management |
+
+## Tech Stack
+
+- **Vite + TypeScript** — fast builds, type-safe codebase
+- **WebContainer API** — browser-native OS environment
+- **xterm.js** — full-featured terminal emulator
+- **Monaco Editor** — the editor behind VS Code
+
+## Configuration
+
+ClawLess is configured through environment variables passed to the `ClawContainer` constructor:
+
+| Variable | Purpose |
+|---|---|
+| `ANTHROPIC_API_KEY` | Anthropic API key |
+| `OPENAI_API_KEY` | OpenAI API key |
+| `GOOGLE_AI_API_KEY` | Google AI API key |
+| `CLAWLESS_MODEL` | Model selection (e.g. `claude-sonnet-4-20250514`, `gpt-4o`) |
+
+All runtime state is persisted to `localStorage` under the `clawchef_` prefix, so sessions survive page reloads.
+
+## Links
+
+## Supported Providers
+
+| Provider | Models |
+|---|---|
+| **Anthropic** | Claude Sonnet, Claude Opus, Claude Haiku |
+| **OpenAI** | GPT-4o, GPT-4, GPT-3.5 |
+| **Google** | Gemini Pro, Gemini Flash |
+
+## Roadmap
+
+- [ ] Custom agent template marketplace
+- [ ] Multi-agent orchestration
+- [ ] Persistent filesystem across sessions
+- [ ] Cloud deployment support
+- [ ] Built-in agent debugging tools
+
+## Community
+
+- [GitHub Discussions](https://github.com/open-gitagent/clawless/discussions) — ask questions, share ideas
+- [Issues](https://github.com/open-gitagent/clawless/issues) — report bugs, request features
+- [Contributing Guide](CONTRIBUTING.md) — how to contribute
+
+## Links
+
+[Documentation](DOCS.md) | [Contributing](CONTRIBUTING.md) | [License](LICENSE) | [GitAgent Standard](https://gitagent.sh)
+
+---
+
+<p align="center">
+  Built with care by <a href="https://github.com/shreyaskapale">Shreyas Kapale</a> / <a href="https://lyzr.ai">Lyzr</a>
+</p>
+
+<p align="center">
+  <sub>If ClawLess helps you, consider giving it a star on GitHub!</sub>
+</p>

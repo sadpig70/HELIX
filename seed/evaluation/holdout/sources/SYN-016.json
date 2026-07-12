@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-016",
+  "family": "synthetic-family-016",
+  "readme": "Synthetic project 016: score_candidate, attest_claim, bound_flow over a local store.",
+  "operations": [
+    "score_candidate",
+    "attest_claim",
+    "bound_flow"
+  ],
+  "entrypoints": [
+    "cli_score_candidate",
+    "cli_attest_claim",
+    "cli_bound_flow"
+  ]
+}

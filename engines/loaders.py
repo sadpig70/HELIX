@@ -83,8 +83,13 @@ def resolve_latest(root: str, subdir: str, stem: str) -> str:
 
 def _load_any(root: str, stem: str, subdir: str):
     """Fixture file at root first (examples), else live resolver under subdir."""
+    return read_doc(_resolve_any_path(root, stem, subdir))
+
+
+def _resolve_any_path(root: str, stem: str, subdir: str) -> str:
+    """Resolve the exact file `_load_any` would read, without parsing it."""
     fixture = _first_existing(*[os.path.join(root, s) for s in _with_ext(stem)])
-    return read_doc(fixture or resolve_latest(root, subdir, stem))
+    return fixture or resolve_latest(root, subdir, stem)
 
 
 def _latest_run_path(root: str, subdir: str) -> str:
@@ -103,13 +108,43 @@ def _latest_run_path(root: str, subdir: str) -> str:
 
 def _load_latest_run_any(root: str, subdir: str, stem: str):
     """Load {stem} from the latest run directory before falling back."""
+    return read_doc(_resolve_latest_run_any_path(root, subdir, stem))
+
+
+def _resolve_latest_run_any_path(root: str, subdir: str, stem: str) -> str:
+    """Resolve the exact file `_load_latest_run_any` would read."""
     run_path = _latest_run_path(root, subdir)
     if run_path:
         for s in _with_ext(stem):
             p = os.path.join(run_path, s)
             if os.path.exists(p):
-                return read_doc(p)
-    return _load_any(root, stem, subdir)
+                return p
+    return _resolve_any_path(root, stem, subdir)
+
+
+def resolve_explore_paths(root: str) -> dict:
+    """Return role -> selected path for the same artifacts as load_explore_state."""
+    specs = (
+        ("explore_winner", "stage6_final", ".evx"),
+        ("explore_manifest", "manifest", ".evx"),
+        ("explore_pool", "idea_pool", ".cix"),
+        ("explore_consumed", "consumed_ideas", ".idea-ledger"),
+    )
+    return {role: path for role, stem, subdir in specs
+            for path in [_resolve_any_path(root, stem, subdir)] if path}
+
+
+def resolve_exploit_paths(root: str) -> dict:
+    """Return role -> selected path for the same artifacts as load_exploit_state."""
+    registry = _resolve_any_path(root, "registry", ".recreate")
+    candidates = _resolve_latest_run_any_path(root, ".recreate", "candidates")
+    run_status = _resolve_latest_run_any_path(root, ".recreate", "status")
+    rows = (
+        ("exploit_registry", registry),
+        ("exploit_candidates", candidates),
+        ("exploit_run_status", run_status),
+    )
+    return {role: path for role, path in rows if path}
 
 
 def load_explore_state(root: str) -> dict:

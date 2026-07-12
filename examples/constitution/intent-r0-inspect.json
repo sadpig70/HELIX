@@ -1,0 +1,12 @@
+{
+  "schema": "helix-action-intent/1.0",
+  "intent_id": "INT-R0-001",
+  "title": "Inspect unified ledger state",
+  "proposer": {"kind": "ai", "id": "helix-runtime"},
+  "risk_class": "R0",
+  "scope": {"write_paths": [], "remote_mutation": false, "publish": false},
+  "impact": {"authority": false, "economic": false, "physical": false, "broad_public": false},
+  "reversibility": {"reversible": true, "rollback_plan": "read-only; nothing to roll back"},
+  "budget": {"max_files": 0, "max_bytes": 0},
+  "justification": "Read current ledger and diversity state to compute next_action."
+}

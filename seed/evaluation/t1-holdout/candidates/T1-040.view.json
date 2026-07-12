@@ -1,0 +1,25 @@
+{
+  "candidate_id": "T1-040",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/xoofx/markdig",
+    "immutable_revision": "fc705234fa211d179ee1d5e7656b51ab99f70ca9",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-040.README.md"
+  },
+  "observed_operations": [
+    "parse_commonmark",
+    "run_extension_pipeline",
+    "render_html"
+  ],
+  "observed_inputs": [
+    "markdown text"
+  ],
+  "observed_outputs": [
+    "HTML",
+    "syntax tree"
+  ],
+  "invariants": [
+    "CommonMark compliant with low GC pressure"
+  ],
+  "sample_behavior": "Fast, extensible CommonMark processor for .NET."
+}

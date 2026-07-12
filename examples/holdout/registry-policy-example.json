@@ -1,0 +1,73 @@
+{
+  "schema": "helix-holdout-registry/1.0",
+  "policy_version": "HELIX-HOLDOUT/1.0",
+  "cohort": {
+    "cohort_id": "POLICY-FIXTURE-001",
+    "kind": "policy_fixture",
+    "selection_rule": "Synthetic candidates used only to test policy semantics",
+    "selection_cutoff": "injected-sequence-001",
+    "commitment_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "minimum_candidates": 1,
+    "status": "locked"
+  },
+  "leakage_control": {
+    "excluded_registries": ["seed/condense/layered-corpus.json", "seed/condense/forward-candidate-artifacts.json"],
+    "excluded_source_hashes": ["bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"],
+    "forbidden_candidate_fields": ["expected", "machines", "machine_id", "action", "expected_action", "platform", "platform_hint", "oracle_rationale"],
+    "predictor_forbidden_paths": ["_holdout/oracles", "_holdout/reveal"],
+    "overlap_policy": "exclude_locked_no_replacement"
+  },
+  "scoring": {
+    "coverage_denominator": "locked_eligible_candidates",
+    "score_denominator": "locked_eligible_candidates",
+    "credits": {"exact": 1, "wrong": 0, "abstain": 0, "missing_artifact": 0, "protocol_violation": 0},
+    "minimum_coverage": 0.8,
+    "minimum_macro_f1": 0.8
+  },
+  "reveal_authority": {
+    "required_approvals": 1,
+    "allowed_roles": ["reveal_approver"],
+    "prediction_seal_required": true,
+    "commitment_match_required": true
+  },
+  "candidates": [
+    {
+      "candidate_id": "SYNTH-ELIGIBLE-001",
+      "status": "eligible",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "examples/holdout/source-one",
+        "immutable_revision": "snapshot-001",
+        "artifact_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "family_id": "synthetic-family-one",
+        "license_id": "MIT",
+        "license_evidence_path": "examples/holdout/licenses/source-one.MIT.txt",
+        "license_evidence_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      },
+      "eligibility": {"source_hash_unseen": true, "family_unseen": true, "registry_overlap": false, "license_allowed": true, "reasons": []},
+      "candidate_view": {"path": "_holdout/candidates/SYNTH-ELIGIBLE-001.json", "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "builder_role": "candidate_builder", "label_free": true},
+      "oracle_commitment": {"path": "_holdout/oracles/SYNTH-ELIGIBLE-001.json", "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", "author_role": "oracle_author", "access": "sealed"},
+      "prediction_receipt": {"status": "absent", "path": null, "sha256": null, "predictor_role": "predictor"},
+      "reveal": {"status": "sealed", "authorized_by": [], "receipt_sha256": null}
+    },
+    {
+      "candidate_id": "SYNTH-EXCLUDED-001",
+      "status": "excluded",
+      "source": {
+        "kind": "local_snapshot",
+        "locator": "examples/holdout/known-source",
+        "immutable_revision": "snapshot-known",
+        "artifact_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "family_id": "known-family",
+        "license_id": "MIT",
+        "license_evidence_path": "examples/holdout/licenses/known.MIT.txt",
+        "license_evidence_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "eligibility": {"source_hash_unseen": false, "family_unseen": false, "registry_overlap": true, "license_allowed": true, "reasons": ["known source hash overlap"]},
+      "candidate_view": {"path": "_holdout/candidates/SYNTH-EXCLUDED-001.json", "sha256": "2222222222222222222222222222222222222222222222222222222222222222", "builder_role": "candidate_builder", "label_free": true},
+      "oracle_commitment": {"path": "_holdout/oracles/SYNTH-EXCLUDED-001.json", "sha256": "3333333333333333333333333333333333333333333333333333333333333333", "author_role": "oracle_author", "access": "sealed"},
+      "prediction_receipt": {"status": "absent", "path": null, "sha256": null, "predictor_role": "predictor"},
+      "reveal": {"status": "sealed", "authorized_by": [], "receipt_sha256": null}
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "helix-action-intent/1.0",
+  "intent_id": "INT-R2-001",
+  "title": "Push HELIX branch to public remote",
+  "proposer": {"kind": "ai", "id": "helix-runtime"},
+  "risk_class": "R2",
+  "scope": {"write_paths": [".git"], "remote_mutation": true, "publish": true},
+  "impact": {"authority": false, "economic": false, "physical": false, "broad_public": false},
+  "reversibility": {"reversible": false, "rollback_plan": null},
+  "budget": {"max_files": 100, "max_bytes": 10485760},
+  "justification": "Publish reviewed work; requires one human approval per risk policy."
+}

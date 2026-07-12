@@ -1,0 +1,24 @@
+{
+  "candidate_id": "T1-042",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/chrisdiana/cms.js",
+    "immutable_revision": "0dd9d803837cd76c33f7650d27b1ed4c36d5d33d",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-042.README.md"
+  },
+  "observed_operations": [
+    "fetch_markdown_content",
+    "render_site_client_side",
+    "route_pages"
+  ],
+  "observed_inputs": [
+    "markdown files"
+  ],
+  "observed_outputs": [
+    "single-page site"
+  ],
+  "invariants": [
+    "no server-side scripting required"
+  ],
+  "sample_behavior": "Client-side markdown site generator in the spirit of Jekyll."
+}

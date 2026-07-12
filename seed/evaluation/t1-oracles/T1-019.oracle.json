@@ -1,0 +1,10 @@
+{
+  "candidate_id": "T1-019",
+  "role": "oracle",
+  "expected": {
+    "action": "DEFER",
+    "machines": []
+  },
+  "oracle_rationale": "Optical mark recognition and simple response evaluation; no weighted score-to-tier aggregation machine.",
+  "derivation_rule": "covered-machines->BUILD_ON_PLATFORM; any-uncovered-or-none->DEFER"
+}

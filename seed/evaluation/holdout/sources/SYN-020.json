@@ -1,0 +1,15 @@
+{
+  "name": "synthetic-source-020",
+  "family": "synthetic-family-020",
+  "readme": "Synthetic project 020: gate_predicate, aggregate_tier, emit_receipt over a local store.",
+  "operations": [
+    "gate_predicate",
+    "aggregate_tier",
+    "emit_receipt"
+  ],
+  "entrypoints": [
+    "cli_gate_predicate",
+    "cli_aggregate_tier",
+    "cli_emit_receipt"
+  ]
+}

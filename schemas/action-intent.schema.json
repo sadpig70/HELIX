@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-action-intent/1.0",
+  "title": "HELIX Constitution action intent (risk, scope, budget, reversibility)",
+  "type": "object",
+  "required": ["schema", "intent_id", "title", "proposer", "risk_class", "scope", "impact", "reversibility", "budget", "justification"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-action-intent/1.0"]},
+    "intent_id": {"type": "string"},
+    "title": {"type": "string"},
+    "proposer": {
+      "type": "object",
+      "required": ["kind", "id"],
+      "properties": {
+        "kind": {"type": "string", "enum": ["ai", "human"]},
+        "id": {"type": "string"}
+      }
+    },
+    "risk_class": {"type": "string", "enum": ["R0", "R1", "R2", "R3"]},
+    "scope": {
+      "type": "object",
+      "required": ["write_paths", "remote_mutation", "publish"],
+      "properties": {
+        "write_paths": {"type": "array", "items": {"type": "string"}},
+        "remote_mutation": {"type": "boolean"},
+        "publish": {"type": "boolean"}
+      }
+    },
+    "impact": {
+      "type": "object",
+      "required": ["authority", "economic", "physical", "broad_public"],
+      "properties": {
+        "authority": {"type": "boolean"},
+        "economic": {"type": "boolean"},
+        "physical": {"type": "boolean"},
+        "broad_public": {"type": "boolean"}
+      }
+    },
+    "reversibility": {
+      "type": "object",
+      "required": ["reversible", "rollback_plan"],
+      "properties": {
+        "reversible": {"type": "boolean"},
+        "rollback_plan": {"type": ["string", "null"]}
+      }
+    },
+    "budget": {
+      "type": "object",
+      "required": ["max_files", "max_bytes"],
+      "properties": {
+        "max_files": {"type": "integer", "minimum": 0},
+        "max_bytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "justification": {"type": "string"}
+  }
+}

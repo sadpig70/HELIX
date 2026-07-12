@@ -1,0 +1,26 @@
+{
+  "candidate_id": "T1-030",
+  "role": "candidate_view",
+  "provenance": {
+    "locator": "github.com/Flagsmith/flagsmith",
+    "immutable_revision": "1c73453daf1bc5769f14b3ee69291072e44746dc",
+    "artifact": "seed/evaluation/t1-holdout/sources/T1-030.README.md"
+  },
+  "observed_operations": [
+    "toggle_features_remotely",
+    "evaluate_flag_per_identity",
+    "segment_users",
+    "run_ab_tests"
+  ],
+  "observed_inputs": [
+    "flag definitions",
+    "user identities, segments, traits"
+  ],
+  "observed_outputs": [
+    "per-identity feature states"
+  ],
+  "invariants": [
+    "feature exposure is controlled by flag rules without redeploying"
+  ],
+  "sample_behavior": "Feature flag service that evaluates flags per identity and segment for staged releases and A/B tests."
+}
