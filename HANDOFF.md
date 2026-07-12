@@ -57,14 +57,17 @@ wedge(agent handback/approval audit)는 실증 완료 상태이며(내부 pilot 
 수동 검토보다 엄격·false-admit 방향 불일치 0), 연결 킷도 준비됐다:
 `helix.py audit-handback` + `docs/WEDGE-RUNBOOK.md` + `examples/wedge/` + sealed metrics.
 
-**자율 진행 가능(공개 전에도):**
-- pilot 운영 프로토콜 문서 — 목표(주 20 real decisions 또는 검토시간 50% 절감,
-  false-admit ≤1%, 8주 판정), 참가 절차, 측정·집계 방법.
-- 외부 참가자 온보딩 가이드 — packet 작성부터 판정·replay·appeal까지.
-- pilot 결과 집계 자동화(여러 참가자 ledger → `wedge_metrics` 통합 리포트).
+**자율 준비 완료 (2026-07-12):**
+- pilot 운영 프로토콜: `docs/PILOT-PROTOCOL.md` — 목표(주 20 real decisions 또는 검토시간
+  50% 절감, false-admit ≤1%, replay 100%, 3곳 중 2곳 retention, 8주), 온보딩(2h), **역할
+  분리**(참가자가 packet 작성·판정·false-admit 확인 → 내부 pilot의 "동일 주체" 한계 해소),
+  kill/downgrade 조건.
+- 집계 도구: `core/helix_wedge_metrics.py:aggregate_pilot` + `scripts/evaluate/pilot_report.py`
+  — 다중 참가자 ledger를 sealed T4 리포트로 통합, gate 판정. ledger로 알 수 없는 신호
+  (false-admit·retention·review time)는 sidecar 명시 주입, 없으면 `unmeasured` 정직 표기.
 
-**정욱님 승인 필요:**
-- repo/kit 공개 범위(commit/push — ①과 연결), 외부 workflow 3개 모집, 8주 운영 개시.
+**정욱님 승인 필요 (개시):**
+- repo/kit 공개 범위, 외부 workflow 3개 모집, 8주 운영 개시. 승인 즉시 시작 가능.
 
 T4 gate 통과 시 "Governed Internal System"에서 **"Admission Plane(제품)"**으로 상향 가능.
 

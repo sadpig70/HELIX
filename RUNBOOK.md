@@ -92,6 +92,10 @@ python core/helix_evidence.py examples/constitution/evidence-r1-local-artifact.j
 #   운영 절차·판정 해석·exit code는 docs/WEDGE-RUNBOOK.md (샘플: examples/wedge/)
 python helix.py audit-handback --packet examples/wedge/valid-packet.json
 
+# T4 external pilot: 다중 참가자 wedge ledger를 하나의 sealed T4 리포트로 집계·판정.
+#   운영 프로토콜(참가·측정·gate·kill 조건)은 docs/PILOT-PROTOCOL.md
+python scripts/evaluate/pilot_report.py --config pilot.json [--out report.json]
+
 # ★ 루프 폐쇄(write, actuator): 구현된 winner를 ledger에 기록 + 코퍼스로 환류(염기쌍). idempotent.
 python helix.py close-loop --winner winner.json --ledger .helix/ledger.json --corpus .helix/corpus.json
 #   winner.json = {"winner": {...}, "source_chain": {...}, "implementation": {project_name,...}}

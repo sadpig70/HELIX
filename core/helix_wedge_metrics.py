@@ -153,7 +153,118 @@ def wedge_metrics(root: str, ledger_rel: str, appeals: list = None,
     return _seal(report)
 
 
+PILOT_SCHEMA_ID = "helix-pilot-report/1.0"
+
+
+def aggregate_pilot(root: str, participant_ledgers: dict, period: dict = None,
+                    sidecar: dict = None) -> dict:
+    """Combine per-participant wedge ledgers into one T4 pilot report.
+
+    ``participant_ledgers``: {participant_id: ledger_rel}. Each participant's
+    numbers are recomputed from their own sealed ledger (wedge_metrics), then
+    summed. ``sidecar`` carries the metrics that need real-world signals
+    outside sealed receipts — kept explicit and separate:
+      {"false_admits": {pid: count}, "retained": [pid, ...],
+       "manual_review_baseline_minutes": {...}, "wedge_review_minutes": {...}}
+    False-admits and adoption cannot be derived from the ledger (a ledger only
+    knows the decision at admission time), so they are honestly marked
+    unmeasured when the sidecar omits them.
+
+    T4 gate (process plan §P5): weekly >=20 real decisions OR review time 50%
+    reduction; false-admit <=1%; replay 100%; >=2 of >=3 external participants
+    retained. Each criterion reports pass/None(unmeasured); the overall verdict
+    is "passed" only when every measured criterion passes AND none required is
+    unmeasured.
+    """
+    sidecar = sidecar or {}
+    per_participant = {}
+    combined_decisions = 0
+    combined_admit = 0
+    combined_prevented = 0
+    replay_ok = True
+    problems = []
+    for pid in sorted(participant_ledgers):
+        m = wedge_metrics(root, participant_ledgers[pid])
+        per_participant[pid] = m
+        combined_decisions += m["decisions_total"]
+        combined_admit += m["by_admission"]["ADMIT"]
+        combined_prevented += m["prevented_invalid_handbacks"]
+        if not m["metrics_valid"]:
+            problems.append(f"{pid}: ledger chain invalid")
+        if m["replay"]["total"] and m["replay"]["rate"] != 1.0:
+            replay_ok = False
+            problems.append(f"{pid}: replay rate {m['replay']['rate']} < 1.0")
+
+    participants = len(participant_ledgers)
+    weeks = (period or {}).get("weeks")
+    weekly_rate = (combined_decisions / weeks) if weeks else None
+
+    false_admits = sidecar.get("false_admits")
+    false_admit_rate = None
+    if false_admits is not None and combined_admit:
+        false_admit_rate = sum(false_admits.values()) / combined_admit
+    elif false_admits is not None:
+        false_admit_rate = 0.0
+
+    retained = sidecar.get("retained")
+    retained_count = len(retained) if retained is not None else None
+
+    baseline = sidecar.get("manual_review_baseline_minutes")
+    wedge_min = sidecar.get("wedge_review_minutes")
+    review_reduction = None
+    if baseline and wedge_min:
+        b = sum(baseline.values())
+        w = sum(wedge_min.values())
+        review_reduction = (b - w) / b if b else None
+
+    def gate(measured, ok):
+        return None if not measured else bool(ok)
+
+    throughput_pass = gate(
+        weekly_rate is not None or review_reduction is not None,
+        (weekly_rate is not None and weekly_rate >= 20)
+        or (review_reduction is not None and review_reduction >= 0.5))
+    false_admit_pass = gate(false_admit_rate is not None,
+                            false_admit_rate is not None and false_admit_rate <= 0.01)
+    replay_pass = replay_ok
+    adoption_pass = gate(retained_count is not None,
+                         participants >= 3 and (retained_count or 0) >= 2)
+
+    required = [throughput_pass, false_admit_pass, replay_pass, adoption_pass]
+    verdict = ("passed" if all(x is True for x in required)
+               else ("failed" if any(x is False for x in required)
+                     else "incomplete"))
+
+    return _seal({
+        "schema": PILOT_SCHEMA_ID,
+        "participants": participants,
+        "participant_ids": sorted(participant_ledgers),
+        "combined": {
+            "decisions_total": combined_decisions,
+            "admitted": combined_admit,
+            "prevented_invalid_handbacks": combined_prevented,
+            "weekly_rate": weekly_rate,
+            "period": period or {"weeks": None},
+        },
+        "north_star": {"metric": "weekly_real_admission_decisions",
+                       "value": weekly_rate},
+        "t4_gate": {
+            "throughput": {"pass": throughput_pass, "weekly_rate": weekly_rate,
+                           "review_time_reduction": review_reduction,
+                           "target": ">=20/week or >=50% review-time cut"},
+            "false_admit": {"pass": false_admit_pass, "rate": false_admit_rate,
+                            "target": "<=0.01"},
+            "replay": {"pass": replay_pass, "target": "100%"},
+            "adoption": {"pass": adoption_pass, "participants": participants,
+                         "retained": retained_count,
+                         "target": ">=3 external, >=2 retained"},
+            "verdict": verdict,
+        },
+        "per_participant": per_participant,
+        "problems": sorted(problems),
+    })
+
+
 if __name__ == "__main__":
-    print("library module — wedge_metrics(root, ledger_rel, appeals, "
-          "overrides, period)")
+    print("library module — wedge_metrics(...) / aggregate_pilot(...)")
     sys.exit(2)
