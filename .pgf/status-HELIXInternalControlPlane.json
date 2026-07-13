@@ -1,0 +1,16 @@
+{
+  "project": "HELIXInternalControlPlane",
+  "phase": "COMPLETE",
+  "policy_version": "2.5",
+  "nodes": {
+    "TrustClosure": {"status": "done", "outputs": ["core/helix_provisioning.py", "engines/exploit/adapter.py", "core/helix_stop_token.py", "core/helix_actuator.py"]},
+    "TransactionKernel": {"status": "done", "outputs": ["core/helix_transaction.py", "schemas/helix-transaction.schema.json"]},
+    "TransactionRuntime": {"status": "done", "outputs": ["engines/transaction_store.py", "scripts/control_transaction.py"]},
+    "CondenseAcceptance": {"status": "done", "outputs": ["core/helix_condense_acceptance.py"]},
+    "PlatformComposition": {"status": "done", "outputs": ["core/helix_platform_composition.py"]},
+    "InternalMetrics": {"status": "done", "outputs": ["core/helix_internal_metrics.py"]},
+    "Verification": {"status": "done", "outputs": ["tests/test_internal_control_plane.py", ".pgf/VERIFY-HELIXInternalControlPlane.md"]}
+  },
+  "summary": {"done": 7, "in_progress": 0, "designing": 0, "blocked": 0, "total": 7},
+  "review": {"status": "APPROVED", "critical": 0, "high": 0}
+}

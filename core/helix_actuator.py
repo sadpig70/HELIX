@@ -93,25 +93,39 @@ def append_actuation_ledger(root: str, ledger_rel: str, kind: str,
     a write-capable adversary who rebuilds the chain cannot forge it without
     the key. Without a key the entry keeps the unkeyed seal (integrity only).
     """
-    entries = read_actuation_ledger(root, ledger_rel)
-    parent = entries[-1]["entry_sha256"] if entries else None
-    entry = {
-        "schema": LEDGER_SCHEMA_ID,
-        "seq": len(entries),
-        "kind": kind,
-        "request_id": request_id,
-        "parent_sha256": parent,
-        "receipt": receipt,
-    }
-    entry["entry_sha256"] = _entry_seal(entry)
-    if signing_key is not None:
-        entry["entry_hmac"] = sign_bytes(
-            signing_key, canonical_json_bytes(_entry_body(entry)))
     full = _full(root, ledger_rel)
     os.makedirs(os.path.dirname(full), exist_ok=True)
-    with open(full, "a", encoding="utf-8", newline="\n") as f:
-        f.write(json.dumps(entry, ensure_ascii=False, sort_keys=True) + "\n")
-    return entry
+    lock_path = full + ".lock"
+    try:
+        lock_fd = os.open(lock_path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    except FileExistsError as e:
+        raise RuntimeError(f"actuation ledger is locked: {ledger_rel}") from e
+    try:
+        os.close(lock_fd)
+        entries = read_actuation_ledger(root, ledger_rel)
+        parent = entries[-1]["entry_sha256"] if entries else None
+        entry = {
+            "schema": LEDGER_SCHEMA_ID,
+            "seq": len(entries),
+            "kind": kind,
+            "request_id": request_id,
+            "parent_sha256": parent,
+            "receipt": receipt,
+        }
+        entry["entry_sha256"] = _entry_seal(entry)
+        if signing_key is not None:
+            entry["entry_hmac"] = sign_bytes(
+                signing_key, canonical_json_bytes(_entry_body(entry)))
+        with open(full, "a", encoding="utf-8", newline="\n") as f:
+            f.write(json.dumps(entry, ensure_ascii=False, sort_keys=True) + "\n")
+            f.flush()
+            os.fsync(f.fileno())
+        return entry
+    finally:
+        try:
+            os.unlink(lock_path)
+        except FileNotFoundError:
+            pass
 
 
 def verify_actuation_ledger(root: str, ledger_rel: str, signing_key=None) -> list:
@@ -220,7 +234,9 @@ def _execute_effects(root: str, effects: list) -> None:
 def run_admission(root: str, request: dict, current_state_receipt_hash: str,
                   ledger_rel: str, snapshot_dir: str,
                   stop_tokens: list = None,
-                  resume_receipts: list = None, signing_key=None) -> dict:
+                  resume_receipts: list = None, signing_key=None,
+                  stop_token_signing_key=None,
+                  resume_signing_key=None) -> dict:
     """One full propose->gate->execute->handback->ledger round, fail-closed.
 
     request = {request_id, intent, evidence_manifest, approvals,
@@ -238,7 +254,9 @@ def run_admission(root: str, request: dict, current_state_receipt_hash: str,
     gate = authorize(root, intent, request.get("evidence_manifest"),
                      request.get("approvals") or [],
                      current_state_receipt_hash, stop_tokens=stop_tokens,
-                     resume_receipts=resume_receipts)
+                     resume_receipts=resume_receipts,
+                     stop_token_signing_key=stop_token_signing_key,
+                     resume_signing_key=resume_signing_key)
     ledger("gate", gate)
     if gate["decision"] not in ("ALLOW", "SANDBOX"):
         return {"request_id": request_id, "executed": False, "stage": "gate",
@@ -267,7 +285,9 @@ def run_admission(root: str, request: dict, current_state_receipt_hash: str,
     guard = guard_side_effects(root, intent, gate, plan,
                                current_state_receipt_hash,
                                stop_tokens=stop_tokens,
-                               resume_receipts=resume_receipts)
+                               resume_receipts=resume_receipts,
+                               stop_token_signing_key=stop_token_signing_key,
+                               resume_signing_key=resume_signing_key)
     ledger("guard", guard)
     if not guard["cleared"]:
         return {"request_id": request_id, "executed": False, "stage": "guard",

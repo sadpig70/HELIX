@@ -146,12 +146,12 @@ python core/helix_fingerprint.py source ADPR ReleaseMesh PnR
 
 ```text
 === HELIX turn ===
-  unified ledger: 2 entries (explore=1, exploit=1)
+  unified ledger: 1 entries (explore=1, exploit=0)
   diversity pool: 7 items | triggered=False (sim=lexical, breaches=1)
   latest explore winner: IDEA-018 "Time-Box Automation Enforcer" -> already_consumed=False
       lineage: IDEA-018 -> INS-L10-007 -> EVX-... -> CIX-... -> IDX-... -> TCX-... -> v2
   base-pairing (explore->corpus): AgentPACT
-  NEXT ACTION: RUN_EXPLOIT  (fresh assets accumulated -> recombine (compound))
+  NEXT ACTION: RUN_EXPLORE  (corpus immature -> scan world for fresh signal)
 ```
 
 ## 하위 네이밍

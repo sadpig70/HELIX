@@ -20,10 +20,9 @@ entries. It expires automatically when the state receipt moves (same drift
 semantics as approvals) and it never upgrades thin/breach. Without a live
 flag, absent is unconditionally QUARANTINE.
 
-This module classifies and seals receipts; it does not change the existing
-ledger admission path (engines/exploit registry_to_ledger keeps its
-documented backward-compatible behavior until the actuator migration in
-P4_5 switches consumption over to these classes).
+This module classifies and seals receipts. ``engines/exploit.registry_to_ledger``
+uses these classes directly, so absent/thin/breach entries cannot enter the
+consumed ledger. The migration flag is the only explicit legacy exception.
 
 Deterministic, stdlib-only: no clock, network, subprocess, randomness, or AI.
 """

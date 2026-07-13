@@ -64,7 +64,9 @@ def verify_guard_receipt_seal(receipt: dict) -> bool:
 def guard_side_effects(root: str, intent: dict, gate_result: dict, plan: dict,
                        current_state_receipt_hash: str,
                        stop_tokens: list = None,
-                       resume_receipts: list = None) -> dict:
+                       resume_receipts: list = None,
+                       stop_token_signing_key=None,
+                       resume_signing_key=None) -> dict:
     """Judge whether a sealed plan may execute RIGHT NOW; return a sealed
     guard receipt with ``cleared`` and classified problems. Never executes."""
     problems = list(verify_execution_plan(root, plan, intent, gate_result,
@@ -83,7 +85,8 @@ def guard_side_effects(root: str, intent: dict, gate_result: dict, plan: dict,
             f"{str(current_state_receipt_hash)[:16]}… (state drift revokes "
             "plan authority)")
 
-    blocking = blocking_stops(intent, stop_tokens or [], resume_receipts or [])
+    blocking = blocking_stops(intent, stop_tokens or [], resume_receipts or [],
+                              stop_token_signing_key, resume_signing_key)
     for item in blocking:
         problems.append(f"stopped: token {item['token_id']} ({item['reason']}) "
                         "blocks this scope at execution time")

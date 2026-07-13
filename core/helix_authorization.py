@@ -85,7 +85,8 @@ def _thin_evidence(manifest: dict) -> bool:
 
 def authorize(root: str, intent: dict, evidence_manifest,
               approvals: list, current_state_receipt_hash: str,
-              stop_tokens: list = None, resume_receipts: list = None) -> dict:
+              stop_tokens: list = None, resume_receipts: list = None,
+              stop_token_signing_key=None, resume_signing_key=None) -> dict:
     """Judge one proposed action; return a sealed GateResult.
 
     Active stop tokens (core/helix_stop_token) are checked right after the
@@ -113,7 +114,8 @@ def authorize(root: str, intent: dict, evidence_manifest,
     if intent_problems:
         return decide("DENY", [f"intent: {p}" for p in intent_problems])
 
-    blocking = blocking_stops(intent, stop_tokens or [], resume_receipts or [])
+    blocking = blocking_stops(intent, stop_tokens or [], resume_receipts or [],
+                              stop_token_signing_key, resume_signing_key)
     if blocking:
         return decide("DENY", [
             f"stopped: token {item['token_id']} ({item['reason']}) blocks "

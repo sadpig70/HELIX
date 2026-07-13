@@ -371,11 +371,9 @@ def validate_determinism_boundary(root: str) -> list:
 
 
 def _sha256_file(path: str) -> str:
-    h = hashlib.sha256()
+    # Kernel locks describe source bytes, independent of Git checkout EOL mode.
     with open(path, "rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
+        return hashlib.sha256(f.read().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def _iter_kernel_files(base: str, kernel_dirs: list):
@@ -703,11 +701,11 @@ def _main(argv) -> int:
     print(f"  - forward-predict gate: {FORWARD_PREDICT_GATE}")
     problems = validate_project(root)
     if problems:
-        print("\nFAIL — problems:")
+        print("\nFAIL - problems:")
         for p in problems:
             print(f"  * {p}")
         return 1
-    print("\nPASS — HELIX structure + example artifacts consistent.")
+    print("\nPASS - HELIX structure + example artifacts consistent.")
     return 0
 
 

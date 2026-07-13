@@ -144,13 +144,31 @@ python -m unittest discover -s tests -q
 |---|---|
 | `valid` / `thin` | consumed에 기록 + entry에 `handback_verdict` 표시 |
 | `breach` | consumed에서 **제외** (구현이 handback 검증 실패) |
-| packet 없음 | 기존 동작 유지 (backward compatible) |
+| packet/verdict 없음 | `QUARANTINE`; consumed 제외 (live migration flag만 예외) |
 
 - **persisted 우선**: writer가 영속화한 `handback_verdict`는 live packet보다 우선 (writer 권위).
 - **결정론 불변**: ActionHandbackVerifier는 순수 stdlib → HELIX 결정론 경계 위반 없음.
 - **게이트 요약**: `status` 출력에서 `checked > 0`일 때만 `handback gate:` 라인 표시.
 
 ## 4.5 자율 실행 (문서만 읽고 풀사이클·연속 폐루프)
+
+### Governed internal transaction
+
+내부 변경의 상태를 하나의 sealed transaction으로 영속화한다. 이벤트 ID 재사용은 멱등
+no-op이며 불법 상태 전이는 fail-closed한다.
+
+```bash
+python scripts/control_transaction.py init --path .helix/transactions/TX-1.json \
+  --id TX-1 --intent-digest <intent-sha256>
+python scripts/control_transaction.py event --path .helix/transactions/TX-1.json \
+  --event-id E-1 --event authorize --receipt-sha256 <gate-sha256>
+python scripts/control_transaction.py status --path .helix/transactions/TX-1.json
+python scripts/control_transaction.py verify --path .helix/transactions/TX-1.json
+```
+
+합법 이벤트 순서는 `authorize -> apply -> applied -> verify -> verified -> handback -> replay`다.
+실패 시 `block`, `rollback -> rolled_back`, `quarantine` 경로만 허용한다. transaction 파일은
+exclusive lock과 atomic replace로 저장된다.
 
 - **통합 설계도(pg/pgf)**: `docs/DESIGN-HELIX-UNIFIED-PIPELINE.pg.md` — aox·recreate **전 기능을 단일 폐루프로
   파이프라인**한 Gantree+PPR 설계(함수 커버리지 매트릭스 포함). *무엇을 어떻게 파이프라인하는가*.

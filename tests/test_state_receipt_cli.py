@@ -56,7 +56,7 @@ class TestStateReceiptCli(unittest.TestCase):
         receipt = json.loads(buf.getvalue())
         self.assertEqual(validate_against_schema(receipt, SCHEMA), [])
         self.assertTrue(verify_receipt_hash(receipt))
-        self.assertEqual(receipt["next_action"]["action"], "RUN_EXPLOIT")
+        self.assertEqual(receipt["next_action"]["action"], "RUN_EXPLORE")
         # Default reports carry no sealed hash, so none can be fresh. Whether a
         # given report is "unverifiable" (present but unbound, e.g. local
         # _workspace) or "missing" (absent, e.g. CI) is environment-dependent;

@@ -1,9 +1,11 @@
 # HANDOFF — HELIX
 
-> 갱신: 2026-07-13
+> 갱신: 2026-07-14
 > **현재 상태:** Condense(5 platforms·56 packs) + HELIXDirection(Deterministic Admission
 > Control Plane) + persona-trial 파생 security 강화 + **provenance 사다리 3층 + T4 verdict
-> 판정 기계 + pilot provenance fail-closed 경계**. **695 tests OK**, `helix_validate` PASS.
+> 판정 기계 + pilot provenance fail-closed 경계**. **698 tests OK**, `helix_validate` PASS.
+> **HELIXInternalControlPlane 구현 완료:** fail-closed exploit consumption, signed stop/resume,
+> serialized ledger, governed transaction, deterministic Condense acceptance, 5-stage composition.
 > **영속화 완료: PR #12~#23 전부 main merged (CI green).** admission plane(P0~P7) ·
 > line-ending fix · grounding gate + persona adoption trial · wedge security 4건(정직성 정정
 > · evidence-truth 검증 · keyed HMAC signing · external anchoring) · wedge operations 계약(#18)
@@ -50,7 +52,48 @@ plane을 내부 runtime으로 보유. generator 주장은 internal corpus router
 | **T4** Utility | **NOT JUDGED** | 내부 pilot 10 decisions(prevented 4, replay 10/10)은 내부 실증; 외부 표본 없음 |
 | T5 Federation | 진입 불가 | 조건(T1~T4 통과 + 외부 사용자 2) 미충족 |
 
+### HELIXInternalControlPlane v1 (2026-07-14 완료)
+
+`_workspace/HELIX-FUTURE-DIRECTION.md`의 내부 발전 방향을 PGF full-cycle로 구현했다.
+
+- exploit consumption을 fail-closed로 전환: `ADMIT`만 consumed, absent=`QUARANTINE`,
+  thin=`SANDBOX_ONLY`, breach=`EXCLUDED`; live state-anchored migration만 absent 예외
+- `helix_transaction`: 합법 상태 전이, event-id 멱등성, history replay, optional HMAC
+- `transaction_store` + `control_transaction.py`: exclusive lock, atomic checkpoint,
+  `init/event/record-result/status/verify`
+- stop/resume HMAC key를 authorization과 execution guard까지 전달
+- Condense proposal은 probe/parity file hash + zero-kernel-change 없이 `ACCEPT` 불가
+- 5-stage composition 계약: `route -> clear -> certify -> attest -> score`
+- internal metrics는 `is_t4_utility=false`, `is_product_claim=false` 고정
+- CI가 AHV + 5개 `-stra`를 checkout해 parity/router/kernel 경로를 실제 실행
+- kernel lock은 LF canonical source hash로 통일해 Windows/Linux checkout 차이를 제거
+
+PGF evidence: `.pgf/{DESIGN,REVIEW,WORKPLAN,VERIFY,status}-HELIXInternalControlPlane.*`.
+최종 검증: **698 tests OK (1 conditional skip)**, `helix_validate` PASS. 남은 skip은 독립
+`PolicyDriftGate` 미provision 조건이다.
+
 ## 2. 해야 할 작업 (우선순위 — 내 판단)
+
+### ⓪ HELIXInternalControlPlane v1 — 완료 (2026-07-14)
+
+설계·검토·구현·회귀 검증 완료. 현재 v1은 deterministic control contract와 durable state를
+제공한다. AI pack 생성기나 5개 플랫폼의 실제 호출 어댑터를 구현한 것은 아니다.
+
+### 다음 작업 (외부 pilot 제외)
+
+1. **Crash-safe staged orchestrator** — 현재 `record-result` 사후 bridge를
+   authorize/apply/verify/handback 각 단계 전후 atomic checkpoint로 승격. 중단 후 실제 actuator를
+   중복 side effect 없이 재개하는 것이 최우선.
+2. **Platform execution adapters** — route/clear/certify/attest/score typed receipt 계약을
+   실제 5개 플랫폼 호출과 연결하되, 실패 후 후속 stage 실행 0을 증명.
+3. **Condense meta-layer producer** — AI가 machine/pack/parity 후보를 생성하고 deterministic
+   acceptance가 승인한 결과만 corpus mutation transaction으로 넘기도록 연결.
+4. **Signing policy hardening** — 현재 optional인 transaction/stop/resume/ledger HMAC을 운영
+   profile에서 mandatory로 만들고 key rotation과 external anchor binding을 정의.
+5. **Internal metrics wiring** — verified transaction ledger에서 block/rollback/replay/stale/cost를
+   자동 집계. T4/product claim과의 분리는 유지.
+6. **Conditional test closure** — 독립 `PolicyDriftGate`를 CI에 provision할지, 해당 테스트를
+   명시적 integration job으로 분리할지 결정해 남은 skip 1건을 처리.
 
 ### ① commit 영속화 + main merge — 완료 (2026-07-12)
 
@@ -166,6 +209,9 @@ grounding gate로 강화됨.
 - **seed**: `seed/evaluation/` (synthetic + T1-LIVE-001 실 cohort — 30 unseen, pinned SHA)
 - **scripts**: `scripts/evaluate/` (synthetic builder · T1 collector · blind trial ·
   shadow replay · pilot_report); `engines/exploit/adapter.py`에 `registry_admissions` 추가
+- **Internal Control Plane v1**: core 5종(`helix_{transaction,condense_acceptance,
+  platform_composition,internal_metrics,provisioning}`) · engine 1종(`transaction_store`) ·
+  schema 1종 · CLI `control_transaction.py` · PGF 5종 · 전체 **698 tests**
 
 ## 4. Evidence 색인 (`_workspace/helix-direction/`, gitignored durable)
 
@@ -185,15 +231,16 @@ grounding gate로 강화됨.
 ## 6. 알려진 한계 / 이탈 (은폐 없음)
 
 1. NoveltyTrial 실측(구현·환원 ≥3건) 미수행 — T1 재도전 조건(단 T1은 구조적 한계로 종결).
-2. actuation ledger는 keyed HMAC signing + external anchoring **구현**(opt-in). stop token 등
-   나머지 seal은 아직 unkeyed — 필요 시 동일 signing 패턴 적용 가능(backlog).
-3. 기존 exploit ledger의 fail-open 소비 경로가 migration flag 유예 하 잔존.
+2. actuation ledger와 transaction/stop/resume은 keyed HMAC을 **구현**했으나 opt-in이다.
+   운영 profile의 mandatory signing, key rotation, external anchor binding은 후속 작업이다.
+3. 기존 exploit ledger의 fail-open 소비 경로는 `HELIXInternalControlPlane`에서 제거됨.
+   packet/verdict 부재는 `QUARANTINE`, thin은 `SANDBOX_ONLY`, breach는 `EXCLUDED`이며
+   current state receipt에 봉인된 live migration flag만 absent legacy를 임시 admit한다.
 4. wedge latency/cost는 sidecar 설계만 (결정론 경계 준수의 의도적 선택).
 5. FederationPlane 미구현 — DESIGN의 조건부 gate가 의도한 blocked.
-6. wedge 운영 backlog 3건은 `docs/WEDGE-OPERATIONS.md`에 계약으로 명시(코드 버그 아님):
-   AHV는 명확 실패로 fail-closed, ledger 동시성은 single-writer 계약 + verify 탐지(실증),
-   컴플라이언스는 evidence 제공(인증 주장 없음). 다중 writer 직렬화 어댑터는 결정론 core
-   밖 backlog로 잔존.
+6. wedge 운영 계약은 `docs/WEDGE-OPERATIONS.md`에 명시: AHV 부재는 fail-closed,
+   로컬 ledger append는 exclusive lock으로 직렬화, 컴플라이언스는 evidence만 제공하고 인증을
+   주장하지 않는다. distributed filesystem/다중 host writer는 외부 queue가 필요하다.
 7. 페르소나 trial provenance 사다리 3/3 코드/계약 완성: simulated_unverified ·
    fidelity_attested(실제 receipt 1건) · real_owned_stakes(hard independence, 위조불가).
    앞 둘은 is_t4_utility=false. real_owned_stakes만 utility 신호이며 위조불가 계약은 완성됐으나
@@ -220,7 +267,7 @@ nested 19 repos는 무변경(clean). `_workspace/`는 gitignored durable evidenc
 
 ## 9. 한 줄 인수인계
 
-> **HELIXDirection이 GOVERNED INTERNAL SYSTEM으로 종결됐고(695 tests·sealed evidence,
+> **HELIXDirection이 GOVERNED INTERNAL SYSTEM으로 종결됐고(698 tests·sealed evidence,
 > PR #12~#23 main merged), Condense 5 플랫폼 라인도 유지된다. T1 강등은 구조적 한계로
 > 확정, T4는 미판정. 페르소나 conditional-adoption trial이 wedge security 4건을 발견·해소
 > (keyed signing + external anchoring 포함)하고, provenance 사다리 3/3 칸(simulated ·

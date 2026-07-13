@@ -36,39 +36,54 @@ import sys
 
 try:  # package import (python -m core.helix_stop_token) or library use
     from .helix_holdout import canonical_json_bytes
+    from .helix_signing import sign_bytes, verify_signature
 except ImportError:  # direct script run
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     from core.helix_holdout import canonical_json_bytes
+    from core.helix_signing import sign_bytes, verify_signature
 
 STOP_SCHEMA_ID = "helix-stop-token/1.0"
 RESUME_SCHEMA_ID = "helix-resume-receipt/1.0"
 SCOPE_KINDS = ("global", "path_prefix")
 
 
-def _seal(doc: dict, seal_key: str) -> dict:
-    sealed = dict(doc)
-    sealed.pop(seal_key, None)
+def _seal(doc: dict, seal_key: str, signing_key=None,
+          hmac_key: str = None) -> dict:
+    sealed = {k: v for k, v in doc.items() if k not in (seal_key, hmac_key)}
     sealed[seal_key] = hashlib.sha256(canonical_json_bytes(sealed)).hexdigest()
+    if signing_key is not None and hmac_key:
+        sealed[hmac_key] = sign_bytes(signing_key, canonical_json_bytes(
+            {k: v for k, v in sealed.items() if k != hmac_key}))
     return sealed
 
 
-def _seal_ok(doc: dict, seal_key: str) -> bool:
+def _seal_ok(doc: dict, seal_key: str, signing_key=None,
+             hmac_key: str = None) -> bool:
     expected = doc.get(seal_key)
-    body = {k: v for k, v in doc.items() if k != seal_key}
-    return isinstance(expected, str) and expected == hashlib.sha256(
+    body = {k: v for k, v in doc.items() if k not in (seal_key, hmac_key)}
+    digest_ok = isinstance(expected, str) and expected == hashlib.sha256(
         canonical_json_bytes(body)).hexdigest()
+    if not digest_ok:
+        return False
+    if doc.get(hmac_key) is not None:
+        if signing_key is None:
+            return False
+        signed_body = {k: v for k, v in doc.items() if k != hmac_key}
+        return verify_signature(signing_key, canonical_json_bytes(signed_body),
+                                doc.get(hmac_key))
+    return signing_key is None
 
 
-def verify_stop_token_seal(token: dict) -> bool:
-    return _seal_ok(token, "token_sha256")
+def verify_stop_token_seal(token: dict, signing_key=None) -> bool:
+    return _seal_ok(token, "token_sha256", signing_key, "token_hmac")
 
 
-def verify_resume_receipt_seal(receipt: dict) -> bool:
-    return _seal_ok(receipt, "receipt_sha256")
+def verify_resume_receipt_seal(receipt: dict, signing_key=None) -> bool:
+    return _seal_ok(receipt, "receipt_sha256", signing_key, "receipt_hmac")
 
 
 def issue_stop_token(token_id: str, issuer: dict, reason: str, scope: dict,
-                     state_receipt_hash: str) -> dict:
+                     state_receipt_hash: str, signing_key=None) -> dict:
     """Issue one immutable sealed stop token."""
     if not (token_id or "").strip():
         raise ValueError("token_id must be non-empty")
@@ -95,19 +110,20 @@ def issue_stop_token(token_id: str, issuer: dict, reason: str, scope: dict,
         "reason": reason,
         "scope": {"kind": kind, "prefixes": sorted(prefixes) if prefixes else None},
         "anchor": {"state_receipt_hash": state_receipt_hash},
-    }, "token_sha256")
+    }, "token_sha256", signing_key, "token_hmac")
 
 
 def issue_resume_receipt(token: dict, approvals: list, reason: str,
                          state_receipt_hash: str,
-                         required_approvals: int = 1) -> dict:
+                         required_approvals: int = 1, token_signing_key=None,
+                         signing_key=None) -> dict:
     """Approve lifting one stop; chained to the token's seal, fail-closed.
 
     Refuses: a token whose seal is broken (restore the original first), a
     reason-less resume, and any approval set containing the token issuer,
     a duplicate, a non-human, a blank id, or a stale/missing anchor.
     """
-    if not verify_stop_token_seal(token):
+    if not verify_stop_token_seal(token, token_signing_key):
         raise ValueError("stop token seal is broken; a tampered stop cannot "
                          "be resumed")
     if not (reason or "").strip():
@@ -142,12 +158,15 @@ def issue_resume_receipt(token: dict, approvals: list, reason: str,
         "approvals": [{"approver_id": a["approver_id"], "kind": "human",
                        "anchor": {"state_receipt_hash": state_receipt_hash}}
                       for a in approvals],
-    }, "receipt_sha256")
+    }, "receipt_sha256", signing_key, "receipt_hmac")
 
 
-def _resume_lifts(token: dict, receipt: dict) -> bool:
+def _resume_lifts(token: dict, receipt: dict, token_signing_key=None,
+                  resume_signing_key=None) -> bool:
     """A resume lifts a stop only if its own chain and rules re-verify."""
-    if not verify_resume_receipt_seal(receipt):
+    if not verify_stop_token_seal(token, token_signing_key):
+        return False
+    if not verify_resume_receipt_seal(receipt, resume_signing_key):
         return False
     if receipt.get("stop_token_sha256") != token.get("token_sha256"):
         return False
@@ -164,14 +183,16 @@ def _resume_lifts(token: dict, receipt: dict) -> bool:
     return bool(seen)
 
 
-def active_stops(tokens: list, resume_receipts: list) -> list:
+def active_stops(tokens: list, resume_receipts: list, token_signing_key=None,
+                 resume_signing_key=None) -> list:
     """Tokens still in force: every token without a verifiable resume.
 
     A token with a broken seal stays active — tampering must never lift a
     stop — and can only be resumed after the original token is restored.
     """
     return [token for token in tokens or []
-            if not any(_resume_lifts(token, receipt)
+            if not any(_resume_lifts(token, receipt, token_signing_key,
+                                     resume_signing_key)
                        for receipt in resume_receipts or [])]
 
 
@@ -180,7 +201,8 @@ def _has_side_effects(intent: dict) -> bool:
     return bool(scope["write_paths"]) or scope["remote_mutation"] or scope["publish"]
 
 
-def blocking_stops(intent: dict, tokens: list, resume_receipts: list) -> list:
+def blocking_stops(intent: dict, tokens: list, resume_receipts: list,
+                   token_signing_key=None, resume_signing_key=None) -> list:
     """Active stop tokens whose scope blocks this intent's side effects.
 
     Read-only intents are never blocked. Returns [{token_id, token_sha256,
@@ -191,7 +213,8 @@ def blocking_stops(intent: dict, tokens: list, resume_receipts: list) -> list:
         return []
     write_paths = [p.replace("\\", "/") for p in intent["scope"]["write_paths"]]
     blocking = []
-    for token in active_stops(tokens, resume_receipts):
+    for token in active_stops(tokens, resume_receipts, token_signing_key,
+                              resume_signing_key):
         scope = token["scope"]
         if scope["kind"] == "global":
             hit = True

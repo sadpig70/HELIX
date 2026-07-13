@@ -137,15 +137,17 @@ class TestAdapterIntegration(unittest.TestCase):
                          "SANDBOX_ONLY")
         self.assertEqual(result["summary"]["QUARANTINE"], 1)
 
-    def test_existing_ledger_path_is_unchanged(self):
-        # The documented backward-compatible fail-open ledger behavior stays
-        # as-is until P4_5 switches consumption to admission classes: the
-        # absent-verdict legacy entry is still consumed, with no gate count.
+    def test_ledger_path_is_now_fail_closed(self):
         ledger = registry_to_ledger(self.registry)
         titles = [e["title"] for e in ledger["consumed"]]
-        self.assertIn("WithheldActionWitness", titles)
+        self.assertNotIn("WithheldActionWitness", titles)
         self.assertEqual(ledger["_handback_gate"],
-                         {"checked": 0, "passed": 0, "excluded": 0})
+                         {"checked": 0, "passed": 0, "excluded": 1})
+
+    def test_ledger_migration_requires_current_anchor(self):
+        ledger = registry_to_ledger(self.registry, migration_flag(), CURRENT)
+        self.assertEqual([e["title"] for e in ledger["consumed"]],
+                         ["WithheldActionWitness"])
 
 
 if __name__ == "__main__":

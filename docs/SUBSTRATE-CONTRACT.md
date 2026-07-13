@@ -119,7 +119,9 @@ admit/exclude를 결정한다.
 |---|---|---|
 | `valid` / `thin` | admitted + `handback_verdict` 표시 | passed++ |
 | `breach` | excluded | excluded++ |
-| packet/verdict 없음 | admitted (변경 없음) | 미카운트 |
+| packet/verdict 없음 | quarantined; live migration flag만 예외 | excluded++ |
 
 **결정론 보장**: ActionHandbackVerifier는 순수 stdlib (시계·네트워크·AI 없음) → §0 결정론 규약 준수.
-ledger와 마찬가지로 품질 인증이 아니라 **admit/exclude 게이트**다.
+ledger와 마찬가지로 품질 인증이 아니라 **admit/exclude 게이트**다. `thin`은
+`SANDBOX_ONLY`, `breach`는 `EXCLUDED`, 증거 부재는 `QUARANTINE`이며 consumed에는
+`ADMIT`만 들어간다.

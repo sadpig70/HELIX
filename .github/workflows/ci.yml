@@ -13,6 +13,31 @@ jobs:
         with:
           repository: sadpig70/ActionHandbackVerifier
           path: ActionHandbackVerifier
+      - name: Vendor Attestra platform
+        uses: actions/checkout@v4
+        with:
+          repository: sadpig70/Attestra
+          path: Attestra
+      - name: Vendor Clearstra platform
+        uses: actions/checkout@v4
+        with:
+          repository: sadpig70/Clearstra
+          path: Clearstra
+      - name: Vendor Routestra platform
+        uses: actions/checkout@v4
+        with:
+          repository: sadpig70/Routestra
+          path: Routestra
+      - name: Vendor Certstra platform
+        uses: actions/checkout@v4
+        with:
+          repository: sadpig70/Certstra
+          path: Certstra
+      - name: Vendor Scorestra platform
+        uses: actions/checkout@v4
+        with:
+          repository: sadpig70/Scorestra
+          path: Scorestra
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'

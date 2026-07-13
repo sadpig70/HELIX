@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "helix-transaction/1.0",
+  "title": "HELIX Governed Transaction",
+  "type": "object",
+  "required": [
+    "schema",
+    "transaction_id",
+    "intent_digest",
+    "state",
+    "history",
+    "applied_event_ids",
+    "transaction_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "helix-transaction/1.0"},
+    "transaction_id": {"type": "string", "minLength": 1},
+    "intent_digest": {"type": "string", "minLength": 1},
+    "state": {
+      "enum": [
+        "PLANNED", "AUTHORIZED", "APPLYING", "APPLIED", "VERIFYING",
+        "VERIFIED", "HANDBACK_COMPLETE", "REPLAYABLE",
+        "ROLLBACK_REQUIRED", "ROLLED_BACK", "BLOCKED", "QUARANTINED"
+      ]
+    },
+    "history": {"type": "array", "items": {"type": "object"}},
+    "applied_event_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "transaction_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "transaction_hmac": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

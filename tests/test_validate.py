@@ -28,7 +28,7 @@ def _kernel_lock_for(tmp, body="VALUE = 1\n"):
     kernel_path = os.path.join(tmp, "FooStra", "foo_core", "kernel.py")
     _write(kernel_path, body)
     with open(kernel_path, "rb") as f:
-        digest = hashlib.sha256(f.read()).hexdigest()
+        digest = hashlib.sha256(f.read().replace(b"\r\n", b"\n")).hexdigest()
     lock = {
         "version": 1,
         "platforms": {

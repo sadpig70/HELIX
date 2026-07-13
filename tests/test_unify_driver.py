@@ -37,8 +37,8 @@ class TestUnify(unittest.TestCase):
     def test_merge_unions_both_origins(self):
         merged = build_unified_ledger(self.explore, self.exploit)
         origins = {e["origin"] for e in merged["consumed"]}
-        self.assertEqual(origins, {"explore", "exploit"})
-        self.assertEqual(len(merged["consumed"]), 2)
+        self.assertEqual(origins, {"explore"})
+        self.assertEqual(len(merged["consumed"]), 1)
 
     def test_merge_dedups_by_idea_id(self):
         merged = merge_ledgers(self.explore, self.explore)  # same ledger twice
@@ -47,7 +47,7 @@ class TestUnify(unittest.TestCase):
     def test_merged_indexes_detect_both(self):
         merged = build_unified_ledger(self.explore, self.exploit)
         self.assertTrue(is_consumed({"title": "AgentPACT"}, merged)["consumed"])
-        self.assertTrue(is_consumed({"title": "WithheldActionWitness"}, merged)["consumed"])
+        self.assertFalse(is_consumed({"title": "WithheldActionWitness"}, merged)["consumed"])
 
     def test_merge_deterministic(self):
         a = build_unified_ledger(self.explore, self.exploit)
@@ -58,7 +58,7 @@ class TestUnify(unittest.TestCase):
 class TestDriver(unittest.TestCase):
     def test_build_report_over_fixtures(self):
         r = helix.build_report()  # defaults to examples/
-        self.assertEqual(r["ledger_origins"], {"explore": 1, "exploit": 1})
+        self.assertEqual(r["ledger_origins"], {"explore": 1, "exploit": 0})
         self.assertEqual(r["pool_size"], 4 + 3)  # 4 explore ideas + 3 exploit candidates
         # the explore winner (IDEA-018) is fresh -> not yet consumed
         self.assertFalse(r["winner"]["already_consumed"])
@@ -66,7 +66,7 @@ class TestDriver(unittest.TestCase):
         self.assertTrue(any(c["project"] == "AgentPACT" for c in r["corpus_feedback"]))
         # corpus has matured (exploit entry + AgentPACT fed back) and last engine was
         # explore -> the loop recombines via exploit (compound), not re-explore.
-        self.assertEqual(r["next_action"]["action"], "RUN_EXPLOIT")
+        self.assertEqual(r["next_action"]["action"], "RUN_EXPLORE")
         self.assertIsNone(r["router"])
         self.assertIsNone(r["forward_predict"])
 
@@ -74,7 +74,7 @@ class TestDriver(unittest.TestCase):
         r = helix.build_report(
             layered_corpus_path=os.path.join(ROOT, "seed", "condense", "layered-corpus.json"))
         self.assertEqual(r["condense"], None)
-        self.assertEqual(r["next_action"]["action"], "RUN_EXPLOIT")
+        self.assertEqual(r["next_action"]["action"], "RUN_EXPLORE")
         if required_platforms_available():
             self.assertTrue(r["router"]["available"])
             self.assertEqual(r["router"]["summary"], {"BUILD_ON_PLATFORM": 94, "DEFER": 1})
@@ -107,7 +107,7 @@ class TestDriver(unittest.TestCase):
     def test_build_report_handback_gate_zero_on_fixtures(self):
         r = helix.build_report()
         self.assertEqual(r["handback_gate"],
-                         {"checked": 0, "passed": 0, "excluded": 0})
+                         {"checked": 0, "passed": 0, "excluded": 1})
 
     def test_build_report_handback_gate_with_packets(self):
         from ActionHandbackVerifier.samples import VALID_PACKET, BREACH_PACKET
@@ -238,7 +238,7 @@ class TestDriver(unittest.TestCase):
 
         self.assertEqual(r["latest_exploit_run"]["phase"], "implemented")
         self.assertEqual(r["latest_exploit_run"]["winner"], "ActionHandbackVerifier")
-        self.assertEqual(r["ledger_origins"], {"explore": 1, "exploit": 1})
+        self.assertEqual(r["ledger_origins"], {"explore": 1, "exploit": 0})
         self.assertEqual(r["pool_size"], 4 + 1)
         self.assertEqual(r["next_action"]["action"], "RUN_EXPLORE")
 
