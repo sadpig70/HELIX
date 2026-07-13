@@ -1,0 +1,37 @@
+{
+  "design": ".pgf/DESIGN-FidelityAttestation.md",
+  "project": "FidelityAttestation",
+  "parent": "HELIXDirection",
+  "intent": "Make the fidelity_attested provenance grade EARNABLE not merely assertable — a named real person must attest, bound by hash, independent of the reproduction agent, verdict=faithful. Closes the same assert-without-backing gap the wedge had with unverified evidence.",
+  "nodes": {
+    "Design": {"status": "done", "evidence": ".pgf/DESIGN-FidelityAttestation.md"},
+    "Review": {"status": "done", "note": "3-lens self-review: consistency (seal/canonical-json/import patterns match core), completeness (source/sample/attestation/grade/downgrade all covered), correctness (independence enforced, binding checked, faithful-only upgrade, fidelity_attested stays non-utility)"},
+    "Implement": {
+      "status": "done",
+      "module": "core/helix_fidelity.py",
+      "integration": "core/helix_adoption_trial.py (provenance carries sample/attestation binding; aggregate_adoption verifies + downgrades unbacked fidelity_attested claims)"
+    },
+    "Test": {"status": "done", "tests": "tests/test_fidelity.py", "count": 21},
+    "Verify": {"status": "done", "result": "663 tests OK (642 -> 663); helix_validate PASS (determinism gate includes helix_fidelity.py)"}
+  },
+  "invariants_held": [
+    "fidelity_attested is NOT utility — is_t4_utility stays gated by real_owned_stakes only",
+    "attester must differ from reproduction agent (no self-attestation)",
+    "unbacked fidelity_attested claim downgraded to simulated_unverified at aggregate, recorded not hidden",
+    "conflict_of_interest (e.g. wedge author dogfooding) recorded verbatim",
+    "trial cannot upgrade its own grade — upgrade is a function of an external attestation"
+  ],
+  "ceiling": "This layer reaches fidelity_attested (authenticity of a faithfully-reproduced real perspective). real_owned_stakes (genuine T4 utility) still requires an independent party running the wedge on real work with owned outcomes — out of autonomous scope; the slot is left explicitly empty, not faked.",
+  "first_real_receipt": {
+    "status": "done",
+    "evidence": "_workspace/helix-direction/fidelity/jwy-reproduction-r1.json",
+    "flow": "real source (CLAUDE.md/HANDOFF.md/DESIGN sha256) -> isolated subagent reproduced JWY perspective (non-deterministic, judged wedge 'conditional', not rubber-stamp) -> JWY (real person) attested 'faithful' -> grade EARNED, not asserted",
+    "sample_sha256": "ae4e8f59c3ea33a0a76faef3996477f1c083523279075ed273b74c42b6adad5c",
+    "attestation_sha256_prefix": "140c59060ee84b94",
+    "grade": "fidelity_attested",
+    "conflict_of_interest": "attester is the wedge author (dogfooding) — recorded, not hidden",
+    "ceiling_held": "is_t4_utility=False (stakes simulated)",
+    "unforgeability_proven": "same receipt WITHOUT the attestation downgrades to simulated_unverified at aggregate"
+  },
+  "next": "USER-DECISION: (a) commit the fidelity layer + first real receipt, (b) reach for real_owned_stakes (an independent party runs the wedge on real work), (c) other"
+}
