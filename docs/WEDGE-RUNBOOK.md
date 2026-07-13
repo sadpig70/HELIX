@@ -57,8 +57,12 @@ verdict만 편집해 다시 봉인하는 정직한 실수나 우연한 변조는
 > **keyed 서명(opt-in, 구현됨):** `audit_handback`/`run_admission`에 `signing_key`를 주면
 > ledger entry가 HMAC-SHA256으로 서명되고 `verify_actuation_ledger(signing_key=K)`가
 > 검증한다 — 키를 모르는 write-권한 적대자는 chain을 재구축해도 서명을 위조할 수 없어
-> 탐지된다(integrity→authenticity). 키까지 탈취한 내부자 방어는 외부 anchoring이 담당
-> (backlog). `valid` verdict는 기본적으로 packet의 **구조**가
+> 탐지된다(integrity→authenticity). **external anchoring(구현됨):** 키를 가진 내부자가
+> ledger를 통째로 재작성·재서명하는 것은 keyed 검증으로 못 막지만, `core/helix_anchor.py`가
+> ledger head+prefix digest를 **독립 신뢰 도메인**(git commit·timestamp service 등,
+> `external_ref`로 주입)에 anchor하고 `verify_against_anchor`가 이후 재작성을 탐지한다 —
+> 재서명된 rewrite도 externally-held anchor와 divergence로 잡힌다. 실제 외부 게시는 core
+> 밖(운영 절차)이다. `valid` verdict는 기본적으로 packet의 **구조**가
 > 완비되었음을 뜻한다. **evidence-truth 검증(opt-in):** `audit_handback`에
 > `evidence_root`(참가자가 제출한 evidence 파일 디렉토리)를 주면 각 predicate의
 > `evidence_path` 존재를(그리고 packet에 `evidence_hashes`가 있으면 hash를) 검증한다.
