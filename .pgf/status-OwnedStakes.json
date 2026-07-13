@@ -1,0 +1,27 @@
+{
+  "design": ".pgf/DESIGN-OwnedStakes.md",
+  "project": "OwnedStakes",
+  "parent": "HELIXDirection",
+  "sibling": "FidelityAttestation",
+  "intent": "Complete the provenance ladder's top rung: make real_owned_stakes (the only grade that flips is_t4_utility) EARNABLE not assertable, with HARD operator independence — an unbacked/self-dealing claim must never fabricate a T4 utility signal.",
+  "nodes": {
+    "Design": {"status": "done", "evidence": ".pgf/DESIGN-OwnedStakes.md"},
+    "Implement": {
+      "status": "done",
+      "module": "core/helix_owned_stakes.py",
+      "integration": "core/helix_adoption_trial.py (_effective_grade now verifies real_owned_stakes by attestation hash; aggregate downgrades unbacked claims)"
+    },
+    "Test": {"status": "done", "tests": "tests/test_owned_stakes.py", "count": 16},
+    "Verify": {"status": "done", "result": "679 tests OK (663 -> 679); helix_validate PASS; fidelity path regression clean"}
+  },
+  "invariants_held": [
+    "HARD independence: operator == wedge author is REJECTED (dogfooding disqualifies real_owned_stakes) — deliberate contrast to fidelity where dogfooding is allowed+flagged",
+    "real work only: simulated / decision_count<=0 / bad ledger head rejected; bound to a real ledger head sha256",
+    "objective outcomes: at least one integer measure + replay_verified True; sentiment-only rejected",
+    "only VERIFIED real_owned_stakes flips is_t4_utility; aggregate downgrades unbacked claims with an explicit 'cannot fabricate a T4 utility signal' problem",
+    "single operator = utility_candidate, NOT T4 pass — full T4 verdict still needs the multi-participant pilot gate (docs/PILOT-PROTOCOL.md)"
+  ],
+  "ladder_status": "provenance ladder COMPLETE in code/contract: simulated_unverified (done) + fidelity_attested (done, 1 real receipt) + real_owned_stakes (done, unforgeable, awaiting a real independent operator). No rung can now be asserted without verifiable backing.",
+  "ceiling": "This layer makes the T4-eligible grade unforgeable; it does NOT produce real_owned_stakes data. That requires an independent party running the wedge on real work with owned outcomes — a real-world event (P5_5 external pilot), not autonomous code.",
+  "next": "USER-DECISION: (a) commit this owned-stakes layer, (b) P5_5 external pilot (the real-world event that GENERATES real_owned_stakes data this layer will honestly judge)"
+}
