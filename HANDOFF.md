@@ -204,7 +204,8 @@ grounding gate로 강화됨.
 ## 7. Rollback 상태
 
 기존 방향 작업은 **main에 merged**(PR #12~#23). PILOT-SIM·provenance boundary·pause 기록은
-이번 종료 커밋의 push 대상이다. 되돌리려면 해당 커밋들을 revert.
+baseline commit `f2eb20c`로 `origin/main`에 push됐고 CI run `29230457241`이 success다.
+되돌리려면 해당 커밋들을 revert.
 nested 19 repos는 무변경(clean). `_workspace/`는 gitignored durable evidence — 삭제 금지.
 미merge branch 없음.
 
