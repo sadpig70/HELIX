@@ -146,42 +146,61 @@ def build_adoption_receipt(persona: dict, judgment: dict,
     })
 
 
-def _effective_grade(receipt: dict, attest_index: dict, problems: list,
+def _effective_grade(receipt: dict, attest_ctx: dict, problems: list,
                      index: int) -> str:
     """The grade a receipt actually earns once attestations are checked.
 
-    Mirrors the wedge's evidence_required idiom: a fidelity_attested claim is
-    only honored when a valid, faithful attestation bound to this receipt's
-    reproduction sample is present. An unbacked claim is downgraded to
-    simulated_unverified and the downgrade is recorded, never hidden.
-    real_owned_stakes is out of this module's verification scope and passes
-    through (its backing is an external owner, checked elsewhere).
+    Mirrors the wedge's evidence_required idiom: a non-simulated claim is only
+    honored when a valid attestation bound to this receipt is present. An
+    unbacked claim is downgraded to simulated_unverified and the downgrade is
+    recorded, never hidden. Two claims are verifiable:
+
+    - fidelity_attested : bound by reproduction-sample hash; verdict must be
+      faithful (core.helix_fidelity).
+    - real_owned_stakes : bound by attestation hash; the attestation must earn
+      the grade — independent operator, real work, objective outcomes
+      (core.helix_owned_stakes). This is the grade that flips is_t4_utility, so
+      an unbacked one must never pass.
     """
     prov = receipt.get("provenance", {})
     grade = prov.get("grade")
-    if grade != "fidelity_attested" or attest_index is None:
+    if attest_ctx is None or grade not in ("fidelity_attested",
+                                           "real_owned_stakes"):
         return grade
-    from core.helix_fidelity import verify_attestation
-    sample_hash = prov.get("sample_sha256")
-    att = attest_index.get(sample_hash) if sample_hash else None
-    if (att is not None and verify_attestation(att)
-            and att.get("verdict") == "faithful"
-            and att.get("sample_sha256") == sample_hash):
-        return "fidelity_attested"
+    if grade == "fidelity_attested":
+        from core.helix_fidelity import verify_attestation
+        sample_hash = prov.get("sample_sha256")
+        att = attest_ctx["by_sample"].get(sample_hash) if sample_hash else None
+        if (att is not None and verify_attestation(att)
+                and att.get("verdict") == "faithful"
+                and att.get("sample_sha256") == sample_hash):
+            return "fidelity_attested"
+        problems.append(
+            f"receipt[{index}] claims fidelity_attested but no valid faithful "
+            "attestation is bound to its reproduction sample; downgraded to "
+            "simulated_unverified")
+        return "simulated_unverified"
+    # grade == "real_owned_stakes"
+    from core.helix_owned_stakes import owned_stakes_grade
+    att_hash = prov.get("attestation_sha256")
+    att = attest_ctx["by_hash"].get(att_hash) if att_hash else None
+    if att is not None and owned_stakes_grade(att) == "real_owned_stakes":
+        return "real_owned_stakes"
     problems.append(
-        f"receipt[{index}] claims fidelity_attested but no valid faithful "
-        "attestation is bound to its reproduction sample; downgraded to "
-        "simulated_unverified")
+        f"receipt[{index}] claims real_owned_stakes but no valid independent "
+        "owned-stakes attestation is bound to it; downgraded to "
+        "simulated_unverified (a bare label cannot fabricate a T4 utility signal)")
     return "simulated_unverified"
 
 
 def aggregate_adoption(receipts: list, attestations: list = None) -> dict:
     """Summarize adoption receipts, keeping the provenance ceiling explicit.
 
-    When ``attestations`` is provided, every fidelity_attested claim is verified
-    against it (bound by reproduction-sample hash, must be faithful) and
-    downgraded if unbacked. When it is None, grades are taken as recorded
-    (backward compatible).
+    When ``attestations`` is provided, every non-simulated claim is verified
+    against it — fidelity_attested by reproduction-sample hash (must be
+    faithful), real_owned_stakes by attestation hash (must be an independent,
+    real, objective owned-stakes attestation) — and downgraded if unbacked. When
+    it is None, grades are taken as recorded (backward compatible).
     """
     valid = []
     problems = []
@@ -191,20 +210,23 @@ def aggregate_adoption(receipts: list, attestations: list = None) -> dict:
             continue
         valid.append(r)
 
-    attest_index = None
+    attest_ctx = None
     if attestations is not None:
-        attest_index = {}
+        attest_ctx = {"by_sample": {}, "by_hash": {}}
         for a in attestations:
-            h = a.get("sample_sha256")
-            if h:
-                attest_index[h] = a
+            sample_h = a.get("sample_sha256")
+            if sample_h:
+                attest_ctx["by_sample"][sample_h] = a
+            att_h = a.get("attestation_sha256")
+            if att_h:
+                attest_ctx["by_hash"][att_h] = a
 
     by_decision = {d: 0 for d in DECISIONS}
     by_grade = {g: 0 for g in PROVENANCE_GRADES}
     defects = []
     for index, r in enumerate(valid):
         by_decision[r["decision"]] += 1
-        grade = _effective_grade(r, attest_index, problems, index)
+        grade = _effective_grade(r, attest_ctx, problems, index)
         by_grade[grade] = by_grade.get(grade, 0) + 1
         for d in r["defects_found"]:
             defects.append({"persona": r["persona_id"], "defect": d})
