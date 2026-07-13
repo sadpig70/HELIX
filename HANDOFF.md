@@ -2,19 +2,20 @@
 
 > 갱신: 2026-07-13
 > **현재 상태:** Condense(5 platforms·56 packs) + HELIXDirection(Deterministic Admission
-> Control Plane) + persona-trial 파생 security 강화 + **fidelity attestation 층**.
-> **663 tests OK**, `helix_validate` PASS.
-> **영속화 완료: PR #12~#19 전부 main merged (CI green).** admission plane(P0~P7) ·
+> Control Plane) + persona-trial 파생 security 강화 + **provenance 사다리 3층(fidelity +
+> owned-stakes)**. **679 tests OK**, `helix_validate` PASS.
+> **영속화 완료: PR #12~#21 전부 main merged (CI green).** admission plane(P0~P7) ·
 > line-ending fix · grounding gate + persona adoption trial · wedge security 4건(정직성 정정
 > · evidence-truth 검증 · keyed HMAC signing · external anchoring) · wedge operations 계약(#18)
-> · **fidelity_attested provenance 층(#19)**.
+> · **fidelity_attested 층(#19)** · **real_owned_stakes 층(#21)**.
 > **thesis: GOVERNED INTERNAL SYSTEM** — T1 강등 **구조적 확정**(재상향 미추진), T4 미판정.
 > 어떤 주장도 부풀리지 않음.
-> **provenance 사다리 2/3 칸 완성**: `simulated_unverified`✅ · `fidelity_attested`✅(코드+
-> 위조불가 계약+실제 receipt 1건) · `real_owned_stakes`⬜(T4 효용의 관문, 미완).
-> **정확한 다음 최우선 작업: 정욱님 방향 결정** — 남은 것은 대부분 실세계·결정 의존:
-> (a) P5_5 외부 pilot 실개시(모집·공개), (b) `real_owned_stakes` 도달(독립 당사자가 실제
-> 업무·소유된 결과로 wedge 운영) — provenance 사다리의 마지막 칸이자 T4 효용의 관문.
+> **provenance 사다리 3/3 칸 코드/계약 완성**: `simulated_unverified`✅ · `fidelity_attested`✅
+> (코드+위조불가 계약+실제 receipt 1건) · `real_owned_stakes`✅(코드+위조불가 계약, hard
+> independence — 실존 독립 operator 데이터 대기). **어떤 칸도 검증 가능한 뒷받침 없이 주장 불가.**
+> **정확한 다음 최우선 작업: 정욱님 방향 결정** — 자율 순수 구현은 종결, 남은 것은 실세계·결정:
+> (a) P5_5 외부 pilot 실개시(모집·공개) — real_owned_stakes 데이터를 *생성*해 T4로 직행하는
+> 유일 경로. owned-stakes 층이 그 데이터를 위조불가로 판정할 준비 완료.
 > 이전 완료 계보: [`_legacy/`](_legacy/) (Condense v0.6 · HELIXDirection 종결본/상세본)
 
 ---
@@ -119,21 +120,34 @@ evidence_required 관용구).
 integrity-only seal을 결함으로 지목) → 정욱님(실존 인물)이 `faithful` 보증 → 등급 획득.
 위조불가 실증: 동일 receipt를 attestation 없이 집계하면 `simulated_unverified`로 강등.
 **정직한 상한 유지: is_t4_utility=false**(재현 충실도 보증은 authenticity를 올릴 뿐, 손익은
-여전히 simulated). 마지막 칸 `real_owned_stakes`는 독립 당사자의 실제 소유 손익 필요 —
-자율 범위 밖, 명시적으로 비워둠. 설계/상태: `.pgf/{DESIGN,status}-FidelityAttestation.*`.
+여전히 simulated). 설계/상태: `.pgf/{DESIGN,status}-FidelityAttestation.*`.
+
+### ③-b provenance 사다리 마지막 칸 — real_owned_stakes 층 완성·merged (PR #21)
+
+`core/helix_owned_stakes.py`가 사다리의 최상단이자 **`is_t4_utility`를 flip시키는 유일한
+등급**을 위조불가로 만든다. 위조된 주장은 곧 T4 효용 날조이므로 최고위험 — 그래서
+**independence를 hard 요건**으로 강제한다: operator == wedge 저자면 **거부**(자기사용은
+효용 신호 아님; fidelity가 dogfooding을 허용한 것과 원리적으로 반대). real work(simulated
+거부·decision_count>0·실 ledger head 바인딩) + objective outcomes(정수 측정+replay_verified,
+감정서술 거부) + 소유 손익 명시일 때만 `owned_stakes_grade`가 격상. `aggregate_adoption`이
+뒷받침 없는 real_owned_stakes 주장을 강등("cannot fabricate a T4 utility signal").
+**정직한 상한**: 단일 operator = utility_candidate이지 T4 pass 아님 — 완전 T4는 다중 참가자
+pilot 게이트(`docs/PILOT-PROTOCOL.md`) 필요. 이 층은 등급을 위조불가로 만들 뿐 실 데이터를
+*생성하지 않는다*(그것은 외부 pilot이라는 실세계 사건). 설계/상태:
+`.pgf/{DESIGN,status}-OwnedStakes.*`.
 
 ### (종결) T1 재도전 — 재상향 미추진
 
 구조적 한계로 확정(①-b). generator 주장 재상향은 추진하지 않는다. blind trial 방법론은
 grounding gate로 강화됨.
 
-## 3. 산출 인벤토리 (HELIXDirection + 후속, **main merged PR #12~#19**)
+## 3. 산출 인벤토리 (HELIXDirection + 후속, **main merged PR #12~#21**)
 
-- **core 신규 22종**: helix_{state_receipt, holdout, prediction, novelty, constitution,
+- **core 신규 23종**: helix_{state_receipt, holdout, prediction, novelty, constitution,
   evidence, risk_policy, authorization, stop_token, contestability, execution_plan,
   admission, side_effect_guard, actuator, impact_handback, wedge, wedge_metrics,
-  oracle_grounding, adoption_trial, signing, anchor, **fidelity**}
-- **schemas 8종**, tests 329→**663**, **CLI**: `state-receipt`, `audit-handback`
+  oracle_grounding, adoption_trial, signing, anchor, fidelity, **owned_stakes**}
+- **schemas 8종**, tests 329→**679**, **CLI**: `state-receipt`, `audit-handback`
 - **wedge 킷**: `docs/WEDGE-RUNBOOK.md`(정직 security-boundary 포함), `examples/wedge/`,
   `docs/PILOT-PROTOCOL.md`, `docs/WEDGE-OPERATIONS.md`(운영 계약); **policy**: `docs/HOLDOUT-POLICY.md`
 - **security**: `helix_signing`(keyed HMAC) · `helix_anchor`(external anchoring) —
@@ -169,15 +183,16 @@ grounding gate로 강화됨.
    AHV는 명확 실패로 fail-closed, ledger 동시성은 single-writer 계약 + verify 탐지(실증),
    컴플라이언스는 evidence 제공(인증 주장 없음). 다중 writer 직렬화 어댑터는 결정론 core
    밖 backlog로 잔존.
-7. 페르소나 trial provenance 사다리 2/3 완성: simulated_unverified·fidelity_attested(실제
-   receipt 1건, 코드가 위조 강등)까지 도달. 둘 다 is_t4_utility=false. 마지막 칸
-   real_owned_stakes(독립 당사자의 실제 소유 손익)만 utility 신호 — 미완, 자율 범위 밖.
+7. 페르소나 trial provenance 사다리 3/3 코드/계약 완성: simulated_unverified ·
+   fidelity_attested(실제 receipt 1건) · real_owned_stakes(hard independence, 위조불가).
+   앞 둘은 is_t4_utility=false. real_owned_stakes만 utility 신호이며 위조불가 계약은 완성됐으나
+   실 데이터(독립 외부 operator)는 미보유 — 데이터 생성은 P5_5 외부 pilot(실세계 사건).
 6. (방법론) T1 oracle·T2 brief를 단일 운영자 작성; 격리는 predictor/classifier subagent
    컨텍스트로만 확보. 제3자 역할 분리는 외부 pilot의 몫.
 
 ## 7. Rollback 상태
 
-이 방향 작업은 **main에 merged**(PR #12~#19). 되돌리려면 해당 merge commit들을 revert.
+이 방향 작업은 **main에 merged**(PR #12~#21). 되돌리려면 해당 merge commit들을 revert.
 nested 19 repos는 무변경(clean). `_workspace/`는 gitignored durable evidence — 삭제 금지.
 미merge branch 없음.
 
@@ -192,10 +207,11 @@ nested 19 repos는 무변경(clean). `_workspace/`는 gitignored durable evidenc
 
 ## 9. 한 줄 인수인계
 
-> **HELIXDirection이 GOVERNED INTERNAL SYSTEM으로 종결됐고(663 tests·sealed evidence,
-> PR #12~#19 main merged), Condense 5 플랫폼 라인도 유지된다. T1 강등은 구조적 한계로
+> **HELIXDirection이 GOVERNED INTERNAL SYSTEM으로 종결됐고(679 tests·sealed evidence,
+> PR #12~#21 main merged), Condense 5 플랫폼 라인도 유지된다. T1 강등은 구조적 한계로
 > 확정, T4는 미판정. 페르소나 conditional-adoption trial이 wedge security 4건을 발견·해소
-> (keyed signing + external anchoring 포함)하고, fidelity attestation 층이 provenance 사다리
-> 2/3 칸을 채웠다(fidelity_attested가 실제 receipt로 획득 가능·위조불가, is_t4_utility=false
-> 유지). 자율 순수 실무는 종결 — 남은 것은 P5_5 외부 pilot 실개시, provenance 마지막 칸
-> real_owned_stakes 도달로, 전부 정욱님의 실세계·결정이 필요하다.**
+> (keyed signing + external anchoring 포함)하고, provenance 사다리 3/3 칸(simulated ·
+> fidelity_attested[실제 receipt 1건] · real_owned_stakes[hard independence])이 전부
+> 위조불가 계약으로 완성됐다 — 어떤 칸도 뒷받침 없이 주장 불가, is_t4_utility는 검증된
+> real_owned_stakes에서만 flip. 자율 순수 실무는 종결 — 남은 것은 P5_5 외부 pilot 실개시로
+> real_owned_stakes 실 데이터를 생성해 T4를 판정하는 것이며, 정욱님의 실세계·결정이 필요하다.**
