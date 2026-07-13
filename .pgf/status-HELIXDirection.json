@@ -182,7 +182,7 @@
     },
     "P5_5_ExternalPilots": {
       "status": "blocked",
-      "blocker": "external recruitment/publication requires explicit user approval (not granted); resumable — kit and sealed metrics are ready"
+      "blocker": "PAUSED_BY_USER on 2026-07-13; external recruitment and 8-week operation not started; resume only on a new explicit user instruction"
     },
     "P5_6_T4Verify": {
       "status": "done",
@@ -191,7 +191,7 @@
     },
     "P5_UtilityPlane": {
       "status": "done",
-      "note": "internal wedge validated (P5_1~P5_4); T4 not judged — external pilots blocked on user approval; honest interim verdict recorded"
+      "note": "internal wedge and PILOT-SIM validated; provenance fail-closed boundary complete; T4 not judged — external pilot track PAUSED_BY_USER"
     },
     "P6_FederationPlane": {"status": "blocked", "blocker": "entry condition unmet at the root: T1 failed and T4 not judged; requires T1..T4 pass + 2 external users"},
     "P7_1_Regression": {
@@ -214,7 +214,7 @@
     "P7_4_Handoff": {
       "status": "done",
       "result": "HELIXDirection final state + detailed lineage archived to _legacy/HANDOFF-HELIXDirection{,-COMPLETE}.md; root HANDOFF.md restored to Condense v0.6 baseline; direction closed",
-      "next_after_close": "user decision: (a) commit approval for 66 uncommitted files, (b) P5_5 external pilots"
+      "next_after_close": "none for external pilot; PAUSED_BY_USER, resume only on a new explicit instruction"
     }
   },
   "summary": {
@@ -229,5 +229,11 @@
     "useful_artifact": "grounding gate + MACHINE_FEATURES rubric (blind-trial methodology hardening; commit candidate)",
     "evidence": "_workspace/helix-direction/T1-retry-verdict.md"
   },
-  "next": "USER-DECISION: (a) commit approval for the uncommitted direction work, (b) P5_5 external pilots"
+  "external_pilot_track": {
+    "status": "PAUSED_BY_USER",
+    "paused_at": "2026-07-13",
+    "status_doc": "docs/PILOT-STATUS.md",
+    "resume_condition": "new explicit user instruction"
+  },
+  "next": "NONE for external pilot; preserve GOVERNED INTERNAL SYSTEM and resume P5_5 only on a new explicit user instruction"
 }

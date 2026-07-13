@@ -30,13 +30,13 @@ class PilotFixtureCase(unittest.TestCase):
         shutil.copytree(os.path.join(ROOT, "ActionHandbackVerifier", "src"),
                         os.path.join(self.root, "ActionHandbackVerifier", "src"))
 
-    def participant(self, pid, packets):
+    def participant(self, pid, packets, provenance_class="real"):
         ledger = f"_pilot/{pid}.jsonl"
         packets_dir = f"_pilot/{pid}-packets"
         for name in packets:
             audit_handback(self.root, load_packet(name),
                            {"kind": "human", "id": pid}, CURRENT, ledger,
-                           packets_dir)
+                           packets_dir, provenance_class=provenance_class)
         return ledger
 
     def three_participants(self):
@@ -122,6 +122,25 @@ class TestT4Gate(PilotFixtureCase):
             self.root, two, period={"weeks": 0.1},
             sidecar={"false_admits": {}, "retained": ["team-a", "team-b"]})
         self.assertFalse(report["t4_gate"]["adoption"]["pass"])
+
+    def test_synthetic_participants_cannot_enter_real_metrics(self):
+        ledgers = {
+            pid: self.participant(pid, ["valid-packet.json"] * 7,
+                                  provenance_class="synthetic")
+            for pid in ("sim-a", "sim-b", "sim-c")
+        }
+        report = aggregate_pilot(
+            self.root, ledgers, period={"weeks": 1},
+            sidecar={"false_admits": {}, "retained": list(ledgers),
+                     "manual_review_baseline_minutes": {pid: 100 for pid in ledgers},
+                     "wedge_review_minutes": {pid: 10 for pid in ledgers}})
+        self.assertEqual(report["combined"]["decisions_total"], 21)
+        self.assertEqual(report["combined"]["real_decisions_total"], 0)
+        self.assertEqual(report["combined"]["excluded_by_provenance"], 21)
+        self.assertEqual(report["real_participants"], 0)
+        self.assertFalse(report["t4_gate"]["throughput"]["pass"])
+        self.assertFalse(report["t4_gate"]["adoption"]["pass"])
+        self.assertEqual(report["t4_gate"]["verdict"], "failed")
 
 
 if __name__ == "__main__":

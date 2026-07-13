@@ -42,7 +42,7 @@ class MetricsFixtureCase(unittest.TestCase):
                      "breach-packet.json"):
             self.results[name] = audit_handback(
                 self.root, load_packet(name), OPERATOR, CURRENT, LEDGER,
-                PACKETS)
+                PACKETS, provenance_class="real")
 
     def metrics(self, **kwargs):
         return wedge_metrics(self.root, LEDGER, **kwargs)
@@ -84,6 +84,20 @@ class TestCounts(MetricsFixtureCase):
         report = self.metrics(period={"weeks": 1.5, "label": "pilot week 1-1.5"})
         self.assertEqual(report["north_star"]["weekly_rate"], 2.0)
         self.assertFalse(report["latency_cost"]["measured"])
+
+    def test_synthetic_and_unclassified_are_visible_but_not_real_metrics(self):
+        audit_handback(self.root, load_packet(), OPERATOR, CURRENT, LEDGER,
+                       PACKETS, provenance_class="synthetic")
+        audit_handback(self.root, load_packet(), OPERATOR, CURRENT, LEDGER,
+                       PACKETS)
+        report = self.metrics(period={"weeks": 1})
+        self.assertEqual(report["decisions_total"], 5)
+        self.assertEqual(report["real_decisions_total"], 3)
+        self.assertEqual(report["provenance_counts"],
+                         {"real": 3, "synthetic": 1, "unclassified": 1})
+        self.assertEqual(report["north_star"]["decisions"], 3)
+        self.assertEqual(report["north_star"]["excluded_by_provenance"], 2)
+        self.assertEqual(report["north_star"]["weekly_rate"], 3.0)
 
 
 class TestHonesty(MetricsFixtureCase):

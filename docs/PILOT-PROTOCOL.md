@@ -24,7 +24,8 @@
    산출물 hash가 아니라 packet public surface self-binding hash임에 주의(내부 pilot의 실제
    함정, RUNBOOK 참조).
 4. `python helix.py audit-handback --packet <p> --operator <participant-id>
-   --ledger <participant.jsonl> --packets-dir <dir>`로 판정을 시작한다.
+   --provenance-class real --ledger <participant.jsonl> --packets-dir <dir>`로 판정을 시작한다.
+   rehearsal은 반드시 `--provenance-class synthetic`과 별도 ledger를 사용한다.
 
 ## 3. 주간 운영
 
@@ -53,6 +54,8 @@ python scripts/evaluate/pilot_report.py --config pilot.json --out pilot-report.j
 `core/helix_wedge_metrics.py`:
 - `wedge_metrics(ledger)` — 참가자별: decisions, admission 분포, prevented_invalid_handbacks,
   **replay rate**(세탁된 판정은 replay율 하락으로 탐지), intervention.
+- North Star와 T4 metrics는 receipt가 명시적으로 `provenance_class=real`인 decision만
+  집계한다. synthetic·legacy/unclassified decision과 해당 participant는 자동 제외된다.
 - `aggregate_pilot(participants, period, sidecar)` — 통합 + T4 gate 판정. 모든 수치는
   sealed ledger에서 재계산되며, ledger로 알 수 없는 것(false_admit, retention, review time)은
   sidecar로 명시 주입되고 없으면 정직하게 `unmeasured`로 남는다.

@@ -1,5 +1,8 @@
 # HELIX Wedge — P5_5 External Pilot Kickoff
 
+> **현재 상태(2026-07-13): `PAUSED_BY_USER`.** 외부 모집·8주 운영은 시작하지 않는다.
+> 재개 조건과 완료된 준비 범위는 `docs/PILOT-STATUS.md`가 권위다.
+
 > 정욱님이 외부 pilot을 실제로 개시·운영하기 위한 실행 문서. 운영 프로토콜·목표는
 > `docs/PILOT-PROTOCOL.md`, 판정 기능은 `docs/WEDGE-RUNBOOK.md`. 이 문서는 **모집 →
 > 온보딩 → 8주 운영 → 증거 수집 → T4 판정**의 순서대로 필요한 것을 담는다.
@@ -52,7 +55,8 @@
 1. 명령:
    ```bash
    python helix.py audit-handback --packet <handback.json> \
-     --ledger <team>.jsonl --packets-dir <team>-packets --operator <team-id>
+     --ledger <team>.jsonl --packets-dir <team>-packets --operator <team-id> \
+     --provenance-class real
    ```
 2. packet 5-필드 작성법: delegation · custody · route · rollback · trace
    (`docs/WEDGE-RUNBOOK.md` §2, 샘플 `examples/wedge/valid-packet.json`).

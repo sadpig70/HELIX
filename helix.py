@@ -504,7 +504,8 @@ USAGE = ("usage:\n"
          "  python helix.py verify-handback --registry <registry.json> --project <name> "
          "--packet <handback.json>\n"
          "  python helix.py audit-handback --packet <handback.json> [--operator ID] "
-         "[--ledger P] [--packets-dir P] [--state-receipt-hash H] [--json]\n"
+         "[--provenance-class real|synthetic] [--ledger P] [--packets-dir P] "
+         "[--state-receipt-hash H] [--json]\n"
          "  python helix.py loop-status [--loop-state <loop-state.json>] [--ledger <ledger.json>]\n")
 
 
@@ -621,7 +622,14 @@ def _main(argv) -> int:
             return 2
         with open(packet_path, "r", encoding="utf-8") as f:
             packet = json.load(f)
-        operator = {"kind": "human", "id": _opt(argv, "--operator", "operator-local")}
+        provenance_class = _opt(argv, "--provenance-class")
+        if provenance_class not in (None, "real", "synthetic"):
+            sys.stderr.write("--provenance-class must be real or synthetic\n")
+            return 2
+        operator = {
+            "kind": "human",
+            "id": _opt(argv, "--operator", "operator-local"),
+        }
         ledger_rel = _opt(argv, "--ledger",
                           os.path.join(".helix", "wedge", "ledger.jsonl"))
         packets_dir = _opt(argv, "--packets-dir",
@@ -629,7 +637,8 @@ def _main(argv) -> int:
         anchor = _opt(argv, "--state-receipt-hash") or _live_receipt_hash()
         result = audit_handback(ROOT, packet, operator, anchor,
                                 ledger_rel.replace(os.sep, "/"),
-                                packets_dir.replace(os.sep, "/"))
+                                packets_dir.replace(os.sep, "/"),
+                                provenance_class=provenance_class)
         if result["decision"] is None:
             print(json.dumps({"stage": "gate", "why": result["why"],
                               "gate_decision": result["gate"]["decision"]},
@@ -646,12 +655,16 @@ def _main(argv) -> int:
             print(f"  handback_id: {decision['handback_id']}")
             print(f"  verdict:     {decision['handback_verdict']}")
             print(f"  admission:   {decision['admission']}  ({decision['admission_basis']})")
+            print(f"  provenance:  {decision['provenance_class']}")
             print(f"  decision:    {decision['decision_id']}  seal {decision['receipt_sha256'][:16]}…")
             print(f"  packet:      {decision['packet_path']}")
             print(f"  ledger:      {ledger_rel}")
             print(f"  replay:      python helix.py audit-handback --packet "
                   f"{decision['packet_path']} --state-receipt-hash {anchor}"
-                  f" --ledger {ledger_rel} --packets-dir {packets_dir}")
+                  f" --operator {decision['operator']['id']}"
+                  + (f" --provenance-class {decision['provenance_class']}"
+                     if decision["provenance_class"] != "unclassified" else "")
+                  + f" --ledger {ledger_rel} --packets-dir {packets_dir}")
             print(f"  replay check: {'REPRODUCED' if not replay_problems else replay_problems}")
         if replay_problems:
             return 1

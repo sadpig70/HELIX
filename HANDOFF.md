@@ -3,7 +3,7 @@
 > 갱신: 2026-07-13
 > **현재 상태:** Condense(5 platforms·56 packs) + HELIXDirection(Deterministic Admission
 > Control Plane) + persona-trial 파생 security 강화 + **provenance 사다리 3층 + T4 verdict
-> 판정 기계**. **689 tests OK**, `helix_validate` PASS.
+> 판정 기계 + pilot provenance fail-closed 경계**. **695 tests OK**, `helix_validate` PASS.
 > **영속화 완료: PR #12~#23 전부 main merged (CI green).** admission plane(P0~P7) ·
 > line-ending fix · grounding gate + persona adoption trial · wedge security 4건(정직성 정정
 > · evidence-truth 검증 · keyed HMAC signing · external anchoring) · wedge operations 계약(#18)
@@ -13,10 +13,10 @@
 > **provenance 사다리 3/3 칸 코드/계약 완성**: `simulated_unverified`✅ · `fidelity_attested`✅
 > (코드+위조불가 계약+실제 receipt 1건) · `real_owned_stakes`✅(코드+위조불가 계약, hard
 > independence — 실존 독립 operator 데이터 대기). **어떤 칸도 검증 가능한 뒷받침 없이 주장 불가.**
-> **정확한 다음 최우선 작업: P5_5 외부 pilot 실개시(정욱님 실세계 행위)** — 자율 코드 track은
-> 완전 종결(사다리 3층 + T4 판정 기계 end-to-end). 남은 것은 오직 독립 외부 operator ≥3
-> 모집 · ≥8주 운영 · sealed ledger + owned-stakes attestation + sidecar 수집. 그 데이터를
-> `t4_verdict`가 위조·과대주장 불가로 판정한다. 운영 상세는 §2 ② 참조.
+> **외부 pilot track: `PAUSED_BY_USER` (2026-07-13).** 외부 모집·8주 운영은 시작하지
+> 않는다. 실패나 T4 판정이 아니라 정욱님의 현재 작업 상황에 따른 명시적 범위 결정이다.
+> 재개 전 정확한 다음 작업은 **없음**이며, 새 명시 지시가 있을 때만 `docs/PILOT-STATUS.md`
+> 순서로 재개한다. thesis는 `GOVERNED INTERNAL SYSTEM`, T4는 `NOT JUDGED`를 유지한다.
 > 이전 완료 계보: [`_legacy/`](_legacy/) (Condense v0.6 · HELIXDirection 종결본/상세본)
 
 ---
@@ -85,7 +85,7 @@ utility 아님, 코드가 격상 금지). 19개 결함 독립 발견. 상세:
 signing + anchoring 두 층으로 tamper-evidence의 양쪽(외부/내부)이 닫혔다. 전부
 결정론 경계 유지(stdlib hmac/hashlib, 키·external_ref 주입).
 
-### ② P5_5 외부 pilot 개시 — T4 판정으로 직결 (최우선 방향)
+### ② P5_5 외부 pilot — `PAUSED_BY_USER` (2026-07-13)
 
 wedge(agent handback/approval audit)는 실증 완료 상태이며(내부 pilot 10 decisions, wedge가
 수동 검토보다 엄격·false-admit 방향 불일치 0), 연결 킷도 준비됐다:
@@ -106,10 +106,12 @@ wedge(agent handback/approval audit)는 실증 완료 상태이며(내부 pilot 
   불가. **판정 경로 완성**: `audit_handback → wedge_metrics → aggregate_pilot →
   owned_stakes → t4_verdict`.
 
-**정욱님 승인·수행 필요 (실세계 개시 — 자율 불가):**
-- repo/kit 공개 범위 결정, **독립 외부 operator ≥3 모집**, ≥8주 운영, 각 참가자의 sealed
-  ledger + owned-stakes attestation + retention/false-admit sidecar 수집. 코드 준비는 완료,
-  남은 것은 전적으로 실세계 행위다.
+**현재 결정:** 외부 모집·8주 운영을 시작하지 않고 여기서 중지한다. `PILOT-SIM`은 3 persona
+21 decisions와 replay 21/21을 완료했으며, 새 `provenance_class` 경계가 synthetic·legacy/
+unclassified decision을 real metrics에서 fail-closed로 제외한다. 기존 합성 ledger 재집계는
+`21 total / 0 real / 21 excluded`, metrics `failed`, T4 `not_passed`다.
+
+재개 조건·완료 범위의 권위 문서: `docs/PILOT-STATUS.md`.
 
 T4 gate 통과 시 "Governed Internal System"에서 **"Admission Plane(제품)"**으로 상향 가능.
 
@@ -156,7 +158,7 @@ grounding gate로 강화됨.
   evidence, risk_policy, authorization, stop_token, contestability, execution_plan,
   admission, side_effect_guard, actuator, impact_handback, wedge, wedge_metrics,
   oracle_grounding, adoption_trial, signing, anchor, fidelity, owned_stakes, **t4**}
-- **schemas 8종**, tests 329→**689**, **CLI**: `state-receipt`, `audit-handback`
+- **schemas 8종**, tests 329→**695**, **CLI**: `state-receipt`, `audit-handback`
 - **wedge 킷**: `docs/WEDGE-RUNBOOK.md`(정직 security-boundary 포함), `examples/wedge/`,
   `docs/PILOT-PROTOCOL.md`, `docs/WEDGE-OPERATIONS.md`(운영 계약); **policy**: `docs/HOLDOUT-POLICY.md`
 - **security**: `helix_signing`(keyed HMAC) · `helix_anchor`(external anchoring) —
@@ -177,7 +179,7 @@ grounding gate로 강화됨.
 
 | 노드 | 사유 | 재개 조건 |
 |---|---|---|
-| `P5_5_ExternalPilots` | 외부 모집·공개는 명시 승인 필요 | 정욱님이 공개 범위·대상·개시 승인 — 킷 준비 완료 |
+| `P5_5_ExternalPilots` | `PAUSED_BY_USER`; 외부 모집·8주 운영 미개시 | 정욱님의 새 명시 재개 지시 |
 | `P6_FederationPlane` | 진입 조건 미충족 | T1 재도전 통과 + T4 판정 통과 + 외부 사용자 2 |
 
 ## 6. 알려진 한계 / 이탈 (은폐 없음)
@@ -201,7 +203,8 @@ grounding gate로 강화됨.
 
 ## 7. Rollback 상태
 
-이 방향 작업은 **main에 merged**(PR #12~#23). 되돌리려면 해당 merge commit들을 revert.
+기존 방향 작업은 **main에 merged**(PR #12~#23). PILOT-SIM·provenance boundary·pause 기록은
+이번 종료 커밋의 push 대상이다. 되돌리려면 해당 커밋들을 revert.
 nested 19 repos는 무변경(clean). `_workspace/`는 gitignored durable evidence — 삭제 금지.
 미merge branch 없음.
 
@@ -216,11 +219,11 @@ nested 19 repos는 무변경(clean). `_workspace/`는 gitignored durable evidenc
 
 ## 9. 한 줄 인수인계
 
-> **HELIXDirection이 GOVERNED INTERNAL SYSTEM으로 종결됐고(689 tests·sealed evidence,
+> **HELIXDirection이 GOVERNED INTERNAL SYSTEM으로 종결됐고(695 tests·sealed evidence,
 > PR #12~#23 main merged), Condense 5 플랫폼 라인도 유지된다. T1 강등은 구조적 한계로
 > 확정, T4는 미판정. 페르소나 conditional-adoption trial이 wedge security 4건을 발견·해소
 > (keyed signing + external anchoring 포함)하고, provenance 사다리 3/3 칸(simulated ·
 > fidelity_attested[실제 receipt 1건] · real_owned_stakes[hard independence])과 T4 verdict
-> 판정 기계(metrics ∧ 독립-provenance)가 전부 위조불가로 완성됐다 — is_t4_utility·T4는 검증된
-> 독립 real_owned_stakes에서만 flip. 자율 코드 track은 완전 종결 — 남은 것은 P5_5 외부 pilot
-> 실개시(독립 operator ≥3 모집·≥8주 운영·증거 수집)로, 전적으로 정욱님의 실세계 행위다.**
+> 판정 기계(metrics ∧ 독립-provenance)가 전부 위조불가로 완성됐다. PILOT-SIM 21건과
+> provenance fail-closed 경계까지 검증됐으며, 외부 pilot은 `PAUSED_BY_USER`다. T4는
+> `NOT JUDGED`, 제품 주장은 보류하며 새 명시 지시 전에는 외부 pilot 다음 작업이 없다.**

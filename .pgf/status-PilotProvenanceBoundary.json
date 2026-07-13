@@ -1,0 +1,18 @@
+{
+  "project": "PilotProvenanceBoundary",
+  "workplan": ".pgf/WORKPLAN-PilotProvenanceBoundary.md",
+  "design": ".pgf/DESIGN-PilotProvenanceBoundary.md",
+  "started_at": "2026-07-13T15:50:00+09:00",
+  "updated_at": "2026-07-13T15:57:10.1323254+09:00",
+  "iteration": 2,
+  "nodes": {
+    "ReceiptContract": {"status": "done", "outputs": {"file": "core/helix_wedge.py"}},
+    "CliContract": {"status": "done", "outputs": {"file": "helix.py"}},
+    "MetricsBoundary": {"status": "done", "outputs": {"file": "core/helix_wedge_metrics.py"}},
+    "ReplayBoundary": {"status": "done", "outputs": {"files": ["core/helix_wedge.py", "core/helix_t4.py"]}},
+    "TestsAndDocs": {"status": "done", "outputs": {"tests": 53, "docs_updated": 4}},
+    "FullVerification": {"status": "done", "outputs": {"validator": "PASS", "tests": "695 OK"}}
+  },
+  "summary": {"total": 6, "done": 6, "in-progress": 0, "designing": 0, "blocked": 0},
+  "verdict": "passed"
+}

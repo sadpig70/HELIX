@@ -66,7 +66,9 @@ def _provenance_gate(metrics: dict, attestations: dict,
     An operator id or org shared across participants disqualifies ALL of its
     participants (a single party masquerading as several is not independent).
     """
-    per = metrics.get("per_participant", {})
+    all_per = metrics.get("per_participant", {})
+    per = {pid: report for pid, report in all_per.items()
+           if report.get("real_decisions_total", 0) > 0}
 
     # pre-pass: which operator ids/orgs appear for more than one participant
     op_pids, org_pids = {}, {}
@@ -112,7 +114,7 @@ def _provenance_gate(metrics: dict, attestations: dict,
         else:
             problems.append(f"{pid}: " + "; ".join(sorted(reasons)))
 
-    participants = metrics.get("participants", 0)
+    participants = metrics.get("real_participants", 0)
     gate_pass = participants >= 3 and verified >= 2
     return {
         "pass": gate_pass,

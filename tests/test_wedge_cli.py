@@ -28,13 +28,16 @@ class WedgeCliCase(unittest.TestCase):
         self.ledger = os.path.join(self.workdir, "ledger.jsonl")
         self.packets = os.path.join(self.workdir, "packets")
 
-    def cli(self, packet_rel, extra=()):
+    def cli(self, packet_rel, extra=(), provenance="real"):
         argv = [sys.executable, "helix.py", "audit-handback",
                 "--packet", packet_rel,
                 "--state-receipt-hash", ANCHOR,
                 "--operator", "operator-e2e",
                 "--ledger", self.ledger,
-                "--packets-dir", self.packets] + list(extra)
+                "--packets-dir", self.packets]
+        if provenance is not None:
+            argv += ["--provenance-class", provenance]
+        argv += list(extra)
         return subprocess.run(argv, cwd=ROOT, capture_output=True, text=True)
 
     def test_sample_packets_produce_the_documented_verdicts_and_exit_codes(self):
@@ -56,6 +59,20 @@ class WedgeCliCase(unittest.TestCase):
         self.assertEqual(doc["decision"]["metric"]["counts_toward"],
                          "weekly_real_admission_decisions")
         self.assertEqual(doc["replay_problems"], [])
+
+    def test_missing_and_synthetic_provenance_are_metric_ineligible(self):
+        unclassified = json.loads(self.cli(
+            "examples/wedge/valid-packet.json", extra=["--json"],
+            provenance=None).stdout)["decision"]
+        self.assertEqual(unclassified["provenance_class"], "unclassified")
+        self.assertIsNone(unclassified["metric"]["counts_toward"])
+
+        synthetic = json.loads(self.cli(
+            "examples/wedge/valid-packet.json", extra=["--json"],
+            provenance="synthetic").stdout)["decision"]
+        self.assertEqual(synthetic["provenance_class"], "synthetic")
+        self.assertEqual(synthetic["operator"]["kind"], "human")
+        self.assertIsNone(synthetic["metric"]["counts_toward"])
 
     def test_decisions_land_in_a_verifiable_ledger(self):
         self.cli("examples/wedge/valid-packet.json")
@@ -80,6 +97,12 @@ class WedgeCliCase(unittest.TestCase):
         proc = subprocess.run([sys.executable, "helix.py", "audit-handback"],
                               cwd=ROOT, capture_output=True, text=True)
         self.assertEqual(proc.returncode, 2)
+
+    def test_invalid_provenance_class_is_usage_error(self):
+        proc = self.cli("examples/wedge/valid-packet.json",
+                        provenance="external")
+        self.assertEqual(proc.returncode, 2)
+        self.assertIn("provenance-class", proc.stderr)
 
 
 if __name__ == "__main__":

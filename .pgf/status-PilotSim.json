@@ -1,0 +1,20 @@
+{
+  "project": "PilotSim",
+  "workplan": ".pgf/WORKPLAN-PilotSim.md",
+  "design": ".pgf/DESIGN-PilotSim.md",
+  "started_at": "2026-07-13T00:00:00+09:00",
+  "updated_at": "2026-07-13T15:43:49.2945879+09:00",
+  "iteration": 2,
+  "nodes": {
+    "PrepareContracts": {"status": "done"},
+    "ReleaseLead": {"status": "done", "outputs": {"result": "_workspace/pilot-sim/agents/release-lead/result.json"}},
+    "SREOperator": {"status": "done", "outputs": {"result": "_workspace/pilot-sim/agents/sre-operator/result.json"}},
+    "AIGovernanceLead": {"status": "done", "outputs": {"result": "_workspace/pilot-sim/agents/ai-governance-lead/result.json"}},
+    "AggregateEvidence": {"status": "done", "outputs": {"report": "_workspace/pilot-sim/metrics-report.json"}},
+    "JudgeBoundary": {"status": "done", "outputs": {"verdict": "_workspace/pilot-sim/t4-verdict.json"}},
+    "RecordReport": {"status": "done", "outputs": {"report": "_workspace/pilot-sim/FINAL-REPORT.md"}}
+  },
+  "summary": {"total": 7, "done": 7, "in-progress": 0, "designing": 0, "blocked": 0},
+  "verdict": "passed",
+  "claim_boundary": "synthetic operational preflight only; T4 not_passed"
+}

@@ -90,7 +90,9 @@ python core/helix_evidence.py examples/constitution/evidence-r1-local-artifact.j
 
 # ★ 첫 utility wedge: handback packet 하나 → AHV 검사 → admission class → sealed replayable decision
 #   운영 절차·판정 해석·exit code는 docs/WEDGE-RUNBOOK.md (샘플: examples/wedge/)
-python helix.py audit-handback --packet examples/wedge/valid-packet.json
+python helix.py audit-handback --packet examples/wedge/valid-packet.json \
+  --provenance-class real
+# rehearsal/fixture는 --provenance-class synthetic; 생략은 unclassified로 metrics 제외
 
 # T4 external pilot: 다중 참가자 wedge ledger를 하나의 sealed T4 리포트로 집계·판정.
 #   운영 프로토콜(참가·측정·gate·kill 조건)은 docs/PILOT-PROTOCOL.md

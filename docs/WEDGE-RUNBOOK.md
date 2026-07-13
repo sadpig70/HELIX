@@ -32,10 +32,16 @@ JSON 객체, 필수 최상위 필드 (자세한 계약은 `ActionHandbackVerifie
 ## 3. 명령
 
 ```bash
-python helix.py audit-handback --packet <packet.json> [--operator YOUR-ID] [--json]
+python helix.py audit-handback --packet <packet.json> --provenance-class real \
+  [--operator YOUR-ID] [--json]
 # 기본 저장 위치: .helix/wedge/ledger.jsonl / .helix/wedge/packets/
 # --state-receipt-hash H 를 생략하면 live state receipt를 계산해 anchor로 쓴다.
 ```
+
+`--provenance-class`는 receipt에 봉인된다. 실제 외부 workflow는 `real`, rehearsal·fixture는
+`synthetic`을 사용한다. 생략하면 `unclassified`로 기록되며 fail-closed로 North Star와 T4
+metrics에서 제외된다. `real`은 operator의 선언일 뿐이며 최종 독립성은 owned-stakes
+attestation과 `core.helix_t4`가 별도로 검증한다.
 
 ## 4. 판정 해석과 exit code
 
@@ -92,5 +98,7 @@ AHV provisioning, ledger 동시성 계약(single-writer), 컴플라이언스 프
 
 ## 7. 측정 (North Star)
 
-각 decision receipt에는 `metric.counts_toward = "weekly_real_admission_decisions"`가
-내장되어 있어, ledger의 `wedge_decision` entry 수가 곧 실사용 판정 수다.
+`provenance_class=real`인 decision만
+`metric.counts_toward = "weekly_real_admission_decisions"`를 갖는다. `synthetic` 또는
+`unclassified` decision은 ledger와 replay에는 남지만 North Star 집계에서 제외된다.
+따라서 전체 `wedge_decision` 수와 실제 metric 대상 수는 다를 수 있다.

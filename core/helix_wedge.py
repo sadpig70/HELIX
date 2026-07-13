@@ -16,9 +16,10 @@ packet; it reuses the existing backbone end to end and invents no new
 judgment logic. The packet is stored at an immutable content-addressed path
 and becomes the evidence artifact of an R0 (read-only judgment) intent; the
 gate result, admission receipt, and the sealed wedge decision are chained
-and appended to the actuation ledger. The decision receipt carries the T4
-North-Star metric marker (``weekly_real_admission_decisions``) so real usage
-is countable without any extra bookkeeping.
+and appended to the actuation ledger. The decision receipt seals a
+``provenance_class``; only explicit ``real`` decisions carry the T4 North-Star
+metric marker (``weekly_real_admission_decisions``). Synthetic or missing
+provenance remains replayable but is metric-ineligible.
 
 Replayability: ``verify_wedge_decision`` re-hashes the stored packet,
 re-runs the AHV verdict and the admission classification, and re-checks
@@ -62,8 +63,10 @@ except ImportError:  # direct script run
     from core.helix_project_paths import ensure_project_src
     from core.helix_state_receipt import sha256_file
 
-SCHEMA_ID = "helix-wedge-decision/1.0"
+SCHEMA_ID = "helix-wedge-decision/1.1"
 AUDITABLE_GATES = ("ALLOW", "SANDBOX")  # the audit is a judgment, not a write
+ASSERTABLE_PROVENANCE_CLASSES = ("real", "synthetic")
+EFFECTIVE_PROVENANCE_CLASSES = ASSERTABLE_PROVENANCE_CLASSES + ("unclassified",)
 
 
 def _seal(doc: dict) -> dict:
@@ -79,6 +82,24 @@ def verify_wedge_seal(decision: dict) -> bool:
     body = {k: v for k, v in decision.items() if k != "receipt_sha256"}
     return isinstance(expected, str) and expected == hashlib.sha256(
         canonical_json_bytes(body)).hexdigest()
+
+
+def _normalize_provenance_class(value) -> str:
+    """Missing provenance is metric-ineligible; unknown assertions are errors."""
+    if value is None:
+        return "unclassified"
+    if value not in ASSERTABLE_PROVENANCE_CLASSES:
+        raise ValueError("provenance_class must be 'real' or 'synthetic'")
+    return value
+
+
+def _metric_marker(provenance_class: str) -> dict:
+    marker = {"kind": "admission_decision", "counts_toward": None}
+    if provenance_class == "real":
+        marker["counts_toward"] = "weekly_real_admission_decisions"
+    else:
+        marker["excluded_reason"] = f"provenance:{provenance_class}"
+    return marker
 
 
 def _full(root: str, path: str) -> str:
@@ -176,7 +197,8 @@ def _audit_intent(operator: dict, packet_sha256: str) -> dict:
 def audit_handback(root: str, packet: dict, operator: dict,
                    current_state_receipt_hash: str, ledger_rel: str,
                    packets_dir: str, migration=None, evidence_root=None,
-                   evidence_required=False, signing_key=None) -> dict:
+                   evidence_required=False, signing_key=None,
+                   provenance_class=None) -> dict:
     """One admission decision for one submitted handback packet.
 
     Returns {decision, gate, admission_receipt} on success; a non-auditable
@@ -195,6 +217,7 @@ def audit_handback(root: str, packet: dict, operator: dict,
                          "registry_admissions' job")
     if not (operator.get("id") or "").strip():
         raise ValueError("operator.id must be non-empty")
+    provenance_class = _normalize_provenance_class(provenance_class)
 
     packet_sha256, packet_rel = _store_packet(root, packets_dir, packet)
     intent = _audit_intent(operator, packet_sha256)
@@ -226,6 +249,7 @@ def audit_handback(root: str, packet: dict, operator: dict,
     decision = _seal({
         "schema": SCHEMA_ID,
         "decision_id": decision_id,
+        "provenance_class": provenance_class,
         "operator": {"kind": operator.get("kind", "human"),
                      "id": operator["id"]},
         "handback_id": packet.get("handback_id"),
@@ -242,8 +266,7 @@ def audit_handback(root: str, packet: dict, operator: dict,
         "gate_result_sha256": gate["result_sha256"],
         "gate_decision": gate["decision"],
         "state_receipt_hash": current_state_receipt_hash,
-        "metric": {"kind": "admission_decision",
-                   "counts_toward": "weekly_real_admission_decisions"},
+        "metric": _metric_marker(provenance_class),
     })
     append_actuation_ledger(root, ledger_rel, "wedge_decision", decision_id,
                             decision, signing_key=signing_key)
@@ -256,6 +279,14 @@ def verify_wedge_decision(root: str, decision: dict) -> list:
     problems = []
     if not verify_wedge_seal(decision):
         problems.append("wedge decision seal is broken")
+    # Legacy receipts remain replayable but metrics treat them as unclassified.
+    # New receipts bind provenance to their metric eligibility marker.
+    if "provenance_class" in decision:
+        provenance_class = decision.get("provenance_class")
+        if provenance_class not in EFFECTIVE_PROVENANCE_CLASSES:
+            problems.append("invalid provenance_class")
+        elif decision.get("metric") != _metric_marker(provenance_class):
+            problems.append("metric marker does not match provenance_class")
     packet_full = _full(root, decision.get("packet_path", ""))
     if not os.path.isfile(packet_full):
         problems.append("stored packet is missing; decision is not replayable")

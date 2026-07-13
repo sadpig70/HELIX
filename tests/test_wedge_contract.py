@@ -46,12 +46,14 @@ class WedgeFixtureCase(unittest.TestCase):
         self.packet = load_packet()
 
     def audit(self, packet=None, operator=None, migration=None,
-              evidence_root=None, evidence_required=False):
+              evidence_root=None, evidence_required=False,
+              provenance_class="real"):
         return audit_handback(self.root,
                               packet if packet is not None else self.packet,
                               operator or OPERATOR, CURRENT, LEDGER, PACKETS,
                               migration=migration, evidence_root=evidence_root,
-                              evidence_required=evidence_required)
+                              evidence_required=evidence_required,
+                              provenance_class=provenance_class)
 
 
 class TestWedgeDecision(WedgeFixtureCase):
@@ -104,6 +106,24 @@ class TestWedgeDecision(WedgeFixtureCase):
             self.audit(packet={})
         with self.assertRaisesRegex(ValueError, "operator.id"):
             self.audit(operator={"kind": "human", "id": "  "})
+
+    def test_provenance_is_sealed_and_fails_closed(self):
+        real = self.audit(provenance_class="real")["decision"]
+        self.assertEqual(real["provenance_class"], "real")
+        self.assertEqual(real["metric"]["counts_toward"],
+                         "weekly_real_admission_decisions")
+
+        synthetic = self.audit(provenance_class="synthetic")["decision"]
+        self.assertEqual(synthetic["provenance_class"], "synthetic")
+        self.assertIsNone(synthetic["metric"]["counts_toward"])
+        self.assertEqual(synthetic["metric"]["excluded_reason"],
+                         "provenance:synthetic")
+
+        unclassified = self.audit(provenance_class=None)["decision"]
+        self.assertEqual(unclassified["provenance_class"], "unclassified")
+        self.assertIsNone(unclassified["metric"]["counts_toward"])
+        with self.assertRaisesRegex(ValueError, "provenance_class"):
+            self.audit(provenance_class="external")
 
     def test_migration_flag_is_irrelevant_for_submitted_packets(self):
         flag = issue_migration_flag("legacy grace", CURRENT, "op-1")
@@ -210,6 +230,17 @@ class TestReplay(WedgeFixtureCase):
         problems = verify_wedge_decision(self.root, laundered)
         self.assertTrue(any("verdict does not replay" in p for p in problems),
                         problems)
+
+    def test_provenance_metric_mismatch_fails_replay(self):
+        decision = self.audit(provenance_class="real")["decision"]
+        forged = {k: v for k, v in decision.items() if k != "receipt_sha256"}
+        forged["provenance_class"] = "synthetic"
+        import hashlib
+        from core.helix_holdout import canonical_json_bytes
+        forged["receipt_sha256"] = hashlib.sha256(
+            canonical_json_bytes(forged)).hexdigest()
+        self.assertIn("metric marker does not match provenance_class",
+                      verify_wedge_decision(self.root, forged))
 
 
 if __name__ == "__main__":

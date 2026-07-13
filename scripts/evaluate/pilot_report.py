@@ -51,9 +51,10 @@ def _main(argv):
 
     gate = report["t4_gate"]
     print(f"=== HELIX wedge pilot report ===")
-    print(f"  participants: {report['participants']} "
-          f"{report['participant_ids']}")
-    print(f"  decisions:    {report['combined']['decisions_total']}"
+    print(f"  participants: submitted {report['participants']}, "
+          f"real {report['real_participants']} {report['real_participant_ids']}")
+    print(f"  decisions:    total {report['combined']['decisions_total']}, "
+          f"real {report['combined']['real_decisions_total']}"
           f" (admitted {report['combined']['admitted']},"
           f" prevented {report['combined']['prevented_invalid_handbacks']})")
     ns = report["north_star"]["value"]
