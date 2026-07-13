@@ -149,8 +149,10 @@ grounding gate로 강화됨.
 3. 기존 exploit ledger의 fail-open 소비 경로가 migration flag 유예 하 잔존.
 4. wedge latency/cost는 sidecar 설계만 (결정론 경계 준수의 의도적 선택).
 5. FederationPlane 미구현 — DESIGN의 조건부 gate가 의도한 blocked.
-6. wedge 남은 backlog: AHV(nested repo) provisioning 취약, 동시성 ledger, 컴플라이언스
-   프레임워크(SOC2/PCI) 매핑 — 페르소나 trial이 지목, 미해소.
+6. wedge 운영 backlog 3건은 `docs/WEDGE-OPERATIONS.md`에 계약으로 명시(코드 버그 아님):
+   AHV는 명확 실패로 fail-closed, ledger 동시성은 single-writer 계약 + verify 탐지(실증),
+   컴플라이언스는 evidence 제공(인증 주장 없음). 다중 writer 직렬화 어댑터는 결정론 core
+   밖 backlog로 잔존.
 7. 페르소나 trial provenance는 simulated_unverified — is_t4_utility=false. 실존 인물 보증
    시에만 utility 신호로 격상(코드가 강제).
 6. (방법론) T1 oracle·T2 brief를 단일 운영자 작성; 격리는 predictor/classifier subagent
