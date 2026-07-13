@@ -1,0 +1,25 @@
+{
+  "design": ".pgf/DESIGN-T4Verdict.md",
+  "project": "T4Verdict",
+  "parent": "HELIXDirection",
+  "enables": "P5_5 external pilot (the judgment machine the pilot's data flows into)",
+  "intent": "Compose the T4 metrics gate (aggregate_pilot) with an independent-provenance gate so T4 passes ONLY when metrics pass AND >=2 of >=3 participants clear a verified, independent, ledger-bound real_owned_stakes attestation. Closes pilot-level T4 forgery (self-dealing insider ledgers).",
+  "nodes": {
+    "Design": {"status": "done", "evidence": ".pgf/DESIGN-T4Verdict.md"},
+    "Review": {"status": "done", "note": "3-lens: consistency (reuses aggregate_pilot verbatim, seal pattern matches core), completeness (metrics+provenance+compose+fail-closed+all cases), correctness (AND logic, mutual independence via shared-operator prepass, ledger-head binding, decoy-author cross-check, fail-closed default)"},
+    "Implement": {"status": "done", "module": "core/helix_t4.py"},
+    "Test": {"status": "done", "tests": "tests/test_t4_verdict.py", "count": 10},
+    "Verify": {"status": "done", "result": "689 tests OK (679 -> 689); helix_validate PASS; pilot/owned-stakes regression clean"}
+  },
+  "invariants_held": [
+    "T4 passed = metrics gate passed AND independent-provenance gate passed (logical AND, fail-closed default not_passed)",
+    "each participant's real_owned_stakes attestation must be bound to that participant's own sealed ledger head",
+    "mutual independence: an operator id/org shared across participants disqualifies ALL of them (single party masquerading as many)",
+    "decoy-author attack blocked: T4 cross-checks operator against the caller's TRUSTED wedge_author_id, not the attestation's self-declared one",
+    "no single-operator, unbacked, or self-dealing set can pass; empty pilot -> not_passed",
+    "single source: metrics never reimplemented, aggregate_pilot reused verbatim"
+  ],
+  "honest_ceiling": "This machine JUDGES pilot data; it does not produce it. Real real_owned_stakes evidence requires an external pilot (P5_5) with independent operators running the wedge on real work — a real-world event, not autonomous code. Until then T4 stays not_passed / not judged.",
+  "p5_5_readiness": "Judgment path complete end-to-end: real wedge ledgers (audit_handback) -> per-participant metrics (wedge_metrics) -> combined metrics gate (aggregate_pilot) -> independent-provenance gate (owned_stakes) -> sealed T4 verdict (t4_verdict). What remains is NON-autonomous: recruit >=3 independent external operators, run >=8 weeks, collect their sealed ledgers + owned-stakes attestations + retention/false-admit sidecar.",
+  "next": "USER-DECISION: (a) commit this T4 verdict layer, (b) real-world P5_5 kickoff steps (external recruitment/publication) which only Jung Wook Yang can perform"
+}
