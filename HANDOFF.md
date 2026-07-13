@@ -1,14 +1,16 @@
 # HANDOFF — HELIX
 
-> 갱신: 2026-07-12
-> **현재 상태:** Condense 라인(5 platforms · 56 packs)과 HELIXDirection 라인(Deterministic
-> Admission Control Plane) 모두 구축 완료. **613 tests OK**, `helix_validate` PASS.
-> **영속화 완료:** HELIXDirection P0~P7이 **main에 merge됨** (PR #12 + line-ending fix PR #13,
-> CI green). 그 이후 T1 재도전 조사 산출물(grounding gate 등)은 미commit — 정욱님 결정.
-> **T1 재도전 완결:** 4단계 조사로 강등이 **구조적 한계**임을 확정 (재상향 미추진). thesis
-> "internal corpus router" 최종화 — 완화 없음.
-> **정확한 다음 최우선 작업: 정욱님 방향 결정** — (i) grounding gate 등 유효 산출물 commit,
-> (ii) P5_5 외부 pilot 개시, (iii) 페르소나 utility trial. 자율 순수 실무는 종결됨.
+> 갱신: 2026-07-13
+> **현재 상태:** Condense(5 platforms·56 packs) + HELIXDirection(Deterministic Admission
+> Control Plane) + persona-trial 파생 security 강화. **642 tests OK**, `helix_validate` PASS.
+> **영속화 완료: PR #12~#16 전부 main merged (CI green).** admission plane(P0~P7) ·
+> line-ending fix · grounding gate + persona adoption trial · wedge security 4건(정직성 정정
+> · evidence-truth 검증 · keyed HMAC signing · external anchoring).
+> **thesis: GOVERNED INTERNAL SYSTEM** — T1 강등 **구조적 확정**(재상향 미추진), T4 미판정.
+> 어떤 주장도 부풀리지 않음.
+> **정확한 다음 최우선 작업: 정욱님 방향 결정** — 남은 것은 대부분 실세계·결정 의존:
+> (a) P5_5 외부 pilot 실개시(모집·공개), (b) 페르소나 utility trial에 실존 인물 provenance
+> 부여, (c) 나머지 wedge backlog(AHV provisioning · 동시성 ledger · 컴플라이언스 매핑).
 > 이전 완료 계보: [`_legacy/`](_legacy/) (Condense v0.6 · HELIXDirection 종결본/상세본)
 
 ---
@@ -50,12 +52,32 @@ HELIXDirection P0~P7(303 files)을 PR #12로 main에 merge. Windows CRLF가
 content-addressed evidence hash를 깨뜨린 결함을 `.gitattributes`로 잡아 PR #13(hotfix)로
 merge. **CI green, main 안정.** nested 19 repos·`_workspace`는 격리 유지.
 
-### ①-b T1 재도전 조사 — 완결, 산출물 미commit
+### ①-b T1 재도전 조사 — 완결·merged (PR #14)
 
-T1 강등이 구조적 한계임을 4단계로 확정(`_workspace/helix-direction/T1-retry-verdict.md`).
-유효 산출물 **grounding gate**(`core/helix_oracle_grounding.py` + `tests/test_oracle_grounding.py`,
-613 tests에 포함)와 pilot kit 이후 산출물은 아직 미commit. **정욱님 결정**: 이 유효
-도구들을 새 branch로 commit할지.
+T1 강등이 구조적 한계임을 4단계(post-mortem → grounding gate → 독립 재채점 0.20 →
+feasibility)로 확정(`_workspace/helix-direction/T1-retry-verdict.md`). 유효 산출물
+**grounding gate**(`core/helix_oracle_grounding.py`)를 main에 merge — oracle/predictor의
+machine 라벨이 view 인용으로 grounding되도록 강제해 topic-기반 over-claim을 차단.
+
+### ①-c 페르소나 conditional-adoption trial — merged (PR #14)
+
+방법론 논의(비결정론 페르소나 + 인과적 독립성 + provenance 정직 라벨)를 코드로 실체화
+(`core/helix_adoption_trial.py`). 4 페르소나(격리 subagent, wedge-무관 이익 함수)가 wedge를
+독립 평가: adopt 0 · reject 1 · conditional 3, **is_t4_utility=false**(simulated provenance —
+utility 아님, 코드가 격상 금지). 19개 결함 독립 발견. 상세:
+`_workspace/helix-direction/persona-trial-report.md`.
+
+### ①-d wedge security 강화 — 페르소나 trial 발견 4건 전부 해소·merged (PR #14~#16)
+
+| # | 결함 (발견: security-engineer 페르소나) | 해소 |
+|---|---|---|
+| 1 | "tamper-evident" 문서 과대주장 | 정직 정정 (integrity≠authenticity 명시) — PR #14 |
+| 2 | evidence_path 실제 파일 미검증 → 가짜 evidence도 ADMIT | opt-in evidence-truth 검증(`evidence_root`) — PR #14 |
+| 3 | unkeyed seal → 키 없는 외부 적대자가 chain 재구축 통과 | **keyed HMAC signing**(`core/helix_signing.py`) — PR #15 |
+| 4 | 키 보유 내부자가 ledger 재작성·재서명 | **external anchoring**(`core/helix_anchor.py`) — PR #16 |
+
+signing + anchoring 두 층으로 tamper-evidence의 양쪽(외부/내부)이 닫혔다. 전부
+결정론 경계 유지(stdlib hmac/hashlib, 키·external_ref 주입).
 
 ### ② P5_5 외부 pilot 개시 — T4 판정으로 직결 (최우선 방향)
 
@@ -89,16 +111,20 @@ T4 gate 통과 시 "Governed Internal System"에서 **"Admission Plane(제품)"*
 구조적 한계로 확정(①-b). generator 주장 재상향은 추진하지 않는다. blind trial 방법론은
 grounding gate로 강화됨.
 
-## 3. 산출 인벤토리 (HELIXDirection, 전부 미commit)
+## 3. 산출 인벤토리 (HELIXDirection + 후속, **main merged PR #12~#16**)
 
-- **core 신규 15종**: helix_{state_receipt, holdout, prediction, novelty, constitution,
+- **core 신규 21종**: helix_{state_receipt, holdout, prediction, novelty, constitution,
   evidence, risk_policy, authorization, stop_token, contestability, execution_plan,
-  admission, side_effect_guard, actuator, impact_handback, wedge, wedge_metrics}
-- **schemas 8종**, **tests 17파일**(329→595), **CLI**: `state-receipt`, `audit-handback`
-- **wedge 킷**: `docs/WEDGE-RUNBOOK.md`, `examples/wedge/`; **policy**: `docs/HOLDOUT-POLICY.md`
+  admission, side_effect_guard, actuator, impact_handback, wedge, wedge_metrics,
+  **oracle_grounding, adoption_trial, signing, anchor**}
+- **schemas 8종**, tests 329→**642**, **CLI**: `state-receipt`, `audit-handback`
+- **wedge 킷**: `docs/WEDGE-RUNBOOK.md`(정직 security-boundary 포함), `examples/wedge/`,
+  `docs/PILOT-PROTOCOL.md`; **policy**: `docs/HOLDOUT-POLICY.md`
+- **security**: `helix_signing`(keyed HMAC) · `helix_anchor`(external anchoring) —
+  actuation ledger에 opt-in 적용
 - **seed**: `seed/evaluation/` (synthetic + T1-LIVE-001 실 cohort — 30 unseen, pinned SHA)
 - **scripts**: `scripts/evaluate/` (synthetic builder · T1 collector · blind trial ·
-  shadow replay); `engines/exploit/adapter.py`에 `registry_admissions` 추가
+  shadow replay · pilot_report); `engines/exploit/adapter.py`에 `registry_admissions` 추가
 
 ## 4. Evidence 색인 (`_workspace/helix-direction/`, gitignored durable)
 
@@ -117,19 +143,24 @@ grounding gate로 강화됨.
 
 ## 6. 알려진 한계 / 이탈 (은폐 없음)
 
-1. NoveltyTrial 실측(구현·환원 ≥3건) 미수행 — T1 재도전 조건.
-2. stop token은 암호 서명이 아닌 canonical seal + ledger 정합 (서명 도입은 향후 과제).
+1. NoveltyTrial 실측(구현·환원 ≥3건) 미수행 — T1 재도전 조건(단 T1은 구조적 한계로 종결).
+2. actuation ledger는 keyed HMAC signing + external anchoring **구현**(opt-in). stop token 등
+   나머지 seal은 아직 unkeyed — 필요 시 동일 signing 패턴 적용 가능(backlog).
 3. 기존 exploit ledger의 fail-open 소비 경로가 migration flag 유예 하 잔존.
 4. wedge latency/cost는 sidecar 설계만 (결정론 경계 준수의 의도적 선택).
 5. FederationPlane 미구현 — DESIGN의 조건부 gate가 의도한 blocked.
+6. wedge 남은 backlog: AHV(nested repo) provisioning 취약, 동시성 ledger, 컴플라이언스
+   프레임워크(SOC2/PCI) 매핑 — 페르소나 trial이 지목, 미해소.
+7. 페르소나 trial provenance는 simulated_unverified — is_t4_utility=false. 실존 인물 보증
+   시에만 utility 신호로 격상(코드가 강제).
 6. (방법론) T1 oracle·T2 brief를 단일 운영자 작성; 격리는 predictor/classifier subagent
    컨텍스트로만 확보. 제3자 역할 분리는 외부 pilot의 몫.
 
 ## 7. Rollback 상태
 
-이 방향 작업은 branch `helixdirection-admission-plane`에 committed (main 미merge).
-되돌리려면 해당 branch를 삭제/미merge로 두면 main은 무영향. nested 19 repos는
-무변경(clean). `_workspace/`는 gitignored durable evidence — 삭제 금지.
+이 방향 작업은 **main에 merged**(PR #12~#16). 되돌리려면 해당 merge commit들을 revert.
+nested 19 repos는 무변경(clean). `_workspace/`는 gitignored durable evidence — 삭제 금지.
+미merge branch 없음.
 
 ## 8. 운영 규율 (유지)
 
@@ -142,7 +173,9 @@ grounding gate로 강화됨.
 
 ## 9. 한 줄 인수인계
 
-> **HELIXDirection이 GOVERNED INTERNAL SYSTEM으로 종결됐고(595 tests·sealed evidence),
-> Condense 5 플랫폼 라인도 유지된다. 다음 최우선은 `P5_5 외부 pilot 개시`로 T4를 판정하는
-> 것 — 준비 문서는 지금 자율로 시작할 수 있고, 공개·모집·운영과 그 선행인 commit 영속화는
-> 정욱님 승인이 필요하다.**
+> **HELIXDirection이 GOVERNED INTERNAL SYSTEM으로 종결됐고(642 tests·sealed evidence,
+> PR #12~#16 main merged), Condense 5 플랫폼 라인도 유지된다. T1 강등은 구조적 한계로
+> 확정, T4는 미판정. 페르소나 conditional-adoption trial이 wedge security 4건을 발견·해소
+> (keyed signing + external anchoring 포함)했다. 자율 순수 실무는 종결 — 남은 것은
+> P5_5 외부 pilot 실개시, 페르소나 trial 실존 provenance, 남은 wedge backlog로, 전부
+> 정욱님의 실세계·결정이 필요하다.**
