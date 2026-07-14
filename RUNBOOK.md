@@ -102,6 +102,9 @@ python scripts/evaluate/pilot_report.py --config pilot.json [--out report.json]
 python helix.py close-loop --winner winner.json --ledger .helix/ledger.json --corpus .helix/corpus.json
 #   winner.json = {"winner": {...}, "source_chain": {...}, "implementation": {project_name,...}}
 #   --packet <handback.json>: winner handback 검증 (breach=write 중단 fail-fast, valid/thin=entry 표시)
+#   게이트 경계: close-loop write는 handback 검증만으로 게이트된다. state-receipt의
+#   actuator_ready(diversity/freshness/drift authority)는 참조하지 않는다 — 두 액추에이션
+#   표면은 각자 게이트를 가진다(HANDOFF §6-8; close-loop의 state_drift 미존중은 미결정 항목).
 
 # ★ 핸드백 게이트(write, actuator): 구현된 프로젝트의 handback packet을 ActionHandbackVerifier로
 #   검증하고 verdict를 registry에 영속화. breach면 exit 1 + 다음 status에서 excluded.

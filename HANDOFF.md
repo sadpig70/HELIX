@@ -200,6 +200,14 @@ grounding gate로 강화됨.
    실 데이터(독립 외부 operator)는 미보유 — 데이터 생성은 P5_5 외부 pilot(실세계 사건).
 6. (방법론) T1 oracle·T2 brief를 단일 운영자 작성; 격리는 predictor/classifier subagent
    컨텍스트로만 확보. 제3자 역할 분리는 외부 pilot의 몫.
+8. **두 액추에이션 표면의 게이트 디커플링** (풀사이클 실행 검토, 2026-07-14 확인):
+   `helix.py close-loop`(명시 winner write)는 **handback 검증만**으로 게이트되고
+   (`ActionHandbackVerifier`, breach=write 중단), `state-receipt`의 `actuator_ready`
+   (diversity_repair·unverifiable_report·state_drift 기반 fail-closed) authority를 **참조하지
+   않는다**. 즉 state authority가 `blocked`여도 명시 close-loop write는 진행된다. 명시
+   operator write + 독립 handback 게이트로 방어된다는 점에서 방어 가능하나, **close-loop이
+   state_drift를 존중하지 않는 것**이 의도인지(명시 override) 갭인지는 정욱님 결정 사항.
+   미결정 항목으로 기록. (RUNBOOK §4에도 표기.)
 
 ## 7. Rollback 상태
 
