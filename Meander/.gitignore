@@ -1,0 +1,7 @@
+# rendered scratch (root only — examples/*.svg stay tracked)
+/out.svg
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
