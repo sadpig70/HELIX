@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/ConcordGate_hero.svg" alt="ConcordGate — reconcile independent attestations" width="100%">
+</p>
+
 # ConcordGate
 
 **Reconcile independent attestations about one subject — do they concord, or does the evidence split?**
