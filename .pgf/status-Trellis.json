@@ -1,0 +1,20 @@
+{
+  "design": ".pgf/DESIGN-Trellis.md",
+  "project": "Trellis",
+  "strand": "exploit(recreate) + domain-distance gate (full-cycle turn 4)",
+  "distinct_character": "fourth character: verify(ConcordGate) -> design(Confluence) -> play(Meander) -> learn(Trellis)",
+  "co_evolution": "transplants Meander's graph-traversal gene (fed back into the corpus) into the learning domain: a skill DAG instead of a maze grid",
+  "nodes": {
+    "Design": {"status": "done", "evidence": ".pgf/DESIGN-Trellis.md"},
+    "Implement": {"status": "done", "module": "Trellis/trellis.py",
+                  "capability": "skill DAG validate (cycle/missing, fail-closed) + deterministic topological ordering (alpha tie-break) + minimal prereq-closure plan + depth metrics + ASCII/SVG render"},
+    "Test": {"status": "done", "tests": "Trellis/tests/test_trellis.py", "count": 18, "result": "18 passed"},
+    "Actuate": {"status": "done", "close_loop": "closed; corpus_added=true"},
+    "Verify": {"status": "done", "helix_validate": "PASS (core unaffected)",
+               "artifacts": "assets/Trellis_hero.svg + examples/{curriculum.svg, plan.txt, skills.json} produced by the engine",
+               "invariants": "topological validity (prereqs first), deterministic, fail-closed on cycles/missing"}
+  },
+  "deliverable": "Trellis/ — deterministic curriculum/skill-tree planner; single stdlib module, README(hero), LICENSE(MIT), examples/3, tests/18, cli_triplet sample/plan/check",
+  "honest_boundary": "orders the prerequisite graph you give it; does not judge pedagogy or invent prerequisites (README noted).",
+  "next": "publish independent repo + optionally another full-cycle turn (user standing-authorized repo create/commit/push)"
+}
