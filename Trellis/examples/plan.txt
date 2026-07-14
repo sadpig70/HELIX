@@ -1,0 +1,11 @@
+Learning path to 'machine_learning' (10 steps):
+   1. arithmetic
+   2. algebra   (needs: arithmetic)
+   3. functions   (needs: algebra)
+   4. geometry   (needs: arithmetic)
+   5. linear_algebra   (needs: functions)
+   6. statistics   (needs: algebra)
+   7. trigonometry   (needs: algebra, geometry)
+   8. calculus   (needs: functions, trigonometry)
+   9. probability   (needs: calculus, statistics)
+  10. machine_learning   (needs: calculus, linear_algebra, probability)

@@ -1,0 +1,35 @@
+{
+  "arithmetic": [],
+  "algebra": [
+    "arithmetic"
+  ],
+  "geometry": [
+    "arithmetic"
+  ],
+  "trigonometry": [
+    "algebra",
+    "geometry"
+  ],
+  "functions": [
+    "algebra"
+  ],
+  "calculus": [
+    "trigonometry",
+    "functions"
+  ],
+  "linear_algebra": [
+    "functions"
+  ],
+  "statistics": [
+    "algebra"
+  ],
+  "probability": [
+    "statistics",
+    "calculus"
+  ],
+  "machine_learning": [
+    "linear_algebra",
+    "probability",
+    "calculus"
+  ]
+}
