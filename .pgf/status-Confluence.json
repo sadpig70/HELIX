@@ -1,0 +1,23 @@
+{
+  "design": ".pgf/DESIGN-Confluence.md",
+  "project": "Confluence",
+  "strand": "exploit(recreate) + domain-distance gate (full-cycle augmentation)",
+  "differentiation": {
+    "problem": "recreate is corpus-bound -> reverts to governance/verification character (ConcordGate proved it)",
+    "augmentation": "domain-distance gate: winner must flip the corpus centroid on >=3 of 5 character axes",
+    "axes_flipped": "5/5 (purpose generate!=verify, output artifacts!=verdict, interaction generate!=judge, user creator!=agent-ops, domain science+art!=governance)"
+  },
+  "nodes": {
+    "Design": {"status": "done", "evidence": ".pgf/DESIGN-Confluence.md"},
+    "Implement": {"status": "done", "module": "Confluence/confluence.py",
+                  "engine": "deterministic multi-objective (Pareto) evolutionary search, stdlib-only (SHA-256 seed, no random/clock)",
+                  "domain_packs": ["molecule(pharma)", "alloy(materials)", "floorplan(semiconductor)", "energy", "schema(data)", "mandala(SVG)", "melody(WAV)", "story(text)"]},
+    "Test": {"status": "done", "tests": "Confluence/tests/test_confluence.py", "count": 15, "result": "15 passed"},
+    "Actuate": {"status": "done", "close_loop": "closed; corpus_added=true; idempotent re-run=already_recorded"},
+    "Verify": {"status": "done", "helix_validate": "PASS (core unaffected)",
+               "artifacts": "examples/{mandala.svg, melody.wav, story.txt} rendered by the engine itself"}
+  },
+  "deliverable": "Confluence/ — one domain-agnostic generative design engine + 8 domain packs spanning pharma/materials/semiconductor/energy/data + art/music/story; single stdlib module, README(hero), LICENSE(MIT), examples/3 (engine-rendered), tests/15, cli_triplet domains/run/report",
+  "honest_boundary": "domain packs are ILLUSTRATIVE models, not production R&D tools (no real drug discovery / chip design) — stated in README. Local only (repo_url empty) until published.",
+  "next": "USER-DECISION: (a) commit Confluence as tracked deliverable, (b) publish independent repo github.com/sadpig70/Confluence, (c) another full-cycle turn"
+}
