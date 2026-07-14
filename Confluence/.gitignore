@@ -1,0 +1,9 @@
+# runtime run ledgers / rendered scratch
+*.jsonl
+out.svg
+out.wav
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/

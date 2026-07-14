@@ -1,0 +1,7 @@
+story beats:
+  1. call
+  2. ordinary_world
+  3. refusal
+  4. threshold
+  5. trials
+  6. ordeal
