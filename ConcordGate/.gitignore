@@ -1,0 +1,9 @@
+# runtime ledgers / caches
+.cg/
+_cg/
+*.jsonl
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
