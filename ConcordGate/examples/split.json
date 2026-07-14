@@ -1,0 +1,31 @@
+{
+  "subject_id": "release-2026.4.0",
+  "attestations": [
+    {
+      "schema": "concordgate-attestation/1.0",
+      "attester": {
+        "id": "alice",
+        "org": "AuditCo"
+      },
+      "subject_id": "release-2026.4.0",
+      "claims": {
+        "sha256": "abc123",
+        "signed": true
+      },
+      "attestation_sha256": "ecb46c11937baa6995dbf14da7bf0c7550698c7e95da5025120d92484dabb642"
+    },
+    {
+      "schema": "concordgate-attestation/1.0",
+      "attester": {
+        "id": "carol",
+        "org": "ThirdEye"
+      },
+      "subject_id": "release-2026.4.0",
+      "claims": {
+        "sha256": "def999",
+        "signed": true
+      },
+      "attestation_sha256": "aff3539ee5678ad2258d9d2bd48d68eff69012f8234b73cdf72b54445733c781"
+    }
+  ]
+}

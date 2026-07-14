@@ -1,0 +1,25 @@
+{
+  "design": ".pgf/DESIGN-ConcordGate.md",
+  "project": "ConcordGate",
+  "strand": "exploit (recreate)",
+  "provenance": {
+    "next_action": "RUN_EXPLOIT (fresh assets -> recombine)",
+    "recombined_genes": ["ReproDossier", "ADPR/CertMesh", "WithheldActionWitness"],
+    "white_space": "corpus verifies single actions; none reconciles multiple independent attestations about one subject (split-brain evidence detection)",
+    "winner_id": "SEED-CONCORDGATE-001",
+    "unified_ledger_is_consumed": "fresh (no collision)"
+  },
+  "nodes": {
+    "Design": {"status": "done", "evidence": ".pgf/DESIGN-ConcordGate.md"},
+    "Implement": {"status": "done", "module": "ConcordGate/concordgate.py",
+                  "contract": "single stdlib module + README + LICENSE(MIT) + .gitignore + examples/3 + tests/17"},
+    "Test": {"status": "done", "tests": "ConcordGate/tests/test_concordgate.py", "count": 17, "result": "17 passed"},
+    "Actuate": {"status": "done", "close_loop": "corpus_added=true; idempotent re-run=already_recorded",
+                "ledger": ".helix/ledger.json (consumed)", "corpus": ".helix/corpus.json (10 entries, ConcordGate fed back)"},
+    "Verify": {"status": "done", "gate_evidence": ".helix/runs/concordgate-fullcycle/GATE-EVIDENCE.json",
+               "all_passed": true, "helix_validate": "PASS (core unaffected)"}
+  },
+  "deliverable": "ConcordGate/ — local CLI: reconcile N independent sealed attestations about one subject -> CONCORDANT/SPLIT/INSUFFICIENT (org=independence unit, quorum, exact conflict pairs, sealed hash-chain ledger, cli_triplet sample/run/report, stdlib-only)",
+  "honest_boundary": "Generated project is LOCAL only (repo_url empty, not published). .helix/ ledger+corpus+GATE-EVIDENCE are gitignored runtime state. Tracked deliverable = ConcordGate/ + .pgf/DESIGN-ConcordGate.md.",
+  "next": "USER-DECISION: (a) commit ConcordGate as tracked deliverable, (b) publish as its own repo (github.com/sadpig70/ConcordGate), (c) another full-cycle turn"
+}

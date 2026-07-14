@@ -1,0 +1,33 @@
+{
+  "subject_id": "release-2026.4.0",
+  "attestations": [
+    {
+      "schema": "concordgate-attestation/1.0",
+      "attester": {
+        "id": "alice",
+        "org": "AuditCo"
+      },
+      "subject_id": "release-2026.4.0",
+      "claims": {
+        "sha256": "abc123",
+        "signed": true,
+        "sbom": "present"
+      },
+      "attestation_sha256": "3d5eb512ba89a88164271362d7c77d0ab42ca68489b633f96af616516d4a9a35"
+    },
+    {
+      "schema": "concordgate-attestation/1.0",
+      "attester": {
+        "id": "bob",
+        "org": "ReproLab"
+      },
+      "subject_id": "release-2026.4.0",
+      "claims": {
+        "sha256": "abc123",
+        "signed": true,
+        "sbom": "present"
+      },
+      "attestation_sha256": "18cac3de23a15d1f533683a0721a5f2317b3f8afa5cc433cc33207f21e8f7ca4"
+    }
+  ]
+}
