@@ -4,10 +4,15 @@
 > **현재 상태:** Condense(5 platforms·56 packs) + HELIXDirection(Deterministic Admission
 > Control Plane) + persona-trial 파생 security 강화 + **provenance 사다리 3층 + T4 verdict
 > 판정 기계 + pilot provenance fail-closed 경계**. **695 tests OK**, `helix_validate` PASS.
-> **영속화 완료: PR #12~#23 전부 main merged (CI green).** admission plane(P0~P7) ·
+> **영속화 완료: PR #12~#29 전부 main merged (CI green).** admission plane(P0~P7) ·
 > line-ending fix · grounding gate + persona adoption trial · wedge security 4건(정직성 정정
 > · evidence-truth 검증 · keyed HMAC signing · external anchoring) · wedge operations 계약(#18)
-> · **fidelity_attested 층(#19)** · **real_owned_stakes 층(#21)** · **T4 verdict gate(#23)**.
+> · **fidelity_attested 층(#19)** · **real_owned_stakes 층(#21)** · **T4 verdict gate(#23)**
+> · 풀사이클 검토·산출(#26~#29).
+> **풀사이클 생성 실증(2026-07-14):** HELIX 루프가 실제 새 프로젝트를 산출·환류·공개했다 —
+> **ConcordGate**(독립 attestation 협화 판정)·**Confluence**(과학+예술 통합 생성 설계 엔진).
+> 후자는 **도메인-거리 게이트**로 코퍼스 성격 5축을 뒤집어 governance 골격을 탈피(§2-④).
+> 두 프로젝트는 독립 public repo로 공개되고 `.helix` 코퍼스에 환류됐다.
 > **thesis: GOVERNED INTERNAL SYSTEM** — T1 강등 **구조적 확정**(재상향 미추진), T4 미판정.
 > 어떤 주장도 부풀리지 않음.
 > **provenance 사다리 3/3 칸 코드/계약 완성**: `simulated_unverified`✅ · `fidelity_attested`✅
@@ -147,12 +152,33 @@ pilot 게이트(`docs/PILOT-PROTOCOL.md`) 필요. 이 층은 등급을 위조불
 *생성하지 않는다*(그것은 외부 pilot이라는 실세계 사건). 설계/상태:
 `.pgf/{DESIGN,status}-OwnedStakes.*`.
 
+### ④ 풀사이클 생성 산출 — 실제 새 프로젝트 2건 산출·공개 (2026-07-14)
+
+HELIX 루프를 `next_action`(RUN_EXPLOIT)부터 actuator(close-loop)까지 실제로 돌려 새
+프로젝트를 산출했다. 산출 계약(단일 stdlib 모듈 + README + LICENSE(MIT) + examples/3 +
+tests/≥10 + .gitignore) 충족, close-loop 환류(idempotent), helix_validate PASS(core 무해),
+독립 public repo 공개까지 폐루프 완결.
+
+| 프로젝트 | 성격 | 산출 경로 | 공개 |
+|---|---|---|---|
+| **ConcordGate** | 독립 attestation 협화 판정(CONCORDANT/SPLIT/INSUFFICIENT), org=독립단위, hash-chain | exploit(recreate), 코퍼스 white-space | github.com/sadpig70/ConcordGate |
+| **Confluence** | 도메인-불가지 생성 설계 엔진(Pareto), 8팩=신약·신소재·반도체·에너지·데이터+art/music/story | exploit + **도메인-거리 게이트** | github.com/sadpig70/Confluence |
+
+**풀사이클 개선 — 도메인-거리 게이트**: recreate는 코퍼스에 매여 governance/verification
+성격으로 회귀한다(ConcordGate가 증거 — novel이나 같은 골격). Confluence 턴에서 코퍼스 중심의
+성격 5축(목적·출력·상호작용·사용자·도메인)을 **전부 반대편으로 뒤집도록 강제**해 차별성을
+주장이 아니라 측정으로 만들었다. 설계/상태: `.pgf/{DESIGN,status}-{ConcordGate,Confluence}.*`.
+
+**정직 경계**: 생성 프로젝트의 도메인 모델(특히 Confluence의 신약/칩 등)은 **illustrative**이며
+실제 R&D 도구가 아니다(각 README 명시). 두 프로젝트는 HELIX-tracked이자 독립 repo이며,
+`.helix/`(ledger·corpus) 런타임 상태는 gitignored 격리.
+
 ### (종결) T1 재도전 — 재상향 미추진
 
 구조적 한계로 확정(①-b). generator 주장 재상향은 추진하지 않는다. blind trial 방법론은
 grounding gate로 강화됨.
 
-## 3. 산출 인벤토리 (HELIXDirection + 후속, **main merged PR #12~#23**)
+## 3. 산출 인벤토리 (HELIXDirection + 후속, **main merged PR #12~#29**)
 
 - **core 신규 24종**: helix_{state_receipt, holdout, prediction, novelty, constitution,
   evidence, risk_policy, authorization, stop_token, contestability, execution_plan,
@@ -211,10 +237,11 @@ grounding gate로 강화됨.
 
 ## 7. Rollback 상태
 
-기존 방향 작업은 **main에 merged**(PR #12~#23). PILOT-SIM·provenance boundary·pause 기록은
+기존 방향 작업은 **main에 merged**(PR #12~#29). PILOT-SIM·provenance boundary·pause 기록은
 baseline commit `f2eb20c`로 `origin/main`에 push됐고 CI run `29230457241`이 success다.
+풀사이클 생성 산출(ConcordGate #27·Confluence #29·문서 #26/#28)도 main에 merged.
 되돌리려면 해당 커밋들을 revert.
-nested 19 repos는 무변경(clean). `_workspace/`는 gitignored durable evidence — 삭제 금지.
+nested repos는 무변경(clean). `_workspace/`는 gitignored durable evidence — 삭제 금지.
 미merge branch 없음.
 
 ## 8. 운영 규율 (유지)
@@ -229,10 +256,12 @@ nested 19 repos는 무변경(clean). `_workspace/`는 gitignored durable evidenc
 ## 9. 한 줄 인수인계
 
 > **HELIXDirection이 GOVERNED INTERNAL SYSTEM으로 종결됐고(695 tests·sealed evidence,
-> PR #12~#23 main merged), Condense 5 플랫폼 라인도 유지된다. T1 강등은 구조적 한계로
+> PR #12~#29 main merged), Condense 5 플랫폼 라인도 유지된다. T1 강등은 구조적 한계로
 > 확정, T4는 미판정. 페르소나 conditional-adoption trial이 wedge security 4건을 발견·해소
 > (keyed signing + external anchoring 포함)하고, provenance 사다리 3/3 칸(simulated ·
 > fidelity_attested[실제 receipt 1건] · real_owned_stakes[hard independence])과 T4 verdict
 > 판정 기계(metrics ∧ 독립-provenance)가 전부 위조불가로 완성됐다. PILOT-SIM 21건과
 > provenance fail-closed 경계까지 검증됐으며, 외부 pilot은 `PAUSED_BY_USER`다. T4는
-> `NOT JUDGED`, 제품 주장은 보류하며 새 명시 지시 전에는 외부 pilot 다음 작업이 없다.**
+> `NOT JUDGED`, 제품 주장은 보류. 그리고 풀사이클 루프가 실제 새 프로젝트 2건을 산출·
+> 공개했다 — **ConcordGate**·**Confluence**(도메인-거리 게이트로 코퍼스 성격 탈피, 독립
+> public repo + 코퍼스 환류). 새 명시 지시 전 외부 pilot 다음 작업은 없다.**
