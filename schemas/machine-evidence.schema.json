@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-parity-machine-evidence/1.0",
+  "title": "HELIX parity/provenance machine evidence",
+  "type": "object",
+  "required": [
+    "schema", "evidence_id", "source_lock_id", "machine_label",
+    "machine_status", "reproduction_command", "tests_passed",
+    "deterministic", "behavior_sha256", "supporting_files", "problems"
+  ],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-parity-machine-evidence/1.0"]},
+    "evidence_id": {"type": "string"},
+    "source_lock_id": {"type": "string"},
+    "machine_label": {"type": "string"},
+    "machine_status": {"type": "string", "enum": ["hypothesis", "substantiated"]},
+    "reproduction_command": {"type": "string"},
+    "tests_passed": {"type": "boolean"},
+    "deterministic": {"type": "boolean"},
+    "behavior_sha256": {"type": "string"},
+    "supporting_files": {"type": "array", "items": {"type": "string"}},
+    "problems": {"type": "array", "items": {"type": "string"}}
+  }
+}

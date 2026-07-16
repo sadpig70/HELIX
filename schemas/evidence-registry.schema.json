@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-parity-evidence-registry/1.0",
+  "title": "HELIX parity/provenance evidence registry",
+  "type": "object",
+  "required": ["schema", "registry_id", "policy_version", "updated_at", "entries"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-parity-evidence-registry/1.0"]},
+    "registry_id": {"type": "string"},
+    "policy_version": {"type": "string", "enum": ["HELIX-PARITY-PROVENANCE/1.0"]},
+    "updated_at": {"type": "string"},
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["pack", "target_platform", "source_locks", "machine_evidence", "parity_contracts", "parity_receipts", "provenance_statements", "status"],
+        "properties": {
+          "pack": {"type": "string"},
+          "target_platform": {"type": "string"},
+          "source_locks": {"type": "array", "items": {"type": "string"}},
+          "machine_evidence": {"type": "array", "items": {"type": "string"}},
+          "parity_contracts": {"type": "array", "items": {"type": "string"}},
+          "parity_receipts": {"type": "array", "items": {"type": "string"}},
+          "provenance_statements": {"type": "array", "items": {"type": "string"}},
+          "status": {"type": "string", "enum": ["PENDING", "PARTIAL", "VALID", "BLOCKED"]}
+        }
+      }
+    }
+  }
+}

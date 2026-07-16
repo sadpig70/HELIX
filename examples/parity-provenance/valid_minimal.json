@@ -1,0 +1,82 @@
+{
+  "source-lock": {
+    "schema": "helix-parity-source-lock/1.0",
+    "source_id": "source:HC-PILOT-EXT-001",
+    "corpus_id": "HC-PILOT-EXT-001",
+    "origin_kind": "external_repo",
+    "locator": "https://github.com/in-toto/in-toto",
+    "revision": "a8ce9ee2125ae5a4b041a4e37cc1cf10eed0da6b",
+    "source_sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "license": "Apache-2.0",
+    "license_evidence_sha256": "abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789",
+    "captured_at": "2026-07-16T00:00:00Z",
+    "restrictions": ["snapshot_only"]
+  },
+  "machine-evidence": {
+    "schema": "helix-parity-machine-evidence/1.0",
+    "evidence_id": "machine:HC-PILOT-EXT-001",
+    "source_lock_id": "source:HC-PILOT-EXT-001",
+    "machine_label": "signed-step-metadata",
+    "machine_status": "substantiated",
+    "reproduction_command": "python -m pytest",
+    "tests_passed": true,
+    "deterministic": true,
+    "behavior_sha256": "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+    "supporting_files": ["source.snapshot.json"],
+    "problems": []
+  },
+  "parity-contract": {
+    "schema": "helix-parity-contract/1.0",
+    "contract_id": "contract:ProofEscrow:minimal",
+    "pack": "ProofEscrow",
+    "target_platform": "Attestra",
+    "source_locks": ["source:HC-PILOT-EXT-001"],
+    "machine_evidence": ["machine:HC-PILOT-EXT-001"],
+    "inputs": {"artifact": "demo"},
+    "expected": {"decision": "BLOCK_UNTIL_ESCROWED"},
+    "comparators": ["exact_decision"],
+    "invariants": ["receipt_binds_artifact_and_behavior"]
+  },
+  "parity-receipt": {
+    "schema": "helix-parity-receipt/1.0",
+    "receipt_id": "receipt:ProofEscrow:minimal",
+    "contract_id": "contract:ProofEscrow:minimal",
+    "runner": "helix-parity-runner/0",
+    "executed_at": "2026-07-16T00:00:00Z",
+    "decision": "UNAVAILABLE",
+    "source_lock_sha256s": ["0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"],
+    "machine_evidence_sha256s": ["fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210"],
+    "observations": {"reason": "runner_not_implemented"},
+    "problems": ["runner_not_implemented"],
+    "receipt_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "provenance-statement": {
+    "schema": "helix-parity-provenance-statement/1.0",
+    "statement_id": "provenance:ProofEscrow:minimal",
+    "artifact": "platform/Attestra/packs/ProofEscrow",
+    "pack": "ProofEscrow",
+    "target_platform": "Attestra",
+    "source_locks": ["source:HC-PILOT-EXT-001"],
+    "parity_receipts": ["receipt:ProofEscrow:minimal"],
+    "claims": ["source_locked", "parity_unavailable"],
+    "statement_sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+  },
+  "evidence-registry": {
+    "schema": "helix-parity-evidence-registry/1.0",
+    "registry_id": "registry:parity-provenance:minimal",
+    "policy_version": "HELIX-PARITY-PROVENANCE/1.0",
+    "updated_at": "2026-07-16T00:00:00Z",
+    "entries": [
+      {
+        "pack": "ProofEscrow",
+        "target_platform": "Attestra",
+        "source_locks": ["source:HC-PILOT-EXT-001"],
+        "machine_evidence": ["machine:HC-PILOT-EXT-001"],
+        "parity_contracts": ["contract:ProofEscrow:minimal"],
+        "parity_receipts": ["receipt:ProofEscrow:minimal"],
+        "provenance_statements": ["provenance:ProofEscrow:minimal"],
+        "status": "PARTIAL"
+      }
+    ]
+  }
+}

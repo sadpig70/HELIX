@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-parity-provenance-statement/1.0",
+  "title": "HELIX parity/provenance statement",
+  "type": "object",
+  "required": [
+    "schema", "statement_id", "artifact", "pack", "target_platform",
+    "source_locks", "parity_receipts", "claims", "statement_sha256"
+  ],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-parity-provenance-statement/1.0"]},
+    "statement_id": {"type": "string"},
+    "artifact": {"type": "string"},
+    "pack": {"type": "string"},
+    "target_platform": {"type": "string"},
+    "source_locks": {"type": "array", "items": {"type": "string"}},
+    "parity_receipts": {"type": "array", "items": {"type": "string"}},
+    "claims": {"type": "array", "items": {"type": "string"}},
+    "statement_sha256": {"type": "string"}
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-parity-source-lock/1.0",
+  "title": "HELIX parity/provenance source lock",
+  "type": "object",
+  "required": [
+    "schema", "source_id", "corpus_id", "origin_kind", "locator",
+    "revision", "source_sha256", "license", "license_evidence_sha256",
+    "captured_at", "restrictions"
+  ],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-parity-source-lock/1.0"]},
+    "source_id": {"type": "string"},
+    "corpus_id": {"type": "string"},
+    "origin_kind": {"type": "string", "enum": ["external_repo", "helix_generated", "operational_problem", "research", "failure", "legacy_inventory"]},
+    "locator": {"type": "string"},
+    "revision": {"type": "string"},
+    "source_sha256": {"type": "string"},
+    "license": {"type": "string"},
+    "license_evidence_sha256": {"type": "string"},
+    "captured_at": {"type": "string"},
+    "restrictions": {"type": "array", "items": {"type": "string"}}
+  }
+}

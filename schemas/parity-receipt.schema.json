@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-parity-receipt/1.0",
+  "title": "HELIX parity receipt",
+  "type": "object",
+  "required": [
+    "schema", "receipt_id", "contract_id", "runner", "executed_at",
+    "decision", "source_lock_sha256s", "machine_evidence_sha256s",
+    "observations", "problems", "receipt_sha256"
+  ],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-parity-receipt/1.0"]},
+    "receipt_id": {"type": "string"},
+    "contract_id": {"type": "string"},
+    "runner": {"type": "string"},
+    "executed_at": {"type": "string"},
+    "decision": {"type": "string", "enum": ["PASS", "FAIL", "UNAVAILABLE"]},
+    "source_lock_sha256s": {"type": "array", "items": {"type": "string"}},
+    "machine_evidence_sha256s": {"type": "array", "items": {"type": "string"}},
+    "observations": {"type": "object"},
+    "problems": {"type": "array", "items": {"type": "string"}},
+    "receipt_sha256": {"type": "string"}
+  }
+}

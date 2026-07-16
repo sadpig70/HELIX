@@ -1,0 +1,26 @@
+{
+  "source-lock": {
+    "schema": "helix-parity-source-lock/1.0",
+    "source_id": "source:missing-required"
+  },
+  "machine-evidence": {
+    "schema": "helix-parity-machine-evidence/1.0",
+    "evidence_id": "machine:missing-required"
+  },
+  "parity-contract": {
+    "schema": "helix-parity-contract/1.0",
+    "contract_id": "contract:missing-required"
+  },
+  "parity-receipt": {
+    "schema": "helix-parity-receipt/1.0",
+    "receipt_id": "receipt:missing-required"
+  },
+  "provenance-statement": {
+    "schema": "helix-parity-provenance-statement/1.0",
+    "statement_id": "provenance:missing-required"
+  },
+  "evidence-registry": {
+    "schema": "helix-parity-evidence-registry/1.0",
+    "registry_id": "registry:missing-required"
+  }
+}
