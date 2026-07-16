@@ -123,3 +123,36 @@ Result:
   - `missing_behavior_sha256`
 
 This preserves the Stage 0 conclusion: these packs have V1/V2 source traceability, but must not be promoted to `P2/V3` until external machine evidence is substantiated.
+
+## Stage 3 ProofEscrow parity contract runner
+
+`scripts/corpus/parity_contract_runner.py` builds and runs the first executable parity contract.
+
+```pg
+Stage3ParityContractRunner
+    BuildProofEscrowContract -> done
+    RunProofEscrowParity -> done
+    SaveParityReceipt -> done
+    TestUnavailableFailClosed -> done
+```
+
+Tracked output:
+
+- `seed/parity-provenance/representative/ProofEscrow/parity-contracts/released.json`
+- `seed/parity-provenance/representative/ProofEscrow/parity-receipts/released.json`
+
+Result:
+
+- Contract: `contract:ProofEscrow:released`
+- Runner: `helix-parity-contract-runner/1.0`
+- HELIX parity decision: `PASS`
+- Pack-local decision: `RELEASED`
+- Pack-local receipt schema: `proofescrow-receipt/1.0`
+- HELIX parity receipt schema: `helix-parity-receipt/1.0`
+
+The runner deliberately separates two receipts:
+
+1. `ProofEscrow` pack-local receipt: proves the pack engine released the sample according to its own deterministic rules.
+2. HELIX `parity-receipt`: proves the pack-local result matched the HELIX parity contract and that source/machine evidence artifacts were present.
+
+Missing input is tested as `UNAVAILABLE`, not as success.

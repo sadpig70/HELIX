@@ -1,0 +1,59 @@
+{
+  "contract_id": "contract:ProofEscrow:released",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "2f659984774e9cbcc5f7dc50617b36488ba48dfa4a144a6cd4cf6501af0367e4",
+    "9d38438cedcd78187b8a9bef5e760a4c5e7700a6de1045c04f5bcb19f2b3e687"
+  ],
+  "observations": {
+    "comparators": [
+      {
+        "name": "pack_decision_equals_expected",
+        "pass": true
+      },
+      {
+        "name": "gene_provenance_equals_expected",
+        "pass": true
+      },
+      {
+        "name": "source_and_machine_evidence_present",
+        "pass": true
+      }
+    ],
+    "contract_sha256": "99ff1e289223bcd74b7e4b9321b59151c8580a6a2d66659230cd2e83baa16c7b",
+    "pack_receipt": {
+      "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "behavior_binding": {
+        "approved_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "baseline_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "observed_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "decision": "RELEASED",
+      "escrow_id": "PE-DEMO-001",
+      "gene_provenance": {
+        "behavior_baseline_binding": "HC-PILOT-HELIX-002",
+        "signed_step_metadata": "HC-PILOT-EXT-001"
+      },
+      "reasons": [],
+      "receipt_sha256": "7f3342f804db6ac6352cf97efb6f05e0a7a11c2fcfb9df70cc15d237d5e0b047",
+      "request_sha256": "c1e266bdc42cc93a81d69392f168c8d3db03264bb36a54267531ba108842c584",
+      "schema": "proofescrow-receipt/1.0",
+      "trusted_signers": [
+        "builder-1"
+      ],
+      "verified_steps": [
+        "build-1"
+      ]
+    }
+  },
+  "problems": [],
+  "receipt_id": "receipt:ProofEscrow:released",
+  "receipt_sha256": "24477c077951da68e3a2c07db278d60ad763ad481f400f9c137787394c89aa7a",
+  "runner": "helix-parity-contract-runner/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "a0e952fa3f45ce9bc6f25321c46208ce437f987c2b42c75adc35fca8ab66d621",
+    "6a4aa07467a6006d563ea05546ee279ac1f709bf678d9a758faf9efb3594fa71"
+  ]
+}

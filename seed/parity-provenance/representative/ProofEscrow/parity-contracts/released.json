@@ -1,0 +1,35 @@
+{
+  "comparators": [
+    "pack_decision_equals_expected",
+    "gene_provenance_equals_expected",
+    "source_and_machine_evidence_present"
+  ],
+  "contract_id": "contract:ProofEscrow:released",
+  "expected": {
+    "helix_decision": "PASS",
+    "pack_decision": "RELEASED",
+    "required_gene_provenance": {
+      "behavior_baseline_binding": "HC-PILOT-HELIX-002",
+      "signed_step_metadata": "HC-PILOT-EXT-001"
+    }
+  },
+  "inputs": {
+    "request": "ProofEscrow/examples/released-request.json",
+    "trust_store": "ProofEscrow/examples/trust-store.json"
+  },
+  "invariants": [
+    "fail_closed_to_unavailable_on_missing_input",
+    "receipt_hash_canonical"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/representative/ProofEscrow/machine-evidence/HC-PILOT-EXT-001.json",
+    "seed/parity-provenance/representative/ProofEscrow/machine-evidence/HC-PILOT-HELIX-002.json"
+  ],
+  "pack": "ProofEscrow",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/representative/ProofEscrow/source-locks/HC-PILOT-EXT-001.json",
+    "seed/parity-provenance/representative/ProofEscrow/source-locks/HC-PILOT-HELIX-002.json"
+  ],
+  "target_platform": "Attestra"
+}
