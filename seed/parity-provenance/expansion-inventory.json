@@ -1,0 +1,1160 @@
+{
+  "counts": {
+    "by_platform": {
+      "Attestra": {
+        "BLOCKED": 3,
+        "PENDING": 24,
+        "VALID": 1
+      },
+      "Certstra": {
+        "PENDING": 5
+      },
+      "Clearstra": {
+        "PENDING": 12
+      },
+      "Routestra": {
+        "BLOCKED": 1,
+        "PENDING": 11
+      },
+      "Scorestra": {
+        "PENDING": 5
+      }
+    },
+    "by_status": {
+      "BLOCKED": 4,
+      "PENDING": 57,
+      "VALID": 1
+    },
+    "packs": 62,
+    "probe_cases": 102
+  },
+  "entries": [
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "action-governance",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:action-governance",
+        "Attestra:action-governance:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "afferent-core",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:afferent-core",
+        "Attestra:afferent-core:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "afferent-interrupt",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:afferent-interrupt",
+        "Attestra:afferent-interrupt:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {
+        "parity_receipts": [
+          "seed/parity-provenance/representative/AuthorityArbiter/parity-receipts/released.json"
+        ],
+        "provenance_statements": [
+          "seed/parity-provenance/representative/AuthorityArbiter/provenance-statements/representative.json"
+        ],
+        "representative_pack": "AuthorityArbiter"
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "authority-arbiter",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:authority-arbiter",
+        "Attestra:authority-arbiter:predicate-gate"
+      ],
+      "reason": "representative_evidence_registered",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "BLOCKED"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "context-boundary",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:context-boundary",
+        "Attestra:context-boundary:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "cover-gate",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:cover-gate",
+        "Attestra:cover-gate:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "custody-relay",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:custody-relay",
+        "Attestra:custody-relay:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "delegation",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:delegation",
+        "Attestra:delegation:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "drift-isolator",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:drift-isolator",
+        "Attestra:drift-isolator:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "gen-cert",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:gen-cert",
+        "Attestra:gen-cert:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {
+        "parity_receipts": [
+          "seed/parity-provenance/representative/GraphQuarantine/parity-receipts/released.json"
+        ],
+        "provenance_statements": [
+          "seed/parity-provenance/representative/GraphQuarantine/provenance-statements/representative.json"
+        ],
+        "representative_pack": "GraphQuarantine"
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "graph-quarantine",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:graph-quarantine",
+        "Attestra:graph-quarantine:predicate-gate"
+      ],
+      "reason": "representative_evidence_registered",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "BLOCKED"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "handback",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:handback",
+        "Attestra:handback:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {
+        "parity_receipts": [
+          "seed/parity-provenance/representative/HookCircuit/parity-receipts/released.json"
+        ],
+        "provenance_statements": [
+          "seed/parity-provenance/representative/HookCircuit/provenance-statements/representative.json"
+        ],
+        "representative_pack": "HookCircuit"
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "hook-circuit",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:hook-circuit",
+        "Attestra:hook-circuit:predicate-gate"
+      ],
+      "reason": "representative_evidence_registered",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "BLOCKED"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "method-bond",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:method-bond",
+        "Attestra:method-bond:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M11",
+        "M2",
+        "M3"
+      ],
+      "pack": "policy-drift",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:policy-drift",
+        "Attestra:policy-drift:breach:drift",
+        "Attestra:policy-drift:predicate-gate",
+        "Attestra:policy-drift:thin:drift",
+        "Attestra:policy-drift:valid:drift"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "drift_detection",
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "pqc-mesh",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:pqc-mesh",
+        "Attestra:pqc-mesh:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {
+        "parity_receipts": [
+          "seed/parity-provenance/representative/ProofEscrow/parity-receipts/released.json"
+        ],
+        "provenance_statements": [
+          "seed/parity-provenance/representative/ProofEscrow/provenance-statements/representative.json"
+        ],
+        "representative_pack": "ProofEscrow"
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "proof-escrow",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:proof-escrow",
+        "Attestra:proof-escrow:predicate-gate"
+      ],
+      "reason": "representative_evidence_registered",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "VALID"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "repro-dossier",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:repro-dossier",
+        "Attestra:repro-dossier:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "reserve-flow",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:reserve-flow",
+        "Attestra:reserve-flow:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "settle-mesh",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:settle-mesh",
+        "Attestra:settle-mesh:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "signal-mesh",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:signal-mesh",
+        "Attestra:signal-mesh:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "slot-gate",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:slot-gate",
+        "Attestra:slot-gate:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "slot-settle-gate",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:slot-settle-gate",
+        "Attestra:slot-settle-gate:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "sov-mesh",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:sov-mesh",
+        "Attestra:sov-mesh:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "spend-boundary",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:spend-boundary",
+        "Attestra:spend-boundary:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "spend-mesh",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:spend-mesh",
+        "Attestra:spend-mesh:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "veto-escrow",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:veto-escrow",
+        "Attestra:veto-escrow:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "withheld-action",
+      "platform": "Attestra",
+      "probe_cases": [
+        "Attestra:withheld-action",
+        "Attestra:withheld-action:predicate-gate"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "predicate_gate"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2"
+      ],
+      "pack": "bio-clock",
+      "platform": "Certstra",
+      "probe_cases": [
+        "Certstra:bio-clock:certify"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "certify"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2"
+      ],
+      "pack": "cert-mesh",
+      "platform": "Certstra",
+      "probe_cases": [
+        "Certstra:cert-mesh:certify"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "certify"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2"
+      ],
+      "pack": "orbi-roam",
+      "platform": "Certstra",
+      "probe_cases": [
+        "Certstra:orbi-roam:certify"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "certify"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M12",
+        "M2"
+      ],
+      "pack": "release-mesh",
+      "platform": "Certstra",
+      "probe_cases": [
+        "Certstra:release-mesh:certify",
+        "Certstra:release-mesh:stage"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "certify",
+        "stage"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M2"
+      ],
+      "pack": "robo-trace",
+      "platform": "Certstra",
+      "probe_cases": [
+        "Certstra:robo-trace:certify"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "certify"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M6"
+      ],
+      "pack": "agent-ops",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:agent-ops:price"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "price"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M5",
+        "M6"
+      ],
+      "pack": "buy-bloc",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:buy-bloc:clear",
+        "Clearstra:buy-bloc:price"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "clear",
+        "price"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M5",
+        "M6"
+      ],
+      "pack": "cold-capacity",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:cold-capacity:clear",
+        "Clearstra:cold-capacity:price"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "clear",
+        "price"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M6",
+        "M7"
+      ],
+      "pack": "cryo-futures",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:cryo-futures:price",
+        "Clearstra:cryo-futures:settle"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "price",
+        "settle"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M5"
+      ],
+      "pack": "exclusive-grant",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:exclusive-grant:clear"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "clear"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M6",
+        "M7"
+      ],
+      "pack": "failure-futures",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:failure-futures:price",
+        "Clearstra:failure-futures:settle"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "price",
+        "settle"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M6",
+        "M8"
+      ],
+      "pack": "mineral-shock",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:mineral-shock:price",
+        "Clearstra:mineral-shock:rehearse"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "price",
+        "rehearse"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M5"
+      ],
+      "pack": "quadratic-carbon",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:quadratic-carbon:clear"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "clear"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M6"
+      ],
+      "pack": "refusal-option",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:refusal-option:price"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "price"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M5",
+        "M6",
+        "M8"
+      ],
+      "pack": "reserve-flow",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:reserve-flow:clear",
+        "Clearstra:reserve-flow:price",
+        "Clearstra:reserve-flow:rehearse"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "clear",
+        "price",
+        "rehearse"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M6",
+        "M7"
+      ],
+      "pack": "retrofit-receivable",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:retrofit-receivable:price",
+        "Clearstra:retrofit-receivable:settle"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "price",
+        "settle"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M8"
+      ],
+      "pack": "shock-rehearsal",
+      "platform": "Clearstra",
+      "probe_cases": [
+        "Clearstra:shock-rehearsal:rehearse"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "rehearse"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M10"
+      ],
+      "pack": "climate-resilience",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:climate-resilience:bound"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "bound"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M9"
+      ],
+      "pack": "compute-power",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:compute-power:route"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "route"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {
+        "parity_receipts": [
+          "seed/parity-provenance/representative/ContractRelay/parity-receipts/released.json"
+        ],
+        "provenance_statements": [
+          "seed/parity-provenance/representative/ContractRelay/provenance-statements/representative.json"
+        ],
+        "representative_pack": "ContractRelay"
+      },
+      "machines": [
+        "M9"
+      ],
+      "pack": "contract-relay",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:contract-relay:route"
+      ],
+      "reason": "representative_evidence_registered",
+      "stages": [
+        "route"
+      ],
+      "status": "BLOCKED"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M10"
+      ],
+      "pack": "flow-mesh",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:flow-mesh:bound"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "bound"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M9"
+      ],
+      "pack": "inference-grid",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:inference-grid:route"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "route"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M9"
+      ],
+      "pack": "power-roam",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:power-roam:route"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "route"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M10"
+      ],
+      "pack": "season-battery",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:season-battery:bound"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "bound"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M9"
+      ],
+      "pack": "soil-carbon",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:soil-carbon:route"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "route"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M10"
+      ],
+      "pack": "thermal-cascade",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:thermal-cascade:bound"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "bound"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M10"
+      ],
+      "pack": "thermal-plume",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:thermal-plume:bound"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "bound"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M10"
+      ],
+      "pack": "waste-stack",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:waste-stack:bound"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "bound"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M9"
+      ],
+      "pack": "watt-fabric",
+      "platform": "Routestra",
+      "probe_cases": [
+        "Routestra:watt-fabric:route"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "route"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M15"
+      ],
+      "pack": "detour-posture",
+      "platform": "Scorestra",
+      "probe_cases": [
+        "Scorestra:detour-posture:assess"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "assess"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M15"
+      ],
+      "pack": "field-posture",
+      "platform": "Scorestra",
+      "probe_cases": [
+        "Scorestra:field-posture:assess"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "assess"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M15"
+      ],
+      "pack": "lazaretto-risk",
+      "platform": "Scorestra",
+      "probe_cases": [
+        "Scorestra:lazaretto-risk:assess"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "assess"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M15"
+      ],
+      "pack": "loop-kit",
+      "platform": "Scorestra",
+      "probe_cases": [
+        "Scorestra:loop-kit:assess"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "assess"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "evidence": {},
+      "machines": [
+        "M15"
+      ],
+      "pack": "pqc-exposure",
+      "platform": "Scorestra",
+      "probe_cases": [
+        "Scorestra:pqc-exposure:assess"
+      ],
+      "reason": "parity_provenance_bundle_not_started",
+      "stages": [
+        "assess"
+      ],
+      "status": "PENDING"
+    }
+  ],
+  "generated_at": "2026-07-16T00:00:00Z",
+  "problems": [],
+  "schema": "helix-parity-expansion-inventory/1.0",
+  "source": {
+    "machine_probe_dataset": "scripts/condense/machine_probe_dataset.py",
+    "representative_registry": "seed/parity-provenance/evidence-registry.json"
+  }
+}

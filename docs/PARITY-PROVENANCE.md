@@ -232,3 +232,48 @@ Gate checks:
 - pilot report counts must match registry status counts.
 
 This makes the representative evidence chain CI-enforced while preserving honest blocked states.
+
+## Stage 6 expansion inventory
+
+`scripts/corpus/parity_expansion_inventory.py` builds the expansion inventory for all 62 live platform packs.
+
+```pg
+Stage6ExpansionInventory
+    ReadLivePlatformLoaders -> done
+    ExcludeCoreProbeRows -> done
+    MergeRepresentativeRegistry -> done
+    ClassifyAllPacks -> done
+    SaveExpansionInventory -> done
+    AddCIGateValidation -> done
+```
+
+Tracked output:
+
+- `seed/parity-provenance/expansion-inventory.json`
+
+Classification rule:
+
+- `VALID`: representative registry entry has a `PASS` parity receipt.
+- `BLOCKED`: representative registry entry exists but is non-success and must not be promoted.
+- `PENDING`: live platform pack exists and has machine-probe coverage, but no parity/provenance bundle has been started.
+
+Inventory result:
+
+| Status | Count |
+| --- | ---: |
+| `VALID` | 1 |
+| `BLOCKED` | 4 |
+| `PENDING` | 57 |
+| Total | 62 |
+
+Platform split:
+
+| Platform | VALID | BLOCKED | PENDING |
+| --- | ---: | ---: | ---: |
+| `Attestra` | 1 | 3 | 24 |
+| `Clearstra` | 0 | 0 | 12 |
+| `Routestra` | 0 | 1 | 11 |
+| `Certstra` | 0 | 0 | 5 |
+| `Scorestra` | 0 | 0 | 5 |
+
+The inventory uses live platform probe rows from `scripts/condense/machine_probe_dataset.py`, excludes `core` and `HELIX` probe rows, and therefore tracks exactly the 62 platform packs.
