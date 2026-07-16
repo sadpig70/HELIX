@@ -1,0 +1,36 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Attestra:policy-drift:live-probe",
+  "expected": {
+    "case_count": 5,
+    "machines": [
+      "M11",
+      "M2",
+      "M3"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Attestra:policy-drift",
+      "Attestra:policy-drift:breach:drift",
+      "Attestra:policy-drift:predicate-gate",
+      "Attestra:policy-drift:thin:drift",
+      "Attestra:policy-drift:valid:drift"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Attestra/policy-drift/machine-evidence/live-probe.json"
+  ],
+  "pack": "policy-drift",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/policy-drift/source-locks/local-pack.json"
+  ],
+  "target_platform": "Attestra"
+}

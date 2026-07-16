@@ -277,3 +277,48 @@ Platform split:
 | `Scorestra` | 0 | 0 | 5 |
 
 The inventory uses live platform probe rows from `scripts/condense/machine_probe_dataset.py`, excludes `core` and `HELIX` probe rows, and therefore tracks exactly the 62 platform packs.
+
+## Stage 7 first pending promotion
+
+`scripts/corpus/parity_pending_promotion.py` promotes the strongest pending pack into a full parity/provenance bundle.
+
+```pg
+Stage7FirstPendingPromotion
+    SelectStrongestPending -> done
+    BuildSourceLock -> done
+    BuildMachineEvidence -> done
+    BuildParityContract -> done
+    BuildParityReceipt -> done
+    BuildProvenanceStatement -> done
+    RefreshExpansionInventory -> done
+```
+
+Selected pack:
+
+- Platform: `Attestra`
+- Pack: `policy-drift`
+- Reason: strongest pending candidate by live probe density: 5 probe cases across `M2`, `M3`, and `M11`.
+
+Tracked output:
+
+- `seed/parity-provenance/expansion/Attestra/policy-drift/source-locks/local-pack.json`
+- `seed/parity-provenance/expansion/Attestra/policy-drift/machine-evidence/live-probe.json`
+- `seed/parity-provenance/expansion/Attestra/policy-drift/parity-contracts/live-probe.json`
+- `seed/parity-provenance/expansion/Attestra/policy-drift/parity-receipts/live-probe.json`
+- `seed/parity-provenance/expansion/Attestra/policy-drift/provenance-statements/live-probe.json`
+- `seed/parity-provenance/expansion/Attestra/policy-drift/promotion-report.json`
+
+Promotion result:
+
+- `policy-drift`: `PENDING` → `VALID`
+- parity receipt decision: `PASS`
+- machines: `M2`, `M3`, `M11`
+
+Updated inventory:
+
+| Status | Before | After |
+| --- | ---: | ---: |
+| `VALID` | 1 | 2 |
+| `BLOCKED` | 4 | 4 |
+| `PENDING` | 57 | 56 |
+| Total | 62 | 62 |

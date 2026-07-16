@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/policy-drift",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "policy-drift",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/policy-drift/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/policy-drift/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:policy-drift:live-probe",
+  "statement_sha256": "01ccc02cb810c0c8a01801c39b91cc464006cac97644f0fa7b09ba8b1e68fa3d",
+  "target_platform": "Attestra"
+}

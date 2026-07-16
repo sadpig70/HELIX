@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Attestra-policy-drift",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Attestra/policy-drift",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "744b8fcf55277551199efdb1a16c09be29c5601e",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Attestra:policy-drift",
+  "source_sha256": "f58f66fe5243fc4e87c3dbd88a46803364c877ddd437c5a16e6361084e5a4a67"
+}

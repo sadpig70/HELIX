@@ -10,6 +10,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
+from core.helix_corpus_supply import digest  # noqa: E402
+from core.helix_schema import schema_path, validate_against_schema  # noqa: E402
 from scripts.condense.machine_probe_dataset import build_dataset  # noqa: E402
 
 
@@ -34,8 +36,33 @@ def _write(path, value):
         handle.write("\n")
 
 
+def _validate_artifact(root, rel_path, schema_name):
+    path = os.path.join(root, rel_path.replace("/", os.sep))
+    if not os.path.exists(path):
+        return None, [f"{rel_path}: missing"]
+    doc = _load(path)
+    return doc, [f"{rel_path}: {problem}" for problem in validate_against_schema(
+        doc, schema_path(root, schema_name))]
+
+
 def _representative_index(registry):
     return {entry["pack"]: entry for entry in registry.get("entries", [])}
+
+
+def _promotion_evidence(evidence_root, platform, pack):
+    base = os.path.join(evidence_root, "expansion", platform, pack)
+    report_path = os.path.join(base, "promotion-report.json")
+    if not os.path.exists(report_path):
+        return None
+    report = _load(report_path)
+    return {
+        "promotion_report": os.path.relpath(report_path, ROOT).replace(os.sep, "/"),
+        "source_locks": [report["source_lock"]],
+        "machine_evidence": [report["machine_evidence"]],
+        "parity_contracts": [report["parity_contract"]],
+        "parity_receipts": [report["parity_receipt"]],
+        "provenance_statements": [report["provenance_statement"]],
+    }
 
 
 def build_inventory(root, evidence_root, now):
@@ -75,6 +102,10 @@ def build_inventory(root, evidence_root, now):
                 "provenance_statements": rep_entry.get("provenance_statements", []),
             }
             reason = "representative_evidence_registered"
+        elif (promotion := _promotion_evidence(evidence_root, platform, pack)):
+            status = "VALID"
+            evidence = promotion
+            reason = "pending_pack_promoted_from_live_machine_probe"
         else:
             status = "PENDING"
             evidence = {}
@@ -142,6 +173,25 @@ def validate_inventory(inventory):
             problems.append(f"{entry.get('platform')}/{entry.get('pack')}: registered status lacks evidence")
         if entry["status"] == "PENDING" and entry.get("evidence"):
             problems.append(f"{entry.get('platform')}/{entry.get('pack')}: pending entry must not claim evidence")
+        evidence = entry.get("evidence", {})
+        for key, schema_name in (
+            ("source_locks", "source-lock"),
+            ("machine_evidence", "machine-evidence"),
+            ("parity_contracts", "parity-contract"),
+            ("parity_receipts", "parity-receipt"),
+            ("provenance_statements", "provenance-statement"),
+        ):
+            for rel_path in evidence.get(key, []):
+                doc, doc_problems = _validate_artifact(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), rel_path, schema_name)
+                problems.extend(f"{entry.get('platform')}/{entry.get('pack')}: {problem}" for problem in doc_problems)
+                if schema_name == "parity-receipt" and doc:
+                    expected = digest({**doc, "receipt_sha256": ""})
+                    if doc.get("receipt_sha256") != expected:
+                        problems.append(f"{entry.get('platform')}/{entry.get('pack')}: {rel_path}: receipt_sha256 mismatch")
+                if schema_name == "provenance-statement" and doc:
+                    expected = digest({**doc, "statement_sha256": ""})
+                    if doc.get("statement_sha256") != expected:
+                        problems.append(f"{entry.get('platform')}/{entry.get('pack')}: {rel_path}: statement_sha256 mismatch")
     if inventory.get("counts", {}).get("by_status") != dict(sorted(by_status.items())):
         problems.append("counts.by_status mismatch")
     return sorted(set(problems + inventory.get("problems", [])))

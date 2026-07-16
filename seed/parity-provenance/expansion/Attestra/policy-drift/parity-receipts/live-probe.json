@@ -1,0 +1,32 @@
+{
+  "contract_id": "contract:Attestra:policy-drift:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "24e080ae0f4094aeb1c7f2cb59f0003ec21de6b59b96193b41822efcff053c6d"
+  ],
+  "observations": {
+    "case_count": 5,
+    "contract_sha256": "17e540f95908b7d78c4512e2e8d4748172fe1bb60f6b43c54ed7a2de673741f7",
+    "matched_machines": [
+      "M11",
+      "M2",
+      "M3"
+    ],
+    "probe_cases": [
+      "Attestra:policy-drift",
+      "Attestra:policy-drift:breach:drift",
+      "Attestra:policy-drift:predicate-gate",
+      "Attestra:policy-drift:thin:drift",
+      "Attestra:policy-drift:valid:drift"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Attestra:policy-drift:live-probe",
+  "receipt_sha256": "13e626189380f582bfe4e84cb77554fa04dab6e7393e4504f125b654ef77d8e5",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "8458922910187ddd58d86ee698e72620d026a2e44881f1ced643b38e835d0e62"
+  ]
+}
