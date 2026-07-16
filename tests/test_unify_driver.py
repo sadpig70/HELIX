@@ -86,20 +86,20 @@ class TestDriver(unittest.TestCase):
             self.assertIn("missing platform repo", r["router"]["reason"])
 
     def test_build_report_includes_forward_predict_summary_when_requested(self):
-        report_path = os.path.join(ROOT, "_workspace", "condense", "U9-forward-predict-report.json")
-        if not os.path.exists(report_path):
+        with tempfile.TemporaryDirectory(prefix="helix-forward-predict-", dir=ROOT) as tmp:
+            report_path = os.path.join(tmp, "U9-forward-predict-report.json")
             from scripts.condense.forward_predict import main as forward_main
             with redirect_stdout(StringIO()):
                 forward_main(["--gate", os.path.join(ROOT, "seed", "condense", "forward-predict-gate.json"),
                               "--layered-corpus", os.path.join(ROOT, "seed", "condense", "layered-corpus.json"),
                               "--out", report_path,
                               "--json"])
-        r = helix.build_report(forward_predict_report_path=report_path)
-        self.assertTrue(r["forward_predict"]["available"])
-        self.assertTrue(r["forward_predict"]["all_ok"])
-        self.assertEqual(r["forward_predict"]["summary"],
-                         {"BUILD_ON_PLATFORM": 1, "CONDENSE": 1, "DEFER": 1})
-        self.assertEqual(r["forward_predict"]["rows"][0]["action"], "BUILD_ON_PLATFORM")
+            r = helix.build_report(forward_predict_report_path=report_path)
+            self.assertTrue(r["forward_predict"]["available"])
+            self.assertTrue(r["forward_predict"]["all_ok"])
+            self.assertEqual(r["forward_predict"]["summary"],
+                             {"BUILD_ON_PLATFORM": 1, "CONDENSE": 1, "DEFER": 1})
+            self.assertEqual(r["forward_predict"]["rows"][0]["action"], "BUILD_ON_PLATFORM")
 
     def test_report_deterministic(self):
         self.assertEqual(helix.build_report(), helix.build_report())
