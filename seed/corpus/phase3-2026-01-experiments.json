@@ -1,0 +1,139 @@
+{
+  "schema": "helix-corpus-phase3-registry/1.0",
+  "phase_id": "HELIX-CORPUS-PHASE3-2026-01",
+  "frozen": true,
+  "source_pilot": {
+    "pilot_id": "HELIX-CORPUS-PILOT-2026-01",
+    "report": "_workspace/corpus-pilot/pilot-report.json",
+    "report_sha256": "da5a76b5265671841b6923ca75957d49a50f1792a5f292d01aee1c44ab9fd21e",
+    "verdict": "READY_FOR_PHASE_3"
+  },
+  "policy": {
+    "experiment_count": 6,
+    "minimum_independent_projects": 3,
+    "minimum_domain_distance": 0.75,
+    "minimum_external_genes_per_experiment": 1,
+    "unique_lead_verbs": true,
+    "require_handback": true,
+    "require_close_loop": true,
+    "require_feedback": true,
+    "record_failures": true
+  },
+  "recent_project_domains": [
+    "software_supply_chain",
+    "agent_governance",
+    "method_trust",
+    "runtime_safety",
+    "bio_evidence"
+  ],
+  "slots": [
+    {
+      "experiment_id": "HC-P3-FC-001",
+      "ordinal": 1,
+      "project_slug": "ProofEscrow",
+      "title": "Evidence-bound AI artifact release escrow",
+      "status": "planned",
+      "lead_verb": "escrow",
+      "domain_signature": ["artifact_release", "evidence_escrow", "ai_assurance"],
+      "evidence_baseline": {"corpus_id": "HC-PILOT-EXT-001", "manifest_sha256": "f36477866369548bb21412f3f13f7f0de48a1720943fdaa1732cf8365db6435c"},
+      "gene_bindings": [
+        {"corpus_id": "HC-PILOT-EXT-001", "manifest_sha256": "f36477866369548bb21412f3f13f7f0de48a1720943fdaa1732cf8365db6435c", "gene": "signed_step_metadata"},
+        {"corpus_id": "HC-PILOT-HELIX-002", "manifest_sha256": "7af0e996fe99d123b5285cb39c28cdfd01895db7895cbf056d675ac6cc8a13bc", "gene": "behavior_baseline_binding"}
+      ],
+      "pipeline": ["explore", "full_cycle", "implement", "handback", "close_loop", "feedback"],
+      "failure_route": "failure_corpus",
+      "required_outputs": ["implementation_report", "handback_packet", "close_loop_receipt", "experiment_result"],
+      "success_signal": "release is blocked until artifact steps and behavior evidence share one escrow receipt"
+    },
+    {
+      "experiment_id": "HC-P3-FC-002",
+      "ordinal": 2,
+      "project_slug": "AuthorityArbiter",
+      "title": "Delegated policy conflict arbitration",
+      "status": "planned",
+      "lead_verb": "arbitrate",
+      "domain_signature": ["delegated_authority", "policy_conflict", "agent_operations"],
+      "evidence_baseline": {"corpus_id": "HC-PILOT-HELIX-001", "manifest_sha256": "b40825717ed8d54a53211177a30efdc6082f1d75de79995ae48022974db2f6c6"},
+      "gene_bindings": [
+        {"corpus_id": "HC-PILOT-EXT-002", "manifest_sha256": "455f6abf3395655aa9e2e6d075a0014770b44ba7fddf12f43e974f2a0e7fc3a2", "gene": "policy_data_separation"},
+        {"corpus_id": "HC-PILOT-HELIX-001", "manifest_sha256": "b40825717ed8d54a53211177a30efdc6082f1d75de79995ae48022974db2f6c6", "gene": "authority_custody_route"}
+      ],
+      "pipeline": ["explore", "full_cycle", "implement", "handback", "close_loop", "feedback"],
+      "failure_route": "failure_corpus",
+      "required_outputs": ["implementation_report", "handback_packet", "close_loop_receipt", "experiment_result"],
+      "success_signal": "conflicting delegated policies resolve to a traced authority and reversible handback"
+    },
+    {
+      "experiment_id": "HC-P3-FC-003",
+      "ordinal": 3,
+      "project_slug": "DriftIsolator",
+      "title": "Minimal counterexample isolation for runtime drift",
+      "status": "planned",
+      "lead_verb": "isolate",
+      "domain_signature": ["counterexample_minimization", "drift_diagnosis", "runtime_control"],
+      "evidence_baseline": {"corpus_id": "HC-PILOT-HELIX-003", "manifest_sha256": "eebe81f3a7f188f355f0cb6c47e92cb7da4ccee75beee560cb595be22c48350f"},
+      "gene_bindings": [
+        {"corpus_id": "HC-PILOT-EXT-003", "manifest_sha256": "9923a7b1758fd950bde28b72fd3548f137de3db9e979942b515a3b85a110ca3b", "gene": "counterexample_shrinking"},
+        {"corpus_id": "HC-PILOT-HELIX-003", "manifest_sha256": "eebe81f3a7f188f355f0cb6c47e92cb7da4ccee75beee560cb595be22c48350f", "gene": "baseline_drift"}
+      ],
+      "pipeline": ["explore", "full_cycle", "implement", "handback", "close_loop", "feedback"],
+      "failure_route": "failure_corpus",
+      "required_outputs": ["implementation_report", "handback_packet", "close_loop_receipt", "experiment_result"],
+      "success_signal": "a drift interruption carries a reproducible minimal counterexample"
+    },
+    {
+      "experiment_id": "HC-P3-FC-004",
+      "ordinal": 4,
+      "project_slug": "GraphQuarantine",
+      "title": "Path-aware evidence quarantine",
+      "status": "planned",
+      "lead_verb": "quarantine",
+      "domain_signature": ["evidence_propagation", "graph_risk", "quarantine"],
+      "evidence_baseline": {"corpus_id": "HC-PILOT-HELIX-004", "manifest_sha256": "bced6c8319b171a95d82651a121dc2814a41042b6dc4e482659913d991e76c68"},
+      "gene_bindings": [
+        {"corpus_id": "HC-PILOT-EXT-004", "manifest_sha256": "3cc55241c312cf1f6e795102c7c6ab338f0dfbc88f649095f1e48f4d87d9b252", "gene": "path_analysis"},
+        {"corpus_id": "HC-PILOT-HELIX-004", "manifest_sha256": "bced6c8319b171a95d82651a121dc2814a41042b6dc4e482659913d991e76c68", "gene": "staged_quarantine"}
+      ],
+      "pipeline": ["explore", "full_cycle", "implement", "handback", "close_loop", "feedback"],
+      "failure_route": "failure_corpus",
+      "required_outputs": ["implementation_report", "handback_packet", "close_loop_receipt", "experiment_result"],
+      "success_signal": "quarantine scope follows contaminated evidence paths without blocking clean branches"
+    },
+    {
+      "experiment_id": "HC-P3-FC-005",
+      "ordinal": 5,
+      "project_slug": "ContractRelay",
+      "title": "Fail-closed federated contract relay",
+      "status": "planned",
+      "lead_verb": "relay",
+      "domain_signature": ["data_contract", "federated_protocol", "handoff"],
+      "evidence_baseline": {"corpus_id": "HC-PILOT-HELIX-002", "manifest_sha256": "7af0e996fe99d123b5285cb39c28cdfd01895db7895cbf056d675ac6cc8a13bc"},
+      "gene_bindings": [
+        {"corpus_id": "HC-PILOT-EXT-005", "manifest_sha256": "48cfcb637bf6f71b001956eb592599601347f6bc51140b20dbaf18817230c377", "gene": "normalized_errors"},
+        {"corpus_id": "HC-PILOT-HELIX-001", "manifest_sha256": "b40825717ed8d54a53211177a30efdc6082f1d75de79995ae48022974db2f6c6", "gene": "fail_closed_handback"}
+      ],
+      "pipeline": ["explore", "full_cycle", "implement", "handback", "close_loop", "feedback"],
+      "failure_route": "failure_corpus",
+      "required_outputs": ["implementation_report", "handback_packet", "close_loop_receipt", "experiment_result"],
+      "success_signal": "cross-system contract failures return normalized errors and block ambiguous custody transfer"
+    },
+    {
+      "experiment_id": "HC-P3-FC-006",
+      "ordinal": 6,
+      "project_slug": "HookCircuit",
+      "title": "Reflex circuit breaker for plugin hooks",
+      "status": "planned",
+      "lead_verb": "trip",
+      "domain_signature": ["plugin_isolation", "hook_runtime", "resilience"],
+      "evidence_baseline": {"corpus_id": "HC-PILOT-EXT-001", "manifest_sha256": "f36477866369548bb21412f3f13f7f0de48a1720943fdaa1732cf8365db6435c"},
+      "gene_bindings": [
+        {"corpus_id": "HC-PILOT-EXT-006", "manifest_sha256": "be1e8b7376ad35e54912c750178bd74c002acf05d40f0df062fbd1b895ad79eb", "gene": "hook_contract"},
+        {"corpus_id": "HC-PILOT-HELIX-003", "manifest_sha256": "eebe81f3a7f188f355f0cb6c47e92cb7da4ccee75beee560cb595be22c48350f", "gene": "reflex_interruption"}
+      ],
+      "pipeline": ["explore", "full_cycle", "implement", "handback", "close_loop", "feedback"],
+      "failure_route": "failure_corpus",
+      "required_outputs": ["implementation_report", "handback_packet", "close_loop_receipt", "experiment_result"],
+      "success_signal": "a failing hook trips an isolated circuit while preserving deterministic dispatch evidence"
+    }
+  ]
+}

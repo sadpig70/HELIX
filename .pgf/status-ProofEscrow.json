@@ -1,0 +1,29 @@
+{
+  "project": "ProofEscrow",
+  "design": ".pgf/DESIGN-ProofEscrow.md",
+  "review": ".pgf/REVIEW-ProofEscrow.md",
+  "workplan": ".pgf/WORKPLAN-ProofEscrow.md",
+  "started_at": "2026-07-15T21:43:26.2991695+09:00",
+  "updated_at": "2026-07-15T21:58:57.8384512+09:00",
+  "phase": "complete",
+  "iteration": 2,
+  "review_iterations": 1,
+  "unresolved_issues": [],
+  "verify_status": "passed",
+  "batches": {
+    "Contract": "done",
+    "EscrowEngine": "done",
+    "AuditLedger": "done",
+    "Interface": "done",
+    "Verification": "done",
+    "HandbackCloseLoop": "done"
+  },
+  "gate_evidence": [
+    {"command": "python -m unittest discover -s tests -q", "cwd": "ProofEscrow", "exit_code": 0, "result": "16 tests OK"},
+    {"command": "python -m unittest discover -s tests -q", "cwd": ".", "exit_code": 0, "result": "717 tests OK"},
+    {"command": "python core/helix_validate.py .", "cwd": ".", "exit_code": 0, "result": "PASS"},
+    {"command": "ActionHandbackVerifier.evaluate_handback", "cwd": ".", "exit_code": 0, "result": "valid; 5/5 predicates"},
+    {"command": "python helix.py close-loop ...", "cwd": ".", "exit_code": 0, "result": "closed; corpus_added=true; replay already_recorded"}
+  ],
+  "next_task": "execute HC-P3-FC-002 AuthorityArbiter through full-cycle, handback, close-loop and feedback"
+}

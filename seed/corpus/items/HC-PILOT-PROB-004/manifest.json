@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "federated_governance",
+    "input_shape": "local_gate_and_user_evidence",
+    "output_shape": "federation_entry_decision",
+    "primary_verb": "federate"
+  },
+  "corpus_id": "HC-PILOT-PROB-004",
+  "dependencies": [],
+  "genes": [
+    "entry_condition_lock",
+    "external_user_threshold"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "federation-entry-gate",
+    "status": "hypothesis"
+  },
+  "name": "Federation Entry Boundary",
+  "origin": {
+    "kind": "operational_problem",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "69c66c431aa360981342490f404a5a945ca9dc1c9ef56baa1f806ad0de134b72",
+    "license_verified": true,
+    "locator": "helix://problem/federation-entry-boundary",
+    "revision": "44a91ac60d6bea29ab6c42ea9a58e52e23187d7a8d50b07ab91a71ad7d7eb069",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "44a91ac60d6bea29ab6c42ea9a58e52e23187d7a8d50b07ab91a71ad7d7eb069"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:helix://problem/federation-entry-boundary",
+    "revision:44a91ac60d6bea29ab6c42ea9a58e52e23187d7a8d50b07ab91a71ad7d7eb069",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Federation remains blocked until external-user and gate evidence exists.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

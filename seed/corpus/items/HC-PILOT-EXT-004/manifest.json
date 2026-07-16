@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "graph_analysis",
+    "input_shape": "nodes_and_edges",
+    "output_shape": "graph_measure",
+    "primary_verb": "traverse"
+  },
+  "corpus_id": "HC-PILOT-EXT-004",
+  "dependencies": [],
+  "genes": [
+    "graph_projection",
+    "path_analysis"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "graph-relation-analyzer",
+    "status": "hypothesis"
+  },
+  "name": "NetworkX",
+  "origin": {
+    "kind": "external_repo",
+    "license": "BSD-3-Clause",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "668745f186bba0fe0fbe9589977a893ed17c855f8af1e2e66ede08ea4c1d2183",
+    "license_verified": true,
+    "locator": "https://github.com/networkx/networkx",
+    "revision": "3b4c227fda1c5462e6c04ac1ed7e7b0d8f2eacd4",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "0b8893d9e0d2a474f3bfb18e124174a04c25db5605360a4bcb48ca82693ab0cb"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/networkx/networkx",
+    "revision:3b4c227fda1c5462e6c04ac1ed7e7b0d8f2eacd4",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Graph structures and algorithms for relationship analysis.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

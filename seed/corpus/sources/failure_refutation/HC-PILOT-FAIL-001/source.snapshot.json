@@ -1,0 +1,1 @@
+{"corpus_id":"HC-PILOT-FAIL-001","name":"Bio Drift M11 Refutation","references":["README.md:68","_workspace/condense/U6-machine-probe-report.json"],"schema":"helix-corpus-normalized-observation/1.0","scope":"normalized HELIX observation; referenced artifacts remain authoritative","summary":"The proposed Bio drift M11 novelty axis was refuted by live code evidence."}

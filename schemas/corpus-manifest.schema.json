@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-corpus-manifest/1.0",
+  "title": "HELIX dual-corpus supply manifest",
+  "type": "object",
+  "required": [
+    "schema", "corpus_id", "revision", "name", "summary", "origin",
+    "character", "genes", "machine", "verification", "safety", "provenance"
+  ],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-corpus-manifest/1.0"]},
+    "corpus_id": {"type": "string"},
+    "revision": {"type": "integer", "minimum": 1},
+    "name": {"type": "string"},
+    "summary": {"type": "string"},
+    "origin": {
+      "type": "object",
+      "required": [
+        "kind", "locator", "revision", "license", "license_verified",
+        "license_evidence", "license_evidence_sha256", "source_evidence", "source_sha256"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "external_repo", "helix_generated", "operational_problem",
+            "research", "failure", "legacy_inventory"
+          ]
+        },
+        "locator": {"type": "string"},
+        "revision": {"type": "string"},
+        "license": {"type": "string"},
+        "license_verified": {"type": "boolean"},
+        "license_evidence": {"type": "string"},
+        "license_evidence_sha256": {"type": "string"},
+        "source_evidence": {"type": "string"},
+        "source_sha256": {"type": "string"}
+      }
+    },
+    "supersedes_manifest_sha256": {"type": ["string", "null"]},
+    "character": {
+      "type": "object",
+      "required": ["domain", "primary_verb", "input_shape", "output_shape"],
+      "properties": {
+        "domain": {"type": "string"},
+        "primary_verb": {"type": "string"},
+        "input_shape": {"type": "string"},
+        "output_shape": {"type": "string"}
+      }
+    },
+    "genes": {"type": "array", "items": {"type": "string"}},
+    "dependencies": {"type": "array", "items": {"type": "string"}},
+    "restrictions": {"type": "array", "items": {"type": "string"}},
+    "machine": {
+      "type": "object",
+      "required": ["status", "label", "evidence"],
+      "properties": {
+        "status": {"type": "string", "enum": ["hypothesis", "substantiated"]},
+        "label": {"type": "string"},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "reproducible", "tests_passed", "deterministic", "parity_available",
+        "reproduction_command", "behavior_sha256", "supporting_files",
+        "supporting_symbols"
+      ],
+      "properties": {
+        "reproducible": {"type": "boolean"},
+        "tests_passed": {"type": "boolean"},
+        "deterministic": {"type": "boolean"},
+        "parity_available": {"type": "boolean"},
+        "reproduction_command": {"type": "string"},
+        "behavior_sha256": {"type": "string"},
+        "supporting_files": {"type": "array", "items": {"type": "string"}},
+        "supporting_symbols": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "safety": {
+      "type": "object",
+      "required": ["secret_scan_passed", "pii_scan_passed", "malware_scan_passed", "execution_isolated"],
+      "properties": {
+        "secret_scan_passed": {"type": "boolean"},
+        "pii_scan_passed": {"type": "boolean"},
+        "malware_scan_passed": {"type": "boolean"},
+        "execution_isolated": {"type": "boolean"}
+      }
+    },
+    "provenance": {"type": "array", "items": {"type": "string"}}
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "ledger_concurrency",
+    "input_shape": "parallel_candidate_results",
+    "output_shape": "ordered_admission_events",
+    "primary_verb": "serialize"
+  },
+  "corpus_id": "HC-PILOT-PROB-003",
+  "dependencies": [],
+  "genes": [
+    "single_writer_queue",
+    "hash_chain_replay"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "admission-serialization-controller",
+    "status": "hypothesis"
+  },
+  "name": "Single Writer Admission Bottleneck",
+  "origin": {
+    "kind": "operational_problem",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "69c66c431aa360981342490f404a5a945ca9dc1c9ef56baa1f806ad0de134b72",
+    "license_verified": true,
+    "locator": "helix://problem/single-writer-admission",
+    "revision": "4fc17a8f5e85ec753cb3dc6de665b4ad49228ab29975828f07a9a66a86ee7e7b",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "4fc17a8f5e85ec753cb3dc6de665b4ad49228ab29975828f07a9a66a86ee7e7b"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:helix://problem/single-writer-admission",
+    "revision:4fc17a8f5e85ec753cb3dc6de665b4ad49228ab29975828f07a9a66a86ee7e7b",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Parallel preparation must converge on one serialized admission ledger writer.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

@@ -66,7 +66,7 @@ class TestRouter(unittest.TestCase):
         dataset = build_dataset()
         self.assertEqual(dataset["agreement"]["rows"][0]["platform"], "Attestra")
         report = route_probe_rows(LC, dataset["agreement"]["rows"])
-        self.assertEqual(report["summary"], {"BUILD_ON_PLATFORM": 94, "DEFER": 1})
+        self.assertEqual(report["summary"], {"BUILD_ON_PLATFORM": 105, "DEFER": 1})
 
 
 if __name__ == "__main__":

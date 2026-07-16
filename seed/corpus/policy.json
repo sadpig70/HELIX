@@ -1,0 +1,28 @@
+{
+  "schema": "helix-corpus-supply-policy/1.0",
+  "manifest_schema": "helix-corpus-manifest/1.0",
+  "tiers": ["generative", "evidence"],
+  "hard_gate": {
+    "require_pinned_revision": true,
+    "require_license_verification": true,
+    "require_source_sha256": true,
+    "require_safety_attestations": true
+  },
+  "generative_gate": {
+    "minimum_genes": 1,
+    "allow_machine_hypothesis": true,
+    "reject_duplicate_source": true
+  },
+  "evidence_gate": {
+    "require_prior_generative_admission": true,
+    "require_reproduction": true,
+    "require_determinism": true,
+    "require_substantiated_machine": true,
+    "require_human_review": true
+  },
+  "authority": {
+    "condense_threshold_owner": "core.helix_condense.DEFAULT_CONDENSE_POLICY",
+    "supply_promotion_implies_condense": false,
+    "ledger_writer": "single_writer"
+  }
+}

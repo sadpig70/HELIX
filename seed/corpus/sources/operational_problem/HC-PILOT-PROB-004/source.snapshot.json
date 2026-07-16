@@ -1,0 +1,1 @@
+{"corpus_id":"HC-PILOT-PROB-004","name":"Federation Entry Boundary","references":[".pgf/status-HELIXDirection.json:196","HANDOFF.md:224"],"schema":"helix-corpus-normalized-observation/1.0","scope":"normalized HELIX observation; referenced artifacts remain authoritative","summary":"Federation remains blocked until external-user and gate evidence exists."}

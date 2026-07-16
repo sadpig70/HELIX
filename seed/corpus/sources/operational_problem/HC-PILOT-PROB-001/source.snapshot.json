@@ -1,0 +1,1 @@
+{"corpus_id":"HC-PILOT-PROB-001","name":"Split Actuator Authority","references":["HANDOFF.md:230","RUNBOOK.md:134"],"schema":"helix-corpus-normalized-observation/1.0","scope":"normalized HELIX observation; referenced artifacts remain authoritative","summary":"State receipt authority and explicit close-loop writes use separate gates."}

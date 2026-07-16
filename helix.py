@@ -506,11 +506,19 @@ USAGE = ("usage:\n"
          "  python helix.py audit-handback --packet <handback.json> [--operator ID] "
          "[--provenance-class real|synthetic] [--ledger P] [--packets-dir P] "
          "[--state-receipt-hash H] [--json]\n"
+         "  python helix.py corpus validate|intake|admit|promote|fingerprint|verify-ledger|status|health|migrate "
+         "[--root <corpus-root>] [options]\n"
          "  python helix.py loop-status [--loop-state <loop-state.json>] [--ledger <ledger.json>]\n")
 
 
 def _main(argv) -> int:
     cmd = argv[1] if len(argv) > 1 else "status"
+
+    if cmd == "corpus":
+        from core.helix_corpus_supply import corpus_cli
+        code, payload = corpus_cli(argv[2:], ROOT)
+        print(json.dumps(payload, ensure_ascii=False, indent=2))
+        return code
 
     if cmd == "status":
         report = build_report(_opt(argv, "--explore-root"), _opt(argv, "--exploit-root"),

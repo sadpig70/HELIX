@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-corpus-pilot-registry/1.0",
+  "title": "HELIX fixed-slot corpus pilot registry",
+  "type": "object",
+  "required": ["schema", "pilot_id", "frozen", "targets", "slots"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-corpus-pilot-registry/1.0"]},
+    "pilot_id": {"type": "string"},
+    "frozen": {"type": "boolean"},
+    "targets": {
+      "type": "object",
+      "required": ["candidate_count", "generative_min", "evidence_min"],
+      "properties": {
+        "candidate_count": {"type": "integer", "minimum": 24, "maximum": 24},
+        "generative_min": {"type": "integer", "minimum": 12},
+        "evidence_min": {"type": "integer", "minimum": 5}
+      }
+    },
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "corpus_id", "source_class", "status", "admission_target", "candidate"
+        ],
+        "properties": {
+          "corpus_id": {"type": "string"},
+          "source_class": {
+            "type": "string",
+            "enum": [
+              "external_oss", "helix_generated", "operational_problem",
+              "failure_refutation", "research_mechanism"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "unassigned", "selected", "evidence_ready", "intaken",
+              "generative_admitted", "evidence_admitted", "quarantined", "rejected"
+            ]
+          },
+          "admission_target": {"type": "string", "enum": ["generative", "evidence"]},
+          "candidate": {
+            "type": ["object", "null"],
+            "properties": {
+              "name": {"type": "string"},
+              "locator": {"type": "string"},
+              "revision": {"type": "string"},
+              "evidence_root": {"type": "string"}
+            }
+          },
+          "notes": {"type": "string"}
+        }
+      }
+    }
+  }
+}

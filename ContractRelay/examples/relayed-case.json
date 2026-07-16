@@ -1,0 +1,28 @@
+{
+  "schema": "contract-relay-case/1.0",
+  "case_id": "sample-relayed",
+  "source": "system-a",
+  "target": "system-b",
+  "contract": {
+    "contract_id": "contract-v1",
+    "allowed_sources": ["system-a"],
+    "allowed_targets": ["system-b"],
+    "required_fields": ["subject.id", "subject.score", "handoff.reason"],
+    "field_types": {
+      "subject.id": "string",
+      "subject.score": "number",
+      "handoff.reason": "string"
+    }
+  },
+  "payload": {
+    "subject": {"id": "case-17", "score": 0.82},
+    "handoff": {"reason": "verified"}
+  },
+  "custody": {
+    "from_actor": "system-a",
+    "to_actor": "system-b",
+    "handoff_confirmed": true,
+    "route_id": "route-ab"
+  },
+  "baseline_sha256": "bdb94e136afa82fb37ee65606c6c8bc7cf0601b17dfda998da7991695d174f16"
+}

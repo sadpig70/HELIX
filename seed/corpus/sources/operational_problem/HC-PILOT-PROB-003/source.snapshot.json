@@ -1,0 +1,1 @@
+{"corpus_id":"HC-PILOT-PROB-003","name":"Single Writer Admission Bottleneck","references":["docs/CORPUS-SUPPLY.md","HANDOFF.md:226"],"schema":"helix-corpus-normalized-observation/1.0","scope":"normalized HELIX observation; referenced artifacts remain authoritative","summary":"Parallel preparation must converge on one serialized admission ledger writer."}

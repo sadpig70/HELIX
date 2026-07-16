@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-corpus-review-receipt/1.0",
+  "title": "HELIX human corpus review receipt",
+  "type": "object",
+  "required": ["schema", "corpus_id", "manifest_sha256", "reviewer", "verdict", "reviewed_at"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-corpus-review-receipt/1.0"]},
+    "corpus_id": {"type": "string"},
+    "manifest_sha256": {"type": "string"},
+    "reviewer": {
+      "type": "object",
+      "required": ["kind", "id"],
+      "properties": {
+        "kind": {"type": "string", "enum": ["human"]},
+        "id": {"type": "string"}
+      }
+    },
+    "verdict": {"type": "string", "enum": ["approved", "rejected"]},
+    "reviewed_at": {"type": "string"},
+    "notes": {"type": "string"}
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "project": "HookCircuit",
+  "phase": "complete",
+  "verify_status": "passed",
+  "summary": {"done": 5, "total": 5},
+  "nodes": {
+    "DesignContract": "done",
+    "ImplementCore": "done",
+    "ImplementCliLedger": "done",
+    "TestExamples": "done",
+    "VerifyHelixClosure": "done"
+  }
+}
+

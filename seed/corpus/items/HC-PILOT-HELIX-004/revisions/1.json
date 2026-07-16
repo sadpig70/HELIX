@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "bio_evidence",
+    "input_shape": "clinical_and_quarantine_evidence",
+    "output_shape": "clock_certificate",
+    "primary_verb": "certify"
+  },
+  "corpus_id": "HC-PILOT-HELIX-004",
+  "dependencies": [],
+  "genes": [
+    "evidence_freshness",
+    "staged_quarantine"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "biological-clock-certifier",
+    "status": "hypothesis"
+  },
+  "name": "BioClock",
+  "origin": {
+    "kind": "helix_generated",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "64f450225d9190a102e0eca0e4a38b3131b50ceae256a484f1b537bd36f64c1c",
+    "license_verified": true,
+    "locator": "BioClock",
+    "revision": "72aec836300f44689186afa4384345b74a589830",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "1fc28487527f96e868419ba61e9be03caec5bd8fea61bda57a63244dcce176b9"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:BioClock",
+    "revision:72aec836300f44689186afa4384345b74a589830",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Biological clock certification from evidence freshness and quarantine stages.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

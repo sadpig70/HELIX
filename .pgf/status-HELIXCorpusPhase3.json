@@ -1,0 +1,186 @@
+{
+  "project": "HELIXCorpusPhase3",
+  "design": ".pgf/DESIGN-HELIXCorpusPhase3.md",
+  "workplan": ".pgf/WORKPLAN-HELIXCorpusPhase3.md",
+  "started_at": "2026-07-15T21:32:07.9827917+09:00",
+  "updated_at": "2026-07-16T01:30:00+09:00",
+  "phase": "complete",
+  "iteration": 9,
+  "verify_status": "passed",
+  "batches": {
+    "B0EntryGate": "done",
+    "B1Registry": "done",
+    "B2Freeze": "done",
+    "B3Execution": "done_6_of_6",
+    "B4Closure": "done"
+  },
+  "gate_evidence": [
+    {
+      "command": "python scripts/corpus/phase3_registry.py validate --registry seed/corpus/phase3-2026-01-experiments.json --corpus-root seed/corpus",
+      "exit_code": 0,
+      "result": "six frozen slots valid"
+    },
+    {
+      "command": "python scripts/corpus/phase3_registry.py freeze ...",
+      "exit_code": 0,
+      "result": "FROZEN_READY_TO_EXECUTE; registry 41876eb3452331ea92518650a20794eb4498dcb38c8a3dcb2c3b9111e53f73f8"
+    },
+    {
+      "command": "python -m unittest tests.test_corpus_phase3_registry -v",
+      "exit_code": 0,
+      "result": "4 tests OK"
+    },
+    {
+      "command": "python -m compileall -q scripts/corpus && python core/helix_validate.py .",
+      "exit_code": 0,
+      "result": "compile OK; repository validator PASS"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q",
+      "exit_code": 0,
+      "result": "717 tests OK"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "clean"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q (ProofEscrow)",
+      "exit_code": 0,
+      "result": "16 tests OK; RELEASED/HELD examples and deterministic replay passed"
+    },
+    {
+      "command": "ActionHandbackVerifier.evaluate_handback + helix.py close-loop",
+      "exit_code": 0,
+      "result": "5/5 valid; closed; corpus_added=true; idempotent replay"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q && python core/helix_validate.py .",
+      "exit_code": 0,
+      "result": "717 tests OK; repository validator PASS"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q (AuthorityArbiter)",
+      "exit_code": 0,
+      "result": "17 tests OK; allow/deny/escalate examples and deterministic replay passed"
+    },
+    {
+      "command": "ActionHandbackVerifier.evaluate_handback + helix.py close-loop (FC-002)",
+      "exit_code": 0,
+      "result": "5/5 valid; closed; corpus_added=true; idempotent replay"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q (DriftIsolator)",
+      "exit_code": 0,
+      "result": "15 tests OK; 4-event drift reduced to a 1-minimal event; deterministic replay passed"
+    },
+    {
+      "command": "ActionHandbackVerifier.evaluate_handback + helix.py close-loop (FC-003)",
+      "exit_code": 0,
+      "result": "5/5 valid; closed; corpus_added=true; idempotent replay"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q && python core/helix_validate.py .",
+      "exit_code": 0,
+      "result": "717 tests OK; repository validator PASS"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q (GraphQuarantine)",
+      "exit_code": 0,
+      "result": "10 tests OK; quarantined path isolated while clean sibling branch remained clear; deterministic replay passed"
+    },
+    {
+      "command": "ActionHandbackVerifier.evaluate_handback + helix.py close-loop (FC-004)",
+      "exit_code": 0,
+      "result": "5/5 valid; closed; corpus_added=true; idempotent replay"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q && python core/helix_validate.py . && git diff --check",
+      "exit_code": 0,
+      "result": "717 tests OK; repository validator PASS; diff check PASS"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q (ContractRelay)",
+      "exit_code": 0,
+      "result": "12 tests OK; blocked example emitted normalized errors and fail-closed custody checks passed"
+    },
+    {
+      "command": "ActionHandbackVerifier.evaluate_handback + helix.py close-loop (FC-005)",
+      "exit_code": 0,
+      "result": "5/5 valid; closed; corpus_added=true; idempotent replay"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q && python core/helix_validate.py . && git diff --check",
+      "exit_code": 0,
+      "result": "717 tests OK; repository validator PASS; diff check PASS"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q (HookCircuit)",
+      "exit_code": 0,
+      "result": "12 tests OK; timeout hook tripped in isolation and clean hooks stayed dispatchable"
+    },
+    {
+      "command": "ActionHandbackVerifier.evaluate_handback + helix.py close-loop (FC-006)",
+      "exit_code": 0,
+      "result": "5/5 valid; closed; corpus_added=true; idempotent replay"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q && python core/helix_validate.py . && git diff --check",
+      "exit_code": 0,
+      "result": "717 tests OK; repository validator PASS; diff check PASS"
+    },
+    {
+      "command": "aggregate _workspace/corpus-phase3/HC-P3-FC-001..006/experiment-result.json",
+      "exit_code": 0,
+      "result": "6/6 completed; 6 valid handbacks; 6 closed loops; 6 corpus additions; Attestra=5 Routestra=1"
+    },
+    {
+      "command": "B4Closure decision",
+      "exit_code": 0,
+      "result": "PHASE3_COMPLETE_READY_FOR_PHASE4; PROCEED_TO_PLATFORM_ABSORPTION_PACKAGING; DO_NOT_EMIT_NEW_PLATFORM_KERNEL"
+    },
+    {
+      "command": "python - <<'PY' ... validate _workspace/corpus-phase3/phase3-outcome-report.json",
+      "exit_code": 0,
+      "result": "phase3 outcome report OK"
+    },
+    {
+      "command": "python scripts/corpus/phase3_registry.py validate --registry seed/corpus/phase3-2026-01-experiments.json --corpus-root seed/corpus",
+      "exit_code": 0,
+      "result": "valid true; no problems"
+    },
+    {
+      "command": "python core/helix_validate.py .",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q",
+      "exit_code": 0,
+      "result": "717 tests OK"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "PASS; existing LF-to-CRLF warnings only"
+    }
+  ],
+  "phase3_metrics": {
+    "experiments_completed": 6,
+    "experiments_total": 6,
+    "implementation_successes": 6,
+    "independent_projects": 6,
+    "external_gene_transfers": 6,
+    "machine_candidates_substantiated": 6,
+    "new_machine_candidates": 6,
+    "handbacks_valid": 6,
+    "close_loops_closed": 6,
+    "corpus_additions": 6,
+    "platform_absorbed": 6,
+    "platform_absorption_rate": 1.0,
+    "new_platform_kernels_emitted": 0,
+    "unresolved_failures": 0
+  },
+  "next_task": "create Phase 4 platform-pack absorption plan and registry"
+}

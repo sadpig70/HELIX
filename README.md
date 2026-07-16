@@ -10,7 +10,7 @@
 HELIX는 두 시스템을 **하나의 자기완결 repo로 통합**한다 — 모든 스킬을 `skills/`에 vendor하되,
 내부 로직은 공유 백본(HELIX-Core)을 **단일 출처**로 두어 desync를 막는다.
 
-> 📄 **외부 검토·빠른 파악용 단일 브리핑**: [`docs/OVERVIEW.md`](docs/OVERVIEW.md) — 현황(5 플랫폼·56팩)·설계 불변식·정직한 한계·열린 질문·향후 방향.
+> 📄 **외부 검토·빠른 파악용 단일 브리핑**: [`docs/OVERVIEW.md`](docs/OVERVIEW.md) — 현황(5 플랫폼·62팩)·설계 불변식·정직한 한계·열린 질문·향후 방향.
 
 <p align="center">
   <img src="assets/helix-loop.svg" alt="HELIX explore⊕exploit 폐쇄 제어 루프: IdeaFirst(가닥 A)와 recreate(가닥 B)가 새 프로젝트로 모이고 winner→corpus 환류(염기쌍)로 닫히며, 백본 HELIX-Core가 ledger·diversity·provenance·fingerprint·loop를 단일 출처로 받친다" width="92%">
@@ -62,14 +62,19 @@ ledger·verdict severity·predicate gate·clearing·routing…)을 공유하는 
   (`helix.py status --layered-corpus seed/condense/layered-corpus.json`). 레시피는 `skills/condense` 스킬.
 - **완주한 라우팅 sweep**: corpus 후보 풀 전체를 machine으로 판정해 **3분류로 완전 배정** —
   **흡수 20**(clean gate/primitive → 팩 + 원본 parity 테스트) · **defer 2**(RouteSentinel·EndowFront) ·
-  **design-only 8**(코드 없음). **5개 플랫폼**이 corpus에서 성장:
-  **Attestra 23 · Clearstra 12 · Routestra 11 · Certstra 5 · Scorestra 5 (총 56팩)**. 라우팅은 **이름이 아니라
+  **design-only 8**(코드 없음). 이 baseline 위에 Phase4 corpus 공급 출력 6개를 기존 플랫폼 팩으로 추가 흡수했다
+  (**Attestra +5, Routestra +1, 새 커널 0개**). **5개 플랫폼**이 corpus에서 성장:
+  **Attestra 28 · Clearstra 12 · Routestra 12 · Certstra 5 · Scorestra 5 (총 62팩)**. 라우팅은 **이름이 아니라
   machine**으로 판정하며 양방향 교정한다(AgentMesh: Attestra→Clearstra, SettleMesh: Clearstra→Attestra).
   "Bio drift(M11)" CONDENSE 가설은 실코드로 **반증**했으나, defer됐던 스코어링 클러스터의 **novel M15
   machine**(가중 score→등급 tier→집계)을 확정 → HELIX가 스스로 **CONDENSE를 제안·실행해 5번째 플랫폼
   Scorestra를 emit**했다(Certstra에 이은 2번째 CONDENSE, 2-D rule-ladder 커널로 클러스터 5/5 흡수). 결과:
   `build_on_platform_candidate()`·`condense_candidate()` 모두 `None` — corpus 완전 라우팅.
 - 상세: [`docs/CONDENSE.md`](docs/CONDENSE.md).
+
+신규 재료 공급은 [`docs/CORPUS-SUPPLY.md`](docs/CORPUS-SUPPLY.md)의 이중 admission plane이
+담당한다. `Generative` 재료와 검증된 `Evidence`를 독립 receipt로 분리하며 Evidence 승격만으로
+`CONDENSE`를 승인하지 않는다.
 
 ## 구조
 

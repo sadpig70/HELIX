@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "state_management",
+    "input_shape": "state_event",
+    "output_shape": "next_state",
+    "primary_verb": "transition"
+  },
+  "corpus_id": "HC-PILOT-EXT-008",
+  "dependencies": [],
+  "genes": [
+    "guarded_transition",
+    "hierarchical_state"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "state-transition-runtime",
+    "status": "hypothesis"
+  },
+  "name": "transitions",
+  "origin": {
+    "kind": "external_repo",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "c3ad2b4b406883c8ffed1454b32ac1111e7f2776fdbdf000697391348e6f7ec9",
+    "license_verified": true,
+    "locator": "https://github.com/pytransitions/transitions",
+    "revision": "bd42b38f3627e6bca7274fb4d9af2e105f75da7c",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "31a18db1359c66a6774bfa9450c41f7c7e6341af55d4437b975749357d767d71"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/pytransitions/transitions",
+    "revision:bd42b38f3627e6bca7274fb4d9af2e105f75da7c",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Finite and hierarchical state-machine execution.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

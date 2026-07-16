@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "supply_resilience",
+    "input_shape": "reserve_and_shock_scenario",
+    "output_shape": "survival_and_price_report",
+    "primary_verb": "rehearse"
+  },
+  "corpus_id": "HC-PILOT-HELIX-006",
+  "dependencies": [],
+  "genes": [
+    "refusal_option",
+    "shock_survival_clock"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "strategic-shock-rehearsal-engine",
+    "status": "hypothesis"
+  },
+  "name": "MineralShock",
+  "origin": {
+    "kind": "helix_generated",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "6a25a56e2b63b8edd3e6739e74b44500b4b226c04f2ede642e8e2d133b2bc1c0",
+    "license_verified": true,
+    "locator": "MineralShock",
+    "revision": "c399bce3f4db02142528a6336429c924ccdc2df9",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "7a2ee2871c103cc3b0f4c634b6eb98aab11af0a7ab49b55acd53b6240614ef67"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:MineralShock",
+    "revision:c399bce3f4db02142528a6336429c924ccdc2df9",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Reserve rights, refusal options and strategic-mineral shock rehearsal.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

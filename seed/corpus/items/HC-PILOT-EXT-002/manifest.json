@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "policy_engine",
+    "input_shape": "policy_and_facts",
+    "output_shape": "policy_decision",
+    "primary_verb": "evaluate"
+  },
+  "corpus_id": "HC-PILOT-EXT-002",
+  "dependencies": [],
+  "genes": [
+    "policy_data_separation",
+    "declarative_decision"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "declarative-policy-evaluator",
+    "status": "hypothesis"
+  },
+  "name": "Open Policy Agent",
+  "origin": {
+    "kind": "external_repo",
+    "license": "Apache-2.0",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "2e54cd84a645bea25943c75dd8ae67cb291e66a47a11578333c9b4b3b6b86c85",
+    "license_verified": true,
+    "locator": "https://github.com/open-policy-agent/opa",
+    "revision": "9e7dc5c430802f2271097ba51fd2da3145752a97",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "4c82edeeac0bcf142dc05cd41450eb0be2e754083eb26fc44ecf05f709cecbcf"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/open-policy-agent/opa",
+    "revision:9e7dc5c430802f2271097ba51fd2da3145752a97",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Declarative policy evaluation separated from application logic.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

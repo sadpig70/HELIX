@@ -53,6 +53,53 @@
 - `pgxf` — 초대형 PG 인덱스
 - DesignSeed/final_idea → **pgf full-cycle**로 구현 위임: `/pgf full-cycle {Name}`
 
+## 3.5 신규 Corpus 공급 (`core/helix_corpus_supply.py`)
+
+Generative/Evidence 이중 admission, immutable revision snapshot, 실제 source/license bytes 검증,
+append-only hash-chain ledger를 제공한다. 상세 계약과 명령은 `docs/CORPUS-SUPPLY.md`.
+
+```bash
+python helix.py corpus validate --manifest candidate.json
+python helix.py corpus intake --manifest candidate.json --root seed/corpus
+python helix.py corpus admit --id HC-2026-0001 --root seed/corpus \
+  --evidence-root .helix/corpus-cache/HC-2026-0001 --now <iso8601>
+python helix.py corpus promote --id HC-2026-0001 --review human-review.json \
+  --root seed/corpus --evidence-root .helix/corpus-cache/HC-2026-0001 --now <iso8601>
+python helix.py corpus verify-ledger --root seed/corpus
+python helix.py corpus status --root seed/corpus
+python helix.py corpus health --root seed/corpus
+```
+
+Evidence 승격은 Condense 승인이 아니다. machine routing/threshold 권위는 기존 Condense plane에 유지된다.
+
+24개 Phase 2 파일럿은 고정 registry와 ledger 기반 report를 사용한다. 후보 선택과 Evidence
+review 서명만 인간 권위이며, 나머지는 자동화할 수 있다.
+
+```bash
+python scripts/corpus/pilot_registry.py init --out _workspace/corpus-pilot/registry.json
+python scripts/corpus/pilot_registry.py validate --registry _workspace/corpus-pilot/registry.json
+python scripts/corpus/pilot_report.py --registry _workspace/corpus-pilot/registry.json \
+  --corpus-root seed/corpus --out _workspace/corpus-pilot/pilot-report.json \
+  --markdown _workspace/corpus-pilot/pilot-report.md
+```
+
+Phase 3은 여섯 full-cycle의 ID·순서·lead verb·domain-distance·외부 gene·Evidence baseline을
+canonical registry로 고정한 뒤 시작한다. 모든 cycle은 `handback → close-loop → feedback` 순서를
+지키며 실패도 Failure Corpus로 보낸다.
+
+```bash
+python scripts/corpus/phase3_registry.py validate \
+  --registry seed/corpus/phase3-2026-01-experiments.json \
+  --corpus-root seed/corpus
+
+python scripts/corpus/phase3_registry.py freeze \
+  --registry seed/corpus/phase3-2026-01-experiments.json \
+  --corpus-root seed/corpus \
+  --pilot-report _workspace/corpus-pilot/pilot-report.json \
+  --out _workspace/corpus-phase3/freeze-receipt.json \
+  --now <ISO-8601>
+```
+
 ## 4. HELIX 통합 루프 (`core/` + `helix.py`)
 
 ```bash

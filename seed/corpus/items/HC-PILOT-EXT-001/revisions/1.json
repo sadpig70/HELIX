@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "software_supply_chain",
+    "input_shape": "artifact_steps",
+    "output_shape": "verified_layout",
+    "primary_verb": "attest"
+  },
+  "corpus_id": "HC-PILOT-EXT-001",
+  "dependencies": [],
+  "genes": [
+    "signed_step_metadata",
+    "layout_verification"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "supply-chain-attestation-verifier",
+    "status": "hypothesis"
+  },
+  "name": "in-toto",
+  "origin": {
+    "kind": "external_repo",
+    "license": "Apache-2.0",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "0fa57d00e818396fb13e62d8b232b381984f3a6a82cf2237d6bbace6498e6e3b",
+    "license_verified": true,
+    "locator": "https://github.com/in-toto/in-toto",
+    "revision": "a8ce9ee2125ae5a4b041a4e37cc1cf10eed0da6b",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "b05bf7e7469049fae57cbe9dcb4e3c4287a0d11dbe89a4c9099229a2c874783d"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/in-toto/in-toto",
+    "revision:a8ce9ee2125ae5a4b041a4e37cc1cf10eed0da6b",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Supply-chain step metadata and layout verification.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

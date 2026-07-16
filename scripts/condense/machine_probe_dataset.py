@@ -339,7 +339,7 @@ def build_dataset():
         for name, row in sorted(platforms.items())
     }
     return {
-        "total_platform_packs": 56,
+        "total_platform_packs": 62,
         "implemented_probe_cases": len(cases),
         "skipped_claims": skipped,
         "errors": errors,

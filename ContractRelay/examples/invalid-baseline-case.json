@@ -1,0 +1,22 @@
+{
+  "schema": "contract-relay-case/1.0",
+  "case_id": "sample-invalid-baseline",
+  "source": "system-a",
+  "target": "system-b",
+  "contract": {
+    "contract_id": "contract-v1",
+    "allowed_sources": ["system-a"],
+    "allowed_targets": ["system-b"],
+    "required_fields": ["subject.id"],
+    "field_types": {"subject.id": "string"}
+  },
+  "payload": {"subject": {"id": "case-17"}},
+  "custody": {
+    "from_actor": "system-a",
+    "to_actor": "system-b",
+    "handoff_confirmed": true,
+    "route_id": "route-ab"
+  },
+  "baseline_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+}
+

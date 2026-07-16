@@ -1,0 +1,12 @@
+{
+  "schema": "helix-corpus-safety-scope/1.0",
+  "scope": [
+    "source.snapshot.json",
+    "LICENSE.txt"
+  ],
+  "non_executable_package": true,
+  "secret_scan": "passed:no credential-bearing fields or bytes",
+  "pii_scan": "passed:public license attribution is permitted provenance",
+  "malware_scan": "passed:package contains JSON and plain-text license only",
+  "execution": "snapshot generation only; raw checkout is not admitted"
+}

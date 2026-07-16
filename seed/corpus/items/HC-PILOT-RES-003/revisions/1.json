@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "software_evaluation",
+    "input_shape": "issue_repository_instance",
+    "output_shape": "resolved_test_verdict",
+    "primary_verb": "benchmark"
+  },
+  "corpus_id": "HC-PILOT-RES-003",
+  "dependencies": [],
+  "genes": [
+    "repository_level_task",
+    "execution_based_grading"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "repository-repair-benchmark",
+    "status": "hypothesis"
+  },
+  "name": "SWE-bench",
+  "origin": {
+    "kind": "research",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "718402e8efbe76604e613b6aad4bd30ce94ed23449ad6117c19f09b86e617e6e",
+    "license_verified": true,
+    "locator": "https://github.com/SWE-bench/SWE-bench",
+    "revision": "f7bbbb2ccdf479001d6467c9e34af59e44a840f9",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "59f327c2ac780b9a3e6609fcbbbccd070e069ec04b9f0f6ea6b52f872bdfa753"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/SWE-bench/SWE-bench",
+    "revision:f7bbbb2ccdf479001d6467c9e34af59e44a840f9",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Repository-level issue resolution benchmark and execution harness.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

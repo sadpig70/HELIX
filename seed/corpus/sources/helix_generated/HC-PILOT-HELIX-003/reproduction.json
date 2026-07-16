@@ -1,0 +1,1 @@
+{"command":"python -m unittest discover -s tests -q","corpus_id":"HC-PILOT-HELIX-003","excluded_tests":[],"exit_code":0,"result":"passed","schema":"helix-corpus-reproduction/1.0","stderr_sha256":"6f4034e1ddae46f91974367a8834b3fdc60e9a1fe718503c354819d20d9725ea","stdout_sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"}

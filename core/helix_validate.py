@@ -144,7 +144,10 @@ def cross_check_schema_vs_validator(root: str) -> list:
     except ImportError:
         have_jsonschema = False
     if not have_jsonschema:
-        for name in ("ledger", "diversity-report", "loop-state", "corpus-entry"):
+        for name in (
+                "ledger", "diversity-report", "loop-state", "corpus-entry",
+                "corpus-manifest", "corpus-admission-receipt", "corpus-review-receipt",
+                "corpus-pilot-registry", "corpus-phase3-registry"):
             sp = schema_path(root, name)
             if not os.path.exists(sp):
                 continue
@@ -633,6 +636,7 @@ def validate_project(root: str) -> list:
         "core/helix_provenance.py",
         "core/helix_loop.py",
         "core/helix_router.py",
+        "core/helix_corpus_supply.py",
         "core/helix_validate.py",
         "engines/explore/adapter.py",
         "engines/exploit/adapter.py",
@@ -643,6 +647,11 @@ def validate_project(root: str) -> list:
         "schemas/diversity-report.schema.json",
         "schemas/loop-state.schema.json",
         "schemas/corpus-entry.schema.json",
+        "schemas/corpus-manifest.schema.json",
+        "schemas/corpus-admission-receipt.schema.json",
+        "schemas/corpus-review-receipt.schema.json",
+        "schemas/corpus-phase3-registry.schema.json",
+        "seed/corpus/policy.json",
         "docs/ARCHITECTURE.md",
         "docs/SUBSTRATE-CONTRACT.md",
         "README.md",
@@ -650,6 +659,21 @@ def validate_project(root: str) -> list:
     for rel in expected:
         if not os.path.exists(os.path.join(root, rel)):
             problems.append(f"missing file: {rel}")
+
+    policy_path = os.path.join(root, "seed", "corpus", "policy.json")
+    if os.path.exists(policy_path):
+        try:
+            with open(policy_path, "r", encoding="utf-8") as f:
+                corpus_policy = json.load(f)
+            if corpus_policy.get("schema") != "helix-corpus-supply-policy/1.0":
+                problems.append("seed/corpus/policy.json: unsupported schema")
+            authority = corpus_policy.get("authority", {})
+            if authority.get("supply_promotion_implies_condense") is not False:
+                problems.append("seed/corpus/policy.json: supply promotion must not imply CONDENSE")
+            if authority.get("ledger_writer") != "single_writer":
+                problems.append("seed/corpus/policy.json: v1 ledger_writer must be single_writer")
+        except ValueError as error:
+            problems.append(f"seed/corpus/policy.json: invalid JSON: {error}")
 
     # validate example ledger if present
     ex = os.path.join(root, "examples", "consumed_ledger.json")

@@ -1,0 +1,15 @@
+{
+  "schema": "hook-circuit-case/1.0",
+  "case_id": "sample-clean",
+  "hooks": [
+    {"hook_id": "h-auth", "plugin": "authz", "event": "before_dispatch", "max_failures": 1, "timeout_ms": 50},
+    {"hook_id": "h-log", "plugin": "audit", "event": "after_dispatch", "max_failures": 2, "timeout_ms": 100},
+    {"hook_id": "h-cache", "plugin": "cache", "event": "before_dispatch", "max_failures": 1, "timeout_ms": 25}
+  ],
+  "observations": [
+    {"hook_id": "h-auth", "event_id": "evt-1", "sequence": 1, "outcome": "ok", "elapsed_ms": 12},
+    {"hook_id": "h-log", "event_id": "evt-1", "sequence": 2, "outcome": "ok", "elapsed_ms": 10},
+    {"hook_id": "h-cache", "event_id": "evt-1", "sequence": 3, "outcome": "ok", "elapsed_ms": 8}
+  ],
+  "baseline_sha256": "8db239f9651224e5742ea8b33f86730c14693747080ca322258246541436b4d9"
+}

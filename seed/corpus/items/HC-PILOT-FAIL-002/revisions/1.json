@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "evidence_failure",
+    "input_shape": "synthetic_pilot_result",
+    "output_shape": "scope_limited_verdict",
+    "primary_verb": "differentiate"
+  },
+  "corpus_id": "HC-PILOT-FAIL-002",
+  "dependencies": [],
+  "genes": [
+    "synthetic_real_separation",
+    "honest_gate_failure"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "evidence-scope-classifier",
+    "status": "hypothesis"
+  },
+  "name": "Synthetic Evidence Externality Failure",
+  "origin": {
+    "kind": "failure",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "69c66c431aa360981342490f404a5a945ca9dc1c9ef56baa1f806ad0de134b72",
+    "license_verified": true,
+    "locator": "helix://failure/synthetic-externality",
+    "revision": "95a971c0f82b07e6a3bf8d36d3bc51b12de9984e1f74e2b991a74600c56866fa",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "95a971c0f82b07e6a3bf8d36d3bc51b12de9984e1f74e2b991a74600c56866fa"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:helix://failure/synthetic-externality",
+    "revision:95a971c0f82b07e6a3bf8d36d3bc51b12de9984e1f74e2b991a74600c56866fa",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "A synthetic pilot can verify machinery but cannot pass an external-validity gate.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

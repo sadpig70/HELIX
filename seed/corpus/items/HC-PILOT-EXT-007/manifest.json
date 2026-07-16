@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "resilience_control",
+    "input_shape": "fallible_operation",
+    "output_shape": "attempt_outcome",
+    "primary_verb": "retry"
+  },
+  "corpus_id": "HC-PILOT-EXT-007",
+  "dependencies": [],
+  "genes": [
+    "retry_policy_composition",
+    "bounded_backoff"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "retry-policy-controller",
+    "status": "hypothesis"
+  },
+  "name": "Tenacity",
+  "origin": {
+    "kind": "external_repo",
+    "license": "Apache-2.0",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "49bbe9114e49214df2ccc324cb3ac8d1d1aa1c3a0947f94c286765e86647b32e",
+    "license_verified": true,
+    "locator": "https://github.com/jd/tenacity",
+    "revision": "c650fb45204635f07910948d5fc59a8c551ffdda",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "72b392a0b0b65fbd68e6d01e467fcf4628ee57d761e78c096b1422839e5e8ae1"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/jd/tenacity",
+    "revision:c650fb45204635f07910948d5fc59a8c551ffdda",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Composable retry, stop and wait policies.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

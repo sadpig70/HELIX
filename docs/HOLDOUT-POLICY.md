@@ -27,7 +27,7 @@ prediction**으로 반증 가능하게 검증한다. 이 정책은 후보를 잘
 3. cohort manifest를 canonical JSON SHA256으로 봉인한 뒤 후보를 교체하거나 삭제하지 않는다.
 4. source는 immutable revision과 artifact SHA256을 가져야 한다. branch tip, latest URL만으로 잠그지 않는다.
 5. source license는 SPDX identifier와 local evidence path/hash를 모두 요구한다. 불명확하면 excluded다.
-6. 기존 HELIX corpus, 56 packs, M1~M17 fixtures, U6/U9 artifacts와 source/artifact hash가 겹치면 excluded다.
+6. 기존 HELIX corpus, 62 packs, M1~M17 fixtures, U6/U9 artifacts와 source/artifact hash가 겹치면 excluded다.
 7. 동일 upstream의 fork 또는 generated mirror는 하나의 source family로 계산한다.
 
 ## Candidate / Oracle Isolation

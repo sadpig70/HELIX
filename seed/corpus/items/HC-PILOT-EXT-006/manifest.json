@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "plugin_runtime",
+    "input_shape": "hook_call",
+    "output_shape": "plugin_results",
+    "primary_verb": "dispatch"
+  },
+  "corpus_id": "HC-PILOT-EXT-006",
+  "dependencies": [],
+  "genes": [
+    "hook_contract",
+    "multi-implementation_dispatch"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "hook-dispatch-runtime",
+    "status": "hypothesis"
+  },
+  "name": "pluggy",
+  "origin": {
+    "kind": "external_repo",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "de91589cbcc498cb36d3f979e39d4fb1ea1164d5331f6e0ea90a986525310d51",
+    "license_verified": true,
+    "locator": "https://github.com/pytest-dev/pluggy",
+    "revision": "c1a5f3ea743c462595b77ecb866a70569e25c901",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "82ed25eb74b99878cadd2f4a73d7382672782b27087e7b0f6a082ec81ad5e59b"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/pytest-dev/pluggy",
+    "revision:c1a5f3ea743c462595b77ecb866a70569e25c901",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Explicit hook specifications and plugin dispatch.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

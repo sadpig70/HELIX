@@ -1,0 +1,1 @@
+{"corpus_id":"HC-PILOT-FAIL-003","name":"Legacy Fail Open Migration Grace","references":[".pgf/status-HELIXDirection.json:205","HANDOFF.md:259"],"schema":"helix-corpus-normalized-observation/1.0","scope":"normalized HELIX observation; referenced artifacts remain authoritative","summary":"Legacy migration grace can preserve compatibility while weakening fail-closed authority."}

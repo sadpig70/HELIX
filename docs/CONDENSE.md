@@ -28,6 +28,23 @@ certifiable/needs_review/blocked) → 상호 조합·증언 가능(예: `Clearst
 defer됐던 스코어링 클러스터(ForgeQuarantine·LoopKit·LazarettoStage·DetourDesk·FieldRoot)를 CONDENSE로
 emit해 흡수했다 — "defer = 버림"이 아니라 **미인식 novel-machine 클러스터**였음의 실증.
 
+## 현재 팩 상태 (Phase4 closeout 기준)
+
+HELIX 작업공간 기준 live platform pack count는 **62팩**이다. Phase4 corpus 공급 lane에서 Phase3 full-cycle
+출력 6개를 기존 플랫폼으로 흡수했다:
+
+| 플랫폼 | Phase3 baseline | Phase4 추가 | 현재 |
+|---|---:|---:|---:|
+| Attestra | 23 | +5 | 28 |
+| Clearstra | 12 | +0 | 12 |
+| Routestra | 11 | +1 | 12 |
+| Certstra | 5 | +0 | 5 |
+| Scorestra | 5 | +0 | 5 |
+| **Total** | **56** | **+6** | **62** |
+
+Phase4 추가 팩은 `proof-escrow`, `authority-arbiter`, `drift-isolator`, `graph-quarantine`, `hook-circuit`,
+`contract-relay`이다. 모두 **BUILD_ON_PLATFORM**이며 새 kernel은 0개다.
+
 ## 단계 (U1~U5)
 
 | Phase | 산출 | 게이트 |

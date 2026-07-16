@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "software_testing",
+    "input_shape": "properties_and_strategies",
+    "output_shape": "minimal_counterexample",
+    "primary_verb": "falsify"
+  },
+  "corpus_id": "HC-PILOT-EXT-003",
+  "dependencies": [],
+  "genes": [
+    "generative_testing",
+    "counterexample_shrinking"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "property-falsification-engine",
+    "status": "hypothesis"
+  },
+  "name": "Hypothesis",
+  "origin": {
+    "kind": "external_repo",
+    "license": "MPL-2.0",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "df2ca456f6cda1226620ee99f16bafb6345241040996734d3a46e3afe414c056",
+    "license_verified": true,
+    "locator": "https://github.com/HypothesisWorks/hypothesis",
+    "revision": "db83b48b41fcb9ca06e77cf56a1708f5e6a6b962",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "10d6fd06ad1cd39d26e1b929c32cfcf551dab91e4eeb3e3da96827871238c438"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/HypothesisWorks/hypothesis",
+    "revision:db83b48b41fcb9ca06e77cf56a1708f5e6a6b962",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Property-based test generation and counterexample shrinking.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

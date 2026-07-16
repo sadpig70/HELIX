@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "data_contracts",
+    "input_shape": "instance_and_schema",
+    "output_shape": "validation_errors",
+    "primary_verb": "validate"
+  },
+  "corpus_id": "HC-PILOT-EXT-005",
+  "dependencies": [],
+  "genes": [
+    "schema_contract",
+    "normalized_errors"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "schema-validation-engine",
+    "status": "hypothesis"
+  },
+  "name": "jsonschema",
+  "origin": {
+    "kind": "external_repo",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "66010c33da1256c30c4359f6edd8c30fbccbf41a4bf66cb0c576e5c726978142",
+    "license_verified": true,
+    "locator": "https://github.com/python-jsonschema/jsonschema",
+    "revision": "027429257d13ece4942c0ae501d3096a7a51f24a",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "eea78c843b6f85bd58fade6183afab62b4e2be53b54c51a55b61ef2aabc24916"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/python-jsonschema/jsonschema",
+    "revision:027429257d13ece4942c0ae501d3096a7a51f24a",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Instance validation against explicit JSON Schema contracts.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

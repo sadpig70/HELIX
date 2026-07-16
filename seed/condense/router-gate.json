@@ -1,11 +1,11 @@
 {
   "criteria": {
-    "decision_count": 95,
+    "decision_count": 106,
     "deferred_machines": {
       "M13": 1
     },
     "summary": {
-      "BUILD_ON_PLATFORM": 94,
+      "BUILD_ON_PLATFORM": 105,
       "DEFER": 1
     }
   },

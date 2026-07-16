@@ -1,0 +1,28 @@
+{
+  "schema": "proofescrow-request/1.0",
+  "escrow_id": "PE-DEMO-003",
+  "artifact": {
+    "name": "drifted-wheel",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "steps": [
+      {
+        "step_id": "build-1",
+        "command": ["python", "-m", "build"],
+        "materials": ["cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+        "products": ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],
+        "signer": "builder-1",
+        "signature": "69bbb2b6d49d4b811c136f3a4b628e00138492aa0d278dd31fae9f07477693ad"
+      }
+    ]
+  },
+  "behavior": {
+    "baseline_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "observed_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "tests_passed": true,
+    "deterministic": true
+  },
+  "policy": {
+    "approved_behavior_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "required_signers": ["builder-1"]
+  }
+}

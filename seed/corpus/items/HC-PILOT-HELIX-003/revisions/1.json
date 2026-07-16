@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "runtime_safety",
+    "input_shape": "policy_and_runtime_trace",
+    "output_shape": "drift_attestation",
+    "primary_verb": "interrupt"
+  },
+  "corpus_id": "HC-PILOT-HELIX-003",
+  "dependencies": [],
+  "genes": [
+    "baseline_drift",
+    "reflex_interruption"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "policy-drift-interrupt-gate",
+    "status": "hypothesis"
+  },
+  "name": "PolicyDriftGate",
+  "origin": {
+    "kind": "helix_generated",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "d31788387458c3e4efc6206921a1e83178e795a96f13ca80cb0b76fcd1413f19",
+    "license_verified": true,
+    "locator": "PolicyDriftGate",
+    "revision": "e94f03e10945b7959268bb2aeedaf150e6a3470e",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "45c6545b90c04b1593b64e7df7aea12f24fb0fb30df71378d81974361e2eea71"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:PolicyDriftGate",
+    "revision:e94f03e10945b7959268bb2aeedaf150e6a3470e",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Policy baseline drift detection with loop interruption.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

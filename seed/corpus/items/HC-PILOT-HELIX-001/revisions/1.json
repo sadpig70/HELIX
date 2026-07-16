@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "agent_governance",
+    "input_shape": "delegation_packet",
+    "output_shape": "handback_verdict",
+    "primary_verb": "handback"
+  },
+  "corpus_id": "HC-PILOT-HELIX-001",
+  "dependencies": [],
+  "genes": [
+    "authority_custody_route",
+    "fail_closed_handback"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "handback-boundary-verifier",
+    "status": "hypothesis"
+  },
+  "name": "ActionHandbackVerifier",
+  "origin": {
+    "kind": "helix_generated",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "64f450225d9190a102e0eca0e4a38b3131b50ceae256a484f1b537bd36f64c1c",
+    "license_verified": true,
+    "locator": "ActionHandbackVerifier",
+    "revision": "fbad75a07e0df6fff180b4c635b4898f9c0ed529",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "ec19407cf557d2fd0dceac9112dfa6478aa416de89124b73954a22b3bb3627f4"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:ActionHandbackVerifier",
+    "revision:fbad75a07e0df6fff180b4c635b4898f9c0ed529",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Deterministic delegated-action handback verification.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "novelty_refutation",
+    "input_shape": "novelty_hypothesis_and_code",
+    "output_shape": "negative_reduction_receipt",
+    "primary_verb": "refute"
+  },
+  "corpus_id": "HC-PILOT-FAIL-001",
+  "dependencies": [],
+  "genes": [
+    "negative_result_preservation",
+    "live_code_refutation"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "novelty-refutation-recorder",
+    "status": "hypothesis"
+  },
+  "name": "Bio Drift M11 Refutation",
+  "origin": {
+    "kind": "failure",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "69c66c431aa360981342490f404a5a945ca9dc1c9ef56baa1f806ad0de134b72",
+    "license_verified": true,
+    "locator": "helix://failure/bio-drift-m11",
+    "revision": "fe7ae416599ea1808a6b5ce1e8443e8c3cbc0e6ce7306fe8652e91791d5ab59c",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "fe7ae416599ea1808a6b5ce1e8443e8c3cbc0e6ce7306fe8652e91791d5ab59c"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:helix://failure/bio-drift-m11",
+    "revision:fe7ae416599ea1808a6b5ce1e8443e8c3cbc0e6ce7306fe8652e91791d5ab59c",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "The proposed Bio drift M11 novelty axis was refuted by live code evidence.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

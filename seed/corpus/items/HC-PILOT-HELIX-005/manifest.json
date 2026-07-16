@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "risk_market",
+    "input_shape": "capacity_risk_contract",
+    "output_shape": "priced_settlement",
+    "primary_verb": "settle"
+  },
+  "corpus_id": "HC-PILOT-HELIX-005",
+  "dependencies": [],
+  "genes": [
+    "failure_probability_pricing",
+    "contingent_settlement"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "fragility-futures-clearing-engine",
+    "status": "hypothesis"
+  },
+  "name": "CryoFutures",
+  "origin": {
+    "kind": "helix_generated",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "c943b15e5312d6c86dd8f742739ef9166ae47b092e467e91fa0c11c5afb40412",
+    "license_verified": true,
+    "locator": "CryoFutures",
+    "revision": "c429bd96a755b6a92a6e14d4611881c82cb2f1e2",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "904c6e56b4537b7ebcfef44108202cca006acadaffd629f67e220d122e49c5cf"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:CryoFutures",
+    "revision:c429bd96a755b6a92a6e14d4611881c82cb2f1e2",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Failure-protection futures for fragile cooling capacity.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

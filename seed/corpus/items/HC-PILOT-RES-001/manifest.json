@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "software_agents",
+    "input_shape": "issue_and_repository",
+    "output_shape": "code_patch",
+    "primary_verb": "repair"
+  },
+  "corpus_id": "HC-PILOT-RES-001",
+  "dependencies": [],
+  "genes": [
+    "agent_computer_interface",
+    "trajectory_control"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "repository-repair-agent",
+    "status": "hypothesis"
+  },
+  "name": "SWE-agent",
+  "origin": {
+    "kind": "research",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "0dd16d1dbe4b1dc13b8bc93865cac483d5ddc80239db4b7d363a3c0d5e5bd9f0",
+    "license_verified": true,
+    "locator": "https://github.com/princeton-nlp/SWE-agent",
+    "revision": "1132b3e80a45487ce8423f75d0e180874bf84caa",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "b8ecf322b797bae48e811f74e46b3caf318491edafd2d7ca96464b9f6de3f877"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/princeton-nlp/SWE-agent",
+    "revision:1132b3e80a45487ce8423f75d0e180874bf84caa",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Agent-computer interfaces for repository issue resolution.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

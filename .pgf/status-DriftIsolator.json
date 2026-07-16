@@ -1,0 +1,11 @@
+{
+  "project":"DriftIsolator","design":".pgf/DESIGN-DriftIsolator.md","review":".pgf/REVIEW-DriftIsolator.md","workplan":".pgf/WORKPLAN-DriftIsolator.md",
+  "started_at":"2026-07-15T23:22:51.3657336+09:00","updated_at":"2026-07-15T23:31:02.4629428+09:00","phase":"complete","iteration":2,"review_iterations":1,"unresolved_issues":[],"verify_status":"passed",
+  "batches":{"Contract":"done","ReplayEngine":"done","Shrinker":"done","AuditLedger":"done","Interface":"done","Verification":"done","HandbackCloseLoop":"done"},
+  "gate_evidence":[
+    {"command":"python -m unittest discover -s tests -q","cwd":"DriftIsolator","exit_code":0,"result":"15 tests OK"},
+    {"command":"three static CLI examples","cwd":"DriftIsolator","exit_code":0,"result":"ISOLATED 4->1; NO_DRIFT; INVALID exit 2"},
+    {"command":"ActionHandbackVerifier.evaluate_handback + helix.py close-loop","cwd":".","exit_code":0,"result":"5/5 valid; closed; idempotent"},
+    {"command":"python -m unittest discover -s tests -q && python core/helix_validate.py .","cwd":".","exit_code":0,"result":"717 tests OK; validator PASS"}
+  ],"next_task":"execute HC-P3-FC-004 GraphQuarantine through full-cycle, handback, close-loop and feedback"
+}

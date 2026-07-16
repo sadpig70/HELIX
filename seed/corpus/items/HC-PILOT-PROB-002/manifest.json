@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "evaluation_validity",
+    "input_shape": "internal_evaluation_evidence",
+    "output_shape": "external_validity_protocol",
+    "primary_verb": "externalize"
+  },
+  "corpus_id": "HC-PILOT-PROB-002",
+  "dependencies": [],
+  "genes": [
+    "provenance_class_separation",
+    "external_cohort_gate"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "external-validity-planner",
+    "status": "hypothesis"
+  },
+  "name": "External Validity Gap",
+  "origin": {
+    "kind": "operational_problem",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "69c66c431aa360981342490f404a5a945ca9dc1c9ef56baa1f806ad0de134b72",
+    "license_verified": true,
+    "locator": "helix://problem/external-validity-gap",
+    "revision": "fc3ef9545fa6016bea1462255367d8670b37681a77cbf2097d200948c3aa50ec",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "fc3ef9545fa6016bea1462255367d8670b37681a77cbf2097d200948c3aa50ec"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:helix://problem/external-validity-gap",
+    "revision:fc3ef9545fa6016bea1462255367d8670b37681a77cbf2097d200948c3aa50ec",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Synthetic and internal evidence cannot establish real external adoption validity.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

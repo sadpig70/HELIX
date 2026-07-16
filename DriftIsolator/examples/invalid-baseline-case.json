@@ -1,0 +1,7 @@
+{
+  "schema":"drift-isolator-case/1.0","case_id":"DI-DEMO-003",
+  "initial_state":{"mode":"safe","count":0,"audit":[]},
+  "expected_state":{"mode":"safe","count":0,"audit":[]},
+  "baseline_sha256":"0000000000000000000000000000000000000000000000000000000000000000",
+  "events":[{"event_id":"e3","op":"set","path":"mode","value":"unsafe"}]
+}

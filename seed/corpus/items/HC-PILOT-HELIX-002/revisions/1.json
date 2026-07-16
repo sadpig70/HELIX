@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "method_trust",
+    "input_shape": "method_evidence_bundle",
+    "output_shape": "trust_verdict",
+    "primary_verb": "bond"
+  },
+  "corpus_id": "HC-PILOT-HELIX-002",
+  "dependencies": [],
+  "genes": [
+    "license_reproduction_certification",
+    "behavior_baseline_binding"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "method-trust-bundle-gate",
+    "status": "hypothesis"
+  },
+  "name": "MethodBond",
+  "origin": {
+    "kind": "helix_generated",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+    "license_verified": true,
+    "locator": "MethodBond",
+    "revision": "ec7f8bedb77376820706cbcec1df2aad2d984fcd",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "12d09d0d808355722d593b9b164c845a21394e8821779b765561e3672f343d98"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:MethodBond",
+    "revision:ec7f8bedb77376820706cbcec1df2aad2d984fcd",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "License, reproducibility and behavior certification trust bundle.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

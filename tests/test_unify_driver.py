@@ -77,10 +77,10 @@ class TestDriver(unittest.TestCase):
         self.assertEqual(r["next_action"]["action"], "RUN_EXPLOIT")
         if required_platforms_available():
             self.assertTrue(r["router"]["available"])
-            self.assertEqual(r["router"]["summary"], {"BUILD_ON_PLATFORM": 94, "DEFER": 1})
+            self.assertEqual(r["router"]["summary"], {"BUILD_ON_PLATFORM": 105, "DEFER": 1})
             self.assertEqual(r["router"]["deferred_machines"], {"M13": 1})
-            self.assertEqual(r["router"]["matched_claims"], 95)
-            self.assertEqual(r["router"]["scored_claims"], 95)
+            self.assertEqual(r["router"]["matched_claims"], 106)
+            self.assertEqual(r["router"]["scored_claims"], 106)
         else:
             self.assertFalse(r["router"]["available"])
             self.assertIn("missing platform repo", r["router"]["reason"])

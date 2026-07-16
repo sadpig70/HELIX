@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "language_model_programming",
+    "input_shape": "lm_program_and_metric",
+    "output_shape": "compiled_lm_program",
+    "primary_verb": "optimize"
+  },
+  "corpus_id": "HC-PILOT-RES-002",
+  "dependencies": [],
+  "genes": [
+    "declarative_lm_module",
+    "metric_driven_optimization"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "lm-program-optimizer",
+    "status": "hypothesis"
+  },
+  "name": "DSPy",
+  "origin": {
+    "kind": "research",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "2ca13c1acd6a46a84ec0c9fa6b066b4faec0d6da96973766c541633a1f51c110",
+    "license_verified": true,
+    "locator": "https://github.com/stanfordnlp/dspy",
+    "revision": "027d9f45f4d60aedadee3fd587d1f4f3584567df",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "55f5736cba824d0c4bbdb466cbff228e38e2a0a29f6726596510286ef16675ef"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:https://github.com/stanfordnlp/dspy",
+    "revision:027d9f45f4d60aedadee3fd587d1f4f3584567df",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "Declarative LM programs optimized against metrics.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

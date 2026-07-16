@@ -1,0 +1,1 @@
+{"artifact_id":"pilot-method","details":{"certification":{"baseline_rules":1,"candidate_rules":1,"drifts":[]},"license":{"errors":[],"fields_missing":[],"fields_present":["revenue_share_pct","source_domain","target_industry","transfer_type"]},"reproducibility":{"errors":[],"output_hashes":["sha256:out","sha256:out"],"provenance_count":2}},"verdict":"certified"}

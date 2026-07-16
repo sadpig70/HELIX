@@ -1,0 +1,47 @@
+Sample artifact written to C:\Users\sadpig70\AppData\Local\Temp\tmplv3rlmle\sample.json
+Artifact fingerprint: 3c301a9378951cd2d5e6df44f5239ff02f5371b1055a5b2c14d1c4d3456bdb86
+verdict=certified artifact_id=sample-method-v1
+verdict=rejected artifact_id=bad
+Sample artifact written to C:\Users\sadpig70\AppData\Local\Temp\tmply70ct64\sample.json
+Artifact fingerprint: 3c301a9378951cd2d5e6df44f5239ff02f5371b1055a5b2c14d1c4d3456bdb86
+{
+  "verdict": "certified",
+  "artifact_id": "sample-method-v1",
+  "details": {
+    "license": {
+      "fields_present": [
+        "revenue_share_pct",
+        "source_domain",
+        "target_industry",
+        "transfer_type"
+      ],
+      "fields_missing": [],
+      "errors": []
+    },
+    "reproducibility": {
+      "provenance_count": 2,
+      "errors": [],
+      "output_hashes": [
+        "sha256:matched",
+        "sha256:matched"
+      ]
+    },
+    "certification": {
+      "baseline_rules": 2,
+      "candidate_rules": 2,
+      "drifts": []
+    }
+  }
+}
+Sample artifact written to C:\Users\sadpig70\AppData\Local\Temp\tmpj96vaiml\sample.json
+Artifact fingerprint: 3c301a9378951cd2d5e6df44f5239ff02f5371b1055a5b2c14d1c4d3456bdb86
+verdict=certified artifact_id=sample-method-v1
+Sample artifact written to C:\Users\sadpig70\AppData\Local\Temp\tmp7n5svxp7\sample.json
+Artifact fingerprint: 3c301a9378951cd2d5e6df44f5239ff02f5371b1055a5b2c14d1c4d3456bdb86
+Report written to C:\Users\sadpig70\AppData\Local\Temp\tmp7n5svxp7\report.md
+Sample artifact written to C:\Users\sadpig70\AppData\Local\Temp\tmp6p3ttp0d\sample.json
+Artifact fingerprint: 3c301a9378951cd2d5e6df44f5239ff02f5371b1055a5b2c14d1c4d3456bdb86
+----------------------------------------------------------------------
+Ran 32 tests in 0.148s
+
+OK

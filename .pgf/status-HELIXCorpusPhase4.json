@@ -1,0 +1,134 @@
+{
+  "project": "HELIXCorpusPhase4",
+  "design": ".pgf/DESIGN-HELIXCorpusPhase4.md",
+  "workplan": ".pgf/WORKPLAN-HELIXCorpusPhase4.md",
+  "started_at": "2026-07-16T10:43:54.1058329+09:00",
+  "updated_at": "2026-07-16T15:55:00+09:00",
+  "phase": "complete",
+  "iteration": 2,
+  "verify_status": "passed",
+  "batches": {
+    "B0EntryGate": "done",
+    "B1PackRegistry": "done",
+    "B2PackContracts": "done",
+    "B3Validation": "done",
+    "B4Handoff": "done",
+    "Phase4AttestraPackLane": "done",
+    "RoutestraContractRelayPackLane": "done",
+    "Phase4CloseoutReport": "done",
+    "PublicNarrativeDocsPhase4Sync": "done",
+    "Phase4FinalRuntimeHandoff": "done",
+    "Phase4CommitPushClosure": "done"
+  },
+  "gate_evidence": [
+    {
+      "command": "read _workspace/corpus-phase3/phase3-outcome-report.json",
+      "exit_code": 0,
+      "result": "PHASE3_COMPLETE_READY_FOR_PHASE4; PROCEED_TO_PLATFORM_ABSORPTION_PACKAGING; DO_NOT_EMIT_NEW_PLATFORM_KERNEL"
+    },
+    {
+      "command": "read docs/CONDENSE.md",
+      "exit_code": 0,
+      "result": "hard gates captured: zero-kernel-change, reference-parity, determinism-clean, tests-green, structure-conform"
+    },
+    {
+      "command": "inline Python JSON assertions for _workspace/corpus-phase4/platform-pack-registry.json",
+      "exit_code": 0,
+      "result": "phase4 registry OK"
+    },
+    {
+      "command": "python scripts/corpus/phase3_registry.py validate --registry seed/corpus/phase3-2026-01-experiments.json --corpus-root seed/corpus",
+      "exit_code": 0,
+      "result": "valid true; no problems"
+    },
+    {
+      "command": "python core/helix_validate.py .",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q",
+      "exit_code": 0,
+      "result": "717 tests OK"
+    },
+    {
+      "command": "cd Routestra; python -m unittest tests.test_packs tests.test_contract_relay_parity -q",
+      "exit_code": 0,
+      "result": "12 tests OK"
+    },
+    {
+      "command": "cd Routestra; python -m unittest discover -s tests -q",
+      "exit_code": 0,
+      "result": "48 tests OK"
+    },
+    {
+      "command": "python -m unittest tests.test_machine_probe_dataset tests.test_router tests.test_unify_driver tests.test_validate -q",
+      "exit_code": 0,
+      "result": "48 tests OK"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "PASS; existing LF-to-CRLF warnings only"
+    }
+  ],
+  "outputs": {
+    "files_created": [
+      ".pgf/DESIGN-HELIXCorpusPhase4.md",
+      ".pgf/WORKPLAN-HELIXCorpusPhase4.md",
+      ".pgf/status-HELIXCorpusPhase4.json",
+      "_workspace/corpus-phase4/platform-pack-registry.json",
+      "_workspace/corpus-phase4/platform-pack-plan.md",
+      ".pgf/VERIFY-HELIXCorpusPhase4.md",
+      "_workspace/corpus-phase4/validation-report.md",
+      ".pgf/DESIGN-RoutestraContractRelayPackLane.md",
+      ".pgf/WORKPLAN-RoutestraContractRelayPackLane.md",
+      ".pgf/status-RoutestraContractRelayPackLane.json",
+      ".pgf/VERIFY-RoutestraContractRelayPackLane.md",
+      "_workspace/corpus-phase4/routestra-contract-relay-implementation-report.md",
+      ".pgf/DESIGN-Phase4CloseoutReport.md",
+      ".pgf/WORKPLAN-Phase4CloseoutReport.md",
+      ".pgf/status-Phase4CloseoutReport.json",
+      ".pgf/VERIFY-Phase4CloseoutReport.md",
+      "_workspace/corpus-phase4/phase4-closeout-report.md",
+      ".pgf/DESIGN-PublicNarrativeDocsPhase4Sync.md",
+      ".pgf/WORKPLAN-PublicNarrativeDocsPhase4Sync.md",
+      ".pgf/status-PublicNarrativeDocsPhase4Sync.json",
+      ".pgf/VERIFY-PublicNarrativeDocsPhase4Sync.md",
+      "_workspace/corpus-phase4/public-narrative-docs-sync-report.md",
+      ".pgf/DESIGN-Phase4FinalRuntimeHandoff.md",
+      ".pgf/WORKPLAN-Phase4FinalRuntimeHandoff.md",
+      ".pgf/status-Phase4FinalRuntimeHandoff.json",
+      ".pgf/VERIFY-Phase4FinalRuntimeHandoff.md",
+      "_workspace/runtime-handoff-HELIXCorpusPhase4.md",
+      ".pgf/DESIGN-Phase4CommitPushClosure.md",
+      ".pgf/WORKPLAN-Phase4CommitPushClosure.md",
+      ".pgf/status-Phase4CommitPushClosure.json",
+      ".pgf/VERIFY-Phase4CommitPushClosure.md"
+    ],
+    "files_modified": [
+      "Routestra/routestra_packs/contract_relay.py",
+      "Routestra/schemas/candidate-contractrelay.schema.json",
+      "Routestra/tests/test_contract_relay_parity.py",
+      "Routestra/tests/test_packs.py",
+      "scripts/condense/machine_probe_dataset.py",
+      "seed/condense/machine-probe-gate.json",
+      "seed/condense/router-gate.json",
+      "tests/test_machine_probe_dataset.py",
+      "tests/test_router.py",
+      "tests/test_unify_driver.py",
+      "_workspace/corpus-phase4/platform-pack-registry.json",
+      "README.md",
+      "docs/OVERVIEW.md",
+      "docs/CONDENSE.md",
+      "docs/HOLDOUT-POLICY.md"
+    ]
+  },
+  "summary": {
+    "total": 11,
+    "done": 11,
+    "needs-verify": 0,
+    "blocked": 0
+  },
+  "next_task": "verify GitHub Actions CI for Phase4 closure push"
+}

@@ -1,0 +1,61 @@
+{
+  "character": {
+    "domain": "runtime_authority",
+    "input_shape": "competing_gate_states",
+    "output_shape": "unified_authority_contract",
+    "primary_verb": "reconcile"
+  },
+  "corpus_id": "HC-PILOT-PROB-001",
+  "dependencies": [],
+  "genes": [
+    "authority_unification",
+    "actuator_readiness"
+  ],
+  "machine": {
+    "evidence": [],
+    "label": "authority-reconciliation-planner",
+    "status": "hypothesis"
+  },
+  "name": "Split Actuator Authority",
+  "origin": {
+    "kind": "operational_problem",
+    "license": "MIT",
+    "license_evidence": "LICENSE.txt",
+    "license_evidence_sha256": "69c66c431aa360981342490f404a5a945ca9dc1c9ef56baa1f806ad0de134b72",
+    "license_verified": true,
+    "locator": "helix://problem/split-actuator-authority",
+    "revision": "28f71e4f4d412d180cf60610db02e573ce055cc12b5f20d44d70de48124933d6",
+    "source_evidence": "source.snapshot.json",
+    "source_sha256": "28f71e4f4d412d180cf60610db02e573ce055cc12b5f20d44d70de48124933d6"
+  },
+  "provenance": [
+    "pilot:HELIX-CORPUS-PILOT-2026-01",
+    "locator:helix://problem/split-actuator-authority",
+    "revision:28f71e4f4d412d180cf60610db02e573ce055cc12b5f20d44d70de48124933d6",
+    "safety-scope:safety-scope.json"
+  ],
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": 1,
+  "safety": {
+    "execution_isolated": true,
+    "malware_scan_passed": true,
+    "pii_scan_passed": true,
+    "secret_scan_passed": true
+  },
+  "schema": "helix-corpus-manifest/1.0",
+  "summary": "State receipt authority and explicit close-loop writes use separate gates.",
+  "verification": {
+    "behavior_sha256": "",
+    "deterministic": false,
+    "parity_available": false,
+    "reproducible": false,
+    "reproduction_command": "",
+    "supporting_files": [],
+    "supporting_symbols": [],
+    "tests_passed": false
+  }
+}

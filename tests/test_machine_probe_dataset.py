@@ -14,10 +14,10 @@ class TestMachineProbeDataset(unittest.TestCase):
     def test_live_stra_pack_samples_match_implemented_probes(self):
         dataset = build_dataset()
         self.assertEqual(dataset["errors"], [])
-        self.assertEqual(dataset["total_platform_packs"], 56)
-        self.assertEqual(dataset["implemented_probe_cases"], 95)
-        self.assertEqual(dataset["agreement"]["scored_claims"], 95)
-        self.assertEqual(dataset["agreement"]["matched_claims"], 95)
+        self.assertEqual(dataset["total_platform_packs"], 62)
+        self.assertEqual(dataset["implemented_probe_cases"], 106)
+        self.assertEqual(dataset["agreement"]["scored_claims"], 106)
+        self.assertEqual(dataset["agreement"]["matched_claims"], 106)
         self.assertEqual(dataset["agreement"]["agreement"], 1.0)
 
     def test_unimplemented_machine_claims_are_explicitly_skipped(self):
@@ -35,7 +35,7 @@ class TestMachineProbeDataset(unittest.TestCase):
             with open(out, "r", encoding="utf-8") as f:
                 report = json.load(f)
         self.assertEqual(report["agreement"]["agreement"], 1.0)
-        self.assertEqual(report["implemented_probe_cases"], 95)
+        self.assertEqual(report["implemented_probe_cases"], 106)
 
 
 if __name__ == "__main__":

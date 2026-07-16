@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-corpus-admission-receipt/1.0",
+  "title": "HELIX corpus admission ledger event",
+  "type": "object",
+  "required": [
+    "schema", "event_id", "corpus_id", "tier", "decision", "reasons",
+    "manifest_sha256", "fingerprints", "review_sha256", "previous_event_sha256",
+    "recorded_at", "event_sha256"
+  ],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-corpus-admission-receipt/1.0"]},
+    "event_id": {"type": "string"},
+    "corpus_id": {"type": "string"},
+    "tier": {"type": "string", "enum": ["generative", "evidence"]},
+    "decision": {"type": "string", "enum": ["ADMITTED", "QUARANTINED"]},
+    "reasons": {"type": "array", "items": {"type": "string"}},
+    "manifest_sha256": {"type": "string"},
+    "fingerprints": {"type": "object"},
+    "review_sha256": {"type": ["string", "null"]},
+    "previous_event_sha256": {"type": ["string", "null"]},
+    "recorded_at": {"type": "string"},
+    "event_sha256": {"type": "string"}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "graph-quarantine-case/1.0",
+  "case_id": "sample-clear",
+  "nodes": [
+    {"id": "root"},
+    {"id": "bad-evidence"},
+    {"id": "derived-a"},
+    {"id": "derived-b"},
+    {"id": "clean-sibling"},
+    {"id": "watch-only"}
+  ],
+  "edges": [
+    {"from": "bad-evidence", "to": "derived-a", "relation": "derived_from", "propagation": "block"},
+    {"from": "derived-a", "to": "derived-b", "relation": "feeds", "propagation": "block"},
+    {"from": "bad-evidence", "to": "watch-only", "relation": "mentioned_with", "propagation": "monitor"},
+    {"from": "root", "to": "clean-sibling", "relation": "sibling", "propagation": "ignore"}
+  ],
+  "contamination_sources": [],
+  "baseline_sha256": "168ed4c31add6055fd7bc60cc88747020bb31aec2ee7d24856de705969a4fe72"
+}

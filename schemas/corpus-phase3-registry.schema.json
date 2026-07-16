@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "helix-corpus-phase3-registry/1.0",
+  "title": "HELIX Phase 3 six-full-cycle experiment registry",
+  "type": "object",
+  "required": ["schema", "phase_id", "frozen", "source_pilot", "policy", "recent_project_domains", "slots"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["helix-corpus-phase3-registry/1.0"]},
+    "phase_id": {"type": "string"},
+    "frozen": {"type": "boolean"},
+    "source_pilot": {
+      "type": "object",
+      "required": ["pilot_id", "report", "report_sha256", "verdict"],
+      "properties": {
+        "pilot_id": {"type": "string"},
+        "report": {"type": "string"},
+        "report_sha256": {"type": "string"},
+        "verdict": {"type": "string", "enum": ["READY_FOR_PHASE_3"]}
+      }
+    },
+    "policy": {
+      "type": "object",
+      "required": ["experiment_count", "minimum_independent_projects", "minimum_domain_distance", "minimum_external_genes_per_experiment", "unique_lead_verbs", "require_handback", "require_close_loop", "require_feedback", "record_failures"],
+      "properties": {
+        "experiment_count": {"type": "integer", "minimum": 6, "maximum": 6},
+        "minimum_independent_projects": {"type": "integer", "minimum": 3},
+        "minimum_domain_distance": {"type": "number", "minimum": 0, "maximum": 1},
+        "minimum_external_genes_per_experiment": {"type": "integer", "minimum": 1},
+        "unique_lead_verbs": {"type": "boolean"},
+        "require_handback": {"type": "boolean"},
+        "require_close_loop": {"type": "boolean"},
+        "require_feedback": {"type": "boolean"},
+        "record_failures": {"type": "boolean"}
+      }
+    },
+    "recent_project_domains": {"type": "array", "items": {"type": "string"}},
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["experiment_id", "ordinal", "project_slug", "title", "status", "lead_verb", "domain_signature", "evidence_baseline", "gene_bindings", "pipeline", "failure_route", "required_outputs", "success_signal"],
+        "properties": {
+          "experiment_id": {"type": "string"},
+          "ordinal": {"type": "integer", "minimum": 1, "maximum": 6},
+          "project_slug": {"type": "string"},
+          "title": {"type": "string"},
+          "status": {"type": "string", "enum": ["planned"]},
+          "lead_verb": {"type": "string"},
+          "domain_signature": {"type": "array", "items": {"type": "string"}},
+          "evidence_baseline": {
+            "type": "object",
+            "required": ["corpus_id", "manifest_sha256"],
+            "properties": {
+              "corpus_id": {"type": "string"},
+              "manifest_sha256": {"type": "string"}
+            }
+          },
+          "gene_bindings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["corpus_id", "manifest_sha256", "gene"],
+              "properties": {
+                "corpus_id": {"type": "string"},
+                "manifest_sha256": {"type": "string"},
+                "gene": {"type": "string"}
+              }
+            }
+          },
+          "pipeline": {"type": "array", "items": {"type": "string"}},
+          "failure_route": {"type": "string", "enum": ["failure_corpus"]},
+          "required_outputs": {"type": "array", "items": {"type": "string"}},
+          "success_signal": {"type": "string"}
+        }
+      }
+    }
+  }
+}

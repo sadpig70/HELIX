@@ -1,0 +1,109 @@
+{
+  "project": "HELIXCorpusPilot",
+  "design": ".pgf/DESIGN-HELIXCorpusPilot.md",
+  "workplan": ".pgf/WORKPLAN-HELIXCorpusPilot.md",
+  "started_at": "2026-07-15T00:00:00+09:00",
+  "updated_at": "2026-07-15T21:32:07.9827917+09:00",
+  "phase": "phase3_ready",
+  "iteration": 4,
+  "verify_status": "passed",
+  "batches": {
+    "B0Contract": "done",
+    "B1Tooling": "done",
+    "B2Integration": "done",
+    "B3Verification": "done",
+    "B4RealPilot": "done"
+  },
+  "gate_evidence": [
+    {
+      "command": "python -m unittest tests.test_corpus_pilot -v",
+      "exit_code": 0,
+      "result": "5 tests OK"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q",
+      "exit_code": 0,
+      "result": "713 tests OK"
+    },
+    {
+      "command": "python core/helix_validate.py .",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "python scripts/corpus/pilot_registry.py validate --registry _workspace/corpus-pilot/registry.json",
+      "exit_code": 0,
+      "result": "valid"
+    },
+    {
+      "command": "python -m py_compile scripts/corpus/pilot_registry.py scripts/corpus/build_snapshot.py scripts/corpus/pilot_report.py tests/test_corpus_pilot.py && git diff --check",
+      "exit_code": 0,
+      "result": "clean"
+    },
+    {
+      "command": "python scripts/corpus/run_pilot.py --start 2026-07-15T21:03:26.0842120+09:00",
+      "exit_code": 0,
+      "result": "24/24 Generative ADMITTED"
+    },
+    {
+      "command": "python scripts/corpus/run_in_toto_supported_tests.py",
+      "exit_code": 0,
+      "result": "249 tests OK, 3 Windows symlink tests explicitly excluded, 2 skipped"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q",
+      "exit_code": 0,
+      "result": "MethodBond 32 tests OK"
+    },
+    {
+      "command": "python -m unittest tests.test_corpus_supply tests.test_corpus_pilot -q",
+      "exit_code": 0,
+      "result": "18 tests OK after pilot execution"
+    },
+    {
+      "command": "python helix.py corpus promote --id HC-PILOT-EXT-001 ...",
+      "exit_code": 0,
+      "result": "Evidence ADMITTED; exact human-bound manifest hash"
+    },
+    {
+      "command": "python helix.py corpus promote --id HC-PILOT-HELIX-002 ...",
+      "exit_code": 0,
+      "result": "Evidence ADMITTED; exact human-bound manifest hash"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q (HELIX-001/003/004)",
+      "exit_code": 0,
+      "result": "14 + 14 + 19 tests OK; three Evidence revision packets ready"
+    },
+    {
+      "command": "python helix.py corpus promote --id HC-PILOT-HELIX-001/003/004 ...",
+      "exit_code": 0,
+      "result": "three exact-hash human reviews admitted; Evidence 5/5"
+    },
+    {
+      "command": "python helix.py corpus verify-ledger --root seed/corpus && python helix.py corpus health --root seed/corpus",
+      "exit_code": 0,
+      "result": "29 events valid; 24 Generative, 5 Evidence, 0 quarantine"
+    },
+    {
+      "command": "python scripts/corpus/pilot_report.py ...",
+      "exit_code": 0,
+      "result": "READY_FOR_PHASE_3; all nine gates passed"
+    },
+    {
+      "command": "python -m unittest tests.test_corpus_supply tests.test_corpus_pilot -q && python -m compileall -q scripts/corpus",
+      "exit_code": 0,
+      "result": "18 tests OK; corpus scripts compile"
+    },
+    {
+      "command": "python -m unittest discover -s tests -q && python core/helix_validate.py . && git diff --check",
+      "exit_code": 0,
+      "result": "713 tests OK; validator PASS; diff hygiene clean"
+    }
+  ],
+  "human_actions": [
+    "freeze the actual 24 candidate identities after reviewing scope and rights",
+    "approve Evidence review receipts only after inspecting reproduction evidence"
+  ],
+  "next_task": "design and freeze the Phase 3 six-full-cycle experiment registry"
+}

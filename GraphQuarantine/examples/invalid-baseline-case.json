@@ -1,0 +1,9 @@
+{
+  "schema": "graph-quarantine-case/1.0",
+  "case_id": "sample-invalid-baseline",
+  "nodes": [{"id": "root"}],
+  "edges": [],
+  "contamination_sources": [],
+  "baseline_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+}
+
