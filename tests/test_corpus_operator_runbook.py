@@ -117,6 +117,40 @@ class CorpusOperatorRunbookCliTests(unittest.TestCase):
         )
         return json.loads(completed.stdout)
 
+    def _intake_and_admit_generative_then_intake_evidence(self, corpus_id):
+        generative = _manifest(corpus_id=corpus_id)
+        generative_path = self._write_json(f"{corpus_id}-v1.json", generative)
+        self.assertTrue(
+            self._corpus("validate", "--manifest", generative_path)["valid"])
+        self.assertEqual(
+            "INTAKEN",
+            self._corpus(
+                "intake", "--manifest", generative_path,
+                "--root", self.corpus)["status"],
+        )
+        admitted = self._corpus(
+            "admit", "--id", generative["corpus_id"], "--root", self.corpus,
+            "--evidence-root", self.evidence,
+            "--now", "2026-07-16T16:01:00+09:00")
+        self.assertEqual("ADMITTED", admitted["decision"]["decision"])
+
+        evidence = _manifest(
+            corpus_id=corpus_id,
+            revision=2,
+            supersedes=admitted["event"]["manifest_sha256"],
+            evidence=True,
+        )
+        evidence_path = self._write_json(f"{corpus_id}-v2.json", evidence)
+        self.assertTrue(
+            self._corpus("validate", "--manifest", evidence_path)["valid"])
+        self.assertEqual(
+            "INTAKEN",
+            self._corpus(
+                "intake", "--manifest", evidence_path,
+                "--root", self.corpus)["status"],
+        )
+        return evidence
+
     def test_documented_operator_sequence_admits_and_promotes(self):
         generative = _manifest()
         generative_path = self._write_json("candidate-v1.json", generative)
@@ -176,6 +210,64 @@ class CorpusOperatorRunbookCliTests(unittest.TestCase):
         self.assertEqual(2, status["event_count"])
         self.assertEqual("ADMITTED", status["items"][0]["generative"])
         self.assertEqual("ADMITTED", status["items"][0]["evidence"])
+
+    def test_rejected_review_records_quarantine_event_without_replacing_slot(self):
+        corpus_id = "HC-RUNBOOK-REJECTED"
+        evidence = self._intake_and_admit_generative_then_intake_evidence(
+            corpus_id)
+        review = _review_for(evidence)
+        review["verdict"] = "rejected"
+        review_path = self._write_json("rejected-review.json", review)
+
+        promoted = self._corpus(
+            "promote", "--id", evidence["corpus_id"], "--root", self.corpus,
+            "--review", review_path,
+            "--evidence-root", self.evidence,
+            "--now", "2026-07-16T16:02:00+09:00",
+            expected=4)
+        self.assertEqual("QUARANTINED", promoted["decision"]["decision"])
+        self.assertIn(
+            "human_review_not_approved", promoted["decision"]["reasons"])
+
+        self.assertTrue(
+            self._corpus("verify-ledger", "--root", self.corpus)["valid"])
+        health = self._corpus("health", "--root", self.corpus)
+        self.assertEqual(1, health["counts"]["items"])
+        self.assertEqual(1, health["counts"]["generative_admitted"])
+        self.assertEqual(0, health["counts"]["evidence_admitted"])
+        self.assertEqual(1, health["counts"]["quarantined"])
+
+        status = self._corpus("status", "--root", self.corpus)
+        self.assertEqual(2, status["event_count"])
+        self.assertEqual(corpus_id, status["items"][0]["corpus_id"])
+        self.assertEqual("ADMITTED", status["items"][0]["generative"])
+        self.assertEqual("QUARANTINED", status["items"][0]["evidence"])
+
+    def test_mismatched_review_hash_records_quarantine_event(self):
+        corpus_id = "HC-RUNBOOK-MISMATCH"
+        evidence = self._intake_and_admit_generative_then_intake_evidence(
+            corpus_id)
+        review = _review_for(evidence)
+        review["manifest_sha256"] = "0" * 64
+        review_path = self._write_json("mismatched-review.json", review)
+
+        promoted = self._corpus(
+            "promote", "--id", evidence["corpus_id"], "--root", self.corpus,
+            "--review", review_path,
+            "--evidence-root", self.evidence,
+            "--now", "2026-07-16T16:02:00+09:00",
+            expected=4)
+        self.assertEqual("QUARANTINED", promoted["decision"]["decision"])
+        self.assertIn(
+            "review_manifest_hash_mismatch", promoted["decision"]["reasons"])
+
+        self.assertTrue(
+            self._corpus("verify-ledger", "--root", self.corpus)["valid"])
+        status = self._corpus("status", "--root", self.corpus)
+        self.assertEqual(2, status["event_count"])
+        self.assertEqual(corpus_id, status["items"][0]["corpus_id"])
+        self.assertEqual("ADMITTED", status["items"][0]["generative"])
+        self.assertEqual("QUARANTINED", status["items"][0]["evidence"])
 
 
 if __name__ == "__main__":
