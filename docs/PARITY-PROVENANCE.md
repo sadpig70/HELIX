@@ -403,3 +403,54 @@ Updated inventory:
 | `BLOCKED` | 4 | 4 |
 | `PENDING` | 55 | 52 |
 | Total | 62 | 62 |
+
+## Stage 10 coverage dashboard
+
+`scripts/corpus/parity_coverage_dashboard.py` builds the operator-facing coverage view from tracked parity/provenance evidence.
+
+```pg
+Stage10CoverageDashboard
+    LoadExpansionInventory -> done
+    LoadRepresentativePilotReport -> done
+    LoadLatestBatchReport -> done
+    SummarizeCoverageByStatusAndPlatform -> done
+    SelectNextPendingCandidates -> done
+    ValidateDashboardInCI -> done
+```
+
+Dashboard scope:
+
+- reads `seed/parity-provenance/expansion-inventory.json`;
+- reads `seed/parity-provenance/representative-pilot-report.json`;
+- reads `seed/parity-provenance/promotion-batch-report.json`;
+- writes `seed/parity-provenance/coverage-dashboard.json`;
+- does not create or mutate evidence bundles.
+
+Current coverage:
+
+| Metric | Value |
+| --- | ---: |
+| Total packs | 62 |
+| `VALID` | 6 |
+| `BLOCKED` | 4 |
+| `PENDING` | 52 |
+| Coverage | 9.68% |
+| Blocked | 6.45% |
+| Pending | 83.87% |
+
+Top next candidates from the dashboard:
+
+| Platform | Pack | Probe cases |
+| --- | --- | ---: |
+| `Attestra` | `context-boundary` | 2 |
+| `Attestra` | `cover-gate` | 2 |
+| `Attestra` | `custody-relay` | 2 |
+
+CI gate:
+
+```bash
+python scripts/corpus/parity_coverage_dashboard.py \
+  --out seed/parity-provenance/coverage-dashboard.json \
+  --now 2026-07-16T00:00:00Z \
+  --validate
+```

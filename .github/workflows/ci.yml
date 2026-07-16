@@ -31,6 +31,7 @@ jobs:
           python scripts/corpus/parity_representative_pilot.py --evidence-root seed/parity-provenance --now 2026-07-16T00:00:00Z
           python scripts/corpus/parity_registry_gate.py --registry seed/parity-provenance/evidence-registry.json --report seed/parity-provenance/representative-pilot-report.json
           python scripts/corpus/parity_expansion_inventory.py --out seed/parity-provenance/expansion-inventory.json --now 2026-07-16T00:00:00Z --validate
+          python scripts/corpus/parity_coverage_dashboard.py --out seed/parity-provenance/coverage-dashboard.json --now 2026-07-16T00:00:00Z --validate
       - name: Ensure tests leave working tree clean
         run: |
           status="$(git status --short)"

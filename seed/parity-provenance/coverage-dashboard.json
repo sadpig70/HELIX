@@ -1,0 +1,318 @@
+{
+  "blocked": [
+    {
+      "evidence": {
+        "parity_receipts": [
+          "seed/parity-provenance/representative/AuthorityArbiter/parity-receipts/released.json"
+        ],
+        "provenance_statements": [
+          "seed/parity-provenance/representative/AuthorityArbiter/provenance-statements/representative.json"
+        ],
+        "representative_pack": "AuthorityArbiter"
+      },
+      "pack": "authority-arbiter",
+      "platform": "Attestra",
+      "reason": "representative_evidence_registered"
+    },
+    {
+      "evidence": {
+        "parity_receipts": [
+          "seed/parity-provenance/representative/GraphQuarantine/parity-receipts/released.json"
+        ],
+        "provenance_statements": [
+          "seed/parity-provenance/representative/GraphQuarantine/provenance-statements/representative.json"
+        ],
+        "representative_pack": "GraphQuarantine"
+      },
+      "pack": "graph-quarantine",
+      "platform": "Attestra",
+      "reason": "representative_evidence_registered"
+    },
+    {
+      "evidence": {
+        "parity_receipts": [
+          "seed/parity-provenance/representative/HookCircuit/parity-receipts/released.json"
+        ],
+        "provenance_statements": [
+          "seed/parity-provenance/representative/HookCircuit/provenance-statements/representative.json"
+        ],
+        "representative_pack": "HookCircuit"
+      },
+      "pack": "hook-circuit",
+      "platform": "Attestra",
+      "reason": "representative_evidence_registered"
+    },
+    {
+      "evidence": {
+        "parity_receipts": [
+          "seed/parity-provenance/representative/ContractRelay/parity-receipts/released.json"
+        ],
+        "provenance_statements": [
+          "seed/parity-provenance/representative/ContractRelay/provenance-statements/representative.json"
+        ],
+        "representative_pack": "ContractRelay"
+      },
+      "pack": "contract-relay",
+      "platform": "Routestra",
+      "reason": "representative_evidence_registered"
+    }
+  ],
+  "generated_at": "2026-07-16T00:00:00Z",
+  "latest_batch": {
+    "completed": 3,
+    "problems": [],
+    "promotions": [
+      {
+        "ordinal": 1,
+        "pack": "action-governance",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 2,
+        "pack": "afferent-core",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 3,
+        "pack": "afferent-interrupt",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      }
+    ],
+    "requested_limit": 3
+  },
+  "next_candidates": [
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "context-boundary",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "cover-gate",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "custody-relay",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "delegation",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "drift-isolator",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "gen-cert",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "handback",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "method-bond",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "pqc-mesh",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "repro-dossier",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    }
+  ],
+  "platforms": [
+    {
+      "blocked": 3,
+      "blocked_packs": [
+        "authority-arbiter",
+        "graph-quarantine",
+        "hook-circuit"
+      ],
+      "coverage_percent": 17.86,
+      "next_pending": {
+        "machines": [
+          "M2",
+          "M3"
+        ],
+        "pack": "context-boundary",
+        "probe_case_count": 2
+      },
+      "pending": 20,
+      "platform": "Attestra",
+      "total": 28,
+      "valid": 5
+    },
+    {
+      "blocked": 0,
+      "blocked_packs": [],
+      "coverage_percent": 0.0,
+      "next_pending": {
+        "machines": [
+          "M12",
+          "M2"
+        ],
+        "pack": "release-mesh",
+        "probe_case_count": 2
+      },
+      "pending": 5,
+      "platform": "Certstra",
+      "total": 5,
+      "valid": 0
+    },
+    {
+      "blocked": 0,
+      "blocked_packs": [],
+      "coverage_percent": 8.33,
+      "next_pending": {
+        "machines": [
+          "M5",
+          "M6"
+        ],
+        "pack": "buy-bloc",
+        "probe_case_count": 2
+      },
+      "pending": 11,
+      "platform": "Clearstra",
+      "total": 12,
+      "valid": 1
+    },
+    {
+      "blocked": 1,
+      "blocked_packs": [
+        "contract-relay"
+      ],
+      "coverage_percent": 0.0,
+      "next_pending": {
+        "machines": [
+          "M10"
+        ],
+        "pack": "climate-resilience",
+        "probe_case_count": 1
+      },
+      "pending": 11,
+      "platform": "Routestra",
+      "total": 12,
+      "valid": 0
+    },
+    {
+      "blocked": 0,
+      "blocked_packs": [],
+      "coverage_percent": 0.0,
+      "next_pending": {
+        "machines": [
+          "M15"
+        ],
+        "pack": "detour-posture",
+        "probe_case_count": 1
+      },
+      "pending": 5,
+      "platform": "Scorestra",
+      "total": 5,
+      "valid": 0
+    }
+  ],
+  "problems": [],
+  "representative": {
+    "counts": {
+      "blocked": 4,
+      "packs": 5,
+      "valid": 1
+    },
+    "problems": [
+      "AuthorityArbiter: receipt: HC-PILOT-EXT-002: machine_status_not_substantiated",
+      "AuthorityArbiter: receipt: HC-PILOT-EXT-002: missing_behavior_sha256",
+      "AuthorityArbiter: receipt: HC-PILOT-EXT-002: not_deterministic",
+      "AuthorityArbiter: receipt: HC-PILOT-EXT-002: not_reproducible",
+      "AuthorityArbiter: receipt: HC-PILOT-EXT-002: tests_not_passed",
+      "AuthorityArbiter: receipt: unsupported pack: AuthorityArbiter",
+      "GraphQuarantine: receipt: HC-PILOT-EXT-004: machine_status_not_substantiated",
+      "GraphQuarantine: receipt: HC-PILOT-EXT-004: missing_behavior_sha256",
+      "GraphQuarantine: receipt: HC-PILOT-EXT-004: not_deterministic",
+      "GraphQuarantine: receipt: HC-PILOT-EXT-004: not_reproducible",
+      "GraphQuarantine: receipt: HC-PILOT-EXT-004: tests_not_passed",
+      "GraphQuarantine: receipt: unsupported pack: GraphQuarantine",
+      "ContractRelay: receipt: HC-PILOT-EXT-005: machine_status_not_substantiated",
+      "ContractRelay: receipt: HC-PILOT-EXT-005: missing_behavior_sha256",
+      "ContractRelay: receipt: HC-PILOT-EXT-005: not_deterministic",
+      "ContractRelay: receipt: HC-PILOT-EXT-005: not_reproducible",
+      "ContractRelay: receipt: HC-PILOT-EXT-005: tests_not_passed",
+      "ContractRelay: receipt: unsupported pack: ContractRelay",
+      "HookCircuit: receipt: HC-PILOT-EXT-006: machine_status_not_substantiated",
+      "HookCircuit: receipt: HC-PILOT-EXT-006: missing_behavior_sha256",
+      "HookCircuit: receipt: HC-PILOT-EXT-006: not_deterministic",
+      "HookCircuit: receipt: HC-PILOT-EXT-006: not_reproducible",
+      "HookCircuit: receipt: HC-PILOT-EXT-006: tests_not_passed",
+      "HookCircuit: receipt: unsupported pack: HookCircuit"
+    ]
+  },
+  "schema": "helix-parity-coverage-dashboard/1.0",
+  "source": {
+    "expansion_inventory": "seed/parity-provenance/expansion-inventory.json",
+    "promotion_batch_report": "seed/parity-provenance/promotion-batch-report.json",
+    "representative_pilot_report": "seed/parity-provenance/representative-pilot-report.json"
+  },
+  "summary": {
+    "blocked": 4,
+    "blocked_percent": 6.45,
+    "coverage_percent": 9.68,
+    "packs": 62,
+    "pending": 52,
+    "pending_percent": 83.87,
+    "valid": 6
+  }
+}
