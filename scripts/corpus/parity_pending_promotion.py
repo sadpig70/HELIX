@@ -3,6 +3,7 @@
 
 import argparse
 import hashlib
+import importlib
 import json
 import os
 import subprocess
@@ -14,11 +15,49 @@ if ROOT not in sys.path:
 
 from core.helix_corpus_supply import digest  # noqa: E402
 from core.helix_schema import schema_path, validate_against_schema  # noqa: E402
-from scripts.condense.machine_probe_dataset import build_dataset  # noqa: E402
+from scripts.condense.machine_probe_dataset import build_dataset, platform_import  # noqa: E402
+from scripts.corpus.parity_expansion_inventory import validate_inventory  # noqa: E402
 
 
 DEFAULT_PLATFORM = "Attestra"
 DEFAULT_PACK = "policy-drift"
+PLATFORM_META = {
+    "Attestra": {
+        "package": "attestra_packs",
+        "loader": "attestra_packs.loader",
+        "load": "load_packs",
+        "registry_key": "packs",
+        "schema_key": "packet_schema",
+    },
+    "Clearstra": {
+        "package": "clearstra_markets",
+        "loader": "clearstra_markets.loader",
+        "load": "load_markets",
+        "registry_key": "markets",
+        "schema_key": "order_schema",
+    },
+    "Routestra": {
+        "package": "routestra_packs",
+        "loader": "routestra_packs.loader",
+        "load": "load_packs",
+        "registry_key": "packs",
+        "schema_key": "candidate_schema",
+    },
+    "Certstra": {
+        "package": "certstra_packs",
+        "loader": "certstra_packs.loader",
+        "load": "load_packs",
+        "registry_key": "packs",
+        "schema_key": "cert_schema",
+    },
+    "Scorestra": {
+        "package": "scorestra_packs",
+        "loader": "scorestra_packs.loader",
+        "load": "load_packs",
+        "registry_key": "packs",
+        "schema_key": "item_schema",
+    },
+}
 
 
 def _write(path, value):
@@ -48,13 +87,43 @@ def _head():
         return "UNKNOWN"
 
 
+def _module_file(platform, pack_record):
+    module_value = pack_record.get("module")
+    if hasattr(module_value, "__file__"):
+        return module_value.__file__
+    if isinstance(module_value, str):
+        module = importlib.import_module(module_value)
+        return module.__file__
+    raise ValueError(f"{platform}/{pack_record.get('name')}: cannot resolve module file")
+
+
+def _pack_record(platform, pack):
+    meta = PLATFORM_META.get(platform)
+    if not meta:
+        raise ValueError(f"unsupported platform: {platform}")
+    with platform_import(platform):
+        loader = importlib.import_module(meta["loader"])
+        registry = getattr(loader, meta["load"])()
+        if registry.get("errors"):
+            raise ValueError(f"{platform}: loader errors: {registry['errors']}")
+        records = registry[meta["registry_key"]]
+        if pack not in records:
+            raise ValueError(f"{platform}: unknown pack {pack!r}")
+        return dict(records[pack])
+
+
 def _pack_source_files(platform, pack):
-    if platform == "Attestra" and pack == "policy-drift":
-        return [
-            os.path.join(ROOT, "Attestra", "attestra_packs", "policy_drift.py"),
-            os.path.join(ROOT, "Attestra", "schemas", "packet-policy.schema.json"),
-        ]
-    raise ValueError(f"unsupported promotion target: {platform}/{pack}")
+    meta = PLATFORM_META.get(platform)
+    if not meta:
+        raise ValueError(f"unsupported platform: {platform}")
+    record = _pack_record(platform, pack)
+    paths = [_module_file(platform, record)]
+    schema_rel = record.get(meta["schema_key"])
+    if schema_rel:
+        schema_path = os.path.join(ROOT, platform, schema_rel)
+        if os.path.exists(schema_path):
+            paths.append(schema_path)
+    return paths
 
 
 def _combined_file_digest(paths):
@@ -73,6 +142,28 @@ def _probe_rows(platform, pack):
     if failed:
         raise ValueError(f"machine probe mismatch for {platform}/{pack}: {failed}")
     return sorted(rows, key=lambda row: row.get("id", ""))
+
+
+def _load_json(path):
+    with open(path, encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def select_next_pending(evidence_root):
+    inventory_path = os.path.join(evidence_root, "expansion-inventory.json")
+    inventory = _load_json(inventory_path)
+    problems = validate_inventory(inventory)
+    if problems:
+        raise ValueError(f"inventory is not valid: {problems}")
+    pending = [entry for entry in inventory["entries"] if entry["status"] == "PENDING"]
+    if not pending:
+        raise ValueError("no PENDING packs remain")
+    pending.sort(key=lambda entry: (
+        -len(entry["probe_cases"]),
+        entry["platform"],
+        entry["pack"],
+    ))
+    return pending[0]["platform"], pending[0]["pack"]
 
 
 def build_promotion(platform, pack, evidence_root, now):
@@ -204,9 +295,13 @@ def main(argv=None):
     parser.add_argument("--pack", default=DEFAULT_PACK)
     parser.add_argument("--evidence-root", default=os.path.join(ROOT, "seed", "parity-provenance"))
     parser.add_argument("--now", required=True)
+    parser.add_argument("--auto-next", action="store_true",
+                        help="Select the strongest current PENDING pack from expansion-inventory.json.")
     args = parser.parse_args(argv)
+    platform, pack = (select_next_pending(os.path.abspath(args.evidence_root))
+                      if args.auto_next else (args.platform, args.pack))
     report, problems = build_promotion(
-        args.platform, args.pack, os.path.abspath(args.evidence_root), args.now)
+        platform, pack, os.path.abspath(args.evidence_root), args.now)
     print(json.dumps(report or {"valid": False, "problems": problems}, ensure_ascii=False, indent=2, sort_keys=True))
     return 0 if report else 4
 

@@ -1,0 +1,34 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Clearstra:reserve-flow:live-probe",
+  "expected": {
+    "case_count": 3,
+    "machines": [
+      "M5",
+      "M6",
+      "M8"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Clearstra:reserve-flow:clear",
+      "Clearstra:reserve-flow:price",
+      "Clearstra:reserve-flow:rehearse"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Clearstra/reserve-flow/machine-evidence/live-probe.json"
+  ],
+  "pack": "reserve-flow",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/reserve-flow/source-locks/local-pack.json"
+  ],
+  "target_platform": "Clearstra"
+}

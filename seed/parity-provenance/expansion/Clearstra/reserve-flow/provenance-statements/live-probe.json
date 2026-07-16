@@ -1,0 +1,20 @@
+{
+  "artifact": "Clearstra/reserve-flow",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "reserve-flow",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Clearstra/reserve-flow/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/reserve-flow/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Clearstra:reserve-flow:live-probe",
+  "statement_sha256": "e5e52dbe209bb4faf26db359fd67f29259519789d3fc0a51027c34fb1835bf12",
+  "target_platform": "Clearstra"
+}

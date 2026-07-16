@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Clearstra-reserve-flow",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Clearstra/reserve-flow",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "97a0ec127168568ba5b03f150d2ca690b9136597",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Clearstra:reserve-flow",
+  "source_sha256": "528c4c55fd8c0700d1645932e1a9ecfaf5859feda93017c08c5f56bd9521ecee"
+}

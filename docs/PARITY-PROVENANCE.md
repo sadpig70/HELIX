@@ -322,3 +322,40 @@ Updated inventory:
 | `BLOCKED` | 4 | 4 |
 | `PENDING` | 57 | 56 |
 | Total | 62 | 62 |
+
+## Stage 8 promotion factory
+
+`scripts/corpus/parity_pending_promotion.py` is now a reusable promotion factory.
+
+```pg
+Stage8PromotionFactory
+    GeneralizeSourceResolution -> done
+    AddAutoNextSelection -> done
+    PromoteNextPending -> done
+    RefreshExpansionInventory -> done
+```
+
+Factory behavior:
+
+- resolves platform pack source files from live platform loader metadata;
+- supports `Attestra`, `Clearstra`, `Routestra`, `Certstra`, and `Scorestra`;
+- selects the strongest pending pack with `--auto-next` by descending live probe case count;
+- writes the same five-artifact bundle: `source-lock`, `machine-evidence`, `parity-contract`, `parity-receipt`, `provenance-statement`.
+
+Second promoted pack:
+
+- Platform: `Clearstra`
+- Pack: `reserve-flow`
+- Selection path: `--auto-next`
+- Machines: `M5`, `M6`, `M8`
+- Probe cases: 3
+- Result: `PENDING` → `VALID`
+
+Updated inventory:
+
+| Status | Before Stage 8 | After Stage 8 |
+| --- | ---: | ---: |
+| `VALID` | 2 | 3 |
+| `BLOCKED` | 4 | 4 |
+| `PENDING` | 56 | 55 |
+| Total | 62 | 62 |

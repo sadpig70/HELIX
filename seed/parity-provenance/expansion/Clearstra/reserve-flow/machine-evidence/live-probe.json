@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "680ea29d1ded5b82b6d2858d3bb3d7a3b5636b48a299d6bfc78889e90f49e7bf",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:reserve-flow:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:reserve-flow",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/reserve_flow.py",
+    "Clearstra/schemas/order-reserve.schema.json"
+  ],
+  "tests_passed": true
+}

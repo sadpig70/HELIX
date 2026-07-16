@@ -10,7 +10,8 @@
         "PENDING": 5
       },
       "Clearstra": {
-        "PENDING": 12
+        "PENDING": 11,
+        "VALID": 1
       },
       "Routestra": {
         "BLOCKED": 1,
@@ -22,8 +23,8 @@
     },
     "by_status": {
       "BLOCKED": 4,
-      "PENDING": 56,
-      "VALID": 2
+      "PENDING": 55,
+      "VALID": 3
     },
     "packs": 62,
     "probe_cases": 102
@@ -830,7 +831,24 @@
       "status": "PENDING"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/reserve-flow/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/reserve-flow/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/reserve-flow/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/reserve-flow/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/reserve-flow/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/reserve-flow/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M5",
         "M6",
@@ -843,13 +861,13 @@
         "Clearstra:reserve-flow:price",
         "Clearstra:reserve-flow:rehearse"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "clear",
         "price",
         "rehearse"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
       "evidence": {},
