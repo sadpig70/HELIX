@@ -4,16 +4,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       # ActionHandbackVerifier is an independent repo and HELIX's reference
       # exploit project (handback gate). Vendor it as a subdir so the
       # integration tests + validate run against the real implementation.
       - name: Vendor reference project (ActionHandbackVerifier)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: sadpig70/ActionHandbackVerifier
           path: ActionHandbackVerifier
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
       - name: Unit tests
