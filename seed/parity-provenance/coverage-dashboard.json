@@ -64,19 +64,19 @@
     "promotions": [
       {
         "ordinal": 1,
-        "pack": "action-governance",
+        "pack": "context-boundary",
         "platform": "Attestra",
         "probe_case_count": 2
       },
       {
         "ordinal": 2,
-        "pack": "afferent-core",
+        "pack": "cover-gate",
         "platform": "Attestra",
         "probe_case_count": 2
       },
       {
         "ordinal": 3,
-        "pack": "afferent-interrupt",
+        "pack": "custody-relay",
         "platform": "Attestra",
         "probe_case_count": 2
       }
@@ -84,33 +84,6 @@
     "requested_limit": 3
   },
   "next_candidates": [
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "context-boundary",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "cover-gate",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "custody-relay",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
     {
       "machines": [
         "M2",
@@ -173,6 +146,33 @@
       "pack": "repro-dossier",
       "platform": "Attestra",
       "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "reserve-flow",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "settle-mesh",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "signal-mesh",
+      "platform": "Attestra",
+      "probe_case_count": 2
     }
   ],
   "platforms": [
@@ -183,19 +183,19 @@
         "graph-quarantine",
         "hook-circuit"
       ],
-      "coverage_percent": 17.86,
+      "coverage_percent": 28.57,
       "next_pending": {
         "machines": [
           "M2",
           "M3"
         ],
-        "pack": "context-boundary",
+        "pack": "delegation",
         "probe_case_count": 2
       },
-      "pending": 20,
+      "pending": 17,
       "platform": "Attestra",
       "total": 28,
-      "valid": 5
+      "valid": 8
     },
     {
       "blocked": 0,
@@ -309,10 +309,10 @@
   "summary": {
     "blocked": 4,
     "blocked_percent": 6.45,
-    "coverage_percent": 9.68,
+    "coverage_percent": 14.52,
     "packs": 62,
-    "pending": 52,
-    "pending_percent": 83.87,
-    "valid": 6
+    "pending": 49,
+    "pending_percent": 79.03,
+    "valid": 9
   }
 }

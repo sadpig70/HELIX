@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/custody-relay",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "custody-relay",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/custody-relay/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/custody-relay/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:custody-relay:live-probe",
+  "statement_sha256": "06566f933ec41b388b3d4e6db30f709e6f58f5f9100cd95ad2cc415c531894bb",
+  "target_platform": "Attestra"
+}

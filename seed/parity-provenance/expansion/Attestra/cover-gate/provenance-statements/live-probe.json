@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/cover-gate",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "cover-gate",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/cover-gate/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/cover-gate/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:cover-gate:live-probe",
+  "statement_sha256": "6c3db49df41816ae3525b5de8ae8ae80fe21d6c90d936ee716b00316a930eef8",
+  "target_platform": "Attestra"
+}

@@ -454,3 +454,59 @@ python scripts/corpus/parity_coverage_dashboard.py \
   --now 2026-07-16T00:00:00Z \
   --validate
 ```
+
+## Stage 11 dashboard-driven promotion batch
+
+`scripts/corpus/parity_promotion_batch.py` now supports dashboard-driven selection.
+
+```pg
+Stage11DashboardDrivenPromotionBatch
+    ReadCoverageDashboard.next_candidates -> done
+    PromoteBoundedCandidateBatch(limit=3) -> done
+    ValidateInventoryAfterEachPromotion -> done
+    RefreshCoverageDashboard -> done
+    PreserveRepresentativeBlockedEvidence -> done
+```
+
+Execution command:
+
+```bash
+python scripts/corpus/parity_promotion_batch.py \
+  --evidence-root seed/parity-provenance \
+  --limit 3 \
+  --now 2026-07-16T00:00:00Z \
+  --dashboard seed/parity-provenance/coverage-dashboard.json \
+  --refresh-dashboard
+```
+
+Promoted from dashboard candidates:
+
+| Platform | Pack | Machines | Probe cases |
+| --- | --- | --- | ---: |
+| `Attestra` | `context-boundary` | `M2`, `M3` | 2 |
+| `Attestra` | `cover-gate` | `M2`, `M3` | 2 |
+| `Attestra` | `custody-relay` | `M2`, `M3` | 2 |
+
+Updated inventory:
+
+| Status | Before Stage 11 | After Stage 11 |
+| --- | ---: | ---: |
+| `VALID` | 6 | 9 |
+| `BLOCKED` | 4 | 4 |
+| `PENDING` | 52 | 49 |
+| Total | 62 | 62 |
+
+Updated dashboard:
+
+| Metric | Before Stage 11 | After Stage 11 |
+| --- | ---: | ---: |
+| Coverage | 9.68% | 14.52% |
+| Pending | 83.87% | 79.03% |
+
+Next dashboard candidates after Stage 11:
+
+| Platform | Pack | Probe cases |
+| --- | --- | ---: |
+| `Attestra` | `delegation` | 2 |
+| `Attestra` | `drift-isolator` | 2 |
+| `Attestra` | `gen-cert` | 2 |

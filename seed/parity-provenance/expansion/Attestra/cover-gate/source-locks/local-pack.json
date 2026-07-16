@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Attestra-cover-gate",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Attestra/cover-gate",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "1e0ed5a82124346ce3491854b3719cf0ac10f58c",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Attestra:cover-gate",
+  "source_sha256": "79bc65e19e630625cc967ae2583a68ddf91a54c7151593ad1b08583064db5dd6"
+}

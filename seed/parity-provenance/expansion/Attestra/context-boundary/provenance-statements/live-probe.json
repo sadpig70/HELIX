@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/context-boundary",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "context-boundary",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/context-boundary/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/context-boundary/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:context-boundary:live-probe",
+  "statement_sha256": "b08028c9c54e59e3e5ef770f4f57974f62b5fdd2718803f63124effd22e5b1b9",
+  "target_platform": "Attestra"
+}

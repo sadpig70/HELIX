@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Attestra-custody-relay",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Attestra/custody-relay",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "1e0ed5a82124346ce3491854b3719cf0ac10f58c",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Attestra:custody-relay",
+  "source_sha256": "a16d0c087c77fc98b9994b89c6b4fd659cfee50e5a0ee284e98f3af46a7cf7cb"
+}

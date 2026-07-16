@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "4207701e71b7102b80a2ae19cf15ef6fac41e39b9fd9c1bdb8f658ffc39c0a7f",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:custody-relay:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:custody-relay",
+  "supporting_files": [
+    "Attestra/attestra_packs/custody_relay.py",
+    "Attestra/schemas/packet-custody.schema.json"
+  ],
+  "tests_passed": true
+}

@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "80453149e6a3f9f0ef47dee5085d079dde5554447de3ab149c88432c03bec4d2",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:cover-gate:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:cover-gate",
+  "supporting_files": [
+    "Attestra/attestra_packs/cover_gate.py",
+    "Attestra/schemas/packet-covergate.schema.json"
+  ],
+  "tests_passed": true
+}

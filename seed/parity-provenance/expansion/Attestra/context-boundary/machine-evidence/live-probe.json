@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "917159e48cde49049ab4c1e9b70b312f0f8f36e29ef923d8d9b1e3bbcd44c06d",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:context-boundary:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:context-boundary",
+  "supporting_files": [
+    "Attestra/attestra_packs/context_boundary.py",
+    "Attestra/schemas/packet-context.schema.json"
+  ],
+  "tests_passed": true
+}

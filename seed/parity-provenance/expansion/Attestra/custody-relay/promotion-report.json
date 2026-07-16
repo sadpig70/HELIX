@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-07-16T00:00:00Z",
+  "machine_evidence": "seed/parity-provenance/expansion/Attestra/custody-relay/machine-evidence/live-probe.json",
+  "machines": [
+    "M2",
+    "M3"
+  ],
+  "pack": "custody-relay",
+  "parity_contract": "seed/parity-provenance/expansion/Attestra/custody-relay/parity-contracts/live-probe.json",
+  "parity_receipt": "seed/parity-provenance/expansion/Attestra/custody-relay/parity-receipts/live-probe.json",
+  "platform": "Attestra",
+  "probe_case_count": 2,
+  "problems": [],
+  "provenance_statement": "seed/parity-provenance/expansion/Attestra/custody-relay/provenance-statements/live-probe.json",
+  "schema": "helix-parity-pending-promotion-report/1.0",
+  "source_lock": "seed/parity-provenance/expansion/Attestra/custody-relay/source-locks/local-pack.json",
+  "status": "VALID"
+}

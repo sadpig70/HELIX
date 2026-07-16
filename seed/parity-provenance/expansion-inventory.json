@@ -3,8 +3,8 @@
     "by_platform": {
       "Attestra": {
         "BLOCKED": 3,
-        "PENDING": 20,
-        "VALID": 5
+        "PENDING": 17,
+        "VALID": 8
       },
       "Certstra": {
         "PENDING": 5
@@ -23,8 +23,8 @@
     },
     "by_status": {
       "BLOCKED": 4,
-      "PENDING": 52,
-      "VALID": 6
+      "PENDING": 49,
+      "VALID": 9
     },
     "packs": 62,
     "probe_cases": 102
@@ -162,7 +162,24 @@
       "status": "BLOCKED"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/context-boundary/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/context-boundary/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/context-boundary/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/context-boundary/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/context-boundary/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/context-boundary/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -173,14 +190,31 @@
         "Attestra:context-boundary",
         "Attestra:context-boundary:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/cover-gate/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/cover-gate/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/cover-gate/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/cover-gate/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/cover-gate/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/cover-gate/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -191,14 +225,31 @@
         "Attestra:cover-gate",
         "Attestra:cover-gate:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/custody-relay/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/custody-relay/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/custody-relay/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/custody-relay/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/custody-relay/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/custody-relay/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -209,11 +260,11 @@
         "Attestra:custody-relay",
         "Attestra:custody-relay:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
       "evidence": {},

@@ -1,0 +1,28 @@
+{
+  "contract_id": "contract:Attestra:context-boundary:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "05e448f15376c5a1407ef58963ace1cebdb7bf772456d53c37253284e53de12d"
+  ],
+  "observations": {
+    "case_count": 2,
+    "contract_sha256": "48561a6bbdd1363e3361470f2dda7619f6a11a913614a10b763612607b906299",
+    "matched_machines": [
+      "M2",
+      "M3"
+    ],
+    "probe_cases": [
+      "Attestra:context-boundary",
+      "Attestra:context-boundary:predicate-gate"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Attestra:context-boundary:live-probe",
+  "receipt_sha256": "509e8bc3226ad32a65a3991b9ff05fa2e5c7e340730489959e3af8835c2d7323",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "ff48be090b2982a93a7d249eec833c658344f06a850b70a5d71e1e82e7ed87b2"
+  ]
+}
