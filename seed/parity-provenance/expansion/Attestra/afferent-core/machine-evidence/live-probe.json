@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "1631d7da2897d1dadaa2b37bd1d33c991cf23e255d3ae8f9e819db24be3706a5",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:afferent-core:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:afferent-core",
+  "supporting_files": [
+    "Attestra/attestra_packs/afferent_core.py",
+    "Attestra/schemas/packet-afferentcore.schema.json"
+  ],
+  "tests_passed": true
+}

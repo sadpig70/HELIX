@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "6a4cdd007aed144325e8703a7d3ba84adef246eba96a24e0489306a19c9640e9",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:action-governance:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:action-governance",
+  "supporting_files": [
+    "Attestra/attestra_packs/action_governance.py",
+    "Attestra/schemas/packet-action.schema.json"
+  ],
+  "tests_passed": true
+}

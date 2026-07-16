@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/action-governance",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "action-governance",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/action-governance/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/action-governance/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:action-governance:live-probe",
+  "statement_sha256": "6d26093ec71951851a9bd74c83c9371f8e19cf05ce76e9bbbe095a3bba10aa0c",
+  "target_platform": "Attestra"
+}

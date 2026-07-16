@@ -26,10 +26,10 @@ class TestParityExpansionInventory(unittest.TestCase):
         self.assertEqual(inventory["counts"]["packs"], 62)
         self.assertEqual(inventory["counts"]["by_status"], {
             "BLOCKED": 4,
-            "PENDING": 55,
-            "VALID": 3,
+            "PENDING": 52,
+            "VALID": 6,
         })
-        self.assertEqual(inventory["counts"]["by_platform"]["Attestra"]["VALID"], 2)
+        self.assertEqual(inventory["counts"]["by_platform"]["Attestra"]["VALID"], 5)
         self.assertEqual(inventory["counts"]["by_platform"]["Clearstra"]["VALID"], 1)
         self.assertEqual(inventory["counts"]["by_platform"]["Routestra"]["BLOCKED"], 1)
 
@@ -37,7 +37,7 @@ class TestParityExpansionInventory(unittest.TestCase):
     def test_pending_entries_do_not_claim_evidence(self):
         inventory = build_inventory(ROOT, EVIDENCE_ROOT, NOW)
         pending = [entry for entry in inventory["entries"] if entry["status"] == "PENDING"]
-        self.assertEqual(len(pending), 55)
+        self.assertEqual(len(pending), 52)
         self.assertTrue(all(entry["evidence"] == {} for entry in pending))
 
 

@@ -359,3 +359,47 @@ Updated inventory:
 | `BLOCKED` | 4 | 4 |
 | `PENDING` | 56 | 55 |
 | Total | 62 | 62 |
+
+## Stage 9 batch promotion gate
+
+`scripts/corpus/parity_promotion_batch.py` runs bounded promotion batches.
+
+```pg
+Stage9BatchPromotionGate
+    RunAutoNextLoop(limit=N) -> done
+    ValidateAfterEachPromotion -> done
+    StopOnFirstProblem -> done
+    WriteBatchReport -> done
+    RefreshExpansionInventory -> done
+```
+
+Batch safety rule:
+
+- each promotion uses the factory from Stage 8;
+- after each promotion, `expansion-inventory.json` is rebuilt and validated;
+- if any promotion or inventory validation fails, the batch stops and reports the problem;
+- the batch does not mutate `BLOCKED` representative evidence.
+
+Executed batch:
+
+- limit: 3
+- promoted:
+  - `Attestra/action-governance` (`M2`, `M3`)
+  - `Attestra/afferent-core` (`M2`, `M3`)
+  - `Attestra/afferent-interrupt` (`M2`, `M3`)
+
+Tracked output:
+
+- `seed/parity-provenance/promotion-batch-report.json`
+- `seed/parity-provenance/expansion/Attestra/action-governance/*`
+- `seed/parity-provenance/expansion/Attestra/afferent-core/*`
+- `seed/parity-provenance/expansion/Attestra/afferent-interrupt/*`
+
+Updated inventory:
+
+| Status | Before Stage 9 | After Stage 9 |
+| --- | ---: | ---: |
+| `VALID` | 3 | 6 |
+| `BLOCKED` | 4 | 4 |
+| `PENDING` | 55 | 52 |
+| Total | 62 | 62 |

@@ -1,0 +1,132 @@
+{
+  "completed": 3,
+  "generated_at": "2026-07-16T00:00:00Z",
+  "problems": [],
+  "promotions": [
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "PENDING": 22,
+            "VALID": 3
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 54,
+          "VALID": 4
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 1,
+      "pack": "action-governance",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/action-governance/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "PENDING": 21,
+            "VALID": 4
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 53,
+          "VALID": 5
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 2,
+      "pack": "afferent-core",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/afferent-core/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "PENDING": 20,
+            "VALID": 5
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 52,
+          "VALID": 6
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 3,
+      "pack": "afferent-interrupt",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/afferent-interrupt/parity-receipts/live-probe.json"
+    }
+  ],
+  "requested_limit": 3,
+  "schema": "helix-parity-promotion-batch-report/1.0"
+}

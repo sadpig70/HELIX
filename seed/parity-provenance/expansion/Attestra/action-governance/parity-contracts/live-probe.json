@@ -1,0 +1,32 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Attestra:action-governance:live-probe",
+  "expected": {
+    "case_count": 2,
+    "machines": [
+      "M2",
+      "M3"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Attestra:action-governance",
+      "Attestra:action-governance:predicate-gate"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Attestra/action-governance/machine-evidence/live-probe.json"
+  ],
+  "pack": "action-governance",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/action-governance/source-locks/local-pack.json"
+  ],
+  "target_platform": "Attestra"
+}

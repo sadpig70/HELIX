@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/afferent-interrupt",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "afferent-interrupt",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/afferent-interrupt/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/afferent-interrupt/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:afferent-interrupt:live-probe",
+  "statement_sha256": "f35928c36c5e2106595d5b79550a6e5e7a9f5516a16e35e9efd81407bb6897b0",
+  "target_platform": "Attestra"
+}

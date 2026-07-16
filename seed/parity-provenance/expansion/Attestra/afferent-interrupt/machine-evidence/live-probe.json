@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "7557863ee880a6ac9ec8d8601b45bf0b38ec9726cf0fa84a3e28708ecdd75570",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:afferent-interrupt:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:afferent-interrupt",
+  "supporting_files": [
+    "Attestra/attestra_packs/afferent_interrupt.py",
+    "Attestra/schemas/packet-afferentinterrupt.schema.json"
+  ],
+  "tests_passed": true
+}

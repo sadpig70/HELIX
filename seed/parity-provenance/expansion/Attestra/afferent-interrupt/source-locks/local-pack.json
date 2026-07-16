@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Attestra-afferent-interrupt",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Attestra/afferent-interrupt",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "801ca1bc4562cf8a03bbfbea379f94e378b946aa",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Attestra:afferent-interrupt",
+  "source_sha256": "1d62a48a66ba69ad5d19124c41414e957e2ce59802998d7b2c6c769ca2786b60"
+}

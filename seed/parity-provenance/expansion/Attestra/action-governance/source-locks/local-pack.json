@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Attestra-action-governance",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Attestra/action-governance",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "801ca1bc4562cf8a03bbfbea379f94e378b946aa",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Attestra:action-governance",
+  "source_sha256": "7edb593dfc4eae580ed080d8948b5526d10522f5eba01ba2f8a41461651a76f2"
+}
