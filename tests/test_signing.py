@@ -74,8 +74,8 @@ class TestSignedLedger(unittest.TestCase):
         # entry. Unkeyed integrity passes; the keyed check does NOT.
         self.append()
         full = os.path.join(self.root, *self.ledger.split("/"))
-        entries = [json.loads(l) for l in open(full, encoding="utf-8")
-                   if l.strip()]
+        with open(full, encoding="utf-8") as f:
+            entries = [json.loads(l) for l in f if l.strip()]
         entries[1]["receipt"]["decision"] = "DENY_laundered"
         # rebuild integrity (seq/parent/seal) but the adversary lacks the key,
         # so they cannot recompute a valid entry_hmac — leave/forge it.

@@ -69,7 +69,8 @@ class TestInsiderRewriteCaught(AnchorFixtureCase):
         """Simulate a KEY-HOLDING insider: rewrite entries and fully re-sign,
         so keyed verification passes but the external anchor should not."""
         full = os.path.join(self.root, *self.ledger.split("/"))
-        entries = [json.loads(l) for l in open(full, encoding="utf-8") if l.strip()]
+        with open(full, encoding="utf-8") as f:
+            entries = [json.loads(l) for l in f if l.strip()]
         mutate(entries)
         parent = None
         for i, e in enumerate(entries):
@@ -105,7 +106,8 @@ class TestInsiderRewriteCaught(AnchorFixtureCase):
         self.append(4)
         anchor = self.anchor()  # seq 3
         full = os.path.join(self.root, *self.ledger.split("/"))
-        entries = [json.loads(l) for l in open(full, encoding="utf-8") if l.strip()]
+        with open(full, encoding="utf-8") as f:
+            entries = [json.loads(l) for l in f if l.strip()]
         with open(full, "w", encoding="utf-8", newline="\n") as f:
             for e in entries[:2]:  # drop below the anchor
                 f.write(json.dumps(e, ensure_ascii=False, sort_keys=True) + "\n")
