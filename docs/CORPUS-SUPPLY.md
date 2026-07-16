@@ -136,6 +136,65 @@ Automation stops at two points:
 The operator may reject a candidate or promotion. Rejection is retained in the frozen slot; it is
 not repaired by substituting an easier candidate.
 
+## Operator runbook
+
+Use this order when adding or promoting corpus material. Steps 1-3 may be prepared in parallel,
+but steps 4-8 are a serialized single-writer queue because they can append to the admission ledger.
+
+1. **Acquire outside the deterministic core.** Clone or otherwise collect the source in a meta-layer
+   workspace such as `.helix/corpus-worktrees/{corpus_id}`. Pin the exact revision or immutable
+   artifact used for the manifest.
+2. **Build evidence bytes.** Store compact source/license evidence under a dedicated evidence root,
+   for example `.helix/corpus-cache/{corpus_id}`. Manifest paths must be relative to that root.
+3. **Write or revise the manifest.** Increase `revision` monotonically for any changed manifest.
+   For Evidence promotion revisions, set `supersedes_manifest_sha256` to the prior Generative
+   manifest hash.
+4. **Validate without mutation.**
+   ```bash
+   python helix.py corpus validate --manifest candidate.json
+   ```
+5. **Intake the immutable revision.**
+   ```bash
+   python helix.py corpus intake --manifest candidate.json --root seed/corpus
+   python helix.py corpus fingerprint --id {corpus_id} --root seed/corpus
+   ```
+6. **Admit Generative material.** This appends one ledger event if the manifest and evidence bytes
+   pass the hard gate.
+   ```bash
+   python helix.py corpus admit --id {corpus_id} --root seed/corpus \
+     --evidence-root .helix/corpus-cache/{corpus_id} --now <iso8601>
+   ```
+7. **Promote Evidence only after human review.** The review receipt must bind the current manifest
+   SHA-256 and use `verdict: "approved"`. A rejected or mismatched review intentionally records
+   quarantine instead of being silently repaired.
+   ```bash
+   python helix.py corpus promote --id {corpus_id} --review human-review.json \
+     --root seed/corpus --evidence-root .helix/corpus-cache/{corpus_id} \
+     --now <iso8601>
+   ```
+8. **Close with the same checks as CI.**
+   ```bash
+   python helix.py corpus verify-ledger --root seed/corpus
+   python helix.py corpus health --root seed/corpus
+   python scripts/corpus/phase3_registry.py validate \
+     --registry seed/corpus/phase3-2026-01-experiments.json \
+     --corpus-root seed/corpus
+   git status --short
+   ```
+
+### Failure handling
+
+- `validate` failures are pre-admission defects. Fix the candidate file before intake.
+- `intake` with an existing revision is not a reason to overwrite history. Create the next revision
+  when the manifest changed.
+- `admit` or `promote` exit code `4` means the decision is invalid, quarantined or tampered. Inspect
+  `reasons`, keep the ledger event, and repair only by creating a new manifest/review revision.
+- If `verify-ledger` reports a problem, stop all writes. Do not edit or truncate
+  `seed/corpus/evidence/admission-ledger.jsonl`; recover from version control or a known-good copy,
+  then replay only verifiable operations.
+- Quarantine is evidence, not a dirty state. The fixed pilot keeps the slot and records the reason;
+  it must not be replaced by an easier candidate.
+
 ## v1 boundaries
 
 - Single writer ledger. Each append uses `flush+fsync`; the full chain is verified before and after.
