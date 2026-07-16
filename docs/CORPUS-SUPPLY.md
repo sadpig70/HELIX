@@ -66,6 +66,28 @@ python helix.py corpus migrate --legacy-list seed/corpus/project_list.md \
 
 Exit codes: `0` success/admitted, `2` usage error, `4` invalid/quarantined/tampered.
 
+## CI enforcement
+
+The repository CI keeps this plane from drifting away from its committed corpus
+state. On every push and pull request it now enforces:
+
+```bash
+python helix.py corpus verify-ledger --root seed/corpus
+python helix.py corpus health --root seed/corpus
+python scripts/corpus/phase3_registry.py validate \
+  --registry seed/corpus/phase3-2026-01-experiments.json \
+  --corpus-root seed/corpus
+git status --short
+```
+
+The first two checks bind the append-only corpus ledger and current health
+summary. The Phase 3 registry check keeps the frozen six-cycle plan tied to the
+current corpus manifests, evidence baseline, lead verbs and domain-distance
+policy. The final clean-tree gate fails CI if tests or validators leave generated
+artifacts behind. This means corpus supply changes are accepted only when the
+ledger, health summary, Phase 3 plan and workspace hygiene all remain
+reproducible from tracked files.
+
 ## Fixed 24-item pilot
 
 Phase 2 uses a frozen registry so failed candidates cannot be replaced after results are known. The
