@@ -57,6 +57,8 @@
 
 Generative/Evidence 이중 admission, immutable revision snapshot, 실제 source/license bytes 검증,
 append-only hash-chain ledger를 제공한다. 상세 계약과 명령은 `docs/CORPUS-SUPPLY.md`.
+운영 상세 절차는 [`docs/CORPUS-SUPPLY.md#operator-runbook`](docs/CORPUS-SUPPLY.md#operator-runbook)를
+기준으로 한다.
 
 ```bash
 python helix.py corpus validate --manifest candidate.json
