@@ -70,6 +70,11 @@ python helix.py corpus status --root seed/corpus
 python helix.py corpus health --root seed/corpus
 ```
 
+CI는 corpus 공급 plane도 별도 게이트로 검증한다. `verify-ledger`, `health`, Phase 3 frozen
+registry validate, 그리고 `git status --short` clean-tree gate가 모두 통과해야 push/PR이
+green이 된다. 따라서 운영자는 ledger·health·Phase 3 registry·생성물 정리 상태를 tracked
+파일만으로 재현 가능하게 유지해야 한다.
+
 Evidence 승격은 Condense 승인이 아니다. machine routing/threshold 권위는 기존 Condense plane에 유지된다.
 
 24개 Phase 2 파일럿은 고정 registry와 ledger 기반 report를 사용한다. 후보 선택과 Evidence
