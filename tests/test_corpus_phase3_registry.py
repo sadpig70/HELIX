@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 import os
 import tempfile
@@ -11,7 +12,6 @@ from scripts.corpus.phase3_registry import freeze_registry, validate_registry
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CORPUS_ROOT = os.path.join(ROOT, "seed", "corpus")
 REGISTRY_PATH = os.path.join(CORPUS_ROOT, "phase3-2026-01-experiments.json")
-PILOT_REPORT = os.path.join(ROOT, "_workspace", "corpus-pilot", "pilot-report.json")
 
 
 def registry():
@@ -43,16 +43,31 @@ class CorpusPhase3RegistryTests(unittest.TestCase):
         self.assertTrue(any("pairwise domain distance" in problem for problem in problems))
 
     def test_freeze_receipt_binds_registry_and_refuses_overwrite(self):
-        with tempfile.TemporaryDirectory(prefix="helix-phase3-freeze-") as tmp:
+        with tempfile.TemporaryDirectory(prefix="helix-phase3-freeze-", dir=ROOT) as tmp:
+            pilot_report = os.path.join(tmp, "pilot-report.json")
+            with open(pilot_report, "w", encoding="utf-8", newline="\n") as handle:
+                json.dump({"verdict": "READY_FOR_PHASE_3"}, handle, ensure_ascii=False, sort_keys=True)
+                handle.write("\n")
+            with open(pilot_report, "rb") as handle:
+                pilot_report_sha = hashlib.sha256(handle.read()).hexdigest()
+
+            registry_copy = registry()
+            registry_copy["source_pilot"]["report"] = pilot_report
+            registry_copy["source_pilot"]["report_sha256"] = pilot_report_sha
+            registry_path = os.path.join(tmp, "phase3-registry.json")
+            with open(registry_path, "w", encoding="utf-8", newline="\n") as handle:
+                json.dump(registry_copy, handle, ensure_ascii=False, indent=2)
+                handle.write("\n")
+
             out = os.path.join(tmp, "freeze.json")
             receipt, problems = freeze_registry(
-                REGISTRY_PATH, CORPUS_ROOT, PILOT_REPORT, out,
+                registry_path, CORPUS_ROOT, pilot_report, out,
                 "2026-07-15T22:00:00+09:00")
             self.assertEqual([], problems)
             self.assertEqual("FROZEN_READY_TO_EXECUTE", receipt["verdict"])
-            self.assertEqual(digest(registry()), receipt["registry_sha256"])
+            self.assertEqual(digest(registry_copy), receipt["registry_sha256"])
             second, problems = freeze_registry(
-                REGISTRY_PATH, CORPUS_ROOT, PILOT_REPORT, out,
+                registry_path, CORPUS_ROOT, pilot_report, out,
                 "2026-07-15T22:00:01+09:00")
             self.assertIsNone(second)
             self.assertTrue(any("refusing to overwrite" in problem for problem in problems))
