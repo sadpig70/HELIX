@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Attestra-drift-isolator",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Attestra/drift-isolator",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "194590850b40cf6a1edc23e77708fcd30b10026a",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Attestra:drift-isolator",
+  "source_sha256": "24871c17ace0e68d91d56846eb8d060c76c5eed15d52d27913a29a53d12ae0f2"
+}

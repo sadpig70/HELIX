@@ -510,3 +510,48 @@ Next dashboard candidates after Stage 11:
 | `Attestra` | `delegation` | 2 |
 | `Attestra` | `drift-isolator` | 2 |
 | `Attestra` | `gen-cert` | 2 |
+
+## Stage 12 dashboard-driven promotion batch 2
+
+Stage 12 repeats the Stage 11 dashboard-driven loop against the refreshed candidate queue.
+
+```pg
+Stage12DashboardDrivenPromotionBatch2
+    ReadCoverageDashboard.next_candidates -> done
+    PromoteBoundedCandidateBatch(limit=3) -> done
+    ValidateInventoryAfterEachPromotion -> done
+    RefreshCoverageDashboard -> done
+    AdvanceAttestraCoverageFrontier -> done
+```
+
+Promoted from dashboard candidates:
+
+| Platform | Pack | Machines | Probe cases |
+| --- | --- | --- | ---: |
+| `Attestra` | `delegation` | `M2`, `M3` | 2 |
+| `Attestra` | `drift-isolator` | `M2`, `M3` | 2 |
+| `Attestra` | `gen-cert` | `M2`, `M3` | 2 |
+
+Updated inventory:
+
+| Status | Before Stage 12 | After Stage 12 |
+| --- | ---: | ---: |
+| `VALID` | 9 | 12 |
+| `BLOCKED` | 4 | 4 |
+| `PENDING` | 49 | 46 |
+| Total | 62 | 62 |
+
+Updated dashboard:
+
+| Metric | Before Stage 12 | After Stage 12 |
+| --- | ---: | ---: |
+| Coverage | 14.52% | 19.35% |
+| Pending | 79.03% | 74.19% |
+
+Next dashboard candidates after Stage 12:
+
+| Platform | Pack | Probe cases |
+| --- | --- | ---: |
+| `Attestra` | `handback` | 2 |
+| `Attestra` | `method-bond` | 2 |
+| `Attestra` | `pqc-mesh` | 2 |

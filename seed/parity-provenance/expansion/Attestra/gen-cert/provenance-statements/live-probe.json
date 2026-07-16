@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/gen-cert",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "gen-cert",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/gen-cert/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/gen-cert/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:gen-cert:live-probe",
+  "statement_sha256": "412404a4ef1577085080f7150b0bd8043b993db62caca45ee8248040d25452f1",
+  "target_platform": "Attestra"
+}

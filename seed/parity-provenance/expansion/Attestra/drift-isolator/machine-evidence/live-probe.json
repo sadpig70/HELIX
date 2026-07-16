@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "be6628d78d851b4f4a8ca276469c2a0ff4e01648fd3329d20a770b5e1c475a44",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:drift-isolator:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:drift-isolator",
+  "supporting_files": [
+    "Attestra/attestra_packs/drift_isolator.py",
+    "Attestra/schemas/packet-driftisolator.schema.json"
+  ],
+  "tests_passed": true
+}

@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/delegation",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "delegation",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/delegation/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/delegation/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:delegation:live-probe",
+  "statement_sha256": "6a3e66303bb812f2367e223abbf507d78382d89d8779dd0bd5bb9dff11e058b2",
+  "target_platform": "Attestra"
+}

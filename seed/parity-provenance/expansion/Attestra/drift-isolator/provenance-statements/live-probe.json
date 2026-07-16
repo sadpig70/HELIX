@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/drift-isolator",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "drift-isolator",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/drift-isolator/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/drift-isolator/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:drift-isolator:live-probe",
+  "statement_sha256": "c97fbf4b400d86cce37bfbf83840eafd4d2dd9c81b033fd00c2f0139d627224b",
+  "target_platform": "Attestra"
+}

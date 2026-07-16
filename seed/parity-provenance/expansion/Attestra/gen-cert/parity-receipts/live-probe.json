@@ -1,0 +1,28 @@
+{
+  "contract_id": "contract:Attestra:gen-cert:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "437059335ade372f81faa1bd300b06b11f548efe9bf720eef0180558fa346b9c"
+  ],
+  "observations": {
+    "case_count": 2,
+    "contract_sha256": "c748dbeee7e754f07b8b174ff9d947531434d684a153fa1ba2097864dba4ad85",
+    "matched_machines": [
+      "M2",
+      "M3"
+    ],
+    "probe_cases": [
+      "Attestra:gen-cert",
+      "Attestra:gen-cert:predicate-gate"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Attestra:gen-cert:live-probe",
+  "receipt_sha256": "d3326b3230789855ff17600e04dc5b1812becb553f2e621d6c6b403126909862",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "dc0805441672b5abbb76862e2af98fafd2a22443cd54124303a46e68b5d01470"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "contract_id": "contract:Attestra:drift-isolator:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "c8b924aa25da6dad999fe93e33d557873d6d60711be022fb7e0ef8736704097d"
+  ],
+  "observations": {
+    "case_count": 2,
+    "contract_sha256": "087c1a60fcdf321b38438419a3bddb947b1472382d70e9cda0b0920eef52751a",
+    "matched_machines": [
+      "M2",
+      "M3"
+    ],
+    "probe_cases": [
+      "Attestra:drift-isolator",
+      "Attestra:drift-isolator:predicate-gate"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Attestra:drift-isolator:live-probe",
+  "receipt_sha256": "a02a359b7a8240c1a6de587cb645e23c3b4e8c367ce3a21805432efa423ff562",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "268a54449c695160b75c77383da08d75466e6a03d61a4bade155cbc6bb7ac4c4"
+  ]
+}

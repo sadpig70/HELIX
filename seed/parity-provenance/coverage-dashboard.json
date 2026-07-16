@@ -64,19 +64,19 @@
     "promotions": [
       {
         "ordinal": 1,
-        "pack": "context-boundary",
+        "pack": "delegation",
         "platform": "Attestra",
         "probe_case_count": 2
       },
       {
         "ordinal": 2,
-        "pack": "cover-gate",
+        "pack": "drift-isolator",
         "platform": "Attestra",
         "probe_case_count": 2
       },
       {
         "ordinal": 3,
-        "pack": "custody-relay",
+        "pack": "gen-cert",
         "platform": "Attestra",
         "probe_case_count": 2
       }
@@ -84,33 +84,6 @@
     "requested_limit": 3
   },
   "next_candidates": [
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "delegation",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "drift-isolator",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "gen-cert",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
     {
       "machines": [
         "M2",
@@ -173,6 +146,33 @@
       "pack": "signal-mesh",
       "platform": "Attestra",
       "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "slot-gate",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "slot-settle-gate",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "sov-mesh",
+      "platform": "Attestra",
+      "probe_case_count": 2
     }
   ],
   "platforms": [
@@ -183,19 +183,19 @@
         "graph-quarantine",
         "hook-circuit"
       ],
-      "coverage_percent": 28.57,
+      "coverage_percent": 39.29,
       "next_pending": {
         "machines": [
           "M2",
           "M3"
         ],
-        "pack": "delegation",
+        "pack": "handback",
         "probe_case_count": 2
       },
-      "pending": 17,
+      "pending": 14,
       "platform": "Attestra",
       "total": 28,
-      "valid": 8
+      "valid": 11
     },
     {
       "blocked": 0,
@@ -309,10 +309,10 @@
   "summary": {
     "blocked": 4,
     "blocked_percent": 6.45,
-    "coverage_percent": 14.52,
+    "coverage_percent": 19.35,
     "packs": 62,
-    "pending": 49,
-    "pending_percent": 79.03,
-    "valid": 9
+    "pending": 46,
+    "pending_percent": 74.19,
+    "valid": 12
   }
 }

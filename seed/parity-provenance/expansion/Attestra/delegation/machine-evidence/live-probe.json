@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "717256d94105a93055a36a699359422a4e648091415a1c24bcff8d68aff7fe42",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:delegation:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:delegation",
+  "supporting_files": [
+    "Attestra/attestra_packs/delegation.py",
+    "Attestra/schemas/packet-delegation.schema.json"
+  ],
+  "tests_passed": true
+}

@@ -3,8 +3,8 @@
     "by_platform": {
       "Attestra": {
         "BLOCKED": 3,
-        "PENDING": 17,
-        "VALID": 8
+        "PENDING": 14,
+        "VALID": 11
       },
       "Certstra": {
         "PENDING": 5
@@ -23,8 +23,8 @@
     },
     "by_status": {
       "BLOCKED": 4,
-      "PENDING": 49,
-      "VALID": 9
+      "PENDING": 46,
+      "VALID": 12
     },
     "packs": 62,
     "probe_cases": 102
@@ -267,7 +267,24 @@
       "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/delegation/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/delegation/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/delegation/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/delegation/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/delegation/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/delegation/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -278,14 +295,31 @@
         "Attestra:delegation",
         "Attestra:delegation:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/drift-isolator/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/drift-isolator/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/drift-isolator/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/drift-isolator/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/drift-isolator/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/drift-isolator/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -296,14 +330,31 @@
         "Attestra:drift-isolator",
         "Attestra:drift-isolator:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/gen-cert/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/gen-cert/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/gen-cert/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/gen-cert/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/gen-cert/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/gen-cert/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -314,11 +365,11 @@
         "Attestra:gen-cert",
         "Attestra:gen-cert:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
       "evidence": {

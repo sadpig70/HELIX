@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "dd4612a9f15dff7b33aa3705a31f0f2d71ca21a795645403bdcba47b295b738f",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:gen-cert:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:gen-cert",
+  "supporting_files": [
+    "Attestra/attestra_packs/gencert.py",
+    "Attestra/schemas/packet-gencert.schema.json"
+  ],
+  "tests_passed": true
+}
