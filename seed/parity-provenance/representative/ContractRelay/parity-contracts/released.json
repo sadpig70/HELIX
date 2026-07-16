@@ -1,0 +1,29 @@
+{
+  "comparators": [
+    "source_and_machine_evidence_present",
+    "unsupported_runner_reports_unavailable"
+  ],
+  "contract_id": "contract:ContractRelay:representative",
+  "expected": {
+    "helix_decision": "UNAVAILABLE",
+    "reason": "representative_runner_not_implemented_or_machine_evidence_blocked"
+  },
+  "inputs": {
+    "status": "runner_not_implemented"
+  },
+  "invariants": [
+    "fail_closed_to_unavailable_on_missing_runner",
+    "do_not_promote_hypothesis_source_to_pass"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/representative/ContractRelay/machine-evidence/HC-PILOT-EXT-005.json",
+    "seed/parity-provenance/representative/ContractRelay/machine-evidence/HC-PILOT-HELIX-001.json"
+  ],
+  "pack": "ContractRelay",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/representative/ContractRelay/source-locks/HC-PILOT-EXT-005.json",
+    "seed/parity-provenance/representative/ContractRelay/source-locks/HC-PILOT-HELIX-001.json"
+  ],
+  "target_platform": "Routestra"
+}

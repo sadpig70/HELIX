@@ -1,0 +1,25 @@
+{
+  "contract_id": "contract:HookCircuit:representative",
+  "decision": "UNAVAILABLE",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "f7234c0e807820aaa5dd371434e25f5e29f46d6673df2ebe4c1045086e273633",
+    "992e5305fedf0d55594a8d33b22f7d5475ac50bce296f2462aae6522da06cd00"
+  ],
+  "observations": {
+    "comparators": [],
+    "contract_sha256": "4fa1ef2ebfeb92f86fe9da7fbeb78900140375795d700099e8a040a8fe7d5ba6",
+    "pack_receipt": null
+  },
+  "problems": [
+    "unsupported pack: HookCircuit"
+  ],
+  "receipt_id": "receipt:HookCircuit:released",
+  "receipt_sha256": "505accb472576592c98b01eba3554a01a807f9b1c7ec1b6c62f66a6a6757f9c7",
+  "runner": "helix-parity-contract-runner/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "2b5ad3acfb87e57b1cd76ff93bcd18c2027557dfcb5861b5fad342565c79b7a3",
+    "d6454aad7efe74abdc89bfc1ec43eb3c79c4a36200e7a8b68d4450d0b340b185"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "artifact": "ProofEscrow",
+  "claims": [
+    "source_locked",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "ProofEscrow",
+  "parity_receipts": [
+    "seed/parity-provenance/representative/ProofEscrow/parity-receipts/released.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/representative/ProofEscrow/source-locks/HC-PILOT-EXT-001.json",
+    "seed/parity-provenance/representative/ProofEscrow/source-locks/HC-PILOT-HELIX-002.json"
+  ],
+  "statement_id": "provenance:ProofEscrow:representative",
+  "statement_sha256": "ecd4b6ace9f9f06e2a37d55854f82f40986322944042e326d250a6e69680a92d",
+  "target_platform": "Attestra"
+}

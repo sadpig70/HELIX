@@ -1,0 +1,118 @@
+{
+  "entries": [
+    {
+      "machine_evidence": [
+        "seed/parity-provenance/representative/ProofEscrow/machine-evidence/HC-PILOT-EXT-001.json",
+        "seed/parity-provenance/representative/ProofEscrow/machine-evidence/HC-PILOT-HELIX-002.json"
+      ],
+      "pack": "ProofEscrow",
+      "parity_contracts": [
+        "seed/parity-provenance/representative/ProofEscrow/parity-contracts/released.json"
+      ],
+      "parity_receipts": [
+        "seed/parity-provenance/representative/ProofEscrow/parity-receipts/released.json"
+      ],
+      "provenance_statements": [
+        "seed/parity-provenance/representative/ProofEscrow/provenance-statements/representative.json"
+      ],
+      "source_locks": [
+        "seed/parity-provenance/representative/ProofEscrow/source-locks/HC-PILOT-EXT-001.json",
+        "seed/parity-provenance/representative/ProofEscrow/source-locks/HC-PILOT-HELIX-002.json"
+      ],
+      "status": "VALID",
+      "target_platform": "Attestra"
+    },
+    {
+      "machine_evidence": [
+        "seed/parity-provenance/representative/AuthorityArbiter/machine-evidence/HC-PILOT-EXT-002.json",
+        "seed/parity-provenance/representative/AuthorityArbiter/machine-evidence/HC-PILOT-HELIX-001.json"
+      ],
+      "pack": "AuthorityArbiter",
+      "parity_contracts": [
+        "seed/parity-provenance/representative/AuthorityArbiter/parity-contracts/released.json"
+      ],
+      "parity_receipts": [
+        "seed/parity-provenance/representative/AuthorityArbiter/parity-receipts/released.json"
+      ],
+      "provenance_statements": [
+        "seed/parity-provenance/representative/AuthorityArbiter/provenance-statements/representative.json"
+      ],
+      "source_locks": [
+        "seed/parity-provenance/representative/AuthorityArbiter/source-locks/HC-PILOT-EXT-002.json",
+        "seed/parity-provenance/representative/AuthorityArbiter/source-locks/HC-PILOT-HELIX-001.json"
+      ],
+      "status": "BLOCKED",
+      "target_platform": "Attestra"
+    },
+    {
+      "machine_evidence": [
+        "seed/parity-provenance/representative/GraphQuarantine/machine-evidence/HC-PILOT-EXT-004.json",
+        "seed/parity-provenance/representative/GraphQuarantine/machine-evidence/HC-PILOT-HELIX-004.json"
+      ],
+      "pack": "GraphQuarantine",
+      "parity_contracts": [
+        "seed/parity-provenance/representative/GraphQuarantine/parity-contracts/released.json"
+      ],
+      "parity_receipts": [
+        "seed/parity-provenance/representative/GraphQuarantine/parity-receipts/released.json"
+      ],
+      "provenance_statements": [
+        "seed/parity-provenance/representative/GraphQuarantine/provenance-statements/representative.json"
+      ],
+      "source_locks": [
+        "seed/parity-provenance/representative/GraphQuarantine/source-locks/HC-PILOT-EXT-004.json",
+        "seed/parity-provenance/representative/GraphQuarantine/source-locks/HC-PILOT-HELIX-004.json"
+      ],
+      "status": "BLOCKED",
+      "target_platform": "Attestra"
+    },
+    {
+      "machine_evidence": [
+        "seed/parity-provenance/representative/ContractRelay/machine-evidence/HC-PILOT-EXT-005.json",
+        "seed/parity-provenance/representative/ContractRelay/machine-evidence/HC-PILOT-HELIX-001.json"
+      ],
+      "pack": "ContractRelay",
+      "parity_contracts": [
+        "seed/parity-provenance/representative/ContractRelay/parity-contracts/released.json"
+      ],
+      "parity_receipts": [
+        "seed/parity-provenance/representative/ContractRelay/parity-receipts/released.json"
+      ],
+      "provenance_statements": [
+        "seed/parity-provenance/representative/ContractRelay/provenance-statements/representative.json"
+      ],
+      "source_locks": [
+        "seed/parity-provenance/representative/ContractRelay/source-locks/HC-PILOT-EXT-005.json",
+        "seed/parity-provenance/representative/ContractRelay/source-locks/HC-PILOT-HELIX-001.json"
+      ],
+      "status": "BLOCKED",
+      "target_platform": "Routestra"
+    },
+    {
+      "machine_evidence": [
+        "seed/parity-provenance/representative/HookCircuit/machine-evidence/HC-PILOT-EXT-006.json",
+        "seed/parity-provenance/representative/HookCircuit/machine-evidence/HC-PILOT-HELIX-003.json"
+      ],
+      "pack": "HookCircuit",
+      "parity_contracts": [
+        "seed/parity-provenance/representative/HookCircuit/parity-contracts/released.json"
+      ],
+      "parity_receipts": [
+        "seed/parity-provenance/representative/HookCircuit/parity-receipts/released.json"
+      ],
+      "provenance_statements": [
+        "seed/parity-provenance/representative/HookCircuit/provenance-statements/representative.json"
+      ],
+      "source_locks": [
+        "seed/parity-provenance/representative/HookCircuit/source-locks/HC-PILOT-EXT-006.json",
+        "seed/parity-provenance/representative/HookCircuit/source-locks/HC-PILOT-HELIX-003.json"
+      ],
+      "status": "BLOCKED",
+      "target_platform": "Attestra"
+    }
+  ],
+  "policy_version": "HELIX-PARITY-PROVENANCE/1.0",
+  "registry_id": "registry:parity-provenance:representative-5",
+  "schema": "helix-parity-evidence-registry/1.0",
+  "updated_at": "2026-07-16T00:00:00Z"
+}

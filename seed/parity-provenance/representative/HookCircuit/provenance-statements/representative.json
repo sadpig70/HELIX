@@ -1,0 +1,21 @@
+{
+  "artifact": "HookCircuit",
+  "claims": [
+    "source_locked",
+    "parity_decision:UNAVAILABLE",
+    "parity_not_valid",
+    "machine_evidence_blocked"
+  ],
+  "pack": "HookCircuit",
+  "parity_receipts": [
+    "seed/parity-provenance/representative/HookCircuit/parity-receipts/released.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/representative/HookCircuit/source-locks/HC-PILOT-EXT-006.json",
+    "seed/parity-provenance/representative/HookCircuit/source-locks/HC-PILOT-HELIX-003.json"
+  ],
+  "statement_id": "provenance:HookCircuit:representative",
+  "statement_sha256": "5c943228ef63876489d82ab3f42e6fa80466f9f781a143674dafc11093e6eb8d",
+  "target_platform": "Attestra"
+}

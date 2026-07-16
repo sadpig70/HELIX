@@ -156,3 +156,42 @@ The runner deliberately separates two receipts:
 2. HELIX `parity-receipt`: proves the pack-local result matched the HELIX parity contract and that source/machine evidence artifacts were present.
 
 Missing input is tested as `UNAVAILABLE`, not as success.
+
+## Stage 4 representative 5-pack pilot
+
+`scripts/corpus/parity_representative_pilot.py` generates the representative bundle for all five selected packs and writes the evidence registry.
+
+```pg
+Stage4RepresentativePilot
+    BuildFivePackContracts -> done
+    RunFivePackReceipts -> done
+    BuildProvenanceStatements -> done
+    BuildEvidenceRegistry -> done
+    PreserveBlockedState -> done
+```
+
+Tracked output:
+
+- `seed/parity-provenance/evidence-registry.json`
+- `seed/parity-provenance/representative-pilot-report.json`
+- `seed/parity-provenance/representative/<Pack>/parity-contracts/released.json`
+- `seed/parity-provenance/representative/<Pack>/parity-receipts/released.json`
+- `seed/parity-provenance/representative/<Pack>/provenance-statements/representative.json`
+
+Representative pilot status:
+
+| Pack | Registry status | Receipt decision | Reason |
+| --- | --- | --- | --- |
+| `ProofEscrow` | `VALID` | `PASS` | Executable parity runner exists and source/machine evidence is substantiated. |
+| `AuthorityArbiter` | `BLOCKED` | `UNAVAILABLE` | External OPA machine evidence is still unsubstantiated and no pack runner exists. |
+| `GraphQuarantine` | `BLOCKED` | `UNAVAILABLE` | External NetworkX machine evidence is still unsubstantiated and no pack runner exists. |
+| `ContractRelay` | `BLOCKED` | `UNAVAILABLE` | External jsonschema machine evidence is still unsubstantiated and no pack runner exists. |
+| `HookCircuit` | `BLOCKED` | `UNAVAILABLE` | External pluggy machine evidence is still unsubstantiated and no pack runner exists. |
+
+Pilot count:
+
+- `packs`: 5
+- `VALID`: 1
+- `BLOCKED`: 4
+
+No blocked pack is promoted to success. The registry is intentionally admissible as a status registry, not as a claim that all five packs reached `P2/V3`.

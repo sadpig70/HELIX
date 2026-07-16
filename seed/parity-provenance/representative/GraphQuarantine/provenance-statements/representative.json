@@ -1,0 +1,21 @@
+{
+  "artifact": "GraphQuarantine",
+  "claims": [
+    "source_locked",
+    "parity_decision:UNAVAILABLE",
+    "parity_not_valid",
+    "machine_evidence_blocked"
+  ],
+  "pack": "GraphQuarantine",
+  "parity_receipts": [
+    "seed/parity-provenance/representative/GraphQuarantine/parity-receipts/released.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/representative/GraphQuarantine/source-locks/HC-PILOT-EXT-004.json",
+    "seed/parity-provenance/representative/GraphQuarantine/source-locks/HC-PILOT-HELIX-004.json"
+  ],
+  "statement_id": "provenance:GraphQuarantine:representative",
+  "statement_sha256": "deec6ed38fa40f2e822b4393976c70900d67147fe092997fda0e5cf50e864041",
+  "target_platform": "Attestra"
+}

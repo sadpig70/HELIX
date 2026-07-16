@@ -1,0 +1,21 @@
+{
+  "artifact": "AuthorityArbiter",
+  "claims": [
+    "source_locked",
+    "parity_decision:UNAVAILABLE",
+    "parity_not_valid",
+    "machine_evidence_blocked"
+  ],
+  "pack": "AuthorityArbiter",
+  "parity_receipts": [
+    "seed/parity-provenance/representative/AuthorityArbiter/parity-receipts/released.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/representative/AuthorityArbiter/source-locks/HC-PILOT-EXT-002.json",
+    "seed/parity-provenance/representative/AuthorityArbiter/source-locks/HC-PILOT-HELIX-001.json"
+  ],
+  "statement_id": "provenance:AuthorityArbiter:representative",
+  "statement_sha256": "308095660ccf2e61cd7cde85769010136937e06839117437e5321413f592ca0b",
+  "target_platform": "Attestra"
+}

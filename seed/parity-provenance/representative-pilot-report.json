@@ -1,0 +1,36 @@
+{
+  "counts": {
+    "blocked": 4,
+    "packs": 5,
+    "valid": 1
+  },
+  "evidence_registry": "seed/parity-provenance/evidence-registry.json",
+  "generated_at": "2026-07-16T00:00:00Z",
+  "problems": [
+    "AuthorityArbiter: receipt: HC-PILOT-EXT-002: machine_status_not_substantiated",
+    "AuthorityArbiter: receipt: HC-PILOT-EXT-002: missing_behavior_sha256",
+    "AuthorityArbiter: receipt: HC-PILOT-EXT-002: not_deterministic",
+    "AuthorityArbiter: receipt: HC-PILOT-EXT-002: not_reproducible",
+    "AuthorityArbiter: receipt: HC-PILOT-EXT-002: tests_not_passed",
+    "AuthorityArbiter: receipt: unsupported pack: AuthorityArbiter",
+    "GraphQuarantine: receipt: HC-PILOT-EXT-004: machine_status_not_substantiated",
+    "GraphQuarantine: receipt: HC-PILOT-EXT-004: missing_behavior_sha256",
+    "GraphQuarantine: receipt: HC-PILOT-EXT-004: not_deterministic",
+    "GraphQuarantine: receipt: HC-PILOT-EXT-004: not_reproducible",
+    "GraphQuarantine: receipt: HC-PILOT-EXT-004: tests_not_passed",
+    "GraphQuarantine: receipt: unsupported pack: GraphQuarantine",
+    "ContractRelay: receipt: HC-PILOT-EXT-005: machine_status_not_substantiated",
+    "ContractRelay: receipt: HC-PILOT-EXT-005: missing_behavior_sha256",
+    "ContractRelay: receipt: HC-PILOT-EXT-005: not_deterministic",
+    "ContractRelay: receipt: HC-PILOT-EXT-005: not_reproducible",
+    "ContractRelay: receipt: HC-PILOT-EXT-005: tests_not_passed",
+    "ContractRelay: receipt: unsupported pack: ContractRelay",
+    "HookCircuit: receipt: HC-PILOT-EXT-006: machine_status_not_substantiated",
+    "HookCircuit: receipt: HC-PILOT-EXT-006: missing_behavior_sha256",
+    "HookCircuit: receipt: HC-PILOT-EXT-006: not_deterministic",
+    "HookCircuit: receipt: HC-PILOT-EXT-006: not_reproducible",
+    "HookCircuit: receipt: HC-PILOT-EXT-006: tests_not_passed",
+    "HookCircuit: receipt: unsupported pack: HookCircuit"
+  ],
+  "schema": "helix-parity-representative-pilot-report/1.0"
+}

@@ -1,0 +1,25 @@
+{
+  "contract_id": "contract:AuthorityArbiter:representative",
+  "decision": "UNAVAILABLE",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "5ecb78d8893eccbf5f06431be0358a7707080301ac4224f4c7cc85055bf9c02a",
+    "9cc0f106264ac530bfbd67b372969918699a7538fa5d478b4836b1b73084daf5"
+  ],
+  "observations": {
+    "comparators": [],
+    "contract_sha256": "4ae1439c49476e8b4f4fbd91afbef87304c3893ea03cde3b5059080de84085a9",
+    "pack_receipt": null
+  },
+  "problems": [
+    "unsupported pack: AuthorityArbiter"
+  ],
+  "receipt_id": "receipt:AuthorityArbiter:released",
+  "receipt_sha256": "218dd1fc7c8cd94054023455c2ae878f99e16f3a74bcf87f79c8445879cb5cb3",
+  "runner": "helix-parity-contract-runner/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "039689bf8564bf9d5eedc4542d807c884534e02af1d8af8b2c7fd5de6c98d35d",
+    "609e1f3fa5a64c312600989a4ba519d4af9b9f6257558a0c10ecffc8b9938866"
+  ]
+}

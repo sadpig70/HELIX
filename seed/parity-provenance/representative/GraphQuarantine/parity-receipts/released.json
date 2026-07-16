@@ -1,0 +1,25 @@
+{
+  "contract_id": "contract:GraphQuarantine:representative",
+  "decision": "UNAVAILABLE",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "59738032a6c0626613f4a6820ff7eb07745ba01c97548dbd0d6f9cb201b879f7",
+    "f148f85f2af83f5852733cd9897f8254fc5ad5d1e055ca6fa0e8939ae828ab28"
+  ],
+  "observations": {
+    "comparators": [],
+    "contract_sha256": "c1ae9f1857d79b67cdd789f5e51b1912811890f0d405e32a1a94f3bb3a59f1cd",
+    "pack_receipt": null
+  },
+  "problems": [
+    "unsupported pack: GraphQuarantine"
+  ],
+  "receipt_id": "receipt:GraphQuarantine:released",
+  "receipt_sha256": "7388f5b41605e9062b0994c95ee9999c2a1356c274acea4bebdb0b385c6a7bfa",
+  "runner": "helix-parity-contract-runner/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "8a5a8445c718bc870ef19e8ae862b58f345e02497768e9db2cf36e52edecb58d",
+    "875f89cb7fe7c7caea690d5751eccb4bd837739d0d2d59c2b47671646c7ba5f1"
+  ]
+}

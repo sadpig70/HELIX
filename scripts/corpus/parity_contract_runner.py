@@ -128,12 +128,6 @@ def run_contract(root, contract_path, out, now):
         paths.append(path)
         if not os.path.exists(path):
             missing.append(rel_path)
-    for key in ("request", "trust_store"):
-        rel_path = contract["inputs"].get(key, "")
-        path = os.path.join(root, rel_path)
-        paths.append(path)
-        if not os.path.exists(path):
-            missing.append(rel_path)
     if missing:
         problems = [f"missing input: {path}" for path in sorted(missing)]
         receipt = _receipt(contract, now, "UNAVAILABLE", observations, problems)
@@ -142,6 +136,18 @@ def run_contract(root, contract_path, out, now):
 
     if contract.get("pack") != "ProofEscrow":
         problems = [f"unsupported pack: {contract.get('pack')}"]
+        receipt = _receipt(contract, now, "UNAVAILABLE", observations, problems)
+        _write(out, receipt)
+        return receipt, problems
+
+    for key in ("request", "trust_store"):
+        rel_path = contract["inputs"].get(key, "")
+        path = os.path.join(root, rel_path)
+        paths.append(path)
+        if not os.path.exists(path):
+            missing.append(rel_path)
+    if missing:
+        problems = [f"missing input: {path}" for path in sorted(missing)]
         receipt = _receipt(contract, now, "UNAVAILABLE", observations, problems)
         _write(out, receipt)
         return receipt, problems

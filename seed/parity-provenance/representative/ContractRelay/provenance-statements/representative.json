@@ -1,0 +1,21 @@
+{
+  "artifact": "ContractRelay",
+  "claims": [
+    "source_locked",
+    "parity_decision:UNAVAILABLE",
+    "parity_not_valid",
+    "machine_evidence_blocked"
+  ],
+  "pack": "ContractRelay",
+  "parity_receipts": [
+    "seed/parity-provenance/representative/ContractRelay/parity-receipts/released.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/representative/ContractRelay/source-locks/HC-PILOT-EXT-005.json",
+    "seed/parity-provenance/representative/ContractRelay/source-locks/HC-PILOT-HELIX-001.json"
+  ],
+  "statement_id": "provenance:ContractRelay:representative",
+  "statement_sha256": "8ce81eaf11f44acbcfbd0f1e436c6bff8e4913f4359db027f2aef050b175f0fe",
+  "target_platform": "Routestra"
+}
