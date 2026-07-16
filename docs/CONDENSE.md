@@ -45,6 +45,20 @@ HELIX 작업공간 기준 live platform pack count는 **62팩**이다. Phase4 co
 Phase4 추가 팩은 `proof-escrow`, `authority-arbiter`, `drift-isolator`, `graph-quarantine`, `hook-circuit`,
 `contract-relay`이다. 모두 **BUILD_ON_PLATFORM**이며 새 kernel은 0개다.
 
+## Corpus 공급 plane와 Condense 권위 경계
+
+신규 corpus 공급은 [`CORPUS-SUPPLY.md`](CORPUS-SUPPLY.md)의 이중 admission plane이 담당한다. 현재 committed
+상태는 **24 items / 24 Generative admitted / 5 Evidence admitted / quarantine 0**이며 append-only
+ledger가 valid다.
+
+CI는 push/PR마다 corpus ledger, corpus health, Phase 3 frozen registry, clean-tree 상태를 강제한다.
+즉 corpus 공급 상태는 tracked 파일만으로 재현되어야 하며, 문서·ledger·registry·테스트 산출물 정리가
+동시에 맞아야 green이 된다.
+
+`Evidence ADMITTED`는 `CONDENSE` 승인이 아니다. Evidence는 재료와 재현 근거의 신뢰도만 승격한다.
+machine novelty, `BUILD_ON_PLATFORM`, `CONDENSE` 판정 권위는 계속 `core/helix_condense.py`와
+evaluation plane에 있다.
+
 ## 단계 (U1~U5)
 
 | Phase | 산출 | 게이트 |
