@@ -70,6 +70,7 @@ python helix.py corpus promote --id HC-2026-0001 --review human-review.json \
 python helix.py corpus verify-ledger --root seed/corpus
 python helix.py corpus status --root seed/corpus
 python helix.py corpus health --root seed/corpus
+python helix.py corpus quarantine-report --root seed/corpus
 ```
 
 CI는 corpus 공급 plane도 별도 게이트로 검증한다. `verify-ledger`, `health`, Phase 3 frozen
@@ -106,6 +107,9 @@ python scripts/corpus/phase3_registry.py freeze \
   --out _workspace/corpus-phase3/freeze-receipt.json \
   --now <ISO-8601>
 ```
+
+Phase 3 실행 전 readiness는 registry validate와 freeze dry-run으로 확인한다. `freeze`는 기존 receipt를
+덮어쓰지 않으므로 확인용 출력은 `_workspace/corpus-phase3/` 아래 새 파일명으로 둔다.
 
 ## 4. HELIX 통합 루프 (`core/` + `helix.py`)
 

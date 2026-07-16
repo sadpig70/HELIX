@@ -1,11 +1,10 @@
 import json
 import os
 import shutil
-import subprocess
 import tempfile
 import unittest
 
-from core.helix_corpus_supply import digest, manifest_digest
+from core.helix_corpus_supply import corpus_cli, digest, manifest_digest
 
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -104,18 +103,9 @@ class CorpusOperatorRunbookCliTests(unittest.TestCase):
         return path
 
     def _corpus(self, *args, expected=0):
-        completed = subprocess.run(
-            ["python", "helix.py", "corpus", *args],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        self.assertEqual(
-            expected, completed.returncode,
-            completed.stderr or completed.stdout,
-        )
-        return json.loads(completed.stdout)
+        code, payload = corpus_cli(list(args), ROOT)
+        self.assertEqual(expected, code, payload)
+        return payload
 
     def _intake_and_admit_generative_then_intake_evidence(self, corpus_id):
         generative = _manifest(corpus_id=corpus_id)
@@ -236,6 +226,11 @@ class CorpusOperatorRunbookCliTests(unittest.TestCase):
         self.assertEqual(1, health["counts"]["generative_admitted"])
         self.assertEqual(0, health["counts"]["evidence_admitted"])
         self.assertEqual(1, health["counts"]["quarantined"])
+        report = self._corpus("quarantine-report", "--root", self.corpus)
+        self.assertEqual(1, report["counts"]["items"])
+        self.assertEqual(1, report["counts"]["events"])
+        self.assertEqual(
+            1, report["reason_counts"]["human_review_not_approved"])
 
         status = self._corpus("status", "--root", self.corpus)
         self.assertEqual(2, status["event_count"])
@@ -263,6 +258,11 @@ class CorpusOperatorRunbookCliTests(unittest.TestCase):
 
         self.assertTrue(
             self._corpus("verify-ledger", "--root", self.corpus)["valid"])
+        report = self._corpus("quarantine-report", "--root", self.corpus)
+        self.assertEqual(1, report["counts"]["items"])
+        self.assertEqual(1, report["counts"]["events"])
+        self.assertEqual(
+            1, report["reason_counts"]["review_manifest_hash_mismatch"])
         status = self._corpus("status", "--root", self.corpus)
         self.assertEqual(2, status["event_count"])
         self.assertEqual(corpus_id, status["items"][0]["corpus_id"])

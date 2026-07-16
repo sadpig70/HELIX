@@ -495,6 +495,44 @@ def corpus_health(repo_root: str, corpus_root: str) -> dict:
     }
 
 
+def corpus_quarantine_report(repo_root: str, corpus_root: str) -> dict:
+    materialized = materialize_state(repo_root, corpus_root)
+    events = []
+    reason_counts = {}
+    for row in materialized["events"]:
+        if row.get("decision") != "QUARANTINED":
+            continue
+        event = {
+            "event_id": row.get("event_id"),
+            "corpus_id": row.get("corpus_id"),
+            "tier": row.get("tier"),
+            "manifest_sha256": row.get("manifest_sha256"),
+            "recorded_at": row.get("recorded_at"),
+            "reasons": row.get("reasons", []),
+        }
+        events.append(event)
+        for reason in event["reasons"]:
+            reason_counts[reason] = reason_counts.get(reason, 0) + 1
+    status = corpus_status(repo_root, corpus_root)
+    items = [
+        item for item in status["items"]
+        if item["generative"] == "QUARANTINED" or item["evidence"] == "QUARANTINED"
+    ]
+    return {
+        "schema": "helix-corpus-quarantine-report/1.0",
+        "counts": {
+            "items": len(items),
+            "events": len(events),
+            "reasons": sum(reason_counts.values()),
+        },
+        "ledger_valid": status["ledger_valid"],
+        "ledger_problems": status["ledger_problems"],
+        "reason_counts": dict(sorted(reason_counts.items())),
+        "items": items,
+        "events": events,
+    }
+
+
 def migrate_legacy_project_list(path: str) -> list:
     manifests = []
     with open(path, "r", encoding="utf-8") as f:
@@ -634,6 +672,9 @@ def corpus_cli(argv: list, repo_root: str) -> tuple:
             return 0, corpus_status(repo_root, corpus_root)
         if command == "health":
             result = corpus_health(repo_root, corpus_root)
+            return (0 if result["ledger_valid"] else 4), result
+        if command == "quarantine-report":
+            result = corpus_quarantine_report(repo_root, corpus_root)
             return (0 if result["ledger_valid"] else 4), result
         if command == "migrate":
             path = _arg(argv, "--legacy-list")

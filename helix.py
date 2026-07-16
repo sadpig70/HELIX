@@ -506,7 +506,7 @@ USAGE = ("usage:\n"
          "  python helix.py audit-handback --packet <handback.json> [--operator ID] "
          "[--provenance-class real|synthetic] [--ledger P] [--packets-dir P] "
          "[--state-receipt-hash H] [--json]\n"
-         "  python helix.py corpus validate|intake|admit|promote|fingerprint|verify-ledger|status|health|migrate "
+         "  python helix.py corpus validate|intake|admit|promote|fingerprint|verify-ledger|status|health|quarantine-report|migrate "
          "[--root <corpus-root>] [options]\n"
          "  python helix.py loop-status [--loop-state <loop-state.json>] [--ledger <ledger.json>]\n")
 

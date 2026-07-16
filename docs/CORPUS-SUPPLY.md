@@ -55,6 +55,7 @@ python helix.py corpus promote --id HC-2026-0001 --review human-review.json \
 python helix.py corpus verify-ledger --root seed/corpus
 python helix.py corpus status --root seed/corpus
 python helix.py corpus health --root seed/corpus
+python helix.py corpus quarantine-report --root seed/corpus
 
 # Preview only: emits no admission event.
 python helix.py corpus migrate --legacy-list seed/corpus/project_list.md
@@ -176,6 +177,7 @@ but steps 4-8 are a serialized single-writer queue because they can append to th
    ```bash
    python helix.py corpus verify-ledger --root seed/corpus
    python helix.py corpus health --root seed/corpus
+   python helix.py corpus quarantine-report --root seed/corpus
    python scripts/corpus/phase3_registry.py validate \
      --registry seed/corpus/phase3-2026-01-experiments.json \
      --corpus-root seed/corpus
@@ -188,7 +190,8 @@ but steps 4-8 are a serialized single-writer queue because they can append to th
 - `intake` with an existing revision is not a reason to overwrite history. Create the next revision
   when the manifest changed.
 - `admit` or `promote` exit code `4` means the decision is invalid, quarantined or tampered. Inspect
-  `reasons`, keep the ledger event, and repair only by creating a new manifest/review revision.
+  `reasons`, keep the ledger event, inspect `quarantine-report`, and repair only by creating a new
+  manifest/review revision.
 - If `verify-ledger` reports a problem, stop all writes. Do not edit or truncate
   `seed/corpus/evidence/admission-ledger.jsonl`; recover from version control or a known-good copy,
   then replay only verifiable operations.
