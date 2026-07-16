@@ -1,0 +1,17 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "HC-PILOT-EXT-004",
+  "license": "BSD-3-Clause",
+  "license_evidence_sha256": "668745f186bba0fe0fbe9589977a893ed17c855f8af1e2e66ede08ea4c1d2183",
+  "locator": "https://github.com/networkx/networkx",
+  "origin_kind": "external_repo",
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": "3b4c227fda1c5462e6c04ac1ed7e7b0d8f2eacd4",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:HC-PILOT-EXT-004",
+  "source_sha256": "0b8893d9e0d2a474f3bfb18e124174a04c25db5605360a4bcb48ca82693ab0cb"
+}

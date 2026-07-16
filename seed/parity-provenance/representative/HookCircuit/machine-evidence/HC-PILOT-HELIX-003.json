@@ -1,0 +1,18 @@
+{
+  "behavior_sha256": "9c780490feb29020f67cddd11a240dd04221230298493f0af1cbf2fe8f9d3375",
+  "deterministic": true,
+  "evidence_id": "machine:HC-PILOT-HELIX-003",
+  "machine_label": "policy-drift-interrupt-gate",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python -m unittest discover -s tests -q",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:HC-PILOT-HELIX-003",
+  "supporting_files": [
+    "src/PolicyDriftGate/verifier.py",
+    "tests/test_policy_drift_gate.py",
+    "reproduction.json",
+    "behavior-output.json"
+  ],
+  "tests_passed": true
+}

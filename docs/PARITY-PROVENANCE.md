@@ -92,3 +92,34 @@ Stage1ContractSchemas
     AddSchemaValidationTests
         python -m unittest discover -s tests -q
 ```
+
+## Stage 2 source-lock and machine-evidence build
+
+`scripts/corpus/parity_evidence_builder.py` generates deterministic V1/V2 evidence artifacts from the Phase 3 registry and corpus manifests.
+
+```pg
+Stage2EvidenceBuilder
+    ReadPhase3Registry -> done
+    BuildSourceLocks -> done
+    BuildMachineEvidence -> done
+    ValidateAgainstSchemas -> done
+    SaveRepresentativeArtifacts -> done
+```
+
+Tracked output:
+
+- `seed/parity-provenance/build-report.json`
+- `seed/parity-provenance/representative/<Pack>/source-locks/*.json`
+- `seed/parity-provenance/representative/<Pack>/machine-evidence/*.json`
+
+Result:
+
+- `ProofEscrow`: all generated `source-lock` and `machine-evidence` artifacts are schema-valid with no builder problems.
+- `AuthorityArbiter`, `GraphQuarantine`, `ContractRelay`, `HookCircuit`: generated artifacts are schema-valid, but each has one external source with explicit machine-evidence problems:
+  - `machine_status_not_substantiated`
+  - `not_reproducible`
+  - `tests_not_passed`
+  - `not_deterministic`
+  - `missing_behavior_sha256`
+
+This preserves the Stage 0 conclusion: these packs have V1/V2 source traceability, but must not be promoted to `P2/V3` until external machine evidence is substantiated.

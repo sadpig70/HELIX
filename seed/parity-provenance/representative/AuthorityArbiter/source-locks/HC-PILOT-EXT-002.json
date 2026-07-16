@@ -1,0 +1,17 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "HC-PILOT-EXT-002",
+  "license": "Apache-2.0",
+  "license_evidence_sha256": "2e54cd84a645bea25943c75dd8ae67cb291e66a47a11578333c9b4b3b6b86c85",
+  "locator": "https://github.com/open-policy-agent/opa",
+  "origin_kind": "external_repo",
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": "9e7dc5c430802f2271097ba51fd2da3145752a97",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:HC-PILOT-EXT-002",
+  "source_sha256": "4c82edeeac0bcf142dc05cd41450eb0be2e754083eb26fc44ecf05f709cecbcf"
+}

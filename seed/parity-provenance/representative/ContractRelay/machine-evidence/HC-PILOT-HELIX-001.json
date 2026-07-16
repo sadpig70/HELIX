@@ -1,0 +1,18 @@
+{
+  "behavior_sha256": "29d43e86121db9ff740e4ede2f19989c653e31499a8a7b38c6893763f68b968a",
+  "deterministic": true,
+  "evidence_id": "machine:HC-PILOT-HELIX-001",
+  "machine_label": "handback-boundary-verifier",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python -m unittest discover -s tests -q",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:HC-PILOT-HELIX-001",
+  "supporting_files": [
+    "src/ActionHandbackVerifier/verifier.py",
+    "tests/test_action_handback_verifier.py",
+    "reproduction.json",
+    "behavior-output.json"
+  ],
+  "tests_passed": true
+}

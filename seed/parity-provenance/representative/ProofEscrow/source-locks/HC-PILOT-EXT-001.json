@@ -1,0 +1,18 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "HC-PILOT-EXT-001",
+  "license": "Apache-2.0",
+  "license_evidence_sha256": "0fa57d00e818396fb13e62d8b232b381984f3a6a82cf2237d6bbace6498e6e3b",
+  "locator": "https://github.com/in-toto/in-toto",
+  "origin_kind": "external_repo",
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package",
+    "windows_symlink_tests_excluded_without_developer_mode"
+  ],
+  "revision": "a8ce9ee2125ae5a4b041a4e37cc1cf10eed0da6b",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:HC-PILOT-EXT-001",
+  "source_sha256": "b05bf7e7469049fae57cbe9dcb4e3c4287a0d11dbe89a4c9099229a2c874783d"
+}

@@ -1,0 +1,125 @@
+{
+  "generated_at": "2026-07-16T00:00:00Z",
+  "packs": [
+    {
+      "experiment_id": "HC-P3-FC-001",
+      "machine_evidence": [
+        "representative/ProofEscrow/machine-evidence/HC-PILOT-EXT-001.json",
+        "representative/ProofEscrow/machine-evidence/HC-PILOT-HELIX-002.json"
+      ],
+      "pack": "ProofEscrow",
+      "problems": [],
+      "source_locks": [
+        "representative/ProofEscrow/source-locks/HC-PILOT-EXT-001.json",
+        "representative/ProofEscrow/source-locks/HC-PILOT-HELIX-002.json"
+      ],
+      "target_platform": "Attestra"
+    },
+    {
+      "experiment_id": "HC-P3-FC-002",
+      "machine_evidence": [
+        "representative/AuthorityArbiter/machine-evidence/HC-PILOT-EXT-002.json",
+        "representative/AuthorityArbiter/machine-evidence/HC-PILOT-HELIX-001.json"
+      ],
+      "pack": "AuthorityArbiter",
+      "problems": [
+        "HC-PILOT-EXT-002: machine_status_not_substantiated",
+        "HC-PILOT-EXT-002: not_reproducible",
+        "HC-PILOT-EXT-002: tests_not_passed",
+        "HC-PILOT-EXT-002: not_deterministic",
+        "HC-PILOT-EXT-002: missing_behavior_sha256"
+      ],
+      "source_locks": [
+        "representative/AuthorityArbiter/source-locks/HC-PILOT-EXT-002.json",
+        "representative/AuthorityArbiter/source-locks/HC-PILOT-HELIX-001.json"
+      ],
+      "target_platform": "Attestra"
+    },
+    {
+      "experiment_id": "HC-P3-FC-004",
+      "machine_evidence": [
+        "representative/GraphQuarantine/machine-evidence/HC-PILOT-EXT-004.json",
+        "representative/GraphQuarantine/machine-evidence/HC-PILOT-HELIX-004.json"
+      ],
+      "pack": "GraphQuarantine",
+      "problems": [
+        "HC-PILOT-EXT-004: machine_status_not_substantiated",
+        "HC-PILOT-EXT-004: not_reproducible",
+        "HC-PILOT-EXT-004: tests_not_passed",
+        "HC-PILOT-EXT-004: not_deterministic",
+        "HC-PILOT-EXT-004: missing_behavior_sha256"
+      ],
+      "source_locks": [
+        "representative/GraphQuarantine/source-locks/HC-PILOT-EXT-004.json",
+        "representative/GraphQuarantine/source-locks/HC-PILOT-HELIX-004.json"
+      ],
+      "target_platform": "Attestra"
+    },
+    {
+      "experiment_id": "HC-P3-FC-005",
+      "machine_evidence": [
+        "representative/ContractRelay/machine-evidence/HC-PILOT-EXT-005.json",
+        "representative/ContractRelay/machine-evidence/HC-PILOT-HELIX-001.json"
+      ],
+      "pack": "ContractRelay",
+      "problems": [
+        "HC-PILOT-EXT-005: machine_status_not_substantiated",
+        "HC-PILOT-EXT-005: not_reproducible",
+        "HC-PILOT-EXT-005: tests_not_passed",
+        "HC-PILOT-EXT-005: not_deterministic",
+        "HC-PILOT-EXT-005: missing_behavior_sha256"
+      ],
+      "source_locks": [
+        "representative/ContractRelay/source-locks/HC-PILOT-EXT-005.json",
+        "representative/ContractRelay/source-locks/HC-PILOT-HELIX-001.json"
+      ],
+      "target_platform": "Routestra"
+    },
+    {
+      "experiment_id": "HC-P3-FC-006",
+      "machine_evidence": [
+        "representative/HookCircuit/machine-evidence/HC-PILOT-EXT-006.json",
+        "representative/HookCircuit/machine-evidence/HC-PILOT-HELIX-003.json"
+      ],
+      "pack": "HookCircuit",
+      "problems": [
+        "HC-PILOT-EXT-006: machine_status_not_substantiated",
+        "HC-PILOT-EXT-006: not_reproducible",
+        "HC-PILOT-EXT-006: tests_not_passed",
+        "HC-PILOT-EXT-006: not_deterministic",
+        "HC-PILOT-EXT-006: missing_behavior_sha256"
+      ],
+      "source_locks": [
+        "representative/HookCircuit/source-locks/HC-PILOT-EXT-006.json",
+        "representative/HookCircuit/source-locks/HC-PILOT-HELIX-003.json"
+      ],
+      "target_platform": "Attestra"
+    }
+  ],
+  "policy_version": "HELIX-PARITY-PROVENANCE/1.0",
+  "problems": [
+    "AuthorityArbiter: HC-PILOT-EXT-002: machine_status_not_substantiated",
+    "AuthorityArbiter: HC-PILOT-EXT-002: not_reproducible",
+    "AuthorityArbiter: HC-PILOT-EXT-002: tests_not_passed",
+    "AuthorityArbiter: HC-PILOT-EXT-002: not_deterministic",
+    "AuthorityArbiter: HC-PILOT-EXT-002: missing_behavior_sha256",
+    "GraphQuarantine: HC-PILOT-EXT-004: machine_status_not_substantiated",
+    "GraphQuarantine: HC-PILOT-EXT-004: not_reproducible",
+    "GraphQuarantine: HC-PILOT-EXT-004: tests_not_passed",
+    "GraphQuarantine: HC-PILOT-EXT-004: not_deterministic",
+    "GraphQuarantine: HC-PILOT-EXT-004: missing_behavior_sha256",
+    "ContractRelay: HC-PILOT-EXT-005: machine_status_not_substantiated",
+    "ContractRelay: HC-PILOT-EXT-005: not_reproducible",
+    "ContractRelay: HC-PILOT-EXT-005: tests_not_passed",
+    "ContractRelay: HC-PILOT-EXT-005: not_deterministic",
+    "ContractRelay: HC-PILOT-EXT-005: missing_behavior_sha256",
+    "HookCircuit: HC-PILOT-EXT-006: machine_status_not_substantiated",
+    "HookCircuit: HC-PILOT-EXT-006: not_reproducible",
+    "HookCircuit: HC-PILOT-EXT-006: tests_not_passed",
+    "HookCircuit: HC-PILOT-EXT-006: not_deterministic",
+    "HookCircuit: HC-PILOT-EXT-006: missing_behavior_sha256"
+  ],
+  "registry": "seed/corpus/phase3-2026-01-experiments.json",
+  "registry_sha256": "41876eb3452331ea92518650a20794eb4498dcb38c8a3dcb2c3b9111e53f73f8",
+  "schema": "helix-parity-evidence-build-report/1.0"
+}

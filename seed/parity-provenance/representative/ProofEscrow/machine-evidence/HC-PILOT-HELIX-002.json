@@ -1,0 +1,18 @@
+{
+  "behavior_sha256": "5e3e9f28787fa935aa54246edd6cb08f2c36d2477676787f45d4a3ab937c5f41",
+  "deterministic": true,
+  "evidence_id": "machine:HC-PILOT-HELIX-002",
+  "machine_label": "method-trust-bundle-gate",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python -m unittest discover -s tests -q",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:HC-PILOT-HELIX-002",
+  "supporting_files": [
+    "MethodBond/engine.py",
+    "tests/test_engine.py",
+    "reproduction.json",
+    "behavior-output.json"
+  ],
+  "tests_passed": true
+}

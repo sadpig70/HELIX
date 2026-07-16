@@ -1,0 +1,18 @@
+{
+  "behavior_sha256": "e1eb916abcb9f988256b03e746489f044d27614d8c3f7e27df0ad7565cb6ebab",
+  "deterministic": true,
+  "evidence_id": "machine:HC-PILOT-EXT-001",
+  "machine_label": "supply-chain-attestation-verifier",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/corpus/run_in_toto_supported_tests.py",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:HC-PILOT-EXT-001",
+  "supporting_files": [
+    "in_toto/rulelib.py",
+    "tests/test_rulelib.py",
+    "reproduction.json",
+    "behavior-output.json"
+  ],
+  "tests_passed": true
+}

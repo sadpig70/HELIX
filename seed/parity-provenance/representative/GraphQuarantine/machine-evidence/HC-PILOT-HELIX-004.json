@@ -1,0 +1,18 @@
+{
+  "behavior_sha256": "8de9c2db1ebc69a20359725f2988dac7bbb0eb2cef1f241f490a7218d91f0e3b",
+  "deterministic": true,
+  "evidence_id": "machine:HC-PILOT-HELIX-004",
+  "machine_label": "biological-clock-certifier",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python -m unittest discover -s tests -q",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:HC-PILOT-HELIX-004",
+  "supporting_files": [
+    "src/BioClock/core.py",
+    "tests/test_bioclock.py",
+    "reproduction.json",
+    "behavior-output.json"
+  ],
+  "tests_passed": true
+}

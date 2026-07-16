@@ -1,0 +1,17 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "HC-PILOT-EXT-006",
+  "license": "MIT",
+  "license_evidence_sha256": "de91589cbcc498cb36d3f979e39d4fb1ea1164d5331f6e0ea90a986525310d51",
+  "locator": "https://github.com/pytest-dev/pluggy",
+  "origin_kind": "external_repo",
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": "c1a5f3ea743c462595b77ecb866a70569e25c901",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:HC-PILOT-EXT-006",
+  "source_sha256": "82ed25eb74b99878cadd2f4a73d7382672782b27087e7b0f6a082ec81ad5e59b"
+}

@@ -1,0 +1,17 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "HC-PILOT-HELIX-001",
+  "license": "MIT",
+  "license_evidence_sha256": "64f450225d9190a102e0eca0e4a38b3131b50ceae256a484f1b537bd36f64c1c",
+  "locator": "ActionHandbackVerifier",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": "fbad75a07e0df6fff180b4c635b4898f9c0ed529",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:HC-PILOT-HELIX-001",
+  "source_sha256": "ec19407cf557d2fd0dceac9112dfa6478aa416de89124b73954a22b3bb3627f4"
+}

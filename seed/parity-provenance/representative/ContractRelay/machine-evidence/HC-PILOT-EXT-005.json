@@ -1,0 +1,19 @@
+{
+  "behavior_sha256": "",
+  "deterministic": false,
+  "evidence_id": "machine:HC-PILOT-EXT-005",
+  "machine_label": "schema-validation-engine",
+  "machine_status": "hypothesis",
+  "problems": [
+    "machine_status_not_substantiated",
+    "not_reproducible",
+    "tests_not_passed",
+    "not_deterministic",
+    "missing_behavior_sha256"
+  ],
+  "reproduction_command": "",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:HC-PILOT-EXT-005",
+  "supporting_files": [],
+  "tests_passed": false
+}

@@ -1,0 +1,17 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "HC-PILOT-EXT-005",
+  "license": "MIT",
+  "license_evidence_sha256": "66010c33da1256c30c4359f6edd8c30fbccbf41a4bf66cb0c576e5c726978142",
+  "locator": "https://github.com/python-jsonschema/jsonschema",
+  "origin_kind": "external_repo",
+  "restrictions": [
+    "snapshot_only",
+    "raw_checkout_not_admitted",
+    "safety_claim_scoped_to_evidence_package"
+  ],
+  "revision": "027429257d13ece4942c0ae501d3096a7a51f24a",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:HC-PILOT-EXT-005",
+  "source_sha256": "eea78c843b6f85bd58fade6183afab62b4e2be53b54c51a55b61ef2aabc24916"
+}
