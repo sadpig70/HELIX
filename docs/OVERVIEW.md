@@ -53,8 +53,25 @@ Phase3 full-cycle 출력 6개는 새 플랫폼을 만들지 않고 기존 플랫
 
 - `Attestra`: `proof-escrow`, `authority-arbiter`, `drift-isolator`, `graph-quarantine`, `hook-circuit`.
 - `Routestra`: `contract-relay`.
-- 검증 상태: `python core/helix_validate.py .` PASS, `python -m unittest discover -s tests -q` 717 tests OK.
+- 검증 상태: `python core/helix_validate.py .` PASS,
+  `python -W error::ResourceWarning -m unittest discover -s tests -q` 719 tests OK.
 - closeout artifact: `_workspace/corpus-phase4/phase4-closeout-report.md`.
+
+### 2.2.2 Corpus 공급 plane와 CI 보증
+
+신규 corpus 공급은 `docs/CORPUS-SUPPLY.md`의 이중 admission plane으로 운영된다. 현재 committed
+상태는 **24 items / 24 Generative admitted / 5 Evidence admitted / quarantine 0**이며,
+append-only corpus ledger가 valid다.
+
+CI는 push/PR마다 다음을 강제한다.
+
+- corpus ledger: `python helix.py corpus verify-ledger --root seed/corpus`
+- corpus health: `python helix.py corpus health --root seed/corpus`
+- Phase 3 frozen registry:
+  `python scripts/corpus/phase3_registry.py validate --registry seed/corpus/phase3-2026-01-experiments.json --corpus-root seed/corpus`
+- workspace hygiene: 테스트/validator 이후 `git status --short`가 비어 있어야 함
+
+즉 corpus 상태, Phase 3 계획, 테스트 산출물 정리 상태가 모두 tracked 파일에서 재현되어야 CI가 green이 된다.
 
 ### 2.3 Condense 두 성장 경로 모두 실증
 - **BUILD_ON_PLATFORM**: 기존 4 플랫폼에 팩 추가 (커널 중복 방지). 예: "Compatibility Mesh" 5형제를
@@ -122,7 +139,11 @@ Phase3 full-cycle 출력 6개는 새 플랫폼을 만들지 않고 기존 플랫
 # HELIX 루프 상태 (라우팅 제안 — 현재 후보 없음 = 완전 라우팅)
 python helix.py status --layered-corpus seed/condense/layered-corpus.json
 # 백본 검증 + 테스트
-python core/helix_validate.py . && python -m unittest discover -s tests -q
+python core/helix_validate.py . && python -W error::ResourceWarning -m unittest discover -s tests -q
+# corpus 공급 plane
+python helix.py corpus verify-ledger --root seed/corpus
+python helix.py corpus health --root seed/corpus
+python scripts/corpus/phase3_registry.py validate --registry seed/corpus/phase3-2026-01-experiments.json --corpus-root seed/corpus
 ```
 
 - 라우팅 지식 베이스: [`seed/condense/layered-corpus.json`](../seed/condense/layered-corpus.json)
