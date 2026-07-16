@@ -20,6 +20,10 @@ jobs:
         run: python -W error::ResourceWarning -m unittest discover -s tests -q
       - name: Validate (structure + determinism)
         run: python core/helix_validate.py .
+      - name: Validate corpus supply plane
+        run: |
+          python helix.py corpus verify-ledger --root seed/corpus
+          python helix.py corpus health --root seed/corpus
       - name: Ensure tests leave working tree clean
         run: |
           status="$(git status --short)"
