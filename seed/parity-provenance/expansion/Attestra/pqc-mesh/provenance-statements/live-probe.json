@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/pqc-mesh",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "pqc-mesh",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/pqc-mesh/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/pqc-mesh/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:pqc-mesh:live-probe",
+  "statement_sha256": "69f6c985533eb0c818100f65931e3a14a735a316dc6e35b3b2300a06e48b91e7",
+  "target_platform": "Attestra"
+}

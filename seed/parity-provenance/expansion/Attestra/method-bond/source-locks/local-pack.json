@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Attestra-method-bond",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Attestra/method-bond",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "5f0642566ef7df2649f0e661ed62fbfaee421dd5",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Attestra:method-bond",
+  "source_sha256": "6c38d26ffbb73b70cf713de1a1e8471e3b1f5cb6f42f2a46db1c832d03c45ee9"
+}

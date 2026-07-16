@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Attestra-handback",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Attestra/handback",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "5f0642566ef7df2649f0e661ed62fbfaee421dd5",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Attestra:handback",
+  "source_sha256": "f7ac2b88409e4f21770f2fc30f838d02119b28a81c997c4ed97eb33828025aab"
+}

@@ -9,8 +9,8 @@
         "by_platform": {
           "Attestra": {
             "BLOCKED": 3,
-            "PENDING": 16,
-            "VALID": 9
+            "PENDING": 13,
+            "VALID": 12
           },
           "Certstra": {
             "PENDING": 5
@@ -29,8 +29,8 @@
         },
         "by_status": {
           "BLOCKED": 4,
-          "PENDING": 48,
-          "VALID": 10
+          "PENDING": 45,
+          "VALID": 13
         },
         "packs": 62,
         "probe_cases": 102
@@ -40,18 +40,18 @@
         "M3"
       ],
       "ordinal": 1,
-      "pack": "delegation",
+      "pack": "handback",
       "platform": "Attestra",
       "probe_case_count": 2,
-      "promotion_report": "seed/parity-provenance/expansion/Attestra/delegation/parity-receipts/live-probe.json"
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/handback/parity-receipts/live-probe.json"
     },
     {
       "inventory_counts": {
         "by_platform": {
           "Attestra": {
             "BLOCKED": 3,
-            "PENDING": 15,
-            "VALID": 10
+            "PENDING": 12,
+            "VALID": 13
           },
           "Certstra": {
             "PENDING": 5
@@ -70,8 +70,8 @@
         },
         "by_status": {
           "BLOCKED": 4,
-          "PENDING": 47,
-          "VALID": 11
+          "PENDING": 44,
+          "VALID": 14
         },
         "packs": 62,
         "probe_cases": 102
@@ -81,18 +81,18 @@
         "M3"
       ],
       "ordinal": 2,
-      "pack": "drift-isolator",
+      "pack": "method-bond",
       "platform": "Attestra",
       "probe_case_count": 2,
-      "promotion_report": "seed/parity-provenance/expansion/Attestra/drift-isolator/parity-receipts/live-probe.json"
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/method-bond/parity-receipts/live-probe.json"
     },
     {
       "inventory_counts": {
         "by_platform": {
           "Attestra": {
             "BLOCKED": 3,
-            "PENDING": 14,
-            "VALID": 11
+            "PENDING": 11,
+            "VALID": 14
           },
           "Certstra": {
             "PENDING": 5
@@ -111,8 +111,8 @@
         },
         "by_status": {
           "BLOCKED": 4,
-          "PENDING": 46,
-          "VALID": 12
+          "PENDING": 43,
+          "VALID": 15
         },
         "packs": 62,
         "probe_cases": 102
@@ -122,10 +122,10 @@
         "M3"
       ],
       "ordinal": 3,
-      "pack": "gen-cert",
+      "pack": "pqc-mesh",
       "platform": "Attestra",
       "probe_case_count": 2,
-      "promotion_report": "seed/parity-provenance/expansion/Attestra/gen-cert/parity-receipts/live-probe.json"
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/pqc-mesh/parity-receipts/live-probe.json"
     }
   ],
   "requested_limit": 3,

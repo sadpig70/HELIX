@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "f7b3abb0400b0ea6d5948774abf11c6abe0325dede8774ef5c07349ce435397d",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:handback:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:handback",
+  "supporting_files": [
+    "Attestra/attestra_packs/handback.py",
+    "Attestra/schemas/packet-handback.schema.json"
+  ],
+  "tests_passed": true
+}

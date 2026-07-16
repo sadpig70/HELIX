@@ -64,19 +64,19 @@
     "promotions": [
       {
         "ordinal": 1,
-        "pack": "delegation",
+        "pack": "handback",
         "platform": "Attestra",
         "probe_case_count": 2
       },
       {
         "ordinal": 2,
-        "pack": "drift-isolator",
+        "pack": "method-bond",
         "platform": "Attestra",
         "probe_case_count": 2
       },
       {
         "ordinal": 3,
-        "pack": "gen-cert",
+        "pack": "pqc-mesh",
         "platform": "Attestra",
         "probe_case_count": 2
       }
@@ -84,33 +84,6 @@
     "requested_limit": 3
   },
   "next_candidates": [
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "handback",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "method-bond",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "pqc-mesh",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
     {
       "machines": [
         "M2",
@@ -173,6 +146,33 @@
       "pack": "sov-mesh",
       "platform": "Attestra",
       "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "spend-boundary",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "spend-mesh",
+      "platform": "Attestra",
+      "probe_case_count": 2
+    },
+    {
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "pack": "veto-escrow",
+      "platform": "Attestra",
+      "probe_case_count": 2
     }
   ],
   "platforms": [
@@ -183,19 +183,19 @@
         "graph-quarantine",
         "hook-circuit"
       ],
-      "coverage_percent": 39.29,
+      "coverage_percent": 50.0,
       "next_pending": {
         "machines": [
           "M2",
           "M3"
         ],
-        "pack": "handback",
+        "pack": "repro-dossier",
         "probe_case_count": 2
       },
-      "pending": 14,
+      "pending": 11,
       "platform": "Attestra",
       "total": 28,
-      "valid": 11
+      "valid": 14
     },
     {
       "blocked": 0,
@@ -309,10 +309,10 @@
   "summary": {
     "blocked": 4,
     "blocked_percent": 6.45,
-    "coverage_percent": 19.35,
+    "coverage_percent": 24.19,
     "packs": 62,
-    "pending": 46,
-    "pending_percent": 74.19,
-    "valid": 12
+    "pending": 43,
+    "pending_percent": 69.35,
+    "valid": 15
   }
 }

@@ -1,0 +1,28 @@
+{
+  "contract_id": "contract:Attestra:pqc-mesh:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "9f064c11ef08c8f6da45b1e278a055463236b893bf19bb1390c80f43e2aa57ec"
+  ],
+  "observations": {
+    "case_count": 2,
+    "contract_sha256": "74305ec36454294324dcb3a99312dde48e65ae9039e51cfb5f9d77ed99688935",
+    "matched_machines": [
+      "M2",
+      "M3"
+    ],
+    "probe_cases": [
+      "Attestra:pqc-mesh",
+      "Attestra:pqc-mesh:predicate-gate"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Attestra:pqc-mesh:live-probe",
+  "receipt_sha256": "668c913d62a4791adfad36608c5d783e29391302dd33462df4cc6ce226ab491a",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "2e6e48e759db1321520f9d25ad804d7282b71e56d224c9bad5293edbe181774b"
+  ]
+}

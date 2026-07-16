@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "912441dbd7f9305ec5ea83993c637fbcc4f4b2efd14a32a768d1687f8fd984b7",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:pqc-mesh:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:pqc-mesh",
+  "supporting_files": [
+    "Attestra/attestra_packs/pqc_mesh.py",
+    "Attestra/schemas/packet-pqcmesh.schema.json"
+  ],
+  "tests_passed": true
+}

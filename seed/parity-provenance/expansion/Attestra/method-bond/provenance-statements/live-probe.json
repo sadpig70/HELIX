@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/method-bond",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "method-bond",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/method-bond/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/method-bond/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:method-bond:live-probe",
+  "statement_sha256": "42af81eff5b9349e5720f796f282e7c303def96bf8feac2f03061e493c32a1cb",
+  "target_platform": "Attestra"
+}

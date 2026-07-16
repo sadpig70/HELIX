@@ -1,0 +1,32 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Attestra:method-bond:live-probe",
+  "expected": {
+    "case_count": 2,
+    "machines": [
+      "M2",
+      "M3"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Attestra:method-bond",
+      "Attestra:method-bond:predicate-gate"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Attestra/method-bond/machine-evidence/live-probe.json"
+  ],
+  "pack": "method-bond",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/method-bond/source-locks/local-pack.json"
+  ],
+  "target_platform": "Attestra"
+}

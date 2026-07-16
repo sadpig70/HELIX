@@ -555,3 +555,48 @@ Next dashboard candidates after Stage 12:
 | `Attestra` | `handback` | 2 |
 | `Attestra` | `method-bond` | 2 |
 | `Attestra` | `pqc-mesh` | 2 |
+
+## Stage 13 dashboard-driven promotion batch 3
+
+Stage 13 continues the dashboard-driven promotion loop and keeps the batch bounded to three packs.
+
+```pg
+Stage13DashboardDrivenPromotionBatch3
+    ReadCoverageDashboard.next_candidates -> done
+    PromoteBoundedCandidateBatch(limit=3) -> done
+    ValidateInventoryAfterEachPromotion -> done
+    RefreshCoverageDashboard -> done
+    PreserveBlockedEvidenceBoundary -> done
+```
+
+Promoted from dashboard candidates:
+
+| Platform | Pack | Machines | Probe cases |
+| --- | --- | --- | ---: |
+| `Attestra` | `handback` | `M2`, `M3` | 2 |
+| `Attestra` | `method-bond` | `M2`, `M3` | 2 |
+| `Attestra` | `pqc-mesh` | `M2`, `M3` | 2 |
+
+Updated inventory:
+
+| Status | Before Stage 13 | After Stage 13 |
+| --- | ---: | ---: |
+| `VALID` | 12 | 15 |
+| `BLOCKED` | 4 | 4 |
+| `PENDING` | 46 | 43 |
+| Total | 62 | 62 |
+
+Updated dashboard:
+
+| Metric | Before Stage 13 | After Stage 13 |
+| --- | ---: | ---: |
+| Coverage | 19.35% | 24.19% |
+| Pending | 74.19% | 69.35% |
+
+Next dashboard candidates after Stage 13:
+
+| Platform | Pack | Probe cases |
+| --- | --- | ---: |
+| `Attestra` | `repro-dossier` | 2 |
+| `Attestra` | `reserve-flow` | 2 |
+| `Attestra` | `settle-mesh` | 2 |

@@ -3,8 +3,8 @@
     "by_platform": {
       "Attestra": {
         "BLOCKED": 3,
-        "PENDING": 14,
-        "VALID": 11
+        "PENDING": 11,
+        "VALID": 14
       },
       "Certstra": {
         "PENDING": 5
@@ -23,8 +23,8 @@
     },
     "by_status": {
       "BLOCKED": 4,
-      "PENDING": 46,
-      "VALID": 12
+      "PENDING": 43,
+      "VALID": 15
     },
     "packs": 62,
     "probe_cases": 102
@@ -398,7 +398,24 @@
       "status": "BLOCKED"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/handback/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/handback/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/handback/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/handback/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/handback/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/handback/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -409,11 +426,11 @@
         "Attestra:handback",
         "Attestra:handback:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
       "evidence": {
@@ -442,7 +459,24 @@
       "status": "BLOCKED"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/method-bond/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/method-bond/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/method-bond/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/method-bond/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/method-bond/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/method-bond/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -453,11 +487,11 @@
         "Attestra:method-bond",
         "Attestra:method-bond:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
       "evidence": {
@@ -500,7 +534,24 @@
       "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/pqc-mesh/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/pqc-mesh/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/pqc-mesh/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/pqc-mesh/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/pqc-mesh/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/pqc-mesh/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -511,11 +562,11 @@
         "Attestra:pqc-mesh",
         "Attestra:pqc-mesh:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
       "evidence": {
