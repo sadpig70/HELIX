@@ -26,6 +26,10 @@ jobs:
           python helix.py corpus health --root seed/corpus
           python scripts/corpus/phase3_registry.py validate --registry seed/corpus/phase3-2026-01-experiments.json --corpus-root seed/corpus
           python scripts/corpus/phase3_outcome.py --registry seed/corpus/phase3-2026-01-experiments.json --corpus-root seed/corpus
+      - name: Validate parity provenance evidence
+        run: |
+          python scripts/corpus/parity_representative_pilot.py --evidence-root seed/parity-provenance --now 2026-07-16T00:00:00Z
+          python scripts/corpus/parity_registry_gate.py --registry seed/parity-provenance/evidence-registry.json --report seed/parity-provenance/representative-pilot-report.json
       - name: Ensure tests leave working tree clean
         run: |
           status="$(git status --short)"

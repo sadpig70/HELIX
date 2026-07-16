@@ -195,3 +195,40 @@ Pilot count:
 - `BLOCKED`: 4
 
 No blocked pack is promoted to success. The registry is intentionally admissible as a status registry, not as a claim that all five packs reached `P2/V3`.
+
+## Stage 5 CI gates
+
+`scripts/corpus/parity_registry_gate.py` validates the representative parity/provenance evidence in CI.
+
+```pg
+Stage5CIGates
+    ValidateEvidenceRegistrySchema -> done
+    ValidateReferencedArtifacts -> done
+    ValidateReceiptSeals -> done
+    ValidateProvenanceStatementSeals -> done
+    ValidateStatusHonesty -> done
+    WireGitHubActions -> done
+```
+
+CI now runs:
+
+```bash
+python scripts/corpus/parity_representative_pilot.py \
+  --evidence-root seed/parity-provenance \
+  --now 2026-07-16T00:00:00Z
+
+python scripts/corpus/parity_registry_gate.py \
+  --registry seed/parity-provenance/evidence-registry.json \
+  --report seed/parity-provenance/representative-pilot-report.json
+```
+
+Gate checks:
+
+- `evidence-registry.json` matches `schemas/evidence-registry.schema.json`.
+- Every referenced `source-lock`, `machine-evidence`, `parity-contract`, `parity-receipt`, and `provenance-statement` exists and is schema-valid.
+- `receipt_sha256` and `statement_sha256` seals match canonical HELIX digest rules.
+- `VALID` entries must have exactly one `PASS` receipt.
+- `BLOCKED` entries must not contain a `PASS` receipt and must still carry a non-success receipt.
+- pilot report counts must match registry status counts.
+
+This makes the representative evidence chain CI-enforced while preserving honest blocked states.
