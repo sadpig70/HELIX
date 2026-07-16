@@ -18,3 +18,7 @@ python -m contractrelay report ledger.jsonl
 - `BLOCKED`: contract or custody failed with normalized errors.
 - `INVALID`: schema or baseline validation failed.
 
+## HELIX gene provenance
+
+- `normalized_errors`: `HC-PILOT-EXT-005`.
+- `fail_closed_handback`: `HC-PILOT-HELIX-001`.

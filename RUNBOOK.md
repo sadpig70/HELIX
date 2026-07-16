@@ -111,6 +111,16 @@ python scripts/corpus/phase3_registry.py freeze \
 Phase 3 실행 전 readiness는 registry validate와 freeze dry-run으로 확인한다. `freeze`는 기존 receipt를
 덮어쓰지 않으므로 확인용 출력은 `_workspace/corpus-phase3/` 아래 새 파일명으로 둔다.
 
+Phase 3 완료 상태는 tracked repo 기준 validator로 재현한다.
+
+```bash
+python scripts/corpus/phase3_outcome.py \
+  --registry seed/corpus/phase3-2026-01-experiments.json \
+  --corpus-root seed/corpus
+```
+
+결과 문서: [`docs/PHASE3-OUTCOME.md`](docs/PHASE3-OUTCOME.md).
+
 ## 4. HELIX 통합 루프 (`core/` + `helix.py`)
 
 ```bash

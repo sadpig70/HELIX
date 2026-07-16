@@ -18,3 +18,7 @@ python -m graphquarantine report ledger.jsonl
 - `CLEAR`: no quarantine path exists.
 - `INVALID`: schema, baseline, edge, or source validation failed.
 
+## HELIX gene provenance
+
+- `path_analysis`: `HC-PILOT-EXT-004`.
+- `staged_quarantine`: `HC-PILOT-HELIX-004`.

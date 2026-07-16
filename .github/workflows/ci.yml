@@ -25,6 +25,7 @@ jobs:
           python helix.py corpus verify-ledger --root seed/corpus
           python helix.py corpus health --root seed/corpus
           python scripts/corpus/phase3_registry.py validate --registry seed/corpus/phase3-2026-01-experiments.json --corpus-root seed/corpus
+          python scripts/corpus/phase3_outcome.py --registry seed/corpus/phase3-2026-01-experiments.json --corpus-root seed/corpus
       - name: Ensure tests leave working tree clean
         run: |
           status="$(git status --short)"

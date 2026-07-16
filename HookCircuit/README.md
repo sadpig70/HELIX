@@ -18,3 +18,7 @@ python -m hookcircuit report ledger.jsonl
 - `TRIPPED`: one or more hook circuits are isolated.
 - `INVALID`: schema, baseline, hook contract, or observation validation failed.
 
+## HELIX gene provenance
+
+- `hook_contract`: `HC-PILOT-EXT-006`.
+- `reflex_interruption`: `HC-PILOT-HELIX-003`.
