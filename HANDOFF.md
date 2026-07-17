@@ -1,5 +1,25 @@
 # HANDOFF — HELIX
 
+> 갱신: 2026-07-17
+> **Parity·Provenance Evidence 확장 종료:** 62개 platform pack 중 `VALID 58`,
+> `BLOCKED 4`, `PENDING 0`, coverage `93.55%`.
+> 자동 진행 가능한 pending promotion은 모두 소진했다.
+> 남은 4건(`Attestra/authority-arbiter`, `Attestra/graph-quarantine`,
+> `Attestra/hook-circuit`, `Routestra/contract-relay`)은 실증된 machine evidence와
+> representative runner support가 부족하므로 `VALID`로 승격하지 않고
+> `ACTIONABLE_PENDING_EXHAUSTED_BLOCKED_FAIL_CLOSED`로 고정했다.
+> 최종 산출물:
+> `seed/parity-provenance/final-closure-report.json`,
+> `seed/parity-provenance/coverage-dashboard.json`,
+> `seed/parity-provenance/expansion-inventory.json`,
+> `docs/PARITY-PROVENANCE.md`.
+> 검증: `740 tests OK`, `core/helix_validate.py .` PASS,
+> corpus/phase3/parity inventory/dashboard gates PASS,
+> GitHub Actions CI green run `29543604224`.
+> 현재 HEAD: `7868626d0157041b90d8c53c99a3442a30f826f6`.
+> **다음 작업:** repo-local 자동 작업 없음. blocked 4건은 외부/실제 machine evidence가
+> 준비될 때만 재평가한다.
+
 > 갱신: 2026-07-13
 > **현재 상태:** Condense(5 platforms·56 packs) + HELIXDirection(Deterministic Admission
 > Control Plane) + persona-trial 파생 security 강화 + **provenance 사다리 3층 + T4 verdict
