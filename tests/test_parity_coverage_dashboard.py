@@ -16,19 +16,17 @@ class TestParityCoverageDashboard(unittest.TestCase):
         self.assertEqual(validate_dashboard(dashboard), [])
         self.assertEqual(dashboard["schema"], "helix-parity-coverage-dashboard/1.0")
         self.assertEqual(dashboard["summary"]["packs"], 62)
-        self.assertEqual(dashboard["summary"]["valid"], 15)
+        self.assertEqual(dashboard["summary"]["valid"], 58)
         self.assertEqual(dashboard["summary"]["blocked"], 4)
-        self.assertEqual(dashboard["summary"]["pending"], 43)
-        self.assertEqual(dashboard["summary"]["coverage_percent"], 24.19)
-        self.assertEqual(dashboard["latest_batch"]["completed"], 3)
+        self.assertEqual(dashboard["summary"]["pending"], 0)
+        self.assertEqual(dashboard["summary"]["coverage_percent"], 93.55)
+        self.assertEqual(dashboard["latest_batch"]["completed"], 43)
         self.assertEqual(dashboard["latest_batch"]["problems"], [])
-        self.assertEqual(
-            [item["pack"] for item in dashboard["latest_batch"]["promotions"]],
-            ["handback", "method-bond", "pqc-mesh"],
-        )
+        self.assertEqual(dashboard["latest_batch"]["promotions"][0]["pack"], "repro-dossier")
+        self.assertEqual(dashboard["latest_batch"]["promotions"][-1]["pack"], "pqc-exposure")
         self.assertEqual(len(dashboard["platforms"]), 5)
         self.assertEqual(len(dashboard["blocked"]), 4)
-        self.assertTrue(dashboard["next_candidates"])
+        self.assertEqual(dashboard["next_candidates"], [])
 
 
 if __name__ == "__main__":

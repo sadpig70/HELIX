@@ -1,0 +1,32 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Clearstra:cryo-futures:live-probe",
+  "expected": {
+    "case_count": 2,
+    "machines": [
+      "M6",
+      "M7"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Clearstra:cryo-futures:price",
+      "Clearstra:cryo-futures:settle"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Clearstra/cryo-futures/machine-evidence/live-probe.json"
+  ],
+  "pack": "cryo-futures",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/cryo-futures/source-locks/local-pack.json"
+  ],
+  "target_platform": "Clearstra"
+}

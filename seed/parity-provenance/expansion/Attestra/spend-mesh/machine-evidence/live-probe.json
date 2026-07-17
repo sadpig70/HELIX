@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "256686adc195ec8fc6bf9cfff097165a10214c3191769068314d3f77439e97bd",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:spend-mesh:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:spend-mesh",
+  "supporting_files": [
+    "Attestra/attestra_packs/spend_mesh.py",
+    "Attestra/schemas/packet-spendmesh.schema.json"
+  ],
+  "tests_passed": true
+}

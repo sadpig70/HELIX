@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "9015bf683b043c914359e78caadb4cc9bc45d0baf8f7d4cb75da4b853ab17ae1",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:failure-futures:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:failure-futures",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/failure_futures.py",
+    "Clearstra/schemas/order-failure.schema.json"
+  ],
+  "tests_passed": true
+}

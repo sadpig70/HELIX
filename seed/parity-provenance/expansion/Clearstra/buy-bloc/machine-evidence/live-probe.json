@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "ca98e4e748d661b2643ad69c143fcc3b94a5d5f7a9407db2255e71f18c4c15d2",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:buy-bloc:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:buy-bloc",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/buy_bloc.py",
+    "Clearstra/schemas/order-bloc.schema.json"
+  ],
+  "tests_passed": true
+}

@@ -1,0 +1,20 @@
+{
+  "artifact": "Clearstra/mineral-shock",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "mineral-shock",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Clearstra/mineral-shock/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/mineral-shock/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Clearstra:mineral-shock:live-probe",
+  "statement_sha256": "f2ccfc63fe2a5e0fac51ab55a731826685c92ab67a89808b5d9eb38b02b14cc4",
+  "target_platform": "Clearstra"
+}

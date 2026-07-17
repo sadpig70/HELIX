@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/flow-mesh",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "flow-mesh",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/flow-mesh/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/flow-mesh/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:flow-mesh:live-probe",
+  "statement_sha256": "7022a84b129b28d1dbf9da50c193ca4d290b3863ed98ffb01a85fffb0554afb5",
+  "target_platform": "Routestra"
+}

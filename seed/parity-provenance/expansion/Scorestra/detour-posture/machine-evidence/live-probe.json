@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "8d73d32896c91a39060af2fb87104cfbce851010093689ae0de4e92ff6fe0263",
+  "deterministic": true,
+  "evidence_id": "machine:Scorestra:detour-posture:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Scorestra:detour-posture",
+  "supporting_files": [
+    "Scorestra/scorestra_packs/detour_posture.py",
+    "Scorestra/schemas/item-detour.schema.json"
+  ],
+  "tests_passed": true
+}

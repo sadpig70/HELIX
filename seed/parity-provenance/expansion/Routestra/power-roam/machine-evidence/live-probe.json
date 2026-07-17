@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "8e17c2a62983f44f79ec7d69a2ba433cbdf1b758f98255d6d3b381e51c1a2927",
+  "deterministic": true,
+  "evidence_id": "machine:Routestra:power-roam:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Routestra:power-roam",
+  "supporting_files": [
+    "Routestra/routestra_packs/power_roam.py",
+    "Routestra/schemas/candidate-roam.schema.json"
+  ],
+  "tests_passed": true
+}

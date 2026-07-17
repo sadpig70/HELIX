@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "4699c09b2475d90d58bee0e4b2ce12067abcd9d4e138b1010b27f6fa5a67a9b6",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:spend-boundary:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:spend-boundary",
+  "supporting_files": [
+    "Attestra/attestra_packs/spend_boundary.py",
+    "Attestra/schemas/packet-spend.schema.json"
+  ],
+  "tests_passed": true
+}

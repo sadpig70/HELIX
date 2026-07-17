@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Routestra:soil-carbon:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "85e3948b67d0433539b36a901bccc5a92fc09703c3e4edb07c7bce922a39daad"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "01a01b48382f96a1405cb8e1c30d361e6874d76f69fc51d2dff6f6aab8f70108",
+    "matched_machines": [
+      "M9"
+    ],
+    "probe_cases": [
+      "Routestra:soil-carbon:route"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Routestra:soil-carbon:live-probe",
+  "receipt_sha256": "65724c742fce1fd9e82baff843d289a1cebff927a8c255273358bc4afa94da0e",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "e54e9a242cd35ce8b5ede7972952a57bd5956e8a80010b3964df3233c99225df"
+  ]
+}

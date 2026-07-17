@@ -1,0 +1,20 @@
+{
+  "artifact": "Clearstra/shock-rehearsal",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "shock-rehearsal",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Clearstra:shock-rehearsal:live-probe",
+  "statement_sha256": "ccb3f5cb1dbb66be2919a24a22efd89d0b3a5adcebfaa13f0efbefb20c8ed3fb",
+  "target_platform": "Clearstra"
+}

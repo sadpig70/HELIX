@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/watt-fabric",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "watt-fabric",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/watt-fabric/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/watt-fabric/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:watt-fabric:live-probe",
+  "statement_sha256": "9cb8e88c56e28dbae7f5bce2c177cc990236403cc5fbab0099d38e2f8b697ab5",
+  "target_platform": "Routestra"
+}

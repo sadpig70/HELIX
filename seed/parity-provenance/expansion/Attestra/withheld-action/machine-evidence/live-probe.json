@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "7160856dcc535a2746ebb7d064bee62df3dbea5cc306d02a90ea236fc0eca202",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:withheld-action:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:withheld-action",
+  "supporting_files": [
+    "Attestra/attestra_packs/withheld_action.py",
+    "Attestra/schemas/packet-withheld.schema.json"
+  ],
+  "tests_passed": true
+}

@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "f9ead9c44bb06a550f8f7af35a8b66b60216e947cb08201d87eb96c2e0a6a561",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:retrofit-receivable:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:retrofit-receivable",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/retrofit_receivable.py",
+    "Clearstra/schemas/order-retrofit.schema.json"
+  ],
+  "tests_passed": true
+}

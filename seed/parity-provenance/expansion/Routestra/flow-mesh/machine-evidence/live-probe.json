@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "28e4630bd7ec2ed531118f1c85a0b1a133e233ade1d8e2647acb62a766be4611",
+  "deterministic": true,
+  "evidence_id": "machine:Routestra:flow-mesh:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Routestra:flow-mesh",
+  "supporting_files": [
+    "Routestra/routestra_packs/flow_mesh.py",
+    "Routestra/schemas/candidate-flow.schema.json"
+  ],
+  "tests_passed": true
+}

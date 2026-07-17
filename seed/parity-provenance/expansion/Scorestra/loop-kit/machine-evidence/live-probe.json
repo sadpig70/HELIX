@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "f9a9c5b6cfff27577b7a742a82dfe465baa98a40b1595eb441358ed590a686a5",
+  "deterministic": true,
+  "evidence_id": "machine:Scorestra:loop-kit:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Scorestra:loop-kit",
+  "supporting_files": [
+    "Scorestra/scorestra_packs/loop_kit.py",
+    "Scorestra/schemas/item-loop.schema.json"
+  ],
+  "tests_passed": true
+}

@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "491cd38ad3173779a627d7e798d8b2fead2cb616e8abf32357dbaf1c411e3469",
+  "deterministic": true,
+  "evidence_id": "machine:Routestra:thermal-plume:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Routestra:thermal-plume",
+  "supporting_files": [
+    "Routestra/routestra_packs/thermal_plume.py",
+    "Routestra/schemas/candidate-plume.schema.json"
+  ],
+  "tests_passed": true
+}

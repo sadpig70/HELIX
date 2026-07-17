@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/veto-escrow",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "veto-escrow",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/veto-escrow/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/veto-escrow/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:veto-escrow:live-probe",
+  "statement_sha256": "704869866276586c933f76bffb8bca7fcc6a13cdce09ad7bce81620e4fc1c0b8",
+  "target_platform": "Attestra"
+}

@@ -1,0 +1,32 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Clearstra:cold-capacity:live-probe",
+  "expected": {
+    "case_count": 2,
+    "machines": [
+      "M5",
+      "M6"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Clearstra:cold-capacity:clear",
+      "Clearstra:cold-capacity:price"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Clearstra/cold-capacity/machine-evidence/live-probe.json"
+  ],
+  "pack": "cold-capacity",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/cold-capacity/source-locks/local-pack.json"
+  ],
+  "target_platform": "Clearstra"
+}

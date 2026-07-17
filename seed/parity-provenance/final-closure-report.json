@@ -1,0 +1,65 @@
+{
+  "generated_at": "2026-07-16T00:00:00Z",
+  "policy": {
+    "blocked_resolution": "fail_closed_until_real_machine_evidence_is_substantiated",
+    "no_synthetic_upgrade": true,
+    "pending_promotion": "exhausted"
+  },
+  "remaining_blocked": [
+    {
+      "pack": "authority-arbiter",
+      "platform": "Attestra",
+      "reason": "representative evidence has non-PASS receipt; machine evidence is not substantiated",
+      "required_to_unblock": [
+        "real machine evidence with behavior_sha256",
+        "deterministic reproduction command",
+        "passing tests",
+        "representative parity runner support"
+      ]
+    },
+    {
+      "pack": "graph-quarantine",
+      "platform": "Attestra",
+      "reason": "representative evidence has non-PASS receipt; machine evidence is not substantiated",
+      "required_to_unblock": [
+        "real machine evidence with behavior_sha256",
+        "deterministic reproduction command",
+        "passing tests",
+        "representative parity runner support"
+      ]
+    },
+    {
+      "pack": "hook-circuit",
+      "platform": "Attestra",
+      "reason": "representative evidence has non-PASS receipt; machine evidence is not substantiated",
+      "required_to_unblock": [
+        "real machine evidence with behavior_sha256",
+        "deterministic reproduction command",
+        "passing tests",
+        "representative parity runner support"
+      ]
+    },
+    {
+      "pack": "contract-relay",
+      "platform": "Routestra",
+      "reason": "representative evidence has non-PASS receipt; machine evidence is not substantiated",
+      "required_to_unblock": [
+        "real machine evidence with behavior_sha256",
+        "deterministic reproduction command",
+        "passing tests",
+        "representative parity runner support"
+      ]
+    }
+  ],
+  "schema": "helix-parity-provenance-final-closure-report/1.0",
+  "summary": {
+    "blocked": 4,
+    "blocked_percent": 6.45,
+    "coverage_percent": 93.55,
+    "packs": 62,
+    "pending": 0,
+    "pending_percent": 0.0,
+    "valid": 58
+  },
+  "verdict": "ACTIONABLE_PENDING_EXHAUSTED_BLOCKED_FAIL_CLOSED"
+}

@@ -1,0 +1,20 @@
+{
+  "artifact": "Certstra/robo-trace",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "robo-trace",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Certstra/robo-trace/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Certstra/robo-trace/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Certstra:robo-trace:live-probe",
+  "statement_sha256": "4243512906484fab06e03c54d0f0e417feeb4f8369a91655d40af844266664ce",
+  "target_platform": "Certstra"
+}

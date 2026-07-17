@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "7109faa748c60412f9e931bada170685ca6b77205d3a006f173eb1090b51c60e",
+  "deterministic": true,
+  "evidence_id": "machine:Scorestra:lazaretto-risk:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Scorestra:lazaretto-risk",
+  "supporting_files": [
+    "Scorestra/scorestra_packs/lazaretto_risk.py",
+    "Scorestra/schemas/item-lazaretto.schema.json"
+  ],
+  "tests_passed": true
+}

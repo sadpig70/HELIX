@@ -1,0 +1,20 @@
+{
+  "artifact": "Certstra/release-mesh",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "release-mesh",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Certstra/release-mesh/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Certstra/release-mesh/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Certstra:release-mesh:live-probe",
+  "statement_sha256": "859c84a1b448bbd843b300ad7211abd5769d1636e42c25094b7f662ae2d68679",
+  "target_platform": "Certstra"
+}

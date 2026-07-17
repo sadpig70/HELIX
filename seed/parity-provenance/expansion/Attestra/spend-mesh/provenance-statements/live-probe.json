@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/spend-mesh",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "spend-mesh",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/spend-mesh/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/spend-mesh/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:spend-mesh:live-probe",
+  "statement_sha256": "5103e5601b0e0330b2214c5be816e086ce307dff5385e09b09c2241ad5e32480",
+  "target_platform": "Attestra"
+}

@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-07-16T00:00:00Z",
+  "machine_evidence": "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/machine-evidence/live-probe.json",
+  "machines": [
+    "M8"
+  ],
+  "pack": "shock-rehearsal",
+  "parity_contract": "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/parity-contracts/live-probe.json",
+  "parity_receipt": "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/parity-receipts/live-probe.json",
+  "platform": "Clearstra",
+  "probe_case_count": 1,
+  "problems": [],
+  "provenance_statement": "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/provenance-statements/live-probe.json",
+  "schema": "helix-parity-pending-promotion-report/1.0",
+  "source_lock": "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/source-locks/local-pack.json",
+  "status": "VALID"
+}

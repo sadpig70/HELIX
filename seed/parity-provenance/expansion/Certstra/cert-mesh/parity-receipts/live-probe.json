@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Certstra:cert-mesh:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "2519ebc14f62b97dc6c77cad3404651824f961995afe689e563832ec8605b06e"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "24711c948825ece2ecddbc712ac45e2478c8599f81a23e9b539804d028b831fd",
+    "matched_machines": [
+      "M2"
+    ],
+    "probe_cases": [
+      "Certstra:cert-mesh:certify"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Certstra:cert-mesh:live-probe",
+  "receipt_sha256": "14ad7e11f8f43770d692e10163da13514f6995f0a1c3ef946a8d613a323da82a",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "9c0c9ef7ddf585a392acb98e94c14741a81c3c06ba5219d8fcade549438d6c2a"
+  ]
+}

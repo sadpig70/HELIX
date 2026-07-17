@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "72223c2f9987bf4e456d745cadb5c5e79b6647ba2af78ac388993467c77d207a",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:veto-escrow:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:veto-escrow",
+  "supporting_files": [
+    "Attestra/attestra_packs/veto_escrow.py",
+    "Attestra/schemas/packet-veto.schema.json"
+  ],
+  "tests_passed": true
+}

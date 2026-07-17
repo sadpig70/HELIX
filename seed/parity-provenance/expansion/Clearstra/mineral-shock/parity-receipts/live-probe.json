@@ -1,0 +1,28 @@
+{
+  "contract_id": "contract:Clearstra:mineral-shock:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "5fb2534b614e239a7d35e9a604c91c2722cef1dfb9926ac575cd955db556f673"
+  ],
+  "observations": {
+    "case_count": 2,
+    "contract_sha256": "cc7340ab4089b8c5a6921359ed6c133c7ca6ecb2265b61c914817353698f0551",
+    "matched_machines": [
+      "M6",
+      "M8"
+    ],
+    "probe_cases": [
+      "Clearstra:mineral-shock:price",
+      "Clearstra:mineral-shock:rehearse"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Clearstra:mineral-shock:live-probe",
+  "receipt_sha256": "b62a8abc24009f608901fcdbc28601d4cf649c4a4bef1655bd1e1d1592ca6c3b",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "9e9e81a19dbde50061e5ebc5d68d69e5c2b58d07a0216d8f7837a477ad40a087"
+  ]
+}

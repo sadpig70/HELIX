@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Clearstra-quadratic-carbon",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Clearstra/quadratic-carbon",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "62957dc4fc2e52b887652ad853888a4d65c25d94",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Clearstra:quadratic-carbon",
+  "source_sha256": "3e911c2f18fcafa4beada12d544e55b05365f7219f6a9c3d6826bfc0b88ec8f6"
+}

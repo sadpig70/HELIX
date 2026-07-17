@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "c258f59c6f81605a2c25e3890b3b5f0603568999e21c299a5558ebe17792b370",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:cryo-futures:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:cryo-futures",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/cryo_futures.py",
+    "Clearstra/schemas/order-cryo.schema.json"
+  ],
+  "tests_passed": true
+}

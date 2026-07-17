@@ -1,0 +1,20 @@
+{
+  "artifact": "Scorestra/field-posture",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "field-posture",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Scorestra/field-posture/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Scorestra/field-posture/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Scorestra:field-posture:live-probe",
+  "statement_sha256": "f80f19ea4c9721e620766e3364d4744164c71654237d8ff0757de912dafe281e",
+  "target_platform": "Scorestra"
+}

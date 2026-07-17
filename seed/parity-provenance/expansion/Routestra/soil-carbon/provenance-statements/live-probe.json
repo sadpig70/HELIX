@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/soil-carbon",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "soil-carbon",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/soil-carbon/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/soil-carbon/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:soil-carbon:live-probe",
+  "statement_sha256": "699288bf2bdf7746db8f746e4fbb1ebf106b795fe761c1369bbbd45e88b63d0b",
+  "target_platform": "Routestra"
+}

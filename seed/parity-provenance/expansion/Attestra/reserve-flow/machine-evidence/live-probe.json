@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "f1c56ac7f0164b88a464b4a7a94454045ab08fdabbb02a222994f8ada30ba9d1",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:reserve-flow:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:reserve-flow",
+  "supporting_files": [
+    "Attestra/attestra_packs/reserveflow.py",
+    "Attestra/schemas/packet-clearing.schema.json"
+  ],
+  "tests_passed": true
+}

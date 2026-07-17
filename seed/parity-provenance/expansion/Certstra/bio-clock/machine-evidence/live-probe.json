@@ -1,0 +1,15 @@
+{
+  "behavior_sha256": "6bb8c9a65c133346e71ac73499c14c74dff408871f95aa7a042f0d3d30172fcc",
+  "deterministic": true,
+  "evidence_id": "machine:Certstra:bio-clock:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Certstra:bio-clock",
+  "supporting_files": [
+    "Certstra/certstra_packs/bio_clock.py"
+  ],
+  "tests_passed": true
+}

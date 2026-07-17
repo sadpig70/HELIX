@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Routestra:power-roam:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "0615f8dd07ac5122a1252ee256e36fd67bf09d0808320b5eda8882e8c9db9d32"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "870e7d5f1662b3b3f7e6fa4d5f2e7634347dfb700a94478c0634a2b136f40108",
+    "matched_machines": [
+      "M9"
+    ],
+    "probe_cases": [
+      "Routestra:power-roam:route"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Routestra:power-roam:live-probe",
+  "receipt_sha256": "e7c9238c2f816db4953c50c0cdbb3f211a3a362e947a97069aef33c8667605b9",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "f2c6267dc3711714fcaeca6df3db93b2426f6752a800987b518d53f0c06ddb27"
+  ]
+}

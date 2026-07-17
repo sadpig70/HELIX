@@ -1,0 +1,30 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Routestra:thermal-plume:live-probe",
+  "expected": {
+    "case_count": 1,
+    "machines": [
+      "M10"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Routestra:thermal-plume:bound"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Routestra/thermal-plume/machine-evidence/live-probe.json"
+  ],
+  "pack": "thermal-plume",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/thermal-plume/source-locks/local-pack.json"
+  ],
+  "target_platform": "Routestra"
+}

@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Clearstra-retrofit-receivable",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Clearstra/retrofit-receivable",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "62957dc4fc2e52b887652ad853888a4d65c25d94",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Clearstra:retrofit-receivable",
+  "source_sha256": "e36ad0b62224f71e1a12d34dd0cdb591cdbb33c42f70c88c6870006cc7c7bed5"
+}

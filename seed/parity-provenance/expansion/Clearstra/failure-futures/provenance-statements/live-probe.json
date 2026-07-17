@@ -1,0 +1,20 @@
+{
+  "artifact": "Clearstra/failure-futures",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "failure-futures",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Clearstra/failure-futures/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/failure-futures/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Clearstra:failure-futures:live-probe",
+  "statement_sha256": "cfc674f5289e1004d1c85429313950826bcb4b8474477e6c55837df0ab771e24",
+  "target_platform": "Clearstra"
+}

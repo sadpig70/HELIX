@@ -600,3 +600,75 @@ Next dashboard candidates after Stage 13:
 | `Attestra` | `repro-dossier` | 2 |
 | `Attestra` | `reserve-flow` | 2 |
 | `Attestra` | `settle-mesh` | 2 |
+
+## Stage 14 full pending closure
+
+Stage 14 exhausts every remaining `PENDING` expansion pack in one bounded promotion sweep.
+
+```pg
+Stage14FullPendingClosure
+    InspectCoverageDashboard -> done
+    PromoteAllPending(limit=43) -> done
+    ValidateInventoryAfterEachPromotion -> done
+    RefreshCoverageDashboard -> done
+    FreezeBlockedRepresentativeEvidenceAsFailClosed -> done
+    WriteFinalClosureReport -> done
+```
+
+Execution command:
+
+```bash
+python scripts/corpus/parity_promotion_batch.py \
+  --evidence-root seed/parity-provenance \
+  --limit 43 \
+  --now 2026-07-16T00:00:00Z \
+  --refresh-dashboard
+```
+
+Final inventory:
+
+| Status | Before Stage 14 | After Stage 14 |
+| --- | ---: | ---: |
+| `VALID` | 15 | 58 |
+| `BLOCKED` | 4 | 4 |
+| `PENDING` | 43 | 0 |
+| Total | 62 | 62 |
+
+Final platform coverage:
+
+| Platform | `VALID` | `BLOCKED` | `PENDING` |
+| --- | ---: | ---: | ---: |
+| `Attestra` | 25 | 3 | 0 |
+| `Certstra` | 5 | 0 | 0 |
+| `Clearstra` | 12 | 0 | 0 |
+| `Routestra` | 11 | 1 | 0 |
+| `Scorestra` | 5 | 0 | 0 |
+
+Final dashboard:
+
+| Metric | Value |
+| --- | ---: |
+| Total packs | 62 |
+| `VALID` | 58 |
+| `BLOCKED` | 4 |
+| `PENDING` | 0 |
+| Coverage | 93.55% |
+
+Final closure artifact:
+
+- `seed/parity-provenance/final-closure-report.json`
+
+Fail-closed blocked set:
+
+| Platform | Pack | Closure decision |
+| --- | --- | --- |
+| `Attestra` | `authority-arbiter` | remains `BLOCKED` until real machine evidence is substantiated |
+| `Attestra` | `graph-quarantine` | remains `BLOCKED` until real machine evidence is substantiated |
+| `Attestra` | `hook-circuit` | remains `BLOCKED` until real machine evidence is substantiated |
+| `Routestra` | `contract-relay` | remains `BLOCKED` until real machine evidence is substantiated |
+
+PGF review decision:
+
+- all actionable `PENDING` parity/provenance promotions are exhausted;
+- the remaining `BLOCKED` entries are intentionally not converted to `VALID` because doing so would require unsupported representative runner behavior or unsubstantiated machine evidence;
+- therefore the terminal state is `ACTIONABLE_PENDING_EXHAUSTED_BLOCKED_FAIL_CLOSED`, not `ALL_PACKS_VALID`.

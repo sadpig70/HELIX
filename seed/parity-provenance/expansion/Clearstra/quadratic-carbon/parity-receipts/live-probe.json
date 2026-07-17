@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Clearstra:quadratic-carbon:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "03d483fbafa98f8415b295ac61ba910e37e08e3cd94bcc5e2a2892b21951c7f3"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "e9a61ee2544dc66e8b10c9a15a0466c9568d3f3aa3b8babca207f655dc2c860a",
+    "matched_machines": [
+      "M5"
+    ],
+    "probe_cases": [
+      "Clearstra:quadratic-carbon:clear"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Clearstra:quadratic-carbon:live-probe",
+  "receipt_sha256": "4c4e1bf2d0c085dcae84688867e2ff414b6d8678fe42dd8e1811c05d5fdae640",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "4a97f8cb79a29efb3543418808051c42ea329e8b885df039182b762469a86ed4"
+  ]
+}

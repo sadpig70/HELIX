@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "22f18fa2b91c57bd9873f13a9d7d829f74506cd2261a8b6a4119c327f9c12a8d",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:cold-capacity:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:cold-capacity",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/cold_capacity.py",
+    "Clearstra/schemas/order-cold.schema.json"
+  ],
+  "tests_passed": true
+}

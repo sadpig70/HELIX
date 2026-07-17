@@ -26,18 +26,20 @@ class TestParityExpansionInventory(unittest.TestCase):
         self.assertEqual(inventory["counts"]["packs"], 62)
         self.assertEqual(inventory["counts"]["by_status"], {
             "BLOCKED": 4,
-            "PENDING": 43,
-            "VALID": 15,
+            "VALID": 58,
         })
-        self.assertEqual(inventory["counts"]["by_platform"]["Attestra"]["VALID"], 14)
-        self.assertEqual(inventory["counts"]["by_platform"]["Clearstra"]["VALID"], 1)
+        self.assertEqual(inventory["counts"]["by_platform"]["Attestra"]["VALID"], 25)
+        self.assertEqual(inventory["counts"]["by_platform"]["Certstra"]["VALID"], 5)
+        self.assertEqual(inventory["counts"]["by_platform"]["Clearstra"]["VALID"], 12)
+        self.assertEqual(inventory["counts"]["by_platform"]["Routestra"]["VALID"], 11)
         self.assertEqual(inventory["counts"]["by_platform"]["Routestra"]["BLOCKED"], 1)
+        self.assertEqual(inventory["counts"]["by_platform"]["Scorestra"]["VALID"], 5)
 
     @unittest.skipUnless(required_platforms_available(ROOT), "live platform repos are not checked out")
     def test_pending_entries_do_not_claim_evidence(self):
         inventory = build_inventory(ROOT, EVIDENCE_ROOT, NOW)
         pending = [entry for entry in inventory["entries"] if entry["status"] == "PENDING"]
-        self.assertEqual(len(pending), 43)
+        self.assertEqual(len(pending), 0)
         self.assertTrue(all(entry["evidence"] == {} for entry in pending))
 
 

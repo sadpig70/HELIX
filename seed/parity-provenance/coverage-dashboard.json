@@ -59,122 +59,271 @@
   ],
   "generated_at": "2026-07-16T00:00:00Z",
   "latest_batch": {
-    "completed": 3,
+    "completed": 43,
     "problems": [],
     "promotions": [
       {
         "ordinal": 1,
-        "pack": "handback",
+        "pack": "repro-dossier",
         "platform": "Attestra",
         "probe_case_count": 2
       },
       {
         "ordinal": 2,
-        "pack": "method-bond",
+        "pack": "reserve-flow",
         "platform": "Attestra",
         "probe_case_count": 2
       },
       {
         "ordinal": 3,
-        "pack": "pqc-mesh",
+        "pack": "settle-mesh",
         "platform": "Attestra",
         "probe_case_count": 2
+      },
+      {
+        "ordinal": 4,
+        "pack": "signal-mesh",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 5,
+        "pack": "slot-gate",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 6,
+        "pack": "slot-settle-gate",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 7,
+        "pack": "sov-mesh",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 8,
+        "pack": "spend-boundary",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 9,
+        "pack": "spend-mesh",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 10,
+        "pack": "veto-escrow",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 11,
+        "pack": "withheld-action",
+        "platform": "Attestra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 12,
+        "pack": "release-mesh",
+        "platform": "Certstra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 13,
+        "pack": "buy-bloc",
+        "platform": "Clearstra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 14,
+        "pack": "cold-capacity",
+        "platform": "Clearstra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 15,
+        "pack": "cryo-futures",
+        "platform": "Clearstra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 16,
+        "pack": "failure-futures",
+        "platform": "Clearstra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 17,
+        "pack": "mineral-shock",
+        "platform": "Clearstra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 18,
+        "pack": "retrofit-receivable",
+        "platform": "Clearstra",
+        "probe_case_count": 2
+      },
+      {
+        "ordinal": 19,
+        "pack": "bio-clock",
+        "platform": "Certstra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 20,
+        "pack": "cert-mesh",
+        "platform": "Certstra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 21,
+        "pack": "orbi-roam",
+        "platform": "Certstra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 22,
+        "pack": "robo-trace",
+        "platform": "Certstra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 23,
+        "pack": "agent-ops",
+        "platform": "Clearstra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 24,
+        "pack": "exclusive-grant",
+        "platform": "Clearstra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 25,
+        "pack": "quadratic-carbon",
+        "platform": "Clearstra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 26,
+        "pack": "refusal-option",
+        "platform": "Clearstra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 27,
+        "pack": "shock-rehearsal",
+        "platform": "Clearstra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 28,
+        "pack": "climate-resilience",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 29,
+        "pack": "compute-power",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 30,
+        "pack": "flow-mesh",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 31,
+        "pack": "inference-grid",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 32,
+        "pack": "power-roam",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 33,
+        "pack": "season-battery",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 34,
+        "pack": "soil-carbon",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 35,
+        "pack": "thermal-cascade",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 36,
+        "pack": "thermal-plume",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 37,
+        "pack": "waste-stack",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 38,
+        "pack": "watt-fabric",
+        "platform": "Routestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 39,
+        "pack": "detour-posture",
+        "platform": "Scorestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 40,
+        "pack": "field-posture",
+        "platform": "Scorestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 41,
+        "pack": "lazaretto-risk",
+        "platform": "Scorestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 42,
+        "pack": "loop-kit",
+        "platform": "Scorestra",
+        "probe_case_count": 1
+      },
+      {
+        "ordinal": 43,
+        "pack": "pqc-exposure",
+        "platform": "Scorestra",
+        "probe_case_count": 1
       }
     ],
-    "requested_limit": 3
+    "requested_limit": 43
   },
-  "next_candidates": [
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "repro-dossier",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "reserve-flow",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "settle-mesh",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "signal-mesh",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "slot-gate",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "slot-settle-gate",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "sov-mesh",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "spend-boundary",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "spend-mesh",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    },
-    {
-      "machines": [
-        "M2",
-        "M3"
-      ],
-      "pack": "veto-escrow",
-      "platform": "Attestra",
-      "probe_case_count": 2
-    }
-  ],
+  "next_candidates": [],
   "platforms": [
     {
       "blocked": 3,
@@ -183,87 +332,54 @@
         "graph-quarantine",
         "hook-circuit"
       ],
-      "coverage_percent": 50.0,
-      "next_pending": {
-        "machines": [
-          "M2",
-          "M3"
-        ],
-        "pack": "repro-dossier",
-        "probe_case_count": 2
-      },
-      "pending": 11,
+      "coverage_percent": 89.29,
+      "next_pending": null,
+      "pending": 0,
       "platform": "Attestra",
       "total": 28,
-      "valid": 14
+      "valid": 25
     },
     {
       "blocked": 0,
       "blocked_packs": [],
-      "coverage_percent": 0.0,
-      "next_pending": {
-        "machines": [
-          "M12",
-          "M2"
-        ],
-        "pack": "release-mesh",
-        "probe_case_count": 2
-      },
-      "pending": 5,
+      "coverage_percent": 100.0,
+      "next_pending": null,
+      "pending": 0,
       "platform": "Certstra",
       "total": 5,
-      "valid": 0
+      "valid": 5
     },
     {
       "blocked": 0,
       "blocked_packs": [],
-      "coverage_percent": 8.33,
-      "next_pending": {
-        "machines": [
-          "M5",
-          "M6"
-        ],
-        "pack": "buy-bloc",
-        "probe_case_count": 2
-      },
-      "pending": 11,
+      "coverage_percent": 100.0,
+      "next_pending": null,
+      "pending": 0,
       "platform": "Clearstra",
       "total": 12,
-      "valid": 1
+      "valid": 12
     },
     {
       "blocked": 1,
       "blocked_packs": [
         "contract-relay"
       ],
-      "coverage_percent": 0.0,
-      "next_pending": {
-        "machines": [
-          "M10"
-        ],
-        "pack": "climate-resilience",
-        "probe_case_count": 1
-      },
-      "pending": 11,
+      "coverage_percent": 91.67,
+      "next_pending": null,
+      "pending": 0,
       "platform": "Routestra",
       "total": 12,
-      "valid": 0
+      "valid": 11
     },
     {
       "blocked": 0,
       "blocked_packs": [],
-      "coverage_percent": 0.0,
-      "next_pending": {
-        "machines": [
-          "M15"
-        ],
-        "pack": "detour-posture",
-        "probe_case_count": 1
-      },
-      "pending": 5,
+      "coverage_percent": 100.0,
+      "next_pending": null,
+      "pending": 0,
       "platform": "Scorestra",
       "total": 5,
-      "valid": 0
+      "valid": 5
     }
   ],
   "problems": [],
@@ -309,10 +425,10 @@
   "summary": {
     "blocked": 4,
     "blocked_percent": 6.45,
-    "coverage_percent": 24.19,
+    "coverage_percent": 93.55,
     "packs": 62,
-    "pending": 43,
-    "pending_percent": 69.35,
-    "valid": 15
+    "pending": 0,
+    "pending_percent": 0.0,
+    "valid": 58
   }
 }

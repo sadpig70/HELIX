@@ -1,0 +1,20 @@
+{
+  "artifact": "Clearstra/refusal-option",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "refusal-option",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Clearstra/refusal-option/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/refusal-option/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Clearstra:refusal-option:live-probe",
+  "statement_sha256": "45861f7244c759ae7b48187acb42052444b3e480465ff890746091a2075f49d4",
+  "target_platform": "Clearstra"
+}

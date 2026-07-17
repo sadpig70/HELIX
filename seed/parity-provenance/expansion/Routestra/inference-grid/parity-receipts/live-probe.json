@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Routestra:inference-grid:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "0b0d67439fe3d6d6ca3861e81c7dd45ffb74b8e274f39727593ee4a392a55288"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "d79611eeda1bf1bf41c14c83379bffe6727b73ce6cc26d3c1224e757d36f2ca2",
+    "matched_machines": [
+      "M9"
+    ],
+    "probe_cases": [
+      "Routestra:inference-grid:route"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Routestra:inference-grid:live-probe",
+  "receipt_sha256": "36df8d1c817daff26b4111f3fa18b0d850c855e18f67e6babfbab38c7db0a3fd",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "90296e53b51f776b063c9940a2f18ce7cdd47b364287ddede0a106da9c54bf68"
+  ]
+}

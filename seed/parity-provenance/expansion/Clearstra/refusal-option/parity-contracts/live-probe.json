@@ -1,0 +1,30 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Clearstra:refusal-option:live-probe",
+  "expected": {
+    "case_count": 1,
+    "machines": [
+      "M6"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Clearstra:refusal-option:price"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Clearstra/refusal-option/machine-evidence/live-probe.json"
+  ],
+  "pack": "refusal-option",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/refusal-option/source-locks/local-pack.json"
+  ],
+  "target_platform": "Clearstra"
+}

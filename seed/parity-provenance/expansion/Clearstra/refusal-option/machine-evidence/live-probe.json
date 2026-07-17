@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "f3921688abaae30b96064071aded2ef367291ef1c7168211bf6b1b19a93bdef8",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:refusal-option:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:refusal-option",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/refusal_option.py",
+    "Clearstra/schemas/order-refusal.schema.json"
+  ],
+  "tests_passed": true
+}

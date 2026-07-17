@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/waste-stack",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "waste-stack",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/waste-stack/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/waste-stack/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:waste-stack:live-probe",
+  "statement_sha256": "5237657842905e2c05a08c1f81827d31bd866bd0eab553fd98a5761ad90b5463",
+  "target_platform": "Routestra"
+}

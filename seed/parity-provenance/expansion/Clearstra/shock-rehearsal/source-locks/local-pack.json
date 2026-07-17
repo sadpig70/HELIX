@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Clearstra-shock-rehearsal",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Clearstra/shock-rehearsal",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "62957dc4fc2e52b887652ad853888a4d65c25d94",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Clearstra:shock-rehearsal",
+  "source_sha256": "1656b5172a366b783d32980b62462cf05ee9bb5e36e34de825758d81133149dc"
+}

@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "c3e3fd811398fdbf544897e42ab75f6efabcaf047d098486e40e20ccf897d242",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:shock-rehearsal:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:shock-rehearsal",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/shock_rehearsal.py",
+    "Clearstra/schemas/order-shock.schema.json"
+  ],
+  "tests_passed": true
+}

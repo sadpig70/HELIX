@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/repro-dossier",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "repro-dossier",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/repro-dossier/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/repro-dossier/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:repro-dossier:live-probe",
+  "statement_sha256": "e309e336047ac6ad3c4d1a57d722389ccdfd93297ba21575619be0852d7caa75",
+  "target_platform": "Attestra"
+}

@@ -3,28 +3,25 @@
     "by_platform": {
       "Attestra": {
         "BLOCKED": 3,
-        "PENDING": 11,
-        "VALID": 14
+        "VALID": 25
       },
       "Certstra": {
-        "PENDING": 5
+        "VALID": 5
       },
       "Clearstra": {
-        "PENDING": 11,
-        "VALID": 1
+        "VALID": 12
       },
       "Routestra": {
         "BLOCKED": 1,
-        "PENDING": 11
+        "VALID": 11
       },
       "Scorestra": {
-        "PENDING": 5
+        "VALID": 5
       }
     },
     "by_status": {
       "BLOCKED": 4,
-      "PENDING": 43,
-      "VALID": 15
+      "VALID": 58
     },
     "packs": 62,
     "probe_cases": 102
@@ -595,7 +592,24 @@
       "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/repro-dossier/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/repro-dossier/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/repro-dossier/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/repro-dossier/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/repro-dossier/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/repro-dossier/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -606,14 +620,31 @@
         "Attestra:repro-dossier",
         "Attestra:repro-dossier:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/reserve-flow/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/reserve-flow/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/reserve-flow/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/reserve-flow/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/reserve-flow/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/reserve-flow/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -624,14 +655,31 @@
         "Attestra:reserve-flow",
         "Attestra:reserve-flow:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/settle-mesh/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/settle-mesh/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/settle-mesh/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/settle-mesh/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/settle-mesh/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/settle-mesh/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -642,14 +690,31 @@
         "Attestra:settle-mesh",
         "Attestra:settle-mesh:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/signal-mesh/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/signal-mesh/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/signal-mesh/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/signal-mesh/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/signal-mesh/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/signal-mesh/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -660,14 +725,31 @@
         "Attestra:signal-mesh",
         "Attestra:signal-mesh:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/slot-gate/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/slot-gate/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/slot-gate/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/slot-gate/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/slot-gate/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/slot-gate/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -678,14 +760,31 @@
         "Attestra:slot-gate",
         "Attestra:slot-gate:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/slot-settle-gate/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/slot-settle-gate/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/slot-settle-gate/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/slot-settle-gate/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/slot-settle-gate/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/slot-settle-gate/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -696,14 +795,31 @@
         "Attestra:slot-settle-gate",
         "Attestra:slot-settle-gate:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/sov-mesh/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/sov-mesh/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/sov-mesh/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/sov-mesh/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/sov-mesh/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/sov-mesh/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -714,14 +830,31 @@
         "Attestra:sov-mesh",
         "Attestra:sov-mesh:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/spend-boundary/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/spend-boundary/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/spend-boundary/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/spend-boundary/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/spend-boundary/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/spend-boundary/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -732,14 +865,31 @@
         "Attestra:spend-boundary",
         "Attestra:spend-boundary:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/spend-mesh/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/spend-mesh/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/spend-mesh/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/spend-mesh/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/spend-mesh/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/spend-mesh/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -750,14 +900,31 @@
         "Attestra:spend-mesh",
         "Attestra:spend-mesh:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/veto-escrow/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/veto-escrow/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/veto-escrow/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/veto-escrow/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/veto-escrow/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/veto-escrow/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -768,14 +935,31 @@
         "Attestra:veto-escrow",
         "Attestra:veto-escrow:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Attestra/withheld-action/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Attestra/withheld-action/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Attestra/withheld-action/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Attestra/withheld-action/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Attestra/withheld-action/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Attestra/withheld-action/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2",
         "M3"
@@ -786,14 +970,31 @@
         "Attestra:withheld-action",
         "Attestra:withheld-action:predicate-gate"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "predicate_gate"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Certstra/bio-clock/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Certstra/bio-clock/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Certstra/bio-clock/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Certstra/bio-clock/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Certstra/bio-clock/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Certstra/bio-clock/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2"
       ],
@@ -802,14 +1003,31 @@
       "probe_cases": [
         "Certstra:bio-clock:certify"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "certify"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Certstra/cert-mesh/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Certstra/cert-mesh/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Certstra/cert-mesh/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Certstra/cert-mesh/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Certstra/cert-mesh/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Certstra/cert-mesh/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2"
       ],
@@ -818,14 +1036,31 @@
       "probe_cases": [
         "Certstra:cert-mesh:certify"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "certify"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Certstra/orbi-roam/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Certstra/orbi-roam/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Certstra/orbi-roam/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Certstra/orbi-roam/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Certstra/orbi-roam/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Certstra/orbi-roam/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2"
       ],
@@ -834,14 +1069,31 @@
       "probe_cases": [
         "Certstra:orbi-roam:certify"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "certify"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Certstra/release-mesh/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Certstra/release-mesh/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Certstra/release-mesh/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Certstra/release-mesh/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Certstra/release-mesh/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Certstra/release-mesh/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M12",
         "M2"
@@ -852,15 +1104,32 @@
         "Certstra:release-mesh:certify",
         "Certstra:release-mesh:stage"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "certify",
         "stage"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Certstra/robo-trace/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Certstra/robo-trace/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Certstra/robo-trace/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Certstra/robo-trace/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Certstra/robo-trace/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Certstra/robo-trace/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M2"
       ],
@@ -869,14 +1138,31 @@
       "probe_cases": [
         "Certstra:robo-trace:certify"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "certify"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/agent-ops/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/agent-ops/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/agent-ops/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/agent-ops/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/agent-ops/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/agent-ops/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M6"
       ],
@@ -885,14 +1171,31 @@
       "probe_cases": [
         "Clearstra:agent-ops:price"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "price"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/buy-bloc/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/buy-bloc/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/buy-bloc/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/buy-bloc/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/buy-bloc/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/buy-bloc/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M5",
         "M6"
@@ -903,15 +1206,32 @@
         "Clearstra:buy-bloc:clear",
         "Clearstra:buy-bloc:price"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "clear",
         "price"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/cold-capacity/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/cold-capacity/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/cold-capacity/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/cold-capacity/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/cold-capacity/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/cold-capacity/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M5",
         "M6"
@@ -922,15 +1242,32 @@
         "Clearstra:cold-capacity:clear",
         "Clearstra:cold-capacity:price"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "clear",
         "price"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/cryo-futures/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/cryo-futures/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/cryo-futures/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/cryo-futures/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/cryo-futures/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/cryo-futures/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M6",
         "M7"
@@ -941,15 +1278,32 @@
         "Clearstra:cryo-futures:price",
         "Clearstra:cryo-futures:settle"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "price",
         "settle"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/exclusive-grant/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/exclusive-grant/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/exclusive-grant/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/exclusive-grant/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/exclusive-grant/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/exclusive-grant/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M5"
       ],
@@ -958,14 +1312,31 @@
       "probe_cases": [
         "Clearstra:exclusive-grant:clear"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "clear"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/failure-futures/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/failure-futures/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/failure-futures/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/failure-futures/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/failure-futures/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/failure-futures/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M6",
         "M7"
@@ -976,15 +1347,32 @@
         "Clearstra:failure-futures:price",
         "Clearstra:failure-futures:settle"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "price",
         "settle"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/mineral-shock/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/mineral-shock/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/mineral-shock/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/mineral-shock/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/mineral-shock/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/mineral-shock/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M6",
         "M8"
@@ -995,15 +1383,32 @@
         "Clearstra:mineral-shock:price",
         "Clearstra:mineral-shock:rehearse"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "price",
         "rehearse"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/quadratic-carbon/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/quadratic-carbon/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/quadratic-carbon/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/quadratic-carbon/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/quadratic-carbon/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/quadratic-carbon/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M5"
       ],
@@ -1012,14 +1417,31 @@
       "probe_cases": [
         "Clearstra:quadratic-carbon:clear"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "clear"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/refusal-option/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/refusal-option/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/refusal-option/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/refusal-option/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/refusal-option/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/refusal-option/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M6"
       ],
@@ -1028,11 +1450,11 @@
       "probe_cases": [
         "Clearstra:refusal-option:price"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "price"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
       "evidence": {
@@ -1074,7 +1496,24 @@
       "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/retrofit-receivable/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/retrofit-receivable/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/retrofit-receivable/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/retrofit-receivable/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/retrofit-receivable/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/retrofit-receivable/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M6",
         "M7"
@@ -1085,15 +1524,32 @@
         "Clearstra:retrofit-receivable:price",
         "Clearstra:retrofit-receivable:settle"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "price",
         "settle"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M8"
       ],
@@ -1102,14 +1558,31 @@
       "probe_cases": [
         "Clearstra:shock-rehearsal:rehearse"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "rehearse"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/climate-resilience/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/climate-resilience/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/climate-resilience/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/climate-resilience/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/climate-resilience/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/climate-resilience/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M10"
       ],
@@ -1118,14 +1591,31 @@
       "probe_cases": [
         "Routestra:climate-resilience:bound"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "bound"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/compute-power/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/compute-power/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/compute-power/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/compute-power/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/compute-power/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/compute-power/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M9"
       ],
@@ -1134,11 +1624,11 @@
       "probe_cases": [
         "Routestra:compute-power:route"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "route"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
       "evidence": {
@@ -1165,7 +1655,24 @@
       "status": "BLOCKED"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/flow-mesh/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/flow-mesh/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/flow-mesh/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/flow-mesh/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/flow-mesh/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/flow-mesh/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M10"
       ],
@@ -1174,14 +1681,31 @@
       "probe_cases": [
         "Routestra:flow-mesh:bound"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "bound"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/inference-grid/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/inference-grid/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/inference-grid/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/inference-grid/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/inference-grid/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/inference-grid/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M9"
       ],
@@ -1190,14 +1714,31 @@
       "probe_cases": [
         "Routestra:inference-grid:route"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "route"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/power-roam/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/power-roam/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/power-roam/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/power-roam/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/power-roam/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/power-roam/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M9"
       ],
@@ -1206,14 +1747,31 @@
       "probe_cases": [
         "Routestra:power-roam:route"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "route"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/season-battery/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/season-battery/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/season-battery/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/season-battery/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/season-battery/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/season-battery/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M10"
       ],
@@ -1222,14 +1780,31 @@
       "probe_cases": [
         "Routestra:season-battery:bound"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "bound"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/soil-carbon/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/soil-carbon/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/soil-carbon/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/soil-carbon/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/soil-carbon/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/soil-carbon/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M9"
       ],
@@ -1238,14 +1813,31 @@
       "probe_cases": [
         "Routestra:soil-carbon:route"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "route"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/thermal-cascade/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/thermal-cascade/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/thermal-cascade/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/thermal-cascade/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/thermal-cascade/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/thermal-cascade/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M10"
       ],
@@ -1254,14 +1846,31 @@
       "probe_cases": [
         "Routestra:thermal-cascade:bound"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "bound"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/thermal-plume/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/thermal-plume/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/thermal-plume/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/thermal-plume/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/thermal-plume/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/thermal-plume/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M10"
       ],
@@ -1270,14 +1879,31 @@
       "probe_cases": [
         "Routestra:thermal-plume:bound"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "bound"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/waste-stack/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/waste-stack/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/waste-stack/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/waste-stack/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/waste-stack/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/waste-stack/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M10"
       ],
@@ -1286,14 +1912,31 @@
       "probe_cases": [
         "Routestra:waste-stack:bound"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "bound"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Routestra/watt-fabric/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Routestra/watt-fabric/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Routestra/watt-fabric/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Routestra/watt-fabric/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Routestra/watt-fabric/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Routestra/watt-fabric/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M9"
       ],
@@ -1302,14 +1945,31 @@
       "probe_cases": [
         "Routestra:watt-fabric:route"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "route"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Scorestra/detour-posture/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Scorestra/detour-posture/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Scorestra/detour-posture/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Scorestra/detour-posture/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Scorestra/detour-posture/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Scorestra/detour-posture/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M15"
       ],
@@ -1318,14 +1978,31 @@
       "probe_cases": [
         "Scorestra:detour-posture:assess"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "assess"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Scorestra/field-posture/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Scorestra/field-posture/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Scorestra/field-posture/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Scorestra/field-posture/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Scorestra/field-posture/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Scorestra/field-posture/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M15"
       ],
@@ -1334,14 +2011,31 @@
       "probe_cases": [
         "Scorestra:field-posture:assess"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "assess"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Scorestra/lazaretto-risk/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Scorestra/lazaretto-risk/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Scorestra/lazaretto-risk/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Scorestra/lazaretto-risk/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Scorestra/lazaretto-risk/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Scorestra/lazaretto-risk/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M15"
       ],
@@ -1350,14 +2044,31 @@
       "probe_cases": [
         "Scorestra:lazaretto-risk:assess"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "assess"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Scorestra/loop-kit/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Scorestra/loop-kit/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Scorestra/loop-kit/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Scorestra/loop-kit/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Scorestra/loop-kit/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Scorestra/loop-kit/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M15"
       ],
@@ -1366,14 +2077,31 @@
       "probe_cases": [
         "Scorestra:loop-kit:assess"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "assess"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     },
     {
-      "evidence": {},
+      "evidence": {
+        "machine_evidence": [
+          "seed/parity-provenance/expansion/Scorestra/pqc-exposure/machine-evidence/live-probe.json"
+        ],
+        "parity_contracts": [
+          "seed/parity-provenance/expansion/Scorestra/pqc-exposure/parity-contracts/live-probe.json"
+        ],
+        "parity_receipts": [
+          "seed/parity-provenance/expansion/Scorestra/pqc-exposure/parity-receipts/live-probe.json"
+        ],
+        "promotion_report": "seed/parity-provenance/expansion/Scorestra/pqc-exposure/promotion-report.json",
+        "provenance_statements": [
+          "seed/parity-provenance/expansion/Scorestra/pqc-exposure/provenance-statements/live-probe.json"
+        ],
+        "source_locks": [
+          "seed/parity-provenance/expansion/Scorestra/pqc-exposure/source-locks/local-pack.json"
+        ]
+      },
       "machines": [
         "M15"
       ],
@@ -1382,11 +2110,11 @@
       "probe_cases": [
         "Scorestra:pqc-exposure:assess"
       ],
-      "reason": "parity_provenance_bundle_not_started",
+      "reason": "pending_pack_promoted_from_live_machine_probe",
       "stages": [
         "assess"
       ],
-      "status": "PENDING"
+      "status": "VALID"
     }
   ],
   "generated_at": "2026-07-16T00:00:00Z",

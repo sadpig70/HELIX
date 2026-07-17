@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "1441252027c0bd5f62bc7af589dae0fbc5514023cde9dad7462447cc2cdf9a6b",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:mineral-shock:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:mineral-shock",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/mineral_shock.py",
+    "Clearstra/schemas/order-mineral.schema.json"
+  ],
+  "tests_passed": true
+}

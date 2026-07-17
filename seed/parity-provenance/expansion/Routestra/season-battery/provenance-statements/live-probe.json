@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/season-battery",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "season-battery",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/season-battery/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/season-battery/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:season-battery:live-probe",
+  "statement_sha256": "17fbca87f1e26307451be29313c85b58262afebe3668e9f7a775ec7307bfe40d",
+  "target_platform": "Routestra"
+}

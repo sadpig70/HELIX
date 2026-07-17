@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Certstra-bio-clock",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Certstra/bio-clock",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "62957dc4fc2e52b887652ad853888a4d65c25d94",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Certstra:bio-clock",
+  "source_sha256": "ff44f253d4b5db51865b7e5511a473b1b2caef2213dcd2b2fb309918e28dc3dc"
+}

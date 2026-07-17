@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Scorestra:loop-kit:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "3a30b5e06815779d0957bac327b4734a0f1831059ec6e8e646d6aaeeefdb7190"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "aa2926a5c84af078547ba649e4b8dc148bd1298c72fb9d1eae07f14eedc960b8",
+    "matched_machines": [
+      "M15"
+    ],
+    "probe_cases": [
+      "Scorestra:loop-kit:assess"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Scorestra:loop-kit:live-probe",
+  "receipt_sha256": "7658ef2f12a3635d26eca6160045109a0735f04942aef81382c14a793d6b8e76",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "f649745d69454eb2aaefbfaee58fc0f85095a2e4c5731725a06666f7bfd213e0"
+  ]
+}

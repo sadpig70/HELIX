@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "2deb0cdfe3fecf59bfde77fc32617c6722ff0d323623bba037745392c2029385",
+  "deterministic": true,
+  "evidence_id": "machine:Scorestra:pqc-exposure:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Scorestra:pqc-exposure",
+  "supporting_files": [
+    "Scorestra/scorestra_packs/pqc_exposure.py",
+    "Scorestra/schemas/item-pqc.schema.json"
+  ],
+  "tests_passed": true
+}

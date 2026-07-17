@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "d87872c83c53b0b40e4d2fcd672f03d87243816f1a4883ef4d365c297dfef6c9",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:agent-ops:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:agent-ops",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/agent_ops.py",
+    "Clearstra/schemas/order-agentops.schema.json"
+  ],
+  "tests_passed": true
+}

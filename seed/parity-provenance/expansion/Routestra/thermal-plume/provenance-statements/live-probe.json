@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/thermal-plume",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "thermal-plume",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/thermal-plume/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/thermal-plume/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:thermal-plume:live-probe",
+  "statement_sha256": "ff25fbbc286f5e8c7a807f232357290ae5c25ae0db2d96f737f91c71fa708997",
+  "target_platform": "Routestra"
+}

@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "63b82b880d8ea1eaac0ddd95b4f14a8034b08520f7a176ba8310f8916f808eaa",
+  "deterministic": true,
+  "evidence_id": "machine:Routestra:thermal-cascade:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Routestra:thermal-cascade",
+  "supporting_files": [
+    "Routestra/routestra_packs/thermal_cascade.py",
+    "Routestra/schemas/candidate-thermal.schema.json"
+  ],
+  "tests_passed": true
+}

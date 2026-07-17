@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Routestra:flow-mesh:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "532ce80365cef986b7aeb2e8241392ebe3b7fec7ba3708930bff979ef2443dc2"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "91098fba87df27e7df8907499bb09a49a814bb0fd6448be97af94562caeb67e6",
+    "matched_machines": [
+      "M10"
+    ],
+    "probe_cases": [
+      "Routestra:flow-mesh:bound"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Routestra:flow-mesh:live-probe",
+  "receipt_sha256": "a5bd063edbac366f423cbbed4517396cd5ff6a8ede69a5872574a641b784b80d",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "6704f582feadb67d962ee751c6eaec82e7060038ed9f65e9d3ea7a26b4ff1aa1"
+  ]
+}

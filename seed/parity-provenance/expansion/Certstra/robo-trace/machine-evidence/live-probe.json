@@ -1,0 +1,15 @@
+{
+  "behavior_sha256": "32e031f084cb1e90212aa2b35f308a492f88c8a60977be4542de0d4e242bb7df",
+  "deterministic": true,
+  "evidence_id": "machine:Certstra:robo-trace:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Certstra:robo-trace",
+  "supporting_files": [
+    "Certstra/certstra_packs/robo_trace.py"
+  ],
+  "tests_passed": true
+}

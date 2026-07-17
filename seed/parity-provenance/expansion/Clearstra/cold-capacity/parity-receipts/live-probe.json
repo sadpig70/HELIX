@@ -1,0 +1,28 @@
+{
+  "contract_id": "contract:Clearstra:cold-capacity:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "759242aa048cf3563aabc6f03d4a70d6a9bff18ac941f6f2a4cb4cc975478840"
+  ],
+  "observations": {
+    "case_count": 2,
+    "contract_sha256": "ebf2c17143b3bcf76be0fd82080334b5c5ba54db8ebc6ceb666d7937f94b64d1",
+    "matched_machines": [
+      "M5",
+      "M6"
+    ],
+    "probe_cases": [
+      "Clearstra:cold-capacity:clear",
+      "Clearstra:cold-capacity:price"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Clearstra:cold-capacity:live-probe",
+  "receipt_sha256": "452a90475caa47f7cf598ac14aa9252d581f97244819ca6ae0b53328768b309d",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "e8b79b0706ccde0aed73e841f22c6660380c4ef3ae2219cc40beef96f482cc0c"
+  ]
+}

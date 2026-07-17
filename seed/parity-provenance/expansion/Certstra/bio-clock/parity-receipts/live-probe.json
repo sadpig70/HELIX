@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Certstra:bio-clock:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "e75a61aadf5eaf904e58ce33ce23460149b5763e0f3084c67d881111d0dd2324"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "0d611c88b17fef97cc879145ef18b78c6f86d9253da7f3a9558b9059436f7cd1",
+    "matched_machines": [
+      "M2"
+    ],
+    "probe_cases": [
+      "Certstra:bio-clock:certify"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Certstra:bio-clock:live-probe",
+  "receipt_sha256": "66278c85731cb3acd056291dd11deacb5f342473e340d2bfb844b52c8470d737",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "3e3875b200c1918af274da9cb52064b0baaa2a3c20552016109fc5e1e22b1035"
+  ]
+}

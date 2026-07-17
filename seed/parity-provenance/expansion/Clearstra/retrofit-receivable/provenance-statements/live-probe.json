@@ -1,0 +1,20 @@
+{
+  "artifact": "Clearstra/retrofit-receivable",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "retrofit-receivable",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Clearstra/retrofit-receivable/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/retrofit-receivable/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Clearstra:retrofit-receivable:live-probe",
+  "statement_sha256": "f5748dc3341fb23eaab273aec683ffbf0b188aba1fe654735058f860c617b172",
+  "target_platform": "Clearstra"
+}

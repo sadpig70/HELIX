@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "8772e894f7c93da97fcc87ba6149245b62067d015a85677f06153f919d5e50f7",
+  "deterministic": true,
+  "evidence_id": "machine:Routestra:soil-carbon:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Routestra:soil-carbon",
+  "supporting_files": [
+    "Routestra/routestra_packs/soil_carbon.py",
+    "Routestra/schemas/candidate-soil.schema.json"
+  ],
+  "tests_passed": true
+}

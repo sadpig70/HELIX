@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Routestra:climate-resilience:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "0edc4c0cbbef7d4be4380372f7e251b37c33889ddbd722510d75b6b8fc0f118a"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "ff7ce4def89f2fe2e7088421063d6960a859a78e82f474c165d8f6b6e0d8a6f7",
+    "matched_machines": [
+      "M10"
+    ],
+    "probe_cases": [
+      "Routestra:climate-resilience:bound"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Routestra:climate-resilience:live-probe",
+  "receipt_sha256": "d7b789fea3f8492f5b4806afa5e1a29287c29daa58d600fda83032e2d9e8b0de",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "00de5c820f8201e9ab4f984b6ddb9d7e73b72d64214678c377d6ec453c459cef"
+  ]
+}

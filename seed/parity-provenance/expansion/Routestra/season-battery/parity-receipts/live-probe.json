@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Routestra:season-battery:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "fa3ac70136b4918de6f3a75ac3976e204bd6b8de8cf5e2b5125651a5969dbccf"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "bce03fd7f8a7aa451bf1f9b31fe3a026a5cd496709ef538c80a2c5ab79d0a924",
+    "matched_machines": [
+      "M10"
+    ],
+    "probe_cases": [
+      "Routestra:season-battery:bound"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Routestra:season-battery:live-probe",
+  "receipt_sha256": "dccdf3341c84f93033267de33d433c8a6e784a356cde2f02fb3bc4e48a02c484",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "2a80fa2ba454b7c91611acb00f48129d82864e58b6d241b6e47543b00011c14d"
+  ]
+}

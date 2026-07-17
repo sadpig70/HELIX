@@ -1,0 +1,20 @@
+{
+  "artifact": "Certstra/bio-clock",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "bio-clock",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Certstra/bio-clock/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Certstra/bio-clock/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Certstra:bio-clock:live-probe",
+  "statement_sha256": "1efd24845c81538f21e318be362e32fd391aeaf91ac93e25da55970de2ed587d",
+  "target_platform": "Certstra"
+}

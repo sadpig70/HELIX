@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "85057135196f80475c6fcb8028f4bb84c4e62b3e75cb65475124d21eddfdaf37",
+  "deterministic": true,
+  "evidence_id": "machine:Routestra:compute-power:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Routestra:compute-power",
+  "supporting_files": [
+    "Routestra/routestra_packs/compute_power.py",
+    "Routestra/schemas/candidate-compute.schema.json"
+  ],
+  "tests_passed": true
+}

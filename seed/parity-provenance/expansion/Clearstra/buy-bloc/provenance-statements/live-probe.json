@@ -1,0 +1,20 @@
+{
+  "artifact": "Clearstra/buy-bloc",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "buy-bloc",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Clearstra/buy-bloc/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/buy-bloc/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Clearstra:buy-bloc:live-probe",
+  "statement_sha256": "07bb2c52516a9d8ea823af41ca8dbbdb6b1b135f6b061643ee06bef88af8e951",
+  "target_platform": "Clearstra"
+}

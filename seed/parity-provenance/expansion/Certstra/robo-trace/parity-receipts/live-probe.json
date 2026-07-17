@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Certstra:robo-trace:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "337947b4bb8468224bb01b32dcc8697c9f7cb44d46253f154a10c4614edc663e"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "e6e4dc6878f8e8b2b58f3d8c59018a16fd033d99458316971078d75a26484801",
+    "matched_machines": [
+      "M2"
+    ],
+    "probe_cases": [
+      "Certstra:robo-trace:certify"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Certstra:robo-trace:live-probe",
+  "receipt_sha256": "e3786a6e2e42aa20ee7caaa26656f4dbf9b94f582306417faaf7e3b97a0e36d7",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "ddf9fbd67f2326525d2bd43a5d20f3903504f9a40965f11884ce468787c4813f"
+  ]
+}

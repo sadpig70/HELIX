@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/reserve-flow",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "reserve-flow",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/reserve-flow/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/reserve-flow/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:reserve-flow:live-probe",
+  "statement_sha256": "5222ffd5f79d2a7dcb4dd21f784c3549ec8c5310224b09e9d602cba2890dfc2b",
+  "target_platform": "Attestra"
+}

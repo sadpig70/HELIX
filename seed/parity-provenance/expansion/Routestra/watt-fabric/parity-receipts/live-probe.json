@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Routestra:watt-fabric:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "8b93c1097f4509f14372387b7bea88af11097237942b9b0eb1872f04a9cdeeaf"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "a372ed6c56553d704e40958a21266ad8697345cd1b9fd7119e11f86f0988b9b9",
+    "matched_machines": [
+      "M9"
+    ],
+    "probe_cases": [
+      "Routestra:watt-fabric:route"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Routestra:watt-fabric:live-probe",
+  "receipt_sha256": "8cfa406ca65eb9dbcee0958eff475bcb16943854cc9503e5b1985f7d2d28e1c4",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "ccfaebca7f4ddfe95b78cd70fe3f7ed41cfa3abd2747ead056cff97620d843c1"
+  ]
+}

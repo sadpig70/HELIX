@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "8a8b26b3b0bd9bb4ffc48551823318df2bb34f3000260d703601a74b9d212c5c",
+  "deterministic": true,
+  "evidence_id": "machine:Routestra:watt-fabric:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Routestra:watt-fabric",
+  "supporting_files": [
+    "Routestra/routestra_packs/watt_fabric.py",
+    "Routestra/schemas/candidate-fabric.schema.json"
+  ],
+  "tests_passed": true
+}

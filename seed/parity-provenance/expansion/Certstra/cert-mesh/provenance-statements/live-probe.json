@@ -1,0 +1,20 @@
+{
+  "artifact": "Certstra/cert-mesh",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "cert-mesh",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Certstra/cert-mesh/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Certstra/cert-mesh/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Certstra:cert-mesh:live-probe",
+  "statement_sha256": "3327843b3fa8a532e8f115074b8592d2f73e2fe3aef6de2025d00646a3fb51e1",
+  "target_platform": "Certstra"
+}

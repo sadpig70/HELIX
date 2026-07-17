@@ -1,0 +1,28 @@
+{
+  "contract_id": "contract:Clearstra:cryo-futures:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "679f364287a4be9ebe2204462822e37fcfdc577d6307808123f9938c9d319637"
+  ],
+  "observations": {
+    "case_count": 2,
+    "contract_sha256": "4e07a35a1007da1b041081403717d67eb42b0a2ccc18317d3a13ff3b7d99adc0",
+    "matched_machines": [
+      "M6",
+      "M7"
+    ],
+    "probe_cases": [
+      "Clearstra:cryo-futures:price",
+      "Clearstra:cryo-futures:settle"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Clearstra:cryo-futures:live-probe",
+  "receipt_sha256": "9c4ed1aadb1f508ed0182e5af9c1795dda2a272cebdef7731e7564edf86590fd",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "9401190a0704915ea67d0a080feff664303a3689405993695cddee1681d5ae1d"
+  ]
+}

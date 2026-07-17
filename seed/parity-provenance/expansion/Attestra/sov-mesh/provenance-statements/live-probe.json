@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/sov-mesh",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "sov-mesh",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/sov-mesh/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/sov-mesh/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:sov-mesh:live-probe",
+  "statement_sha256": "84063e78b67649ebdbb916e256e08ea271381c2b85f341927696719e3fe5660a",
+  "target_platform": "Attestra"
+}

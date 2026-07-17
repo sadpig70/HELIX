@@ -1,0 +1,15 @@
+{
+  "behavior_sha256": "9609f2079afca82bf80eedad62830cecd9615444ce62479d9e161937bddc0e2f",
+  "deterministic": true,
+  "evidence_id": "machine:Certstra:cert-mesh:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Certstra:cert-mesh",
+  "supporting_files": [
+    "Certstra/certstra_packs/cert_mesh.py"
+  ],
+  "tests_passed": true
+}

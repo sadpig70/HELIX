@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/slot-settle-gate",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "slot-settle-gate",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/slot-settle-gate/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/slot-settle-gate/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:slot-settle-gate:live-probe",
+  "statement_sha256": "63260a80e91acb360e26949210723966fce8cb7d36af61361f821070beb98ad3",
+  "target_platform": "Attestra"
+}

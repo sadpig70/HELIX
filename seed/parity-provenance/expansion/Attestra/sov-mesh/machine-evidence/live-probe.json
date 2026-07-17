@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "7dd0662439efac174768f9f45e22d3f42335c55d942578e99bb85352ca938d6f",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:sov-mesh:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:sov-mesh",
+  "supporting_files": [
+    "Attestra/attestra_packs/sov_mesh.py",
+    "Attestra/schemas/packet-sovmesh.schema.json"
+  ],
+  "tests_passed": true
+}

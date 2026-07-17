@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/power-roam",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "power-roam",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/power-roam/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/power-roam/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:power-roam:live-probe",
+  "statement_sha256": "8e784ef3db50040e252f85a09623ec25b411392b43563d7cffd71723cbb0b23f",
+  "target_platform": "Routestra"
+}

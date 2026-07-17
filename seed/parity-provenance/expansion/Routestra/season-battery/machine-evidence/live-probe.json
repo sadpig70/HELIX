@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "6fdbe7b27445fed5b0442d8e2f51450f0f7efde8ea364f2f77d4257ba68223b7",
+  "deterministic": true,
+  "evidence_id": "machine:Routestra:season-battery:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Routestra:season-battery",
+  "supporting_files": [
+    "Routestra/routestra_packs/season_battery.py",
+    "Routestra/schemas/candidate-season.schema.json"
+  ],
+  "tests_passed": true
+}

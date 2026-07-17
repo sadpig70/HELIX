@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "256cf107365467dc2e52ffb09d2ad41fd2c9a5893afde2b78ecebdfd7f95f80e",
+  "deterministic": true,
+  "evidence_id": "machine:Clearstra:quadratic-carbon:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Clearstra:quadratic-carbon",
+  "supporting_files": [
+    "Clearstra/clearstra_markets/quadratic_carbon.py",
+    "Clearstra/schemas/order-carbon.schema.json"
+  ],
+  "tests_passed": true
+}

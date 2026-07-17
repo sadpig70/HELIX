@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/inference-grid",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "inference-grid",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/inference-grid/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/inference-grid/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:inference-grid:live-probe",
+  "statement_sha256": "854d234222b043918879c831ad638f6d0927893372c6af2f422065ce850622f1",
+  "target_platform": "Routestra"
+}

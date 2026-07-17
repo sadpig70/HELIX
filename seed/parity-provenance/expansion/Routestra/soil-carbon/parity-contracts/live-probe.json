@@ -1,0 +1,30 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Routestra:soil-carbon:live-probe",
+  "expected": {
+    "case_count": 1,
+    "machines": [
+      "M9"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Routestra:soil-carbon:route"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Routestra/soil-carbon/machine-evidence/live-probe.json"
+  ],
+  "pack": "soil-carbon",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/soil-carbon/source-locks/local-pack.json"
+  ],
+  "target_platform": "Routestra"
+}

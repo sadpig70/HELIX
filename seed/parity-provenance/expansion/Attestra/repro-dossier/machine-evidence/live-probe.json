@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "621354ea9b0922d505d349f74d4ef5e3e9d2dd5277068ce775c87d3bbdb39ec9",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:repro-dossier:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:repro-dossier",
+  "supporting_files": [
+    "Attestra/attestra_packs/reprodossier.py",
+    "Attestra/schemas/packet-repro.schema.json"
+  ],
+  "tests_passed": true
+}

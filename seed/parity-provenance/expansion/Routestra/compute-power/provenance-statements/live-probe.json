@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/compute-power",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "compute-power",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/compute-power/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/compute-power/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:compute-power:live-probe",
+  "statement_sha256": "70f80b45114bfd278c250e52fd700f10baa5a9603a5388dad522b56e50bd973d",
+  "target_platform": "Routestra"
+}

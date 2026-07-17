@@ -1,0 +1,20 @@
+{
+  "artifact": "Attestra/spend-boundary",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "spend-boundary",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Attestra/spend-boundary/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Attestra/spend-boundary/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Attestra:spend-boundary:live-probe",
+  "statement_sha256": "d01ff52c9167eb1f186a2a5c0cfead02f2949926d338f1d0eda60c2e2ed23b33",
+  "target_platform": "Attestra"
+}

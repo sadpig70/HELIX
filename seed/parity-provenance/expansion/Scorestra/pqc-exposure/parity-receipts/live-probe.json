@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Scorestra:pqc-exposure:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "f51ac0b2aeb3f340909fb44aad8a54e08ed152fe255e915cb5ada7b8316910d8"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "d3ca1e2182bd274e9a386e8e8d6f004f07f73c6c35d9da7016f0bf3076f822b3",
+    "matched_machines": [
+      "M15"
+    ],
+    "probe_cases": [
+      "Scorestra:pqc-exposure:assess"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Scorestra:pqc-exposure:live-probe",
+  "receipt_sha256": "b783bb8d90963a06ed9c1b6e7662e2ca030b300d25556d3bcbbc04acb75c8ba7",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "5261339eb896c2c1e70fca8c6e2bedbfd462218fed1b12e2cffa8e55198b4b57"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "artifact": "Clearstra/cold-capacity",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "cold-capacity",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Clearstra/cold-capacity/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/cold-capacity/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Clearstra:cold-capacity:live-probe",
+  "statement_sha256": "e11da02a0712e84ae845fb9e246138b6b706d4772ccb9685d7184b511882f8ca",
+  "target_platform": "Clearstra"
+}

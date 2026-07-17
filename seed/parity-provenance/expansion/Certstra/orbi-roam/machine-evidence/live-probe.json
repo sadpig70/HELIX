@@ -1,0 +1,15 @@
+{
+  "behavior_sha256": "73f39214883bf66f7dab7dadf36be2b9488ad6df72dae66a367a2fa791293925",
+  "deterministic": true,
+  "evidence_id": "machine:Certstra:orbi-roam:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Certstra:orbi-roam",
+  "supporting_files": [
+    "Certstra/certstra_packs/orbi_roam.py"
+  ],
+  "tests_passed": true
+}

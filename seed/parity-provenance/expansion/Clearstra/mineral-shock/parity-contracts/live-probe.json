@@ -1,0 +1,32 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Clearstra:mineral-shock:live-probe",
+  "expected": {
+    "case_count": 2,
+    "machines": [
+      "M6",
+      "M8"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Clearstra:mineral-shock:price",
+      "Clearstra:mineral-shock:rehearse"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Clearstra/mineral-shock/machine-evidence/live-probe.json"
+  ],
+  "pack": "mineral-shock",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/mineral-shock/source-locks/local-pack.json"
+  ],
+  "target_platform": "Clearstra"
+}

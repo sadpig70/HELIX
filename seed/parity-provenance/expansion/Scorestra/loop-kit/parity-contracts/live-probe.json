@@ -1,0 +1,30 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Scorestra:loop-kit:live-probe",
+  "expected": {
+    "case_count": 1,
+    "machines": [
+      "M15"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Scorestra:loop-kit:assess"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Scorestra/loop-kit/machine-evidence/live-probe.json"
+  ],
+  "pack": "loop-kit",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Scorestra/loop-kit/source-locks/local-pack.json"
+  ],
+  "target_platform": "Scorestra"
+}

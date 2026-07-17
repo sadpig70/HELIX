@@ -1,0 +1,20 @@
+{
+  "artifact": "Scorestra/lazaretto-risk",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "lazaretto-risk",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Scorestra/lazaretto-risk/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Scorestra/lazaretto-risk/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Scorestra:lazaretto-risk:live-probe",
+  "statement_sha256": "93fe4d8637189680f5f475438f31c4824405ae6d2a97975b5486a287329127c4",
+  "target_platform": "Scorestra"
+}

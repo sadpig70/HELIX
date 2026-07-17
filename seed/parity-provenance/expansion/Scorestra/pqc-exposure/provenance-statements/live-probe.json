@@ -1,0 +1,20 @@
+{
+  "artifact": "Scorestra/pqc-exposure",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "pqc-exposure",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Scorestra/pqc-exposure/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Scorestra/pqc-exposure/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Scorestra:pqc-exposure:live-probe",
+  "statement_sha256": "25878ceb520d95e1779d574fef743514779eb1d8e8372b78d0d9b1de56317a6c",
+  "target_platform": "Scorestra"
+}

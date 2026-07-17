@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "cffb1639b7f1a2a0b84255ddab2e98485d8042cae3f0e645be9edea0a3c91741",
+  "deterministic": true,
+  "evidence_id": "machine:Attestra:slot-gate:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Attestra:slot-gate",
+  "supporting_files": [
+    "Attestra/attestra_packs/slot_gate.py",
+    "Attestra/schemas/packet-slot.schema.json"
+  ],
+  "tests_passed": true
+}

@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "cfeecdcfb9e3a6748885f148a36302da4d79a2f1a58a4be015a82fdc788e2389",
+  "deterministic": true,
+  "evidence_id": "machine:Scorestra:field-posture:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Scorestra:field-posture",
+  "supporting_files": [
+    "Scorestra/scorestra_packs/field_posture.py",
+    "Scorestra/schemas/item-field.schema.json"
+  ],
+  "tests_passed": true
+}

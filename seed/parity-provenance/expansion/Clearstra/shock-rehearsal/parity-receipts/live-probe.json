@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Clearstra:shock-rehearsal:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "2cb182b54299fe27a64db7f52ace75f138e7f25f385ed14f6e7849d2c6933312"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "4c1f8f1dd34fda1063b5d6dd5645e3a305dda37dd334fe0a8e3a784c0f1525b4",
+    "matched_machines": [
+      "M8"
+    ],
+    "probe_cases": [
+      "Clearstra:shock-rehearsal:rehearse"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Clearstra:shock-rehearsal:live-probe",
+  "receipt_sha256": "36e2a2a53ff53ab7af77601b4fdf4aa2e6abec023156fa1f6161f07b39f06075",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "822d3f176be76e4eec2b616a4fb4451be3dd110ef80dc1364156ab1fa03286c8"
+  ]
+}

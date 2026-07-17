@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-07-16T00:00:00Z",
+  "corpus_id": "PLATFORM-PACK-Clearstra-agent-ops",
+  "license": "MIT",
+  "license_evidence_sha256": "ece849bde6e6b11ab5081c2c4796a24ce89d41f6f6674ebc713e37540e18e30d",
+  "locator": "Clearstra/agent-ops",
+  "origin_kind": "helix_generated",
+  "restrictions": [
+    "local_platform_pack_snapshot"
+  ],
+  "revision": "62957dc4fc2e52b887652ad853888a4d65c25d94",
+  "schema": "helix-parity-source-lock/1.0",
+  "source_id": "source:Clearstra:agent-ops",
+  "source_sha256": "a04b09eea0e2659a523fb015fd9890b4c2f75c6b8086e67f0cfdf1109335c04c"
+}

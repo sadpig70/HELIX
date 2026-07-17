@@ -1,0 +1,20 @@
+{
+  "artifact": "Scorestra/loop-kit",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "loop-kit",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Scorestra/loop-kit/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Scorestra/loop-kit/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Scorestra:loop-kit:live-probe",
+  "statement_sha256": "7b1be78acda1c8b35a7637b15767a2274654be5823efb8acdb26d3ab6951534c",
+  "target_platform": "Scorestra"
+}

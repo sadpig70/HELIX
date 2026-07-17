@@ -1,0 +1,28 @@
+{
+  "contract_id": "contract:Clearstra:retrofit-receivable:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "d7e23425f3f16d3e548dc07bfb5c3b52d18444024c402b4ae45420fa9aec0b84"
+  ],
+  "observations": {
+    "case_count": 2,
+    "contract_sha256": "d7fa7002f3c0e87641c0a7814608cb1e0615a8d7ff8e3b509385c38607f527d8",
+    "matched_machines": [
+      "M6",
+      "M7"
+    ],
+    "probe_cases": [
+      "Clearstra:retrofit-receivable:price",
+      "Clearstra:retrofit-receivable:settle"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Clearstra:retrofit-receivable:live-probe",
+  "receipt_sha256": "2172e34292b04f22c98d58aced7bd0e912cb5f136225c33a07c781646146a439",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "9ee1c8695ffc7afadc625f3d863a995827dc37896853e50ec5fa24a781734ef8"
+  ]
+}

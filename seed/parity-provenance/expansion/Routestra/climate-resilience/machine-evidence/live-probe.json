@@ -1,0 +1,16 @@
+{
+  "behavior_sha256": "d7092271aec34f07f9d499f85ad36a356f11ca9484e02270df28bccd258a79a0",
+  "deterministic": true,
+  "evidence_id": "machine:Routestra:climate-resilience:live-probe",
+  "machine_label": "live-machine-probe",
+  "machine_status": "substantiated",
+  "problems": [],
+  "reproduction_command": "python scripts/condense/machine_probe_dataset.py --json",
+  "schema": "helix-parity-machine-evidence/1.0",
+  "source_lock_id": "source:Routestra:climate-resilience",
+  "supporting_files": [
+    "Routestra/routestra_packs/climate_resilience.py",
+    "Routestra/schemas/candidate-climate.schema.json"
+  ],
+  "tests_passed": true
+}

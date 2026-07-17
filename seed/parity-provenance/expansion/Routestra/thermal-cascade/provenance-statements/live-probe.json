@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/thermal-cascade",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "thermal-cascade",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/thermal-cascade/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/thermal-cascade/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:thermal-cascade:live-probe",
+  "statement_sha256": "ffb8347053985f6dbe0c33998adff512262a57345680178e592aea5d91a85311",
+  "target_platform": "Routestra"
+}

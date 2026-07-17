@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Scorestra:field-posture:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "4260cded1fc68151e23fb51d555b0cfbf11a9d6534f69a1f610199b9d549eeff"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "0619925d0b04ed6317cacb79728de30cf8007dd818e9a0b369b2f895ef5373d6",
+    "matched_machines": [
+      "M15"
+    ],
+    "probe_cases": [
+      "Scorestra:field-posture:assess"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Scorestra:field-posture:live-probe",
+  "receipt_sha256": "2a86cd783e841cf7cd47381539321d5f0d8167c9171c14cd851963b56efa17d2",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "51a6077440d2b77a59c58877062b0010d86cd3818789cf64b36b924425740261"
+  ]
+}

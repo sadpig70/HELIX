@@ -1,0 +1,30 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Routestra:climate-resilience:live-probe",
+  "expected": {
+    "case_count": 1,
+    "machines": [
+      "M10"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Routestra:climate-resilience:bound"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Routestra/climate-resilience/machine-evidence/live-probe.json"
+  ],
+  "pack": "climate-resilience",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/climate-resilience/source-locks/local-pack.json"
+  ],
+  "target_platform": "Routestra"
+}

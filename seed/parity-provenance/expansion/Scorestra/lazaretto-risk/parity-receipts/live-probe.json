@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Scorestra:lazaretto-risk:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "9265a2cc3549e5f00279cd89b1964c80ed9f55a1c6827ea91d4e56a56337a1e7"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "7fd476f7d639ecfc4cfd1abd006df4e132c764a5d0600d04ffc246b6ee7fa488",
+    "matched_machines": [
+      "M15"
+    ],
+    "probe_cases": [
+      "Scorestra:lazaretto-risk:assess"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Scorestra:lazaretto-risk:live-probe",
+  "receipt_sha256": "bf39c495951834377c27090fae31b35c5e2176a5722904b78ce5d130086a5a74",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "00c9b66f5c45833774b01d1558fae02dfadbf7f27b4e79fd1756aa14045b0229"
+  ]
+}

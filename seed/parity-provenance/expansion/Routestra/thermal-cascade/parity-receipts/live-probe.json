@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Routestra:thermal-cascade:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "ea29704191505cc13aca851681116d48f22b6c604af4dadec34709fe8369a801"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "c78c3d767d385646854c01ea68d7fbe88085796a63f37dc94cf4dd872138d17a",
+    "matched_machines": [
+      "M10"
+    ],
+    "probe_cases": [
+      "Routestra:thermal-cascade:bound"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Routestra:thermal-cascade:live-probe",
+  "receipt_sha256": "01c41f7553450232a10fd9502eb84fb39909a5f8f9e3d15eba1663feea1e89d0",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "d6069288664b989b8634e11dc807ca5b3339be7319336be02bc1b7ec8065e02b"
+  ]
+}

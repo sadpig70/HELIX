@@ -1,0 +1,20 @@
+{
+  "artifact": "Clearstra/quadratic-carbon",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "quadratic-carbon",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Clearstra/quadratic-carbon/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Clearstra/quadratic-carbon/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Clearstra:quadratic-carbon:live-probe",
+  "statement_sha256": "dd8505eb623ed4652a703bed72814498038ad7f9175c261d14d0b25c99f1639e",
+  "target_platform": "Clearstra"
+}

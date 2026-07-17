@@ -1,6 +1,6 @@
 {
-  "completed": 3,
-  "dashboard": "seed/parity-provenance/coverage-dashboard.json",
+  "completed": 43,
+  "dashboard": null,
   "generated_at": "2026-07-16T00:00:00Z",
   "problems": [],
   "promotions": [
@@ -9,8 +9,8 @@
         "by_platform": {
           "Attestra": {
             "BLOCKED": 3,
-            "PENDING": 13,
-            "VALID": 12
+            "PENDING": 10,
+            "VALID": 15
           },
           "Certstra": {
             "PENDING": 5
@@ -29,8 +29,8 @@
         },
         "by_status": {
           "BLOCKED": 4,
-          "PENDING": 45,
-          "VALID": 13
+          "PENDING": 42,
+          "VALID": 16
         },
         "packs": 62,
         "probe_cases": 102
@@ -40,18 +40,18 @@
         "M3"
       ],
       "ordinal": 1,
-      "pack": "handback",
+      "pack": "repro-dossier",
       "platform": "Attestra",
       "probe_case_count": 2,
-      "promotion_report": "seed/parity-provenance/expansion/Attestra/handback/parity-receipts/live-probe.json"
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/repro-dossier/parity-receipts/live-probe.json"
     },
     {
       "inventory_counts": {
         "by_platform": {
           "Attestra": {
             "BLOCKED": 3,
-            "PENDING": 12,
-            "VALID": 13
+            "PENDING": 9,
+            "VALID": 16
           },
           "Certstra": {
             "PENDING": 5
@@ -70,8 +70,8 @@
         },
         "by_status": {
           "BLOCKED": 4,
-          "PENDING": 44,
-          "VALID": 14
+          "PENDING": 41,
+          "VALID": 17
         },
         "packs": 62,
         "probe_cases": 102
@@ -81,18 +81,18 @@
         "M3"
       ],
       "ordinal": 2,
-      "pack": "method-bond",
+      "pack": "reserve-flow",
       "platform": "Attestra",
       "probe_case_count": 2,
-      "promotion_report": "seed/parity-provenance/expansion/Attestra/method-bond/parity-receipts/live-probe.json"
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/reserve-flow/parity-receipts/live-probe.json"
     },
     {
       "inventory_counts": {
         "by_platform": {
           "Attestra": {
             "BLOCKED": 3,
-            "PENDING": 11,
-            "VALID": 14
+            "PENDING": 8,
+            "VALID": 17
           },
           "Certstra": {
             "PENDING": 5
@@ -111,8 +111,8 @@
         },
         "by_status": {
           "BLOCKED": 4,
-          "PENDING": 43,
-          "VALID": 15
+          "PENDING": 40,
+          "VALID": 18
         },
         "packs": 62,
         "probe_cases": 102
@@ -122,13 +122,1601 @@
         "M3"
       ],
       "ordinal": 3,
-      "pack": "pqc-mesh",
+      "pack": "settle-mesh",
       "platform": "Attestra",
       "probe_case_count": 2,
-      "promotion_report": "seed/parity-provenance/expansion/Attestra/pqc-mesh/parity-receipts/live-probe.json"
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/settle-mesh/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "PENDING": 7,
+            "VALID": 18
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 39,
+          "VALID": 19
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 4,
+      "pack": "signal-mesh",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/signal-mesh/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "PENDING": 6,
+            "VALID": 19
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 38,
+          "VALID": 20
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 5,
+      "pack": "slot-gate",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/slot-gate/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "PENDING": 5,
+            "VALID": 20
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 37,
+          "VALID": 21
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 6,
+      "pack": "slot-settle-gate",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/slot-settle-gate/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "PENDING": 4,
+            "VALID": 21
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 36,
+          "VALID": 22
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 7,
+      "pack": "sov-mesh",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/sov-mesh/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "PENDING": 3,
+            "VALID": 22
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 35,
+          "VALID": 23
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 8,
+      "pack": "spend-boundary",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/spend-boundary/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "PENDING": 2,
+            "VALID": 23
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 34,
+          "VALID": 24
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 9,
+      "pack": "spend-mesh",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/spend-mesh/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "PENDING": 1,
+            "VALID": 24
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 33,
+          "VALID": 25
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 10,
+      "pack": "veto-escrow",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/veto-escrow/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 5
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 32,
+          "VALID": 26
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2",
+        "M3"
+      ],
+      "ordinal": 11,
+      "pack": "withheld-action",
+      "platform": "Attestra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Attestra/withheld-action/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 4,
+            "VALID": 1
+          },
+          "Clearstra": {
+            "PENDING": 11,
+            "VALID": 1
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 31,
+          "VALID": 27
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M12",
+        "M2"
+      ],
+      "ordinal": 12,
+      "pack": "release-mesh",
+      "platform": "Certstra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Certstra/release-mesh/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 4,
+            "VALID": 1
+          },
+          "Clearstra": {
+            "PENDING": 10,
+            "VALID": 2
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 30,
+          "VALID": 28
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M5",
+        "M6"
+      ],
+      "ordinal": 13,
+      "pack": "buy-bloc",
+      "platform": "Clearstra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/buy-bloc/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 4,
+            "VALID": 1
+          },
+          "Clearstra": {
+            "PENDING": 9,
+            "VALID": 3
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 29,
+          "VALID": 29
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M5",
+        "M6"
+      ],
+      "ordinal": 14,
+      "pack": "cold-capacity",
+      "platform": "Clearstra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/cold-capacity/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 4,
+            "VALID": 1
+          },
+          "Clearstra": {
+            "PENDING": 8,
+            "VALID": 4
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 28,
+          "VALID": 30
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M6",
+        "M7"
+      ],
+      "ordinal": 15,
+      "pack": "cryo-futures",
+      "platform": "Clearstra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/cryo-futures/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 4,
+            "VALID": 1
+          },
+          "Clearstra": {
+            "PENDING": 7,
+            "VALID": 5
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 27,
+          "VALID": 31
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M6",
+        "M7"
+      ],
+      "ordinal": 16,
+      "pack": "failure-futures",
+      "platform": "Clearstra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/failure-futures/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 4,
+            "VALID": 1
+          },
+          "Clearstra": {
+            "PENDING": 6,
+            "VALID": 6
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 26,
+          "VALID": 32
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M6",
+        "M8"
+      ],
+      "ordinal": 17,
+      "pack": "mineral-shock",
+      "platform": "Clearstra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/mineral-shock/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 4,
+            "VALID": 1
+          },
+          "Clearstra": {
+            "PENDING": 5,
+            "VALID": 7
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 25,
+          "VALID": 33
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M6",
+        "M7"
+      ],
+      "ordinal": 18,
+      "pack": "retrofit-receivable",
+      "platform": "Clearstra",
+      "probe_case_count": 2,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/retrofit-receivable/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 3,
+            "VALID": 2
+          },
+          "Clearstra": {
+            "PENDING": 5,
+            "VALID": 7
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 24,
+          "VALID": 34
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2"
+      ],
+      "ordinal": 19,
+      "pack": "bio-clock",
+      "platform": "Certstra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Certstra/bio-clock/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 2,
+            "VALID": 3
+          },
+          "Clearstra": {
+            "PENDING": 5,
+            "VALID": 7
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 23,
+          "VALID": 35
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2"
+      ],
+      "ordinal": 20,
+      "pack": "cert-mesh",
+      "platform": "Certstra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Certstra/cert-mesh/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "PENDING": 1,
+            "VALID": 4
+          },
+          "Clearstra": {
+            "PENDING": 5,
+            "VALID": 7
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 22,
+          "VALID": 36
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2"
+      ],
+      "ordinal": 21,
+      "pack": "orbi-roam",
+      "platform": "Certstra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Certstra/orbi-roam/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "PENDING": 5,
+            "VALID": 7
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 21,
+          "VALID": 37
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M2"
+      ],
+      "ordinal": 22,
+      "pack": "robo-trace",
+      "platform": "Certstra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Certstra/robo-trace/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "PENDING": 4,
+            "VALID": 8
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 20,
+          "VALID": 38
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M6"
+      ],
+      "ordinal": 23,
+      "pack": "agent-ops",
+      "platform": "Clearstra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/agent-ops/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "PENDING": 3,
+            "VALID": 9
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 19,
+          "VALID": 39
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M5"
+      ],
+      "ordinal": 24,
+      "pack": "exclusive-grant",
+      "platform": "Clearstra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/exclusive-grant/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "PENDING": 2,
+            "VALID": 10
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 18,
+          "VALID": 40
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M5"
+      ],
+      "ordinal": 25,
+      "pack": "quadratic-carbon",
+      "platform": "Clearstra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/quadratic-carbon/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "PENDING": 1,
+            "VALID": 11
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 17,
+          "VALID": 41
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M6"
+      ],
+      "ordinal": 26,
+      "pack": "refusal-option",
+      "platform": "Clearstra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/refusal-option/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 16,
+          "VALID": 42
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M8"
+      ],
+      "ordinal": 27,
+      "pack": "shock-rehearsal",
+      "platform": "Clearstra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Clearstra/shock-rehearsal/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 10,
+            "VALID": 1
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 15,
+          "VALID": 43
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M10"
+      ],
+      "ordinal": 28,
+      "pack": "climate-resilience",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/climate-resilience/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 9,
+            "VALID": 2
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 14,
+          "VALID": 44
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M9"
+      ],
+      "ordinal": 29,
+      "pack": "compute-power",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/compute-power/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 8,
+            "VALID": 3
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 13,
+          "VALID": 45
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M10"
+      ],
+      "ordinal": 30,
+      "pack": "flow-mesh",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/flow-mesh/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 7,
+            "VALID": 4
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 12,
+          "VALID": 46
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M9"
+      ],
+      "ordinal": 31,
+      "pack": "inference-grid",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/inference-grid/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 6,
+            "VALID": 5
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 11,
+          "VALID": 47
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M9"
+      ],
+      "ordinal": 32,
+      "pack": "power-roam",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/power-roam/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 5,
+            "VALID": 6
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 10,
+          "VALID": 48
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M10"
+      ],
+      "ordinal": 33,
+      "pack": "season-battery",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/season-battery/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 4,
+            "VALID": 7
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 9,
+          "VALID": 49
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M9"
+      ],
+      "ordinal": 34,
+      "pack": "soil-carbon",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/soil-carbon/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 3,
+            "VALID": 8
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 8,
+          "VALID": 50
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M10"
+      ],
+      "ordinal": 35,
+      "pack": "thermal-cascade",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/thermal-cascade/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 2,
+            "VALID": 9
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 7,
+          "VALID": 51
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M10"
+      ],
+      "ordinal": 36,
+      "pack": "thermal-plume",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/thermal-plume/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "PENDING": 1,
+            "VALID": 10
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 6,
+          "VALID": 52
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M10"
+      ],
+      "ordinal": 37,
+      "pack": "waste-stack",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/waste-stack/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "VALID": 11
+          },
+          "Scorestra": {
+            "PENDING": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 5,
+          "VALID": 53
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M9"
+      ],
+      "ordinal": 38,
+      "pack": "watt-fabric",
+      "platform": "Routestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Routestra/watt-fabric/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "VALID": 11
+          },
+          "Scorestra": {
+            "PENDING": 4,
+            "VALID": 1
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 4,
+          "VALID": 54
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M15"
+      ],
+      "ordinal": 39,
+      "pack": "detour-posture",
+      "platform": "Scorestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Scorestra/detour-posture/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "VALID": 11
+          },
+          "Scorestra": {
+            "PENDING": 3,
+            "VALID": 2
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 3,
+          "VALID": 55
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M15"
+      ],
+      "ordinal": 40,
+      "pack": "field-posture",
+      "platform": "Scorestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Scorestra/field-posture/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "VALID": 11
+          },
+          "Scorestra": {
+            "PENDING": 2,
+            "VALID": 3
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 2,
+          "VALID": 56
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M15"
+      ],
+      "ordinal": 41,
+      "pack": "lazaretto-risk",
+      "platform": "Scorestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Scorestra/lazaretto-risk/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "VALID": 11
+          },
+          "Scorestra": {
+            "PENDING": 1,
+            "VALID": 4
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "PENDING": 1,
+          "VALID": 57
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M15"
+      ],
+      "ordinal": 42,
+      "pack": "loop-kit",
+      "platform": "Scorestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Scorestra/loop-kit/parity-receipts/live-probe.json"
+    },
+    {
+      "inventory_counts": {
+        "by_platform": {
+          "Attestra": {
+            "BLOCKED": 3,
+            "VALID": 25
+          },
+          "Certstra": {
+            "VALID": 5
+          },
+          "Clearstra": {
+            "VALID": 12
+          },
+          "Routestra": {
+            "BLOCKED": 1,
+            "VALID": 11
+          },
+          "Scorestra": {
+            "VALID": 5
+          }
+        },
+        "by_status": {
+          "BLOCKED": 4,
+          "VALID": 58
+        },
+        "packs": 62,
+        "probe_cases": 102
+      },
+      "machines": [
+        "M15"
+      ],
+      "ordinal": 43,
+      "pack": "pqc-exposure",
+      "platform": "Scorestra",
+      "probe_case_count": 1,
+      "promotion_report": "seed/parity-provenance/expansion/Scorestra/pqc-exposure/parity-receipts/live-probe.json"
     }
   ],
-  "requested_limit": 3,
+  "requested_limit": 43,
   "schema": "helix-parity-promotion-batch-report/1.0",
-  "selection_source": "coverage-dashboard"
+  "selection_source": "expansion-inventory"
 }

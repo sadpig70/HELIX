@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Certstra:orbi-roam:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "96eab91548a2e5b71a5dce019d8fb57d47779038b7998fd72aa1478da75e8be6"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "91bf410dcb8101784aa04ea2d4c8daf17be583678a693d4449f914d7f06fe348",
+    "matched_machines": [
+      "M2"
+    ],
+    "probe_cases": [
+      "Certstra:orbi-roam:certify"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Certstra:orbi-roam:live-probe",
+  "receipt_sha256": "a167a7f460fee1019c1dd2c2ab2ec887e37dcc8175a0335aa1f28f04f57eff88",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "123c3d5dd038a20c4f725764624a9406d81c719db5fef220dd03ea941723ecab"
+  ]
+}

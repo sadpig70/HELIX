@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-07-16T00:00:00Z",
+  "machine_evidence": "seed/parity-provenance/expansion/Routestra/thermal-plume/machine-evidence/live-probe.json",
+  "machines": [
+    "M10"
+  ],
+  "pack": "thermal-plume",
+  "parity_contract": "seed/parity-provenance/expansion/Routestra/thermal-plume/parity-contracts/live-probe.json",
+  "parity_receipt": "seed/parity-provenance/expansion/Routestra/thermal-plume/parity-receipts/live-probe.json",
+  "platform": "Routestra",
+  "probe_case_count": 1,
+  "problems": [],
+  "provenance_statement": "seed/parity-provenance/expansion/Routestra/thermal-plume/provenance-statements/live-probe.json",
+  "schema": "helix-parity-pending-promotion-report/1.0",
+  "source_lock": "seed/parity-provenance/expansion/Routestra/thermal-plume/source-locks/local-pack.json",
+  "status": "VALID"
+}

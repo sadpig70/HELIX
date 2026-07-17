@@ -1,0 +1,30 @@
+{
+  "comparators": [
+    "probe_matched_expected",
+    "machine_evidence_substantiated"
+  ],
+  "contract_id": "contract:Certstra:bio-clock:live-probe",
+  "expected": {
+    "case_count": 1,
+    "machines": [
+      "M2"
+    ]
+  },
+  "inputs": {
+    "probe_cases": [
+      "Certstra:bio-clock:certify"
+    ]
+  },
+  "invariants": [
+    "do_not_mark_pass_without_live_probe_match"
+  ],
+  "machine_evidence": [
+    "seed/parity-provenance/expansion/Certstra/bio-clock/machine-evidence/live-probe.json"
+  ],
+  "pack": "bio-clock",
+  "schema": "helix-parity-contract/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Certstra/bio-clock/source-locks/local-pack.json"
+  ],
+  "target_platform": "Certstra"
+}

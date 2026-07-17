@@ -1,0 +1,20 @@
+{
+  "artifact": "Routestra/climate-resilience",
+  "claims": [
+    "source_locked",
+    "machine_probe_substantiated",
+    "parity_decision:PASS",
+    "parity_passed"
+  ],
+  "pack": "climate-resilience",
+  "parity_receipts": [
+    "seed/parity-provenance/expansion/Routestra/climate-resilience/parity-receipts/live-probe.json"
+  ],
+  "schema": "helix-parity-provenance-statement/1.0",
+  "source_locks": [
+    "seed/parity-provenance/expansion/Routestra/climate-resilience/source-locks/local-pack.json"
+  ],
+  "statement_id": "provenance:Routestra:climate-resilience:live-probe",
+  "statement_sha256": "edc9db9254e72a7b944d9482915a18c6e640bc1caa04602b74db0f872c093ee9",
+  "target_platform": "Routestra"
+}

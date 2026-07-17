@@ -1,0 +1,26 @@
+{
+  "contract_id": "contract:Scorestra:detour-posture:live-probe",
+  "decision": "PASS",
+  "executed_at": "2026-07-16T00:00:00Z",
+  "machine_evidence_sha256s": [
+    "ce3d3f55dcc7f0d4b1eef9e1e00e44ede8f9601e3ce933171e89bb88708246bb"
+  ],
+  "observations": {
+    "case_count": 1,
+    "contract_sha256": "309071adc366e0d31f0cb5f3e23701296f30aead111f5907250ca096af481c50",
+    "matched_machines": [
+      "M15"
+    ],
+    "probe_cases": [
+      "Scorestra:detour-posture:assess"
+    ]
+  },
+  "problems": [],
+  "receipt_id": "receipt:Scorestra:detour-posture:live-probe",
+  "receipt_sha256": "cc14313b84849cfcb3f1e18aad727a7be3614106afb2522993b03f19fcba01b8",
+  "runner": "helix-parity-pending-promotion/1.0",
+  "schema": "helix-parity-receipt/1.0",
+  "source_lock_sha256s": [
+    "67b0965743b83c3ec123b5168d1645041a649e1283c49929180eca25cc64812d"
+  ]
+}
